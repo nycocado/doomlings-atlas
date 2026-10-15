@@ -8,8 +8,8 @@ Everything here comes before assets and code.
 
 - Visual identity: app logo and icon, without the Doomlings logo.
 - Design system.
-- Edition to start with.
-- Reliable source to verify card data.
+- Edition to start with: Classic (2nd edition) base game, no expansions.
+- Card sources: images from [Ryeera's Tabletop Simulator mod](https://steamcommunity.com/sharedfiles/filedetails/?id=3151925153), card data checked against the [official Doomlings Compendium](https://www.doomlings.com/pages/compendium).
 
 ## 1. Card Data and Compendium
 
