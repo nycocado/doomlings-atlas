@@ -12,6 +12,7 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game. No code y
 - Never commit Doomlings assets outside the asset folder or without its notice (see CONTRIBUTING.md).
 - No `Co-Authored-By` trailer or any other AI attribution in commits, PRs or code.
 - Read files before editing them. Keep changes scoped to the task.
+- Respect accepted ADRs in `docs/adr`. Only write a new ADR when the decision meets the criteria in `docs/adr/README.md`, using `docs/adr/template.md` exactly, and update the index.
 
 ## Tooling
 

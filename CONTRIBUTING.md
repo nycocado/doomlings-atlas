@@ -27,7 +27,7 @@ Doomlings LLC gave permission for this app (2026-10-15) under the fan art terms 
 - Never use the Doomlings logo.
 - Always keep the notice "Unofficial, not affiliated with or endorsed by Doomlings LLC" visible in the app and its store listings.
 - No paid features and no ads.
-- Card data (names, effects, points) must be traceable to the physical cards or official sources. Never guess or invent it.
+- Card data (names, effects, points) must be traceable to a reliable source: the physical cards, official material or checked community assets. Never guess or invent it.
 - Card images in issues, PRs or datasets must be photos of cards you own or official images already in the repo.
 
 ## Translations
@@ -43,7 +43,7 @@ Doomlings LLC gave permission for this app (2026-10-15) under the fan art terms 
 3. Include what applies:
    - **Bug:** steps to reproduce, what you expected, what happened, device and app version, screenshots if useful.
    - **Wrong score:** the cards on the table and the score you expected versus the one shown.
-   - **Card data:** card name, edition, what is wrong and a photo of your card or a link to the official source.
+   - **Card data:** card name, edition, what is wrong and a photo of your card or a link to a reliable source.
    - **Translation:** language, where the text appears and your suggested wording.
 
 ## Opening a Pull Request
@@ -55,6 +55,11 @@ Doomlings LLC gave permission for this app (2026-10-15) under the fan art terms 
 5. Open the PR describing what changed, why, how you tested it, and link the issue (`Closes #123`).
 
 You are responsible for every line you submit, however it was written. Make sure you understand it and can explain it.
+
+## Documentation
+
+- [ROADMAP.md](ROADMAP.md): scope and order of work.
+- [docs/adr](docs/adr): architecture decisions. Read them before proposing structural changes; changing one means a new ADR, following [docs/adr/README.md](docs/adr/README.md).
 
 ## Commits
 
