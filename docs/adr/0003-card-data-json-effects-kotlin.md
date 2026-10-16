@@ -1,6 +1,6 @@
 # 3. Card Data in JSON, Scoring Effects in Kotlin
 
-- Status: accepted
+- Status: superseded by [0005](0005-scoring-rules-in-card-data.md)
 - Date: 2026-10-15
 
 ## Context
