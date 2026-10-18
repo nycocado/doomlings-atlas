@@ -19,6 +19,7 @@ Everything here comes before assets and code.
 - The notice "Unofficial, not affiliated with or endorsed by Doomlings LLC" shown on first launch and always available on an "About" screen.
 - Interface in English and Portuguese; card text in English.
 - Tests for database integrity: unique identifiers, required fields, every card with an image.
+- Screenshot tests from the component previews, once the design system settles.
 
 ## 2. Manual Scoring
 

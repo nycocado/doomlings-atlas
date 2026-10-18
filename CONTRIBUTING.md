@@ -50,11 +50,35 @@ Doomlings LLC gave permission for this app (2026-10-15) under the fan art terms 
 
 1. For anything beyond a small fix, open or comment on an issue first so we agree on the approach.
 2. Fork the repo and create a branch from `main`.
-3. Keep the PR focused on one change and follow the commit format below.
-4. Test what you change.
-5. Open the PR describing what changed, why, how you tested it, and link the issue (`Closes #123`).
+3. Keep the PR focused on one change, with a title in the [commit format](#commits) (CI checks it).
+4. Open the PR describing what changed, why and how you tested it, and link the issue (`Closes #123`).
+
+CI checks formatting, lint and tests and tells you if anything needs fixing. The maintainer squash-merges the PR once CI passes. [Development](#development) explains the checks if you work on code.
 
 You are responsible for every line you submit, however it was written. Make sure you understand it and can explain it.
+
+## Development
+
+How the code is kept consistent. Most of it runs in CI, so you only need the parts that touch your change.
+
+- **Tests first in `shared`:** card data, game rules and scoring are written test-first. Each scoring rule gets a test with a real pile and its expected score.
+- **Previews in `app`:** every component and screen has a `@ThemePreviews` preview (light and dark).
+- **Style:** Spotless with ktlint formats the code and Android Lint runs with warnings as errors. `./gradlew spotlessApply check` fixes formatting and runs the same checks as CI.
+- **Dependencies:** versions live in `gradle/libs.versions.toml`. A new dependency needs a reason in the PR.
+- **Permissions:** the app declares no permissions, as it works fully offline ([ADR 0002](docs/adr/0002-offline-without-backend.md)). CI fails if the final manifest has a permission missing from `app/permissions-allowlist.txt`. Adding one needs a reason in the PR.
+- **Minimum Android version:** API 26 (Android 8).
+
+### Branches and Issues
+
+- `main` is the only long-lived branch and always builds and passes CI. Work happens on short-lived branches merged by PR ([GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)); merged branches are deleted.
+- Each [ROADMAP.md](ROADMAP.md) phase is a milestone. Its issues are small, each with what "done" means.
+- Labels: `bug`, `card-data`, `translation` and `scoring`.
+
+### CI and Releases
+
+- Every PR and push to `main` runs one GitHub Actions workflow: Gradle wrapper validation, `spotlessCheck`, `lint`, unit tests, the permission check and a debug build. The PR title must follow the commit format, since it becomes the squash commit message.
+- Actions are pinned by commit SHA. Dependabot opens weekly grouped updates for Gradle and Actions.
+- Releases come from a `vX.Y.Z` tag ([SemVer](https://semver.org)): the version name comes from the tag and the version code from its numbers (`1.2.3` → `10203`). The release workflow runs in the `release` environment, after the maintainer approves it, and creates a draft GitHub Release with the signed APK and the merged PRs grouped by type. The maintainer writes a short summary for players on top and publishes it; the Releases page is the changelog. The signing key lives only in GitHub Secrets and the maintainer's backup, never in the repo.
 
 ## Documentation
 
