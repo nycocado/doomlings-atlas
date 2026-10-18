@@ -1,0 +1,24 @@
+name: Bug
+description: Something in the app is broken.
+labels: [bug]
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected and what happened
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device, Android version and app version
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots

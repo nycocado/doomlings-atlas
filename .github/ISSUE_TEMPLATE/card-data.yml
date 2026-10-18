@@ -1,0 +1,23 @@
+name: Card data
+description: A card name, effect or point value is wrong or missing.
+labels: [card-data]
+body:
+  - type: input
+    id: card
+    attributes:
+      label: Card name and edition
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: A photo of your card or a link to official material. Card data is never guessed.
+    validations:
+      required: true

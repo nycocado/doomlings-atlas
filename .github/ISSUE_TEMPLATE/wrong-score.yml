@@ -1,0 +1,17 @@
+name: Wrong score
+description: The app calculated a different score than the rules give.
+labels: [scoring]
+body:
+  - type: textarea
+    id: cards
+    attributes:
+      label: Cards on the table
+      description: Each player's trait pile, the catastrophes and anything else that affects the score.
+    validations:
+      required: true
+  - type: textarea
+    id: scores
+    attributes:
+      label: Expected score and score shown
+    validations:
+      required: true
