@@ -39,3 +39,4 @@ Not an ADR:
 | [0003](0003-card-data-json-effects-kotlin.md)      | Card Data in JSON, Scoring Effects in Kotlin | superseded |
 | [0004](0004-compendium-before-scoring.md)          | Compendium Before Scoring                    | accepted   |
 | [0005](0005-scoring-rules-in-card-data.md)         | Scoring Rules in Card Data                   | accepted   |
+| [0006](0006-own-design-system.md)                  | Own Design System on Compose Foundation      | accepted   |
