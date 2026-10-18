@@ -4,7 +4,11 @@ Guidance for AI agents in this repo. Follow [CONTRIBUTING.md](CONTRIBUTING.md) f
 
 ## Project
 
-Doomlings Atlas: unofficial companion app for the Doomlings card game. No code yet.
+Doomlings Atlas: unofficial companion app for the Doomlings card game.
+
+- `shared/`: Kotlin Multiplatform module with the app logic (card data, rules, scoring). No Android or Compose code.
+- `app/`: Android app in Jetpack Compose, on the project's own design system ([ADR 0006](docs/adr/0006-own-design-system.md)).
+- `./gradlew check` runs formatting, lint, tests and the permission check, the same as CI. The build needs a full JDK 25 (with `jlink`), not a bare JRE.
 
 ## Rules
 

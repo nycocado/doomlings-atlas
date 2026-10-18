@@ -1,0 +1,5 @@
+# Permissions the app may request, one per line. Adding one needs a reason in the PR.
+
+# Added by androidx.core: a signature-level permission the app declares for itself to protect
+# its own non-exported broadcast receivers. Grants no access to anything.
+dev.nycocado.atlas.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
