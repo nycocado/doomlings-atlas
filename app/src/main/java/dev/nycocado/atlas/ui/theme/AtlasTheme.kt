@@ -1,5 +1,6 @@
 package dev.nycocado.atlas.ui.theme
 
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -13,7 +14,12 @@ fun AtlasTheme(
     dark: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {
-    CompositionLocalProvider(LocalAtlasColors provides if (dark) GameNightColors else DayColors, content = content)
+    val colors = if (dark) GameNightColors else DayColors
+    CompositionLocalProvider(
+        LocalAtlasColors provides colors,
+        LocalIndication provides FocusRing(colors.focusRing),
+        content = content,
+    )
 }
 
 object AtlasTheme {
