@@ -14,7 +14,7 @@ This file covers the look only. Screen flows, scoring steps and game rules are d
 ## Principles
 
 - **Sticker, not Material.** Every control and card is a sticker: `surface-sticker` fill, `outline` border at `stroke-sticker` (2.5) and, when tappable or emphasized, `shadow-sticker` (hard offset shadow, no blur). No soft elevation, no gradients.
-- **The table at sunset.** Floor is `surface` (peach paper by day, purple night in the dark theme). Headers and the dock use `inverse-surface`, always with the **sunset band** below: `sunset-red`, `sunset-orange`, `sunset-yellow`, `sunset-sea`, in four equal blocks.
+- **The table at sunset.** Floor is `surface` (peach paper by day, purple night in the dark theme). Headers and the dock use `inverse-surface`, always with the **sunset band** below: `sunset-red`, `sunset-orange`, `sunset-yellow`, `sunset-sea`, in four equal blocks. On scrolling screens the header title and band fold away as the content scrolls and come back at the top; the search stays.
 - **Cards are objects.** Cards have an outline and `shadow-sticker-lg`, tilted between −3° and +2.5°, deterministic by position (never random per render). Never cropped, nothing drawn over the art.
 - **Color is data.** The five trait colors (`trait-blue`, `trait-green`, `trait-purple`, `trait-red`, `trait-colorless`) appear only where they mean a card's color. Sunset tones identify players and decorate; they never mean a trait color.
 - **Unofficial, and saying so.** The notice "Unofficial, not affiliated with or endorsed by Doomlings LLC" stays visible. No Doomlings logo, nothing imitating its lettering.

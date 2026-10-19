@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -36,5 +35,7 @@ class CompendiumViewModel
             viewModelScope.launch { cards.value = repository.cards() }
         }
 
-        fun updateFilter(change: (CompendiumFilter) -> CompendiumFilter) = mutableFilter.update(change)
+        fun updateFilter(filter: CompendiumFilter) {
+            mutableFilter.value = filter
+        }
     }

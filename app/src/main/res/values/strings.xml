@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Doomlings Atlas</string>
+    <string name="unofficial_notice">Unofficial, not affiliated with or endorsed by Doomlings LLC</string>
+
+    <string name="search_placeholder">Which doomling are you looking for?</string>
+    <string name="search_label">Search cards</string>
+    <string name="no_results">No doomling matches your search.</string>
+
+    <string name="kind_traits">Traits</string>
+    <string name="kind_ages">Ages</string>
+    <string name="kind_catastrophes">Catastrophes</string>
+    <string name="all_traits">All traits</string>
+    <string name="all_ages">All ages</string>
+    <string name="all_catastrophes">All catastrophes</string>
+    <string name="color_hint">tap a color to filter</string>
+
+    <string name="color_blue">Blue</string>
+    <string name="color_green">Green</string>
+    <string name="color_purple">Purple</string>
+    <string name="color_red">Red</string>
+    <string name="color_colorless">Colorless</string>
+    <plurals name="card_points">
+        <item quantity="one">%1$d point</item>
+        <item quantity="other">%1$d points</item>
+    </plurals>
+
+    <string name="dock_cards">Cards</string>
+    <string name="dock_score">Score</string>
+    <string name="dock_scanner">Scanner</string>
+    <string name="dock_tutorial">Tutorial</string>
+    <string name="coming_soon">%1$s, coming soon</string>
 </resources>
