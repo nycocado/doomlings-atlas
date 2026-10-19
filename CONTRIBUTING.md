@@ -43,7 +43,7 @@ Doomlings LLC gave permission for this app (2026-10-15) under the fan art terms 
 3. Include what applies:
    - **Bug:** steps to reproduce, what you expected, what happened, device and app version, screenshots if useful.
    - **Wrong score:** the cards on the table and the score you expected versus the one shown.
-   - **Card data:** card name, edition, what is wrong and a photo of your card or a link to a reliable source.
+   - **Card data:** card name, set, what is wrong and a photo of your card or a link to a reliable source.
    - **Translation:** language, where the text appears and your suggested wording.
 
 ## Opening a Pull Request
@@ -78,7 +78,7 @@ How the code is kept consistent. Most of it runs in CI, so you only need the par
 
 - Every PR and push to `main` runs one GitHub Actions workflow: Gradle wrapper validation, `spotlessCheck`, `lint`, unit tests, the permission check and a debug build. The PR title must follow the commit format, since it becomes the squash commit message.
 - Actions are pinned by commit SHA. Dependabot opens weekly grouped updates for Gradle and Actions.
-- Releases come from a `vX.Y.Z` tag ([SemVer](https://semver.org)): the version name comes from the tag and the version code from its numbers (`1.2.3` → `10203`). The release workflow runs in the `release` environment, after the maintainer approves it, and creates a draft GitHub Release with the signed APK and the merged PRs grouped by type. The maintainer writes a short summary for players on top and publishes it; the Releases page is the changelog. The signing key lives only in GitHub Secrets and the maintainer's backup, never in the repo.
+- Releases (not set up yet; planned for the first release) come from a `vX.Y.Z` tag ([SemVer](https://semver.org)): the version name comes from the tag and the version code from its numbers (`1.2.3` → `10203`). The release workflow runs in the `release` environment, after the maintainer approves it, and creates a draft GitHub Release with the signed APK and the merged PRs grouped by type. The maintainer writes a short summary for players on top and publishes it; the Releases page is the changelog. The signing key lives only in GitHub Secrets and the maintainer's backup, never in the repo.
 
 ## Documentation
 

@@ -1,6 +1,6 @@
 # 1. Kotlin Multiplatform, Android First
 
-- Status: accepted
+- Status: accepted; UI library amended by [0006](0006-own-design-system.md)
 - Date: 2026-10-15
 
 ## Context

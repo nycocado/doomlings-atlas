@@ -27,6 +27,7 @@ Not an ADR:
 
 - **proposed:** under discussion, may still change.
 - **accepted:** in effect. From here on only the Status line may change.
+- **amended:** still accepted, but a newer ADR changes part of it. Add `; <part> amended by [NNNN](NNNN-title.md)` to the status and write the new ADR; the rest of the old one still applies.
 - **superseded:** replaced by a newer ADR. Never edit or delete the old one; set its status to `superseded by [NNNN](NNNN-title.md)` and write a new ADR explaining the change.
 - **deprecated:** no longer applies and nothing replaces it.
 
@@ -34,7 +35,7 @@ Not an ADR:
 
 | ADR                                                | Title                                        | Status     |
 | -------------------------------------------------- | -------------------------------------------- | ---------- |
-| [0001](0001-kotlin-multiplatform-android-first.md) | Kotlin Multiplatform, Android First          | accepted   |
+| [0001](0001-kotlin-multiplatform-android-first.md) | Kotlin Multiplatform, Android First          | amended    |
 | [0002](0002-offline-without-backend.md)            | Offline, Without Backend                     | accepted   |
 | [0003](0003-card-data-json-effects-kotlin.md)      | Card Data in JSON, Scoring Effects in Kotlin | superseded |
 | [0004](0004-compendium-before-scoring.md)          | Compendium Before Scoring                    | accepted   |
