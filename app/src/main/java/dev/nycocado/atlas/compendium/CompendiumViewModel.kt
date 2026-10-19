@@ -21,18 +21,21 @@ class CompendiumViewModel
     constructor(
         repository: CardRepository,
     ) : ViewModel() {
-        private val cards = MutableStateFlow<List<Card>?>(null)
+        private val mutableCards = MutableStateFlow<List<Card>?>(null)
         private val mutableFilter = MutableStateFlow(CompendiumFilter())
 
         val filter: StateFlow<CompendiumFilter> = mutableFilter.asStateFlow()
 
+        // Every card, for the detail screen; null while loading, like results.
+        val cards: StateFlow<List<Card>?> = mutableCards.asStateFlow()
+
         // null while the cards are loading.
         val results: StateFlow<List<Card>?> =
-            combine(cards.filterNotNull(), mutableFilter) { cards, filter -> cards.filterCompendium(filter) }
+            combine(mutableCards.filterNotNull(), mutableFilter) { cards, filter -> cards.filterCompendium(filter) }
                 .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
         init {
-            viewModelScope.launch { cards.value = repository.cards() }
+            viewModelScope.launch { mutableCards.value = repository.cards() }
         }
 
         fun updateFilter(filter: CompendiumFilter) {

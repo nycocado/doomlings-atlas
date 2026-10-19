@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -23,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.disabled
+import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
@@ -42,7 +44,10 @@ private enum class Destination(
 }
 
 @Composable
-fun Dock(modifier: Modifier = Modifier) {
+fun Dock(
+    onCardsClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val colors = AtlasTheme.colors
     Row(
         modifier
@@ -61,10 +66,12 @@ fun Dock(modifier: Modifier = Modifier) {
                     Modifier
                         .height(46.dp)
                         .background(colors.highlight, CircleShape)
+                        .clickable(onClick = onCardsClick)
                         .padding(horizontal = Space.s4)
                         .clearAndSetSemantics {
                             contentDescription = label
                             selected = true
+                            onClick { onCardsClick().let { true } }
                         },
                     horizontalArrangement = Arrangement.spacedBy(Space.s2),
                     verticalAlignment = Alignment.CenterVertically,
@@ -102,5 +109,5 @@ fun Dock(modifier: Modifier = Modifier) {
 @Composable
 internal fun DockPreview() =
     AtlasTheme {
-        Box(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) { Dock() }
+        Box(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) { Dock({}) }
     }

@@ -40,6 +40,7 @@ import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -51,6 +52,9 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -80,7 +84,6 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.Age
@@ -94,6 +97,7 @@ import dev.nycocado.atlas.ui.component.Dock
 import dev.nycocado.atlas.ui.component.TraitColorOptions
 import dev.nycocado.atlas.ui.component.TraitGlyph
 import dev.nycocado.atlas.ui.component.colorName
+import dev.nycocado.atlas.ui.component.signed
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Radius
@@ -101,6 +105,7 @@ import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
+import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 // Header, filters and dock stop growing here on tablets and unfolded foldables; the grid adds columns instead.
@@ -114,10 +119,13 @@ private val CardMargin = 8.dp
 private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
 
 @Composable
-fun CompendiumScreen(viewModel: CompendiumViewModel = hiltViewModel()) {
+fun CompendiumScreen(
+    viewModel: CompendiumViewModel,
+    onCardClick: (String) -> Unit,
+) {
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val results by viewModel.results.collectAsStateWithLifecycle()
-    CompendiumContent(filter, results, viewModel::updateFilter)
+    CompendiumContent(filter, results, viewModel::updateFilter, onCardClick)
 }
 
 @Composable
@@ -125,13 +133,18 @@ fun CompendiumContent(
     filter: CompendiumFilter,
     results: List<Card>?,
     onFilterChange: (CompendiumFilter) -> Unit,
+    onCardClick: (String) -> Unit,
 ) {
     val colors = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
-    val collapse = remember(distance) { HeaderCollapse(distance) }
+    // Saveable like the grid's position, so coming back from a card restores both together.
+    val collapse = rememberSaveable(distance, saver = HeaderCollapse.saver(distance)) { HeaderCollapse(distance) }
+    val grid = rememberLazyGridState()
+    val scope = rememberCoroutineScope()
     Column(Modifier.fillMaxSize().background(colors.surface).nestedScroll(collapse)) {
         Header(filter.query, collapse::fraction) { onFilterChange(filter.copy(query = it)) }
         LazyVerticalGrid(
+            state = grid,
             columns = GridCells.Adaptive(150.dp),
             modifier = Modifier.weight(1f),
             contentPadding =
@@ -160,7 +173,7 @@ fun CompendiumContent(
             }
             itemsIndexed(results.orEmpty(), key = { _, card -> card.id }) { index, card ->
                 val tilt = Tilts[index % Tilts.size]
-                CompendiumCard(card, tilt, Modifier.animateItem())
+                CompendiumCard(card, tilt, { onCardClick(card.id) }, Modifier.animateItem())
             }
         }
         Column(
@@ -172,7 +185,14 @@ fun CompendiumContent(
                 Modifier.padding(vertical = Space.s2),
                 style = AtlasTypography.bodySm.copy(color = colors.onSurfaceVariant, textAlign = TextAlign.Center),
             )
-            Dock(Modifier.padding(bottom = Space.s4))
+            // Tapping the current destination goes back to the top of the list.
+            Dock(
+                onCardsClick = {
+                    scope.launch { grid.animateScrollToItem(0) }
+                    scope.launch { collapse.unfold() }
+                },
+                modifier = Modifier.padding(bottom = Space.s4),
+            )
         }
     }
 }
@@ -196,10 +216,18 @@ private val CollapseDistance = 96.dp
 @Stable
 private class HeaderCollapse(
     private val distance: Float,
+    initial: Float = 0f,
 ) : NestedScrollConnection {
-    private var collapsed by mutableFloatStateOf(0f)
+    private var collapsed by mutableFloatStateOf(initial)
+
+    companion object {
+        fun saver(distance: Float) = Saver<HeaderCollapse, Float>({ it.collapsed }, { HeaderCollapse(distance, it) })
+    }
 
     fun fraction() = collapsed / distance
+
+    // Scrolling the list from code bypasses nested scrolling, so the header is unfolded explicitly.
+    suspend fun unfold() = animate(collapsed, 0f) { value, _ -> collapsed = value }
 
     override fun onPreScroll(
         available: Offset,
@@ -511,6 +539,7 @@ private fun KindSegments(
 private fun CompendiumCard(
     card: Card,
     tilt: Float,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val (name, cardColors, points) =
@@ -524,9 +553,9 @@ private fun CompendiumCard(
         buildList {
             add(name)
             cardColors?.ifEmpty { listOf(null) }?.forEach { add(stringResource(colorName(it))) }
-            points?.let { add(pluralStringResource(R.plurals.card_points, it, it)) }
+            points?.let { add(pluralStringResource(R.plurals.card_points, it, signed(it))) }
         }.joinToString(", ")
-    CardThumb(card.image, name, cardColors, description, tilt, modifier.padding(CardMargin))
+    CardThumb(card.image, name, cardColors, description, tilt, onClick, modifier.padding(CardMargin))
 }
 
 @PreviewLightDark
@@ -550,6 +579,6 @@ internal fun CompendiumPreview() =
                         emptyList(),
                     )
                 }
-            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards) {}
+            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {})
         }
     }
