@@ -9,7 +9,6 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import dev.nycocado.atlas.R
 
-// Type scale from design/tokens.json. Both fonts are variable: one file, the weight set per style.
 private fun variable(
     res: Int,
     vararg weights: FontWeight,
@@ -22,7 +21,6 @@ private fun variable(
 private val Display = variable(R.font.fredoka, FontWeight.SemiBold, FontWeight.Bold)
 private val Sans = variable(R.font.atkinson_hyperlegible_next, FontWeight.Normal, FontWeight.SemiBold, FontWeight.Bold)
 
-// Signed values line up in columns.
 private const val TABULAR = "tnum"
 
 object AtlasTypography {

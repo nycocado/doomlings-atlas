@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.screenshot)
 }
 
 android {
@@ -40,6 +41,7 @@ android {
     buildFeatures {
         compose = true
     }
+    experimentalProperties["android.experimental.enableScreenshotTest"] = true
     lint {
         warningsAsErrors = true
         // New library releases must not break the build; Dependabot handles updates.
@@ -53,11 +55,14 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.coil.compose)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    screenshotTestImplementation(libs.screenshot.validation.api)
+    screenshotTestImplementation(libs.androidx.compose.ui.tooling)
 }
 
 // The app works offline (ADR 0002): fail if the merged manifest asks for a permission
@@ -103,7 +108,6 @@ abstract class CheckPermissions : DefaultTask() {
 // Sets shipped in the APK. The rest of assets/doomlings stays in the repo until its data is checked.
 val enabledSets = listOf("classic")
 
-// Copies into the APK assets only the enabled sets: a filtered cards.json and the images it points to.
 abstract class PackageCards : DefaultTask() {
     @get:Input
     abstract val sets: ListProperty<String>

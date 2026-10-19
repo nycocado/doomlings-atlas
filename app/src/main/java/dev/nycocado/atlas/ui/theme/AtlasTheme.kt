@@ -8,7 +8,6 @@ import androidx.compose.runtime.staticCompositionLocalOf
 
 private val LocalAtlasColors = staticCompositionLocalOf { DayColors }
 
-// Own design system (ADR 0006): "Day" by default, "Game night" when the system is dark. No dynamic color.
 @Composable
 fun AtlasTheme(
     dark: Boolean = isSystemInDarkTheme(),
