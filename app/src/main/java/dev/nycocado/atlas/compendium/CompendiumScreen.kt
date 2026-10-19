@@ -329,6 +329,23 @@ private fun SearchField(
                 field()
             },
         )
+        val clear = stringResource(R.string.clear_search)
+        AnimatedVisibility(query.isNotEmpty(), enter = fadeIn(), exit = fadeOut()) {
+            Box(
+                Modifier
+                    .size(40.dp)
+                    .clickable(interactionSource = null, indication = null, role = Role.Button) { onQueryChange("") }
+                    .semantics { contentDescription = clear },
+                contentAlignment = Alignment.Center,
+            ) {
+                Image(
+                    painterResource(R.drawable.ic_clear),
+                    null,
+                    Modifier.size(20.dp),
+                    colorFilter = ColorFilter.tint(colors.onSurface),
+                )
+            }
+        }
     }
 }
 

@@ -4,6 +4,7 @@
 
     <string name="search_placeholder">Which doomling are you looking for?</string>
     <string name="search_label">Search cards</string>
+    <string name="clear_search">Clear search</string>
     <string name="no_results">No doomling matches your search.</string>
 
     <string name="kind_traits">Traits</string>
