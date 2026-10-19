@@ -62,7 +62,7 @@ You are responsible for every line you submit, however it was written. Make sure
 How the code is kept consistent. Most of it runs in CI, so you only need the parts that touch your change.
 
 - **Tests first in `shared`:** card data, game rules and scoring are written test-first. Each scoring rule gets a test with a real pile and its expected score.
-- **Previews in `app`:** every component and screen has a `@ThemePreviews` preview (light and dark).
+- **Previews in `app`:** every component and screen has a `@PreviewLightDark` preview (light and dark themes).
 - **Style:** Spotless with ktlint formats the code and Android Lint runs with warnings as errors. `./gradlew spotlessApply check` fixes formatting and runs the same checks as CI.
 - **Dependencies:** versions live in `gradle/libs.versions.toml`. A new dependency needs a reason in the PR.
 - **Permissions:** the app declares no permissions, as it works fully offline ([ADR 0002](docs/adr/0002-offline-without-backend.md)). CI fails if the final manifest has a permission missing from `app/permissions-allowlist.txt`. Adding one needs a reason in the PR.

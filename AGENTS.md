@@ -19,13 +19,14 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game.
 - Never push to `main`. Work on a branch per task and open a PR; it merges only with CI green.
 - Never edit `app/permissions-allowlist.txt` or add a dependency without explaining why in the PR.
 - Never touch signing keys, secrets or release workflows unless asked.
+- Before writing code for a generic problem (parsing, text, dates, files, collections, UI patterns), use what already exists, in this order: the Kotlin or Java standard library, Android, Compose and Gradle APIs, a library already in `gradle/libs.versions.toml`, then a well-known library added with a reason in the PR. Hand-written code for a generic problem needs a comment saying why nothing existing fits.
 - Respect accepted ADRs in `docs/adr`. Only write a new ADR when the decision meets the criteria in `docs/adr/README.md`, using `docs/adr/template.md` exactly, and update the index.
 
 ## Workflow
 
 1. Branch from `main` (`feat/...`, `fix/...`, `docs/...`).
 2. In `shared`, write the failing test first, then the code.
-3. In `app`, give every component and screen a `@ThemePreviews` preview, following [docs/design.md](docs/design.md).
+3. In `app`, give every component and screen a `@PreviewLightDark` preview, following [docs/design.md](docs/design.md).
 4. Run `./gradlew spotlessApply check` and fix everything it reports.
 5. Open a PR titled in the commit format, saying what changed, why and how it was tested, with `Closes #N` when it comes from an issue.
 

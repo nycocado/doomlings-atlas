@@ -1,6 +1,9 @@
 import com.android.build.api.artifact.SingleArtifact
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
+import org.w3c.dom.Element
+import javax.inject.Inject
+import javax.xml.parsers.DocumentBuilderFactory
 
 plugins {
     alias(libs.plugins.android.application)
@@ -62,11 +65,20 @@ abstract class CheckPermissions : DefaultTask() {
 
     @TaskAction
     fun check() {
+        val document =
+            DocumentBuilderFactory
+                .newInstance()
+                .apply { isNamespaceAware = true }
+                .newDocumentBuilder()
+                .parse(manifest.get().asFile)
         val requested =
-            Regex("""<uses-permission(?:-sdk-23)?\s[^>]*android:name="([^"]+)"""")
-                .findAll(manifest.get().asFile.readText())
-                .map { it.groupValues[1] }
-                .toSet()
+            listOf("uses-permission", "uses-permission-sdk-23")
+                .flatMap { tag ->
+                    val nodes = document.getElementsByTagName(tag)
+                    (0 until nodes.length).map {
+                        (nodes.item(it) as Element).getAttributeNS("http://schemas.android.com/apk/res/android", "name")
+                    }
+                }.toSet()
         val allowed =
             allowlist
                 .get()
@@ -97,21 +109,24 @@ abstract class PackageCards : DefaultTask() {
     @get:OutputDirectory
     abstract val output: DirectoryProperty
 
+    @get:Inject
+    abstract val files: FileSystemOperations
+
     @TaskAction
     fun pack() {
-        val from = source.get().asFile
-        val to = output.get().asFile.resolve("cards")
-        to.deleteRecursively()
-
         @Suppress("UNCHECKED_CAST")
-        val all = JsonSlurper().parse(from.resolve("cards.json")) as List<Map<String, Any?>>
+        val all = JsonSlurper().parse(source.file("cards.json").get().asFile) as List<Map<String, Any?>>
         val cards = all.filter { it["set"] in sets.get() }
         val empty = sets.get() - cards.map { it["set"] }.toSet()
         check(empty.isEmpty()) { "Enabled sets with no cards: ${empty.joinToString()}" }
 
-        to.mkdirs()
-        to.resolve("cards.json").writeText(JsonOutput.toJson(cards))
-        cards.map { it["image"] as String }.forEach { from.resolve(it).copyTo(to.resolve(it)) }
+        val json = temporaryDir.resolve("cards.json").apply { writeText(JsonOutput.toJson(cards)) }
+        // Sync also deletes what a previous run left, e.g. images of a set no longer enabled.
+        files.sync {
+            from(json)
+            from(source) { include(cards.map { it["image"] as String }) }
+            into(output.dir("cards"))
+        }
     }
 }
 

@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawOutline
 import androidx.compose.ui.graphics.drawscope.translate
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -34,7 +35,7 @@ fun Modifier.sticker(
     }.background(fill, shape)
         .border(stroke, outline, shape)
 
-@ThemePreviews
+@PreviewLightDark
 @Composable
 private fun StickerPreview() =
     AtlasTheme {
