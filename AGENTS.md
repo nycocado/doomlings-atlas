@@ -20,6 +20,7 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game.
 - Never edit `app/permissions-allowlist.txt` or add a dependency without explaining why in the PR.
 - Never touch signing keys, secrets or release workflows unless asked.
 - Before writing code for a generic problem (parsing, text, dates, files, collections, UI patterns), use what already exists, in this order: the Kotlin or Java standard library, Android, Compose and Gradle APIs, a library already in `gradle/libs.versions.toml`, then a well-known library added with a reason in the PR. Hand-written code for a generic problem needs a comment saying why nothing existing fits.
+- Comment only what the code can't say: a data convention, a deliberate deviation from the design, a trap, or a justification these rules require. Never restate what the code or a name already says.
 - Respect accepted ADRs in `docs/adr`. Only write a new ADR when the decision meets the criteria in `docs/adr/README.md`, using `docs/adr/template.md` exactly, and update the index.
 
 ## Workflow
