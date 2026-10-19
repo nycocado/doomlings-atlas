@@ -37,7 +37,7 @@ fun Modifier.sticker(
 
 @PreviewLightDark
 @Composable
-private fun StickerPreview() =
+internal fun StickerPreview() =
     AtlasTheme {
         val colors = AtlasTheme.colors
         Column(
