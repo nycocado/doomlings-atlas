@@ -21,9 +21,29 @@
     <string name="color_red">Red</string>
     <string name="color_colorless">Colorless</string>
     <plurals name="card_points">
-        <item quantity="one">%1$d point</item>
-        <item quantity="other">%1$d points</item>
+        <item quantity="one">%1$s point</item>
+        <item quantity="other">%1$s points</item>
     </plurals>
+
+    <string name="back">Back</string>
+    <string name="detail_placeholder">Pick a card to see it here.</string>
+    <string name="type_trait">Trait</string>
+    <string name="type_age">Age</string>
+    <string name="type_catastrophe">Catastrophe</string>
+    <string name="dominant">Dominant</string>
+    <string name="worlds_end">World\'s End</string>
+    <string name="icon_action">Action</string>
+    <string name="icon_attachment">Attachment</string>
+    <string name="icon_drop_of_life">Drop of life</string>
+    <string name="icon_play_when">Play when</string>
+    <string name="icon_spell">Spell</string>
+    <string name="icon_suppress">Suppress</string>
+    <string name="icon_coral">Coral</string>
+    <string name="icon_curious">Curious</string>
+    <string name="icon_dragon">Dragon</string>
+    <string name="icon_exotic">Exotic</string>
+    <string name="icon_fish">Fish</string>
+    <string name="icon_shell">Shell</string>
 
     <string name="dock_cards">Cards</string>
     <string name="dock_score">Score</string>

@@ -50,4 +50,4 @@ Everything here comes before assets and code.
 
 ## Not Planned Yet
 
-Game history, collection tracking, iOS app, donations.
+Game history, collection tracking, favorite cards, iOS app, donations.
