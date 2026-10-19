@@ -1,4 +1,6 @@
 import com.android.build.api.artifact.SingleArtifact
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
 
 plugins {
     alias(libs.plugins.android.application)
@@ -80,7 +82,47 @@ abstract class CheckPermissions : DefaultTask() {
     }
 }
 
+// Sets shipped in the APK. The rest of assets/doomlings stays in the repo until its data is checked.
+val enabledSets = listOf("classic")
+
+// Copies into the APK assets only the enabled sets: a filtered cards.json and the images it points to.
+abstract class PackageCards : DefaultTask() {
+    @get:Input
+    abstract val sets: ListProperty<String>
+
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val source: DirectoryProperty
+
+    @get:OutputDirectory
+    abstract val output: DirectoryProperty
+
+    @TaskAction
+    fun pack() {
+        val from = source.get().asFile
+        val to = output.get().asFile.resolve("cards")
+        to.deleteRecursively()
+
+        @Suppress("UNCHECKED_CAST")
+        val all = JsonSlurper().parse(from.resolve("cards.json")) as List<Map<String, Any?>>
+        val cards = all.filter { it["set"] in sets.get() }
+        val empty = sets.get() - cards.map { it["set"] }.toSet()
+        check(empty.isEmpty()) { "Enabled sets with no cards: ${empty.joinToString()}" }
+
+        to.mkdirs()
+        to.resolve("cards.json").writeText(JsonOutput.toJson(cards))
+        cards.map { it["image"] as String }.forEach { from.resolve(it).copyTo(to.resolve(it)) }
+    }
+}
+
 androidComponents.onVariants { variant ->
+    val cards =
+        tasks.register<PackageCards>("package${variant.name.replaceFirstChar { it.uppercase() }}Cards") {
+            sets.set(enabledSets)
+            source.set(rootProject.layout.projectDirectory.dir("assets/doomlings"))
+        }
+    variant.sources.assets?.addGeneratedSourceDirectory(cards, PackageCards::output)
+
     val task =
         tasks.register<CheckPermissions>("check${variant.name.replaceFirstChar { it.uppercase() }}Permissions") {
             manifest.set(variant.artifacts.get(SingleArtifact.MERGED_MANIFEST))
