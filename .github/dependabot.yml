@@ -6,6 +6,7 @@ updates:
       interval: weekly
     commit-message:
       prefix: "[chore]"
+    labels: [dependencies]
     groups:
       gradle:
         patterns: ["*"]
@@ -15,6 +16,7 @@ updates:
       interval: weekly
     commit-message:
       prefix: "[chore]"
+    labels: [dependencies]
     groups:
       actions:
         patterns: ["*"]
