@@ -56,7 +56,6 @@
     "dominant": false,
     "subspecies": [],
     "icons": [
-      "effectless",
       "fish"
     ],
     "image": "castle-glass/traits/banal.webp"
@@ -115,7 +114,6 @@
     "subspecies": [],
     "icons": [
       "curious",
-      "effectless",
       "fish"
     ],
     "image": "castle-glass/traits/black-and-blue.webp"
@@ -151,7 +149,6 @@
     "dominant": false,
     "subspecies": [],
     "icons": [
-      "effectless",
       "exotic",
       "fish"
     ],
@@ -307,7 +304,6 @@
     "dominant": false,
     "subspecies": [],
     "icons": [
-      "effectless",
       "shell"
     ],
     "image": "castle-glass/traits/glossy.webp"
@@ -688,7 +684,6 @@
     "dominant": false,
     "subspecies": [],
     "icons": [
-      "effectless",
       "shell"
     ],
     "image": "castle-glass/traits/striated.webp"
@@ -724,7 +719,6 @@
     "subspecies": [],
     "icons": [
       "coral",
-      "effectless",
       "exotic"
     ],
     "image": "castle-glass/traits/tabular.webp"
@@ -1161,9 +1155,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/adorable.webp"
   },
   {
@@ -1195,9 +1187,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/antlers.webp"
   },
   {
@@ -1231,9 +1221,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/appealing.webp"
   },
   {
@@ -1285,9 +1273,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/bark.webp"
   },
   {
@@ -1303,9 +1289,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/big-ears.webp"
   },
   {
@@ -1321,9 +1305,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/blubber.webp"
   },
   {
@@ -1477,9 +1459,7 @@
     "colors": [],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/confusion.webp"
   },
   {
@@ -1513,9 +1493,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/deep-roots.webp"
   },
   {
@@ -1691,9 +1669,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/fangs.webp"
   },
   {
@@ -1707,9 +1683,7 @@
     "colors": [],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/fear.webp"
   },
   {
@@ -1741,9 +1715,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/fine-motor-skills.webp"
   },
   {
@@ -1759,9 +1731,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/fire-skin.webp"
   },
   {
@@ -1775,9 +1745,7 @@
     "colors": [],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/flatulence.webp"
   },
   {
@@ -1829,9 +1797,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/gills.webp"
   },
   {
@@ -2157,9 +2123,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/leaves.webp"
   },
   {
@@ -2193,9 +2157,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/migratory.webp"
   },
   {
@@ -2255,9 +2217,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/nocturnal.webp"
   },
   {
@@ -2483,9 +2443,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/quick.webp"
   },
   {
@@ -2727,9 +2685,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/spiny.webp"
   },
   {
@@ -2763,9 +2719,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/stone-skin.webp"
   },
   {
@@ -3150,9 +3104,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "classic/traits/woody-stems.webp"
   },
   {
@@ -3502,9 +3454,7 @@
     "subspecies": [
       "Deepling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/decaying-ooze.webp"
   },
   {
@@ -3522,9 +3472,7 @@
     "subspecies": [
       "Glitterling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/dipped.webp"
   },
   {
@@ -3706,9 +3654,7 @@
       "Deepling",
       "Moonling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/frumious.webp"
   },
   {
@@ -3766,9 +3712,7 @@
     "subspecies": [
       "Moonling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/fumplepop.webp"
   },
   {
@@ -3788,9 +3732,7 @@
       "Glitterling",
       "Moonling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/glamorous.webp"
   },
   {
@@ -3826,9 +3768,7 @@
       "Deepling",
       "Glitterling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/gossamer.webp"
   },
   {
@@ -4063,9 +4003,7 @@
     "subspecies": [
       "Deepling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/monstrosity.webp"
   },
   {
@@ -4103,9 +4041,7 @@
     "subspecies": [
       "Moonling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/nurplers.webp"
   },
   {
@@ -4222,9 +4158,7 @@
     "subspecies": [
       "Moonling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/rogloblers.webp"
   },
   {
@@ -4345,9 +4279,7 @@
     "subspecies": [
       "Deepling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/still.webp"
   },
   {
@@ -4419,9 +4351,7 @@
     "subspecies": [
       "Glitterling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/toasty.webp"
   },
   {
@@ -4613,9 +4543,7 @@
     "subspecies": [
       "Glitterling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "imaginary-ends/traits/wishful.webp"
   },
   {
@@ -5221,9 +5149,7 @@
     "subspecies": [
       "Techling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/biotech.webp"
   },
   {
@@ -5259,9 +5185,7 @@
     "subspecies": [
       "Mythling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/cavalier.webp"
   },
   {
@@ -5279,9 +5203,7 @@
     "subspecies": [
       "Techling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/chrome.webp"
   },
   {
@@ -5398,9 +5320,7 @@
     "subspecies": [
       "Dinoling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/cursorial.webp"
   },
   {
@@ -5418,9 +5338,7 @@
     "subspecies": [
       "Mythling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/cyclopean.webp"
   },
   {
@@ -5561,9 +5479,7 @@
     "subspecies": [
       "Dinoling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/fiddlehead.webp"
   },
   {
@@ -5600,9 +5516,7 @@
     "subspecies": [
       "Mythling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/fizzled.webp"
   },
   {
@@ -5905,9 +5819,7 @@
     "subspecies": [
       "Techling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/lightweight.webp"
   },
   {
@@ -6068,9 +5980,7 @@
     "subspecies": [
       "Techling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/null.webp"
   },
   {
@@ -6522,9 +6432,7 @@
     "subspecies": [
       "Dinoling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/thunderous.webp"
   },
   {
@@ -6576,9 +6484,7 @@
     "subspecies": [
       "Dinoling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/trabecular.webp"
   },
   {
@@ -6694,9 +6600,7 @@
     "subspecies": [
       "Mythling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "legends-of-enderas/traits/wicked.webp"
   },
   {
@@ -7076,9 +6980,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "mokoko-village/traits/devious.webp"
   },
   {
@@ -7321,9 +7223,7 @@
     "colors": [],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "mokoko-village/traits/mini.webp"
   },
   {
@@ -7376,9 +7276,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "mokoko-village/traits/palmate.webp"
   },
   {
@@ -7446,9 +7344,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "mokoko-village/traits/scratchy-feet.webp"
   },
   {
@@ -7537,9 +7433,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "mokoko-village/traits/stargazer.webp"
   },
   {
@@ -7697,9 +7591,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "mokoko-village/traits/warning-signals.webp"
   },
   {
@@ -8292,7 +8184,6 @@
     "subspecies": [],
     "icons": [
       "coral",
-      "effectless",
       "exotic"
     ],
     "image": "nightflower-island/traits/tubular.webp"
@@ -8882,9 +8773,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/barbels.webp"
   },
   {
@@ -9212,9 +9101,7 @@
     "colors": [],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/docile.webp"
   },
   {
@@ -9230,9 +9117,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/down.webp"
   },
   {
@@ -9246,9 +9131,7 @@
     "colors": [],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/ear-flaps.webp"
   },
   {
@@ -9384,9 +9267,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/face-hugger.webp"
   },
   {
@@ -9403,9 +9284,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/fardingbag.webp"
   },
   {
@@ -9490,9 +9369,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/fleece.webp"
   },
   {
@@ -9522,9 +9399,7 @@
     "colors": [],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/floofy.webp"
   },
   {
@@ -9540,9 +9415,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/freckles.webp"
   },
   {
@@ -9577,9 +9450,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/gular-pouch.webp"
   },
   {
@@ -9889,9 +9760,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/mammoth.webp"
   },
   {
@@ -9925,9 +9794,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/mane.webp"
   },
   {
@@ -10373,9 +10240,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/ruffled.webp"
   },
   {
@@ -10423,9 +10288,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/scruffy.webp"
   },
   {
@@ -10591,9 +10454,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/slender-gams.webp"
   },
   {
@@ -10684,9 +10545,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/spearfisher.webp"
   },
   {
@@ -10702,9 +10561,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/spectacled.webp"
   },
   {
@@ -10809,9 +10666,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/sticky-stalks.webp"
   },
   {
@@ -11036,9 +10891,7 @@
     "colors": [],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/tiny-teeth.webp"
   },
   {
@@ -11159,9 +11012,7 @@
     "colors": [],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/ursine.webp"
   },
   {
@@ -11229,9 +11080,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "overlush/traits/webber.webp"
   },
   {
@@ -11342,9 +11191,7 @@
     "subspecies": [
       "Deepling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "shadow-puppets/traits/ashen.webp"
   },
   {
@@ -11458,9 +11305,7 @@
     "subspecies": [
       "Glitterling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "shadow-puppets/traits/frayed.webp"
   },
   {
@@ -11519,9 +11364,7 @@
       "Glitterling",
       "Moonling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "shadow-puppets/traits/gloump.webp"
   },
   {
@@ -11597,9 +11440,7 @@
     "subspecies": [
       "Moonling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "shadow-puppets/traits/mumbleyops.webp"
   },
   {
@@ -11617,9 +11458,7 @@
     "subspecies": [
       "Moonling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "shadow-puppets/traits/mumpf.webp"
   },
   {
@@ -11637,9 +11476,7 @@
     "subspecies": [
       "Glitterling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "shadow-puppets/traits/outgrown.webp"
   },
   {
@@ -11909,9 +11746,7 @@
     "subspecies": [
       "Deepling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "shadow-puppets/traits/unsettling.webp"
   },
   {
@@ -11953,9 +11788,7 @@
       "Glitterling",
       "Moonling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "shadow-puppets/traits/wasahmbo.webp"
   },
   {
@@ -12878,9 +12711,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/acrobatic.webp"
   },
   {
@@ -12955,9 +12786,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/bloom.webp"
   },
   {
@@ -13014,9 +12843,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/bullheaded.webp"
   },
   {
@@ -13052,9 +12879,7 @@
     "subspecies": [
       "Dinoling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/ceratopsian-horns.webp"
   },
   {
@@ -13089,9 +12914,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/curiosity.webp"
   },
   {
@@ -13145,9 +12968,7 @@
     "subspecies": [
       "Mythling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/destined.webp"
   },
   {
@@ -13165,9 +12986,7 @@
     "subspecies": [
       "Mythling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/diaphanous-wings.webp"
   },
   {
@@ -13413,9 +13232,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/hand-wing.webp"
   },
   {
@@ -13453,9 +13270,7 @@
     "subspecies": [
       "Mythling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/icy.webp"
   },
   {
@@ -13551,9 +13366,7 @@
     ],
     "dominant": false,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/mitosis.webp"
   },
   {
@@ -13827,9 +13640,7 @@
     "subspecies": [
       "Dinoling"
     ],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/talons.webp"
   },
   {
@@ -13944,9 +13755,7 @@
     ],
     "dominant": true,
     "subspecies": [],
-    "icons": [
-      "effectless"
-    ],
+    "icons": [],
     "image": "upgrade/traits/wild.webp"
   },
   {
