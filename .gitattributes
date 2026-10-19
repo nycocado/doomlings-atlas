@@ -1,0 +1,14 @@
+# LF everywhere; the Windows Gradle script needs CRLF.
+* text=auto eol=lf
+*.bat text eol=crlf
+
+# Binary files: never diff or convert.
+*.webp binary
+*.png binary
+*.jpg binary
+*.pdf binary
+*.jar binary
+
+# Generated Gradle scripts don't count as project code in GitHub's language stats.
+gradlew linguist-vendored
+gradlew.bat linguist-vendored
