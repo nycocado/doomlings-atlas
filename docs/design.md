@@ -9,7 +9,7 @@ This file covers the look only. Screen flows, scoring steps and game rules are d
 - [`design/tokens.json`](../design/tokens.json): colors for both themes, type, spacing, radii, strokes and shadows. Source of truth for the Compose theme.
 - [`design/brand/`](../design/brand): app logo, interface icons, trait color glyphs and the adaptive app icon layers.
 - [`design/screens/`](../design/screens): prototype screens in both themes, with placeholder cards. A visual reference only: their content, steps and rules are suggestions, not decisions.
-- [`assets/doomlings/symbols/`](../assets/doomlings/symbols): card symbols and points medals, redrawn from Doomlings originals. Doomlings material, see its [notice](../assets/doomlings/NOTICE.md).
+- [`assets/doomlings/symbols/`](../assets/doomlings/symbols): card symbols, redrawn from Doomlings originals. Doomlings material, see its [notice](../assets/doomlings/NOTICE.md).
 
 ## Principles
 
@@ -61,7 +61,7 @@ Two themes: `light` ("Day", default) and `dark` ("Game night"). No Android dynam
 
 - **Trait glyphs:** drop = blue, leaf = green, hexagon = purple, flame = red, dashed ring = colorless. 24×24, one ink, tinted with `trait-<color>-ink`. Always next to the color name or in `contentDescription`.
 - **Interface icons** for game concepts: Gene Pool, catastrophe, age, trait, Meaning of Life, trait pile, hand, face value, scanner, swap, steal. 24 grid, 2.2 stroke, round caps and joins, tinted with `on-surface`.
-- **Card symbols** (action, play when, spell, suppress, attachment, World's End, drop of life, dominant, compass star, subspecies, tags, points medals): redrawn in the sticker style, recognizable next to the printed card. They are the only version of these symbols, both inside card text and in the interface. Inside text: 1.3em high (action 1.15em), centered on the line, always with `contentDescription`.
+- **Card symbols** (action, play when, spell, suppress, attachment, World's End, drop of life, dominant, compass star, subspecies, tags): redrawn in the sticker style, recognizable next to the printed card. They are the only version of these symbols, both inside card text and in the interface. Inside text: 1.3em high (action 1.15em), centered on the line, always with `contentDescription`.
 - Generic icons (back, search, more): Material Symbols Rounded at a matching weight.
 - In the app, SVGs become vector drawables with colors bound to theme tokens (one drawable per symbol, not per theme). Points medals are drawn in Compose: white ring with `outline`, `trait-<color>` disc and the value in Fredoka.
 
