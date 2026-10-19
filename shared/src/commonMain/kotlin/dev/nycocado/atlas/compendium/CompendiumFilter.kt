@@ -47,8 +47,6 @@ fun List<Card>.filterCompendium(filter: CompendiumFilter): List<Card> {
         .map { it.second }
 }
 
-// Lowercase and without accents, so "Catástrofe" matches "catastrofe".
 internal fun normalize(text: String): String = stripAccents(text.lowercase())
 
-// Each platform has its own Unicode normalizer.
 internal expect fun stripAccents(text: String): String

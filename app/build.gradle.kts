@@ -41,7 +41,6 @@ android {
     buildFeatures {
         compose = true
     }
-    // Screenshot tests render the previews to images (app/src/screenshotTest).
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
     lint {
         warningsAsErrors = true
@@ -109,7 +108,6 @@ abstract class CheckPermissions : DefaultTask() {
 // Sets shipped in the APK. The rest of assets/doomlings stays in the repo until its data is checked.
 val enabledSets = listOf("classic")
 
-// Copies into the APK assets only the enabled sets: a filtered cards.json and the images it points to.
 abstract class PackageCards : DefaultTask() {
     @get:Input
     abstract val sets: ListProperty<String>

@@ -3,7 +3,6 @@ package dev.nycocado.atlas.ui.theme
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.unit.dp
 
-// Spacing, radius, stroke and shadow tokens from design/tokens.json.
 object Space {
     val s1 = 4.dp
     val s2 = 8.dp
@@ -27,7 +26,6 @@ object Stroke {
     val strong = 3.dp
 }
 
-// Hard offset down and right, in the outline color, never blurred.
 object Shadow {
     val sticker = 3.dp
     val stickerLg = 5.dp

@@ -24,7 +24,6 @@ import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.trait
 
-// The five trait colors as the filter discs show them; null is colorless.
 val TraitColorOptions: List<CardColor?> = CardColor.entries + null
 
 @StringRes
@@ -37,7 +36,7 @@ fun colorName(color: CardColor?): Int =
         null -> R.string.color_colorless
     }
 
-// Drop, leaf, hexagon, flame or dashed ring (docs/design.md). Decorative: the color name goes in text or semantics.
+// Decorative: the color name goes in text or semantics.
 @Composable
 fun TraitGlyph(
     color: CardColor?,

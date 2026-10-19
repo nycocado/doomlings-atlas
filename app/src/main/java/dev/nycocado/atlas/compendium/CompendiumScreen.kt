@@ -1,12 +1,24 @@
 package dev.nycocado.atlas.compendium
 
 import androidx.annotation.StringRes
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animate
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -16,6 +28,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -63,6 +76,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
@@ -91,6 +106,10 @@ import kotlin.math.roundToInt
 // Header, filters and dock stop growing here on tablets and unfolded foldables; the grid adds columns instead.
 private val ContentMaxWidth = 640.dp
 
+// Room inside each grid cell for the card's tilt and shadow, which draw past its bounds. Item animations draw the
+// card into a layer the size of its cell, so without this room they cut the corners and the shadow.
+private val CardMargin = 8.dp
+
 // Deterministic by position, never random per render (docs/design.md).
 private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
 
@@ -101,7 +120,6 @@ fun CompendiumScreen(viewModel: CompendiumViewModel = hiltViewModel()) {
     CompendiumContent(filter, results, viewModel::updateFilter)
 }
 
-// results is null while the cards load.
 @Composable
 fun CompendiumContent(
     filter: CompendiumFilter,
@@ -116,13 +134,19 @@ fun CompendiumContent(
         LazyVerticalGrid(
             columns = GridCells.Adaptive(150.dp),
             modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(start = Space.s5, end = Space.s5, top = Space.s4, bottom = Space.s5),
-            horizontalArrangement = Arrangement.spacedBy(18.dp),
-            verticalArrangement = Arrangement.spacedBy(22.dp),
+            contentPadding =
+                PaddingValues(
+                    start = Space.s5 - CardMargin,
+                    end = Space.s5 - CardMargin,
+                    top = Space.s4,
+                    bottom = Space.s5 - CardMargin,
+                ),
+            horizontalArrangement = Arrangement.spacedBy(18.dp - CardMargin * 2),
+            verticalArrangement = Arrangement.spacedBy(22.dp - CardMargin * 2),
         ) {
-            fullWidth { Filters(filter, onFilterChange) }
+            fullWidth("filters") { Filters(filter, onFilterChange) }
             if (results?.isEmpty() == true) {
-                fullWidth {
+                fullWidth("empty") {
                     BasicText(
                         stringResource(R.string.no_results),
                         Modifier.padding(vertical = Space.s6),
@@ -136,7 +160,7 @@ fun CompendiumContent(
             }
             itemsIndexed(results.orEmpty(), key = { _, card -> card.id }) { index, card ->
                 val tilt = Tilts[index % Tilts.size]
-                CompendiumCard(card, tilt)
+                CompendiumCard(card, tilt, Modifier.animateItem())
             }
         }
         Column(
@@ -153,14 +177,18 @@ fun CompendiumContent(
     }
 }
 
-private fun LazyGridScope.fullWidth(content: @Composable () -> Unit) =
-    item(span = { GridItemSpan(maxLineSpan) }) {
-        Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.TopCenter) {
-            Box(Modifier.widthIn(max = ContentMaxWidth)) { content() }
-        }
+private fun LazyGridScope.fullWidth(
+    key: String,
+    content: @Composable () -> Unit,
+) = item(key = key, span = { GridItemSpan(maxLineSpan) }) {
+    Box(
+        Modifier.fillMaxWidth().animateItem().padding(start = CardMargin, end = CardMargin, bottom = CardMargin),
+        contentAlignment = Alignment.TopCenter,
+    ) {
+        Box(Modifier.widthIn(max = ContentMaxWidth)) { content() }
     }
+}
 
-// How far the list scrolls while the title and sunset band fold away.
 private val CollapseDistance = 96.dp
 
 // Folds the header as the list scrolls down and unfolds it once the list is back at the top. Hand-written:
@@ -193,10 +221,20 @@ private class HeaderCollapse(
         collapsed -= used
         return Offset(0f, used)
     }
+
+    // A scroll that ends halfway finishes folding or unfolding, whichever is nearer.
+    override suspend fun onPostFling(
+        consumed: Velocity,
+        available: Velocity,
+    ): Velocity {
+        if (collapsed > 0f && collapsed < distance) {
+            animate(collapsed, if (collapsed < distance / 2) 0f else distance) { value, _ -> collapsed = value }
+        }
+        return Velocity.Zero
+    }
 }
 
-// Shows only the unfolded share of the content's height, cut from the top. Read at layout, so scrolling skips
-// recomposition.
+// Read at layout, so scrolling skips recomposition.
 private fun Modifier.folded(fraction: () -> Float) =
     clipToBounds().layout { measurable, constraints ->
         val placeable = measurable.measure(constraints)
@@ -214,7 +252,6 @@ private fun Header(
     Column(
         Modifier
             .fillMaxWidth()
-            // Rounded base while open, straight once folded.
             .graphicsLayer {
                 val radius = 32.dp.toPx() * (1 - fraction())
                 shape = RoundedCornerShape(0f, 0f, radius, radius)
@@ -311,9 +348,16 @@ private fun Filters(
     onFilterChange: (CompendiumFilter) -> Unit,
 ) {
     val colors = AtlasTheme.colors
-    Column(verticalArrangement = Arrangement.spacedBy(Space.s4)) {
-        if (filter.kind == CardKind.Trait) {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+    Column {
+        AnimatedVisibility(
+            visible = filter.kind == CardKind.Trait,
+            enter = fadeIn() + expandVertically(),
+            exit = fadeOut() + shrinkVertically(),
+        ) {
+            Row(
+                Modifier.fillMaxWidth().padding(bottom = Space.s4),
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
                 TraitColorOptions.forEach { color ->
                     val selected = color in filter.colors
                     ColorDisc(color, selected) {
@@ -323,9 +367,17 @@ private fun Filters(
             }
         }
         KindSegments(filter.kind) { onFilterChange(filter.copy(kind = it)) }
-        Row(verticalAlignment = Alignment.Bottom, horizontalArrangement = Arrangement.spacedBy(Space.s2)) {
+        Row(
+            Modifier.padding(top = Space.s4),
+            verticalAlignment = Alignment.Bottom,
+            horizontalArrangement = Arrangement.spacedBy(Space.s2),
+        ) {
             BasicText(stringResource(filter.kind.title), style = AtlasTypography.titleLg.copy(color = colors.onSurface))
-            if (filter.kind == CardKind.Trait && filter.colors.isEmpty()) {
+            AnimatedVisibility(
+                visible = filter.kind == CardKind.Trait && filter.colors.isEmpty(),
+                enter = fadeIn(),
+                exit = fadeOut(),
+            ) {
                 BasicText(
                     stringResource(R.string.color_hint),
                     Modifier.padding(bottom = 3.dp),
@@ -336,8 +388,7 @@ private fun Filters(
     }
 }
 
-// One color at a time for now; Classic has no two-color traits. Tapping the selected color shows all again.
-// The double ring marks selection, so color is never the only cue.
+// One color at a time for now: Classic has no two-color traits.
 @Composable
 private fun ColorDisc(
     color: CardColor?,
@@ -349,23 +400,27 @@ private fun ColorDisc(
     Column(
         Modifier
             .width(64.dp)
-            .clickable(role = Role.RadioButton, onClick = onClick)
+            // No grey press overlay: the ring's pop is the feedback.
+            .clickable(interactionSource = null, indication = null, role = Role.RadioButton, onClick = onClick)
             .semantics { this.selected = selected },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {
-        val ring =
-            if (selected) {
+        val ring by animateFloatAsState(
+            if (selected) 1f else 0f,
+            spring(dampingRatio = Spring.DampingRatioMediumBouncy),
+            label = "ring",
+        )
+        Box(Modifier.size(60.dp), contentAlignment = Alignment.Center) {
+            Box(
                 Modifier
-                    .border(
-                        3.dp,
-                        colors.outline,
-                        CircleShape,
-                    ).padding(3.dp)
-            } else {
-                Modifier.padding(3.dp)
-            }
-        Box(Modifier.size(60.dp).then(ring).padding(3.dp), contentAlignment = Alignment.Center) {
+                    .matchParentSize()
+                    .graphicsLayer {
+                        scaleX = 0.8f + 0.2f * ring
+                        scaleY = 0.8f + 0.2f * ring
+                        alpha = ring.coerceIn(0f, 1f)
+                    }.border(3.dp, colors.outline, CircleShape),
+            )
             Box(
                 Modifier.size(48.dp).sticker(CircleShape, colors.trait(color).fill, colors.outline),
                 contentAlignment = Alignment.Center,
@@ -397,29 +452,46 @@ private fun KindSegments(
     onSelect: (CardKind) -> Unit,
 ) {
     val colors = AtlasTheme.colors
-    Row(
+    val gap = 6.dp
+    BoxWithConstraints(
         Modifier
             .fillMaxWidth()
             .sticker(CircleShape, colors.surfaceSticker, colors.outline, stroke = Stroke.sticker)
             .padding(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
     ) {
-        CardKind.entries.forEach { kind ->
-            val active = kind == selected
-            Box(
-                Modifier
-                    .weight(1f)
-                    .height(40.dp)
-                    .clip(CircleShape)
-                    .background(if (active) colors.primary else colors.surfaceSticker)
-                    .clickable(role = Role.RadioButton) { onSelect(kind) }
-                    .semantics { this.selected = active },
-                contentAlignment = Alignment.Center,
-            ) {
-                BasicText(
-                    stringResource(kind.label),
-                    style = AtlasTypography.labelLg.copy(color = if (active) colors.onPrimary else colors.onSurface),
+        val count = CardKind.entries.size
+        val width = (maxWidth - gap * (count - 1)) / count
+        val offset by animateDpAsState((width + gap) * selected.ordinal, label = "segment")
+        Box(
+            Modifier
+                .offset { IntOffset(offset.roundToPx(), 0) }
+                .width(width)
+                .height(40.dp)
+                .background(colors.primary, CircleShape),
+        )
+        Row(horizontalArrangement = Arrangement.spacedBy(gap)) {
+            CardKind.entries.forEach { kind ->
+                val active = kind == selected
+                val textColor by animateColorAsState(
+                    if (active) colors.onPrimary else colors.onSurface,
+                    label = "segment text",
                 )
+                Box(
+                    Modifier
+                        .weight(1f)
+                        .height(40.dp)
+                        .clip(CircleShape)
+                        // No grey press overlay: the sliding background is the feedback.
+                        .clickable(
+                            interactionSource = null,
+                            indication = null,
+                            role = Role.RadioButton,
+                        ) { onSelect(kind) }
+                        .semantics { this.selected = active },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    BasicText(stringResource(kind.label), style = AtlasTypography.labelLg.copy(color = textColor))
+                }
             }
         }
     }
@@ -429,6 +501,7 @@ private fun KindSegments(
 private fun CompendiumCard(
     card: Card,
     tilt: Float,
+    modifier: Modifier = Modifier,
 ) {
     val (name, cardColors, points) =
         when (card) {
@@ -443,7 +516,7 @@ private fun CompendiumCard(
             cardColors?.ifEmpty { listOf(null) }?.forEach { add(stringResource(colorName(it))) }
             points?.let { add(pluralStringResource(R.plurals.card_points, it, it)) }
         }.joinToString(", ")
-    CardThumb(card.image, name, cardColors, description, tilt)
+    CardThumb(card.image, name, cardColors, description, tilt, modifier.padding(CardMargin))
 }
 
 @PreviewLightDark

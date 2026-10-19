@@ -41,7 +41,6 @@ private enum class Destination(
     Tutorial(R.string.dock_tutorial, R.drawable.ic_dock_tutorial),
 }
 
-// Floating navigation pill. Only Cards exists in phase 1: the rest show greyed out, announced as coming soon.
 @Composable
 fun Dock(modifier: Modifier = Modifier) {
     val colors = AtlasTheme.colors

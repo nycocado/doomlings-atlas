@@ -18,7 +18,6 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-// The visual signature (docs/design.md): fill, outline border and an optional hard shadow drawn outside the bounds.
 fun Modifier.sticker(
     shape: Shape,
     fill: Color,

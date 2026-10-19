@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import dev.nycocado.atlas.card.CardColor
 
-// Color tokens from design/tokens.json; usage notes live there. Keep both files in sync.
+// The tokens in ui/theme mirror design/tokens.json, where their usage is described. Keep them in sync.
 @Immutable
 data class AtlasColors(
     val surface: Color,
@@ -37,7 +37,6 @@ data class AtlasColors(
     val onSunset: Color = Color(0xFF23173B),
 )
 
-// fill and onFill are the exact card color, the same in both themes.
 @Immutable
 data class TraitColors(
     val fill: Color,
@@ -46,7 +45,6 @@ data class TraitColors(
     val container: Color,
 )
 
-// null is colorless.
 fun AtlasColors.trait(color: CardColor?): TraitColors =
     when (color) {
         CardColor.Blue -> traitBlue

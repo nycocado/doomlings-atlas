@@ -34,10 +34,8 @@ import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
 
-// Card art is 541×756.
 private const val CARD_RATIO = 541f / 756f
 
-// A card lying on the table: art with outline and hard shadow, tilted, name below. Nothing drawn over the art.
 // colors is null for cards without color (ages, catastrophes); an empty list is a colorless trait.
 @Composable
 fun CardThumb(
