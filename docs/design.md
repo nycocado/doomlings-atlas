@@ -55,7 +55,7 @@ Two themes: `light` ("Day", default) and `dark` ("Game night"). No Android dynam
 - The logo is the **trait compass rose**: four points in the exact card colors (north blue, east green, south red, west purple), a colorless disc in the center, sticker outline and shadow. The name is Fredoka 700 converted to curves.
 - `mark.svg` on light backgrounds, `mark-dark.svg` on `inverse-surface`, `mark-flat.svg` below 32px, `mark-mono.svg` for single-color uses. Lockups pair the mark with the name. Clear space: half the mark's height. Minimum size: 16px (flat), 120px wide for the horizontal lockup.
 - Never recolor or rotate the points, never set the name in another font, never place it near the official game logo.
-- The adaptive app icon is `mark-dark` on `inverse-surface` with the sunset band as a horizon. Layers in `design/brand/app-icon/` (108dp grid, foreground within the 66dp safe zone), plus a monochrome layer for Android 13+ themed icons. No text, nothing from the official logo.
+- The adaptive app icon is `mark-dark` on a plain `inverse-surface` background. Layers in `design/brand/app-icon/` (108dp grid, foreground within the 66dp safe zone), plus a monochrome layer for Android 13+ themed icons. No text, nothing from the official logo.
 
 ## Icons
 
