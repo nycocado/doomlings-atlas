@@ -21,7 +21,13 @@ Everything here comes before assets and code.
 - Tests for database integrity: unique identifiers, required fields, every card with an image.
 - Screenshot tests from the component previews, once the design system settles.
 
-## 2. Manual Scoring
+## 2. Card Text Translation
+
+- Portuguese and Spanish, reviewed by the maintainer; other languages through community contributions.
+- Translated card text shown in the compendium.
+- App interface also in Spanish.
+
+## 3. Manual Scoring
 
 - Players added by name at the start of the game, each with the Gene Pool card in front of them.
 - Players enter the full final state: each player's trait pile and hand, catastrophes, World's End.
@@ -30,12 +36,6 @@ Everything here comes before assets and code.
 - Card picker reuses the compendium's searchable list.
 - An in-progress game survives the app being killed; no game history.
 - Tests for every card with a special effect, plus real games with hand-checked scores.
-
-## 3. Card Text Translation
-
-- Portuguese and Spanish, reviewed by the maintainer; other languages through community contributions.
-- Translated card text shown in the compendium.
-- App interface also in Spanish.
 
 ## 4. Card Scanner
 
