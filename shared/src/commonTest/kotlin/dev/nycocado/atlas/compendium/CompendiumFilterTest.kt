@@ -2,7 +2,7 @@ package dev.nycocado.atlas.compendium
 
 import dev.nycocado.atlas.card.Age
 import dev.nycocado.atlas.card.BirthOfLife
-import dev.nycocado.atlas.card.Card
+import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardColor.Blue
 import dev.nycocado.atlas.card.CardColor.Green
 import dev.nycocado.atlas.card.CardColor.Red
@@ -14,7 +14,7 @@ import kotlin.test.assertEquals
 class CompendiumFilterTest {
     private fun trait(
         name: String,
-        vararg colors: dev.nycocado.atlas.card.CardColor,
+        vararg colors: CardColor,
         effect: String? = null,
     ) = Trait(name, "classic", "$name.webp", name, null, effect, 1, colors.toList(), false, emptyList(), emptyList())
 

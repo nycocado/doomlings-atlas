@@ -6,7 +6,7 @@ Source: [official rulesheet](../assets/doomlings/rules/classic.pdf) ([original l
 
 ## Components
 
-- Traits: 4 colors (blue, green, purple, red) plus colorless (grey). Some traits are dominant.
+- Traits: 4 colors (blue, green, purple, red) plus colorless (gray). Some traits are dominant.
 - Ages: 25 normal ages, 15 catastrophes and The Birth of Life. All share the same back.
 - Gene Pools: one per player. The number at the top is the player's hand size.
 

@@ -133,6 +133,7 @@ abstract class PackageCards : DefaultTask() {
 androidComponents.onVariants { variant ->
     val cards =
         tasks.register<PackageCards>("package${variant.name.replaceFirstChar { it.uppercase() }}Cards") {
+            description = "Copies the enabled sets' cards.json and images into the APK assets."
             sets.set(enabledSets)
             source.set(rootProject.layout.projectDirectory.dir("assets/doomlings"))
         }
@@ -140,6 +141,7 @@ androidComponents.onVariants { variant ->
 
     val task =
         tasks.register<CheckPermissions>("check${variant.name.replaceFirstChar { it.uppercase() }}Permissions") {
+            description = "Fails if the merged manifest has a permission missing from permissions-allowlist.txt."
             manifest.set(variant.artifacts.get(SingleArtifact.MERGED_MANIFEST))
             allowlist.set(layout.projectDirectory.file("permissions-allowlist.txt"))
         }
