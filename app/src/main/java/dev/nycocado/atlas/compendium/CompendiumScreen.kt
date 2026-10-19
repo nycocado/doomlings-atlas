@@ -334,7 +334,7 @@ private fun SearchField(
             Box(
                 Modifier
                     .size(40.dp)
-                    .clickable(interactionSource = null, indication = null, role = Role.Button) { onQueryChange("") }
+                    .clickable(role = Role.Button) { onQueryChange("") }
                     .semantics { contentDescription = clear },
                 contentAlignment = Alignment.Center,
             ) {
@@ -417,8 +417,7 @@ private fun ColorDisc(
     Column(
         Modifier
             .width(64.dp)
-            // No grey press overlay: the ring's pop is the feedback.
-            .clickable(interactionSource = null, indication = null, role = Role.RadioButton, onClick = onClick)
+            .clickable(role = Role.RadioButton, onClick = onClick)
             .semantics { this.selected = selected },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(2.dp),
@@ -497,13 +496,7 @@ private fun KindSegments(
                     Modifier
                         .weight(1f)
                         .height(40.dp)
-                        .clip(CircleShape)
-                        // No grey press overlay: the sliding background is the feedback.
-                        .clickable(
-                            interactionSource = null,
-                            indication = null,
-                            role = Role.RadioButton,
-                        ) { onSelect(kind) }
+                        .clickable(role = Role.RadioButton) { onSelect(kind) }
                         .semantics { this.selected = active },
                     contentAlignment = Alignment.Center,
                 ) {
