@@ -25,6 +25,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.clipScrollableContainer
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -140,6 +142,7 @@ private val RailMinWidth = 600.dp
 // instead of each part settling at its own pace.
 private val ReflowSpec = tween<Rect>(350, easing = FastOutSlowInEasing)
 private val Reflow = BoundsTransform { _, _ -> ReflowSpec }
+private val MoveSpec = tween<IntOffset>(350, easing = FastOutSlowInEasing)
 
 // Deterministic by position, never random per render (docs/design.md).
 private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
@@ -245,7 +248,12 @@ fun CompendiumContent(
                         LazyVerticalGrid(
                             state = grid,
                             columns = GridCells.Adaptive(150.dp),
-                            modifier = Modifier.weight(1f).widthIn(max = MaxWidth.wide),
+                            // The grid's own clip leaves out the items fading out after a filter.
+                            modifier =
+                                Modifier
+                                    .weight(1f)
+                                    .widthIn(max = MaxWidth.wide)
+                                    .clipScrollableContainer(Orientation.Vertical),
                             contentPadding =
                                 PaddingValues(
                                     start = Space.s5 - CardMargin,
@@ -279,11 +287,10 @@ fun CompendiumContent(
                                         focusManager.clearFocus()
                                         onCardClick(card.id)
                                     },
-                                    // Moves animate by bounds, which also covers the change of size.
+                                    // animateBounds skips moves inside the grid, which places its items as scrolling.
                                     Modifier
-                                        .animateItem(
-                                            placementSpec = null,
-                                        ).animateBounds(reflow, boundsTransform = Reflow),
+                                        .animateItem(placementSpec = MoveSpec)
+                                        .animateBounds(reflow, boundsTransform = Reflow),
                                 )
                             }
                         }
