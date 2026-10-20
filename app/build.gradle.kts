@@ -2,6 +2,7 @@ import com.android.build.api.artifact.SingleArtifact
 import groovy.json.JsonOutput
 import groovy.json.JsonSlurper
 import org.w3c.dom.Element
+import java.io.File
 import javax.inject.Inject
 import javax.xml.parsers.DocumentBuilderFactory
 
@@ -53,6 +54,9 @@ android {
     }
     buildFeatures {
         compose = true
+    }
+    androidResources {
+        generateLocaleConfig = true
     }
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
     lint {
@@ -121,6 +125,56 @@ abstract class CheckPermissions : DefaultTask() {
         }
     }
 }
+
+// Keeps each translation to one word per concept (CONTRIBUTING.md#translations): fail if a word that
+// docs/glossary/<language>.json rules out shows up in that language's interface strings.
+abstract class CheckGlossary : DefaultTask() {
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val glossaries: DirectoryProperty
+
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val resources: DirectoryProperty
+
+    @TaskAction
+    fun check() {
+        val problems =
+            glossaries.get().asFile.listFiles { it: File -> it.extension == "json" }.orEmpty().flatMap { file ->
+                val language = file.nameWithoutExtension
+                val strings = resources.get().file("values-$language/strings.xml").asFile
+                if (!strings.isFile) return@flatMap emptyList()
+                val text =
+                    DocumentBuilderFactory
+                        .newInstance()
+                        .newDocumentBuilder()
+                        .parse(strings)
+                        .documentElement.textContent
+
+                @Suppress("UNCHECKED_CAST")
+                val glossary = JsonSlurper().parse(file) as Map<String, List<Any>>
+                (glossary.getValue("interface") + glossary.getValue("cards")).flatMap { entry ->
+                    @Suppress("UNCHECKED_CAST")
+                    val term = entry as Map<String, Any>
+
+                    @Suppress("UNCHECKED_CAST")
+                    val avoid = term.getValue("avoid") as List<String>
+                    avoid
+                        .filter { Regex("(?iu)(?<!\\p{L})${Regex.escape(it)}(?!\\p{L})").containsMatchIn(text) }
+                        .map { "$language: \"$it\" found, the glossary uses \"${term["use"]}\" for \"${term["en"]}\"" }
+                }
+            }
+        check(problems.isEmpty()) { problems.joinToString("\n") }
+    }
+}
+
+val checkGlossary =
+    tasks.register<CheckGlossary>("checkGlossary") {
+        description = "Fails if a translation uses a word its glossary in docs/glossary rules out."
+        glossaries.set(rootProject.layout.projectDirectory.dir("docs/glossary"))
+        resources.set(layout.projectDirectory.dir("src/main/res"))
+    }
+tasks.named("check") { dependsOn(checkGlossary) }
 
 // Sets shipped in the APK. The rest of assets/doomlings stays in the repo until its data is checked.
 val enabledSets = listOf("classic")

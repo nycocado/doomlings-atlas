@@ -1,0 +1,157 @@
+{
+  "language": "pt-BR",
+  "keep": [
+    "Action",
+    "Age",
+    "Ages",
+    "Attach",
+    "Attachment",
+    "Awesome Power",
+    "Bargain",
+    "Catastrophe",
+    "Catastrophes",
+    "Collect",
+    "Coral",
+    "Curious",
+    "Deepling",
+    "Dinoling",
+    "Dominant",
+    "Dragon",
+    "Drop of life",
+    "Exotic",
+    "Fish",
+    "Gene Pool",
+    "Glitterling",
+    "Meaning of Life",
+    "Mythling",
+    "Moonling",
+    "Play when",
+    "Pocket Objective",
+    "Rush",
+    "Shell",
+    "Spell",
+    "Stabilize",
+    "Suppress",
+    "Swarm",
+    "Techling",
+    "Trait",
+    "Traits",
+    "Trinket",
+    "World's End"
+  ],
+  "interface": [
+    { "en": "about", "use": "sobre", "avoid": ["acerca"] },
+    { "en": "back", "use": "voltar", "avoid": ["retornar"] },
+    {
+      "en": "card",
+      "use": "carta",
+      "avoid": ["card", "cards", "cartão", "cartões"],
+      "note": "Plural: cartas."
+    },
+    { "en": "clear", "use": "limpar", "avoid": ["deletar"] },
+    { "en": "coming soon", "use": "em breve", "avoid": ["brevemente"] },
+    { "en": "got it", "use": "entendi", "avoid": ["compreendi"] },
+    { "en": "libraries", "use": "bibliotecas", "avoid": ["livrarias"] },
+    {
+      "en": "point",
+      "use": "ponto",
+      "avoid": ["pts"],
+      "note": "Plural: pontos; pontos de (many)."
+    },
+    { "en": "score", "use": "pontuação", "avoid": ["placar", "escore"] },
+    {
+      "en": "search",
+      "use": "busca",
+      "avoid": ["pesquisa", "pesquisar"],
+      "note": "Verbo: buscar. \"procurar\" só na frase 'Qual doomling você procura?'."
+    },
+    { "en": "tap", "use": "toque", "avoid": ["clique", "clicar", "pressione"] },
+    { "en": "unofficial", "use": "não oficial", "avoid": ["extraoficial"] },
+    { "en": "version", "use": "versão", "avoid": [] }
+  ],
+  "cards": [
+    { "en": "add", "use": "adicionar", "avoid": ["acrescentar"] },
+    { "en": "choose", "use": "escolher", "avoid": ["eleger"] },
+    { "en": "color", "use": "cor", "avoid": [] },
+    { "en": "count", "use": "contar", "avoid": ["computar"] },
+    { "en": "deck", "use": "baralho", "avoid": ["deck", "monte"] },
+    { "en": "different", "use": "diferente", "avoid": [] },
+    {
+      "en": "discard",
+      "use": "descartar",
+      "avoid": ["dispensar", "largar"],
+      "note": "Substantivo: descarte."
+    },
+    {
+      "en": "draw",
+      "use": "comprar",
+      "avoid": ["puxar", "sacar"],
+      "note": "Comprar uma carta do baralho; 'draw' no sentido de empate é 'empatar'."
+    },
+    { "en": "each", "use": "cada", "avoid": [] },
+    { "en": "effect", "use": "efeito", "avoid": [] },
+    { "en": "equal", "use": "igual", "avoid": [] },
+    { "en": "fewer", "use": "menos", "avoid": [] },
+    { "en": "gain", "use": "ganhar", "avoid": ["adquirir"] },
+    { "en": "give", "use": "dar", "avoid": [] },
+    { "en": "hand", "use": "mão", "avoid": [] },
+    { "en": "ignore", "use": "ignorar", "avoid": ["desconsiderar"] },
+    {
+      "en": "immediately",
+      "use": "imediatamente",
+      "avoid": ["instantaneamente"]
+    },
+    { "en": "left", "use": "esquerda", "avoid": [] },
+    {
+      "en": "may",
+      "use": "pode",
+      "avoid": [],
+      "note": "Opcional: 'você pode'."
+    },
+    { "en": "more", "use": "mais", "avoid": [] },
+    {
+      "en": "must",
+      "use": "deve",
+      "avoid": [],
+      "note": "Obrigatório: 'você deve'."
+    },
+    { "en": "next", "use": "próximo", "avoid": [] },
+    {
+      "en": "opponent",
+      "use": "oponente",
+      "avoid": ["adversário", "adversária", "rival", "inimigo"]
+    },
+    { "en": "pass", "use": "passar", "avoid": ["repassar"] },
+    { "en": "peek", "use": "espiar", "avoid": ["espreitar", "espiadinha"] },
+    {
+      "en": "pile",
+      "use": "pilha",
+      "avoid": ["monte", "pile"],
+      "note": "Trait pile: 'pilha de traits'."
+    },
+    {
+      "en": "play",
+      "use": "jogar",
+      "avoid": ["baixar"],
+      "note": "Jogar uma carta; Play when permanece em inglês."
+    },
+    { "en": "player", "use": "jogador", "avoid": ["participante"] },
+    { "en": "random", "use": "aleatório", "avoid": ["randômico", "randomico"] },
+    { "en": "receive", "use": "receber", "avoid": [] },
+    {
+      "en": "return",
+      "use": "devolver",
+      "avoid": ["retornar"],
+      "note": "Devolver uma carta ao baralho ou à mão."
+    },
+    { "en": "reveal", "use": "revelar", "avoid": [] },
+    { "en": "right", "use": "direita", "avoid": [] },
+    { "en": "round", "use": "rodada", "avoid": ["ciclo"] },
+    { "en": "steal", "use": "roubar", "avoid": ["furtar", "surrupiar"] },
+    { "en": "swap", "use": "trocar", "avoid": ["permutar"] },
+    { "en": "ties", "use": "empates", "avoid": [] },
+    { "en": "top", "use": "topo", "avoid": [] },
+    { "en": "turn", "use": "turno", "avoid": [] },
+    { "en": "value", "use": "valor", "avoid": [] }
+  ]
+}
