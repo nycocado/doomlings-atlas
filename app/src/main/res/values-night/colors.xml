@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="symbol_outline">#D9CFEE</color>
+    <color name="surface">#1B1230</color>
 </resources>
