@@ -31,7 +31,7 @@ This file covers the look only. Screen flows, scoring steps and game rules are d
 Two themes: `light` ("Day", default) and `dark` ("Game night"). No Android dynamic color.
 
 - `on-surface` on `surface` / `surface-sticker*`: main text. `on-surface-variant`: secondary (≥6:1).
-- `inverse-surface` + `on-inverse-surface`: headers, dock, language selector.
+- `inverse-surface` + `on-inverse-surface`: headers, dock.
 - `primary` / `on-primary`: filled action and active segment (ink by day, yellow at night).
 - `highlight` / `on-highlight`: what is selected now (active dock item, chosen option, current step, points badge, dominant).
 - `sunset-*` with `on-sunset`: player colors and forward buttons in flows.
@@ -79,8 +79,19 @@ Visual specs only; content and behavior are defined with each screen.
 - **Player token:** round token with the initial on a sunset color (yellow, orange, red, sea, in order) and the name below; the name always shows. Editing: double ring. Done: check seal in `primary`. Add: dashed disc. In tabs it becomes a pill (initial + name), active in `highlight`.
 - **Step header:** steps in the dark header. Done: `on-inverse-surface` disc with check. Current: `highlight` disc with the number, bold label. Upcoming: outline only.
 - **Score breakdown:** `surface-sticker` card with rows (icon, title, explanation, signed tabular value in `numeral` 24) split by dashed `outline-soft`. Manual adjustments are marked with a pencil. A color summary of five `trait-<color>` blocks with glyph and points is read-only.
-- **Dock:** floating `inverse-surface` pill, active item in `highlight`.
+- **Dock:** floating `inverse-surface` pill, active item in `highlight`. On wide windows it becomes a vertical rail on the left, below the header, with icons only (labels go to accessibility).
+- **Round button:** 48dp sticker disc with a 22dp icon, sinking into its shadow while pressed. On a surface or panel it uses `outline`; on a dark header, a `surface-sticker` disc with `on-inverse-surface-variant` outline and shadow (back on About), or a quiet `inverse-surface` disc with the icon in `on-inverse-surface` for secondary actions (info on the compendium).
 - **Unofficial notice:** footer in `body-sm`, `on-surface-variant`, centered and underlined, at the end of the card detail; tapping it opens About. The compendium has no footer: an info button in its header opens About. On first launch and About: a sticker with an "Unofficial" label in `highlight`, the sentence in bold and a short explanation. Never hidden behind a tap, never near the game logo.
+
+## Wide Windows
+
+From 840dp wide (tablets, unfolded foldables, phones on their side):
+
+- **Compendium:** with at least 600dp of its own (alone on the screen, or beside a card on a large tablet), the header is a single row that doesn't fold: logo and title in the left corner, info button in the right corner, search in the middle of the screen (up to 480dp), narrowing toward the end when there isn't room. The dock becomes the rail. Color discs and type segments center on the screen; the section title stays in line with the first column of cards.
+- **List and card:** the list fills the screen until a card opens. Then the list and the card share the width half and half; another card replaces the open one. The list jumps to its new width and the cards glide to their new places; the card's pane slides in and out.
+- **Narrower compendium** (beside a card on a foldable or a small tablet): the phone layout, with the stacked header and the dock at the bottom.
+- **Card beside the list:** a sheet hanging from the top of the screen, a sticker on its other sides (`outline` border, `shadow-sticker-lg`, `radius-lg` bottom corners). The info button and its space go to the search, since the card has its own way to About.
+- **Status bar:** its icons stay light, as the list's dark header sits under them; a 20% black shade behind the bar keeps them readable over light card panels. On phones, the card detail picks the icon color that the design puts on its panel.
 
 ## Accessibility
 

@@ -18,6 +18,8 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.movableContentOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -46,82 +48,101 @@ private enum class Destination(
     Tutorial(R.string.dock_tutorial, R.drawable.ic_dock_tutorial),
 }
 
-// A bottom pill, or a rail along the side on wide windows (vertical). The rail shows icons only; labels go to
-// semantics.
+// The rail (vertical) shows icons only; labels go to semantics. The pill and each item keep their identity across
+// both shapes, so a caller can animate one into the other through itemModifier and its own modifier.
 @Composable
 fun Dock(
     onCardsClick: () -> Unit,
     modifier: Modifier = Modifier,
     vertical: Boolean = false,
+    itemModifier: Modifier = Modifier,
 ) {
     val colors = AtlasTheme.colors
-    val items: @Composable () -> Unit = {
-        Destination.entries.forEach { destination ->
-            val label = stringResource(destination.label)
-            if (destination == Destination.Cards) {
-                Row(
-                    Modifier
-                        .height(46.dp)
-                        .background(colors.highlight, CircleShape)
-                        .clickable(onClick = onCardsClick)
-                        .padding(horizontal = if (vertical) 12.dp else Space.s4)
-                        .clearAndSetSemantics {
-                            contentDescription = label
-                            selected = true
-                            onClick { onCardsClick().let { true } }
-                        },
-                    horizontalArrangement = Arrangement.spacedBy(Space.s2),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Image(
-                        painterResource(destination.icon),
-                        null,
-                        Modifier.size(22.dp),
-                        colorFilter = ColorFilter.tint(colors.onHighlight),
-                    )
-                    if (!vertical) {
-                        BasicText(label, style = AtlasTypography.labelLg.copy(color = colors.onHighlight))
-                    }
-                }
-            } else {
-                val comingSoon = stringResource(R.string.coming_soon, label)
-                Box(
-                    Modifier.size(46.dp).clearAndSetSemantics {
-                        contentDescription = comingSoon
-                        disabled()
-                    },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Image(
-                        painterResource(destination.icon),
-                        null,
-                        Modifier.size(24.dp),
-                        colorFilter = ColorFilter.tint(colors.onInverseSurface.copy(alpha = 0.38f)),
-                    )
+    val items =
+        remember {
+            Destination.entries.associateWith { destination ->
+                movableContentOf { vertical: Boolean, onClick: () -> Unit, modifier: Modifier ->
+                    DockItem(destination, vertical, onClick, modifier)
                 }
             }
         }
+    Box(
+        modifier
+            .then(
+                if (vertical) {
+                    Modifier.width(64.dp)
+                } else {
+                    Modifier.widthIn(max = MaxWidth.compact).fillMaxWidth().height(64.dp)
+                },
+            ).background(colors.inverseSurface, CircleShape),
+        contentAlignment = Alignment.Center,
+    ) {
+        if (vertical) {
+            Column(
+                Modifier.padding(vertical = Space.s2),
+                verticalArrangement = Arrangement.spacedBy(Space.s3),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) { Destination.entries.forEach { items.getValue(it)(true, onCardsClick, itemModifier) } }
+        } else {
+            Row(
+                Modifier.fillMaxWidth().padding(horizontal = Space.s2),
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.CenterVertically,
+            ) { Destination.entries.forEach { items.getValue(it)(false, onCardsClick, itemModifier) } }
+        }
     }
-    if (vertical) {
-        Column(
-            modifier
-                .width(64.dp)
-                .background(colors.inverseSurface, CircleShape)
-                .padding(vertical = Space.s2),
-            verticalArrangement = Arrangement.spacedBy(Space.s3),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) { items() }
-    } else {
+}
+
+@Composable
+private fun DockItem(
+    destination: Destination,
+    vertical: Boolean,
+    onCardsClick: () -> Unit,
+    modifier: Modifier,
+) {
+    val colors = AtlasTheme.colors
+    val label = stringResource(destination.label)
+    if (destination == Destination.Cards) {
         Row(
             modifier
-                .widthIn(max = MaxWidth.compact)
-                .fillMaxWidth()
-                .height(64.dp)
-                .background(colors.inverseSurface, CircleShape)
-                .padding(horizontal = Space.s2),
-            horizontalArrangement = Arrangement.SpaceAround,
+                .height(46.dp)
+                .background(colors.highlight, CircleShape)
+                .clickable(onClick = onCardsClick)
+                .padding(horizontal = if (vertical) 12.dp else Space.s4)
+                .clearAndSetSemantics {
+                    contentDescription = label
+                    selected = true
+                    onClick { onCardsClick().let { true } }
+                },
+            horizontalArrangement = Arrangement.spacedBy(Space.s2),
             verticalAlignment = Alignment.CenterVertically,
-        ) { items() }
+        ) {
+            Image(
+                painterResource(destination.icon),
+                null,
+                Modifier.size(22.dp),
+                colorFilter = ColorFilter.tint(colors.onHighlight),
+            )
+            if (!vertical) {
+                BasicText(label, style = AtlasTypography.labelLg.copy(color = colors.onHighlight), maxLines = 1)
+            }
+        }
+    } else {
+        val comingSoon = stringResource(R.string.coming_soon, label)
+        Box(
+            modifier.size(46.dp).clearAndSetSemantics {
+                contentDescription = comingSoon
+                disabled()
+            },
+            contentAlignment = Alignment.Center,
+        ) {
+            Image(
+                painterResource(destination.icon),
+                null,
+                Modifier.size(24.dp),
+                colorFilter = ColorFilter.tint(colors.onInverseSurface.copy(alpha = 0.38f)),
+            )
+        }
     }
 }
 
