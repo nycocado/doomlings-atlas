@@ -1,4 +1,6 @@
 [versions]
+compileSdk = "37"
+minSdk = "26"
 agp = "9.4.1"
 kotlin = "2.4.21"
 activityCompose = "1.13.0"

@@ -7,8 +7,14 @@ plugins {
 kotlin {
     android {
         namespace = "dev.nycocado.atlas.shared"
-        compileSdk = 37
-        minSdk = 26
+        compileSdk =
+            libs.versions.compileSdk
+                .get()
+                .toInt()
+        minSdk =
+            libs.versions.minSdk
+                .get()
+                .toInt()
         withHostTest {}
     }
 

@@ -15,7 +15,8 @@ spotless {
     val ktlintVersion = libs.versions.ktlint.get()
     kotlin {
         target("app/src/**/*.kt", "shared/src/**/*.kt")
-        ktlint(ktlintVersion)
+        // Not run by default with ktlint 1.8.
+        ktlint(ktlintVersion).editorConfigOverride(mapOf("ktlint_standard_no-unused-imports" to "enabled"))
     }
     kotlinGradle {
         target("*.gradle.kts", "app/*.gradle.kts", "shared/*.gradle.kts")

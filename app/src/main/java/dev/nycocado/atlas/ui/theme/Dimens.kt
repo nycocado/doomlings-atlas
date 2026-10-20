@@ -30,3 +30,8 @@ object Shadow {
     val sticker = 3.dp
     val stickerLg = 5.dp
 }
+
+object MaxWidth {
+    val content = 640.dp
+    val compact = 480.dp
+}

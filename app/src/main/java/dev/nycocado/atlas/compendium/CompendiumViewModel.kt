@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardRepository
+import dev.nycocado.atlas.card.NamedCard
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -30,7 +31,7 @@ class CompendiumViewModel
         val cards: StateFlow<List<Card>?> = mutableCards.asStateFlow()
 
         // null while the cards are loading.
-        val results: StateFlow<List<Card>?> =
+        val results: StateFlow<List<NamedCard>?> =
             combine(mutableCards.filterNotNull(), mutableFilter) { cards, filter -> cards.filterCompendium(filter) }
                 .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 

@@ -12,14 +12,20 @@ sealed interface Card {
 }
 
 @Serializable
+sealed interface NamedCard : Card {
+    val name: String
+    val effect: String?
+}
+
+@Serializable
 @SerialName("trait")
 data class Trait(
     override val id: String,
     override val set: String,
     override val image: String,
-    val name: String,
+    override val name: String,
     val flavor: String?,
-    val effect: String?,
+    override val effect: String?,
     // null when the value depends on the game ("Value is equal to...").
     val points: Int?,
     // Empty for colorless traits.
@@ -27,7 +33,7 @@ data class Trait(
     val dominant: Boolean,
     val subspecies: List<String>,
     val icons: List<TraitIcon>,
-) : Card {
+) : NamedCard {
     val effectless: Boolean get() = effect == null
 }
 
@@ -37,9 +43,9 @@ data class Age(
     override val id: String,
     override val set: String,
     override val image: String,
-    val name: String,
-    val effect: String,
-) : Card
+    override val name: String,
+    override val effect: String,
+) : NamedCard
 
 @Serializable
 @SerialName("catastrophe")
@@ -47,10 +53,10 @@ data class Catastrophe(
     override val id: String,
     override val set: String,
     override val image: String,
-    val name: String,
-    val effect: String,
+    override val name: String,
+    override val effect: String,
     val worldsEnd: String,
-) : Card
+) : NamedCard
 
 @Serializable
 @SerialName("birth-of-life")
@@ -58,9 +64,9 @@ data class BirthOfLife(
     override val id: String,
     override val set: String,
     override val image: String,
-    val name: String,
-    val effect: String,
-) : Card
+    override val name: String,
+    override val effect: String,
+) : NamedCard
 
 // Only the color and art are printed on it.
 @Serializable
@@ -77,10 +83,10 @@ data class MeaningOfLife(
     override val id: String,
     override val set: String,
     override val image: String,
-    val name: String,
-    val effect: String,
+    override val name: String,
+    override val effect: String,
     val flavor: String?,
-) : Card
+) : NamedCard
 
 @Serializable
 @SerialName("trinket")
@@ -88,10 +94,10 @@ data class Trinket(
     override val id: String,
     override val set: String,
     override val image: String,
-    val name: String,
-    val effect: String,
+    override val name: String,
+    override val effect: String,
     val flavor: String,
-) : Card
+) : NamedCard
 
 @Serializable
 @SerialName("treasure")
@@ -99,9 +105,9 @@ data class Treasure(
     override val id: String,
     override val set: String,
     override val image: String,
-    val name: String,
-    val effect: String,
-) : Card
+    override val name: String,
+    override val effect: String,
+) : NamedCard
 
 @Serializable
 @SerialName("merchant")
@@ -109,9 +115,9 @@ data class Merchant(
     override val id: String,
     override val set: String,
     override val image: String,
-    val name: String,
-    val effect: String,
-) : Card
+    override val name: String,
+    override val effect: String,
+) : NamedCard
 
 @Serializable
 enum class CardColor {

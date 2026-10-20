@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
@@ -47,6 +46,7 @@ import dev.nycocado.atlas.ui.component.SunsetBand
 import dev.nycocado.atlas.ui.component.UnofficialSticker
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
+import dev.nycocado.atlas.ui.theme.MaxWidth
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
@@ -66,8 +66,6 @@ data class Licenses(
     val libraries: List<LicenseEntry>,
 )
 
-private val ContentMaxWidth = 640.dp
-
 @Composable
 fun AboutScreen(onBack: () -> Unit) {
     val context = LocalContext.current
@@ -83,26 +81,27 @@ fun AboutScreen(onBack: () -> Unit) {
 }
 
 private fun loadLicenses(context: Context): Licenses {
-    // Generated at build time by the AboutLibraries plugin from the app's dependencies.
-    val libs = Libs.Builder().withJson(context, R.raw.aboutlibraries).build()
-    val gpl = libs.licenses.first { it.spdxId == "GPL-3.0-only" }
+    fun read(path: String) =
+        context.assets
+            .open("licenses/$path")
+            .bufferedReader()
+            .use { it.readText() }
+
+    // OFL texts start with "Copyright ... The <font> Project Authors".
     val fonts =
-        listOf(
-            "Fredoka" to "licenses/fredoka-OFL.txt",
-            "Atkinson Hyperlegible Next" to "licenses/atkinson-hyperlegible-next-OFL.txt",
-        ).map { (name, path) ->
-            LicenseEntry(
-                path,
-                name,
-                "OFL-1.1",
-                context.assets
-                    .open(path)
-                    .bufferedReader()
-                    .use { it.readText() },
-            )
+        context.assets.list("licenses").orEmpty().filter { it.endsWith("-OFL.txt") }.map { file ->
+            val text = read(file)
+            val name =
+                Regex("The (.+?) Project Authors").find(text)?.groupValues?.get(1) ?: file.removeSuffix("-OFL.txt")
+            LicenseEntry(file, name, "OFL-1.1", text)
         }
+    // Generated at build time by the AboutLibraries plugin from the app's dependencies.
     val libraries =
-        libs.libraries
+        Libs
+            .Builder()
+            .withJson(context, R.raw.aboutlibraries)
+            .build()
+            .libraries
             .map { library ->
                 LicenseEntry(
                     library.uniqueId,
@@ -115,7 +114,7 @@ private fun loadLicenses(context: Context): Licenses {
                 )
             }.sortedBy { it.name.lowercase() }
     return Licenses(
-        LicenseEntry("app", context.getString(R.string.app_name), "GPL-3.0", gpl.licenseContent),
+        LicenseEntry("app", context.getString(R.string.app_name), "GPL-3.0", read("LICENSE")),
         fonts,
         libraries,
     )
@@ -138,7 +137,7 @@ fun AboutContent(
         item { Header(onBack) }
         item {
             Column(
-                Modifier.widthIn(max = ContentMaxWidth).padding(horizontal = Space.s5, vertical = Space.s6),
+                Modifier.widthIn(max = MaxWidth.content).padding(horizontal = Space.s5, vertical = Space.s6),
                 verticalArrangement = Arrangement.spacedBy(Space.s3),
             ) {
                 UnofficialSticker()
@@ -168,7 +167,7 @@ private fun LazyListScope.section(
         BasicText(
             stringResource(title).uppercase(),
             Modifier
-                .widthIn(max = ContentMaxWidth)
+                .widthIn(max = MaxWidth.content)
                 .fillMaxWidth()
                 .padding(start = Space.s5, end = Space.s5, top = Space.s4, bottom = Space.s2)
                 .semantics { heading() },
@@ -180,7 +179,7 @@ private fun LazyListScope.section(
             entry,
             open == entry.id,
             { onToggle(entry.id) },
-            Modifier.widthIn(max = ContentMaxWidth).padding(horizontal = Space.s5, vertical = 6.dp),
+            Modifier.widthIn(max = MaxWidth.content).padding(horizontal = Space.s5, vertical = 6.dp),
         )
     }
 }

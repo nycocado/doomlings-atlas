@@ -1,16 +1,13 @@
 package dev.nycocado.atlas.ui.component
 
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicText
@@ -29,24 +26,24 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import coil3.ColorImage
 import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.AsyncImage
 import coil3.compose.AsyncImagePreviewHandler
 import coil3.compose.LocalAsyncImagePreviewHandler
+import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.FocusRing
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
-import dev.nycocado.atlas.ui.theme.sticker
+import dev.nycocado.atlas.ui.theme.pressSink
+import dev.nycocado.atlas.ui.theme.sinkingSticker
 import dev.nycocado.atlas.ui.theme.trait
-
-private const val CARD_RATIO = 541f / 756f
 
 // Signed values use the typographic minus (docs/design.md).
 fun signed(points: Int) = if (points < 0) "\u2212${-points}" else "$points"
@@ -64,8 +61,7 @@ fun CardThumb(
 ) {
     val theme = AtlasTheme.colors
     val interactions = remember { MutableInteractionSource() }
-    val pressed by interactions.collectIsPressedAsState()
-    val sink by animateDpAsState(if (pressed) Shadow.sticker else 0.dp, label = "sink")
+    val sink = pressSink(interactions, Shadow.sticker)
     Column(
         modifier
             .rotate(tilt)
@@ -77,14 +73,13 @@ fun CardThumb(
             },
     ) {
         AsyncImage(
-            model = "file:///android_asset/cards/$image",
+            model = cardImage(image),
             contentDescription = null,
             modifier =
                 Modifier
                     .fillMaxWidth()
                     .aspectRatio(CARD_RATIO)
-                    .offset { IntOffset(sink.roundToPx(), sink.roundToPx()) }
-                    .sticker(Radius.cardSm, theme.surfaceSticker, theme.outline, shadow = Shadow.sticker - sink)
+                    .sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker)
                     .clip(Radius.cardSm),
         )
         Row(

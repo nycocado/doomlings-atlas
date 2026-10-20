@@ -52,6 +52,27 @@ class CompendiumFilterTest {
     }
 
     @Test
+    fun searchesTheWorldsEndOfCatastrophes() {
+        assertEquals(listOf("ai-takeover"), names(CompendiumFilter(kind = CardKind.Catastrophe, query = "worth 2")))
+    }
+
+    @Test
+    fun cardsOutsideTheCompendiumHaveNoKind() {
+        assertEquals(
+            listOf(
+                CardKind.Trait,
+                CardKind.Trait,
+                CardKind.Trait,
+                CardKind.Trait,
+                CardKind.Age,
+                CardKind.Catastrophe,
+                null,
+            ),
+            cards.map { it.kind },
+        )
+    }
+
+    @Test
     fun colorlessIsAColorOfItsOwn() {
         assertEquals(listOf("Prickly"), names(CompendiumFilter(colors = setOf(null))))
     }

@@ -22,7 +22,6 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -51,7 +50,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -86,10 +84,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.nycocado.atlas.R
-import dev.nycocado.atlas.card.Age
-import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
-import dev.nycocado.atlas.card.Catastrophe
+import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.CardThumb
@@ -102,16 +98,13 @@ import dev.nycocado.atlas.ui.component.colorName
 import dev.nycocado.atlas.ui.component.signed
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
-import dev.nycocado.atlas.ui.theme.Radius
+import dev.nycocado.atlas.ui.theme.MaxWidth
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
-
-// Header, filters and dock stop growing here on tablets and unfolded foldables; the grid adds columns instead.
-private val ContentMaxWidth = 640.dp
 
 // Room inside each grid cell for the card's tilt and shadow, which draw past its bounds. Item animations draw the
 // card into a layer the size of its cell, so without this room they cut the corners and the shadow.
@@ -134,7 +127,7 @@ fun CompendiumScreen(
 @Composable
 fun CompendiumContent(
     filter: CompendiumFilter,
-    results: List<Card>?,
+    results: List<NamedCard>?,
     onFilterChange: (CompendiumFilter) -> Unit,
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
@@ -205,13 +198,13 @@ private fun LazyGridScope.fullWidth(
         Modifier.fillMaxWidth().animateItem().padding(start = CardMargin, end = CardMargin, bottom = CardMargin),
         contentAlignment = Alignment.TopCenter,
     ) {
-        Box(Modifier.widthIn(max = ContentMaxWidth)) { content() }
+        Box(Modifier.widthIn(max = MaxWidth.content)) { content() }
     }
 }
 
 private val CollapseDistance = 96.dp
 
-// Folds the header as the list scrolls down and unfolds it once the list is back at the top. Hand-written:
+// Folds the header as the list scrolls down and unfolds it once the list is back at the top. Handwritten:
 // Material 3's collapsing app bars come with their own TopAppBar, and the design system is our own (ADR 0006).
 @Stable
 private class HeaderCollapse(
@@ -288,7 +281,7 @@ private fun Header(
             .windowInsetsPadding(WindowInsets.statusBars),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Column(Modifier.widthIn(max = ContentMaxWidth).padding(start = Space.s5, end = Space.s5, top = Space.s2)) {
+        Column(Modifier.widthIn(max = MaxWidth.content).padding(start = Space.s5, end = Space.s5, top = Space.s2)) {
             Row(
                 Modifier.folded(fraction).padding(top = Space.s1, bottom = Space.s4),
                 verticalAlignment = Alignment.CenterVertically,
@@ -527,25 +520,20 @@ private fun KindSegments(
 
 @Composable
 private fun CompendiumCard(
-    card: Card,
+    card: NamedCard,
     tilt: Float,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val (name, cardColors, points) =
-        when (card) {
-            is Trait -> Triple(card.name, card.colors, card.points)
-            is Age -> Triple(card.name, null, null)
-            is Catastrophe -> Triple(card.name, null, null)
-            else -> return
-        }
+    val trait = card as? Trait
+    val cardColors = trait?.colors
     val description =
         buildList {
-            add(name)
+            add(card.name)
             cardColors?.ifEmpty { listOf(null) }?.forEach { add(stringResource(colorName(it))) }
-            points?.let { add(pluralStringResource(R.plurals.card_points, it, signed(it))) }
+            trait?.points?.let { add(pluralStringResource(R.plurals.card_points, it, signed(it))) }
         }.joinToString(", ")
-    CardThumb(card.image, name, cardColors, description, tilt, onClick, modifier.padding(CardMargin))
+    CardThumb(card.image, card.name, cardColors, description, tilt, onClick, modifier.padding(CardMargin))
 }
 
 @PreviewLightDark
