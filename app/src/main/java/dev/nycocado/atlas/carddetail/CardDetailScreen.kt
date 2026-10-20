@@ -7,6 +7,7 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VectorConverter
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
@@ -31,7 +32,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -63,7 +63,6 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -98,6 +97,7 @@ import dev.nycocado.atlas.ui.theme.StatusBarIcons
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
+import dev.nycocado.atlas.ui.theme.wideWindow
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -144,13 +144,15 @@ fun CardDetailContent(
         }
     // Status bar icons take the color the design puts on the panel.
     val onPanel = if (card is Trait) dots else colors.onSurface
-    StatusBarIcons(onPanel.luminance() < 0.5f)
+    // Not beside the list, where the status bar also spans the list's dark header.
+    if (!wideWindow()) StatusBarIcons(onPanel.luminance() < 0.5f)
 
     BoxWithConstraints(Modifier.fillMaxSize().background(colors.surface)) {
         // At least screen-tall, so the notice sits at the bottom of short cards and right after long ones.
         Column(
             Modifier
-                .verticalScroll(rememberScrollState())
+                // Back to the top for each card, as the pane stays when another card opens.
+                .verticalScroll(rememberSaveable(card.id, saver = ScrollState.Saver) { ScrollState(0) })
                 .heightIn(min = maxHeight),
         ) {
             Box {
@@ -471,17 +473,6 @@ private val TraitIcon.symbol: Int?
             TraitIcon.WorldsEnd -> R.drawable.ic_symbol_worlds_end
             else -> null
         }
-
-@Composable
-fun DetailPlaceholder() {
-    val colors = AtlasTheme.colors
-    Box(Modifier.fillMaxSize().background(colors.surface).padding(Space.s6), contentAlignment = Alignment.Center) {
-        BasicText(
-            stringResource(R.string.detail_placeholder),
-            style = AtlasTypography.bodyMd.copy(color = colors.onSurfaceVariant, textAlign = TextAlign.Center),
-        )
-    }
-}
 
 @PreviewLightDark
 @Composable
