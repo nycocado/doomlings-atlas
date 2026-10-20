@@ -1,5 +1,6 @@
 package dev.nycocado.atlas.carddetail
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
@@ -52,12 +53,17 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.VectorPath
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -326,8 +332,21 @@ private fun Pills(
             ) { TraitGlyph(color, palette.onFill, 18.dp) }
         }
         Pill(stringResource(type), colors.surfaceSticker, colors.onSurface)
-        if (trait?.dominant == true) Pill(stringResource(R.string.dominant), colors.highlight, colors.onHighlight)
-        trait?.icons?.forEach { Pill(stringResource(it.label), colors.surfaceSticker, colors.onSurface) }
+        if (trait?.dominant == true) {
+            Pill(stringResource(R.string.dominant), colors.highlight, colors.onHighlight) {
+                Symbol(R.drawable.ic_symbol_dominant)
+            }
+        }
+        trait?.icons?.forEach { icon ->
+            Pill(
+                stringResource(icon.label),
+                colors.surfaceSticker,
+                colors.onSurface,
+                icon.symbol?.let {
+                    { Symbol(it, actionColor = colors.trait(trait.colors.firstOrNull()).fill) }
+                },
+            )
+        }
         trait?.subspecies?.forEach { Pill(it, colors.surfaceSticker, colors.onSurface) }
     }
 }
@@ -351,6 +370,49 @@ private fun Pill(
         BasicText(text, style = AtlasTypography.labelLg.copy(color = content, fontSize = 14.sp))
     }
 }
+
+// Decorative: the pill's text names it.
+@Composable
+private fun Symbol(
+    @DrawableRes id: Int,
+    actionColor: Color = Color.Unspecified,
+) {
+    val vector = ImageVector.vectorResource(id)
+    // The action symbol is printed in the card's color; its drawable names those paths "card_color".
+    val painter =
+        if (id == R.drawable.ic_symbol_action) {
+            rememberVectorPainter(remember(vector, actionColor) { vector.recolor("card_color", actionColor) })
+        } else {
+            rememberVectorPainter(vector)
+        }
+    Image(painter, null, Modifier.height(18.dp))
+}
+
+// ImageVector has no way to change a path's fill, so the paths are copied with the named ones refilled. Converted
+// symbols are flat lists of paths, without groups.
+private fun ImageVector.recolor(
+    pathName: String,
+    color: Color,
+): ImageVector =
+    ImageVector
+        .Builder(name, defaultWidth, defaultHeight, viewportWidth, viewportHeight)
+        .apply {
+            root.filterIsInstance<VectorPath>().forEach {
+                addPath(
+                    it.pathData,
+                    it.pathFillType,
+                    it.name,
+                    if (it.name == pathName) SolidColor(color) else it.fill,
+                    it.fillAlpha,
+                    it.stroke,
+                    it.strokeAlpha,
+                    it.strokeLineWidth,
+                    it.strokeLineCap,
+                    it.strokeLineJoin,
+                    it.strokeLineMiter,
+                )
+            }
+        }.build()
 
 @Composable
 private fun Bubble(
@@ -406,6 +468,17 @@ private val TraitIcon.label: Int
             TraitIcon.WorldsEnd -> R.string.worlds_end
         }
 
+// Only the symbols the enabled sets use are converted; the rest have none yet.
+private val TraitIcon.symbol: Int?
+    @DrawableRes get() =
+        when (this) {
+            TraitIcon.Action -> R.drawable.ic_symbol_action
+            TraitIcon.DropOfLife -> R.drawable.ic_symbol_drop_of_life
+            TraitIcon.PlayWhen -> R.drawable.ic_symbol_play_when
+            TraitIcon.WorldsEnd -> R.drawable.ic_symbol_worlds_end
+            else -> null
+        }
+
 @Composable
 fun DetailPlaceholder() {
     val colors = AtlasTheme.colors
@@ -434,7 +507,7 @@ internal fun CardDetailPreview() =
                     listOf(CardColor.Blue),
                     true,
                     emptyList(),
-                    listOf(TraitIcon.Action),
+                    listOf(TraitIcon.Action, TraitIcon.DropOfLife, TraitIcon.PlayWhen, TraitIcon.WorldsEnd),
                 ),
                 tilt = -3f,
                 onBack = {},
