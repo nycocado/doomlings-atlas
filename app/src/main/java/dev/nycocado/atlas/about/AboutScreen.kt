@@ -41,7 +41,8 @@ import androidx.compose.ui.unit.dp
 import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.util.withJson
 import dev.nycocado.atlas.R
-import dev.nycocado.atlas.ui.component.BackButton
+import dev.nycocado.atlas.ui.component.RoundButton
+import dev.nycocado.atlas.ui.component.RoundButtonStyle
 import dev.nycocado.atlas.ui.component.SunsetBand
 import dev.nycocado.atlas.ui.component.UnofficialSticker
 import dev.nycocado.atlas.ui.theme.AtlasTheme
@@ -232,7 +233,7 @@ private fun Header(onBack: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(Space.s4),
         ) {
-            BackButton(onBack)
+            RoundButton(R.drawable.ic_back, R.string.back, onBack, style = RoundButtonStyle.OnHeader)
             BasicText(
                 stringResource(R.string.about),
                 Modifier.semantics { heading() },

@@ -8,9 +8,9 @@ import dev.nycocado.atlas.about.NoticePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
 import dev.nycocado.atlas.compendium.CompendiumPreview
-import dev.nycocado.atlas.ui.component.BackButtonPreview
 import dev.nycocado.atlas.ui.component.CardThumbPreview
 import dev.nycocado.atlas.ui.component.DockPreview
+import dev.nycocado.atlas.ui.component.RoundButtonPreview
 import dev.nycocado.atlas.ui.component.SunsetBandPreview
 import dev.nycocado.atlas.ui.component.TraitGlyphPreview
 import dev.nycocado.atlas.ui.component.UnofficialNoticePreview
@@ -68,7 +68,7 @@ fun AboutScreenshot() = AboutPreview()
 @PreviewTest
 @PreviewLightDark
 @Composable
-fun BackButtonScreenshot() = BackButtonPreview()
+fun RoundButtonScreenshot() = RoundButtonPreview()
 
 @PreviewTest
 @PreviewLightDark

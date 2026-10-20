@@ -49,6 +49,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.VectorPath
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -82,8 +83,8 @@ import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.compendium.CardKind
 import dev.nycocado.atlas.compendium.CompendiumViewModel
 import dev.nycocado.atlas.compendium.kind
-import dev.nycocado.atlas.ui.component.BackButton
 import dev.nycocado.atlas.ui.component.BlankCardImages
+import dev.nycocado.atlas.ui.component.RoundButton
 import dev.nycocado.atlas.ui.component.TraitGlyph
 import dev.nycocado.atlas.ui.component.UnofficialFooter
 import dev.nycocado.atlas.ui.component.colorName
@@ -93,6 +94,7 @@ import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
+import dev.nycocado.atlas.ui.theme.StatusBarIcons
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
@@ -140,6 +142,9 @@ fun CardDetailContent(
         } else {
             colors.surfaceSunk to colors.outlineSoft
         }
+    // Status bar icons take the color the design puts on the panel.
+    val onPanel = if (card is Trait) dots else colors.onSurface
+    StatusBarIcons(onPanel.luminance() < 0.5f)
 
     BoxWithConstraints(Modifier.fillMaxSize().background(colors.surface)) {
         // At least screen-tall, so the notice sits at the bottom of short cards and right after long ones.
@@ -215,7 +220,7 @@ private fun Panel(
             .windowInsetsPadding(WindowInsets.statusBars)
             .height(420.dp),
     ) {
-        BackButton(onBack, Modifier.padding(start = Space.s4, top = Space.s5))
+        RoundButton(R.drawable.ic_back, R.string.back, onBack, Modifier.padding(start = Space.s4, top = Space.s5))
         val scope = rememberCoroutineScope()
         val drag = remember { Animatable(Offset.Zero, Offset.VectorConverter) }
         val lift = remember { Animatable(0f) }

@@ -89,6 +89,8 @@ import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.CardThumb
 import dev.nycocado.atlas.ui.component.Dock
+import dev.nycocado.atlas.ui.component.RoundButton
+import dev.nycocado.atlas.ui.component.RoundButtonStyle
 import dev.nycocado.atlas.ui.component.SunsetBand
 import dev.nycocado.atlas.ui.component.TraitColorOptions
 import dev.nycocado.atlas.ui.component.TraitGlyph
@@ -97,6 +99,7 @@ import dev.nycocado.atlas.ui.component.signed
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
+import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
@@ -291,26 +294,14 @@ private fun Header(
                     Modifier.weight(1f),
                     style = AtlasTypography.headline.copy(color = colors.onInverseSurface),
                 )
-                val about = stringResource(R.string.about)
-                Box(
-                    Modifier
-                        .size(48.dp)
-                        .clickable(role = Role.Button, onClick = onAboutClick)
-                        .semantics { contentDescription = about },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Box(
-                        Modifier.size(44.dp).border(Stroke.sticker, colors.onInverseSurface, CircleShape),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Image(
-                            painterResource(R.drawable.ic_info),
-                            null,
-                            Modifier.size(30.dp),
-                            colorFilter = ColorFilter.tint(colors.onInverseSurface),
-                        )
-                    }
-                }
+                // The row clips while folding, so it leaves room for the button's shadow.
+                RoundButton(
+                    R.drawable.ic_info,
+                    R.string.about,
+                    onAboutClick,
+                    Modifier.padding(end = Shadow.sticker, bottom = Shadow.sticker),
+                    style = RoundButtonStyle.QuietOnHeader,
+                )
             }
             SearchField(query, onQueryChange, Modifier.padding(bottom = Space.s3))
         }
