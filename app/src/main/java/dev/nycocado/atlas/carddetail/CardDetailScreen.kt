@@ -359,7 +359,7 @@ private fun Pill(
 ) {
     Row(
         Modifier
-            .height(32.dp)
+            .heightIn(min = 32.dp)
             .sticker(CircleShape, fill, AtlasTheme.colors.outline, Stroke.thin)
             .padding(horizontal = Space.s3),
         horizontalArrangement = Arrangement.spacedBy(6.dp),

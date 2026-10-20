@@ -39,6 +39,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -59,6 +60,7 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.Stable
@@ -75,8 +77,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
@@ -100,8 +105,10 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
@@ -552,7 +559,7 @@ private fun SearchField(
     Row(
         modifier
             .fillMaxWidth()
-            .height(52.dp)
+            .heightIn(min = 52.dp)
             .sticker(CircleShape, colors.surfaceSticker, colors.outline)
             .padding(horizontal = Space.s4),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
@@ -729,14 +736,20 @@ private fun KindSegments(
         val count = CardKind.entries.size
         val width = (maxWidth - gap * (count - 1)) / count
         val offset by animateDpAsState((width + gap) * selected.ordinal, label = "segment")
-        Box(
-            Modifier
-                .offset { IntOffset(offset.roundToPx(), 0) }
-                .width(width)
-                .height(40.dp)
-                .background(colors.primary, CircleShape),
-        )
-        Row(horizontalArrangement = Arrangement.spacedBy(gap)) {
+        // Drawn, so it follows the segments' height with large text.
+        Row(
+            Modifier.drawBehind {
+                val start = offset.toPx()
+                val x = if (layoutDirection == LayoutDirection.Ltr) start else size.width - width.toPx() - start
+                drawRoundRect(
+                    colors.primary,
+                    Offset(x, 0f),
+                    Size(width.toPx(), size.height),
+                    CornerRadius(size.height / 2),
+                )
+            },
+            horizontalArrangement = Arrangement.spacedBy(gap),
+        ) {
             CardKind.entries.forEach { kind ->
                 val active = kind == selected
                 val textColor by animateColorAsState(
@@ -746,7 +759,7 @@ private fun KindSegments(
                 Box(
                     Modifier
                         .weight(1f)
-                        .height(40.dp)
+                        .heightIn(min = 40.dp)
                         .clickable(role = Role.RadioButton) { onSelect(kind) }
                         .semantics { this.selected = active },
                     contentAlignment = Alignment.Center,
@@ -755,6 +768,11 @@ private fun KindSegments(
                         stringResource(kind.label),
                         style = AtlasTypography.labelLg.copy(color = textColor),
                         maxLines = 1,
+                        autoSize =
+                            TextAutoSize.StepBased(
+                                minFontSize = 10.sp,
+                                maxFontSize = AtlasTypography.labelLg.fontSize,
+                            ),
                     )
                 }
             }
