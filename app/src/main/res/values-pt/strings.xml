@@ -1,0 +1,42 @@
+<resources>
+    <string name="unofficial_notice">Não oficial, sem afiliação ou endosso da Doomlings LLC</string>
+    <string name="unofficial_label">Não oficial</string>
+    <string name="unofficial_explanation">O Doomlings Atlas é um app companheiro gratuito e de código aberto, feito por um fã. As imagens e os textos das cartas e o nome Doomlings são © Doomlings LLC, usados com permissão.</string>
+    <string name="got_it">Entendi</string>
+
+    <string name="about">Sobre</string>
+    <string name="version">Versão %1$s</string>
+    <string name="licenses_app">App</string>
+    <string name="licenses_fonts">Fontes</string>
+    <string name="licenses_libraries">Bibliotecas</string>
+
+    <string name="search_placeholder">Qual doomling você procura?</string>
+    <string name="search_label">Buscar cartas</string>
+    <string name="clear_search">Limpar busca</string>
+    <string name="no_results">Nenhum doomling corresponde à sua busca.</string>
+
+    <string name="all_traits">Todas as traits</string>
+    <string name="all_ages">Todas as ages</string>
+    <string name="all_catastrophes">Todas as catastrophes</string>
+    <string name="color_hint">toque numa cor para filtrar</string>
+
+    <string name="color_blue">Azul</string>
+    <string name="color_green">Verde</string>
+    <string name="color_purple">Roxo</string>
+    <string name="color_red">Vermelho</string>
+    <string name="color_colorless">Incolor</string>
+    <plurals name="card_points">
+        <item quantity="one">%1$s ponto</item>
+        <item quantity="many">%1$s de pontos</item>
+        <item quantity="other">%1$s pontos</item>
+    </plurals>
+
+    <string name="back">Voltar</string>
+    <string name="detail_placeholder">Escolha uma carta para vê-la aqui.</string>
+
+    <string name="dock_cards">Cartas</string>
+    <string name="dock_score">Pontuação</string>
+    <string name="dock_scanner">Scanner</string>
+    <string name="dock_tutorial">Tutorial</string>
+    <string name="coming_soon">%1$s, em breve</string>
+</resources>

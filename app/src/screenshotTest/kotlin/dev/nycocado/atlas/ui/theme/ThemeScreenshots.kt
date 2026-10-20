@@ -1,6 +1,7 @@
 package dev.nycocado.atlas.ui.theme
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.android.tools.screenshot.PreviewTest
 import dev.nycocado.atlas.about.AboutPreview
@@ -74,3 +75,13 @@ fun RoundButtonScreenshot() = RoundButtonPreview()
 @PreviewLightDark
 @Composable
 fun SunsetBandScreenshot() = SunsetBandPreview()
+
+@PreviewTest
+@Preview(locale = "pt")
+@Composable
+fun CompendiumPortugueseScreenshot() = CompendiumPreview()
+
+@PreviewTest
+@Preview(locale = "pt")
+@Composable
+fun CardDetailPortugueseScreenshot() = CardDetailPreview()

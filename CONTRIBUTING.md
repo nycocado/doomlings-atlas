@@ -35,6 +35,8 @@ Doomlings LLC gave permission for this app (2026-10-15) under the fan art terms 
 - Portuguese and Spanish are reviewed by the maintainer.
 - Other languages are welcome as community contributions, ideally with a second native speaker reviewing.
 - If Doomlings releases an official translation, its terminology wins.
+- Game terms stay as printed on the cards, in English: Trait, Age, Catastrophe, Dominant, World's End, Gene Pool and the like.
+- One word per concept. Each language has a glossary in [`docs/glossary`](docs/glossary): the terms that stay in English (`keep`) and, for every recurring concept, the word to use and the synonyms to avoid. `./gradlew check` fails if an avoided word shows up. To use a new term, add it to the glossary first.
 
 ## Opening an Issue
 
