@@ -36,7 +36,6 @@
     </plurals>
 
     <string name="back">Back</string>
-    <string name="detail_placeholder">Pick a card to see it here.</string>
     <string name="type_trait" translatable="false">Trait</string>
     <string name="type_age" translatable="false">Age</string>
     <string name="type_catastrophe" translatable="false">Catastrophe</string>

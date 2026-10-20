@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.adaptive)
     implementation(libs.androidx.adaptive.navigation3)
     implementation(libs.aboutlibraries.core)
     implementation(libs.coil.compose)

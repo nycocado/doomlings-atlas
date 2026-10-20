@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -46,6 +47,7 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
@@ -65,6 +67,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
@@ -82,6 +85,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.window.core.layout.WindowSizeClass
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.NamedCard
@@ -111,6 +115,8 @@ import kotlin.math.roundToInt
 // card into a layer the size of its cell, so without this room they cut the corners and the shadow.
 private val CardMargin = 8.dp
 
+private val RailWidth = 64.dp + Space.s4 * 2
+
 // Deterministic by position, never random per render (docs/design.md).
 private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
 
@@ -139,53 +145,81 @@ fun CompendiumContent(
     val collapse = rememberSaveable(distance, saver = HeaderCollapse.saver(distance)) { HeaderCollapse(distance) }
     val grid = rememberLazyGridState()
     val scope = rememberCoroutineScope()
-    Column(Modifier.fillMaxSize().background(colors.surface).nestedScroll(collapse)) {
-        Header(filter.query, collapse::fraction, onAboutClick) { onFilterChange(filter.copy(query = it)) }
-        LazyVerticalGrid(
-            state = grid,
-            columns = GridCells.Adaptive(150.dp),
-            modifier = Modifier.weight(1f),
-            contentPadding =
-                PaddingValues(
-                    start = Space.s5 - CardMargin,
-                    end = Space.s5 - CardMargin,
-                    top = Space.s4,
-                    bottom = Space.s5 - CardMargin,
-                ),
-            horizontalArrangement = Arrangement.spacedBy(18.dp - CardMargin * 2),
-            verticalArrangement = Arrangement.spacedBy(22.dp - CardMargin * 2),
-        ) {
-            fullWidth("filters") { Filters(filter, onFilterChange) }
-            if (results?.isEmpty() == true) {
-                fullWidth("empty") {
-                    BasicText(
-                        stringResource(R.string.no_results),
-                        Modifier.padding(vertical = Space.s6),
-                        style =
-                            AtlasTypography.bodyMd.copy(
-                                color = colors.onSurfaceVariant,
-                                textAlign = TextAlign.Center,
-                            ),
-                    )
+    // Tapping the current destination goes back to the top of the list.
+    val onCardsClick: () -> Unit = {
+        scope.launch { grid.animateScrollToItem(0) }
+        scope.launch { collapse.unfold() }
+    }
+    val rail =
+        currentWindowAdaptiveInfoV2().windowSizeClass.isWidthAtLeastBreakpoint(
+            WindowSizeClass.WIDTH_DP_EXPANDED_LOWER_BOUND,
+        )
+    // On the rail layout nothing sits below the grid, so it keeps clear of the navigation bar itself.
+    val bottom = if (rail) Modifier.windowInsetsPadding(WindowInsets.navigationBars) else Modifier
+    // The wide header is a single row with nothing to fold, so it doesn't take part in scrolling.
+    val folding = if (rail) Modifier else Modifier.nestedScroll(collapse)
+    Column(Modifier.fillMaxSize().background(colors.surface).then(folding)) {
+        Header(filter.query, collapse::fraction, rail, onAboutClick) {
+            onFilterChange(filter.copy(query = it))
+        }
+        Row(Modifier.weight(1f).then(bottom)) {
+            if (rail) {
+                Box(
+                    Modifier.width(RailWidth).fillMaxHeight().padding(Space.s4),
+                    contentAlignment = Alignment.Center,
+                ) { Dock(onCardsClick, vertical = true) }
+            }
+            // As wide as the rail on the other side, so the content centers on the screen like the search.
+            Column(
+                Modifier.weight(1f).padding(end = if (rail) RailWidth else 0.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                LazyVerticalGrid(
+                    state = grid,
+                    columns = GridCells.Adaptive(150.dp),
+                    modifier = Modifier.weight(1f).widthIn(max = MaxWidth.wide),
+                    contentPadding =
+                        PaddingValues(
+                            start = Space.s5 - CardMargin,
+                            end = Space.s5 - CardMargin,
+                            top = Space.s4,
+                            bottom = Space.s5 - CardMargin,
+                        ),
+                    horizontalArrangement = Arrangement.spacedBy(18.dp - CardMargin * 2),
+                    verticalArrangement = Arrangement.spacedBy(22.dp - CardMargin * 2),
+                ) {
+                    fullWidth("filters") { Filters(filter, onFilterChange) }
+                    if (results?.isEmpty() == true) {
+                        fullWidth("empty") {
+                            BasicText(
+                                stringResource(R.string.no_results),
+                                Modifier.fillMaxWidth().padding(vertical = Space.s6),
+                                style =
+                                    AtlasTypography.bodyMd.copy(
+                                        color = colors.onSurfaceVariant,
+                                        textAlign = TextAlign.Center,
+                                    ),
+                            )
+                        }
+                    }
+                    itemsIndexed(results.orEmpty(), key = { _, card -> card.id }) { index, card ->
+                        val tilt = Tilts[index % Tilts.size]
+                        CompendiumCard(card, tilt, { onCardClick(card.id) }, Modifier.animateItem())
+                    }
+                }
+                if (!rail) {
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .windowInsetsPadding(
+                                WindowInsets.navigationBars,
+                            ).padding(horizontal = Space.s4),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Dock(onCardsClick, Modifier.padding(top = Space.s3, bottom = Space.s4))
+                    }
                 }
             }
-            itemsIndexed(results.orEmpty(), key = { _, card -> card.id }) { index, card ->
-                val tilt = Tilts[index % Tilts.size]
-                CompendiumCard(card, tilt, { onCardClick(card.id) }, Modifier.animateItem())
-            }
-        }
-        Column(
-            Modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.navigationBars).padding(horizontal = Space.s4),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            // Tapping the current destination goes back to the top of the list.
-            Dock(
-                onCardsClick = {
-                    scope.launch { grid.animateScrollToItem(0) }
-                    scope.launch { collapse.unfold() }
-                },
-                modifier = Modifier.padding(top = Space.s3, bottom = Space.s4),
-            )
         }
     }
 }
@@ -194,11 +228,8 @@ private fun LazyGridScope.fullWidth(
     key: String,
     content: @Composable () -> Unit,
 ) = item(key = key, span = { GridItemSpan(maxLineSpan) }) {
-    Box(
-        Modifier.fillMaxWidth().animateItem().padding(start = CardMargin, end = CardMargin, bottom = CardMargin),
-        contentAlignment = Alignment.TopCenter,
-    ) {
-        Box(Modifier.widthIn(max = MaxWidth.content)) { content() }
+    Box(Modifier.fillMaxWidth().animateItem().padding(start = CardMargin, end = CardMargin, bottom = CardMargin)) {
+        content()
     }
 }
 
@@ -267,10 +298,30 @@ private fun Modifier.folded(fraction: () -> Float) =
 private fun Header(
     query: String,
     fraction: () -> Float,
+    wide: Boolean,
     onAboutClick: () -> Unit,
     onQueryChange: (String) -> Unit,
 ) {
     val colors = AtlasTheme.colors
+    val title: @Composable () -> Unit = {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(Space.s3)) {
+            Image(painterResource(R.drawable.logo_mark_dark), null, Modifier.size(40.dp))
+            BasicText(
+                stringResource(R.string.app_name),
+                style = AtlasTypography.headline.copy(color = colors.onInverseSurface),
+            )
+        }
+    }
+    val about: @Composable () -> Unit = {
+        // The row clips while folding, so it leaves room for the button's shadow.
+        RoundButton(
+            R.drawable.ic_info,
+            R.string.about,
+            onAboutClick,
+            Modifier.padding(end = Shadow.sticker, bottom = Shadow.sticker),
+            style = RoundButtonStyle.QuietOnHeader,
+        )
+    }
     Column(
         Modifier
             .fillMaxWidth()
@@ -282,30 +333,55 @@ private fun Header(
             .windowInsetsPadding(WindowInsets.statusBars),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Column(Modifier.widthIn(max = MaxWidth.content).padding(start = Space.s5, end = Space.s5, top = Space.s2)) {
-            Row(
-                Modifier.folded(fraction).padding(top = Space.s1, bottom = Space.s4),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(Space.s3),
-            ) {
-                Image(painterResource(R.drawable.logo_mark_dark), null, Modifier.size(40.dp))
-                BasicText(
-                    stringResource(R.string.app_name),
-                    Modifier.weight(1f),
-                    style = AtlasTypography.headline.copy(color = colors.onInverseSurface),
-                )
-                // The row clips while folding, so it leaves room for the button's shadow.
-                RoundButton(
-                    R.drawable.ic_info,
-                    R.string.about,
-                    onAboutClick,
-                    Modifier.padding(end = Shadow.sticker, bottom = Shadow.sticker),
-                    style = RoundButtonStyle.QuietOnHeader,
-                )
+        if (wide) {
+            CenteredBetween(
+                Modifier.padding(start = Space.s5, end = Space.s5, top = Space.s3, bottom = Space.s4),
+                start = title,
+                center = {
+                    SearchField(query, onQueryChange, Modifier.widthIn(max = MaxWidth.compact))
+                },
+                end = about,
+            )
+        } else {
+            Column(Modifier.widthIn(max = MaxWidth.content).padding(start = Space.s5, end = Space.s5, top = Space.s2)) {
+                Row(
+                    Modifier.folded(fraction).padding(top = Space.s1, bottom = Space.s4),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Box(Modifier.weight(1f)) { title() }
+                    about()
+                }
+                SearchField(query, onQueryChange, Modifier.padding(bottom = Space.s3))
             }
-            SearchField(query, onQueryChange, Modifier.padding(bottom = Space.s3))
         }
         SunsetBand(Modifier.folded(fraction).padding(top = 6.dp))
+    }
+}
+
+// Start and end in the corners, center in the middle of the whole row. The center narrows rather than overlap
+// either side. Handwritten: Row can only center a child between its neighbors, not on the row itself.
+@Composable
+private fun CenteredBetween(
+    modifier: Modifier,
+    start: @Composable () -> Unit,
+    center: @Composable () -> Unit,
+    end: @Composable () -> Unit,
+) = Layout({
+    start()
+    center()
+    end()
+}, modifier.fillMaxWidth()) { measurables, constraints ->
+    val loose = constraints.copy(minWidth = 0, minHeight = 0)
+    val first = measurables[0].measure(loose)
+    val last = measurables[2].measure(loose)
+    val gap = Space.s4.roundToPx()
+    val side = maxOf(first.width, last.width) + gap
+    val middle = measurables[1].measure(loose.copy(maxWidth = (constraints.maxWidth - side * 2).coerceAtLeast(0)))
+    val height = maxOf(first.height, middle.height, last.height)
+    layout(constraints.maxWidth, height) {
+        first.place(0, (height - first.height) / 2)
+        middle.place((constraints.maxWidth - middle.width) / 2, (height - middle.height) / 2)
+        last.place(constraints.maxWidth - last.width, (height - last.height) / 2)
     }
 }
 
@@ -380,25 +456,28 @@ private fun Filters(
     onFilterChange: (CompendiumFilter) -> Unit,
 ) {
     val colors = AtlasTheme.colors
-    Column {
-        AnimatedVisibility(
-            visible = filter.kind == CardKind.Trait,
-            enter = fadeIn() + expandVertically(),
-            exit = fadeOut() + shrinkVertically(),
-        ) {
-            Row(
-                Modifier.fillMaxWidth().padding(bottom = Space.s4),
-                horizontalArrangement = Arrangement.SpaceBetween,
+    Column(Modifier.fillMaxWidth()) {
+        // The controls center on wide screens; the title below stays in line with the first column of cards.
+        Column(Modifier.widthIn(max = MaxWidth.content).align(Alignment.CenterHorizontally)) {
+            AnimatedVisibility(
+                visible = filter.kind == CardKind.Trait,
+                enter = fadeIn() + expandVertically(),
+                exit = fadeOut() + shrinkVertically(),
             ) {
-                TraitColorOptions.forEach { color ->
-                    val selected = color in filter.colors
-                    ColorDisc(color, selected) {
-                        onFilterChange(filter.copy(colors = if (selected) emptySet() else setOf(color)))
+                Row(
+                    Modifier.fillMaxWidth().padding(bottom = Space.s4),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    TraitColorOptions.forEach { color ->
+                        val selected = color in filter.colors
+                        ColorDisc(color, selected) {
+                            onFilterChange(filter.copy(colors = if (selected) emptySet() else setOf(color)))
+                        }
                     }
                 }
             }
+            KindSegments(filter.kind) { onFilterChange(filter.copy(kind = it)) }
         }
-        KindSegments(filter.kind) { onFilterChange(filter.copy(kind = it)) }
         Row(
             Modifier.padding(top = Space.s4),
             verticalAlignment = Alignment.Bottom,

@@ -85,3 +85,8 @@ fun CompendiumPortugueseScreenshot() = CompendiumPreview()
 @Preview(locale = "pt")
 @Composable
 fun CardDetailPortugueseScreenshot() = CardDetailPreview()
+
+@PreviewTest
+@Preview(device = "spec:width=1280dp,height=800dp,dpi=240")
+@Composable
+fun CompendiumTabletScreenshot() = CompendiumPreview()

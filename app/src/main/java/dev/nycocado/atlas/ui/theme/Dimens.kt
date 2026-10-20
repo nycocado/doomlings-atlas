@@ -32,6 +32,8 @@ object Shadow {
 }
 
 object MaxWidth {
+    // The grid and header on wide windows; their controls stay within content.
+    val wide = 1040.dp
     val content = 640.dp
     val compact = 480.dp
 }

@@ -63,7 +63,6 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -471,17 +470,6 @@ private val TraitIcon.symbol: Int?
             TraitIcon.WorldsEnd -> R.drawable.ic_symbol_worlds_end
             else -> null
         }
-
-@Composable
-fun DetailPlaceholder() {
-    val colors = AtlasTheme.colors
-    Box(Modifier.fillMaxSize().background(colors.surface).padding(Space.s6), contentAlignment = Alignment.Center) {
-        BasicText(
-            stringResource(R.string.detail_placeholder),
-            style = AtlasTypography.bodyMd.copy(color = colors.onSurfaceVariant, textAlign = TextAlign.Center),
-        )
-    }
-}
 
 @PreviewLightDark
 @Composable

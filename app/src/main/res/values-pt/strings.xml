@@ -32,7 +32,6 @@
     </plurals>
 
     <string name="back">Voltar</string>
-    <string name="detail_placeholder">Escolha uma carta para vê-la aqui.</string>
 
     <string name="dock_cards">Cartas</string>
     <string name="dock_score">Pontuação</string>

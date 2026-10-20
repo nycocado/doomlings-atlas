@@ -7,11 +7,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicText
@@ -44,22 +46,16 @@ private enum class Destination(
     Tutorial(R.string.dock_tutorial, R.drawable.ic_dock_tutorial),
 }
 
+// A bottom pill, or a rail along the side on wide windows (vertical). The rail shows icons only; labels go to
+// semantics.
 @Composable
 fun Dock(
     onCardsClick: () -> Unit,
     modifier: Modifier = Modifier,
+    vertical: Boolean = false,
 ) {
     val colors = AtlasTheme.colors
-    Row(
-        modifier
-            .widthIn(max = MaxWidth.compact)
-            .fillMaxWidth()
-            .height(64.dp)
-            .background(colors.inverseSurface, CircleShape)
-            .padding(horizontal = Space.s2),
-        horizontalArrangement = Arrangement.SpaceAround,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
+    val items: @Composable () -> Unit = {
         Destination.entries.forEach { destination ->
             val label = stringResource(destination.label)
             if (destination == Destination.Cards) {
@@ -68,7 +64,7 @@ fun Dock(
                         .height(46.dp)
                         .background(colors.highlight, CircleShape)
                         .clickable(onClick = onCardsClick)
-                        .padding(horizontal = Space.s4)
+                        .padding(horizontal = if (vertical) 12.dp else Space.s4)
                         .clearAndSetSemantics {
                             contentDescription = label
                             selected = true
@@ -83,7 +79,9 @@ fun Dock(
                         Modifier.size(22.dp),
                         colorFilter = ColorFilter.tint(colors.onHighlight),
                     )
-                    BasicText(label, style = AtlasTypography.labelLg.copy(color = colors.onHighlight))
+                    if (!vertical) {
+                        BasicText(label, style = AtlasTypography.labelLg.copy(color = colors.onHighlight))
+                    }
                 }
             } else {
                 val comingSoon = stringResource(R.string.coming_soon, label)
@@ -104,11 +102,35 @@ fun Dock(
             }
         }
     }
+    if (vertical) {
+        Column(
+            modifier
+                .width(64.dp)
+                .background(colors.inverseSurface, CircleShape)
+                .padding(vertical = Space.s2),
+            verticalArrangement = Arrangement.spacedBy(Space.s3),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) { items() }
+    } else {
+        Row(
+            modifier
+                .widthIn(max = MaxWidth.compact)
+                .fillMaxWidth()
+                .height(64.dp)
+                .background(colors.inverseSurface, CircleShape)
+                .padding(horizontal = Space.s2),
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically,
+        ) { items() }
+    }
 }
 
 @PreviewLightDark
 @Composable
 internal fun DockPreview() =
     AtlasTheme {
-        Box(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) { Dock({}) }
+        Row(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) {
+            Dock({}, Modifier.weight(1f))
+            Dock({}, Modifier.padding(start = Space.s4), vertical = true)
+        }
     }
