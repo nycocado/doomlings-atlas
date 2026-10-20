@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawOutline
@@ -23,6 +24,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.drawscope.Stroke as StrokeStyle
 
 fun Modifier.sticker(
     shape: Shape,
@@ -39,6 +41,12 @@ fun Modifier.sticker(
         }
     }.background(fill, shape)
         .border(stroke, outline, shape)
+        // The fill and any clipped content (card images) are antialiased at the same edge as the border, which lets a
+        // light seam show between the sticker and its shadow. A thin stroke centered on that edge covers it.
+        .drawWithContent {
+            drawContent()
+            drawOutline(shape.createOutline(size, layoutDirection, this), outline, style = StrokeStyle(1.dp.toPx()))
+        }
 
 // How far a pressed sticker sinks into its shadow: right on press, so the feedback never delays the action.
 @Composable
