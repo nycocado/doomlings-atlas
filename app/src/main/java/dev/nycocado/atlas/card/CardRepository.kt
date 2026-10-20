@@ -7,7 +7,11 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
+const val CARD_RATIO = 541f / 756f
+
 // Cards packaged by the PackageCards task (app/build.gradle.kts) into assets/cards/.
+fun cardImage(image: String) = "file:///android_asset/cards/$image"
+
 @Singleton
 class CardRepository
     @Inject

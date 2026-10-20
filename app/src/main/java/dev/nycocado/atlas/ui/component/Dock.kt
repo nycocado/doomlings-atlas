@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
+import dev.nycocado.atlas.ui.theme.MaxWidth
 import dev.nycocado.atlas.ui.theme.Space
 
 private enum class Destination(
@@ -51,7 +52,7 @@ fun Dock(
     val colors = AtlasTheme.colors
     Row(
         modifier
-            .widthIn(max = 480.dp)
+            .widthIn(max = MaxWidth.compact)
             .fillMaxWidth()
             .height(64.dp)
             .background(colors.inverseSurface, CircleShape)

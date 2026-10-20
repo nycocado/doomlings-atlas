@@ -18,13 +18,24 @@ plugins {
 android {
     namespace = "dev.nycocado.atlas"
     compileSdk {
-        version = release(37)
+        version =
+            release(
+                libs.versions.compileSdk
+                    .get()
+                    .toInt(),
+            )
     }
 
     defaultConfig {
         applicationId = "dev.nycocado.atlas"
-        minSdk = 26
-        targetSdk = 37
+        minSdk =
+            libs.versions.minSdk
+                .get()
+                .toInt()
+        targetSdk =
+            libs.versions.compileSdk
+                .get()
+                .toInt()
         versionCode = 1
         versionName = "0.0.0"
     }
@@ -49,11 +60,6 @@ android {
         // New library releases must not break the build; Dependabot handles updates.
         disable += setOf("GradleDependency", "NewerVersionAvailable", "AndroidGradlePluginVersion")
     }
-}
-
-aboutLibraries {
-    // The app's own license, shown on the About screen next to its dependencies'.
-    license.additionalLicenses.add("GPL-3.0-only")
 }
 
 dependencies {

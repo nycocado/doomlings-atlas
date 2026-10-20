@@ -1,13 +1,18 @@
 package dev.nycocado.atlas.ui.theme
 
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.interaction.InteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
@@ -16,6 +21,7 @@ import androidx.compose.ui.graphics.drawOutline
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 
 fun Modifier.sticker(
@@ -33,6 +39,26 @@ fun Modifier.sticker(
         }
     }.background(fill, shape)
         .border(stroke, outline, shape)
+
+// How far a pressed sticker sinks into its shadow: right on press, so the feedback never delays the action.
+@Composable
+fun pressSink(
+    interactions: InteractionSource,
+    shadow: Dp,
+): Dp {
+    val pressed by interactions.collectIsPressedAsState()
+    return animateDpAsState(if (pressed) shadow else 0.dp, label = "sink").value
+}
+
+fun Modifier.sinkingSticker(
+    sink: Dp,
+    shape: Shape,
+    fill: Color,
+    outline: Color,
+    shadow: Dp,
+): Modifier =
+    offset { IntOffset(sink.roundToPx(), sink.roundToPx()) }
+        .sticker(shape, fill, outline, shadow = shadow - sink)
 
 @PreviewLightDark
 @Composable

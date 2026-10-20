@@ -5,17 +5,12 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VectorConverter
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -52,7 +47,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -60,11 +54,9 @@ import androidx.compose.ui.graphics.vector.VectorPath
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
@@ -73,7 +65,6 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.round
 import androidx.compose.ui.unit.sp
@@ -81,13 +72,17 @@ import androidx.compose.ui.util.lerp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import dev.nycocado.atlas.R
-import dev.nycocado.atlas.card.Age
+import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.Catastrophe
+import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
+import dev.nycocado.atlas.card.cardImage
+import dev.nycocado.atlas.compendium.CardKind
 import dev.nycocado.atlas.compendium.CompendiumViewModel
+import dev.nycocado.atlas.compendium.kind
 import dev.nycocado.atlas.ui.component.BackButton
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.TraitGlyph
@@ -130,12 +125,13 @@ fun CardDetailContent(
     onAboutClick: () -> Unit,
 ) {
     val colors = AtlasTheme.colors
-    val (name, type) =
-        when (card) {
-            is Trait -> card.name to R.string.type_trait
-            is Age -> card.name to R.string.type_age
-            is Catastrophe -> card.name to R.string.type_catastrophe
-            else -> return
+    if (card !is NamedCard) return
+    val type =
+        when (card.kind) {
+            CardKind.Trait -> R.string.type_trait
+            CardKind.Age -> R.string.type_age
+            CardKind.Catastrophe -> R.string.type_catastrophe
+            null -> return
         }
     val trait = card as? Trait
     // Ages and catastrophes have no color: their panel stays neutral, so it can't be read as a trait color.
@@ -164,13 +160,12 @@ fun CardDetailContent(
                 verticalArrangement = Arrangement.spacedBy(14.dp),
             ) {
                 BasicText(
-                    name,
+                    card.name,
                     Modifier.semantics { heading() },
                     style = AtlasTypography.display.copy(color = colors.onSurface),
                 )
                 Pills(trait, type)
-                val effect = (card as? Trait)?.effect ?: (card as? Age)?.effect ?: (card as? Catastrophe)?.effect
-                if (effect != null || trait?.flavor != null) Bubble(effect, trait?.flavor)
+                if (card.effect != null || trait?.flavor != null) Bubble(card.effect, trait?.flavor)
                 (card as? Catastrophe)?.let { Bubble(it.worldsEnd, null, label = R.string.worlds_end) }
             }
             Spacer(Modifier.weight(1f))
@@ -186,8 +181,6 @@ fun CardDetailContent(
 }
 
 private val CardWidth = 228.dp
-private const val CARD_RATIO = 541f / 756f
-
 private val PanelShape = RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 40.dp)
 
 @Composable
@@ -232,7 +225,7 @@ private fun Panel(
             scope.launch { lift.animateTo(0f, spring(Spring.DampingRatioMediumBouncy)) }
         }
         AsyncImage(
-            model = "file:///android_asset/cards/$image",
+            model = cardImage(image),
             contentDescription = null,
             modifier =
                 Modifier
@@ -378,22 +371,19 @@ private fun Symbol(
     actionColor: Color = Color.Unspecified,
 ) {
     val vector = ImageVector.vectorResource(id)
-    // The action symbol is printed in the card's color; its drawable names those paths "card_color".
+    // The action symbol is printed in the card's color; its drawable names those paths card_color.
     val painter =
         if (id == R.drawable.ic_symbol_action) {
-            rememberVectorPainter(remember(vector, actionColor) { vector.recolor("card_color", actionColor) })
+            rememberVectorPainter(remember(vector, actionColor) { vector.withCardColor(actionColor) })
         } else {
             rememberVectorPainter(vector)
         }
     Image(painter, null, Modifier.height(18.dp))
 }
 
-// ImageVector has no way to change a path's fill, so the paths are copied with the named ones refilled. Converted
+// ImageVector has no way to change a path's fill, so the paths are copied with the card_color ones refilled. Converted
 // symbols are flat lists of paths, without groups.
-private fun ImageVector.recolor(
-    pathName: String,
-    color: Color,
-): ImageVector =
+private fun ImageVector.withCardColor(color: Color): ImageVector =
     ImageVector
         .Builder(name, defaultWidth, defaultHeight, viewportWidth, viewportHeight)
         .apply {
@@ -402,7 +392,7 @@ private fun ImageVector.recolor(
                     it.pathData,
                     it.pathFillType,
                     it.name,
-                    if (it.name == pathName) SolidColor(color) else it.fill,
+                    if (it.name == "card_color") SolidColor(color) else it.fill,
                     it.fillAlpha,
                     it.stroke,
                     it.strokeAlpha,

@@ -26,6 +26,7 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.ui.component.UnofficialSticker
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
+import dev.nycocado.atlas.ui.theme.MaxWidth
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
@@ -60,7 +61,7 @@ fun NoticeDialog(onAccept: () -> Unit) {
 private fun NoticeContent(onAccept: () -> Unit) {
     val colors = AtlasTheme.colors
     Column(
-        Modifier.widthIn(max = 480.dp).padding(Space.s6),
+        Modifier.widthIn(max = MaxWidth.compact).padding(Space.s6),
         verticalArrangement = Arrangement.spacedBy(Space.s5),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
