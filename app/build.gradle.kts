@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.screenshot)
+    alias(libs.plugins.aboutlibraries)
 }
 
 android {
@@ -50,6 +51,11 @@ android {
     }
 }
 
+aboutLibraries {
+    // The app's own license, shown on the About screen next to its dependencies'.
+    license.additionalLicenses.add("GPL-3.0-only")
+}
+
 dependencies {
     implementation(project(":shared"))
     implementation(platform(libs.androidx.compose.bom))
@@ -59,6 +65,7 @@ dependencies {
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.adaptive.navigation3)
+    implementation(libs.aboutlibraries.core)
     implementation(libs.coil.compose)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)

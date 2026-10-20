@@ -80,7 +80,7 @@ Visual specs only; content and behavior are defined with each screen.
 - **Step header:** steps in the dark header. Done: `on-inverse-surface` disc with check. Current: `highlight` disc with the number, bold label. Upcoming: outline only.
 - **Score breakdown:** `surface-sticker` card with rows (icon, title, explanation, signed tabular value in `numeral` 24) split by dashed `outline-soft`. Manual adjustments are marked with a pencil. A color summary of five `trait-<color>` blocks with glyph and points is read-only.
 - **Dock:** floating `inverse-surface` pill, active item in `highlight`.
-- **Unofficial notice:** footer in `body-sm`, `on-surface-variant`, centered. On first launch and About: a sticker with an "Unofficial" label in `highlight`, the sentence in bold and a short explanation. Never hidden behind a tap, never near the game logo.
+- **Unofficial notice:** footer in `body-sm`, `on-surface-variant`, centered and underlined; tapping it opens About. On first launch and About: a sticker with an "Unofficial" label in `highlight`, the sentence in bold and a short explanation. Never hidden behind a tap, never near the game logo.
 
 ## Accessibility
 

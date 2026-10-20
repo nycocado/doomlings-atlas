@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">Doomlings Atlas</string>
     <string name="unofficial_notice">Unofficial, not affiliated with or endorsed by Doomlings LLC</string>
+    <string name="unofficial_label">Unofficial</string>
+    <string name="unofficial_explanation">Doomlings Atlas is a free, open source companion app made by a fan. Card images, card text and the Doomlings name are © Doomlings LLC, used with permission.</string>
+    <string name="got_it">Got it</string>
+
+    <string name="about">About</string>
+    <string name="version">Version %1$s</string>
+    <string name="licenses_app">App</string>
+    <string name="licenses_fonts">Fonts</string>
+    <string name="licenses_libraries">Libraries</string>
 
     <string name="search_placeholder">Which doomling are you looking for?</string>
     <string name="search_label">Search cards</string>
