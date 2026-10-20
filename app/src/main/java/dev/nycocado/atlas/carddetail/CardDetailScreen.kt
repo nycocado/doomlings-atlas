@@ -67,7 +67,6 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.round
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
@@ -302,7 +301,7 @@ private fun PointsBadge(
             .clearAndSetSemantics { contentDescription = description },
         contentAlignment = Alignment.Center,
     ) {
-        BasicText(signed(points), style = AtlasTypography.numeral.copy(color = colors.onHighlight, fontSize = 32.sp))
+        BasicText(signed(points), style = AtlasTypography.numeralLg.copy(color = colors.onHighlight))
     }
 }
 
@@ -360,7 +359,7 @@ private fun Pill(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         glyph?.invoke()
-        BasicText(text, style = AtlasTypography.labelLg.copy(color = content, fontSize = 14.sp))
+        BasicText(text, style = AtlasTypography.labelLg.copy(color = content))
     }
 }
 
@@ -433,7 +432,6 @@ private fun Bubble(
                     AtlasTypography.bodyMd.copy(
                         color = colors.onSurfaceVariant,
                         fontStyle = FontStyle.Italic,
-                        fontSize = 14.sp,
                     ),
             )
         }

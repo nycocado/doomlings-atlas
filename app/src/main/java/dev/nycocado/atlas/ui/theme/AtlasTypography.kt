@@ -46,6 +46,14 @@ object AtlasTypography {
             letterSpacing = (-0.02).em,
             fontFeatureSettings = TABULAR,
         )
+    val numeralLg =
+        TextStyle(
+            fontFamily = Display,
+            fontSize = 32.sp,
+            lineHeight = 32.sp,
+            fontWeight = FontWeight.Bold,
+            fontFeatureSettings = TABULAR,
+        )
     val numeral =
         TextStyle(
             fontFamily = Display,
