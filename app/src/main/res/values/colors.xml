@@ -2,4 +2,6 @@
 <resources>
     <!-- The outline token (ui/theme/Color.kt), for card symbol drawables. Keep them in sync. -->
     <color name="symbol_outline">#23173B</color>
+    <!-- The surface token, for the window before Compose draws. -->
+    <color name="surface">#FFF4E8</color>
 </resources>
