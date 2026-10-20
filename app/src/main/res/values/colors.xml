@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The outline token (ui/theme/Color.kt), for card symbol drawables. Keep them in sync. -->
+    <color name="symbol_outline">#23173B</color>
+</resources>

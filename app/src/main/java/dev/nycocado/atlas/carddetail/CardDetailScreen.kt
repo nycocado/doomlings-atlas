@@ -1,5 +1,6 @@
 package dev.nycocado.atlas.carddetail
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
@@ -326,8 +327,19 @@ private fun Pills(
             ) { TraitGlyph(color, palette.onFill, 18.dp) }
         }
         Pill(stringResource(type), colors.surfaceSticker, colors.onSurface)
-        if (trait?.dominant == true) Pill(stringResource(R.string.dominant), colors.highlight, colors.onHighlight)
-        trait?.icons?.forEach { Pill(stringResource(it.label), colors.surfaceSticker, colors.onSurface) }
+        if (trait?.dominant == true) {
+            Pill(stringResource(R.string.dominant), colors.highlight, colors.onHighlight) {
+                Symbol(R.drawable.ic_symbol_dominant)
+            }
+        }
+        trait?.icons?.forEach { icon ->
+            Pill(
+                stringResource(icon.label),
+                colors.surfaceSticker,
+                colors.onSurface,
+                icon.symbol?.let { { Symbol(it) } },
+            )
+        }
         trait?.subspecies?.forEach { Pill(it, colors.surfaceSticker, colors.onSurface) }
     }
 }
@@ -350,6 +362,14 @@ private fun Pill(
         glyph?.invoke()
         BasicText(text, style = AtlasTypography.labelLg.copy(color = content, fontSize = 14.sp))
     }
+}
+
+// Decorative: the pill's text names it.
+@Composable
+private fun Symbol(
+    @DrawableRes id: Int,
+) {
+    Image(painterResource(id), null, Modifier.height(18.dp))
 }
 
 @Composable
@@ -406,6 +426,17 @@ private val TraitIcon.label: Int
             TraitIcon.WorldsEnd -> R.string.worlds_end
         }
 
+// Only the symbols the enabled sets use are converted; the rest have none yet.
+private val TraitIcon.symbol: Int?
+    @DrawableRes get() =
+        when (this) {
+            TraitIcon.Action -> R.drawable.ic_symbol_action
+            TraitIcon.DropOfLife -> R.drawable.ic_symbol_drop_of_life
+            TraitIcon.PlayWhen -> R.drawable.ic_symbol_play_when
+            TraitIcon.WorldsEnd -> R.drawable.ic_symbol_worlds_end
+            else -> null
+        }
+
 @Composable
 fun DetailPlaceholder() {
     val colors = AtlasTheme.colors
@@ -434,7 +465,7 @@ internal fun CardDetailPreview() =
                     listOf(CardColor.Blue),
                     true,
                     emptyList(),
-                    listOf(TraitIcon.Action),
+                    listOf(TraitIcon.Action, TraitIcon.DropOfLife, TraitIcon.PlayWhen, TraitIcon.WorldsEnd),
                 ),
                 tilt = -3f,
                 onBack = {},
