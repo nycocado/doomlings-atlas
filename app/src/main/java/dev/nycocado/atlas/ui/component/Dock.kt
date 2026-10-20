@@ -105,7 +105,7 @@ private fun DockItem(
     if (destination == Destination.Cards) {
         Row(
             modifier
-                .height(46.dp)
+                .height(48.dp)
                 .background(colors.highlight, CircleShape)
                 .clickable(onClick = onCardsClick)
                 .padding(horizontal = if (vertical) 12.dp else Space.s4)
@@ -130,7 +130,7 @@ private fun DockItem(
     } else {
         val comingSoon = stringResource(R.string.coming_soon, label)
         Box(
-            modifier.size(46.dp).clearAndSetSemantics {
+            modifier.size(48.dp).clearAndSetSemantics {
                 contentDescription = comingSoon
                 disabled()
             },
