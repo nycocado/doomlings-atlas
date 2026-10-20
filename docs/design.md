@@ -17,7 +17,7 @@ This file covers the look only. Screen flows, scoring steps and game rules are d
 - **The table at sunset.** Floor is `surface` (peach paper by day, purple night in the dark theme). Headers and the dock use `inverse-surface`, always with the **sunset band** below: `sunset-red`, `sunset-orange`, `sunset-yellow`, `sunset-sea`, in four equal blocks. On scrolling screens the header title and band fold away as the content scrolls and come back at the top; the search stays.
 - **Cards are objects.** Cards have an outline and `shadow-sticker-lg`, tilted between −3° and +2.5°, deterministic by position (never random per render). Never cropped, nothing drawn over the art.
 - **Color is data.** The five trait colors (`trait-blue`, `trait-green`, `trait-purple`, `trait-red`, `trait-colorless`) appear only where they mean a card's color. Sunset tones identify players and decorate; they never mean a trait color.
-- **Unofficial, and saying so.** The notice "Unofficial, not affiliated with or endorsed by Doomlings LLC" stays visible. No Doomlings logo, nothing imitating its lettering.
+- **Unofficial, and saying so.** The notice "Unofficial, not affiliated with or endorsed by Doomlings LLC" shows on first launch and stays one tap away, on About. No Doomlings logo, nothing imitating its lettering.
 
 ## Tone
 
@@ -41,7 +41,7 @@ Two themes: `light` ("Day", default) and `dark` ("Game night"). No Android dynam
 ## Typography
 
 - **Fredoka** (`display`) for titles, card names and numbers; **Atkinson Hyperlegible Next** (`sans`) for body, card text and labels. Both are OFL on Google Fonts and ship in the app for offline use.
-- Scale (sp): `display` 36, `headline` 30, `title-lg` 22, `title-md` 16, `numeral-xl` 64, `numeral` 28, `body-lg` 18 (card effects, weight 600), `body-md` 15, `body-sm` 13, `label-lg` 15, `label-sm` 12. Test at 200% font scale.
+- Scale (sp): `display` 36, `headline` 30, `title-lg` 22, `title-md` 16, `numeral-xl` 64, `numeral-lg` 32, `numeral` 28, `body-lg` 18 (card effects, weight 600), `body-md` 15, `body-sm` 13, `label-lg` 15, `label-sm` 12. Test at 200% font scale.
 
 ## Shape and Space
 
@@ -74,13 +74,13 @@ Visual specs only; content and behavior are defined with each screen.
 - **Color disc filter:** 48dp disc filled with `trait-<color>`, glyph in `on-trait-<color>`, label below. Selected: double ring (`surface` + `outline`, 3 each); glyph and label stay.
 - **Segmented selector:** `surface-sticker` track with outline; active segment in `primary` / `on-primary`.
 - **Search field:** 52dp `surface-sticker` pill with `outline` border, placeholder in `on-surface-variant`, inside the dark header.
-- **Points badge:** round `highlight` sticker with the value in `numeral` and `outline` border. Sizes 28, 40 and 68 (detail, tilted +8° with `shadow-sticker`). Same yellow regardless of card color.
+- **Points badge:** round `highlight` sticker with the value in `numeral` (`numeral-lg` at 68) and `outline` border. Sizes 28, 40 and 68 (detail, tilted +8° with `shadow-sticker`). Same yellow regardless of card color.
 - **Dominant badge:** `highlight` pill with star and "DOMINANT" in `label-sm`, or the star alone in a 22dp disc. Icon-only always has `contentDescription`.
 - **Player token:** round token with the initial on a sunset color (yellow, orange, red, sea, in order) and the name below; the name always shows. Editing: double ring. Done: check seal in `primary`. Add: dashed disc. In tabs it becomes a pill (initial + name), active in `highlight`.
 - **Step header:** steps in the dark header. Done: `on-inverse-surface` disc with check. Current: `highlight` disc with the number, bold label. Upcoming: outline only.
 - **Score breakdown:** `surface-sticker` card with rows (icon, title, explanation, signed tabular value in `numeral` 24) split by dashed `outline-soft`. Manual adjustments are marked with a pencil. A color summary of five `trait-<color>` blocks with glyph and points is read-only.
 - **Dock:** floating `inverse-surface` pill, active item in `highlight`.
-- **Unofficial notice:** footer in `body-sm`, `on-surface-variant`, centered and underlined; tapping it opens About. On first launch and About: a sticker with an "Unofficial" label in `highlight`, the sentence in bold and a short explanation. Never hidden behind a tap, never near the game logo.
+- **Unofficial notice:** footer in `body-sm`, `on-surface-variant`, centered and underlined, at the end of the card detail; tapping it opens About. The compendium has no footer: an info button in its header opens About. On first launch and About: a sticker with an "Unofficial" label in `highlight`, the sentence in bold and a short explanation. Never hidden behind a tap, never near the game logo.
 
 ## Accessibility
 

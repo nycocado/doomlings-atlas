@@ -81,7 +81,6 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
@@ -93,7 +92,6 @@ import dev.nycocado.atlas.ui.component.Dock
 import dev.nycocado.atlas.ui.component.SunsetBand
 import dev.nycocado.atlas.ui.component.TraitColorOptions
 import dev.nycocado.atlas.ui.component.TraitGlyph
-import dev.nycocado.atlas.ui.component.UnofficialFooter
 import dev.nycocado.atlas.ui.component.colorName
 import dev.nycocado.atlas.ui.component.signed
 import dev.nycocado.atlas.ui.theme.AtlasTheme
@@ -139,7 +137,7 @@ fun CompendiumContent(
     val grid = rememberLazyGridState()
     val scope = rememberCoroutineScope()
     Column(Modifier.fillMaxSize().background(colors.surface).nestedScroll(collapse)) {
-        Header(filter.query, collapse::fraction) { onFilterChange(filter.copy(query = it)) }
+        Header(filter.query, collapse::fraction, onAboutClick) { onFilterChange(filter.copy(query = it)) }
         LazyVerticalGrid(
             state = grid,
             columns = GridCells.Adaptive(150.dp),
@@ -177,14 +175,13 @@ fun CompendiumContent(
             Modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.navigationBars).padding(horizontal = Space.s4),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            UnofficialFooter(onAboutClick)
             // Tapping the current destination goes back to the top of the list.
             Dock(
                 onCardsClick = {
                     scope.launch { grid.animateScrollToItem(0) }
                     scope.launch { collapse.unfold() }
                 },
-                modifier = Modifier.padding(bottom = Space.s4),
+                modifier = Modifier.padding(top = Space.s3, bottom = Space.s4),
             )
         }
     }
@@ -267,6 +264,7 @@ private fun Modifier.folded(fraction: () -> Float) =
 private fun Header(
     query: String,
     fraction: () -> Float,
+    onAboutClick: () -> Unit,
     onQueryChange: (String) -> Unit,
 ) {
     val colors = AtlasTheme.colors
@@ -290,14 +288,29 @@ private fun Header(
                 Image(painterResource(R.drawable.logo_mark_dark), null, Modifier.size(40.dp))
                 BasicText(
                     stringResource(R.string.app_name),
-                    // The prototype's header title is 28sp, a step below the headline token.
-                    style =
-                        AtlasTypography.headline.copy(
-                            color = colors.onInverseSurface,
-                            fontSize = 28.sp,
-                            lineHeight = 32.sp,
-                        ),
+                    Modifier.weight(1f),
+                    style = AtlasTypography.headline.copy(color = colors.onInverseSurface),
                 )
+                val about = stringResource(R.string.about)
+                Box(
+                    Modifier
+                        .size(48.dp)
+                        .clickable(role = Role.Button, onClick = onAboutClick)
+                        .semantics { contentDescription = about },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Box(
+                        Modifier.size(44.dp).border(Stroke.sticker, colors.onInverseSurface, CircleShape),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Image(
+                            painterResource(R.drawable.ic_info),
+                            null,
+                            Modifier.size(30.dp),
+                            colorFilter = ColorFilter.tint(colors.onInverseSurface),
+                        )
+                    }
+                }
             }
             SearchField(query, onQueryChange, Modifier.padding(bottom = Space.s3))
         }
@@ -337,13 +350,13 @@ private fun SearchField(
             // Results already update while typing: the search key only closes the keyboard.
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             keyboardActions = KeyboardActions(onSearch = { focusManager.clearFocus() }),
-            textStyle = AtlasTypography.bodyMd.copy(color = colors.onSurface, fontSize = 16.sp),
+            textStyle = AtlasTypography.bodyMd.copy(color = colors.onSurface),
             cursorBrush = SolidColor(colors.onSurface),
             decorationBox = { field ->
                 if (query.isEmpty()) {
                     BasicText(
                         stringResource(R.string.search_placeholder),
-                        style = AtlasTypography.bodyMd.copy(color = colors.onSurfaceVariant, fontSize = 16.sp),
+                        style = AtlasTypography.bodyMd.copy(color = colors.onSurfaceVariant),
                         maxLines = 1,
                     )
                 }

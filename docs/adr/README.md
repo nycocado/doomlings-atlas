@@ -41,3 +41,4 @@ Not an ADR:
 | [0004](0004-compendium-before-scoring.md)          | Compendium Before Scoring                    | accepted   |
 | [0005](0005-scoring-rules-in-card-data.md)         | Scoring Rules in Card Data                   | accepted   |
 | [0006](0006-own-design-system.md)                  | Own Design System on Compose Foundation      | accepted   |
+| [0007](0007-card-language-apart-from-interface.md) | Card Language Apart from Interface Language  | accepted   |
