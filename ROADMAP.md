@@ -17,14 +17,14 @@ Everything here comes before assets and code.
 - Every card verified against a reliable source (physical cards, official material or checked community assets such as Tabletop Simulator mods).
 - Compendium: card list with images, search by name, filters by printed attributes, card detail.
 - The notice "Unofficial, not affiliated with or endorsed by Doomlings LLC" shown on first launch and always available on an "About" screen.
-- Interface in English and Portuguese; card text in English.
+- Interface in English and Portuguese, following the system language (no in-app selector); card text in English.
 - Tests for database integrity: unique identifiers, required fields, every card with an image.
 - Screenshot tests from the component previews, once the design system settles.
 
 ## 2. Card Text Translation
 
 - Portuguese and Spanish, reviewed by the maintainer; other languages through community contributions.
-- Translated card text shown in the compendium.
+- Translated card text shown in the compendium, chosen apart from the interface language: card text stays as printed until the user picks a translation, with a language selector in the card detail.
 - App interface also in Spanish.
 
 ## 3. Manual Scoring
