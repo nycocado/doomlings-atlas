@@ -1,6 +1,8 @@
 package dev.nycocado.atlas.compendium
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.serialization.saved
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.nycocado.atlas.card.Card
@@ -21,9 +23,13 @@ class CompendiumViewModel
     @Inject
     constructor(
         repository: CardRepository,
+        savedState: SavedStateHandle,
     ) : ViewModel() {
         private val mutableCards = MutableStateFlow<List<Card>?>(null)
-        private val mutableFilter = MutableStateFlow(CompendiumFilter())
+
+        // The list's scroll position is restored too, and only matches the same filter.
+        private var savedFilter by savedState.saved { CompendiumFilter() }
+        private val mutableFilter = MutableStateFlow(savedFilter)
 
         val filter: StateFlow<CompendiumFilter> = mutableFilter.asStateFlow()
 
@@ -41,5 +47,6 @@ class CompendiumViewModel
 
         fun updateFilter(filter: CompendiumFilter) {
             mutableFilter.value = filter
+            savedFilter = filter
         }
     }

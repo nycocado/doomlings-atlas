@@ -37,6 +37,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -115,7 +116,10 @@ fun CardDetailScreen(
         rememberSaveable(id) {
             if (Random.nextBoolean()) lerp(-3f, -1.5f, Random.nextFloat()) else lerp(1.5f, 2.5f, Random.nextFloat())
         }
-    cards?.find { it.id == id }?.let { CardDetailContent(it, tilt, onBack, onAboutClick) }
+    val card = cards?.find { it.id == id }
+    // A back stack restored after an update can name a card the data no longer has.
+    if (cards != null && card == null) LaunchedEffect(id) { onBack() }
+    card?.let { CardDetailContent(it, tilt, onBack, onAboutClick) }
 }
 
 @Composable

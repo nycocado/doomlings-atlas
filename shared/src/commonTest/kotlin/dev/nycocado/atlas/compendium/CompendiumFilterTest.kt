@@ -8,6 +8,7 @@ import dev.nycocado.atlas.card.CardColor.Green
 import dev.nycocado.atlas.card.CardColor.Red
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.Trait
+import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -80,5 +81,11 @@ class CompendiumFilterTest {
     @Test
     fun normalizesAccentsInAnyLanguage() {
         assertEquals("acao catastrofe nino creme brulee ol", normalize("Ação Catástrofe Niño Crème Brûlée Öl"))
+    }
+
+    @Test
+    fun survivesSavingWithColorlessSelected() {
+        val filter = CompendiumFilter(CardKind.Trait, "drac", setOf(null))
+        assertEquals(filter, Json.decodeFromString<CompendiumFilter>(Json.encodeToString(filter)))
     }
 }
