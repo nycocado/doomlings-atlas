@@ -6,10 +6,13 @@ import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
+import kotlinx.serialization.Serializable
 
 // The compendium's segments. Other card types (Gene Pool, Birth of Life) are not listed.
+@Serializable
 enum class CardKind { Trait, Age, Catastrophe }
 
+@Serializable
 data class CompendiumFilter(
     val kind: CardKind = CardKind.Trait,
     val query: String = "",
