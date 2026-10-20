@@ -94,8 +94,10 @@ import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.CardThumb
 import dev.nycocado.atlas.ui.component.Dock
+import dev.nycocado.atlas.ui.component.SunsetBand
 import dev.nycocado.atlas.ui.component.TraitColorOptions
 import dev.nycocado.atlas.ui.component.TraitGlyph
+import dev.nycocado.atlas.ui.component.UnofficialFooter
 import dev.nycocado.atlas.ui.component.colorName
 import dev.nycocado.atlas.ui.component.signed
 import dev.nycocado.atlas.ui.theme.AtlasTheme
@@ -122,10 +124,11 @@ private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
 fun CompendiumScreen(
     viewModel: CompendiumViewModel,
     onCardClick: (String) -> Unit,
+    onAboutClick: () -> Unit,
 ) {
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val results by viewModel.results.collectAsStateWithLifecycle()
-    CompendiumContent(filter, results, viewModel::updateFilter, onCardClick)
+    CompendiumContent(filter, results, viewModel::updateFilter, onCardClick, onAboutClick)
 }
 
 @Composable
@@ -134,6 +137,7 @@ fun CompendiumContent(
     results: List<Card>?,
     onFilterChange: (CompendiumFilter) -> Unit,
     onCardClick: (String) -> Unit,
+    onAboutClick: () -> Unit,
 ) {
     val colors = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
@@ -180,11 +184,7 @@ fun CompendiumContent(
             Modifier.fillMaxWidth().windowInsetsPadding(WindowInsets.navigationBars).padding(horizontal = Space.s4),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            BasicText(
-                stringResource(R.string.unofficial_notice),
-                Modifier.padding(vertical = Space.s2),
-                style = AtlasTypography.bodySm.copy(color = colors.onSurfaceVariant, textAlign = TextAlign.Center),
-            )
+            UnofficialFooter(onAboutClick)
             // Tapping the current destination goes back to the top of the list.
             Dock(
                 onCardsClick = {
@@ -373,16 +373,6 @@ private fun SearchField(
                     colorFilter = ColorFilter.tint(colors.onSurface),
                 )
             }
-        }
-    }
-}
-
-@Composable
-private fun SunsetBand(modifier: Modifier = Modifier) {
-    val colors = AtlasTheme.colors
-    Row(modifier.fillMaxWidth().height(14.dp)) {
-        listOf(colors.sunsetRed, colors.sunsetOrange, colors.sunsetYellow, colors.sunsetSea).forEach {
-            Spacer(Modifier.weight(1f).height(14.dp).background(it))
         }
     }
 }
@@ -579,6 +569,6 @@ internal fun CompendiumPreview() =
                         emptyList(),
                     )
                 }
-            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {})
+            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {}, {})
         }
     }

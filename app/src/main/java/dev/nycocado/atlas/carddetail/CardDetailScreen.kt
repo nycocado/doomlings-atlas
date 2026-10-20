@@ -82,8 +82,10 @@ import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.compendium.CompendiumViewModel
+import dev.nycocado.atlas.ui.component.BackButton
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.TraitGlyph
+import dev.nycocado.atlas.ui.component.UnofficialFooter
 import dev.nycocado.atlas.ui.component.colorName
 import dev.nycocado.atlas.ui.component.signed
 import dev.nycocado.atlas.ui.theme.AtlasTheme
@@ -102,6 +104,7 @@ fun CardDetailScreen(
     viewModel: CompendiumViewModel,
     id: String,
     onBack: () -> Unit,
+    onAboutClick: () -> Unit,
 ) {
     val cards by viewModel.cards.collectAsStateWithLifecycle()
     // A new angle each time the card opens, kept while it stays open, rotation included. Never within 1.5° of
@@ -110,7 +113,7 @@ fun CardDetailScreen(
         rememberSaveable(id) {
             if (Random.nextBoolean()) lerp(-3f, -1.5f, Random.nextFloat()) else lerp(1.5f, 2.5f, Random.nextFloat())
         }
-    cards?.find { it.id == id }?.let { CardDetailContent(it, tilt, onBack) }
+    cards?.find { it.id == id }?.let { CardDetailContent(it, tilt, onBack, onAboutClick) }
 }
 
 @Composable
@@ -118,6 +121,7 @@ fun CardDetailContent(
     card: Card,
     tilt: Float,
     onBack: () -> Unit,
+    onAboutClick: () -> Unit,
 ) {
     val colors = AtlasTheme.colors
     val (name, type) =
@@ -164,13 +168,12 @@ fun CardDetailContent(
                 (card as? Catastrophe)?.let { Bubble(it.worldsEnd, null, label = R.string.worlds_end) }
             }
             Spacer(Modifier.weight(1f))
-            BasicText(
-                stringResource(R.string.unofficial_notice),
+            UnofficialFooter(
+                onAboutClick,
                 Modifier
-                    .fillMaxWidth()
+                    .align(Alignment.CenterHorizontally)
                     .windowInsetsPadding(WindowInsets.navigationBars)
-                    .padding(horizontal = Space.s6, vertical = Space.s6),
-                style = AtlasTypography.bodySm.copy(color = colors.onSurfaceVariant, textAlign = TextAlign.Center),
+                    .padding(horizontal = Space.s2, vertical = Space.s4),
             )
         }
     }
@@ -272,40 +275,6 @@ private fun Modifier.bleed(amount: Dp) =
         val placeable = measurable.measure(constraints.copy(minWidth = width, maxWidth = width))
         layout(constraints.maxWidth, placeable.height - px) { placeable.place(-px, -px) }
     }
-
-@Composable
-private fun BackButton(
-    onBack: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val colors = AtlasTheme.colors
-    val label = stringResource(R.string.back)
-    val interactions = remember { MutableInteractionSource() }
-    val pressed by interactions.collectIsPressedAsState()
-    // Sinks into its shadow while pressed and navigates on release, so the feedback never delays leaving.
-    val sink by animateDpAsState(if (pressed) Shadow.sticker else 0.dp, label = "sink")
-    Box(
-        modifier
-            .size(48.dp)
-            .clickable(interactions, LocalIndication.current, role = Role.Button, onClick = onBack)
-            .semantics { contentDescription = label },
-    ) {
-        Box(
-            Modifier
-                .matchParentSize()
-                .offset { IntOffset(sink.roundToPx(), sink.roundToPx()) }
-                .sticker(CircleShape, colors.surfaceSticker, colors.outline, shadow = Shadow.sticker - sink),
-            contentAlignment = Alignment.Center,
-        ) {
-            Image(
-                painterResource(R.drawable.ic_back),
-                null,
-                Modifier.size(22.dp),
-                colorFilter = ColorFilter.tint(colors.onSurface),
-            )
-        }
-    }
-}
 
 @Composable
 private fun PointsBadge(
@@ -469,6 +438,7 @@ internal fun CardDetailPreview() =
                 ),
                 tilt = -3f,
                 onBack = {},
+                onAboutClick = {},
             )
         }
     }
@@ -482,6 +452,7 @@ internal fun CatastropheDetailPreview() =
                 Catastrophe("c", "classic", "", "A catastrophe", "Effect text.", "World's End text."),
                 tilt = -3f,
                 onBack = {},
+                onAboutClick = {},
             )
         }
     }

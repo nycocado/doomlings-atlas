@@ -3,12 +3,17 @@ package dev.nycocado.atlas.ui.theme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.android.tools.screenshot.PreviewTest
+import dev.nycocado.atlas.about.AboutPreview
+import dev.nycocado.atlas.about.NoticePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
 import dev.nycocado.atlas.compendium.CompendiumPreview
+import dev.nycocado.atlas.ui.component.BackButtonPreview
 import dev.nycocado.atlas.ui.component.CardThumbPreview
 import dev.nycocado.atlas.ui.component.DockPreview
+import dev.nycocado.atlas.ui.component.SunsetBandPreview
 import dev.nycocado.atlas.ui.component.TraitGlyphPreview
+import dev.nycocado.atlas.ui.component.UnofficialNoticePreview
 
 @PreviewTest
 @PreviewLightDark
@@ -44,3 +49,28 @@ fun CardDetailScreenshot() = CardDetailPreview()
 @PreviewLightDark
 @Composable
 fun CatastropheDetailScreenshot() = CatastropheDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun UnofficialNoticeScreenshot() = UnofficialNoticePreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun NoticeScreenshot() = NoticePreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun AboutScreenshot() = AboutPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun BackButtonScreenshot() = BackButtonPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun SunsetBandScreenshot() = SunsetBandPreview()
