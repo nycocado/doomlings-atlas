@@ -53,12 +53,17 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.vector.VectorPath
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -337,7 +342,9 @@ private fun Pills(
                 stringResource(icon.label),
                 colors.surfaceSticker,
                 colors.onSurface,
-                icon.symbol?.let { { Symbol(it) } },
+                icon.symbol?.let {
+                    { Symbol(it, actionColor = colors.trait(trait.colors.firstOrNull()).fill) }
+                },
             )
         }
         trait?.subspecies?.forEach { Pill(it, colors.surfaceSticker, colors.onSurface) }
@@ -368,9 +375,44 @@ private fun Pill(
 @Composable
 private fun Symbol(
     @DrawableRes id: Int,
+    actionColor: Color = Color.Unspecified,
 ) {
-    Image(painterResource(id), null, Modifier.height(18.dp))
+    val vector = ImageVector.vectorResource(id)
+    // The action symbol is printed in the card's color; its drawable names those paths "card_color".
+    val painter =
+        if (id == R.drawable.ic_symbol_action) {
+            rememberVectorPainter(remember(vector, actionColor) { vector.recolor("card_color", actionColor) })
+        } else {
+            rememberVectorPainter(vector)
+        }
+    Image(painter, null, Modifier.height(18.dp))
 }
+
+// ImageVector has no way to change a path's fill, so the paths are copied with the named ones refilled. Converted
+// symbols are flat lists of paths, without groups.
+private fun ImageVector.recolor(
+    pathName: String,
+    color: Color,
+): ImageVector =
+    ImageVector
+        .Builder(name, defaultWidth, defaultHeight, viewportWidth, viewportHeight)
+        .apply {
+            root.filterIsInstance<VectorPath>().forEach {
+                addPath(
+                    it.pathData,
+                    it.pathFillType,
+                    it.name,
+                    if (it.name == pathName) SolidColor(color) else it.fill,
+                    it.fillAlpha,
+                    it.stroke,
+                    it.strokeAlpha,
+                    it.strokeLineWidth,
+                    it.strokeLineCap,
+                    it.strokeLineJoin,
+                    it.strokeLineMiter,
+                )
+            }
+        }.build()
 
 @Composable
 private fun Bubble(
