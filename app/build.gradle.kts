@@ -41,8 +41,24 @@ android {
         versionName = "0.0.0"
     }
 
+    // The release key never enters the repo: the maintainer's ~/.gradle/gradle.properties (or the release workflow)
+    // passes it as Gradle properties. Without them, the release APK is built unsigned.
+    val releaseKey = providers.gradleProperty("atlas.release.storeFile").orNull
+    signingConfigs {
+        if (releaseKey != null) {
+            create("release") {
+                storeFile = file(releaseKey)
+                storePassword = providers.gradleProperty("atlas.release.storePassword").get()
+                keyAlias = providers.gradleProperty("atlas.release.keyAlias").get()
+                // PKCS12 keystores use one password for the store and the key.
+                keyPassword = storePassword
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.findByName("release")
             optimization {
                 enable = true
             }
@@ -180,9 +196,15 @@ tasks.named("check") { dependsOn(checkGlossary) }
 // Sets shipped in the APK. The rest of assets/doomlings stays in the repo until its data is checked.
 val enabledSets = listOf("classic")
 
+// Card types the app uses. Gene Pools and the Birth of Life wait for scoring (ROADMAP.md, phase 3).
+val enabledTypes = listOf("trait", "age", "catastrophe")
+
 abstract class PackageCards : DefaultTask() {
     @get:Input
     abstract val sets: ListProperty<String>
+
+    @get:Input
+    abstract val types: ListProperty<String>
 
     @get:InputDirectory
     @get:PathSensitive(PathSensitivity.RELATIVE)
@@ -198,7 +220,7 @@ abstract class PackageCards : DefaultTask() {
     fun pack() {
         @Suppress("UNCHECKED_CAST")
         val all = JsonSlurper().parse(source.file("cards.json").get().asFile) as List<Map<String, Any?>>
-        val cards = all.filter { it["set"] in sets.get() }
+        val cards = all.filter { it["set"] in sets.get() && it["type"] in types.get() }
         val empty = sets.get() - cards.map { it["set"] }.toSet()
         check(empty.isEmpty()) { "Enabled sets with no cards: ${empty.joinToString()}" }
 
@@ -215,8 +237,9 @@ abstract class PackageCards : DefaultTask() {
 androidComponents.onVariants { variant ->
     val cards =
         tasks.register<PackageCards>("package${variant.name.replaceFirstChar { it.uppercase() }}Cards") {
-            description = "Copies the enabled sets' cards.json and images into the APK assets."
+            description = "Copies the enabled sets' and types' cards.json and images into the APK assets."
             sets.set(enabledSets)
+            types.set(enabledTypes)
             source.set(rootProject.layout.projectDirectory.dir("assets/doomlings"))
         }
     variant.sources.assets?.addGeneratedSourceDirectory(cards, PackageCards::output)
