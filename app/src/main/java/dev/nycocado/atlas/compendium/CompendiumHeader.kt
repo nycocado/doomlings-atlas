@@ -19,12 +19,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,9 +33,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.movableContentOf
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -52,7 +48,6 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.LookaheadScope
 import androidx.compose.ui.layout.layout
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -158,33 +153,6 @@ internal fun Header(
     onQueryChange: (String) -> Unit,
 ) {
     val theme = AtlasTheme.colors
-    val title = remember { movableContentOf { modifier: Modifier -> HeaderTitle(modifier) } }
-    val search =
-        remember {
-            movableContentOf { query: String, onQueryChange: (String) -> Unit, modifier: Modifier ->
-                SearchField(query, onQueryChange, modifier)
-            }
-        }
-    val about =
-        remember {
-            movableContentOf { show: Boolean, onClick: () -> Unit, modifier: Modifier ->
-                AnimatedVisibility(
-                    show,
-                    modifier,
-                    enter = fadeIn() + scaleIn() + expandHorizontally(),
-                    exit = fadeOut() + scaleOut() + shrinkHorizontally(),
-                ) {
-                    // The header clips while collapsing, so it leaves room for the button's shadow.
-                    RoundButton(
-                        R.drawable.ic_info,
-                        R.string.about,
-                        onClick,
-                        Modifier.padding(end = Shadow.sticker, bottom = Shadow.sticker),
-                        style = RoundButtonStyle.QuietOnHeader,
-                    )
-                }
-            }
-        }
     Column(
         Modifier
             .fillMaxWidth()
@@ -201,43 +169,14 @@ internal fun Header(
             LookaheadScope {
                 val moves = Modifier.animateBounds(this, boundsTransform = transform)
                 // The header's height glides with its parts when the layout switches.
-                Column(moves.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    if (rail) {
-                        CenteredBetween(
-                            Modifier.padding(start = Space.s5, end = Space.s5, top = Space.s3, bottom = Space.s4),
-                            start = { title(moves) },
-                            center = {
-                                search(
-                                    query,
-                                    onQueryChange,
-                                    Modifier.animateBounds(
-                                        this@LookaheadScope,
-                                        Modifier.widthIn(max = MaxWidth.compact),
-                                        boundsTransform = transform,
-                                    ),
-                                )
-                            },
-                            end = { about(showAbout, onAboutClick, moves) },
-                        )
-                    } else {
-                        Column(
-                            Modifier
-                                .widthIn(max = MaxWidth.content)
-                                .padding(start = Space.s5, end = Space.s5, top = Space.s2),
-                        ) {
-                            Row(
-                                Modifier
-                                    .onSizeChanged { collapse.titleHeight = it.height }
-                                    .padding(top = Space.s1, bottom = Space.s4),
-                                verticalAlignment = Alignment.CenterVertically,
-                            ) {
-                                Box(Modifier.weight(1f)) { title(moves) }
-                                about(showAbout, onAboutClick, moves)
-                            }
-                            search(query, onQueryChange, Modifier.padding(bottom = Space.s3).then(moves))
-                        }
-                    }
-                }
+                HeaderParts(
+                    rail,
+                    { collapse.titleHeight = it },
+                    moves.fillMaxWidth(),
+                    title = { HeaderTitle(moves) },
+                    search = { SearchField(query, onQueryChange, moves) },
+                    about = { InfoButton(showAbout, onAboutClick, moves) },
+                )
             }
         }
         // Right below the content, so it moves with the header's edge without animating on its own.
@@ -261,36 +200,89 @@ private fun HeaderTitle(modifier: Modifier) {
     }
 }
 
-// Start and end in the corners, center in the middle of the whole row. Without room for that, the center moves
-// toward the end and then narrows, rather than overlap either side. Handwritten: Row can only center a child
-// between its neighbors, not on the row itself.
+// The title, search and info button in one layout for both shapes, so a layout switch moves them within the same
+// parent and animateBounds glides them from the first frame. Moved between two parents as movable content, they showed
+// up in their new places for two frames before gliding there. Stacked: the title and info button in a row above the
+// search. One row: title and info button in the corners, search in the middle of the whole row, moving toward the end
+// and then narrowing when there isn't room. Handwritten: Row can only center a child between its neighbors, not on the
+// row itself.
 @Composable
-private fun CenteredBetween(
+private fun HeaderParts(
+    rail: Boolean,
+    // The stacked layout's title row, which is the part that collapses.
+    onTitleHeight: (Int) -> Unit,
     modifier: Modifier,
-    start: @Composable () -> Unit,
-    center: @Composable () -> Unit,
-    end: @Composable () -> Unit,
-) = // Each slot is wrapped, so there are always three to measure, even after one animates away.
-    Layout({
-        Box { start() }
-        Box { center() }
-        Box { end() }
-    }, modifier.fillMaxWidth()) { measurables, constraints ->
-        val loose = constraints.copy(minWidth = 0, minHeight = 0)
-        val first = measurables[0].measure(loose)
-        val last = measurables[2].measure(loose)
+    title: @Composable () -> Unit,
+    search: @Composable () -> Unit,
+    about: @Composable () -> Unit,
+) = Layout({
+    // Each part is wrapped, so there are always three to measure, even after the info button animates away.
+    Box { title() }
+    Box { search() }
+    Box { about() }
+}, modifier) { (titleSlot, searchSlot, aboutSlot), constraints ->
+    val width = constraints.maxWidth
+    val side = Space.s5.roundToPx()
+    val loose = constraints.copy(minWidth = 0, minHeight = 0, maxWidth = (width - side * 2).coerceAtLeast(0))
+    if (rail) {
+        val top = Space.s3.roundToPx()
         val gap = Space.s4.roundToPx()
-        val from = first.width + gap
-        val to = constraints.maxWidth - last.width - if (last.width > 0) gap else 0
-        val middle = measurables[1].measure(loose.copy(maxWidth = (to - from).coerceAtLeast(0)))
-        val height = maxOf(first.height, middle.height, last.height)
-        layout(constraints.maxWidth, height) {
-            first.place(0, (height - first.height) / 2)
-            val x = ((constraints.maxWidth - middle.width) / 2).coerceIn(from, (to - middle.width).coerceAtLeast(from))
-            middle.place(x, (height - middle.height) / 2)
-            last.place(constraints.maxWidth - last.width, (height - last.height) / 2)
+        val title = titleSlot.measure(loose)
+        val about = aboutSlot.measure(loose)
+        val from = side + title.width + gap
+        val to = width - side - about.width - if (about.width > 0) gap else 0
+        val searchWidth = minOf(MaxWidth.compact.roundToPx(), to - from).coerceAtLeast(0)
+        val search = searchSlot.measure(loose.copy(minWidth = searchWidth, maxWidth = searchWidth))
+        val row = maxOf(title.height, search.height, about.height)
+        layout(width, top + row + Space.s4.roundToPx()) {
+            title.placeRelative(side, top + (row - title.height) / 2)
+            val x = ((width - search.width) / 2).coerceIn(from, (to - search.width).coerceAtLeast(from))
+            search.placeRelative(x, top + (row - search.height) / 2)
+            about.placeRelative(width - side - about.width, top + (row - about.height) / 2)
+        }
+    } else {
+        // Within the content's width and centered, like the filters below.
+        val outer = minOf(width, MaxWidth.content.roundToPx())
+        val start = Alignment.CenterHorizontally.align(outer, width, layoutDirection) + side
+        val inner = loose.copy(maxWidth = (outer - side * 2).coerceAtLeast(0))
+        val about = aboutSlot.measure(inner)
+        val title = titleSlot.measure(inner.copy(maxWidth = (inner.maxWidth - about.width).coerceAtLeast(0)))
+        val search = searchSlot.measure(inner.copy(minWidth = inner.maxWidth))
+        val row = maxOf(title.height, about.height)
+        val rowTop = Space.s2.roundToPx() + Space.s1.roundToPx()
+        val titleRow = Space.s1.roundToPx() + row + Space.s4.roundToPx()
+        onTitleHeight(titleRow)
+        layout(width, Space.s2.roundToPx() + titleRow + search.height + Space.s3.roundToPx()) {
+            title.placeRelative(start, rowTop + Alignment.CenterVertically.align(title.height, row))
+            about.placeRelative(
+                start + inner.maxWidth - about.width,
+                rowTop + Alignment.CenterVertically.align(about.height, row),
+            )
+            search.placeRelative(start, Space.s2.roundToPx() + titleRow)
         }
     }
+}
+
+@Composable
+private fun InfoButton(
+    show: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier,
+) = AnimatedVisibility(
+    show,
+    modifier,
+    enter = fadeIn() + scaleIn() + expandHorizontally(),
+    exit = fadeOut() + scaleOut() + shrinkHorizontally(),
+) {
+    // The header clips while collapsing, so it leaves room for the button's shadow.
+    RoundButton(
+        R.drawable.ic_info,
+        R.string.about,
+        onClick,
+        Modifier.padding(end = Shadow.sticker, bottom = Shadow.sticker),
+        style = RoundButtonStyle.QuietOnHeader,
+    )
+}
 
 @Composable
 private fun SearchField(
