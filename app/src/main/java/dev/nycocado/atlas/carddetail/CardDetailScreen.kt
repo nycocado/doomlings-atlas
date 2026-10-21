@@ -98,7 +98,6 @@ import dev.nycocado.atlas.ui.theme.StatusBarIcons
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
-import dev.nycocado.atlas.ui.theme.wideWindow
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
@@ -106,6 +105,7 @@ import kotlin.random.Random
 fun CardDetailScreen(
     viewModel: CompendiumViewModel,
     id: String,
+    besideList: Boolean,
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
 ) {
@@ -119,7 +119,7 @@ fun CardDetailScreen(
     val card = cards?.find { it.id == id }
     // A back stack restored after an update can name a card the data no longer has.
     if (cards != null && card == null) LaunchedEffect(id) { onBack() }
-    card?.let { CardDetailContent(it, tilt, onBack, onAboutClick) }
+    card?.let { CardDetailContent(it, tilt, onBack, onAboutClick, besideList) }
 }
 
 @Composable
@@ -128,6 +128,8 @@ fun CardDetailContent(
     tilt: Float,
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
+    // Beside the list, whose dark header the status bar also spans.
+    besideList: Boolean = false,
 ) {
     val theme = AtlasTheme.colors
     if (card !is NamedCard) return
@@ -146,10 +148,9 @@ fun CardDetailContent(
         } else {
             theme.surfaceSunk to theme.outlineSoft
         }
-    // Status bar icons take the color the design puts on the panel.
+    // Status bar icons take the color the design puts on the panel, unless the list's header shares the bar.
     val onPanel = if (card is Trait) dots else theme.onSurface
-    // Not beside the list, where the status bar also spans the list's dark header.
-    if (!wideWindow()) StatusBarIcons(onPanel.luminance() < 0.5f)
+    if (!besideList) StatusBarIcons(onPanel.luminance() < 0.5f)
 
     BoxWithConstraints(Modifier.fillMaxSize().background(theme.surface)) {
         // At least screen-tall, so the notice sits at the bottom of short cards and right after long ones.

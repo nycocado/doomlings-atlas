@@ -46,7 +46,6 @@ import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
-import dev.nycocado.atlas.ui.theme.wideWindow
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -77,12 +76,14 @@ fun AtlasApp() {
     }
     val hasCard = backStack.any { it is CardKey }
     val directive = calculatePaneScaffoldDirective(currentWindowAdaptiveInfoV2())
-    val wide = wideWindow()
-    // On wide windows one list-detail scene covers both states, with a single column until a card opens, so
-    // opening and closing a card animates the panes instead of swapping layouts.
+    // Tablets, unfolded foldables and phones on their side: room for the list and a card side by side. Read from the
+    // panes the scaffold allows, so the screens below follow the scene instead of deciding it again on their own.
+    val sideBySide = directive.maxHorizontalPartitions > 1
+    // Then one list-detail scene covers both states, with a single column until a card opens, so opening and closing a
+    // card animates the panes instead of swapping layouts.
     val listDetail =
         rememberListDetailSceneStrategy<NavKey>(
-            shouldHandleSinglePaneLayout = wide,
+            shouldHandleSinglePaneLayout = sideBySide,
             directive =
                 directive.copy(
                     maxHorizontalPartitions = if (hasCard) directive.maxHorizontalPartitions else 1,
@@ -116,7 +117,7 @@ fun AtlasApp() {
                             backStack.add(CardKey(id))
                         },
                         onAboutClick = { backStack.add(AboutKey) },
-                        besideCard = wide && hasCard,
+                        besideCard = sideBySide && hasCard,
                     )
                 }
                 // One content key for every card, so picking another card beside the list only changes what the
@@ -125,11 +126,12 @@ fun AtlasApp() {
                     clazzContentKey = { "card" },
                     metadata = ListDetailSceneStrategy.detailPane(),
                 ) { key ->
-                    val sheet = if (wide) Modifier.sheet() else Modifier
+                    val sheet = if (sideBySide) Modifier.sheet() else Modifier
                     Box(sheet) {
                         CardDetailScreen(
                             viewModel,
                             key.id,
+                            besideList = sideBySide,
                             onBack = { backStack.removeLastOrNull() },
                             onAboutClick = { backStack.add(AboutKey) },
                         )
