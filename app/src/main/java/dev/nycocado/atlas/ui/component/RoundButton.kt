@@ -43,20 +43,20 @@ fun RoundButton(
     modifier: Modifier = Modifier,
     style: RoundButtonStyle = RoundButtonStyle.OnSurface,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     // On a dark header the theme's outline can be the header's own color, which hides the border and shadow.
     val (fill, outline, content) =
         when (style) {
             RoundButtonStyle.OnSurface -> {
-                Triple(colors.surfaceSticker, colors.outline, colors.onSurface)
+                Triple(theme.surfaceSticker, theme.outline, theme.onSurface)
             }
 
             RoundButtonStyle.OnHeader -> {
-                Triple(colors.surfaceSticker, colors.onInverseSurfaceVariant, colors.onSurface)
+                Triple(theme.surfaceSticker, theme.onInverseSurfaceVariant, theme.onSurface)
             }
 
             RoundButtonStyle.QuietOnHeader -> {
-                Triple(colors.inverseSurface, colors.onInverseSurfaceVariant, colors.onInverseSurface)
+                Triple(theme.inverseSurface, theme.onInverseSurfaceVariant, theme.onInverseSurface)
             }
         }
     val description = stringResource(label)

@@ -129,7 +129,7 @@ fun CardDetailContent(
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     if (card !is NamedCard) return
     val type =
         when (card.kind) {
@@ -142,16 +142,16 @@ fun CardDetailContent(
     // Ages and catastrophes have no color: their panel stays neutral, so it can't be read as a trait color.
     val (panel, dots) =
         if (card is Trait) {
-            colors.trait(card.colors.firstOrNull()).let { it.fill to it.onFill }
+            theme.trait(card.colors.firstOrNull()).let { it.fill to it.onFill }
         } else {
-            colors.surfaceSunk to colors.outlineSoft
+            theme.surfaceSunk to theme.outlineSoft
         }
     // Status bar icons take the color the design puts on the panel.
-    val onPanel = if (card is Trait) dots else colors.onSurface
+    val onPanel = if (card is Trait) dots else theme.onSurface
     // Not beside the list, where the status bar also spans the list's dark header.
     if (!wideWindow()) StatusBarIcons(onPanel.luminance() < 0.5f)
 
-    BoxWithConstraints(Modifier.fillMaxSize().background(colors.surface)) {
+    BoxWithConstraints(Modifier.fillMaxSize().background(theme.surface)) {
         // At least screen-tall, so the notice sits at the bottom of short cards and right after long ones.
         Column(
             Modifier
@@ -172,7 +172,7 @@ fun CardDetailContent(
                 BasicText(
                     card.name,
                     Modifier.semantics { heading() },
-                    style = AtlasTypography.display.copy(color = colors.onSurface),
+                    style = AtlasTypography.display.copy(color = theme.onSurface),
                 )
                 Pills(trait, type)
                 if (card.effect != null || trait?.flavor != null) Bubble(card.effect, trait?.flavor)
@@ -201,7 +201,7 @@ private fun Panel(
     dots: Color,
     onBack: () -> Unit,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     Box(
         Modifier
             .fillMaxWidth()
@@ -221,7 +221,7 @@ private fun Panel(
                     }
                     y += step
                 }
-            }.border(Stroke.strong, colors.outline, PanelShape)
+            }.border(Stroke.strong, theme.outline, PanelShape)
             .padding(top = Stroke.strong, start = Stroke.strong, end = Stroke.strong)
             .windowInsetsPadding(WindowInsets.statusBars)
             .height(420.dp),
@@ -267,8 +267,8 @@ private fun Panel(
                     .aspectRatio(CARD_RATIO)
                     .sticker(
                         Radius.cardLg,
-                        colors.surfaceSticker,
-                        colors.outline,
+                        theme.surfaceSticker,
+                        theme.outline,
                         Stroke.strong,
                         Shadow.stickerLg + 6.dp * lift.value,
                     ).clip(Radius.cardLg),
@@ -290,7 +290,7 @@ private fun PointsBadge(
     points: Int,
     modifier: Modifier = Modifier,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     val description = pluralStringResource(R.plurals.card_points, points, signed(points))
     val scope = rememberCoroutineScope()
     val spin = remember { Animatable(0f) }
@@ -308,11 +308,11 @@ private fun PointsBadge(
                 }
             }.graphicsLayer { rotationZ = 8f + spin.value }
             .size(68.dp)
-            .sticker(CircleShape, colors.highlight, colors.outline, Stroke.strong, Shadow.sticker)
+            .sticker(CircleShape, theme.highlight, theme.outline, Stroke.strong, Shadow.sticker)
             .clearAndSetSemantics { contentDescription = description },
         contentAlignment = Alignment.Center,
     ) {
-        BasicText(signed(points), style = AtlasTypography.numeralLg.copy(color = colors.onHighlight))
+        BasicText(signed(points), style = AtlasTypography.numeralLg.copy(color = theme.onHighlight))
     }
 }
 
@@ -321,36 +321,36 @@ private fun Pills(
     trait: Trait?,
     @StringRes type: Int,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(Space.s2),
         verticalArrangement = Arrangement.spacedBy(Space.s2),
     ) {
         trait?.colors?.ifEmpty { listOf(null) }?.forEach { color ->
-            val palette = colors.trait(color)
+            val palette = theme.trait(color)
             Pill(
                 stringResource(colorName(color)),
                 palette.fill,
                 palette.onFill,
             ) { TraitGlyph(color, palette.onFill, 18.dp) }
         }
-        Pill(stringResource(type), colors.surfaceSticker, colors.onSurface)
+        Pill(stringResource(type), theme.surfaceSticker, theme.onSurface)
         if (trait?.dominant == true) {
-            Pill(stringResource(R.string.dominant), colors.highlight, colors.onHighlight) {
+            Pill(stringResource(R.string.dominant), theme.highlight, theme.onHighlight) {
                 Symbol(R.drawable.ic_symbol_dominant)
             }
         }
         trait?.icons?.forEach { icon ->
             Pill(
                 stringResource(icon.label),
-                colors.surfaceSticker,
-                colors.onSurface,
+                theme.surfaceSticker,
+                theme.onSurface,
                 icon.symbol?.let {
-                    { Symbol(it, actionColor = colors.trait(trait.colors.firstOrNull()).fill) }
+                    { Symbol(it, actionColor = theme.trait(trait.colors.firstOrNull()).fill) }
                 },
             )
         }
-        trait?.subspecies?.forEach { Pill(it, colors.surfaceSticker, colors.onSurface) }
+        trait?.subspecies?.forEach { Pill(it, theme.surfaceSticker, theme.onSurface) }
     }
 }
 
@@ -420,28 +420,28 @@ private fun Bubble(
     flavor: String?,
     @StringRes label: Int? = null,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     Column(
         Modifier
             .padding(top = 6.dp)
             .fillMaxWidth()
-            .sticker(Radius.md, colors.surfaceSticker, colors.outline, shadow = Shadow.stickerLg)
+            .sticker(Radius.md, theme.surfaceSticker, theme.outline, shadow = Shadow.stickerLg)
             .padding(start = 18.dp, end = 18.dp, top = 18.dp, bottom = Space.s4),
         verticalArrangement = Arrangement.spacedBy(Space.s3),
     ) {
         label?.let {
             BasicText(
                 stringResource(it).uppercase(),
-                style = AtlasTypography.labelSm.copy(color = colors.onSurfaceVariant),
+                style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
             )
         }
-        text?.let { BasicText(it, style = AtlasTypography.bodyLg.copy(color = colors.onSurface)) }
+        text?.let { BasicText(it, style = AtlasTypography.bodyLg.copy(color = theme.onSurface)) }
         flavor?.let {
             BasicText(
                 it,
                 style =
                     AtlasTypography.bodyMd.copy(
-                        color = colors.onSurfaceVariant,
+                        color = theme.onSurfaceVariant,
                         fontStyle = FontStyle.Italic,
                     ),
             )

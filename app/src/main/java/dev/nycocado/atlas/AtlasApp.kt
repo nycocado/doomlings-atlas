@@ -147,7 +147,7 @@ private val SheetShape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.
 // panels.
 @Composable
 private fun Modifier.sheet(): Modifier {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     val statusBar = WindowInsets.statusBars.getTop(LocalDensity.current).toFloat()
     return windowInsetsPadding(WindowInsets.navigationBars)
         .padding(start = Space.s3, end = Space.s4, bottom = Space.s4)
@@ -155,7 +155,7 @@ private fun Modifier.sheet(): Modifier {
             val bleed = Stroke.sticker.roundToPx()
             val placeable = measurable.measure(constraints.offset(vertical = bleed))
             layout(placeable.width, placeable.height - bleed) { placeable.place(0, -bleed) }
-        }.sticker(SheetShape, colors.surface, colors.outline, shadow = Shadow.stickerLg)
+        }.sticker(SheetShape, theme.surface, theme.outline, shadow = Shadow.stickerLg)
         .clip(SheetShape)
         .drawWithContent {
             drawContent()

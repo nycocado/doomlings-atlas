@@ -59,7 +59,7 @@ fun NoticeDialog(onAccept: () -> Unit) {
 
 @Composable
 private fun NoticeContent(onAccept: () -> Unit) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     Column(
         Modifier.widthIn(max = MaxWidth.compact).padding(Space.s6),
         verticalArrangement = Arrangement.spacedBy(Space.s5),
@@ -69,10 +69,10 @@ private fun NoticeContent(onAccept: () -> Unit) {
         BasicText(
             stringResource(R.string.got_it),
             Modifier
-                .sticker(CircleShape, colors.sunsetYellow, colors.outline, shadow = Shadow.sticker)
+                .sticker(CircleShape, theme.sunsetYellow, theme.outline, shadow = Shadow.sticker)
                 .clickable(role = Role.Button, onClick = onAccept)
                 .padding(horizontal = Space.s6, vertical = 14.dp),
-            style = AtlasTypography.labelLg.copy(color = colors.onSunset),
+            style = AtlasTypography.labelLg.copy(color = theme.onSunset),
         )
     }
 }
