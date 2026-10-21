@@ -13,9 +13,9 @@ import dev.nycocado.atlas.ui.theme.AtlasTheme
 
 @Composable
 fun SunsetBand(modifier: Modifier = Modifier) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     Row(modifier.fillMaxWidth().height(14.dp)) {
-        listOf(colors.sunsetRed, colors.sunsetOrange, colors.sunsetYellow, colors.sunsetSea).forEach {
+        listOf(theme.sunsetRed, theme.sunsetOrange, theme.sunsetYellow, theme.sunsetSea).forEach {
             Spacer(Modifier.weight(1f).height(14.dp).background(it))
         }
     }

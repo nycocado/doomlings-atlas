@@ -180,7 +180,7 @@ fun CompendiumContent(
     // The card beside the list has its own way to About.
     besideCard: Boolean = false,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
     // Saveable like the grid's position, so coming back from a card restores both together.
     val collapse = rememberSaveable(distance, saver = HeaderCollapse.saver(distance)) { HeaderCollapse(distance) }
@@ -215,13 +215,13 @@ fun CompendiumContent(
             }
         // On the rail layout nothing sits below the grid, so it keeps clear of the navigation bar itself.
         val bottom = if (rail) Modifier.windowInsetsPadding(WindowInsets.navigationBars) else Modifier
-        // The wide header is a single row with nothing to collapse, so it doesn't take part in scrolling.
+        // The rail layout's header is a single row with nothing to collapse, so it doesn't take part in scrolling.
         val collapsesOnScroll = if (rail) Modifier else Modifier.nestedScroll(collapse)
         val fraction: () -> Float = if (rail) ({ 0f }) else collapse::fraction
         Column(
             Modifier
                 .fillMaxSize()
-                .background(colors.surface)
+                .background(theme.surface)
                 .then(collapsesOnScroll)
                 .pointerInput(Unit) { detectTapGestures { focusManager.clearFocus() } },
         ) {
@@ -288,7 +288,7 @@ fun CompendiumContent(
                                         Modifier.fillMaxWidth().padding(vertical = Space.s6),
                                         style =
                                             AtlasTypography.bodyMd.copy(
-                                                color = colors.onSurfaceVariant,
+                                                color = theme.onSurfaceVariant,
                                                 textAlign = TextAlign.Center,
                                             ),
                                     )
@@ -453,7 +453,7 @@ private fun Header(
     query: String,
     fraction: () -> Float,
     collapse: HeaderCollapse,
-    wide: Boolean,
+    rail: Boolean,
     onAboutClick: () -> Unit,
     // When hidden, the search takes the button's place.
     showAbout: Boolean,
@@ -462,7 +462,7 @@ private fun Header(
     modifier: Modifier,
     onQueryChange: (String) -> Unit,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     val title = remember { movableContentOf { modifier: Modifier -> HeaderTitle(modifier) } }
     val search =
         remember {
@@ -497,13 +497,13 @@ private fun Header(
                 val radius = 32.dp.toPx() * (1 - fraction())
                 shape = RoundedCornerShape(0f, 0f, radius, radius)
                 clip = true
-            }.background(colors.inverseSurface)
+            }.background(theme.inverseSurface)
             .windowInsetsPadding(WindowInsets.statusBars),
     ) {
         Column(Modifier.collapsing(collapse, fraction), horizontalAlignment = Alignment.CenterHorizontally) {
             LookaheadScope {
                 val moves = Modifier.animateBounds(this, boundsTransform = transform)
-                if (wide) {
+                if (rail) {
                     CenteredBetween(
                         Modifier.padding(start = Space.s5, end = Space.s5, top = Space.s3, bottom = Space.s4),
                         start = { title(moves) },
@@ -565,13 +565,13 @@ private fun HeaderTitle(modifier: Modifier) {
 }
 
 private class LayoutSwitch(
-    private var wide: Boolean,
+    private var rail: Boolean,
 ) {
     private var at = 0L
 
-    fun track(wide: Boolean) {
-        if (wide != this.wide) {
-            this.wide = wide
+    fun track(rail: Boolean) {
+        if (rail != this.rail) {
+            this.rail = rail
             at = System.nanoTime()
         }
     }
@@ -616,14 +616,14 @@ private fun SearchField(
     onQueryChange: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     val label = stringResource(R.string.search_label)
     val focusManager = LocalFocusManager.current
     Row(
         modifier
             .fillMaxWidth()
             .heightIn(min = 52.dp)
-            .sticker(CircleShape, colors.surfaceSticker, colors.outline)
+            .sticker(CircleShape, theme.surfaceSticker, theme.outline)
             .padding(horizontal = Space.s4),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -632,7 +632,7 @@ private fun SearchField(
             painterResource(R.drawable.ic_search),
             null,
             Modifier.size(22.dp),
-            colorFilter = ColorFilter.tint(colors.onSurface),
+            colorFilter = ColorFilter.tint(theme.onSurface),
         )
         BasicTextField(
             value = query,
@@ -642,13 +642,13 @@ private fun SearchField(
             // Results already update while typing: the search key only closes the keyboard.
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             keyboardActions = KeyboardActions(onSearch = { focusManager.clearFocus() }),
-            textStyle = AtlasTypography.bodyMd.copy(color = colors.onSurface),
-            cursorBrush = SolidColor(colors.onSurface),
+            textStyle = AtlasTypography.bodyMd.copy(color = theme.onSurface),
+            cursorBrush = SolidColor(theme.onSurface),
             decorationBox = { field ->
                 if (query.isEmpty()) {
                     BasicText(
                         stringResource(R.string.search_placeholder),
-                        style = AtlasTypography.bodyMd.copy(color = colors.onSurfaceVariant),
+                        style = AtlasTypography.bodyMd.copy(color = theme.onSurfaceVariant),
                         maxLines = 1,
                     )
                 }
@@ -668,7 +668,7 @@ private fun SearchField(
                     painterResource(R.drawable.ic_clear),
                     null,
                     Modifier.size(20.dp),
-                    colorFilter = ColorFilter.tint(colors.onSurface),
+                    colorFilter = ColorFilter.tint(theme.onSurface),
                 )
             }
         }
@@ -680,7 +680,7 @@ private fun Filters(
     filter: CompendiumFilter,
     onFilterChange: (CompendiumFilter) -> Unit,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     Column(Modifier.fillMaxWidth()) {
         // The controls center on wide screens; the title below stays in line with the first column of cards.
         Column(Modifier.widthIn(max = MaxWidth.content).align(Alignment.CenterHorizontally)) {
@@ -709,7 +709,7 @@ private fun Filters(
             verticalAlignment = Alignment.Bottom,
             horizontalArrangement = Arrangement.spacedBy(Space.s2),
         ) {
-            BasicText(stringResource(filter.kind.title), style = AtlasTypography.titleLg.copy(color = colors.onSurface))
+            BasicText(stringResource(filter.kind.title), style = AtlasTypography.titleLg.copy(color = theme.onSurface))
             AnimatedVisibility(
                 visible = filter.kind == CardKind.Trait && filter.colors.isEmpty(),
                 enter = fadeIn(),
@@ -718,7 +718,7 @@ private fun Filters(
                 BasicText(
                     stringResource(R.string.color_hint),
                     Modifier.padding(bottom = 3.dp),
-                    style = AtlasTypography.bodySm.copy(color = colors.onSurfaceVariant),
+                    style = AtlasTypography.bodySm.copy(color = theme.onSurfaceVariant),
                 )
             }
         }
@@ -733,7 +733,7 @@ private fun ColorDisc(
     modifier: Modifier,
     onClick: () -> Unit,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     val name = stringResource(colorName(color))
     Column(
         modifier
@@ -756,14 +756,14 @@ private fun ColorDisc(
                         scaleX = 0.8f + 0.2f * ring
                         scaleY = 0.8f + 0.2f * ring
                         alpha = ring.coerceIn(0f, 1f)
-                    }.border(3.dp, colors.outline, CircleShape),
+                    }.border(3.dp, theme.outline, CircleShape),
             )
             Box(
-                Modifier.size(48.dp).sticker(CircleShape, colors.trait(color).fill, colors.outline),
+                Modifier.size(48.dp).sticker(CircleShape, theme.trait(color).fill, theme.outline),
                 contentAlignment = Alignment.Center,
-            ) { TraitGlyph(color, colors.trait(color).onFill) }
+            ) { TraitGlyph(color, theme.trait(color).onFill) }
         }
-        BasicText(name, style = AtlasTypography.labelSm.copy(color = colors.onSurface), maxLines = 1)
+        BasicText(name, style = AtlasTypography.labelSm.copy(color = theme.onSurface), maxLines = 1)
     }
 }
 
@@ -788,12 +788,12 @@ private fun KindSegments(
     selected: CardKind,
     onSelect: (CardKind) -> Unit,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     val gap = 6.dp
     BoxWithConstraints(
         Modifier
             .fillMaxWidth()
-            .sticker(CircleShape, colors.surfaceSticker, colors.outline, stroke = Stroke.sticker)
+            .sticker(CircleShape, theme.surfaceSticker, theme.outline, stroke = Stroke.sticker)
             .padding(4.dp),
     ) {
         val count = CardKind.entries.size
@@ -805,7 +805,7 @@ private fun KindSegments(
                 val start = offset.toPx()
                 val x = if (layoutDirection == LayoutDirection.Ltr) start else size.width - width.toPx() - start
                 drawRoundRect(
-                    colors.primary,
+                    theme.primary,
                     Offset(x, 0f),
                     Size(width.toPx(), size.height),
                     CornerRadius(size.height / 2),
@@ -816,7 +816,7 @@ private fun KindSegments(
             CardKind.entries.forEach { kind ->
                 val active = kind == selected
                 val textColor by animateColorAsState(
-                    if (active) colors.onPrimary else colors.onSurface,
+                    if (active) theme.onPrimary else theme.onSurface,
                     label = "segment text",
                 )
                 Box(

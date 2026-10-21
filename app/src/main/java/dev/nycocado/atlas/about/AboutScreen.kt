@@ -127,11 +127,11 @@ fun AboutContent(
     licenses: Licenses?,
     onBack: () -> Unit,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     var open by rememberSaveable { mutableStateOf<String?>(null) }
     val toggle = { id: String -> open = if (open == id) null else id }
     LazyColumn(
-        Modifier.fillMaxSize().background(colors.surface),
+        Modifier.fillMaxSize().background(theme.surface),
         contentPadding = PaddingValues(bottom = Space.s6),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -145,7 +145,7 @@ fun AboutContent(
                 BasicText(
                     stringResource(R.string.version, version),
                     Modifier.padding(top = Space.s2),
-                    style = AtlasTypography.bodySm.copy(color = colors.onSurfaceVariant),
+                    style = AtlasTypography.bodySm.copy(color = theme.onSurfaceVariant),
                 )
             }
         }
@@ -192,11 +192,11 @@ private fun LicenseRow(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     Column(
         modifier
             .fillMaxWidth()
-            .sticker(Radius.cardLg, colors.surfaceSticker, colors.outline)
+            .sticker(Radius.cardLg, theme.surfaceSticker, theme.outline)
             .clickable(enabled = entry.text != null, onClick = onClick)
             .padding(horizontal = Space.s4, vertical = Space.s3),
     ) {
@@ -204,15 +204,15 @@ private fun LicenseRow(
             BasicText(
                 entry.name,
                 Modifier.weight(1f),
-                style = AtlasTypography.labelLg.copy(color = colors.onSurface),
+                style = AtlasTypography.labelLg.copy(color = theme.onSurface),
             )
-            BasicText(entry.license, style = AtlasTypography.bodySm.copy(color = colors.onSurfaceVariant))
+            BasicText(entry.license, style = AtlasTypography.bodySm.copy(color = theme.onSurfaceVariant))
         }
         AnimatedVisibility(expanded) {
             BasicText(
                 entry.text.orEmpty(),
                 Modifier.padding(top = Space.s3),
-                style = AtlasTypography.bodySm.copy(color = colors.onSurfaceVariant),
+                style = AtlasTypography.bodySm.copy(color = theme.onSurfaceVariant),
             )
         }
     }
@@ -220,12 +220,12 @@ private fun LicenseRow(
 
 @Composable
 private fun Header(onBack: () -> Unit) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     Column(
         Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp))
-            .background(colors.inverseSurface)
+            .background(theme.inverseSurface)
             .windowInsetsPadding(WindowInsets.statusBars),
     ) {
         Row(
@@ -237,7 +237,7 @@ private fun Header(onBack: () -> Unit) {
             BasicText(
                 stringResource(R.string.about),
                 Modifier.semantics { heading() },
-                style = AtlasTypography.headline.copy(color = colors.onInverseSurface),
+                style = AtlasTypography.headline.copy(color = theme.onInverseSurface),
             )
         }
         SunsetBand()

@@ -28,7 +28,7 @@ fun UnofficialFooter(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     BasicText(
         stringResource(R.string.unofficial_notice),
         modifier
@@ -36,7 +36,7 @@ fun UnofficialFooter(
             .padding(horizontal = Space.s4, vertical = Space.s2),
         style =
             AtlasTypography.bodySm.copy(
-                color = colors.onSurfaceVariant,
+                color = theme.onSurfaceVariant,
                 textAlign = TextAlign.Center,
                 textDecoration = TextDecoration.Underline,
             ),
@@ -45,28 +45,28 @@ fun UnofficialFooter(
 
 @Composable
 fun UnofficialSticker(modifier: Modifier = Modifier) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     Column(
         modifier
             .fillMaxWidth()
-            .sticker(Radius.md, colors.surfaceSticker, colors.outline, shadow = Shadow.stickerLg)
+            .sticker(Radius.md, theme.surfaceSticker, theme.outline, shadow = Shadow.stickerLg)
             .padding(18.dp),
         verticalArrangement = Arrangement.spacedBy(Space.s3),
     ) {
         BasicText(
             stringResource(R.string.unofficial_label).uppercase(),
             Modifier
-                .sticker(CircleShape, colors.highlight, colors.outline)
+                .sticker(CircleShape, theme.highlight, theme.outline)
                 .padding(horizontal = Space.s3, vertical = Space.s1),
-            style = AtlasTypography.labelSm.copy(color = colors.onHighlight),
+            style = AtlasTypography.labelSm.copy(color = theme.onHighlight),
         )
         BasicText(
             stringResource(R.string.unofficial_notice),
-            style = AtlasTypography.bodyLg.copy(color = colors.onSurface),
+            style = AtlasTypography.bodyLg.copy(color = theme.onSurface),
         )
         BasicText(
             stringResource(R.string.unofficial_explanation),
-            style = AtlasTypography.bodyMd.copy(color = colors.onSurfaceVariant),
+            style = AtlasTypography.bodyMd.copy(color = theme.onSurfaceVariant),
         )
     }
 }

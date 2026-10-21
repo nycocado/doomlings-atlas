@@ -72,9 +72,9 @@ fun Modifier.sinkingSticker(
 @Composable
 internal fun StickerPreview() =
     AtlasTheme {
-        val colors = AtlasTheme.colors
+        val theme = AtlasTheme.colors
         Column(
-            Modifier.background(colors.surface).padding(Space.s4),
+            Modifier.background(theme.surface).padding(Space.s4),
             verticalArrangement = Arrangement.spacedBy(Space.s4),
         ) {
             BasicText(
@@ -82,22 +82,22 @@ internal fun StickerPreview() =
                 Modifier
                     .sticker(
                         Radius.md,
-                        colors.surfaceSticker,
-                        colors.outline,
+                        theme.surfaceSticker,
+                        theme.outline,
                         shadow = Shadow.stickerLg,
                     ).padding(Space.s4),
-                style = AtlasTypography.display.copy(color = colors.onSurface),
+                style = AtlasTypography.display.copy(color = theme.onSurface),
             )
             BasicText(
                 "Build piles",
                 Modifier
-                    .sticker(CircleShape, colors.primary, colors.outline, shadow = Shadow.sticker)
+                    .sticker(CircleShape, theme.primary, theme.outline, shadow = Shadow.sticker)
                     .padding(horizontal = Space.s4, vertical = Space.s3),
-                style = AtlasTypography.labelLg.copy(color = colors.onPrimary),
+                style = AtlasTypography.labelLg.copy(color = theme.onPrimary),
             )
             BasicText(
                 "Unofficial, not affiliated with or endorsed by Doomlings LLC",
-                style = AtlasTypography.bodySm.copy(color = colors.onSurfaceVariant),
+                style = AtlasTypography.bodySm.copy(color = theme.onSurfaceVariant),
             )
         }
     }

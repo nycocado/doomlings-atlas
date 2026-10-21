@@ -57,7 +57,7 @@ fun Dock(
     vertical: Boolean = false,
     itemModifier: Modifier = Modifier,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     val items =
         remember {
             Destination.entries.associateWith { destination ->
@@ -74,7 +74,7 @@ fun Dock(
                 } else {
                     Modifier.widthIn(max = MaxWidth.compact).fillMaxWidth().height(64.dp)
                 },
-            ).background(colors.inverseSurface, CircleShape),
+            ).background(theme.inverseSurface, CircleShape),
         contentAlignment = Alignment.Center,
     ) {
         if (vertical) {
@@ -100,13 +100,13 @@ private fun DockItem(
     onCardsClick: () -> Unit,
     modifier: Modifier,
 ) {
-    val colors = AtlasTheme.colors
+    val theme = AtlasTheme.colors
     val label = stringResource(destination.label)
     if (destination == Destination.Cards) {
         Row(
             modifier
                 .height(48.dp)
-                .background(colors.highlight, CircleShape)
+                .background(theme.highlight, CircleShape)
                 .clickable(onClick = onCardsClick)
                 .padding(horizontal = if (vertical) 12.dp else Space.s4)
                 .clearAndSetSemantics {
@@ -121,10 +121,10 @@ private fun DockItem(
                 painterResource(destination.icon),
                 null,
                 Modifier.size(22.dp),
-                colorFilter = ColorFilter.tint(colors.onHighlight),
+                colorFilter = ColorFilter.tint(theme.onHighlight),
             )
             if (!vertical) {
-                BasicText(label, style = AtlasTypography.labelLg.copy(color = colors.onHighlight), maxLines = 1)
+                BasicText(label, style = AtlasTypography.labelLg.copy(color = theme.onHighlight), maxLines = 1)
             }
         }
     } else {
@@ -140,7 +140,7 @@ private fun DockItem(
                 painterResource(destination.icon),
                 null,
                 Modifier.size(24.dp),
-                colorFilter = ColorFilter.tint(colors.onInverseSurface.copy(alpha = 0.38f)),
+                colorFilter = ColorFilter.tint(theme.onInverseSurface.copy(alpha = 0.38f)),
             )
         }
     }
