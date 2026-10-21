@@ -27,6 +27,8 @@ Everything here comes before assets and code.
 - Translated card text shown in the compendium, chosen apart from the interface language: card text stays as printed until the user picks a translation, with a language selector in the card detail.
 - App interface also in Spanish.
 - UI tests with Compose and Robolectric, in CI: navigation on phone and tablet sizes (opening, switching and closing cards, About) and state surviving activity recreation, with Compose's accessibility checks enabled so a touch target, contrast or label problem fails the build.
+- A screenshot test of the compendium with its header half collapsed, since the collapse relies on how `animateBounds` sizes an idle node.
+- Update check: the app looks up the latest GitHub Release and says when a newer version exists, skipped when Google Play installed it. It needs the internet permission, so an ADR amends [ADR 0002](docs/adr/0002-offline-without-backend.md) first.
 
 ## 3. Manual Scoring
 
