@@ -226,7 +226,6 @@ private fun Panel(
             .windowInsetsPadding(WindowInsets.statusBars)
             .height(420.dp),
     ) {
-        RoundButton(R.drawable.ic_back, R.string.back, onBack, Modifier.padding(start = Space.s4, top = Space.s5))
         val scope = rememberCoroutineScope()
         val drag = remember { Animatable(Offset.Zero, Offset.VectorConverter) }
         val lift = remember { Animatable(0f) }
@@ -273,6 +272,8 @@ private fun Panel(
                         Shadow.stickerLg + 6.dp * lift.value,
                     ).clip(Radius.cardLg),
         )
+        // After the card, so a card picked up and dragged passes under it.
+        RoundButton(R.drawable.ic_back, R.string.back, onBack, Modifier.padding(start = Space.s4, top = Space.s5))
     }
 }
 
