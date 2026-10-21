@@ -28,7 +28,7 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game.
 1. Branch from `main` (`feat/...`, `fix/...`, `docs/...`).
 2. In `shared`, write the failing test first, then the code.
 3. In `app`, give every component and screen a `@PreviewLightDark` preview, following [docs/design.md](docs/design.md).
-4. Run `./gradlew spotlessApply check` and fix everything it reports.
+4. Run `./gradlew spotlessApply check validateDebugScreenshotTest` and fix everything it reports.
 5. Open a PR titled in the commit format, saying what changed, why and how it was tested, with `Closes #N` when it comes from an issue.
 
 Claude Code hooks in `.claude/settings.json` enforce part of this; don't disable them.
