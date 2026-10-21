@@ -5,7 +5,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
@@ -33,6 +35,8 @@ fun UnofficialFooter(
         stringResource(R.string.unofficial_notice),
         modifier
             .clickable(onClickLabel = stringResource(R.string.about), onClick = onClick)
+            .heightIn(min = 48.dp)
+            .wrapContentHeight()
             .padding(horizontal = Space.s4, vertical = Space.s2),
         style =
             AtlasTypography.bodySm.copy(

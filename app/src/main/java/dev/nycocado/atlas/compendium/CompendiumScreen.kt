@@ -54,6 +54,8 @@ import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -100,8 +102,11 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
@@ -285,7 +290,11 @@ fun CompendiumContent(
                                 fullWidth("empty", reflow) {
                                     BasicText(
                                         stringResource(R.string.no_results),
-                                        Modifier.fillMaxWidth().padding(vertical = Space.s6),
+                                        Modifier
+                                            .fillMaxWidth()
+                                            .padding(vertical = Space.s6)
+                                            // Read out as it appears, since the search field keeps the focus.
+                                            .semantics { liveRegion = LiveRegionMode.Polite },
                                         style =
                                             AtlasTypography.bodyMd.copy(
                                                 color = theme.onSurfaceVariant,
@@ -559,6 +568,7 @@ private fun HeaderTitle(modifier: Modifier) {
         Image(painterResource(R.drawable.logo_mark_dark), null, Modifier.size(40.dp))
         BasicText(
             stringResource(R.string.app_name),
+            Modifier.semantics { heading() },
             style = AtlasTypography.headline.copy(color = AtlasTheme.colors.onInverseSurface),
         )
     }
@@ -659,7 +669,7 @@ private fun SearchField(
         AnimatedVisibility(query.isNotEmpty(), enter = fadeIn(), exit = fadeOut()) {
             Box(
                 Modifier
-                    .size(40.dp)
+                    .size(48.dp)
                     .clickable(role = Role.Button) { onQueryChange("") }
                     .semantics { contentDescription = clear },
                 contentAlignment = Alignment.Center,
@@ -690,7 +700,7 @@ private fun Filters(
                 exit = fadeOut() + shrinkVertically(),
             ) {
                 Row(
-                    Modifier.fillMaxWidth().padding(bottom = Space.s4),
+                    Modifier.fillMaxWidth().padding(bottom = Space.s4).selectableGroup(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     TraitColorOptions.forEach { color ->
@@ -709,7 +719,11 @@ private fun Filters(
             verticalAlignment = Alignment.Bottom,
             horizontalArrangement = Arrangement.spacedBy(Space.s2),
         ) {
-            BasicText(stringResource(filter.kind.title), style = AtlasTypography.titleLg.copy(color = theme.onSurface))
+            BasicText(
+                stringResource(filter.kind.title),
+                Modifier.semantics { heading() },
+                style = AtlasTypography.titleLg.copy(color = theme.onSurface),
+            )
             AnimatedVisibility(
                 visible = filter.kind == CardKind.Trait && filter.colors.isEmpty(),
                 enter = fadeIn(),
@@ -738,8 +752,7 @@ private fun ColorDisc(
     Column(
         modifier
             .width(64.dp)
-            .clickable(role = Role.RadioButton, onClick = onClick)
-            .semantics { this.selected = selected },
+            .selectable(selected, role = Role.RadioButton, onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {
@@ -794,23 +807,21 @@ private fun KindSegments(
         Modifier
             .fillMaxWidth()
             .sticker(CircleShape, theme.surfaceSticker, theme.outline, stroke = Stroke.sticker)
-            .padding(4.dp),
+            .padding(horizontal = 4.dp),
     ) {
         val count = CardKind.entries.size
         val width = (maxWidth - gap * (count - 1)) / count
         val offset by animateDpAsState((width + gap) * selected.ordinal, label = "segment")
         // Drawn, so it follows the segments' height with large text.
         Row(
-            Modifier.drawBehind {
-                val start = offset.toPx()
-                val x = if (layoutDirection == LayoutDirection.Ltr) start else size.width - width.toPx() - start
-                drawRoundRect(
-                    theme.primary,
-                    Offset(x, 0f),
-                    Size(width.toPx(), size.height),
-                    CornerRadius(size.height / 2),
-                )
-            },
+            Modifier
+                .drawBehind {
+                    val start = offset.toPx()
+                    val x = if (layoutDirection == LayoutDirection.Ltr) start else size.width - width.toPx() - start
+                    val inset = 4.dp.toPx()
+                    val height = size.height - inset * 2
+                    drawRoundRect(theme.primary, Offset(x, inset), Size(width.toPx(), height), CornerRadius(height / 2))
+                }.selectableGroup(),
             horizontalArrangement = Arrangement.spacedBy(gap),
         ) {
             CardKind.entries.forEach { kind ->
@@ -822,9 +833,9 @@ private fun KindSegments(
                 Box(
                     Modifier
                         .weight(1f)
-                        .heightIn(min = 40.dp)
-                        .clickable(role = Role.RadioButton) { onSelect(kind) }
-                        .semantics { this.selected = active },
+                        // Taller than the selected segment's 40dp, up to the minimum touch target.
+                        .heightIn(min = 48.dp)
+                        .selectable(active, role = Role.RadioButton) { onSelect(kind) },
                     contentAlignment = Alignment.Center,
                 ) {
                     BasicText(

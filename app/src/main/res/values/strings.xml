@@ -11,6 +11,8 @@
     <string name="licenses_app">App</string>
     <string name="licenses_fonts">Fonts</string>
     <string name="licenses_libraries">Libraries</string>
+    <string name="show_license">show license</string>
+    <string name="hide_license">hide license</string>
 
     <string name="search_placeholder">Which doomling are you looking for?</string>
     <string name="search_label">Search cards</string>
