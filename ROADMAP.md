@@ -51,4 +51,4 @@ Everything here comes before assets and code.
 
 ## Not Planned Yet
 
-Game history, collection tracking, favorite cards, iOS app, donations.
+Game history, collection tracking, favorite cards, iOS app, donations, compendium filters beyond color and type (points, icons, subspecies), swiping between cards in the card detail, an error screen for when the card data fails to load.
