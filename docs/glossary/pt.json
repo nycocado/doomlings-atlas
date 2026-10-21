@@ -51,7 +51,9 @@
     { "en": "clear", "use": "limpar", "avoid": ["deletar"] },
     { "en": "coming soon", "use": "em breve", "avoid": ["brevemente"] },
     { "en": "got it", "use": "entendi", "avoid": ["compreendi"] },
+    { "en": "hide", "use": "ocultar", "avoid": ["esconder"] },
     { "en": "libraries", "use": "bibliotecas", "avoid": ["livrarias"] },
+    { "en": "license", "use": "licença", "avoid": ["licenciamento"] },
     {
       "en": "point",
       "use": "ponto",
@@ -65,6 +67,7 @@
       "avoid": ["pesquisa", "pesquisar"],
       "note": "Verbo: buscar. \"procurar\" só na frase 'Qual doomling você procura?'."
     },
+    { "en": "show", "use": "mostrar", "avoid": ["exibir"] },
     { "en": "tap", "use": "toque", "avoid": ["clique", "clicar", "pressione"] },
     { "en": "unofficial", "use": "não oficial", "avoid": ["extraoficial"] },
     { "en": "version", "use": "versão", "avoid": [] }

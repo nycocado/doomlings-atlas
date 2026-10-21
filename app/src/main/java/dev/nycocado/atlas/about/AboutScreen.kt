@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
@@ -197,8 +198,13 @@ private fun LicenseRow(
         modifier
             .fillMaxWidth()
             .sticker(Radius.cardLg, theme.surfaceSticker, theme.outline)
-            .clickable(enabled = entry.text != null, onClick = onClick)
+            .clickable(
+                enabled = entry.text != null,
+                onClickLabel = stringResource(if (expanded) R.string.hide_license else R.string.show_license),
+                onClick = onClick,
+            ).heightIn(min = 48.dp)
             .padding(horizontal = Space.s4, vertical = Space.s3),
+        verticalArrangement = Arrangement.Center,
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(Space.s3)) {
             BasicText(
