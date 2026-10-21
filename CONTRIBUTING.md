@@ -73,14 +73,14 @@ How the code is kept consistent. Most of it runs in CI, so you only need the par
 ### Branches and Issues
 
 - `main` is the only long-lived branch and always builds and passes CI. Work happens on short-lived branches merged by PR ([GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)); merged branches are deleted.
-- Each [ROADMAP.md](ROADMAP.md) phase is a milestone. Its issues are small, each with what "done" means.
+- Each [ROADMAP.md](ROADMAP.md) phase is a milestone and ends with a minor release (`v0.1.0` for phase 1). Its issues are small, each with what "done" means.
 - Labels: `bug`, `card-data`, `translation` and `scoring`.
 
 ### CI and Releases
 
 - Every PR and push to `main` runs one GitHub Actions workflow: Gradle wrapper validation, `spotlessCheck`, `lint`, unit tests, the permission check, the screenshot tests and a debug build. The PR title must follow the commit format, since it becomes the squash commit message.
 - Actions are pinned by commit SHA. Dependabot opens weekly grouped updates for Gradle and Actions.
-- Releases (not set up yet; planned for the first release) come from a `vX.Y.Z` tag ([SemVer](https://semver.org)): the version name comes from the tag and the version code from its numbers (`1.2.3` → `10203`). The release workflow runs in the `release` environment, after the maintainer approves it, and creates a draft GitHub Release with the signed APK and the merged PRs grouped by type. The maintainer writes a short summary for players on top and publishes it; the Releases page is the changelog. The signing key lives only in GitHub Secrets and the maintainer's backup, never in the repo. The build signs the release APK only when the Gradle properties `atlas.release.storeFile`, `atlas.release.storePassword` and `atlas.release.keyAlias` are set (in the maintainer's `~/.gradle/gradle.properties` or by the workflow); otherwise it is built unsigned.
+- Releases (not set up yet; planned for the first release) come from a `vX.Y.Z` tag ([SemVer](https://semver.org)): the version name comes from the tag and the version code from its numbers (`1.2.3` → `10203`). The release workflow runs in the `release` environment, after the maintainer approves it, and creates a draft GitHub Release with the signed APK and the merged PRs grouped by type, as notes from [git-cliff](https://git-cliff.org) (`cliff.toml`). The maintainer writes a short summary for players on top and publishes it. Before tagging, `git cliff --tag vX.Y.Z -o CHANGELOG.md` updates `CHANGELOG.md` in a `[docs]` PR, so the tag includes it (`uvx git-cliff` runs it without installing). The signing key lives only in GitHub Secrets and the maintainer's backup, never in the repo. The build signs the release APK only when the Gradle properties `atlas.release.storeFile`, `atlas.release.storePassword` and `atlas.release.keyAlias` are set (in the maintainer's `~/.gradle/gradle.properties` or by the workflow); otherwise it is built unsigned.
 
 ## Documentation
 
