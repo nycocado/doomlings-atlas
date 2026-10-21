@@ -89,8 +89,11 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.AlignmentLine
+import androidx.compose.ui.layout.HorizontalAlignmentLine
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.LookaheadScope
+import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
@@ -108,6 +111,7 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.offset
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.nycocado.atlas.R
@@ -159,11 +163,11 @@ fun CompendiumScreen(
     viewModel: CompendiumViewModel,
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
-    cardOpen: Boolean,
+    besideCard: Boolean,
 ) {
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val results by viewModel.results.collectAsStateWithLifecycle()
-    CompendiumContent(filter, results, viewModel::updateFilter, onCardClick, onAboutClick, cardOpen)
+    CompendiumContent(filter, results, viewModel::updateFilter, onCardClick, onAboutClick, besideCard)
 }
 
 @Composable
@@ -173,8 +177,8 @@ fun CompendiumContent(
     onFilterChange: (CompendiumFilter) -> Unit,
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
-    // Beside an open card, which has its own way to About.
-    cardOpen: Boolean = false,
+    // The card beside the list has its own way to About.
+    besideCard: Boolean = false,
 ) {
     val colors = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
@@ -191,14 +195,14 @@ fun CompendiumContent(
     // Tapping the current destination goes back to the top of the list.
     val onCardsClick: () -> Unit = {
         scope.launch { grid.animateScrollToItem(0) }
-        scope.launch { collapse.unfold() }
+        scope.launch { collapse.expand() }
     }
     BoxWithConstraints {
         // Decided by the compendium's own width, not the window's: beside a card on a foldable or a small tablet it
         // has a phone's room, and takes the phone layout.
         val rail = maxWidth >= RailMinWidth
         // The header changes shape, its parts and the dock move to their new places when the layout switches. Only
-        // right after that switch: they also move while the header folds as the list scrolls, and must follow that
+        // right after that switch: they also move while the header collapses as the list scrolls, and must follow that
         // at once.
         val switched = remember { LayoutSwitch(rail) }
         switched.track(rail)
@@ -211,28 +215,30 @@ fun CompendiumContent(
             }
         // On the rail layout nothing sits below the grid, so it keeps clear of the navigation bar itself.
         val bottom = if (rail) Modifier.windowInsetsPadding(WindowInsets.navigationBars) else Modifier
-        // The wide header is a single row with nothing to fold, so it doesn't take part in scrolling.
-        val folding = if (rail) Modifier else Modifier.nestedScroll(collapse)
+        // The wide header is a single row with nothing to collapse, so it doesn't take part in scrolling.
+        val collapsesOnScroll = if (rail) Modifier else Modifier.nestedScroll(collapse)
+        val fraction: () -> Float = if (rail) ({ 0f }) else collapse::fraction
         Column(
             Modifier
                 .fillMaxSize()
                 .background(colors.surface)
-                .then(folding)
+                .then(collapsesOnScroll)
                 .pointerInput(Unit) { detectTapGestures { focusManager.clearFocus() } },
         ) {
             LookaheadScope {
                 Header(
                     filter.query,
-                    collapse::fraction,
+                    fraction,
+                    collapse,
                     rail,
                     onAboutClick,
-                    showAbout = !cardOpen,
+                    showAbout = !besideCard,
                     switchMotion,
                     Modifier.animateBounds(this, boundsTransform = switchMotion),
                 ) { onFilterChange(filter.copy(query = it)) }
             }
             Row(Modifier.weight(1f).then(bottom)) {
-                // Inside the row, so the header folding above doesn't move anything within this scope: the cards
+                // Inside the row, so the header collapsing above doesn't move anything within this scope: the cards
                 // only animate when the layout itself changes, like a card opening beside the list or a filter.
                 LookaheadScope {
                     val reflow = this
@@ -249,7 +255,7 @@ fun CompendiumContent(
                     // With the list on its own, a margin as wide as the rail on the other side centers the content on the
                     // screen like the search. Beside a card the list needs that room.
                     Column(
-                        Modifier.weight(1f).padding(end = if (rail && !cardOpen) RailWidth else 0.dp),
+                        Modifier.weight(1f).padding(end = if (rail && !besideCard) RailWidth else 0.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         LazyVerticalGrid(
@@ -260,6 +266,9 @@ fun CompendiumContent(
                                 Modifier
                                     .weight(1f)
                                     .widthIn(max = MaxWidth.wide)
+                                    // The header keeps its full size and only draws collapsed (see Modifier.collapsing),
+                                    // so the grid reaches up over what it no longer draws.
+                                    .raised { collapse.hidden(fraction()) }
                                     .clipScrollableContainer(Orientation.Vertical),
                             contentPadding =
                                 PaddingValues(
@@ -336,7 +345,7 @@ private fun LazyGridScope.fullWidth(
 
 private val CollapseDistance = 96.dp
 
-// Folds the header as the list scrolls down and unfolds it once the list is back at the top. Handwritten:
+// Collapses the header as the list scrolls down and expands it once the list is back at the top. Handwritten:
 // Material 3's collapsing app bars come with their own TopAppBar, and the design system is our own (ADR 0006).
 @Stable
 private class HeaderCollapse(
@@ -351,8 +360,17 @@ private class HeaderCollapse(
 
     fun fraction() = collapsed / distance
 
-    // Scrolling the list from code bypasses nested scrolling, so the header is unfolded explicitly.
-    suspend fun unfold() = animate(collapsed, 0f) { value, _ -> collapsed = value }
+    // The title row and the band collapse. Measured by the header, read by the list to move up as much in the same
+    // frame.
+    var titleHeight = 0
+    var bandHeight = 0
+
+    fun titleHidden(fraction: Float) = (titleHeight * fraction).roundToInt()
+
+    fun hidden(fraction: Float) = titleHidden(fraction) + (bandHeight * fraction).roundToInt()
+
+    // Scrolling the list from code bypasses nested scrolling, so the header is expanded explicitly.
+    suspend fun expand() = animate(collapsed, 0f) { value, _ -> collapsed = value }
 
     override fun onPreScroll(
         available: Offset,
@@ -375,7 +393,7 @@ private class HeaderCollapse(
         return Offset(0f, used)
     }
 
-    // A scroll that ends halfway finishes folding or unfolding, whichever is nearer.
+    // A scroll that ends halfway finishes collapsing or expanding, whichever is nearer.
     override suspend fun onPostFling(
         consumed: Velocity,
         available: Velocity,
@@ -387,18 +405,54 @@ private class HeaderCollapse(
     }
 }
 
-// Read at layout, so scrolling skips recomposition.
-private fun Modifier.folded(fraction: () -> Float) =
-    clipToBounds().layout { measurable, constraints ->
-        val placeable = measurable.measure(constraints)
-        val height = (placeable.height * (1 - fraction())).roundToInt()
-        layout(placeable.width, height) { placeable.place(0, height - placeable.height) }
+private val TitleTop = HorizontalAlignmentLine { a, b -> minOf(a, b) }
+private val TitleBottom = HorizontalAlignmentLine { a, b -> maxOf(a, b) }
+private val BandTop = HorizontalAlignmentLine { a, b -> minOf(a, b) }
+private val BandBottom = HorizontalAlignmentLine { a, b -> maxOf(a, b) }
+
+// Marks a part of the header that collapses, for Modifier.collapsing to measure.
+private fun Modifier.collapses(
+    top: HorizontalAlignmentLine,
+    bottom: HorizontalAlignmentLine,
+) = layout { measurable, constraints ->
+    val placeable = measurable.measure(constraints)
+    layout(placeable.width, placeable.height, mapOf(top to 0, bottom to placeable.height)) { placeable.place(0, 0) }
+}
+
+private fun Placeable.span(
+    top: HorizontalAlignmentLine,
+    bottom: HorizontalAlignmentLine,
+) = if (get(top) == AlignmentLine.Unspecified || get(bottom) == AlignmentLine.Unspecified) 0 else get(bottom) - get(top)
+
+// Collapses the header without moving anything inside it or changing its size in the lookahead pass, which animateBounds
+// would follow a frame or more late: the content slides up as a whole, cut off above and below. Read at layout, so
+// scrolling skips recomposition.
+private fun Modifier.collapsing(
+    collapse: HeaderCollapse,
+    fraction: () -> Float,
+) = clipToBounds().layout { measurable, constraints ->
+    val placeable = measurable.measure(constraints)
+    collapse.titleHeight = placeable.span(TitleTop, TitleBottom)
+    collapse.bandHeight = placeable.span(BandTop, BandBottom)
+    val f = if (isLookingAhead) 0f else fraction()
+    layout(placeable.width, placeable.height - collapse.hidden(f)) { placeable.place(0, -collapse.titleHidden(f)) }
+}
+
+// Placed as scrolling, which animateBounds applies at once instead of animating it a frame or more late.
+private fun Modifier.raised(amount: () -> Int) =
+    layout { measurable, constraints ->
+        val raise = amount()
+        val placeable = measurable.measure(constraints.offset(vertical = raise))
+        layout(placeable.width, placeable.height - raise) {
+            withMotionFrameOfReferencePlacement { placeable.place(0, -raise) }
+        }
     }
 
 @Composable
 private fun Header(
     query: String,
     fraction: () -> Float,
+    collapse: HeaderCollapse,
     wide: Boolean,
     onAboutClick: () -> Unit,
     // When hidden, the search takes the button's place.
@@ -425,7 +479,7 @@ private fun Header(
                     enter = fadeIn() + scaleIn() + expandHorizontally(),
                     exit = fadeOut() + scaleOut() + shrinkHorizontally(),
                 ) {
-                    // The row clips while folding, so it leaves room for the button's shadow.
+                    // The header clips while collapsing, so it leaves room for the button's shadow.
                     RoundButton(
                         R.drawable.ic_info,
                         R.string.about,
@@ -445,43 +499,52 @@ private fun Header(
                 clip = true
             }.background(colors.inverseSurface)
             .windowInsetsPadding(WindowInsets.statusBars),
-        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        LookaheadScope {
-            val moves = Modifier.animateBounds(this, boundsTransform = transform)
-            if (wide) {
-                CenteredBetween(
-                    Modifier.padding(start = Space.s5, end = Space.s5, top = Space.s3, bottom = Space.s4),
-                    start = { title(moves) },
-                    center = {
-                        search(
-                            query,
-                            onQueryChange,
-                            Modifier.animateBounds(
-                                this,
-                                Modifier.widthIn(max = MaxWidth.compact),
-                                boundsTransform = transform,
-                            ),
-                        )
-                    },
-                    end = { about(showAbout, onAboutClick, moves) },
-                )
-            } else {
-                Column(
-                    Modifier.widthIn(max = MaxWidth.content).padding(start = Space.s5, end = Space.s5, top = Space.s2),
-                ) {
-                    Row(
-                        Modifier.folded(fraction).padding(top = Space.s1, bottom = Space.s4),
-                        verticalAlignment = Alignment.CenterVertically,
+        Column(Modifier.collapsing(collapse, fraction), horizontalAlignment = Alignment.CenterHorizontally) {
+            LookaheadScope {
+                val moves = Modifier.animateBounds(this, boundsTransform = transform)
+                if (wide) {
+                    CenteredBetween(
+                        Modifier.padding(start = Space.s5, end = Space.s5, top = Space.s3, bottom = Space.s4),
+                        start = { title(moves) },
+                        center = {
+                            search(
+                                query,
+                                onQueryChange,
+                                Modifier.animateBounds(
+                                    this,
+                                    Modifier.widthIn(max = MaxWidth.compact),
+                                    boundsTransform = transform,
+                                ),
+                            )
+                        },
+                        end = { about(showAbout, onAboutClick, moves) },
+                    )
+                } else {
+                    Column(
+                        Modifier
+                            .widthIn(max = MaxWidth.content)
+                            .padding(start = Space.s5, end = Space.s5, top = Space.s2),
                     ) {
-                        Box(Modifier.weight(1f)) { title(moves) }
-                        about(showAbout, onAboutClick, moves)
+                        Row(
+                            Modifier.collapses(TitleTop, TitleBottom).padding(top = Space.s1, bottom = Space.s4),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Box(Modifier.weight(1f)) { title(moves) }
+                            about(showAbout, onAboutClick, moves)
+                        }
+                        search(query, onQueryChange, Modifier.padding(bottom = Space.s3).then(moves))
                     }
-                    search(query, onQueryChange, Modifier.padding(bottom = Space.s3).then(moves))
                 }
+                // Moves with the header's edge as it grows or shrinks, instead of jumping to where it ends up.
+                SunsetBand(
+                    Modifier.animateBounds(
+                        this,
+                        Modifier.collapses(BandTop, BandBottom).padding(top = 6.dp),
+                        transform,
+                    ),
+                )
             }
-            // Moves with the header's edge as it grows or shrinks, instead of jumping to where it ends up.
-            SunsetBand(Modifier.animateBounds(this, Modifier.folded(fraction).padding(top = 6.dp), transform))
         }
     }
 }

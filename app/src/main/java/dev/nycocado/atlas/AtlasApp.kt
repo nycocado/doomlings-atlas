@@ -116,7 +116,7 @@ fun AtlasApp() {
                             backStack.add(CardKey(id))
                         },
                         onAboutClick = { backStack.add(AboutKey) },
-                        cardOpen = hasCard,
+                        besideCard = wide && hasCard,
                     )
                 }
                 // One content key for every card, so picking another card beside the list only changes what the
