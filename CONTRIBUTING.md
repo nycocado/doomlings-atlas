@@ -64,7 +64,7 @@ You are responsible for every line you submit, however it was written. Make sure
 How the code is kept consistent. Most of it runs in CI, so you only need the parts that touch your change.
 
 - **Tests first in `shared`:** card data, game rules and scoring are written test-first. Each scoring rule gets a test with a real pile and its expected score.
-- **Previews in `app`:** every component and screen has a `@PreviewLightDark` preview (light and dark themes).
+- **Previews in `app`:** every component and screen has a `@PreviewLightDark` preview (light and dark themes). The previews in `app/src/screenshotTest` are screenshot tests: `./gradlew validateDebugScreenshotTest` compares them with the saved images, and after an intended visual change `./gradlew updateDebugScreenshotTest` saves the new ones, which go in the same PR.
 - **Style:** Spotless with ktlint formats the code and Android Lint runs with warnings as errors. `./gradlew spotlessApply check` fixes formatting and runs the same checks as CI.
 - **Dependencies:** versions live in `gradle/libs.versions.toml`. A new dependency needs a reason in the PR.
 - **Permissions:** the app declares no permissions, as it works fully offline ([ADR 0002](docs/adr/0002-offline-without-backend.md)). CI fails if the final manifest has a permission missing from `app/permissions-allowlist.txt`. Adding one needs a reason in the PR.
@@ -78,7 +78,7 @@ How the code is kept consistent. Most of it runs in CI, so you only need the par
 
 ### CI and Releases
 
-- Every PR and push to `main` runs one GitHub Actions workflow: Gradle wrapper validation, `spotlessCheck`, `lint`, unit tests, the permission check and a debug build. The PR title must follow the commit format, since it becomes the squash commit message.
+- Every PR and push to `main` runs one GitHub Actions workflow: Gradle wrapper validation, `spotlessCheck`, `lint`, unit tests, the permission check, the screenshot tests and a debug build. The PR title must follow the commit format, since it becomes the squash commit message.
 - Actions are pinned by commit SHA. Dependabot opens weekly grouped updates for Gradle and Actions.
 - Releases (not set up yet; planned for the first release) come from a `vX.Y.Z` tag ([SemVer](https://semver.org)): the version name comes from the tag and the version code from its numbers (`1.2.3` → `10203`). The release workflow runs in the `release` environment, after the maintainer approves it, and creates a draft GitHub Release with the signed APK and the merged PRs grouped by type. The maintainer writes a short summary for players on top and publishes it; the Releases page is the changelog. The signing key lives only in GitHub Secrets and the maintainer's backup, never in the repo.
 
