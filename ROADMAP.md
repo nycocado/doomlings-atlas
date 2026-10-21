@@ -30,6 +30,20 @@ Everything here comes before assets and code.
 - A screenshot test of the compendium with its header half collapsed, since the collapse relies on how `animateBounds` sizes an idle node.
 - Update check: the app looks up the latest GitHub Release and says when a newer version exists, skipped when Google Play installed it. It needs the internet permission, so an ADR amends [ADR 0002](docs/adr/0002-offline-without-backend.md) first.
 
+### Going Public
+
+The repository goes public and the first APK comes out on GitHub Releases at the end of this phase. Before that, in this order:
+
+- Git history rewritten so every commit uses the maintainer's GitHub noreply address, with the `v0.1.0` tag and Release recreated on the new commits.
+- History scanned for secrets with gitleaks.
+- A `SECURITY.md`, with private vulnerability reporting turned on.
+- Rulesets on `main` (pull request, green CI, no force push) and on `v*` tags (only the maintainer creates or moves them), immutable releases, CodeQL, secret scanning and push protection, which need a public repository on the free plan.
+- Actions runs for outside contributors wait for the maintainer's approval, the maintainer's GitHub account uses two-factor authentication, and the workflows are checked once with [zizmor](https://zizmor.sh).
+- CI also builds the unsigned release APK, so an R8 break fails the pull request, and reviews the dependencies each pull request adds.
+- Release workflow: a `vX.Y.Z` tag builds the signed APK in the `release` environment after the maintainer approves it, and creates a draft GitHub Release with a build provenance attestation (see [CONTRIBUTING.md](CONTRIBUTING.md)). The maintainer installs the draft's APK on a real device before publishing it.
+- README for players: what the app does, screenshots and where to download it. Repository topics so the project shows up in GitHub search.
+- Doomlings told that the repository is public.
+
 ## 3. Manual Scoring
 
 - Players added by name at the start of the game, each with the Gene Pool card in front of them.
@@ -53,4 +67,4 @@ Everything here comes before assets and code.
 
 ## Not Planned Yet
 
-Game history, collection tracking, favorite cards, iOS app, donations, compendium filters beyond color and type (points, icons, subspecies), swiping between cards in the card detail, an error screen for when the card data fails to load.
+Google Play release, F-Droid, game history, collection tracking, favorite cards, iOS app, donations, compendium filters beyond color and type (points, icons, subspecies), swiping between cards in the card detail, an error screen for when the card data fails to load.
