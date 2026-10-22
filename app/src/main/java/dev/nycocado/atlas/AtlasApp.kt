@@ -121,9 +121,11 @@ fun AtlasApp() {
                             detailPlaceholder = { lastCard?.let { cardPane(it, true, {}, {}) } },
                         ) +
                             ListDetailSceneStrategy.preferredPaneSize(width = 0.5f) +
-                            // The list jumps to its new width, so the grid changes its columns once instead of on
-                            // every frame of the resize; the cards then glide to their new places.
-                            ListDetailSceneStrategy.paneAnimation(boundsAnimationSpec = snap()),
+                            // As a card opens, the list jumps to its new width, so the grid changes its columns once
+                            // instead of on every frame of the resize; the cards then glide to their new places. As
+                            // it closes, the list grows with the pane's default motion instead: the scaffold draws the
+                            // card's pane under it while it slides out, so a list already at full width hides it.
+                            ListDetailSceneStrategy.paneAnimation(boundsAnimationSpec = if (hasCard) snap() else null),
                 ) {
                     CompendiumScreen(
                         viewModel,
