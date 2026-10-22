@@ -16,7 +16,9 @@ import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
 import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneStrategy
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.movableContentOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -75,6 +77,18 @@ fun AtlasApp() {
         }
     }
     val hasCard = backStack.any { it is CardKey }
+    // The card's pane takes the card with it as it slides out: the card leaves the back stack before the pane hides,
+    // so the list's placeholder for that pane shows the last card meanwhile. Movable, so it keeps its tilt and scroll.
+    var lastCard by remember { mutableStateOf<String?>(null) }
+    backStack.lastOrNull { it is CardKey }?.let { open -> SideEffect { lastCard = (open as CardKey).id } }
+    val cardPane =
+        remember {
+            movableContentOf { id: String, besideList: Boolean, onBack: () -> Unit, onAboutClick: () -> Unit ->
+                Box(if (besideList) Modifier.sheet() else Modifier) {
+                    CardDetailScreen(viewModel, id, besideList, onBack, onAboutClick)
+                }
+            }
+        }
     val directive = calculatePaneScaffoldDirective(currentWindowAdaptiveInfoV2())
     // Tablets, unfolded foldables and phones on their side: room for the list and a card side by side. Read from the
     // panes the scaffold allows, so the screens below follow the scene instead of deciding it again on their own.
@@ -103,7 +117,9 @@ fun AtlasApp() {
             entryProvider {
                 entry<CompendiumKey>(
                     metadata =
-                        ListDetailSceneStrategy.listPane() +
+                        ListDetailSceneStrategy.listPane(
+                            detailPlaceholder = { lastCard?.let { cardPane(it, true, {}, {}) } },
+                        ) +
                             ListDetailSceneStrategy.preferredPaneSize(width = 0.5f) +
                             // The list jumps to its new width, so the grid changes its columns once instead of on
                             // every frame of the resize; the cards then glide to their new places.
@@ -126,16 +142,7 @@ fun AtlasApp() {
                     clazzContentKey = { "card" },
                     metadata = ListDetailSceneStrategy.detailPane(),
                 ) { key ->
-                    val sheet = if (sideBySide) Modifier.sheet() else Modifier
-                    Box(sheet) {
-                        CardDetailScreen(
-                            viewModel,
-                            key.id,
-                            besideList = sideBySide,
-                            onBack = { backStack.removeLastOrNull() },
-                            onAboutClick = { backStack.add(AboutKey) },
-                        )
-                    }
+                    cardPane(key.id, sideBySide, { backStack.removeLastOrNull() }, { backStack.add(AboutKey) })
                 }
                 entry<AboutKey> { AboutScreen { backStack.removeLastOrNull() } }
             },
