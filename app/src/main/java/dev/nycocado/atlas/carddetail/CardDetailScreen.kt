@@ -128,7 +128,6 @@ fun CardDetailContent(
     tilt: Float,
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
-    // Beside the list, whose dark header the status bar also spans.
     besideList: Boolean = false,
 ) {
     val theme = AtlasTheme.colors

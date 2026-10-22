@@ -241,10 +241,8 @@ fun CompendiumContent(
     }
 }
 
-// The list with the dock as a rail beside it or as a bar below it, in one layout for both, so a layout switch moves
-// the dock within the same parent and its animation glides it from the first frame. Handwritten: a Row with the rail
-// and a Column with the bar are two parents, and the dock moved between them as movable content showed up in its new
-// place for two frames before gliding there.
+// The list with the dock as a rail beside it or a bar below it. Handwritten as one layout: moved between two parents,
+// the dock can't glide on its first frames.
 @Composable
 private fun ListAndDock(
     rail: Boolean,
@@ -273,7 +271,6 @@ private fun ListAndDock(
         val railWidth = RailWidth.roundToPx()
         val start = Space.s5.roundToPx()
         val inset = Space.s4.roundToPx()
-        // The rail's room: from the header's side margin to s4 before the list, and s4 from the top and bottom.
         val room = IntSize(railWidth - start - inset, (height - inset * 2).coerceAtLeast(0))
         val dock = dockSlot.measure(Constraints(maxWidth = room.width, maxHeight = room.height))
         val listRoom = (width - railWidth - if (centered) railWidth else 0).coerceAtLeast(0)

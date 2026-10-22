@@ -87,8 +87,7 @@ internal class HeaderCollapse(
 
     fun fraction() = collapsed / distance
 
-    // Measured by the title row, the part of the header's content that collapses, and read by the header in the same
-    // layout pass.
+    // The stacked header's title row, the part that collapses. Set by the header's layout, read in the same pass.
     var titleHeight = 0
 
     // Scrolling the list from code bypasses nested scrolling, so the header is expanded explicitly.
@@ -115,7 +114,6 @@ internal class HeaderCollapse(
         return Offset(0f, used)
     }
 
-    // A scroll that ends halfway finishes collapsing or expanding, whichever is nearer.
     override suspend fun onPostFling(
         consumed: Velocity,
         available: Velocity,
@@ -131,7 +129,7 @@ internal class HeaderCollapse(
 // recomposition.
 private fun Modifier.collapsing(
     fraction: () -> Float,
-    // The part of the content's height that collapses, all of it by default.
+    // The part of the content's height that collapses.
     height: (Int) -> Int = { it },
 ) = clipToBounds().layout { measurable, constraints ->
     val placeable = measurable.measure(constraints)
@@ -200,16 +198,12 @@ private fun HeaderTitle(modifier: Modifier) {
     }
 }
 
-// The title, search and info button in one layout for both shapes, so a layout switch moves them within the same
-// parent and animateBounds glides them from the first frame. Moved between two parents as movable content, they showed
-// up in their new places for two frames before gliding there. Stacked: the title and info button in a row above the
-// search. One row: title and info button in the corners, search in the middle of the whole row, moving toward the end
-// and then narrowing when there isn't room. Handwritten: Row can only center a child between its neighbors, not on the
-// row itself.
+// Title and info button above the search, or all in one row with the search centered on the whole row. One layout for
+// both: moved between two parents, animateBounds can't glide them on their first frames. Handwritten: Row centers a
+// child between its neighbors, not on the row.
 @Composable
 private fun HeaderParts(
     rail: Boolean,
-    // The stacked layout's title row, which is the part that collapses.
     onTitleHeight: (Int) -> Unit,
     modifier: Modifier,
     title: @Composable () -> Unit,
@@ -241,7 +235,6 @@ private fun HeaderParts(
             about.placeRelative(width - side - about.width, top + (row - about.height) / 2)
         }
     } else {
-        // Within the content's width and centered, like the filters below.
         val outer = minOf(width, MaxWidth.content.roundToPx())
         val start = Alignment.CenterHorizontally.align(outer, width, layoutDirection) + side
         val inner = loose.copy(maxWidth = (outer - side * 2).coerceAtLeast(0))

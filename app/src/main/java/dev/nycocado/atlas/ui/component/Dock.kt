@@ -81,10 +81,8 @@ fun Dock(
     }
 }
 
-// The items in a column (rail) or a row (bar), measured and placed as Column and Row would: each with the room the
-// ones before it left, spaced by s3 in the column and around each other in the row. Handwritten: Column and Row are
-// two parents, and items moved between them as movable content showed up in their new places for two frames before
-// a caller's animation could glide them there; one layout keeps them in the same parent.
+// The items as a Column (rail) or a Row (bar) would place them. Handwritten as one layout: moved between two parents,
+// a caller's animation can't glide them on their first frames.
 @Composable
 private fun DockLine(
     vertical: Boolean,
