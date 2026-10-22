@@ -128,7 +128,6 @@ fun AtlasApp() {
                     CompendiumScreen(
                         viewModel,
                         onCardClick = { id ->
-                            // Beside the list, a new card replaces the open one instead of stacking.
                             backStack.removeAll { it is CardKey }
                             backStack.add(CardKey(id))
                         },
