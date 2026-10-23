@@ -29,6 +29,7 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -112,11 +113,18 @@ fun CompendiumContent(
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
     layout: ListDetailLayout = ListDetailLayout.Single,
+    collapsedAtStart: Float = 0f,
 ) {
     val theme = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
     // Saveable like the grid's position, so coming back from a card restores both together.
-    val collapse = rememberSaveable(distance, saver = HeaderCollapse.saver(distance)) { HeaderCollapse(distance) }
+    val collapse =
+        rememberSaveable(distance, saver = HeaderCollapse.saver(distance)) {
+            HeaderCollapse(
+                distance,
+                collapsedAtStart * distance,
+            )
+        }
     val grid = rememberLazyGridState()
     val scope = rememberCoroutineScope()
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
@@ -143,9 +151,7 @@ fun CompendiumContent(
         val switchMotion = BoundsTransform { _, _ -> if (switched.switching) ReflowSpec else snap() }
         // On the rail layout nothing sits below the grid, so it keeps clear of the navigation bar itself.
         val bottom = if (rail) Modifier.windowInsetsPadding(WindowInsets.navigationBars) else Modifier
-        // The rail layout's header is a single row with nothing to collapse, so it doesn't take part in scrolling.
-        val collapsesOnScroll = if (rail) Modifier else Modifier.nestedScroll(collapse)
-        val fraction: () -> Float = if (rail) ({ 0f }) else collapse::fraction
+        SideEffect { collapse.rail = rail }
         // Around the whole screen, where the dock stays put while the header collapses and the list below it grows.
         LookaheadScope {
             val itemMotion = Modifier.animateBounds(this, boundsTransform = switchMotion)
@@ -153,12 +159,11 @@ fun CompendiumContent(
                 Modifier
                     .fillMaxSize()
                     .background(theme.surface)
-                    .then(collapsesOnScroll)
+                    .nestedScroll(collapse)
                     .pointerInput(Unit) { detectTapGestures { focusManager.clearFocus() } },
             ) {
                 Header(
                     filter.query,
-                    fraction,
                     collapse,
                     rail,
                     onAboutClick,
@@ -356,28 +361,42 @@ internal fun CompendiumPreview() = CompendiumSample(ListDetailLayout.Single)
 
 @PreviewLightDark
 @Composable
+internal fun CompendiumHalfCollapsedPreview() = CompendiumSample(ListDetailLayout.Single, collapsedAtStart = 0.5f)
+
+@PreviewLightDark
+@Composable
 internal fun CompendiumBesideCardPreview() = CompendiumSample(ListDetailLayout.BesideCard)
 
 @Composable
-private fun CompendiumSample(layout: ListDetailLayout) =
-    AtlasTheme {
-        BlankCardImages {
-            val cards =
-                listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red).map {
-                    Trait(
-                        "$it",
-                        "classic",
-                        "",
-                        "${it.name} trait",
-                        null,
-                        null,
-                        1,
-                        listOf(it),
-                        false,
-                        emptyList(),
-                        emptyList(),
-                    )
-                }
-            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {}, {}, layout)
-        }
+private fun CompendiumSample(
+    layout: ListDetailLayout,
+    collapsedAtStart: Float = 0f,
+) = AtlasTheme {
+    BlankCardImages {
+        val cards =
+            listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red).map {
+                Trait(
+                    "$it",
+                    "classic",
+                    "",
+                    "${it.name} trait",
+                    null,
+                    null,
+                    1,
+                    listOf(it),
+                    false,
+                    emptyList(),
+                    emptyList(),
+                )
+            }
+        CompendiumContent(
+            CompendiumFilter(colors = setOf(CardColor.Green)),
+            cards,
+            {},
+            {},
+            {},
+            layout,
+            collapsedAtStart,
+        )
     }
+}
