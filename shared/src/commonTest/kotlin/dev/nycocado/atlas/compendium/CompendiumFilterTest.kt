@@ -84,6 +84,49 @@ class CompendiumFilterTest {
     }
 
     @Test
+    fun searchOfOnlySpacesListsEverything() {
+        assertEquals(listOf("Brave", "Camouflage", "Prickly", "Venomous"), names(CompendiumFilter(query = "   ")))
+    }
+
+    @Test
+    fun searchesSymbolsInTheEffect() {
+        val cards =
+            listOf(
+                trait("Gainer", effect = "+1 Gene Pool."),
+                trait("Loser", effect = "-1 Gene Pool."),
+                trait("Drawer", effect = "Draw 1 card."),
+            )
+        assertEquals(listOf("Gainer"), cards.filterCompendium(CompendiumFilter(query = "+1")).map { it.name })
+    }
+
+    @Test
+    fun cardsSharingANameAreAllListedInTheirDataOrder() {
+        val first = trait("Kidney", Red).copy(id = "kidney-red")
+        val second = trait("Kidney", Blue).copy(id = "kidney-blue")
+        val other = trait("Brave", Green)
+        assertEquals(
+            listOf("Brave", "kidney-red", "kidney-blue"),
+            listOf(first, second, other).filterCompendium(CompendiumFilter()).map { it.id },
+        )
+        assertEquals(
+            listOf("Brave", "kidney-blue", "kidney-red"),
+            listOf(second, first, other).filterCompendium(CompendiumFilter()).map { it.id },
+        )
+    }
+
+    @Test
+    fun colorsSurviveSwitchingToAgesAndBack() {
+        val backToTraits = CompendiumFilter(colors = setOf(Blue)).copy(kind = CardKind.Age).copy(kind = CardKind.Trait)
+        assertEquals(listOf("Brave", "Camouflage"), names(backToTraits))
+    }
+
+    @Test
+    fun colorsNeverHideAgesOrCatastrophes() {
+        assertEquals(listOf("age-of-dracula"), names(CompendiumFilter(CardKind.Age, colors = setOf(Red))))
+        assertEquals(listOf("ai-takeover"), names(CompendiumFilter(CardKind.Catastrophe, colors = setOf(Green, null))))
+    }
+
+    @Test
     fun survivesSavingWithColorlessSelected() {
         val filter = CompendiumFilter(CardKind.Trait, "drac", setOf(null))
         assertEquals(filter, Json.decodeFromString<CompendiumFilter>(Json.encodeToString(filter)))
