@@ -112,11 +112,18 @@ fun CompendiumContent(
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
     layout: ListDetailLayout = ListDetailLayout.Single,
+    collapsedAtStart: Float = 0f,
 ) {
     val theme = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
     // Saveable like the grid's position, so coming back from a card restores both together.
-    val collapse = rememberSaveable(distance, saver = HeaderCollapse.saver(distance)) { HeaderCollapse(distance) }
+    val collapse =
+        rememberSaveable(distance, saver = HeaderCollapse.saver(distance)) {
+            HeaderCollapse(
+                distance,
+                collapsedAtStart * distance,
+            )
+        }
     val grid = rememberLazyGridState()
     val scope = rememberCoroutineScope()
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
@@ -356,28 +363,42 @@ internal fun CompendiumPreview() = CompendiumSample(ListDetailLayout.Single)
 
 @PreviewLightDark
 @Composable
+internal fun CompendiumHalfCollapsedPreview() = CompendiumSample(ListDetailLayout.Single, collapsedAtStart = 0.5f)
+
+@PreviewLightDark
+@Composable
 internal fun CompendiumBesideCardPreview() = CompendiumSample(ListDetailLayout.BesideCard)
 
 @Composable
-private fun CompendiumSample(layout: ListDetailLayout) =
-    AtlasTheme {
-        BlankCardImages {
-            val cards =
-                listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red).map {
-                    Trait(
-                        "$it",
-                        "classic",
-                        "",
-                        "${it.name} trait",
-                        null,
-                        null,
-                        1,
-                        listOf(it),
-                        false,
-                        emptyList(),
-                        emptyList(),
-                    )
-                }
-            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {}, {}, layout)
-        }
+private fun CompendiumSample(
+    layout: ListDetailLayout,
+    collapsedAtStart: Float = 0f,
+) = AtlasTheme {
+    BlankCardImages {
+        val cards =
+            listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red).map {
+                Trait(
+                    "$it",
+                    "classic",
+                    "",
+                    "${it.name} trait",
+                    null,
+                    null,
+                    1,
+                    listOf(it),
+                    false,
+                    emptyList(),
+                    emptyList(),
+                )
+            }
+        CompendiumContent(
+            CompendiumFilter(colors = setOf(CardColor.Green)),
+            cards,
+            {},
+            {},
+            {},
+            layout,
+            collapsedAtStart,
+        )
     }
+}
