@@ -62,10 +62,9 @@ class CardPane internal constructor(
             val card = all?.find { it.id == id }
             // A back stack restored after an update can name a card the data no longer has.
             if (all != null && card == null) LaunchedEffect(id) { onBack() }
-            card?.let {
-                Box(if (besideList) Modifier.sheet() else Modifier) {
-                    CardDetailScreen(it, besideList, onBack, onAboutClick)
-                }
+            // The sheet shows beside the list even while the cards load.
+            Box(if (besideList) Modifier.sheet() else Modifier) {
+                card?.let { CardDetailScreen(it, besideList, onBack, onAboutClick) }
             }
         }
 
