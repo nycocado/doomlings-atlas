@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.offset
 import androidx.core.content.edit
@@ -40,6 +41,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import dev.nycocado.atlas.about.AboutScreen
 import dev.nycocado.atlas.about.NoticeDialog
+import dev.nycocado.atlas.carddetail.CardDetailSample
 import dev.nycocado.atlas.carddetail.CardDetailScreen
 import dev.nycocado.atlas.compendium.CompendiumScreen
 import dev.nycocado.atlas.compendium.CompendiumViewModel
@@ -171,3 +173,11 @@ private fun Modifier.sheet(): Modifier {
             drawRect(Color.Black.copy(alpha = 0.2f), size = Size(size.width, statusBar + Stroke.sticker.toPx()))
         }
 }
+
+// On the scene's background, which shows around the sheet.
+@PreviewLightDark
+@Composable
+internal fun CardBesideListPreview() =
+    AtlasTheme {
+        Box(Modifier.background(AtlasTheme.colors.surface).sheet()) { CardDetailSample(besideList = true) }
+    }

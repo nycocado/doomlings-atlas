@@ -481,28 +481,30 @@ private val TraitIcon.symbol: Int?
 
 @PreviewLightDark
 @Composable
-internal fun CardDetailPreview() =
-    AtlasTheme {
-        BlankCardImages {
-            CardDetailContent(
-                Trait(
-                    "blue",
-                    "classic",
-                    "",
-                    "Blue trait",
-                    "Flavor text goes here.",
-                    "Effect text goes here.",
-                    -1,
-                    listOf(CardColor.Blue),
-                    true,
-                    emptyList(),
-                    listOf(TraitIcon.Action, TraitIcon.DropOfLife, TraitIcon.PlayWhen, TraitIcon.WorldsEnd),
-                ),
-                tilt = -3f,
-                onBack = {},
-                onAboutClick = {},
-            )
-        }
+internal fun CardDetailPreview() = AtlasTheme { CardDetailSample() }
+
+@Composable
+internal fun CardDetailSample(besideList: Boolean = false) =
+    BlankCardImages {
+        CardDetailContent(
+            Trait(
+                "blue",
+                "classic",
+                "",
+                "Blue trait",
+                "Flavor text goes here.",
+                "Effect text goes here.",
+                -1,
+                listOf(CardColor.Blue),
+                true,
+                emptyList(),
+                listOf(TraitIcon.Action, TraitIcon.DropOfLife, TraitIcon.PlayWhen, TraitIcon.WorldsEnd),
+            ),
+            tilt = -3f,
+            onBack = {},
+            onAboutClick = {},
+            besideList = besideList,
+        )
     }
 
 @PreviewLightDark

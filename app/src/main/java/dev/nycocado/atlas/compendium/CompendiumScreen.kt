@@ -352,7 +352,14 @@ private fun CompendiumCard(
 
 @PreviewLightDark
 @Composable
-internal fun CompendiumPreview() =
+internal fun CompendiumPreview() = CompendiumSample(besideCard = false)
+
+@PreviewLightDark
+@Composable
+internal fun CompendiumBesideCardPreview() = CompendiumSample(besideCard = true)
+
+@Composable
+private fun CompendiumSample(besideCard: Boolean) =
     AtlasTheme {
         BlankCardImages {
             val cards =
@@ -371,6 +378,6 @@ internal fun CompendiumPreview() =
                         emptyList(),
                     )
                 }
-            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {}, {})
+            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {}, {}, besideCard)
         }
     }

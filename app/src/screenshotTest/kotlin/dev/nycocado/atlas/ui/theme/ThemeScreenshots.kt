@@ -1,13 +1,17 @@
 package dev.nycocado.atlas.ui.theme
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.content.res.Configuration.UI_MODE_TYPE_NORMAL
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.android.tools.screenshot.PreviewTest
+import dev.nycocado.atlas.CardBesideListPreview
 import dev.nycocado.atlas.about.AboutPreview
 import dev.nycocado.atlas.about.NoticePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
+import dev.nycocado.atlas.compendium.CompendiumBesideCardPreview
 import dev.nycocado.atlas.compendium.CompendiumPreview
 import dev.nycocado.atlas.ui.component.CardThumbPreview
 import dev.nycocado.atlas.ui.component.DockPreview
@@ -90,3 +94,20 @@ fun CardDetailPortugueseScreenshot() = CardDetailPreview()
 @Preview(device = "spec:width=1280dp,height=800dp,dpi=240")
 @Composable
 fun CompendiumTabletScreenshot() = CompendiumPreview()
+
+// One pane of the tablet above: beside a card, the list-detail scene gives the list and the card half the screen each.
+private const val PANE = "spec:width=640dp,height=800dp,dpi=240"
+
+@Preview(name = "Light", device = PANE)
+@Preview(name = "Dark", device = PANE, uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
+annotation class PanePreviews
+
+@PreviewTest
+@PanePreviews
+@Composable
+fun CompendiumBesideCardScreenshot() = CompendiumBesideCardPreview()
+
+@PreviewTest
+@PanePreviews
+@Composable
+fun CardBesideListScreenshot() = CardBesideListPreview()
