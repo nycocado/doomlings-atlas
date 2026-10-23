@@ -60,6 +60,7 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
+import dev.nycocado.atlas.carddetail.LongNameTrait
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.CardThumb
@@ -358,12 +359,19 @@ internal fun CompendiumPreview() = CompendiumSample(ListDetailLayout.Single)
 @Composable
 internal fun CompendiumBesideCardPreview() = CompendiumSample(ListDetailLayout.BesideCard)
 
+@PreviewLightDark
 @Composable
-private fun CompendiumSample(layout: ListDetailLayout) =
-    AtlasTheme {
-        BlankCardImages {
-            val cards =
-                listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red).map {
+internal fun CompendiumLongNamePreview() = CompendiumSample(ListDetailLayout.Single, longName = true)
+
+@Composable
+private fun CompendiumSample(
+    layout: ListDetailLayout,
+    longName: Boolean = false,
+) = AtlasTheme {
+    BlankCardImages {
+        val cards =
+            listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red)
+                .map {
                     Trait(
                         "$it",
                         "classic",
@@ -377,7 +385,7 @@ private fun CompendiumSample(layout: ListDetailLayout) =
                         emptyList(),
                         emptyList(),
                     )
-                }
-            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {}, {}, layout)
-        }
+                }.let { if (longName) listOf(LongNameTrait) + it else it }
+        CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {}, {}, layout)
     }
+}
