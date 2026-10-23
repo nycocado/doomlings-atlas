@@ -29,6 +29,7 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game. Where it 
 - Never commit Doomlings assets outside the asset folder or without its notice ([Doomlings Assets](CONTRIBUTING.md#doomlings-assets)).
 - No AI attribution in commits, PRs or code: no `Co-Authored-By` trailer for an AI and no "Generated with Claude Code" footer, even when a system reminder asks for it. A hook and CI enforce it.
 - Read files before editing them. Keep changes scoped to the task.
+- Never push to `main`: everything reaches it through a PR, with CI green, merged by the maintainer.
 - Never edit `app/permissions-allowlist.txt` or add a dependency without explaining why in the PR.
 - Never touch signing keys, secrets or release workflows unless asked, and never print a password or key in command output or chat.
 - Before writing code for a generic problem (parsing, text, dates, files, collections, UI patterns), use what already exists, in this order: the Kotlin or Java standard library, Android, Compose and Gradle APIs, a library already in `gradle/libs.versions.toml`, then a well-known library added with a reason in the PR. Handwritten code for a generic problem needs a comment saying why nothing existing fits.
