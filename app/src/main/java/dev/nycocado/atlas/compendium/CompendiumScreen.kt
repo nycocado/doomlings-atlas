@@ -29,6 +29,7 @@ import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -150,7 +151,7 @@ fun CompendiumContent(
         val switchMotion = BoundsTransform { _, _ -> if (switched.switching) ReflowSpec else snap() }
         // On the rail layout nothing sits below the grid, so it keeps clear of the navigation bar itself.
         val bottom = if (rail) Modifier.windowInsetsPadding(WindowInsets.navigationBars) else Modifier
-        collapse.rail = rail
+        SideEffect { collapse.rail = rail }
         // Around the whole screen, where the dock stays put while the header collapses and the list below it grows.
         LookaheadScope {
             val itemMotion = Modifier.animateBounds(this, boundsTransform = switchMotion)
