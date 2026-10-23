@@ -150,9 +150,7 @@ fun CompendiumContent(
         val switchMotion = BoundsTransform { _, _ -> if (switched.switching) ReflowSpec else snap() }
         // On the rail layout nothing sits below the grid, so it keeps clear of the navigation bar itself.
         val bottom = if (rail) Modifier.windowInsetsPadding(WindowInsets.navigationBars) else Modifier
-        // The rail layout's header is a single row with nothing to collapse, so it doesn't take part in scrolling.
-        val collapsesOnScroll = if (rail) Modifier else Modifier.nestedScroll(collapse)
-        val fraction: () -> Float = if (rail) ({ 0f }) else collapse::fraction
+        collapse.rail = rail
         // Around the whole screen, where the dock stays put while the header collapses and the list below it grows.
         LookaheadScope {
             val itemMotion = Modifier.animateBounds(this, boundsTransform = switchMotion)
@@ -160,12 +158,11 @@ fun CompendiumContent(
                 Modifier
                     .fillMaxSize()
                     .background(theme.surface)
-                    .then(collapsesOnScroll)
+                    .nestedScroll(collapse)
                     .pointerInput(Unit) { detectTapGestures { focusManager.clearFocus() } },
             ) {
                 Header(
                     filter.query,
-                    fraction,
                     collapse,
                     rail,
                     onAboutClick,

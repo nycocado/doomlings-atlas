@@ -34,6 +34,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -80,24 +81,32 @@ internal class HeaderCollapse(
     initial: Float = 0f,
 ) : NestedScrollConnection {
     private var collapsed by mutableFloatStateOf(initial)
+    private var titleHeight = 0
+
+    // The rail layout's header is a single row with nothing to collapse, so it neither collapses nor scrolls along.
+    var rail by mutableStateOf(false)
 
     companion object {
         fun saver(distance: Float) = Saver<HeaderCollapse, Float>({ it.collapsed }, { HeaderCollapse(distance, it) })
     }
 
-    fun fraction() = collapsed / distance
-
-    // The stacked header's title row, the part that collapses. Set by the header's layout, read in the same pass.
-    var titleHeight = 0
+    fun fraction() = if (rail) 0f else collapsed / distance
 
     // Scrolling the list from code bypasses nested scrolling, so the header is expanded explicitly.
     suspend fun expand() = animate(collapsed, 0f) { value, _ -> collapsed = value }
+
+    // The stacked header's title row, the part that collapses. Set by the header's layout, read in the same pass.
+    internal fun measuredTitle(height: Int) {
+        titleHeight = height
+    }
+
+    internal fun Modifier.collapsingTitle() = collapsing(::fraction) { titleHeight }
 
     override fun onPreScroll(
         available: Offset,
         source: NestedScrollSource,
     ): Offset {
-        if (available.y >= 0) return Offset.Zero
+        if (rail || available.y >= 0) return Offset.Zero
         val used = minOf(-available.y, distance - collapsed)
         collapsed += used
         return Offset(0f, -used)
@@ -108,7 +117,7 @@ internal class HeaderCollapse(
         available: Offset,
         source: NestedScrollSource,
     ): Offset {
-        if (available.y <= 0) return Offset.Zero
+        if (rail || available.y <= 0) return Offset.Zero
         val used = minOf(available.y, collapsed)
         collapsed -= used
         return Offset(0f, used)
@@ -118,7 +127,7 @@ internal class HeaderCollapse(
         consumed: Velocity,
         available: Velocity,
     ): Velocity {
-        if (collapsed > 0f && collapsed < distance) {
+        if (!rail && collapsed > 0f && collapsed < distance) {
             animate(collapsed, if (collapsed < distance / 2) 0f else distance) { value, _ -> collapsed = value }
         }
         return Velocity.Zero
@@ -140,7 +149,6 @@ private fun Modifier.collapsing(
 @Composable
 internal fun Header(
     query: String,
-    fraction: () -> Float,
     collapse: HeaderCollapse,
     rail: Boolean,
     onAboutClick: () -> Unit,
@@ -151,6 +159,7 @@ internal fun Header(
     onQueryChange: (String) -> Unit,
 ) {
     val theme = AtlasTheme.colors
+    val fraction = collapse::fraction
     Column(
         Modifier
             .fillMaxWidth()
@@ -163,13 +172,13 @@ internal fun Header(
     ) {
         // Collapses outside the LookaheadScope, which animateBounds would follow a frame or more late: inside it nothing
         // moves or changes size, the content slides up as a whole.
-        Box(Modifier.collapsing(fraction) { collapse.titleHeight }) {
+        Box(with(collapse) { Modifier.collapsingTitle() }) {
             LookaheadScope {
                 val moves = Modifier.animateBounds(this, boundsTransform = transform)
                 // The header's height glides with its parts when the layout switches.
                 HeaderParts(
                     rail,
-                    { collapse.titleHeight = it },
+                    collapse::measuredTitle,
                     moves.fillMaxWidth(),
                     title = { HeaderTitle(moves) },
                     search = { SearchField(query, onQueryChange, moves) },
