@@ -477,28 +477,47 @@ private val TraitIcon.symbol: Int?
 internal fun CardDetailPreview() = AtlasTheme { CardDetailSample() }
 
 @Composable
-internal fun CardDetailSample(layout: ListDetailLayout = ListDetailLayout.Single) =
-    BlankCardImages {
-        CardDetailContent(
-            Trait(
-                "blue",
-                "classic",
-                "",
-                "Blue trait",
-                "Flavor text goes here.",
-                "Effect text goes here.",
-                -1,
-                listOf(CardColor.Blue),
-                true,
-                emptyList(),
-                listOf(TraitIcon.Action, TraitIcon.DropOfLife, TraitIcon.PlayWhen, TraitIcon.WorldsEnd),
-            ),
-            tilt = -3f,
-            onBack = {},
-            onAboutClick = {},
-            layout = layout,
-        )
-    }
+internal fun CardDetailSample(
+    layout: ListDetailLayout = ListDetailLayout.Single,
+    card: Card = SampleTrait,
+) = BlankCardImages {
+    CardDetailContent(card, tilt = -3f, onBack = {}, onAboutClick = {}, layout = layout)
+}
+
+private val SampleTrait =
+    Trait(
+        "blue",
+        "classic",
+        "",
+        "Blue trait",
+        "Flavor text goes here.",
+        "Effect text goes here.",
+        -1,
+        listOf(CardColor.Blue),
+        true,
+        emptyList(),
+        listOf(TraitIcon.Action, TraitIcon.DropOfLife, TraitIcon.PlayWhen, TraitIcon.WorldsEnd),
+    )
+
+// The longest Classic card name in assets/doomlings/cards.json, verbatim.
+internal val LongNameTrait =
+    Trait(
+        "classic/traits/random-fertilization",
+        "classic",
+        "",
+        "Random Fertilization",
+        "Pick a number between 1 and 64 trillion.",
+        "Value is equal to the size of your Gene Pool.",
+        null,
+        listOf(CardColor.Green),
+        false,
+        emptyList(),
+        listOf(TraitIcon.DropOfLife),
+    )
+
+@PreviewLightDark
+@Composable
+internal fun CardDetailLongNamePreview() = AtlasTheme { CardDetailSample(card = LongNameTrait) }
 
 @PreviewLightDark
 @Composable
