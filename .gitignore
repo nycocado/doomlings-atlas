@@ -10,3 +10,6 @@ local.properties
 *.jks
 *.keystore
 *.p12
+
+# Worktrees of Claude Code agents
+.claude/worktrees/
