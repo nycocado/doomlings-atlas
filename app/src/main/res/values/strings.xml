@@ -32,6 +32,7 @@
     <string name="color_purple">Purple</string>
     <string name="color_red">Red</string>
     <string name="color_colorless">Colorless</string>
+    <string name="card_points_zero">0 points</string>
     <plurals name="card_points">
         <item quantity="one">%1$s point</item>
         <item quantity="other">%1$s points</item>

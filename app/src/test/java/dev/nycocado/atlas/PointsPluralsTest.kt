@@ -2,7 +2,7 @@ package dev.nycocado.atlas
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import dev.nycocado.atlas.ui.component.signed
+import dev.nycocado.atlas.ui.component.pointsText
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,7 +18,7 @@ class PointsPluralsTest {
     ): String {
         RuntimeEnvironment.setQualifiers("+$language")
         val context = ApplicationProvider.getApplicationContext<Context>()
-        return context.resources.getQuantityString(R.plurals.card_points, value, signed(value))
+        return context.resources.pointsText(value)
     }
 
     @Test

@@ -27,6 +27,7 @@
     <string name="color_purple">Roxo</string>
     <string name="color_red">Vermelho</string>
     <string name="color_colorless">Incolor</string>
+    <string name="card_points_zero">0 pontos</string>
     <plurals name="card_points">
         <item quantity="one">%1$s ponto</item>
         <item quantity="many">%1$s de pontos</item>
