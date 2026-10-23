@@ -41,7 +41,8 @@ class CardPane internal constructor(
     private val cards: State<List<Card>?>,
 ) {
     // The card's pane takes the card with it as it slides out: the card leaves the back stack before the pane hides,
-    // so the list's detail placeholder shows the last card meanwhile (#48). Never cleared.
+    // so the list's detail placeholder shows the last card meanwhile (#48). Never cleared: the placeholder only shows
+    // beside the list, and clearing it at the wrong frame would empty the pane mid-slide.
     internal var lastCard by mutableStateOf<String?>(null)
 
     val isOpen: Boolean get() = backStack.any { it is CardKey }

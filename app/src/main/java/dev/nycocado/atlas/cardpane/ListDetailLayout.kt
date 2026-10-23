@@ -7,12 +7,17 @@ import androidx.compose.material3.adaptive.layout.PaneScaffoldDirective
 import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
-fun rememberListDetailLayout(cardPane: CardPane): ListDetailLayout =
-    ListDetailLayout(calculatePaneScaffoldDirective(currentWindowAdaptiveInfoV2()), cardPane.isOpen)
+fun rememberListDetailLayout(cardPane: CardPane): ListDetailLayout {
+    val directive = calculatePaneScaffoldDirective(currentWindowAdaptiveInfoV2())
+    val isOpen = cardPane.isOpen
+    // The same instance while nothing changes, so the screens that take it can skip recomposing.
+    return remember(directive, isOpen) { ListDetailLayout(directive, isOpen) }
+}
 
 // Decided once from the panes the window allows and whether a card is open; the screens follow it instead of deciding
 // again on their own. The compendium still decides its rail from its own width.
@@ -21,13 +26,13 @@ class ListDetailLayout(
     private val windowDirective: PaneScaffoldDirective,
     private val isCardOpen: Boolean,
 ) {
-    // Tablets, unfolded foldables and phones on their side: room for the list and a card side by side.
     val sideBySide = windowDirective.maxHorizontalPartitions > 1
 
     val besideCard = sideBySide && isCardOpen
 
     // The card beside the list has its own way to About.
     val showAbout get() = !besideCard
+
     val centersOnRail get() = !besideCard
 
     // Beside the list, the list's header owns the status bar's icons.

@@ -15,11 +15,11 @@ A map of the code at the level of modules and data flow. The decisions behind it
 2. At build time, `PackageCards` (`app/build.gradle.kts`) copies only the **enabled sets** and **enabled types** (`enabledSets`, `enabledTypes`), with their images, into the APK's `assets/cards/`. Today: the Classic set; traits, ages and catastrophes.
 3. `CardRepository` reads `assets/cards/cards.json` and `decodeCards` turns it into `Card` objects. Decoding is strict: a missing field, unknown key or unknown value fails instead of being skipped. Images load from `file:///android_asset/cards/` with Coil.
 4. `CompendiumViewModel` holds the cards and the `CompendiumFilter`, saved in `SavedStateHandle` so it survives process death. The filtered, sorted list comes from `filterCompendium` in `shared`.
-5. `AtlasApp` shows the screens with Navigation 3 (`NavDisplay`) and a list-detail scene: the compendium, the card detail (beside the list on a wide window) and About. The compendium and the card detail share one `CompendiumViewModel`.
+5. `AtlasApp` assembles the screens with Navigation 3 (`NavDisplay`) in a list-detail scene: the compendium, the card detail (beside the list on a wide window) and About. The **card pane** (`cardpane/CardPane.kt`) owns which card is open (read from the back stack), opening, swapping and closing cards, finding the card and going back when it is missing, and the sheet beside the list; the card detail only receives the card. The **list-detail layout** (`cardpane/ListDetailLayout.kt`) is decided once from the window and the open card, and the screens read it.
 
 ## Screens and UI
 
-- Screens live in feature packages (`compendium/`, `carddetail/`, `about/`); shared components in `ui/component/`; the theme (`AtlasTheme`, colors, type, dimensions, stickers) in `ui/theme/`, following `design/tokens.json`.
+- Screens live in feature packages (`compendium/`, `carddetail/`, `about/`), with the card pane and the list-detail layout in `cardpane/`; shared components in `ui/component/`; the theme (`AtlasTheme`, colors, type, dimensions, stickers) in `ui/theme/`, following `design/tokens.json`.
 - Components are the project's own, on Compose Foundation; Material 3 only for sheets, dialogs, snackbars and ripple ([ADR 0006](adr/0006-own-design-system.md)).
 - The unofficial notice shows once, on first launch; whether it was seen is a `SharedPreferences` flag.
 
