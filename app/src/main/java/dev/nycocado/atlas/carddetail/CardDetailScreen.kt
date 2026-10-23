@@ -37,7 +37,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -69,7 +68,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.round
 import androidx.compose.ui.util.lerp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CARD_RATIO
@@ -80,8 +78,9 @@ import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.card.cardImage
+import dev.nycocado.atlas.cardpane.CardStatusBarIcons
+import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.compendium.CardKind
-import dev.nycocado.atlas.compendium.CompendiumViewModel
 import dev.nycocado.atlas.compendium.kind
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.RoundButton
@@ -94,7 +93,6 @@ import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
-import dev.nycocado.atlas.ui.theme.StatusBarIcons
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
@@ -103,23 +101,18 @@ import kotlin.random.Random
 
 @Composable
 fun CardDetailScreen(
-    viewModel: CompendiumViewModel,
-    id: String,
-    besideList: Boolean,
+    card: Card,
+    layout: ListDetailLayout,
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
 ) {
-    val cards by viewModel.cards.collectAsStateWithLifecycle()
     // A new angle each time the card opens, kept while it stays open, rotation included. Never within 1.5° of
     // straight, where the card stops looking like it lies on the table.
     val tilt =
-        rememberSaveable(id) {
+        rememberSaveable(card.id) {
             if (Random.nextBoolean()) lerp(-3f, -1.5f, Random.nextFloat()) else lerp(1.5f, 2.5f, Random.nextFloat())
         }
-    val card = cards?.find { it.id == id }
-    // A back stack restored after an update can name a card the data no longer has.
-    if (cards != null && card == null) LaunchedEffect(id) { onBack() }
-    card?.let { CardDetailContent(it, tilt, onBack, onAboutClick, besideList) }
+    CardDetailContent(card, tilt, onBack, onAboutClick, layout)
 }
 
 @Composable
@@ -128,7 +121,7 @@ fun CardDetailContent(
     tilt: Float,
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
-    besideList: Boolean = false,
+    layout: ListDetailLayout = ListDetailLayout.Single,
 ) {
     val theme = AtlasTheme.colors
     if (card !is NamedCard) return
@@ -149,7 +142,7 @@ fun CardDetailContent(
         }
     // Status bar icons take the color the design puts on the panel, unless the list's header shares the bar.
     val onPanel = if (card is Trait) dots else theme.onSurface
-    if (!besideList) StatusBarIcons(onPanel.luminance() < 0.5f)
+    CardStatusBarIcons(layout, onPanel.luminance() < 0.5f)
 
     BoxWithConstraints(Modifier.fillMaxSize().background(theme.surface)) {
         // At least screen-tall, so the notice sits at the bottom of short cards and right after long ones.
@@ -481,28 +474,30 @@ private val TraitIcon.symbol: Int?
 
 @PreviewLightDark
 @Composable
-internal fun CardDetailPreview() =
-    AtlasTheme {
-        BlankCardImages {
-            CardDetailContent(
-                Trait(
-                    "blue",
-                    "classic",
-                    "",
-                    "Blue trait",
-                    "Flavor text goes here.",
-                    "Effect text goes here.",
-                    -1,
-                    listOf(CardColor.Blue),
-                    true,
-                    emptyList(),
-                    listOf(TraitIcon.Action, TraitIcon.DropOfLife, TraitIcon.PlayWhen, TraitIcon.WorldsEnd),
-                ),
-                tilt = -3f,
-                onBack = {},
-                onAboutClick = {},
-            )
-        }
+internal fun CardDetailPreview() = AtlasTheme { CardDetailSample() }
+
+@Composable
+internal fun CardDetailSample(layout: ListDetailLayout = ListDetailLayout.Single) =
+    BlankCardImages {
+        CardDetailContent(
+            Trait(
+                "blue",
+                "classic",
+                "",
+                "Blue trait",
+                "Flavor text goes here.",
+                "Effect text goes here.",
+                -1,
+                listOf(CardColor.Blue),
+                true,
+                emptyList(),
+                listOf(TraitIcon.Action, TraitIcon.DropOfLife, TraitIcon.PlayWhen, TraitIcon.WorldsEnd),
+            ),
+            tilt = -3f,
+            onBack = {},
+            onAboutClick = {},
+            layout = layout,
+        )
     }
 
 @PreviewLightDark

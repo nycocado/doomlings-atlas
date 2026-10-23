@@ -60,6 +60,7 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
+import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.CardThumb
 import dev.nycocado.atlas.ui.component.Dock
@@ -96,11 +97,11 @@ fun CompendiumScreen(
     viewModel: CompendiumViewModel,
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
-    besideCard: Boolean,
+    layout: ListDetailLayout,
 ) {
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val results by viewModel.results.collectAsStateWithLifecycle()
-    CompendiumContent(filter, results, viewModel::updateFilter, onCardClick, onAboutClick, besideCard)
+    CompendiumContent(filter, results, viewModel::updateFilter, onCardClick, onAboutClick, layout)
 }
 
 @Composable
@@ -110,8 +111,7 @@ fun CompendiumContent(
     onFilterChange: (CompendiumFilter) -> Unit,
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
-    // The card beside the list has its own way to About.
-    besideCard: Boolean = false,
+    layout: ListDetailLayout = ListDetailLayout.Single,
 ) {
     val theme = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
@@ -162,12 +162,12 @@ fun CompendiumContent(
                     collapse,
                     rail,
                     onAboutClick,
-                    showAbout = !besideCard,
+                    showAbout = layout.showAbout,
                     switchMotion,
                 ) { onFilterChange(filter.copy(query = it)) }
                 ListAndDock(
                     rail,
-                    centered = rail && !besideCard,
+                    centered = rail && layout.centersOnRail,
                     Modifier.weight(1f).then(bottom),
                     list = { reflow ->
                         LazyVerticalGrid(
@@ -352,7 +352,14 @@ private fun CompendiumCard(
 
 @PreviewLightDark
 @Composable
-internal fun CompendiumPreview() =
+internal fun CompendiumPreview() = CompendiumSample(ListDetailLayout.Single)
+
+@PreviewLightDark
+@Composable
+internal fun CompendiumBesideCardPreview() = CompendiumSample(ListDetailLayout.BesideCard)
+
+@Composable
+private fun CompendiumSample(layout: ListDetailLayout) =
     AtlasTheme {
         BlankCardImages {
             val cards =
@@ -371,6 +378,6 @@ internal fun CompendiumPreview() =
                         emptyList(),
                     )
                 }
-            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {}, {})
+            CompendiumContent(CompendiumFilter(colors = setOf(CardColor.Green)), cards, {}, {}, {}, layout)
         }
     }
