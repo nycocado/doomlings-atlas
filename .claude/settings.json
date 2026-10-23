@@ -1,6 +1,7 @@
 {
   "env": {
-    "PONYTAIL_DEFAULT_MODE": "off"
+    "PONYTAIL_DEFAULT_MODE": "off",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet"
   },
   "extraKnownMarketplaces": {
     "mattpocock": {
