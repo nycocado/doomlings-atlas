@@ -1,6 +1,6 @@
 # N. Title
 
-- Status: proposed | accepted | superseded by [NNNN](NNNN-title.md) | deprecated
+- Status: proposed | accepted | accepted; <part> amended by [NNNN](NNNN-title.md) | superseded by [NNNN](NNNN-title.md) | deprecated
 - Date: YYYY-MM-DD
 
 ## Context

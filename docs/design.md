@@ -63,14 +63,14 @@ Two themes: `light` ("Day", default) and `dark` ("Game night"). No Android dynam
 - **Interface icons** for game concepts: Gene Pool, catastrophe, age, trait, Meaning of Life, trait pile, hand, face value, scanner, swap, steal. 24 grid, 2.2 stroke, round caps and joins, tinted with `on-surface`.
 - **Card symbols** (action, play when, spell, suppress, attachment, World's End, drop of life, dominant, compass star, subspecies, tags): redrawn in the sticker style, recognizable next to the printed card. They are the only version of these symbols, both inside card text and in the interface. Inside text: 1.3em high (action 1.15em), centered on the line, always with `contentDescription`.
 - Generic icons (back, search, more): Material Symbols Rounded at a matching weight.
-- In the app, SVGs become vector drawables with colors bound to theme tokens (one drawable per symbol, not per theme). Points medals are drawn in Compose: white ring with `outline`, `trait-<color>` disc and the value in Fredoka.
+- In the app, SVGs become vector drawables with colors bound to theme tokens (one drawable per symbol, not per theme).
 
 ## Components
 
 Visual specs only; content and behavior are defined with each screen.
 
 - **Card thumbnail:** card image with `outline` border at `stroke-sticker`, `radius-card-sm`, `shadow-sticker-lg` and a tilt between −2.5° and +2.5°. Name below in `title-md` with the trait glyph. No badges over the art.
-- **Card detail:** top panel in `trait-<color>` with a dot pattern in `on-trait-<color>` (ages and catastrophes in `surface-sunk` with dots in `outline-soft`), `radius-lg` base, large card tilted at a random angle between −3° and −1.5° or +1.5° and +2.5° (never near straight), picked when it opens and kept while it stays open, with `stroke-strong` and `shadow-sticker-lg`, large points badge stuck on the panel edge. Name in `display`; pills for color (glyph + name), type and keywords. Effect text in a `surface-sticker` bubble (`radius-md`, `shadow-sticker-lg`) in `body-lg`. Round 48dp back and favorite buttons with `shadow-sticker`.
+- **Card detail:** top panel in `trait-<color>` with a dot pattern in `on-trait-<color>` (ages and catastrophes in `surface-sunk` with dots in `outline-soft`), `radius-lg` base, large card tilted at a random angle between −3° and −1.5° or +1.5° and +2.5° (never near straight), picked when it opens and kept while it stays open, with `stroke-strong` and `shadow-sticker-lg`, large points badge stuck on the panel edge. Name in `display`; pills for color (glyph + name), type and keywords. Effect text in a `surface-sticker` bubble (`radius-md`, `shadow-sticker-lg`) in `body-lg`. Round 48dp back button with `shadow-sticker`.
 - **Color disc filter:** 48dp disc filled with `trait-<color>`, glyph in `on-trait-<color>`, label below. Selected: double ring (`surface` + `outline`, 3 each); glyph and label stay.
 - **Segmented selector:** `surface-sticker` track with outline; active segment in `primary` / `on-primary`.
 - **Search field:** 52dp `surface-sticker` pill with `outline` border, placeholder in `on-surface-variant`, inside the dark header.

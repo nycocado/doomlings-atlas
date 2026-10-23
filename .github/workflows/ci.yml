@@ -26,6 +26,29 @@ jobs:
             exit 1
           fi
 
+  no-ai-attribution:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: .claude/hooks/ai-attribution.regex
+          sparse-checkout-cone-mode: false
+      - name: Check the PR body and commits have no AI attribution
+        env:
+          BODY: ${{ github.event.pull_request.body }}
+          COMMITS_URL: ${{ github.event.pull_request.commits_url }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          messages=$(gh api --paginate "$COMMITS_URL" --jq '.[].commit.message')
+          if printf '%s\n%s\n' "$BODY" "$messages" | grep -Eqi "$(cat .claude/hooks/ai-attribution.regex)"; then
+            echo "::error::Remove the AI attribution (Co-Authored-By trailer or 'Generated with' footer); see CONTRIBUTING.md#opening-a-pull-request"
+            exit 1
+          fi
+
   check:
     runs-on: ubuntu-latest
     steps:

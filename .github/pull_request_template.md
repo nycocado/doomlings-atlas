@@ -1,6 +1,8 @@
 ## What and Why
 
-<!-- What changed and why. Link the issue: Closes #123 -->
+<!-- What changed and why. -->
+
+Closes #<!-- the issue or spec this PR implements; a review checks the change against it -->
 
 ## How It Was Tested
 
