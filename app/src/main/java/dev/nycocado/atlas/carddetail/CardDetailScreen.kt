@@ -79,6 +79,7 @@ import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.cardpane.CardStatusBarIcons
+import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.compendium.CardKind
 import dev.nycocado.atlas.compendium.kind
 import dev.nycocado.atlas.ui.component.BlankCardImages
@@ -101,7 +102,7 @@ import kotlin.random.Random
 @Composable
 fun CardDetailScreen(
     card: Card,
-    besideList: Boolean,
+    layout: ListDetailLayout,
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
 ) {
@@ -111,7 +112,7 @@ fun CardDetailScreen(
         rememberSaveable(card.id) {
             if (Random.nextBoolean()) lerp(-3f, -1.5f, Random.nextFloat()) else lerp(1.5f, 2.5f, Random.nextFloat())
         }
-    CardDetailContent(card, tilt, onBack, onAboutClick, besideList)
+    CardDetailContent(card, tilt, onBack, onAboutClick, layout)
 }
 
 @Composable
@@ -120,7 +121,7 @@ fun CardDetailContent(
     tilt: Float,
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
-    besideList: Boolean = false,
+    layout: ListDetailLayout = ListDetailLayout.Single,
 ) {
     val theme = AtlasTheme.colors
     if (card !is NamedCard) return
@@ -141,7 +142,7 @@ fun CardDetailContent(
         }
     // Status bar icons take the color the design puts on the panel, unless the list's header shares the bar.
     val onPanel = if (card is Trait) dots else theme.onSurface
-    CardStatusBarIcons(besideList, onPanel.luminance() < 0.5f)
+    CardStatusBarIcons(layout, onPanel.luminance() < 0.5f)
 
     BoxWithConstraints(Modifier.fillMaxSize().background(theme.surface)) {
         // At least screen-tall, so the notice sits at the bottom of short cards and right after long ones.
@@ -476,7 +477,7 @@ private val TraitIcon.symbol: Int?
 internal fun CardDetailPreview() = AtlasTheme { CardDetailSample() }
 
 @Composable
-internal fun CardDetailSample(besideList: Boolean = false) =
+internal fun CardDetailSample(layout: ListDetailLayout = ListDetailLayout.Single) =
     BlankCardImages {
         CardDetailContent(
             Trait(
@@ -495,7 +496,7 @@ internal fun CardDetailSample(besideList: Boolean = false) =
             tilt = -3f,
             onBack = {},
             onAboutClick = {},
-            besideList = besideList,
+            layout = layout,
         )
     }
 

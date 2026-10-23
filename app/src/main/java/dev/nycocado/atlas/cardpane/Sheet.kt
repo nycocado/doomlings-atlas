@@ -55,5 +55,5 @@ internal fun Modifier.sheet(): Modifier {
 @Composable
 internal fun CardBesideListPreview() =
     AtlasTheme {
-        Box(Modifier.background(AtlasTheme.colors.surface).sheet()) { CardDetailSample(besideList = true) }
+        Box(Modifier.background(AtlasTheme.colors.surface).sheet()) { CardDetailSample(ListDetailLayout.BesideCard) }
     }

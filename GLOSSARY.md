@@ -38,6 +38,7 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 - **Fold**: only the hinge of a foldable device.
 - **Dock**: the app's floating bar; on a wide window it becomes the **rail**. _Avoid_: navigation bar, tab bar.
 - **Navigation bar**: Android's system bar at the bottom of the screen, never the app's.
+- **List-detail layout**: what the window and the open card decide together: list and card side by side or not, whether a card sits beside the list, and what follows (About on the list, the compendium centered, who sets the status bar icons, the scene's panes and animation). Decided once; the screens read it.
 - **Wide window**: 840dp wide or more (tablets, unfolded foldables, phones on their side), where the list and a card can share the screen.
 - **Sticker**: the look of every control and card: thick outline, hard shadow, rounded corners ([docs/design.md](docs/design.md)).
 - **Sunset band**: the four color blocks under a header or the dock.
