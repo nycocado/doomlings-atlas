@@ -74,6 +74,12 @@ android {
     androidResources {
         generateLocaleConfig = true
     }
+    testOptions {
+        // Robolectric reads the merged resources and assets, which include the packaged cards.json.
+        unitTests.isIncludeAndroidResources = true
+        // Robolectric reaches into JDK internals that Java 17+ closes by default.
+        unitTests.all { it.jvmArgs("--add-exports=java.base/jdk.internal.access=ALL-UNNAMED") }
+    }
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
     lint {
         warningsAsErrors = true
@@ -99,6 +105,12 @@ dependencies {
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.androidx.compose.ui.test.junit4)
+    testImplementation(libs.androidx.compose.ui.test.junit4.accessibility)
+    testImplementation(libs.hilt.android.testing)
+    kspTest(libs.hilt.compiler)
     screenshotTestImplementation(libs.screenshot.validation.api)
     screenshotTestImplementation(libs.androidx.compose.ui.tooling)
 }
