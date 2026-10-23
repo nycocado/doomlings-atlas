@@ -5,6 +5,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -19,7 +20,7 @@ class CardDataIntegrityTest {
     private val texts =
         Json.parseToJsonElement(json).jsonArray.flatMap { card ->
             val fields = card.jsonObject
-            val id = (fields.getValue("id") as JsonPrimitive).content
+            val id = fields.getValue("id").jsonPrimitive.content
             fields.values
                 .flatMap { it as? JsonArray ?: listOf(it) }
                 .filter { it is JsonPrimitive && it.isString }
@@ -81,7 +82,7 @@ class CardDataIntegrityTest {
         )
     }
 
-    // Packaging only the enabled sets copies their folders, so an image elsewhere would be left out.
+    // Each set keeps its images in its own folder (assets/doomlings/NOTICE.md).
     @Test
     fun everyImageIsInsideItsSetFolder() {
         assertEquals(

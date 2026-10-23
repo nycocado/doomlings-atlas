@@ -85,7 +85,7 @@ class CompendiumFilterTest {
 
     @Test
     fun searchOfOnlySpacesListsEverything() {
-        assertEquals(listOf("Brave", "Camouflage", "Prickly", "Venomous"), names(CompendiumFilter(query = "   ")))
+        assertEquals(names(CompendiumFilter()), names(CompendiumFilter(query = "   ")))
     }
 
     @Test
