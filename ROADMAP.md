@@ -2,7 +2,7 @@
 
 Architecture decisions behind this plan are in [docs/adr](docs/adr).
 
-## 0. Foundations
+## 0. Foundations (Done)
 
 Everything here comes before assets and code.
 
@@ -11,7 +11,7 @@ Everything here comes before assets and code.
 - Set to start with: Classic (2nd edition) base game, no expansions.
 - Card sources: images from [Ryeera's Tabletop Simulator mod](https://steamcommunity.com/sharedfiles/filedetails/?id=3151925153), card data checked against the [official Doomlings Compendium](https://www.doomlings.com/pages/compendium).
 
-## 1. Card Data and Compendium
+## 1. Card Data and Compendium (Done, v0.1.0)
 
 - Embedded card database with what is printed on each card: name, set, type, color, points, full text and image.
 - Every card verified against a reliable source (physical cards, official material or checked community assets such as Tabletop Simulator mods).
@@ -21,11 +21,12 @@ Everything here comes before assets and code.
 - Tests for database integrity: unique identifiers, required fields, every card with an image.
 - Screenshot tests from the component previews, once the design system settles.
 
-## 2. Card Text Translation
+## 2. Card Text Translation (In Progress)
 
 - Portuguese and Spanish, reviewed by the maintainer; other languages through community contributions.
 - Translated card text shown in the compendium, chosen apart from the interface language: card text stays as printed until the user picks a translation, with a language selector in the card detail.
 - App interface also in Spanish.
+- Unit and data tests: card counts against the rulesheet, text hygiene in every set's data, signed points and cards that share a name, and search edge cases.
 - UI tests with Compose and Robolectric, in CI: navigation on phone and tablet sizes (opening, switching and closing cards, About) and state surviving activity recreation, with Compose's accessibility checks enabled so a touch target, contrast or label problem fails the build.
 - A screenshot test of the compendium with its header half collapsed, since the collapse relies on how `animateBounds` sizes an idle node.
 - Update check: the app looks up the latest GitHub Release and says when a newer version exists, skipped when Google Play installed it. It needs the internet permission, so an ADR amends [ADR 0002](docs/adr/0002-offline-without-backend.md) first.
@@ -36,7 +37,7 @@ The repository goes public and the first APK comes out on GitHub Releases at the
 
 - Git history rewritten so every commit uses the maintainer's GitHub noreply address, with the `v0.1.0` tag and Release recreated on the new commits.
 - History scanned for secrets with gitleaks.
-- A `SECURITY.md`, with private vulnerability reporting turned on.
+- A `SECURITY.md`, with private vulnerability reporting turned on, and a `CODE_OF_CONDUCT.md` (Contributor Covenant) with a reporting contact.
 - Rulesets on `main` (pull request, green CI, no force push) and on `v*` tags (only the maintainer creates or moves them), immutable releases, CodeQL, secret scanning and push protection, which need a public repository on the free plan.
 - Actions runs for outside contributors wait for the maintainer's approval, the maintainer's GitHub account uses two-factor authentication, and the workflows are checked once with [zizmor](https://zizmor.sh).
 - CI also builds the unsigned release APK, so an R8 break fails the pull request, and reviews the dependencies each pull request adds.
@@ -44,7 +45,7 @@ The repository goes public and the first APK comes out on GitHub Releases at the
 - README for players: what the app does, screenshots and where to download it. Repository topics so the project shows up in GitHub search.
 - Doomlings told that the repository is public.
 
-## 3. Manual Scoring
+## 3. Manual Scoring (Planned)
 
 - Players added by name at the start of the game, each with the Gene Pool card in front of them.
 - Players enter the full final state: each player's trait pile and hand, catastrophes, World's End.
@@ -54,13 +55,13 @@ The repository goes public and the first APK comes out on GitHub Releases at the
 - An in-progress game survives the app being killed; no game history.
 - Tests for every card with a special effect, plus real games with hand-checked scores.
 
-## 4. Card Scanner
+## 4. Card Scanner (Planned)
 
 - Card recognition from the camera, running on the device.
 - Compendium search by image: photograph a card to open it.
 - In a photo of the whole table, each player's Gene Pool card identifies which trait pile belongs to whom.
 
-## 5. Game Tutorial
+## 5. Game Tutorial (Planned)
 
 - Interactive tutorial in the app languages.
 - Links to the official rulebook and videos.
