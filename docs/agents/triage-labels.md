@@ -10,4 +10,4 @@ The engineering skills speak in terms of five triage roles. This repo uses their
 | `ready-for-human` | `ready-for-human` | Needs a human to implement it                                   |
 | `wontfix`         | `wontfix`         | Will not be done                                                |
 
-A skill that asks for the agent-ready label (for example `to-spec`) gets `needs-triage` instead: approving a spec is the maintainer's gate (AGENTS.md), and a hook blocks agents from applying `ready-for-agent`.
+A skill that asks for the agent-ready label (for example `to-spec`) gets `needs-triage` instead: approving a spec is the maintainer's gate (AGENTS.md), and a hook blocks agents from applying `ready-for-agent`. The maintainer applies it on GitHub, or by running `gh issue edit` with `!` in the prompt; an agent can't, even when asked to.
