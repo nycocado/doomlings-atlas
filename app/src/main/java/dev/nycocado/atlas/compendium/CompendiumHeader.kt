@@ -57,6 +57,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
@@ -325,6 +326,7 @@ private fun SearchField(
                     BasicText(
                         stringResource(R.string.search_placeholder),
                         style = AtlasTypography.bodyMd.copy(color = theme.onSurfaceVariant),
+                        overflow = TextOverflow.Ellipsis,
                         maxLines = 1,
                     )
                 }
