@@ -29,13 +29,13 @@ All of them run on the JVM; none needs an emulator or device.
 
 Robolectric is set up in `app`. The UI tests in `app/src/test` run the real app: the real `MainActivity` with Hilt (`@HiltAndroidTest`, `HiltTestApplication`) and the enabled sets' card data, packaged into the assets. They drive it like a player with Compose's test APIs and check what shows.
 
-- Extend `AtlasBehaviorTest`: it sets the phone-sized window, Hilt, the Compose rule and Compose's accessibility checks. Put `@HiltAndroidTest` on the test class itself, as Hilt requires.
-- Look text up by its string resource (`text(R.string.about)`, `button(R.string.back)`), never hard-coded; take card names from `assets/doomlings/cards.json`.
-- The notice's "seen" flag lives in the `atlas` preferences: `launch()` starts as on first launch, `launchPastNotice()` after accepting it.
+- Extend `AtlasBehaviorTest`: it sets the phone-sized window, Hilt and the Compose rule. Put `@HiltAndroidTest` on the test class itself, as Hilt requires.
+- Look text up by its string resource (`text(R.string.about)`, `button(R.string.back)`), never hard-coded (points with `pointsText`); take card names from `assets/doomlings/cards.json`.
+- The notice's "seen" flag lives in the preferences named by `NOTICE_PREFS` and `NOTICE_SEEN`: `launch()` starts as on first launch, `launchPastNotice()` after accepting it.
 - Robolectric runs on Android 16 (SDK 36) with native graphics, set in `app/src/test/resources/robolectric.properties`: Espresso, which Compose tests idle through, can't inject input on Android 17 yet. Change `sdk` there once it can.
-- Compose's built-in accessibility checks are on in every test, but on Robolectric they report NOT_RUN: they only evaluate Android views, not Compose content ("Composable content is not evaluated in this environment"). Don't count on them.
-- `assertAccessible()` is the accessibility sweep that does work here: call it on every screen a test reaches (compendium, card detail on a phone and beside the list, About, the notice). It fails if any node with a click action has neither text nor a content description, skipping nodes scrolled out of the window. It doesn't check touch size (Compose widens every touch area to 48dp, which is what [docs/design.md](design.md#accessibility) asks for) nor contrast (the design tokens and a visual review cover that).
-- Wide windows: `@Config(qualifiers = "w1280dp-h800dp-xhdpi")` on the test class (see `WideWindowTest`). Let the screen settle (`compose.waitForIdle()`) before pressing back, and advance `compose.mainClock` after it while the card's pane slides out.
+- Compose's built-in accessibility checks don't run on Robolectric: they report NOT_RUN, as they only evaluate Android views, not Compose content ("Composable content is not evaluated in this environment"). They are not set up here, and `assertAccessible()` replaces them for labels.
+- `assertAccessible()` is the accessibility sweep that does work here: call it on every screen a test reaches (compendium, trait and catastrophe detail on a phone and beside the list, About, the notice); `AccessibilitySweepTest` proves it fails on a clickable without a label. It fails if any node with a click action has neither text nor a content description, skipping nodes scrolled out of the window. It doesn't check touch size (Compose widens every touch area to 48dp, which is what [docs/design.md](design.md#accessibility) asks for) nor contrast (the design tokens and a visual review cover that).
+- Wide windows: `@Config(qualifiers = "w1280dp-h800dp-xhdpi")` on the test class (see `WideWindowTest`). Use `pressBack(scenario)`, which lets the screen settle first, and `waitUntilDoesNotExist` while the card's pane slides out.
 
 ## What a Change Needs
 

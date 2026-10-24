@@ -1,6 +1,5 @@
 package dev.nycocado.atlas
 
-import android.view.KeyEvent
 import android.view.MotionEvent
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.performClick
@@ -24,9 +23,7 @@ class NoticeTest : AtlasBehaviorTest() {
         launch()
 
         val dialog = ShadowDialog.getLatestDialog()
-        dialog.dispatchKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK))
-        dialog.dispatchKeyEvent(KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_BACK))
-        compose.waitForIdle()
+        pressBack { dialog.dispatchKeyEvent(it) }
 
         text(R.string.got_it).assertIsDisplayed()
     }

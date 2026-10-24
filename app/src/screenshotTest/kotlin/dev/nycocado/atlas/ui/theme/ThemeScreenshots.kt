@@ -143,3 +143,13 @@ fun CompendiumBesideCardScreenshot() = CompendiumBesideCardPreview()
 @PanePreviews
 @Composable
 fun CardBesideListScreenshot() = CardBesideListPreview()
+
+@PreviewTest
+@Preview(device = PANE, locale = "pt")
+@Composable
+fun CompendiumBesideCardPortugueseScreenshot() = CompendiumBesideCardPreview()
+
+@PreviewTest
+@Preview(device = PANE, locale = "pt")
+@Composable
+fun CardBesideListPortugueseScreenshot() = CardBesideListPreview()

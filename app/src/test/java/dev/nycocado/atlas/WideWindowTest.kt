@@ -1,23 +1,25 @@
 package dev.nycocado.atlas
 
+import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.performClick
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test
 import org.robolectric.annotation.Config
 
 // From 840dp wide the card opens beside the list. Card names come from assets/doomlings/cards.json.
+@OptIn(ExperimentalTestApi::class)
 @HiltAndroidTest
 @Config(qualifiers = "w1280dp-h800dp-xhdpi")
 class WideWindowTest : AtlasBehaviorTest() {
     @Test
     fun aCardOpensBesideTheListWhichStaysVisible() {
-        val scenario = launchPastNotice()
+        launchPastNotice()
 
         card("Adorable").performClick()
 
-        compose.onNodeWithText("Adorable").assertIsDisplayed()
+        detailOf("Adorable").assertIsDisplayed()
         card("Appealing").assertIsDisplayed()
         text(R.string.search_placeholder).assertIsDisplayed()
         assertAccessible()
@@ -30,11 +32,9 @@ class WideWindowTest : AtlasBehaviorTest() {
 
         card("Appealing").performClick()
 
-        compose.onNodeWithText("Appealing").assertIsDisplayed()
-        compose.onNodeWithText("Adorable").assertDoesNotExist()
-        scenario.onActivity { a ->
-            listOf(0, 1).forEach { a.dispatchKeyEvent(android.view.KeyEvent(it, android.view.KeyEvent.KEYCODE_BACK)) }
-        }
+        detailOf("Appealing").assertIsDisplayed()
+        detailOf("Adorable").assertDoesNotExist()
+        pressBack(scenario)
         text(R.string.unofficial_notice).assertDoesNotExist()
         text(R.string.search_placeholder).assertIsDisplayed()
         button(R.string.about).assertIsDisplayed()
@@ -44,10 +44,9 @@ class WideWindowTest : AtlasBehaviorTest() {
     fun backClosesTheCardBesideTheList() {
         val scenario = launchPastNotice()
         card("Adorable").performClick()
-        compose.waitForIdle()
-        scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
+        pressBack(scenario)
         // The card's pane slides out.
-        compose.mainClock.advanceTimeBy(1000)
+        compose.waitUntilDoesNotExist(hasText(string(R.string.unofficial_notice)))
 
         text(R.string.search_placeholder).assertIsDisplayed()
         text(R.string.unofficial_notice).assertDoesNotExist()
@@ -64,10 +63,8 @@ class WideWindowTest : AtlasBehaviorTest() {
 
         text(R.string.about).assertIsDisplayed()
         assertAccessible()
-        scenario.onActivity { a ->
-            listOf(0, 1).forEach { a.dispatchKeyEvent(android.view.KeyEvent(it, android.view.KeyEvent.KEYCODE_BACK)) }
-        }
-        compose.onNodeWithText("Adorable").assertIsDisplayed()
+        pressBack(scenario)
+        detailOf("Adorable").assertIsDisplayed()
         text(R.string.search_placeholder).assertIsDisplayed()
     }
 }

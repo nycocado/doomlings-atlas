@@ -34,5 +34,6 @@ class PointsPluralsTest {
         assertEquals("1 ponto", points("pt", 1))
         assertEquals("2 pontos", points("pt", 2))
         assertEquals("−1 ponto", points("pt", -1))
+        assertEquals("0 pontos", points("pt", 0))
     }
 }

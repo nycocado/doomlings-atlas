@@ -4,13 +4,9 @@ import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.hasContentDescription
-import androidx.compose.ui.test.hasScrollAction
-import androidx.compose.ui.test.hasText
-import androidx.compose.ui.test.isSelectable
-import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import androidx.compose.ui.test.performScrollToNode
 import dagger.hilt.android.testing.HiltAndroidTest
+import dev.nycocado.atlas.ui.component.pointsText
 import org.junit.Test
 
 // Card names come from assets/doomlings/cards.json: Classic's green traits, in the compendium's alphabetical order,
@@ -23,7 +19,7 @@ class PhoneBrowsingTest : AtlasBehaviorTest() {
 
         card("Adorable").performClick()
 
-        compose.onNodeWithText("Adorable").assertIsDisplayed()
+        detailOf("Adorable").assertIsDisplayed()
         assertAccessible()
         button(R.string.back).performClick()
         text(R.string.search_placeholder).assertIsDisplayed()
@@ -33,18 +29,18 @@ class PhoneBrowsingTest : AtlasBehaviorTest() {
     @Test
     fun backFromACardKeepsTheFilterAndTheScroll() {
         val scenario = launchPastNotice()
-        compose.onNode(isSelectable() and hasText(string(R.string.color_green))).performClick()
-        compose.onNode(hasScrollAction()).performScrollToNode(hasContentDescription("Woody Stems,", substring = true))
+        compose.onNode(green).performClick()
+        scrollListTo(cardNamed("Woody Stems"))
         card("Woody Stems").performClick()
-        compose.onNodeWithText("Woody Stems").assertIsDisplayed()
+        detailOf("Woody Stems").assertIsDisplayed()
 
-        scenario.onActivity { it.onBackPressedDispatcher.onBackPressed() }
+        pressBack(scenario)
 
         card("Woody Stems").assertIsDisplayed()
         card("Appealing").assertDoesNotExist()
         // The filters sit at the top of the list: scrolling there is the only way to see them again.
-        compose.onNode(hasScrollAction()).performScrollToNode(isSelectable() and hasText(string(R.string.color_green)))
-        compose.onNode(isSelectable() and hasText(string(R.string.color_green))).assertIsSelected()
+        scrollListTo(green)
+        compose.onNode(green).assertIsSelected()
         card("Adorable").assertDoesNotExist()
     }
 
@@ -69,21 +65,55 @@ class PhoneBrowsingTest : AtlasBehaviorTest() {
 
         text(R.string.about).assertIsDisplayed()
         button(R.string.back).performClick()
-        compose.onNodeWithText("Adorable").assertIsDisplayed()
+        detailOf("Adorable").assertIsDisplayed()
     }
 
     @Test
     fun aTraitWithAFixedValueShowsItsPoints() {
         launchPastNotice()
 
-        card("Adorable").assertContentDescriptionEquals("Adorable, ${string(R.string.color_purple)}, 4 points")
+        card("Adorable").assertContentDescriptionEquals(
+            "Adorable, ${string(R.string.color_purple)}, ${context.resources.pointsText(4)}",
+        )
     }
 
     @Test
     fun aTraitWhoseValueDependsOnTheGameShowsNoPoints() {
         launchPastNotice()
-        compose.onNode(hasScrollAction()).performScrollToNode(hasContentDescription("Fortunate,", substring = true))
+        scrollListTo(cardNamed("Fortunate"))
 
         card("Fortunate").assertContentDescriptionEquals("Fortunate, ${string(R.string.color_green)}")
+    }
+
+    @Test
+    fun aTraitWithAFixedValueShowsItsPointsBadgeInTheDetail() {
+        launchPastNotice()
+
+        card("Adorable").performClick()
+
+        compose.onNode(pointsBadge).assertIsDisplayed()
+    }
+
+    @Test
+    fun aTraitWhoseValueDependsOnTheGameShowsNoPointsBadgeInTheDetail() {
+        launchPastNotice()
+        scrollListTo(cardNamed("Fortunate"))
+
+        card("Fortunate").performClick()
+
+        detailOf("Fortunate").assertIsDisplayed()
+        compose.onNode(pointsBadge).assertDoesNotExist()
+    }
+
+    @Test
+    fun aCatastropheDetailIsAccessible() {
+        launchPastNotice()
+        text(R.string.kind_catastrophes).performClick()
+
+        // A catastrophe has no color or points: its description is just the name.
+        compose.onNode(hasContentDescription("AI Takeover")).performClick()
+
+        detailOf("AI Takeover").assertIsDisplayed()
+        assertAccessible()
     }
 }

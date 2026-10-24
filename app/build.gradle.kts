@@ -108,7 +108,6 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.robolectric)
     testImplementation(libs.androidx.compose.ui.test.junit4)
-    testImplementation(libs.androidx.compose.ui.test.junit4.accessibility)
     testImplementation(libs.hilt.android.testing)
     kspTest(libs.hilt.compiler)
     screenshotTestImplementation(libs.screenshot.validation.api)

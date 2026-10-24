@@ -36,12 +36,13 @@ data object CompendiumKey : NavKey
 @Serializable
 data object AboutKey : NavKey
 
-private const val NOTICE_SEEN = "notice_seen"
+internal const val NOTICE_PREFS = "atlas"
+internal const val NOTICE_SEEN = "notice_seen"
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 fun AtlasApp() {
-    val prefs = LocalContext.current.getSharedPreferences("atlas", Context.MODE_PRIVATE)
+    val prefs = LocalContext.current.getSharedPreferences(NOTICE_PREFS, Context.MODE_PRIVATE)
     var noticeSeen by remember { mutableStateOf(prefs.getBoolean(NOTICE_SEEN, false)) }
     val backStack = rememberNavBackStack(CompendiumKey)
     val viewModel: CompendiumViewModel = hiltViewModel()
