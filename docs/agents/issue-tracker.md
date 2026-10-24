@@ -1,10 +1,13 @@
 # Issue Tracker: GitHub
 
-Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all operations; it infers the repo from the clone.
+Tickets and specs for this repo live as GitHub issues. Use the `gh` CLI for all operations; it infers the repo from the clone.
 
 ## Project Conventions
 
-- An issue is the spec of its work ([CONTRIBUTING.md](../../CONTRIBUTING.md#issues-and-specs)). A spec an agent writes gets `needs-triage`; only the maintainer applies `ready-for-agent`, and agents only pick up issues that have it.
+- An issue is a ticket or a spec ([CONTRIBUTING.md](../../CONTRIBUTING.md#tickets-and-specs)). One an agent writes gets `needs-triage`; only the maintainer applies `ready-for-agent`, and agents only pick up issues that have it.
+- Tickets and specs use the sections of the Ticket form (`.github/ISSUE_TEMPLATE/ticket.yml`), never a skill's template: where `to-spec` or `to-tickets` ask for user stories, testing philosophy or Parent / What to build, write the form's sections instead. A ticket of a spec is a sub-issue whose problem says "Part of #N", blocked through native dependencies (below).
+- A bug an agent writes is a ticket with the `bug` label; the Bug form is for players.
+- When a ticket's acceptance criteria name the test and where it goes, that is the seam agreed with the maintainer: `tdd` asks only when the ticket doesn't say.
 - Say "no behavior change" for a refactor, never "no app code changes": previews live next to the screens, in app sources.
 - Each [ROADMAP.md](../../ROADMAP.md) phase is a milestone: add the phase's issues to it (`--milestone "2. Card Text Translation"`).
 - Besides the triage labels ([triage-labels.md](triage-labels.md)), issues use the topic labels `bug`, `card-data`, `translation`, `scoring`, `accessibility` and `dependencies`.

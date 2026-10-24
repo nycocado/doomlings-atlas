@@ -2,7 +2,7 @@
 
 <!-- What changed and why. -->
 
-Closes #<!-- the issue or spec this PR implements; a review checks the change against it -->
+Closes #<!-- the ticket or spec this PR implements; a review checks the change against it -->
 
 ## How It Was Tested
 

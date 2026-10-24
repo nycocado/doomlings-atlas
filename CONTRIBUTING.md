@@ -47,14 +47,15 @@ Doomlings LLC gave permission for this app (2026-10-15) under the fan art terms 
    - **Wrong score:** the cards on the table and the score you expected versus the one shown.
    - **Card data:** card name, set, what is wrong and a photo of your card or a link to a reliable source.
    - **Translation:** language, where the text appears and your suggested wording.
-   - **Spec:** a feature or change worked out well enough to build ([Issues and Specs](#issues-and-specs)).
+   - **Ticket:** a feature or change worked out well enough to build ([Tickets and Specs](#tickets-and-specs)).
 
-## Issues and Specs
+## Tickets and Specs
 
-Work on the app starts from an issue that says what "done" means: the **spec**.
+Work on the app starts from an issue that says what "done" means.
 
-- A spec uses the Spec form: the problem, the solution, user stories, implementation and testing decisions, and what is out of scope.
-- New issues get `needs-triage`. The maintainer reads them and labels each one: `needs-info` (waiting on the author), `ready-for-agent` (an approved spec that an AI agent may build), `ready-for-human` (needs a person) or `wontfix`.
+- A **ticket** is an issue that becomes one PR. It uses the Ticket form: the problem, the decided behavior, acceptance criteria with the test that must fail first, and when needed what is out of scope and notes.
+- A **spec** is the parent issue of 2 to 4 tickets and holds the decisions they share. It uses the same form; each of its tickets is a sub-issue whose problem says "Part of #N" and whose behavior covers only its own slice. Most work is a single ticket.
+- New issues get `needs-triage`. The maintainer reads them and labels each one: `needs-info` (waiting on the author), `ready-for-agent` (an approved ticket or spec that an AI agent may build), `ready-for-human` (needs a person) or `wontfix`.
 - Each [ROADMAP.md](ROADMAP.md) phase is a milestone, holding the issues of that phase.
 - Topic labels: `bug`, `card-data`, `translation`, `scoring`, `accessibility` and `dependencies`; `good first issue` and `help wanted` point newcomers to a place to start.
 
