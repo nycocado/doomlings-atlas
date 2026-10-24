@@ -2,9 +2,9 @@ package dev.nycocado.atlas
 
 import android.content.Context
 import androidx.annotation.StringRes
-import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
+import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasContentDescription
@@ -81,9 +81,18 @@ abstract class AtlasBehaviorTest {
                 // Scrolled out of the window: nothing for a player to hit.
                 .filterNot { it.touchBoundsInRoot.isEmpty }
                 .filter { node ->
-                    node.config.getOrNull(SemanticsProperties.Text).orEmpty().isEmpty() &&
-                        node.config.getOrNull(SemanticsProperties.ContentDescription).orEmpty().isEmpty()
+                    node.config
+                        .getOrNull(SemanticsProperties.Text)
+                        .orEmpty()
+                        .isEmpty() &&
+                        node.config
+                            .getOrNull(SemanticsProperties.ContentDescription)
+                            .orEmpty()
+                            .isEmpty()
                 }
-        check(unlabeled.isEmpty()) { "Clickable without a label:\n" + unlabeled.joinToString("\n") { it.config.toString() } }
+        check(unlabeled.isEmpty()) {
+            "Clickable without a label:\n" +
+                unlabeled.joinToString("\n") { it.config.toString() }
+        }
     }
 }

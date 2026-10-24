@@ -32,7 +32,9 @@ class WideWindowTest : AtlasBehaviorTest() {
 
         compose.onNodeWithText("Appealing").assertIsDisplayed()
         compose.onNodeWithText("Adorable").assertDoesNotExist()
-        scenario.onActivity { a -> listOf(0, 1).forEach { a.dispatchKeyEvent(android.view.KeyEvent(it, android.view.KeyEvent.KEYCODE_BACK)) } }
+        scenario.onActivity { a ->
+            listOf(0, 1).forEach { a.dispatchKeyEvent(android.view.KeyEvent(it, android.view.KeyEvent.KEYCODE_BACK)) }
+        }
         text(R.string.unofficial_notice).assertDoesNotExist()
         text(R.string.search_placeholder).assertIsDisplayed()
         button(R.string.about).assertIsDisplayed()
@@ -62,7 +64,9 @@ class WideWindowTest : AtlasBehaviorTest() {
 
         text(R.string.about).assertIsDisplayed()
         assertAccessible()
-        scenario.onActivity { a -> listOf(0, 1).forEach { a.dispatchKeyEvent(android.view.KeyEvent(it, android.view.KeyEvent.KEYCODE_BACK)) } }
+        scenario.onActivity { a ->
+            listOf(0, 1).forEach { a.dispatchKeyEvent(android.view.KeyEvent(it, android.view.KeyEvent.KEYCODE_BACK)) }
+        }
         compose.onNodeWithText("Adorable").assertIsDisplayed()
         text(R.string.search_placeholder).assertIsDisplayed()
     }
