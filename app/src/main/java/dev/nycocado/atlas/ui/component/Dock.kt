@@ -47,14 +47,12 @@ private enum class Destination(
     Tutorial(R.string.dock_tutorial, R.drawable.ic_dock_tutorial),
 }
 
-// The rail (vertical) shows icons only; labels go to semantics. The pill and each item stay the same nodes in both
-// shapes, so a caller can animate one into the other through itemModifier and its own modifier.
+// The rail (vertical) shows icons only; labels go to semantics.
 @Composable
 fun Dock(
     onCardsClick: () -> Unit,
     modifier: Modifier = Modifier,
     vertical: Boolean = false,
-    itemModifier: Modifier = Modifier,
 ) {
     val theme = AtlasTheme.colors
     Box(
@@ -77,12 +75,11 @@ fun Dock(
             } else {
                 Modifier.fillMaxWidth().padding(horizontal = Space.s2)
             },
-        ) { Destination.entries.forEach { DockItem(it, vertical, onCardsClick, itemModifier) } }
+        ) { Destination.entries.forEach { DockItem(it, vertical, onCardsClick) } }
     }
 }
 
-// The items as a Column (rail) or a Row (bar) would place them. Handwritten as one layout: moved between two parents,
-// a caller's animation can't glide them on their first frames.
+// The items as a Column (rail) or a Row (bar) would place them.
 @Composable
 private fun DockLine(
     vertical: Boolean,
@@ -144,13 +141,12 @@ private fun DockItem(
     destination: Destination,
     vertical: Boolean,
     onCardsClick: () -> Unit,
-    modifier: Modifier,
 ) {
     val theme = AtlasTheme.colors
     val label = stringResource(destination.label)
     if (destination == Destination.Cards) {
         Row(
-            modifier
+            Modifier
                 .height(48.dp)
                 .background(theme.highlight, CircleShape)
                 .clickable(onClick = onCardsClick)
@@ -176,7 +172,7 @@ private fun DockItem(
     } else {
         val comingSoon = stringResource(R.string.coming_soon, label)
         Box(
-            modifier.size(48.dp).clearAndSetSemantics {
+            Modifier.size(48.dp).clearAndSetSemantics {
                 contentDescription = comingSoon
                 disabled()
             },

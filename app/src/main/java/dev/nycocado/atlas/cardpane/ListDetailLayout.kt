@@ -1,11 +1,9 @@
 package dev.nycocado.atlas.cardpane
 
-import androidx.compose.animation.core.snap
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfoV2
 import androidx.compose.material3.adaptive.layout.PaneScaffoldDirective
 import androidx.compose.material3.adaptive.layout.calculatePaneScaffoldDirective
-import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.dp
@@ -38,7 +36,7 @@ class ListDetailLayout(
     // Beside the list, the list's header owns the status bar's icons.
     val cardSetsStatusBarIcons get() = !sideBySide
 
-    // A single column until a card opens, so opening and closing a card animates the panes instead of swapping layouts.
+    // A single column until a card opens.
     // The constructor, not copy(): copy() resets shouldAutoFocusCurrentDestination to true. A field the directive gains
     // in a library update has to be passed on here too, or it falls back to its default.
     val directive =
@@ -57,11 +55,6 @@ class ListDetailLayout(
             // enough: as the card closes the scaffold still sees the old directive for a frame.
             shouldAutoFocusCurrentDestination = false,
         )
-
-    // Jumps as a card opens, so the grid changes its columns once. Grows as it closes: the scaffold slides the closing
-    // card out under the list.
-    fun listPaneAnimation() =
-        ListDetailSceneStrategy.paneAnimation(boundsAnimationSpec = if (isCardOpen) snap() else null)
 
     companion object {
         internal val Single = ListDetailLayout(PaneScaffoldDirective.Default, isCardOpen = false)

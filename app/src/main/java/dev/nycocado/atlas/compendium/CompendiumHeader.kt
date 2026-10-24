@@ -1,16 +1,10 @@
 package dev.nycocado.atlas.compendium
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.BoundsTransform
-import androidx.compose.animation.animateBounds
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.animate
-import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
-import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -49,7 +43,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.layout.Layout
-import androidx.compose.ui.layout.LookaheadScope
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -191,8 +184,6 @@ internal fun Header(
     onAboutClick: () -> Unit,
     // When hidden, the search takes the button's place.
     showAbout: Boolean,
-    // Title, search and info button move between the one-row and the stacked header as the same content.
-    transform: BoundsTransform,
     onQueryChange: (String) -> Unit,
 ) {
     val theme = AtlasTheme.colors
@@ -207,21 +198,15 @@ internal fun Header(
             }.background(theme.inverseSurface)
             .windowInsetsPadding(WindowInsets.statusBars),
     ) {
-        // Collapses outside the LookaheadScope, which animateBounds would follow a frame or more late: inside it nothing
-        // moves or changes size, the content slides up as a whole.
         Box(with(collapse) { Modifier.collapsingTitle() }) {
-            LookaheadScope {
-                val moves = Modifier.animateBounds(this, boundsTransform = transform)
-                // The header's height glides with its parts when the layout switches.
-                HeaderParts(
-                    rail,
-                    collapse::measuredTitle,
-                    moves.fillMaxWidth(),
-                    title = { HeaderTitle(moves) },
-                    search = { SearchField(query, onQueryChange, moves) },
-                    about = { InfoButton(showAbout, onAboutClick, moves) },
-                )
-            }
+            HeaderParts(
+                rail,
+                collapse::measuredTitle,
+                Modifier.fillMaxWidth(),
+                title = { HeaderTitle() },
+                search = { SearchField(query, onQueryChange) },
+                about = { InfoButton(showAbout, onAboutClick) },
+            )
         }
         // Right below the content, so it moves with the header's edge without animating on its own.
         SunsetBand(Modifier.collapsing(fraction).padding(top = 6.dp))
@@ -229,9 +214,9 @@ internal fun Header(
 }
 
 @Composable
-private fun HeaderTitle(modifier: Modifier) {
+private fun HeaderTitle() {
     Row(
-        modifier,
+        Modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(Space.s3),
     ) {
@@ -245,8 +230,7 @@ private fun HeaderTitle(modifier: Modifier) {
 }
 
 // Title and info button above the search, or all in one row with the search centered on the whole row. One layout for
-// both: moved between two parents, animateBounds can't glide them on their first frames. Handwritten: Row centers a
-// child between its neighbors, not on the row.
+// both. Handwritten: Row centers a child between its neighbors, not on the row.
 @Composable
 private fun HeaderParts(
     rail: Boolean,
@@ -306,13 +290,8 @@ private fun HeaderParts(
 private fun InfoButton(
     show: Boolean,
     onClick: () -> Unit,
-    modifier: Modifier,
-) = AnimatedVisibility(
-    show,
-    modifier,
-    enter = fadeIn() + scaleIn() + expandHorizontally(),
-    exit = fadeOut() + scaleOut() + shrinkHorizontally(),
 ) {
+    if (!show) return
     // The header clips while collapsing, so it leaves room for the button's shadow.
     RoundButton(
         R.drawable.ic_info,
