@@ -1,5 +1,6 @@
 package dev.nycocado.atlas.ui.component
 
+import android.content.res.Resources
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -32,6 +33,7 @@ import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.AsyncImage
 import coil3.compose.AsyncImagePreviewHandler
 import coil3.compose.LocalAsyncImagePreviewHandler
+import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.cardImage
@@ -47,6 +49,14 @@ import dev.nycocado.atlas.ui.theme.trait
 
 // Signed values use the typographic minus (docs/design.md).
 fun signed(points: Int) = if (points < 0) "\u2212${-points}" else "$points"
+
+// Android's Portuguese plural rule puts 0 in "one" ("0 ponto"); 0 is plural in both languages, so it has its own string.
+fun Resources.pointsText(points: Int): String =
+    if (points == 0) {
+        getString(R.string.card_points_zero)
+    } else {
+        getQuantityString(R.plurals.card_points, points, signed(points))
+    }
 
 // colors is null for cards without color (ages, catastrophes); an empty list is a colorless trait.
 @Composable

@@ -55,7 +55,7 @@ import androidx.compose.ui.graphics.vector.VectorPath
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
-import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -87,6 +87,7 @@ import dev.nycocado.atlas.ui.component.RoundButton
 import dev.nycocado.atlas.ui.component.TraitGlyph
 import dev.nycocado.atlas.ui.component.UnofficialFooter
 import dev.nycocado.atlas.ui.component.colorName
+import dev.nycocado.atlas.ui.component.pointsText
 import dev.nycocado.atlas.ui.component.signed
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
@@ -285,7 +286,7 @@ private fun PointsBadge(
     modifier: Modifier = Modifier,
 ) {
     val theme = AtlasTheme.colors
-    val description = pluralStringResource(R.plurals.card_points, points, signed(points))
+    val description = LocalResources.current.pointsText(points)
     val scope = rememberCoroutineScope()
     val spin = remember { Animatable(0f) }
     Box(

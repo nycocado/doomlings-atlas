@@ -1,5 +1,6 @@
 package dev.nycocado.atlas
 
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.hasContentDescription
@@ -69,5 +70,20 @@ class PhoneBrowsingTest : AtlasBehaviorTest() {
         text(R.string.about).assertIsDisplayed()
         button(R.string.back).performClick()
         compose.onNodeWithText("Adorable").assertIsDisplayed()
+    }
+
+    @Test
+    fun aTraitWithAFixedValueShowsItsPoints() {
+        launchPastNotice()
+
+        card("Adorable").assertContentDescriptionEquals("Adorable, ${string(R.string.color_purple)}, 4 points")
+    }
+
+    @Test
+    fun aTraitWhoseValueDependsOnTheGameShowsNoPoints() {
+        launchPastNotice()
+        compose.onNode(hasScrollAction()).performScrollToNode(hasContentDescription("Fortunate,", substring = true))
+
+        card("Fortunate").assertContentDescriptionEquals("Fortunate, ${string(R.string.color_green)}")
     }
 }
