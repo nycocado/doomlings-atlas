@@ -1,8 +1,12 @@
 package dev.nycocado.atlas
 
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsFocused
+import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.isFocused
 import androidx.compose.ui.test.performClick
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test
@@ -67,4 +71,35 @@ class WideWindowTest : AtlasBehaviorTest() {
         detailOf("Adorable").assertIsDisplayed()
         text(R.string.search_placeholder).assertIsDisplayed()
     }
+
+    @Test
+    fun nothingTakesFocusWhenTheAppOpens() {
+        launchPastNotice()
+
+        focused.assertCountEquals(0)
+    }
+
+    @Test
+    fun nothingTakesFocusWhenTheCardBesideTheListCloses() {
+        val scenario = launchPastNotice()
+        card("Adorable").performClick()
+
+        pressBack(scenario)
+        compose.waitUntilDoesNotExist(hasText(string(R.string.unofficial_notice)))
+
+        focused.assertCountEquals(0)
+    }
+
+    @Test
+    fun tappingTheSearchFieldFocusesIt() {
+        launchPastNotice()
+
+        searchField.performClick()
+
+        searchField.assertIsFocused()
+    }
+
+    private val focused get() = compose.onAllNodes(isFocused())
+
+    private val searchField get() = compose.onNode(hasSetTextAction())
 }
