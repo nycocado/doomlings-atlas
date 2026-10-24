@@ -40,7 +40,7 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game. Where it 
 ## Workflow
 
 1. Work starts from an issue, which is its spec ([docs/agents/issue-tracker.md](docs/agents/issue-tracker.md)). Pick up only issues labelled `ready-for-agent`, which only the maintainer applies; a spec you write gets `needs-triage`, even when a skill says otherwise.
-2. A small spec (2 to 4 tickets) runs with `/implement-spec` and becomes one PR; a single ticket runs with `/implement` and becomes one PR.
+2. A small spec (2 to 4 tickets) runs with `/implement-spec` and becomes one PR; a single ticket runs with `/implement` and becomes one PR. Before merging a ticket into its integration branch, `/implement-spec` runs the `ticket-review` agent on the ticket's commits and fixes or sends back what it finds.
 3. Work on a branch from `main` (`feat/...`, `fix/...`, `docs/...`). Agents working on their own use a worktree; the main checkout is the maintainer's, open in Android Studio.
 4. In `shared`, write the failing test first, then the code. In `app`, give every component and screen a `@PreviewLightDark` preview, following [docs/design.md](docs/design.md).
 5. Run `./gradlew spotlessApply check validateDebugScreenshotTest` and fix everything it reports.
