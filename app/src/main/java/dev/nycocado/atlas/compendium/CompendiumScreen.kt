@@ -233,7 +233,7 @@ fun CompendiumContent(
                                     },
                                     // animateBounds skips moves inside the grid, which places its items as scrolling.
                                     Modifier
-                                        .animateItem(placementSpec = if (settling.active) null else MoveSpec)
+                                        .animateItem(placementSpec = if (settling.resizing) null else MoveSpec)
                                         .animateBounds(reflow, boundsTransform = Reflow),
                                 )
                             }
@@ -330,15 +330,13 @@ private fun LazyGridScope.fullWidth(
     }
 }
 
-// Switching from the composition where the layout changes until the next frame: every move the switch causes starts
-// its animation within that frame, as the header's parts and the dock stay in the same parents.
 // Whether the grid is still laid out at another size than the one it is heading for, as while the list's pane grows or
 // shrinks beside a card. The grid's item animations keep the place where a card first comes into view during those
 // in-between layouts, and nothing corrects it until the next scroll, which then slides the card to its real place.
 // Without a placement animation meanwhile, the grid forgets those places and starts over once it has its size.
 @Stable
 private class GridSettling {
-    var active by mutableStateOf(false)
+    var resizing by mutableStateOf(false)
         private set
 
     private var target = IntSize.Zero
@@ -347,11 +345,14 @@ private class GridSettling {
         Modifier.layout { measurable, constraints ->
             val placeable = measurable.measure(constraints)
             val size = IntSize(placeable.width, placeable.height)
-            if (isLookingAhead) target = size else active = size != target
+            // Never before a first look ahead, which would leave it on for good.
+            if (isLookingAhead) target = size else resizing = target != IntSize.Zero && size != target
             layout(placeable.width, placeable.height) { placeable.place(0, 0) }
         }
 }
 
+// Switching from the composition where the layout changes until the next frame: every move the switch causes starts
+// its animation within that frame, as the header's parts and the dock stay in the same parents.
 private class LayoutSwitch(
     private var rail: Boolean,
 ) {

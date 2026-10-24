@@ -29,7 +29,9 @@ class CardMotionTest : AtlasBehaviorTest() {
         compose.waitForIdle()
 
         compose.mainClock.autoAdvance = false
+        val before = positions()
         dragListUp()
+        check(positions() != before) { "The list didn't scroll" }
 
         val moving = cardsMovingOnTheirOwn()
         check(moving.isEmpty()) { "Moved after the scroll: ${moving.keys}" }
@@ -52,7 +54,6 @@ class CardMotionTest : AtlasBehaviorTest() {
         compose.mainClock.advanceTimeByFrame()
     }
 
-    // The cards whose place changes over the next frames, with nothing else happening.
     private fun cardsMovingOnTheirOwn(): Map<String, Offset> {
         val start = positions()
         repeat(30) { compose.mainClock.advanceTimeByFrame() }
