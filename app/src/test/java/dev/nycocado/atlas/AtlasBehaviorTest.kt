@@ -3,7 +3,10 @@ package dev.nycocado.atlas
 import android.content.Context
 import androidx.annotation.StringRes
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.semantics.SemanticsProperties
+import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.SemanticsNodeInteraction
+import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.junit4.accessibility.enableAccessibilityChecks
 import androidx.compose.ui.test.junit4.v2.createEmptyComposeRule
@@ -67,4 +70,20 @@ abstract class AtlasBehaviorTest {
     // A card in the list is described as "Name, color, points": matched by the name it starts with.
     protected fun card(name: String): SemanticsNodeInteraction =
         compose.onNode(hasContentDescription("$name,", substring = true))
+
+    // Compose's own accessibility checks don't run on Robolectric, so this sweeps what is on screen: everything that can
+    // be clicked must say what it is. Touch size isn't checked (Compose widens every touch area to 48dp) nor contrast.
+    protected fun assertAccessible() {
+        val unlabeled =
+            compose
+                .onAllNodes(hasClickAction())
+                .fetchSemanticsNodes()
+                // Scrolled out of the window: nothing for a player to hit.
+                .filterNot { it.touchBoundsInRoot.isEmpty }
+                .filter { node ->
+                    node.config.getOrNull(SemanticsProperties.Text).orEmpty().isEmpty() &&
+                        node.config.getOrNull(SemanticsProperties.ContentDescription).orEmpty().isEmpty()
+                }
+        check(unlabeled.isEmpty()) { "Clickable without a label:\n" + unlabeled.joinToString("\n") { it.config.toString() } }
+    }
 }

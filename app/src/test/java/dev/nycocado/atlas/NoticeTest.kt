@@ -16,6 +16,7 @@ class NoticeTest : AtlasBehaviorTest() {
 
         text(R.string.unofficial_explanation).assertIsDisplayed()
         text(R.string.got_it).assertIsDisplayed()
+        assertAccessible()
     }
 
     @Test

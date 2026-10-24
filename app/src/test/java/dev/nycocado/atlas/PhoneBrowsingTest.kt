@@ -23,8 +23,10 @@ class PhoneBrowsingTest : AtlasBehaviorTest() {
         card("Adorable").performClick()
 
         compose.onNodeWithText("Adorable").assertIsDisplayed()
+        assertAccessible()
         button(R.string.back).performClick()
         text(R.string.search_placeholder).assertIsDisplayed()
+        assertAccessible()
     }
 
     @Test
@@ -52,6 +54,7 @@ class PhoneBrowsingTest : AtlasBehaviorTest() {
         button(R.string.about).performClick()
 
         text(R.string.about).assertIsDisplayed()
+        assertAccessible()
         button(R.string.back).performClick()
         text(R.string.search_placeholder).assertIsDisplayed()
     }
