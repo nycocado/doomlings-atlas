@@ -55,7 +55,17 @@ blocked "$wt" "git -c k=v push origin main"
 blocked "$m" "git --no-pager push"
 blocked "$m" "git -c k=v push"
 blocked "$wt" "git push origin +main"
+blocked "$m" 'git push origin \"HEAD:main\"'
+blocked "$m" "git push origin 'main'"
+blocked "$wt" "git push --repo=origin main"
+blocked "$wt" "git push --repo origin main"
+blocked "$wt" "git push -o ci.skip origin main"
 
+allowed "$m" "git push --repo=origin feature"
+allowed "$m" "git push --repo origin feature"
+allowed "$m" "git push -o ci.skip origin feature"
+allowed "$m" "git push --push-option x origin feature"
+allowed "$m" 'git push origin \"feature\"'
 allowed "$m" "git push origin feature"
 allowed "$m" "git push origin feature 2>&1"
 allowed "$m" "git -c k=v push origin feature"

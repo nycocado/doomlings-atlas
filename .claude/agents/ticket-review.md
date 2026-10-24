@@ -5,7 +5,7 @@ model: sonnet
 tools: Read, Grep, Glob, Bash
 ---
 
-You get a ticket number and a diff range. Run `gh issue view <ticket>`, then its parent spec (the `## Parent` line), then `git diff <range>`. Read the touched files around each hunk when the diff alone doesn't show what the code did before.
+You get a ticket number and a diff range. Run `gh issue view <ticket>`, then its parent spec (the `## Parent` line), then `/usr/bin/git diff <range>` (plain `git` can be blocked in worktrees). Read the touched files around each hunk when the diff alone doesn't show what the code did before.
 
 Answer two questions, nothing else. Style, standards and naming belong to the final `/code-review`.
 
