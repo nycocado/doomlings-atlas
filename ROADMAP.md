@@ -23,27 +23,29 @@ Everything here comes before assets and code.
 
 ## 2. Card Text Translation (In Progress)
 
-- Portuguese and Spanish, reviewed by the maintainer; other languages through community contributions.
+- Portuguese and Spanish for the cards of every set, drafted by an agent and reviewed by the maintainer; other languages through community contributions.
 - Translated card text shown in the compendium, chosen apart from the interface language: card text stays as printed until the user picks a translation, with a language selector in the card detail.
 - App interface also in Spanish.
 - Unit and data tests: card counts against the rulesheet, text hygiene in every set's data, signed points and cards that share a name, and search edge cases.
 - UI tests with Compose and Robolectric, in CI: navigation on phone and tablet sizes (opening, switching and closing cards, About) and state surviving activity recreation, with Compose's accessibility checks enabled so a touch target, contrast or label problem fails the build.
 - A screenshot test of the compendium with its header half collapsed, since the collapse relies on how `animateBounds` sizes an idle node.
-- Update check: the app looks up the latest GitHub Release and says when a newer version exists, skipped when Google Play installed it. It needs the internet permission, so an ADR amends [ADR 0002](docs/adr/0002-offline-without-backend.md) first.
+- Update check: the app looks up the latest GitHub Release on each start and, when a newer version exists, offers to download it, check its digest and hand it to the system installer; skipped in debug builds and when Google Play installed it. It needs the internet and install permissions, so an ADR amends [ADR 0002](docs/adr/0002-offline-without-backend.md) first.
 
 ### Going Public
 
-The repository goes public and the first APK comes out on GitHub Releases at the end of this phase. Before that, in this order:
+The repository goes public and the first APK comes out on GitHub Releases once every other issue of this phase is done. Before that, in this order:
 
-- Git history rewritten so every commit uses the maintainer's GitHub noreply address, with the `v0.1.0` tag and Release recreated on the new commits.
-- History scanned for secrets with gitleaks.
-- A `SECURITY.md`, with private vulnerability reporting turned on, and a `CODE_OF_CONDUCT.md` (Contributor Covenant) with a reporting contact.
-- Rulesets on `main` (pull request, green CI, no force push) and on `v*` tags (only the maintainer creates or moves them), immutable releases, CodeQL, secret scanning and push protection, which need a public repository on the free plan.
-- Actions runs for outside contributors wait for the maintainer's approval, the maintainer's GitHub account uses two-factor authentication, and the workflows are checked once with [zizmor](https://zizmor.sh).
-- CI also builds the unsigned release APK, so an R8 break fails the pull request, and reviews the dependencies each pull request adds.
-- Release workflow: a `vX.Y.Z` tag builds the signed APK in the `release` environment after the maintainer approves it, and creates a draft GitHub Release with a build provenance attestation (see [CONTRIBUTING.md](CONTRIBUTING.md)). The maintainer installs the draft's APK on a real device before publishing it.
+- A `SECURITY.md` and a `CODE_OF_CONDUCT.md` (Contributor Covenant) with a reporting contact.
+- CI also builds the unsigned release APK, so an R8 break fails the pull request, and reviews the dependencies each pull request adds. The workflows are checked once with [zizmor](https://zizmor.sh).
+- Release workflow: a `vX.Y.Z` tag builds the signed APK in the `release` environment after the maintainer approves it, and creates a draft GitHub Release with a build provenance attestation (see [docs/development.md](docs/development.md#releases)). The maintainer installs the draft's APK on a real device before publishing it.
 - README for players: what the app does, screenshots and where to download it. Repository topics so the project shows up in GitHub search.
-- Doomlings told that the repository is public.
+- Git history rewritten so every commit of the maintainer uses their GitHub noreply address, with the `v0.1.0` tag and Release recreated on the new commits, and the history scanned for secrets with gitleaks. Last, with no pull request open, since the force push invalidates every branch.
+
+Then, right after the repository goes public, since the free plan offers these only to public repositories:
+
+- Rulesets on `main` (pull request, green CI, no force push) and on `v*` tags (only the maintainer creates or moves them), immutable releases, CodeQL, secret scanning, push protection and private vulnerability reporting.
+- Actions runs for outside contributors wait for the maintainer's approval, and the maintainer's GitHub account uses two-factor authentication.
+- The first APK published, and Doomlings told that the repository is public.
 
 ## 3. Manual Scoring (Planned)
 

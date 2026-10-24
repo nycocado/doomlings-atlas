@@ -29,10 +29,13 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 - **Card type**: the `type` field of a card in `cards.json` (`trait`, `age`, `catastrophe`, `birth-of-life`, `gene-pool` and others); one Kotlin class each in `Card.kt`.
 - **Enabled sets** and **enabled types**: the sets and types packaged into the app (`app/build.gradle.kts`). The rest stays in the repo until its data is checked or a feature needs it.
 - **Card kind**: a segment of the compendium (Traits, Ages, Catastrophes), `CardKind` in code. Not every card type has one.
+- **Printed text**: a card's name and text as printed on it, in English.
+- **Translation**: a card's name and text in another language, written by the project and unofficial. A card may have none in a given language. _Avoid_: localization, for card text.
 
 ## The App
 
 - **Compendium**: the screen listing the cards, with search and filters.
+- **Card language**: the language card text is shown and searched in: the printed text or one translation. Chosen apart from the interface language ([ADR 0007](docs/adr/0007-card-language-apart-from-interface.md)).
 - **Card detail**: the screen of one card. On a wide window it opens **beside the list**, in the **card pane**.
 - **Header**: the dark top of the compendium, with the title, sunset band and search. It **collapses** and **expands** as the list scrolls. _Avoid_: fold, for this.
 - **Fold**: only the hinge of a foldable device.
