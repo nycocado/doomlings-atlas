@@ -90,6 +90,7 @@ private val RailMinWidth = 600.dp
 private val ReflowSpec = tween<Rect>(350, easing = FastOutSlowInEasing)
 private val Reflow = BoundsTransform { _, _ -> ReflowSpec }
 private val MoveSpec = tween<IntOffset>(350, easing = FastOutSlowInEasing)
+private val CollapseSpec = tween<Float>(350, easing = FastOutSlowInEasing)
 
 // Deterministic by position, never random per render (docs/design.md).
 private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
@@ -126,6 +127,7 @@ fun CompendiumContent(
                 collapsedAtStart * distance,
             )
         }
+    LaunchedEffect(collapse) { collapse.followSwitches(CollapseSpec) }
     val grid = rememberLazyGridState()
     val scope = rememberCoroutineScope()
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
@@ -152,7 +154,13 @@ fun CompendiumContent(
         val switchMotion = BoundsTransform { _, _ -> if (switched.switching) ReflowSpec else snap() }
         // On the rail layout nothing sits below the grid, so it keeps clear of the navigation bar itself.
         val bottom = if (rail) Modifier.windowInsetsPadding(WindowInsets.navigationBars) else Modifier
-        SideEffect { collapse.rail = rail }
+        SideEffect {
+            collapse.layout(
+                rail,
+                listAtTop =
+                    grid.firstVisibleItemIndex == 0 && grid.firstVisibleItemScrollOffset == 0,
+            )
+        }
         // Around the whole screen, where the dock stays put while the header collapses and the list below it grows.
         LookaheadScope {
             val itemMotion = Modifier.animateBounds(this, boundsTransform = switchMotion)
