@@ -18,6 +18,7 @@ This file covers the look only. Screen flows, scoring steps and game rules are d
 - **Cards are objects.** Cards have an outline and `shadow-sticker-lg`, tilted between −3° and +2.5°, deterministic by position (never random per render). Never cropped, nothing drawn over the art.
 - **Color is data.** The five trait colors (`trait-blue`, `trait-green`, `trait-purple`, `trait-red`, `trait-colorless`) appear only where they mean a card's color. Sunset tones identify players and decorate; they never mean a trait color.
 - **Unofficial, and saying so.** The notice "Unofficial, not affiliated with or endorsed by Doomlings LLC" shows on first launch and stays one tap away, on About. No Doomlings logo, nothing imitating its lettering.
+- **Motion follows the hand.** Layout changes happen at once: the panes as a card opens or closes, the rail and stacked layouts switching, the info button coming and going; only the card's pane fades. Animation is kept for what the player moves directly: the header collapsing with the list, the filters.
 
 ## Tone
 
