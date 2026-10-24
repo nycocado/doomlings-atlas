@@ -21,7 +21,7 @@ How to build the app and how the code is kept consistent. Most of it runs in CI,
 ## Branches and Merging
 
 - `main` is the only long-lived branch and always builds and passes CI. Work happens on short-lived branches merged by PR ([GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow)); merged branches are deleted.
-- Each [ROADMAP.md](../ROADMAP.md) phase is a milestone and ends with a minor release (`v0.1.0` for phase 1). Its issues are the specs of its work ([CONTRIBUTING.md](../CONTRIBUTING.md#issues-and-specs)).
+- Each [ROADMAP.md](../ROADMAP.md) phase is a milestone and ends with a minor release (`v0.1.0` for phase 1). Its issues are the tickets and specs of its work ([CONTRIBUTING.md](../CONTRIBUTING.md#tickets-and-specs)).
 - PRs are **squash-merged**, with the PR title plus ` (#N)` as the subject and an empty body. One PR is one commit on `main`: every commit there passed CI, so `git bisect` and reverting a change work commit by commit; the changelog gets one line per PR; and the working commits of a branch, often noisy when an agent writes them, stay out of `main`. The why of a change lives in its PR: `gh pr view <N>`.
 
 ## CI
