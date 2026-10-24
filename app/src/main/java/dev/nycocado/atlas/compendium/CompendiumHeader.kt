@@ -3,6 +3,7 @@ package dev.nycocado.atlas.compendium
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.BoundsTransform
 import androidx.compose.animation.animateBounds
+import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.animate
 import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.fadeIn
@@ -35,8 +36,9 @@ import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
@@ -70,6 +72,8 @@ import dev.nycocado.atlas.ui.theme.MaxWidth
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.filterNotNull
 import kotlin.math.roundToInt
 
 internal val CollapseDistance = 96.dp
@@ -80,16 +84,48 @@ internal val CollapseDistance = 96.dp
 internal class HeaderCollapse(
     private val distance: Float,
     initial: Float = 0f,
+    rail: Boolean = false,
 ) : NestedScrollConnection {
     private var collapsed by mutableFloatStateOf(initial)
     private var titleHeight = 0
 
     // The rail layout's header is a single row with nothing to collapse, so it neither collapses nor scrolls along.
-    var rail by mutableStateOf(false)
+    var rail by mutableStateOf(rail)
+        private set
 
     companion object {
-        fun saver(distance: Float) = Saver<HeaderCollapse, Float>({ it.collapsed }, { HeaderCollapse(distance, it) })
+        // With the layout it was in, so a rotation out of the rail layout still counts as leaving it.
+        fun saver(distance: Float) =
+            listSaver<HeaderCollapse, Any>(
+                { listOf(it.collapsed, it.rail) },
+                { HeaderCollapse(distance, it[0] as Float, it[1] as Boolean) },
+            )
     }
+
+    private var laidOut = false
+    private var afterRail by mutableStateOf<Float?>(null)
+
+    // Given before each frame's layout. The list scrolls without the header in the rail layout, so leaving it the header
+    // takes the state the stacked layout keeps: expanded only with the list at the top. Restored already out of it, as
+    // after a rotation, it starts there; switching on screen, it gets there in followSwitches.
+    fun layout(
+        rail: Boolean,
+        listAtTop: Boolean,
+    ) {
+        if (this.rail && !rail) {
+            val state = if (listAtTop) 0f else distance
+            if (laidOut) afterRail = state else collapsed = state
+        }
+        this.rail = rail
+        laidOut = true
+    }
+
+    // For as long as the header is shown: each switch out of the rail layout moves it with the switch's duration and curve.
+    suspend fun followSwitches(spec: AnimationSpec<Float>) =
+        snapshotFlow { afterRail }.filterNotNull().collectLatest { state ->
+            afterRail = null
+            animate(collapsed, state, animationSpec = spec) { value, _ -> collapsed = value }
+        }
 
     fun fraction() = if (rail) 0f else collapsed / distance
 
