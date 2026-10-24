@@ -17,46 +17,59 @@ block() {
 # The shell's own directory, which is a worktree's in a worktree session, while CLAUDE_PROJECT_DIR stays the main checkout.
 dir=$(printf '%s' "$input" | jq -r '.cwd // empty')
 dir=${dir:-$CLAUDE_PROJECT_DIR}
-newbranch=
+newdir=
 
 set -f
-segments=$(printf '%s\n' "$command" | sed 's/&&/\n/g; s/||/\n/g; s/[;|&]/\n/g')
+# Redirections are dropped first so they are neither split at their & nor read as refspecs; brackets are just word breaks.
+segments=$(printf '%s\n' "$command" | sed 's/&>>* *[^ ;&|]*//g; s/[0-9]*>&[0-9-]*//g; s/[0-9]*>>* *[^ ;&|]*//g; s/< *[^ ;&|]*//g; s/[(){}]/ /g; s/&&/\n/g; s/||/\n/g; s/[;|&]/\n/g')
 while IFS= read -r segment; do
     # shellcheck disable=SC2086
     set -- $segment
-    case "$1" in
-    cd)
+    if [ "$1" = "cd" ]; then
         case "$2" in
         /*) dir=$2 ;;
         *) dir=$dir/$2 ;;
         esac
         continue
-        ;;
-    git) ;;
-    *) continue ;;
-    esac
+    fi
+    # The git word may follow a prefix (env, rtk, FOO=1) and may be a path (/usr/bin/git).
+    while [ $# -gt 0 ]; do
+        case "$1" in
+        git | */git) break ;;
+        esac
+        shift
+    done
+    [ $# -gt 0 ] || continue
     shift
 
     gitdir=$dir
-    while [ "$1" = "-C" ] && [ $# -ge 2 ]; do
-        case "$2" in
-        /*) gitdir=$2 ;;
-        *) gitdir=$gitdir/$2 ;;
+    while [ $# -gt 0 ]; do
+        case "$1" in
+        -C)
+            case "$2" in
+            /*) gitdir=$2 ;;
+            *) gitdir=$gitdir/$2 ;;
+            esac
+            shift 2
+            ;;
+        -c) shift 2 ;;
+        -*) shift ;;
+        *) break ;;
         esac
-        shift 2
     done
     sub=$1
     shift
 
     case "$sub $1" in
     "checkout -b" | "checkout -B" | "switch -c" | "switch -C")
-        newbranch=1
+        newdir=$gitdir
         continue
         ;;
     esac
 
+    # A branch created in this very directory has no commits to protect yet.
     branch=$(git -C "$gitdir" branch --show-current 2>/dev/null)
-    [ -n "$newbranch" ] && branch=
+    [ "$newdir" = "$gitdir" ] && branch=
     case "$sub" in
     commit)
         [ "$branch" = "main" ] && block
@@ -81,6 +94,7 @@ while IFS= read -r segment; do
             HEAD) dest=$branch ;;
             *) dest=$spec ;;
             esac
+            dest=${dest#+}
             dest=${dest#refs/heads/}
             [ "$dest" = "main" ] && block
         done
