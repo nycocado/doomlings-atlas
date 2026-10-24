@@ -1,7 +1,6 @@
 package dev.nycocado.atlas.compendium
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.animate
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -32,7 +31,6 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
@@ -65,8 +63,6 @@ import dev.nycocado.atlas.ui.theme.MaxWidth
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.filterNotNull
 import kotlin.math.roundToInt
 
 internal val CollapseDistance = 96.dp
@@ -95,30 +91,15 @@ internal class HeaderCollapse(
             )
     }
 
-    private var laidOut = false
-    private var afterRail by mutableStateOf<Float?>(null)
-
     // Given before each frame's layout. The list scrolls without the header in the rail layout, so leaving it the header
-    // takes the state the stacked layout keeps: expanded only with the list at the top. Restored already out of it, as
-    // after a rotation, it starts there; switching on screen, it gets there in followSwitches.
+    // takes at once the state the stacked layout keeps: expanded only with the list at the top.
     fun layout(
         rail: Boolean,
         listAtTop: Boolean,
     ) {
-        if (this.rail && !rail) {
-            val state = if (listAtTop) 0f else distance
-            if (laidOut) afterRail = state else collapsed = state
-        }
+        if (this.rail && !rail) collapsed = if (listAtTop) 0f else distance
         this.rail = rail
-        laidOut = true
     }
-
-    // For as long as the header is shown: each switch out of the rail layout moves it with the switch's duration and curve.
-    suspend fun followSwitches(spec: AnimationSpec<Float>) =
-        snapshotFlow { afterRail }.filterNotNull().collectLatest { state ->
-            afterRail = null
-            animate(collapsed, state, animationSpec = spec) { value, _ -> collapsed = value }
-        }
 
     fun fraction() = if (rail) 0f else collapsed / distance
 
@@ -216,7 +197,6 @@ internal fun Header(
 @Composable
 private fun HeaderTitle() {
     Row(
-        Modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(Space.s3),
     ) {
@@ -229,8 +209,8 @@ private fun HeaderTitle() {
     }
 }
 
-// Title and info button above the search, or all in one row with the search centered on the whole row. One layout for
-// both. Handwritten: Row centers a child between its neighbors, not on the row.
+// Title and info button above the search, or all in one row with the search centered on the whole row.
+// Handwritten: Row centers a child between its neighbors, not on the row.
 @Composable
 private fun HeaderParts(
     rail: Boolean,
@@ -240,7 +220,7 @@ private fun HeaderParts(
     search: @Composable () -> Unit,
     about: @Composable () -> Unit,
 ) = Layout({
-    // Each part is wrapped, so there are always three to measure, even after the info button animates away.
+    // Each part is wrapped, so there are always three to measure, even while the info button is hidden.
     Box { title() }
     Box { search() }
     Box { about() }

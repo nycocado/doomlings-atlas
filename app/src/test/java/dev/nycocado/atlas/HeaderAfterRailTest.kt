@@ -61,7 +61,7 @@ class HeaderAfterRailTest : AtlasBehaviorTest() {
         card("Woody Stems").performClick()
 
         detailOf("Woody Stems").assertIsDisplayed()
-        // It collapses with the layout switch's motion, which starts once the switch is on screen.
+        // It collapses as the switch to the stacked layout reaches the screen.
         compose.waitUntil { !title.isDisplayed() }
         title.assertIsNotDisplayed()
     }

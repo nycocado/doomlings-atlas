@@ -81,7 +81,6 @@ private val RailWidth = Space.s5 + 64.dp + Space.s4
 private val RailMinWidth = 600.dp
 
 private val MoveSpec = tween<IntOffset>(350, easing = FastOutSlowInEasing)
-private val CollapseSpec = tween<Float>(350, easing = FastOutSlowInEasing)
 
 // Deterministic by position, never random per render (docs/design.md).
 private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
@@ -118,7 +117,6 @@ fun CompendiumContent(
                 collapsedAtStart * distance,
             )
         }
-    LaunchedEffect(collapse) { collapse.followSwitches(CollapseSpec) }
     val grid = rememberLazyGridState()
     val scope = rememberCoroutineScope()
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
