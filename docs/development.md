@@ -27,7 +27,6 @@ How to build the app and how the code is kept consistent. Most of it runs in CI,
 ## CI
 
 - Every PR and push to `main` runs one GitHub Actions workflow: Gradle wrapper validation, `spotlessCheck`, `lint`, unit tests, the permission and glossary checks, the screenshot tests and a debug build.
-- A separate job runs the tests of the `main` guard hook (`.claude/hooks/guard-main.test.sh`).
 - On PRs, it also checks that the title follows the [commit format](../CONTRIBUTING.md#commits), since it becomes the squash commit message, and that neither the PR body nor its commits carry AI attribution ([CONTRIBUTING.md](../CONTRIBUTING.md#opening-a-pull-request)).
 - Actions are pinned by commit SHA. Dependabot opens weekly grouped updates for Gradle and Actions.
 
