@@ -13,6 +13,7 @@ import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
 import dev.nycocado.atlas.cardpane.CardBesideListPreview
 import dev.nycocado.atlas.compendium.CompendiumBesideCardPreview
+import dev.nycocado.atlas.compendium.CompendiumHalfCollapsedPreview
 import dev.nycocado.atlas.compendium.CompendiumLongNamePreview
 import dev.nycocado.atlas.compendium.CompendiumPreview
 import dev.nycocado.atlas.ui.component.CardThumbPreview
@@ -46,6 +47,11 @@ fun DockScreenshot() = DockPreview()
 @PreviewLightDark
 @Composable
 fun CompendiumScreenshot() = CompendiumPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun CompendiumHalfCollapsedScreenshot() = CompendiumHalfCollapsedPreview()
 
 @PreviewTest
 @PreviewLightDark
