@@ -47,7 +47,7 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game. Where it 
 6. Commit and push your branch freely, and open a draft PR titled in the commit format, saying what changed, why and how it was tested, with `Closes #N`. Mark it ready when CI passes and `/code-review` has nothing left.
 7. Only the maintainer merges: by squash, with the PR title plus ` (#N)` as the subject and an empty body. "Pode forçar" (force it) means `gh pr merge --admin`.
 
-Claude Code hooks in `.claude/settings.json` enforce part of this (no commits to `main`, no AI attribution, no `ready-for-agent` from agents, a confirmation before protected files); don't disable them.
+Claude Code hooks in `.claude/settings.json` enforce part of this (no commits or pushes to `main`, no AI attribution, no `ready-for-agent` from agents, a confirmation before protected files); don't disable them.
 
 ## Devices
 
