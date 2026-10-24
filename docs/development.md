@@ -4,8 +4,8 @@ How to build the app and how the code is kept consistent. Most of it runs in CI,
 
 ## Getting Started
 
-1. Install a full JDK 25 (with `jlink`, not a bare JRE), the Android SDK and, to run the app, Android Studio.
-2. Gradle finds the SDK through `local.properties` (`sdk.dir`, written by Android Studio and not in git) or `ANDROID_HOME`. If a build can't find it, for example in a fresh git worktree with the SDK outside its default place, set `ANDROID_HOME`.
+1. Install a full JDK 25 (with `jlink`, not a bare JRE), the Android SDK and, to run the app, Android Studio. If a session inherits another `JAVA_HOME` (for example an editor's bare JRE), set it to the JDK 25.
+2. Gradle finds the SDK through `local.properties` (`sdk.dir`, written by Android Studio and not in git) or `ANDROID_HOME`. A fresh git worktree has no `local.properties`, so set `ANDROID_HOME` there.
 3. Run `./gradlew check`: formatting, lint, unit tests and the project's own checks, the same as CI.
 4. Open the project in Android Studio and run the `app` configuration on an emulator or device (API 26 or newer).
 

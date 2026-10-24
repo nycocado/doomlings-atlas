@@ -41,7 +41,7 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game. Where it 
 
 1. Work starts from an issue, which is its spec ([docs/agents/issue-tracker.md](docs/agents/issue-tracker.md)). Pick up only issues labelled `ready-for-agent`, which only the maintainer applies; a spec you write gets `needs-triage`, even when a skill says otherwise.
 2. A small spec (2 to 4 tickets) runs with `/implement-spec` and becomes one PR; a single ticket runs with `/implement` and becomes one PR.
-3. Work on a branch from `main` (`feat/...`, `fix/...`, `docs/...`). Agents working on their own use a worktree; the main checkout is the maintainer's, open in Android Studio.
+3. Work on a branch from `main` (`feat/...`, `fix/...`, `docs/...`). Agents working on their own, and the session that orchestrates `/implement-spec` (`claude --worktree`), use a worktree; the main checkout is the maintainer's, open in Android Studio.
 4. In `shared`, write the failing test first, then the code. In `app`, give every component and screen a `@PreviewLightDark` preview, following [docs/design.md](docs/design.md).
 5. Run `./gradlew spotlessApply check validateDebugScreenshotTest` and fix everything it reports.
 6. Commit and push your branch freely, and open a draft PR titled in the commit format, saying what changed, why and how it was tested, with `Closes #N`. Mark it ready when CI passes and `/code-review` has nothing left.
@@ -78,4 +78,4 @@ Single-context: `GLOSSARY.md` and `docs/adr/` at the root. See [docs/agents/doma
 
 ## Tooling
 
-Prefer `rtk` over raw shell commands and `codegraph` over grep/find/reading files to explore code, whenever applicable and available.
+Prefer `rtk` over raw shell commands and `codegraph` over grep/find/reading files to explore code, whenever applicable and available. Inside agent worktrees plain `git` can be blocked by the `rtk` rewrite and Claude Code's worktree guard: use `/usr/bin/git` there (the repo's hooks still apply).
