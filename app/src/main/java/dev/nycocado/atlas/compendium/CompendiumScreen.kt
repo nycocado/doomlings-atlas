@@ -134,6 +134,7 @@ fun CompendiumContent(
     LaunchedEffect(collapse) { collapse.followSwitches(CollapseSpec) }
     val grid = rememberLazyGridState()
     val settling = remember { GridSettling() }
+    LaunchedEffect(settling.resetting) { settling.settle() }
     val scope = rememberCoroutineScope()
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
     // outside it, scrolling the list or opening a card.
@@ -233,7 +234,7 @@ fun CompendiumContent(
                                     },
                                     // animateBounds skips moves inside the grid, which places its items as scrolling.
                                     Modifier
-                                        .animateItem(placementSpec = if (settling.resizing) null else MoveSpec)
+                                        .animateItem(placementSpec = if (settling.resetting) null else MoveSpec)
                                         .animateBounds(reflow, boundsTransform = Reflow),
                                 )
                             }
@@ -330,25 +331,40 @@ private fun LazyGridScope.fullWidth(
     }
 }
 
-// Whether the grid is still laid out at another size than the one it is heading for, as while the list's pane grows or
-// shrinks beside a card. The grid's item animations keep the place where a card first comes into view during those
-// in-between layouts, and nothing corrects it until the next scroll, which then slides the card to its real place.
-// Without a placement animation meanwhile, the grid forgets those places and starts over once it has its size.
+// The grid's item animations keep the place where a card first comes into view, even in the in-between layouts the grid
+// passes through while the list's pane grows or shrinks beside a card, and nothing corrects it until the next scroll,
+// which then slides the card from there to its real place. So once the grid has its size again, its cards go one frame
+// without a placement animation: that frame takes their real places without moving them. Only one frame: during the
+// resize that animation is what carries the cards to their new columns.
 @Stable
 private class GridSettling {
-    var resizing by mutableStateOf(false)
+    var resetting by mutableStateOf(false)
         private set
 
     private var target = IntSize.Zero
+    private var resizing = false
 
     val modifier =
         Modifier.layout { measurable, constraints ->
             val placeable = measurable.measure(constraints)
             val size = IntSize(placeable.width, placeable.height)
-            // Never before a first look ahead, which would leave it on for good.
-            if (isLookingAhead) target = size else resizing = target != IntSize.Zero && size != target
+            if (isLookingAhead) {
+                target = size
+            } else {
+                // Never before a first look ahead, when there is no size to compare with.
+                val now = target != IntSize.Zero && size != target
+                if (resizing && !now) resetting = true
+                resizing = now
+            }
             layout(placeable.width, placeable.height) { placeable.place(0, 0) }
         }
+
+    suspend fun settle() {
+        if (resetting) {
+            withFrameNanos {}
+            resetting = false
+        }
+    }
 }
 
 // Switching from the composition where the layout changes until the next frame: every move the switch causes starts
