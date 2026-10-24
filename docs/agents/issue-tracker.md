@@ -5,6 +5,7 @@ Issues and specs for this repo live as GitHub issues. Use the `gh` CLI for all o
 ## Project Conventions
 
 - An issue is the spec of its work ([CONTRIBUTING.md](../../CONTRIBUTING.md#issues-and-specs)). A spec an agent writes gets `needs-triage`; only the maintainer applies `ready-for-agent`, and agents only pick up issues that have it.
+- Say "no behavior change" for a refactor, never "no app code changes": previews live next to the screens, in app sources.
 - Each [ROADMAP.md](../../ROADMAP.md) phase is a milestone: add the phase's issues to it (`--milestone "2. Card Text Translation"`).
 - Besides the triage labels ([triage-labels.md](triage-labels.md)), issues use the topic labels `bug`, `card-data`, `translation`, `scoring`, `accessibility` and `dependencies`.
 
