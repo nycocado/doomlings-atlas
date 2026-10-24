@@ -30,10 +30,13 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
@@ -43,6 +46,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.LookaheadScope
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalResources
@@ -129,6 +133,7 @@ fun CompendiumContent(
         }
     LaunchedEffect(collapse) { collapse.followSwitches(CollapseSpec) }
     val grid = rememberLazyGridState()
+    val settling = remember { GridSettling() }
     val scope = rememberCoroutineScope()
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
     // outside it, scrolling the list or opening a card.
@@ -188,7 +193,7 @@ fun CompendiumContent(
                             state = grid,
                             columns = GridCells.Adaptive(150.dp),
                             // The grid's own clip leaves out the items fading out after a filter.
-                            modifier = Modifier.clipScrollableContainer(Orientation.Vertical),
+                            modifier = Modifier.clipScrollableContainer(Orientation.Vertical).then(settling.modifier),
                             contentPadding =
                                 PaddingValues(
                                     start = Space.s5 - CardMargin,
@@ -228,7 +233,7 @@ fun CompendiumContent(
                                     },
                                     // animateBounds skips moves inside the grid, which places its items as scrolling.
                                     Modifier
-                                        .animateItem(placementSpec = MoveSpec)
+                                        .animateItem(placementSpec = if (settling.active) null else MoveSpec)
                                         .animateBounds(reflow, boundsTransform = Reflow),
                                 )
                             }
@@ -327,6 +332,26 @@ private fun LazyGridScope.fullWidth(
 
 // Switching from the composition where the layout changes until the next frame: every move the switch causes starts
 // its animation within that frame, as the header's parts and the dock stay in the same parents.
+// Whether the grid is still laid out at another size than the one it is heading for, as while the list's pane grows or
+// shrinks beside a card. The grid's item animations keep the place where a card first comes into view during those
+// in-between layouts, and nothing corrects it until the next scroll, which then slides the card to its real place.
+// Without a placement animation meanwhile, the grid forgets those places and starts over once it has its size.
+@Stable
+private class GridSettling {
+    var active by mutableStateOf(false)
+        private set
+
+    private var target = IntSize.Zero
+
+    val modifier =
+        Modifier.layout { measurable, constraints ->
+            val placeable = measurable.measure(constraints)
+            val size = IntSize(placeable.width, placeable.height)
+            if (isLookingAhead) target = size else active = size != target
+            layout(placeable.width, placeable.height) { placeable.place(0, 0) }
+        }
+}
+
 private class LayoutSwitch(
     private var rail: Boolean,
 ) {
