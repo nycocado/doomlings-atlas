@@ -124,6 +124,11 @@ fun UnofficialNoticePortugueseScreenshot() = UnofficialNoticePreview()
 fun CompendiumFontScale200Screenshot() = CompendiumLongNamePreview()
 
 @PreviewTest
+@Preview(fontScale = 2f, locale = "pt")
+@Composable
+fun CompendiumFontScale200PortugueseScreenshot() = CompendiumLongNamePreview()
+
+@PreviewTest
 @Preview(fontScale = 2f)
 @Composable
 fun CardDetailFontScale200Screenshot() = CardDetailLongNamePreview()

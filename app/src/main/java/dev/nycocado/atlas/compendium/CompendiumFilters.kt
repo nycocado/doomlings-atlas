@@ -37,14 +37,15 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.ui.component.TraitColorOptions
@@ -113,6 +114,11 @@ internal fun Filters(
     }
 }
 
+// The smallest a label shrinks to fit, fixed in dp: a 10sp minimum grows with the font scale, and at 200% long names
+// (Colorless, Vermelho, Catastrophes) don't fit even at that minimum.
+private val minLabelSize: TextUnit
+    @Composable get() = with(LocalDensity.current) { 10.dp.toSp() }
+
 // One color at a time for now: Classic has no two-color traits.
 @Composable
 private fun ColorDisc(
@@ -150,7 +156,16 @@ private fun ColorDisc(
                 contentAlignment = Alignment.Center,
             ) { TraitGlyph(color, theme.trait(color).onFill) }
         }
-        BasicText(name, style = AtlasTypography.labelSm.copy(color = theme.onSurface), maxLines = 1)
+        BasicText(
+            name,
+            style = AtlasTypography.labelSm.copy(color = theme.onSurface),
+            maxLines = 1,
+            autoSize =
+                TextAutoSize.StepBased(
+                    minFontSize = minLabelSize,
+                    maxFontSize = AtlasTypography.labelSm.fontSize,
+                ),
+        )
     }
 }
 
@@ -214,11 +229,12 @@ private fun KindSegments(
                 ) {
                     BasicText(
                         stringResource(kind.label),
+                        Modifier.padding(horizontal = Space.s2),
                         style = AtlasTypography.labelLg.copy(color = textColor),
                         maxLines = 1,
                         autoSize =
                             TextAutoSize.StepBased(
-                                minFontSize = 10.sp,
+                                minFontSize = minLabelSize,
                                 maxFontSize = AtlasTypography.labelLg.fontSize,
                             ),
                     )
