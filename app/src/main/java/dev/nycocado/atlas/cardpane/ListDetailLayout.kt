@@ -39,7 +39,8 @@ class ListDetailLayout(
     val cardSetsStatusBarIcons get() = !sideBySide
 
     // A single column until a card opens, so opening and closing a card animates the panes instead of swapping layouts.
-    // The constructor, not copy(): copy() resets shouldAutoFocusCurrentDestination to true.
+    // The constructor, not copy(): copy() resets shouldAutoFocusCurrentDestination to true. A field the directive gains
+    // in a library update has to be passed on here too, or it falls back to its default.
     val directive =
         PaneScaffoldDirective(
             maxHorizontalPartitions = if (isCardOpen) windowDirective.maxHorizontalPartitions else 1,
