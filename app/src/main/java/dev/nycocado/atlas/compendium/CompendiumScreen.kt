@@ -11,11 +11,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
@@ -35,7 +40,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalResources
@@ -45,9 +49,7 @@ import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.nycocado.atlas.R
@@ -237,40 +239,29 @@ private fun ListAndDock(
     modifier: Modifier,
     list: @Composable () -> Unit,
     dock: @Composable () -> Unit,
-) = Layout(
-    {
-        Box(propagateMinConstraints = true) { list() }
-        Box { dock() }
-    },
-    modifier,
-) { (listSlot, dockSlot), constraints ->
-    val width = constraints.maxWidth
-    val height = constraints.maxHeight
-    val wide = MaxWidth.wide.roundToPx()
+) {
+    val capped: @Composable (Modifier) -> Unit = {
+        Box(it, Alignment.TopCenter) {
+            Box(Modifier.widthIn(max = MaxWidth.wide).fillMaxSize(), propagateMinConstraints = true) { list() }
+        }
+    }
     if (rail) {
-        val railWidth = RailWidth.roundToPx()
-        val start = Space.s5.roundToPx()
-        val inset = Space.s4.roundToPx()
-        val room = IntSize(railWidth - start - inset, (height - inset * 2).coerceAtLeast(0))
-        val dock = dockSlot.measure(Constraints(maxWidth = room.width, maxHeight = room.height))
-        val listRoom = (width - railWidth - if (centered) railWidth else 0).coerceAtLeast(0)
-        val listWidth = minOf(listRoom, wide)
-        val list = listSlot.measure(Constraints.fixed(listWidth, height))
-        layout(width, height) {
-            val inRoom = Alignment.Center.align(IntSize(dock.width, dock.height), room, layoutDirection)
-            dock.placeRelative(IntOffset(start, inset) + inRoom)
-            list.placeRelative(railWidth + Alignment.CenterHorizontally.align(listWidth, listRoom, layoutDirection), 0)
+        Row(modifier) {
+            Box(
+                Modifier
+                    .width(
+                        RailWidth,
+                    ).fillMaxHeight()
+                    .padding(start = Space.s5, end = Space.s4, top = Space.s4, bottom = Space.s4),
+                Alignment.Center,
+            ) { dock() }
+            capped(Modifier.weight(1f).fillMaxHeight())
+            if (centered) Spacer(Modifier.width(RailWidth))
         }
     } else {
-        val dock = dockSlot.measure(Constraints(maxWidth = width, maxHeight = height))
-        val listWidth = minOf(width, wide)
-        val list = listSlot.measure(Constraints.fixed(listWidth, (height - dock.height).coerceAtLeast(0)))
-        layout(width, height) {
-            list.placeRelative(Alignment.CenterHorizontally.align(listWidth, width, layoutDirection), 0)
-            dock.placeRelative(
-                Alignment.CenterHorizontally.align(dock.width, width, layoutDirection),
-                height - dock.height,
-            )
+        Column(modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+            capped(Modifier.weight(1f).fillMaxWidth())
+            dock()
         }
     }
 }

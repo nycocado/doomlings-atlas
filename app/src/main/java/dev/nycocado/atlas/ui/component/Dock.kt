@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,7 +21,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -29,7 +29,6 @@ import androidx.compose.ui.semantics.disabled
 import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.ui.theme.AtlasTheme
@@ -66,72 +65,18 @@ fun Dock(
             ).background(theme.inverseSurface, CircleShape),
         contentAlignment = Alignment.Center,
     ) {
-        DockLine(
-            vertical,
-            if (vertical) {
-                Modifier.padding(
-                    vertical = Space.s2,
-                )
-            } else {
-                Modifier.fillMaxWidth().padding(horizontal = Space.s2)
-            },
-        ) { Destination.entries.forEach { DockItem(it, vertical, onCardsClick) } }
-    }
-}
-
-// The items as a Column (rail) or a Row (bar) would place them.
-@Composable
-private fun DockLine(
-    vertical: Boolean,
-    modifier: Modifier,
-    content: @Composable () -> Unit,
-) = Layout(content, modifier) { measurables, constraints ->
-    val arrangement = if (vertical) Arrangement.spacedBy(Space.s3) else Arrangement.SpaceAround
-    val spacing = arrangement.spacing.roundToPx()
-    val main = if (vertical) constraints.maxHeight else constraints.maxWidth
-    val cross = if (vertical) constraints.maxWidth else constraints.maxHeight
-    var used = 0
-    var lastSpace = 0
-    val items =
-        measurables.map {
-            val room = if (main == Constraints.Infinity) Constraints.Infinity else (main - used).coerceAtLeast(0)
-            val item =
-                it.measure(
-                    if (vertical) {
-                        Constraints(
-                            maxWidth = cross,
-                            maxHeight = room,
-                        )
-                    } else {
-                        Constraints(maxWidth = room, maxHeight = cross)
-                    },
-                )
-            val size = if (vertical) item.height else item.width
-            lastSpace = minOf(spacing, (main - used - size).coerceAtLeast(0))
-            used += size + lastSpace
-            item
-        }
-    val sizes = IntArray(items.size) { if (vertical) items[it].height else items[it].width }
-    val length = maxOf(used - lastSpace, if (vertical) constraints.minHeight else constraints.minWidth)
-    val thickness =
-        maxOf(
-            items.maxOfOrNull { if (vertical) it.width else it.height } ?: 0,
-            if (vertical) constraints.minWidth else constraints.minHeight,
-        )
-    val positions = IntArray(items.size)
-    if (vertical) {
-        with(arrangement) { arrange(length, sizes, positions) }
-        layout(thickness, length) {
-            items.forEachIndexed { i, item ->
-                item.place(Alignment.CenterHorizontally.align(item.width, thickness, layoutDirection), positions[i])
-            }
-        }
-    } else {
-        with(arrangement) { arrange(length, sizes, layoutDirection, positions) }
-        layout(length, thickness) {
-            items.forEachIndexed { i, item ->
-                item.place(positions[i], Alignment.CenterVertically.align(item.height, thickness))
-            }
+        if (vertical) {
+            Column(
+                Modifier.padding(vertical = Space.s2),
+                verticalArrangement = Arrangement.spacedBy(Space.s3),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) { Destination.entries.forEach { DockItem(it, vertical, onCardsClick) } }
+        } else {
+            Row(
+                Modifier.fillMaxWidth().padding(horizontal = Space.s2),
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.CenterVertically,
+            ) { Destination.entries.forEach { DockItem(it, vertical, onCardsClick) } }
         }
     }
 }
