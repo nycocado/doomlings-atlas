@@ -27,7 +27,7 @@ body:
     id: implementation
     attributes:
       label: Implementation decisions
-      description: Modules touched, interfaces, data formats, ADRs that apply. No file paths or code; they go stale.
+      description: Modules touched, interfaces, data formats, ADRs that apply. No file paths or code; they go stale. For a refactor, say "no behavior change", not "no app code changes".
   - type: textarea
     id: testing
     attributes:
