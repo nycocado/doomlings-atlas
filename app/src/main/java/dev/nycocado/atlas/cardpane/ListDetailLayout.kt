@@ -36,7 +36,8 @@ class ListDetailLayout(
     // Beside the list, the list's header owns the status bar's icons.
     val cardSetsStatusBarIcons get() = !sideBySide
 
-    // A single column until a card opens.
+    // A single column until a card opens: with two partitions the list would take half the window and leave the other
+    // half to the detail placeholder.
     // The constructor, not copy(): copy() resets shouldAutoFocusCurrentDestination to true. A field the directive gains
     // in a library update has to be passed on here too, or it falls back to its default.
     val directive =
