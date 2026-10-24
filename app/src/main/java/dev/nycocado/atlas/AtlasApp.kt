@@ -1,6 +1,7 @@
 package dev.nycocado.atlas
 
 import android.content.Context
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
@@ -35,12 +36,13 @@ data object CompendiumKey : NavKey
 @Serializable
 data object AboutKey : NavKey
 
-private const val NOTICE_SEEN = "notice_seen"
+internal const val NOTICE_PREFS = "atlas"
+internal const val NOTICE_SEEN = "notice_seen"
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 fun AtlasApp() {
-    val prefs = LocalContext.current.getSharedPreferences("atlas", Context.MODE_PRIVATE)
+    val prefs = LocalContext.current.getSharedPreferences(NOTICE_PREFS, Context.MODE_PRIVATE)
     var noticeSeen by remember { mutableStateOf(prefs.getBoolean(NOTICE_SEEN, false)) }
     val backStack = rememberNavBackStack(CompendiumKey)
     val viewModel: CompendiumViewModel = hiltViewModel()
@@ -57,6 +59,9 @@ fun AtlasApp() {
             shouldHandleSinglePaneLayout = layout.sideBySide,
             directive = layout.directive,
         )
+    // The list and the card share one scene beside each other, which NavDisplay sees as having nothing to go back to:
+    // without this, back leaves the app instead of closing the card.
+    BackHandler(enabled = layout.besideCard && backStack.lastOrNull() is CardKey, onBack = cardPane::close)
     NavDisplay(
         backStack = backStack,
         // Shows wherever the panes leave room, like around the fold and while they animate.

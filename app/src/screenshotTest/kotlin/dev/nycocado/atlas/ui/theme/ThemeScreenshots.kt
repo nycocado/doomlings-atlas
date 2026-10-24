@@ -8,11 +8,13 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.android.tools.screenshot.PreviewTest
 import dev.nycocado.atlas.about.AboutPreview
 import dev.nycocado.atlas.about.NoticePreview
+import dev.nycocado.atlas.carddetail.CardDetailLongNamePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
 import dev.nycocado.atlas.cardpane.CardBesideListPreview
 import dev.nycocado.atlas.compendium.CompendiumBesideCardPreview
 import dev.nycocado.atlas.compendium.CompendiumHalfCollapsedPreview
+import dev.nycocado.atlas.compendium.CompendiumLongNamePreview
 import dev.nycocado.atlas.compendium.CompendiumPreview
 import dev.nycocado.atlas.ui.component.CardThumbPreview
 import dev.nycocado.atlas.ui.component.DockPreview
@@ -97,6 +99,36 @@ fun CompendiumPortugueseScreenshot() = CompendiumPreview()
 fun CardDetailPortugueseScreenshot() = CardDetailPreview()
 
 @PreviewTest
+@Preview(locale = "pt")
+@Composable
+fun CatastropheDetailPortugueseScreenshot() = CatastropheDetailPreview()
+
+@PreviewTest
+@Preview(locale = "pt")
+@Composable
+fun AboutPortugueseScreenshot() = AboutPreview()
+
+@PreviewTest
+@Preview(locale = "pt")
+@Composable
+fun NoticePortugueseScreenshot() = NoticePreview()
+
+@PreviewTest
+@Preview(locale = "pt")
+@Composable
+fun UnofficialNoticePortugueseScreenshot() = UnofficialNoticePreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun CompendiumFontScale200Screenshot() = CompendiumLongNamePreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun CardDetailFontScale200Screenshot() = CardDetailLongNamePreview()
+
+@PreviewTest
 @Preview(device = "spec:width=1280dp,height=800dp,dpi=240")
 @Composable
 fun CompendiumTabletScreenshot() = CompendiumPreview()
@@ -117,3 +149,13 @@ fun CompendiumBesideCardScreenshot() = CompendiumBesideCardPreview()
 @PanePreviews
 @Composable
 fun CardBesideListScreenshot() = CardBesideListPreview()
+
+@PreviewTest
+@Preview(device = PANE, locale = "pt")
+@Composable
+fun CompendiumBesideCardPortugueseScreenshot() = CompendiumBesideCardPreview()
+
+@PreviewTest
+@Preview(device = PANE, locale = "pt")
+@Composable
+fun CardBesideListPortugueseScreenshot() = CardBesideListPreview()

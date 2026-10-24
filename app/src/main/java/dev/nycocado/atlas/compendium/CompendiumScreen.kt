@@ -45,7 +45,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.LookaheadScope
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
@@ -61,12 +61,13 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
+import dev.nycocado.atlas.carddetail.LongNameTrait
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.CardThumb
 import dev.nycocado.atlas.ui.component.Dock
 import dev.nycocado.atlas.ui.component.colorName
-import dev.nycocado.atlas.ui.component.signed
+import dev.nycocado.atlas.ui.component.pointsText
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
@@ -350,7 +351,7 @@ private fun CompendiumCard(
         buildList {
             add(card.name)
             cardColors?.ifEmpty { listOf(null) }?.forEach { add(stringResource(colorName(it))) }
-            trait?.points?.let { add(pluralStringResource(R.plurals.card_points, it, signed(it))) }
+            trait?.points?.let { add(LocalResources.current.pointsText(it)) }
         }.joinToString(", ")
     CardThumb(card.image, card.name, cardColors, description, tilt, onClick, modifier.padding(CardMargin))
 }
@@ -367,28 +368,34 @@ internal fun CompendiumHalfCollapsedPreview() = CompendiumSample(ListDetailLayou
 @Composable
 internal fun CompendiumBesideCardPreview() = CompendiumSample(ListDetailLayout.BesideCard)
 
+@PreviewLightDark
+@Composable
+internal fun CompendiumLongNamePreview() = CompendiumSample(ListDetailLayout.Single, longName = true)
+
 @Composable
 private fun CompendiumSample(
     layout: ListDetailLayout,
+    longName: Boolean = false,
     collapsedAtStart: Float = 0f,
 ) = AtlasTheme {
     BlankCardImages {
         val cards =
-            listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red).map {
-                Trait(
-                    "$it",
-                    "classic",
-                    "",
-                    "${it.name} trait",
-                    null,
-                    null,
-                    1,
-                    listOf(it),
-                    false,
-                    emptyList(),
-                    emptyList(),
-                )
-            }
+            listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red)
+                .map {
+                    Trait(
+                        "$it",
+                        "classic",
+                        "",
+                        "${it.name} trait",
+                        null,
+                        null,
+                        1,
+                        listOf(it),
+                        false,
+                        emptyList(),
+                        emptyList(),
+                    )
+                }.let { if (longName) listOf(LongNameTrait) + it else it }
         CompendiumContent(
             CompendiumFilter(colors = setOf(CardColor.Green)),
             cards,

@@ -17,6 +17,8 @@ coil = "3.6.3"
 navigation3 = "1.2.0"
 adaptive = "1.3.0"
 aboutLibraries = "15.2.0"
+robolectric = "4.17"
+junit = "4.13.2"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
@@ -35,6 +37,10 @@ aboutlibraries-core = { group = "com.mikepenz", name = "aboutlibraries-core", ve
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 # Not a dependency: Spotless runs ktlint by version. Listed so Dependabot keeps "ktlint" updated.
