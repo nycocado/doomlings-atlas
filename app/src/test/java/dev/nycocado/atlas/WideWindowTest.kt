@@ -49,7 +49,7 @@ class WideWindowTest : AtlasBehaviorTest() {
         val scenario = launchPastNotice()
         card("Adorable").performClick()
         pressBack(scenario)
-        // The card's pane slides out.
+        // The card's pane fades out.
         compose.waitUntilDoesNotExist(hasText(string(R.string.unofficial_notice)))
 
         text(R.string.search_placeholder).assertIsDisplayed()

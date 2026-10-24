@@ -18,6 +18,7 @@ This file covers the look only. Screen flows, scoring steps and game rules are d
 - **Cards are objects.** Cards have an outline and `shadow-sticker-lg`, tilted between −3° and +2.5°, deterministic by position (never random per render). Never cropped, nothing drawn over the art.
 - **Color is data.** The five trait colors (`trait-blue`, `trait-green`, `trait-purple`, `trait-red`, `trait-colorless`) appear only where they mean a card's color. Sunset tones identify players and decorate; they never mean a trait color.
 - **Unofficial, and saying so.** The notice "Unofficial, not affiliated with or endorsed by Doomlings LLC" shows on first launch and stays one tap away, on About. No Doomlings logo, nothing imitating its lettering.
+- **Motion follows the hand.** Layout changes happen at once: the panes as a card opens or closes, the rail and stacked layouts switching, the info button coming and going; only the card's pane fades. Animation is kept for what the player moves directly: the header collapsing with the list, the filters.
 
 ## Tone
 
@@ -88,7 +89,7 @@ Visual specs only; content and behavior are defined with each screen.
 From 840dp wide (tablets, unfolded foldables, phones on their side):
 
 - **Compendium:** with at least 600dp of its own (alone on the screen, or beside a card on a large tablet), the header is a single row that doesn't collapse: logo and title in the left corner, info button in the right corner, search in the middle of the screen (up to 480dp), narrowing toward the end when there isn't room. The dock becomes the rail. Color discs and type segments center on the screen; the section title stays in line with the first column of cards.
-- **List and card:** the list fills the screen until a card opens. Then the list and the card share the width half and half; another card replaces the open one. The list jumps to its new width and the cards glide to their new places; the card's pane slides in and out.
+- **List and card:** the list fills the screen until a card opens. Then the list and the card share the width half and half; another card replaces the open one. The list jumps to its new width and the cards to their new places; the card's pane fades in and out.
 - **Narrower compendium** (beside a card on a foldable or a small tablet): the phone layout, with the stacked header and the dock at the bottom.
 - **Card beside the list:** a sheet hanging from the top of the screen, a sticker on its other sides (`outline` border, `shadow-sticker-lg`, `radius-lg` bottom corners). The info button and its space go to the search, since the card has its own way to About.
 - **Status bar:** its icons stay light, as the list's dark header sits under them; a 20% black shade behind the bar keeps them readable over light card panels. On phones, the card detail picks the icon color that the design puts on its panel.

@@ -2,6 +2,9 @@ package dev.nycocado.atlas
 
 import android.content.Context
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.core.snap
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
 import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
 import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
@@ -64,7 +67,7 @@ fun AtlasApp() {
     BackHandler(enabled = layout.besideCard && backStack.lastOrNull() is CardKey, onBack = cardPane::close)
     NavDisplay(
         backStack = backStack,
-        // Shows wherever the panes leave room, like around the fold and while they animate.
+        // Shows wherever the panes leave room, like around the fold.
         modifier = Modifier.background(AtlasTheme.colors.surface),
         onBack = { backStack.removeLastOrNull() },
         sceneStrategies = listOf(listDetail),
@@ -76,7 +79,7 @@ fun AtlasApp() {
                             detailPlaceholder = { cardPane.DetailPlaceholder(layout) },
                         ) +
                             ListDetailSceneStrategy.preferredPaneSize(width = 0.5f) +
-                            layout.listPaneAnimation(),
+                            ListDetailSceneStrategy.paneAnimation(boundsAnimationSpec = snap()),
                 ) {
                     CompendiumScreen(
                         viewModel,
@@ -89,7 +92,13 @@ fun AtlasApp() {
                 // pane shows instead of replacing the pane (which also flickered the status bar icons).
                 entry<CardKey>(
                     clazzContentKey = { "card" },
-                    metadata = ListDetailSceneStrategy.detailPane(),
+                    metadata =
+                        ListDetailSceneStrategy.detailPane() +
+                            ListDetailSceneStrategy.paneAnimation(
+                                enterTransition = fadeIn(),
+                                exitTransition = fadeOut(),
+                                boundsAnimationSpec = snap(),
+                            ),
                 ) { key ->
                     cardPane.Detail(key.id, layout) { backStack.add(AboutKey) }
                 }
