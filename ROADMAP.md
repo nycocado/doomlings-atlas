@@ -26,6 +26,7 @@ Everything here comes before assets and code.
 - Portuguese and Spanish for the cards of every set, drafted by an agent and reviewed by the maintainer; other languages through community contributions.
 - Translated card text shown in the compendium, chosen apart from the interface language: card text stays as printed until the user picks a translation, with a language selector in the card detail.
 - App interface also in Spanish.
+- Card groups: cards that share a name (the Kidneys, the Swarms) stack into one thumb in the compendium and open in place to show their variants.
 - Unit and data tests: card counts against the rulesheet, text hygiene in every set's data, signed points and cards that share a name, and search edge cases.
 - UI tests with Compose and Robolectric, in CI: navigation on phone and tablet sizes (opening, switching and closing cards, About) and state surviving activity recreation, with Compose's accessibility checks enabled so a touch target, contrast or label problem fails the build.
 - A screenshot test of the compendium with its header half collapsed, since the collapse relies on how `animateBounds` sizes an idle node.
