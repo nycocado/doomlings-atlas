@@ -39,13 +39,22 @@ class ListDetailLayout(
     val cardSetsStatusBarIcons get() = !sideBySide
 
     // A single column until a card opens, so opening and closing a card animates the panes instead of swapping layouts.
+    // The constructor, not copy(): copy() resets shouldAutoFocusCurrentDestination to true.
     val directive =
-        windowDirective.copy(
+        PaneScaffoldDirective(
             maxHorizontalPartitions = if (isCardOpen) windowDirective.maxHorizontalPartitions else 1,
             horizontalPartitionSpacerSize = 0.dp,
+            maxVerticalPartitions = windowDirective.maxVerticalPartitions,
+            verticalPartitionSpacerSize = windowDirective.verticalPartitionSpacerSize,
+            defaultPanePreferredWidth = windowDirective.defaultPanePreferredWidth,
+            defaultPanePreferredHeight = windowDirective.defaultPanePreferredHeight,
             // A half-open foldable keeps the list on one side of the fold even when alone; it fills the screen until
             // there is a card for the other side.
             excludedBounds = if (isCardOpen) windowDirective.excludedBounds else emptyList(),
+            // Otherwise the scaffold moves focus into the pane that becomes current, and in the list's pane that lands
+            // on the search field, which opens the keyboard on its own (#83). Limiting it to the card's pane isn't
+            // enough: as the card closes the scaffold still sees the old directive for a frame.
+            shouldAutoFocusCurrentDestination = false,
         )
 
     // Jumps as a card opens, so the grid changes its columns once. Grows as it closes: the scaffold slides the closing
