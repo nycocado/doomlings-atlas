@@ -1,5 +1,5 @@
 #!/bin/sh
-# Blocks AI attribution in commits and PRs, and agents approving specs: only the maintainer applies ready-for-agent
+# Blocks AI attribution in commits and PRs, and agents approving tickets or specs: only the maintainer applies ready-for-agent
 # (AGENTS.md). A message passed with git commit -F is not seen here; CI checks the PR as well.
 command=$(jq -r '.tool_input.command // empty')
 
