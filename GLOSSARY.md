@@ -36,7 +36,9 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 - **Card detail**: the screen of one card. On a wide window it opens **beside the list**, in the **card pane**.
 - **Header**: the dark top of the compendium, with the title, sunset band and search. It **collapses** and **expands** as the list scrolls. _Avoid_: fold, for this.
 - **Fold**: only the hinge of a foldable device.
-- **Dock**: the app's floating bar; on a wide window it becomes the **rail**. _Avoid_: navigation bar, tab bar.
+- **Dock**: the app's floating bar; in the rail layout it becomes the **rail**. _Avoid_: navigation bar, tab bar.
+- **Rail layout**: the compendium when it is 600dp wide or more, by its own width, not the window's: the header in one row and the dock as the rail beside the list.
+- **Stacked layout**: the compendium when narrower: the header stacked, title above the search, and the dock as a bar below the list. Only this header collapses. _Avoid_: phone layout, for this.
 - **Navigation bar**: Android's system bar at the bottom of the screen, never the app's.
 - **List-detail layout**: what the window and the open card decide together: list and card side by side or not, whether a card sits beside the list, and what follows (About on the list, the compendium centered, who sets the status bar icons, the scene's panes and animation). Decided once; the screens read it.
 - **Wide window**: 840dp wide or more (tablets, unfolded foldables, phones on their side), where the list and a card can share the screen.
