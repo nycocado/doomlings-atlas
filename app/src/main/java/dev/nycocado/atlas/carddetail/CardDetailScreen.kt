@@ -4,10 +4,20 @@ import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.ContentTransform
+import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VectorConverter
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
@@ -19,6 +29,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -43,6 +54,7 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -50,7 +62,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
@@ -83,6 +97,7 @@ import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.round
 import androidx.compose.ui.util.lerp
@@ -193,44 +208,53 @@ fun CardDetailContent(
                     PointsBadge(it, Modifier.align(Alignment.BottomEnd).offset(x = (-64).dp, y = 30.dp))
                 }
             }
-            Column(
-                Modifier.padding(start = Space.s5, end = Space.s5, top = 22.dp),
-                verticalArrangement = Arrangement.spacedBy(14.dp),
-            ) {
-                Column {
-                    BasicText(
-                        tagged(card.name, CardLanguage.English),
-                        Modifier.semantics { heading() },
-                        style = AtlasTypography.display.copy(color = theme.onSurface),
-                    )
-                    if (language != CardLanguage.English) {
+            // Keyed by the card, so opening another card starts the animations fresh instead of animating from the last.
+            key(card.id) {
+                Column(
+                    Modifier.padding(start = Space.s5, end = Space.s5, top = 22.dp),
+                    verticalArrangement = Arrangement.spacedBy(14.dp),
+                ) {
+                    Column {
                         BasicText(
-                            tagged(text.name, language),
-                            style = AtlasTypography.titleLg.copy(color = theme.onSurfaceVariant),
+                            tagged(card.name, CardLanguage.English),
+                            Modifier.semantics { heading() },
+                            style = AtlasTypography.display.copy(color = theme.onSurface),
+                        )
+                        AnimatedContent(
+                            text.name.takeIf { language != CardLanguage.English }?.let { it to language },
+                            transitionSpec = LanguageChange,
+                            label = "translated name",
+                        ) { shown ->
+                            shown?.let { (name, shownLanguage) ->
+                                BasicText(
+                                    tagged(name, shownLanguage),
+                                    style = AtlasTypography.titleLg.copy(color = theme.onSurfaceVariant),
+                                )
+                            }
+                        }
+                    }
+                    Pills(trait, type, language)
+                    val selector: (@Composable () -> Unit)? =
+                        if (languages.size > 1) {
+                            { LanguageSelector(languages, language, onLanguageChange) }
+                        } else {
+                            null
+                        }
+                    val hasBubble = text.effect != null || text.flavor != null
+                    // Without a text bubble to hang on, the selector takes its own row where the bubble would be.
+                    if (!hasBubble && text.worldsEnd == null) {
+                        selector?.let { Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd) { it() } }
+                    }
+                    if (hasBubble) Bubble(text.effect, text.flavor, language, selector = selector)
+                    text.worldsEnd?.let {
+                        Bubble(
+                            it,
+                            null,
+                            language,
+                            label = cardString(TraitIcon.WorldsEnd.label, language),
+                            selector = selector.takeUnless { hasBubble },
                         )
                     }
-                }
-                Pills(trait, type, language)
-                val selector: (@Composable () -> Unit)? =
-                    if (languages.size > 1) {
-                        { LanguageSelector(languages, language, onLanguageChange) }
-                    } else {
-                        null
-                    }
-                val hasBubble = text.effect != null || text.flavor != null
-                // Without a text bubble to hang on, the selector takes its own row where the bubble would be.
-                if (!hasBubble && text.worldsEnd == null) {
-                    selector?.let { Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd) { it() } }
-                }
-                if (hasBubble) Bubble(text.effect, text.flavor, language, selector = selector)
-                text.worldsEnd?.let {
-                    Bubble(
-                        it,
-                        null,
-                        language,
-                        label = cardString(TraitIcon.WorldsEnd.label, language),
-                        selector = selector.takeUnless { hasBubble },
-                    )
                 }
             }
             Spacer(Modifier.weight(1f))
@@ -478,6 +502,14 @@ private fun ImageVector.withCardColor(color: Color): ImageVector =
             }
         }.build()
 
+// What a bubble shows, as one value so a language change crossfades all of it.
+private data class BubbleText(
+    val label: String?,
+    val text: String?,
+    val flavor: String?,
+    val language: CardLanguage,
+)
+
 @Composable
 private fun Bubble(
     text: String?,
@@ -487,35 +519,59 @@ private fun Bubble(
     selector: (@Composable () -> Unit)? = null,
 ) {
     val theme = AtlasTheme.colors
-    Box(Modifier.padding(top = 6.dp)) {
-        Column(
+    // The selector hangs above the bubble, so the bubble keeps it as far from the pills as the pills are from each other.
+    Box(Modifier.padding(top = 6.dp + if (selector != null) Space.s2 else 0.dp)) {
+        Box(
             Modifier
                 .fillMaxWidth()
                 .sticker(Radius.md, theme.surfaceSticker, theme.outline, shadow = Shadow.stickerLg)
                 .padding(start = 18.dp, end = 18.dp, top = 18.dp, bottom = Space.s4),
-            verticalArrangement = Arrangement.spacedBy(Space.s3),
         ) {
-            label?.let {
-                BasicText(
-                    tagged(it.uppercase(), language),
-                    style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
-                )
-            }
-            text?.let { BasicText(tagged(it, language), style = AtlasTypography.bodyLg.copy(color = theme.onSurface)) }
-            flavor?.let {
-                BasicText(
-                    tagged(it, language),
-                    style =
-                        AtlasTypography.bodyMd.copy(
-                            color = theme.onSurfaceVariant,
-                            fontStyle = FontStyle.Italic,
-                        ),
-                )
+            // The bubble wraps this, so it resizes with the crossfade.
+            AnimatedContent(
+                BubbleText(label, text, flavor, language),
+                transitionSpec = LanguageChange,
+                label = "bubble text",
+            ) { shown ->
+                Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(Space.s3)) {
+                    shown.label?.let {
+                        BasicText(
+                            tagged(it.uppercase(), shown.language),
+                            style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
+                        )
+                    }
+                    shown.text?.let {
+                        BasicText(
+                            tagged(it, shown.language),
+                            style = AtlasTypography.bodyLg.copy(color = theme.onSurface),
+                        )
+                    }
+                    shown.flavor?.let {
+                        BasicText(
+                            tagged(it, shown.language),
+                            style =
+                                AtlasTypography.bodyMd.copy(
+                                    color = theme.onSurfaceVariant,
+                                    fontStyle = FontStyle.Italic,
+                                ),
+                        )
+                    }
+                }
             }
         }
         // Hangs on the bubble's top-right edge, 18dp above it and 14dp in, as the design sketch has it.
         selector?.let { Box(Modifier.align(Alignment.TopEnd).offset(x = (-14).dp, y = (-18).dp)) { it() } }
     }
+}
+
+// Switching the card language is the player's own action, so it animates, with the duration and easing of the cards
+// moving in the compendium list. Compose scales it to zero when Android's animations are removed.
+private const val LANGUAGE_CHANGE_MILLIS = 350
+
+private val LanguageChange: AnimatedContentTransitionScope<*>.() -> ContentTransform = {
+    fadeIn(tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing)) togetherWith
+        fadeOut(tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing)) using
+        SizeTransform(clip = false) { _, _ -> tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing) }
 }
 
 // Each option names its language in itself, so it needs no string resource.
@@ -562,23 +618,37 @@ private fun LanguageSelector(
 ) {
     val theme = AtlasTheme.colors
     val label = stringResource(R.string.card_language)
+    // The highlight is drawn behind the options and slides between them. The index starts at the selected option, so
+    // nothing slides when the card opens.
+    val position by animateFloatAsState(
+        languages.indexOf(selected).toFloat(),
+        tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing),
+        label = "language highlight",
+    )
+    val gap = 4.dp
     // Compose widens the touch target of a 30dp option to the 48dp minimum without changing its layout.
     Row(
         Modifier
             .background(theme.inverseSurface, CircleShape)
             .padding(3.dp)
-            .selectableGroup()
+            .width(IntrinsicSize.Max)
+            .drawBehind {
+                val option = (size.width - gap.toPx() * (languages.size - 1)) / languages.size
+                val start = position * (option + gap.toPx())
+                val x = if (layoutDirection == LayoutDirection.Ltr) start else size.width - option - start
+                drawRoundRect(theme.highlight, Offset(x, 0f), Size(option, size.height), CornerRadius(size.height / 2))
+            }.selectableGroup()
             .semantics { contentDescription = label },
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        horizontalArrangement = Arrangement.spacedBy(gap),
     ) {
         languages.forEach { language ->
             val active = language == selected
             Box(
                 Modifier
+                    .weight(1f)
                     .height(30.dp)
                     .widthIn(min = 44.dp)
                     .clip(CircleShape)
-                    .background(if (active) theme.highlight else Color.Transparent)
                     .selectable(active, role = Role.RadioButton) { onSelect(language) }
                     .clearAndSetSemantics {
                         text = tagged(language.endonym, language)

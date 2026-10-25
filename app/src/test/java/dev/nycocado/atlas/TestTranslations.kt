@@ -28,6 +28,9 @@ val testPortuguese =
             CardText("Era Glacial", effect = "Descarte cartas da mão.", worldsEnd = "Menos pontos vermelhos."),
     )
 
+// Made-up Spanish, for the card language a Spanish device starts in.
+val testSpanish = mapOf("classic/traits/altruistic" to CardText("Altruista", effect = "Zumbido del tamaño de la Pool."))
+
 @Module
 @TestInstallIn(components = [SingletonComponent::class], replaces = [CardRepositoryModule::class])
 object TestCardRepositoryModule {
@@ -37,6 +40,9 @@ object TestCardRepositoryModule {
         @ApplicationContext context: Context,
     ): CardRepository =
         object : CardRepository(context) {
-            override suspend fun translations() = CardTranslations(mapOf(CardLanguage.Portuguese to testPortuguese))
+            override suspend fun translations() =
+                CardTranslations(
+                    mapOf(CardLanguage.Portuguese to testPortuguese, CardLanguage.Spanish to testSpanish),
+                )
         }
 }

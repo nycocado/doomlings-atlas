@@ -24,7 +24,7 @@ Everything here comes before assets and code.
 ## 2. Card Text Translation (In Progress)
 
 - Portuguese and Spanish for the cards of every set, drafted by an agent and reviewed by the maintainer; other languages through community contributions.
-- Translated card text shown in the compendium, chosen apart from the interface language: card text stays as printed until the user picks a translation, with a language selector in the card detail.
+- Translated card text shown in the compendium, chosen apart from the interface language: card text starts in the language Android gives the app when it is Portuguese or Spanish, and as printed otherwise ([ADR 0008](docs/adr/0008-card-language-defaults-to-the-device.md)), with a language selector in the card detail.
 - App interface also in Spanish.
 - Card groups: cards that share a name (the Kidneys, the Swarms) stack into one thumb in the compendium and open in place to show their variants.
 - Unit and data tests: card counts against the rulesheet, text hygiene in every set's data, signed points and cards that share a name, and search edge cases.

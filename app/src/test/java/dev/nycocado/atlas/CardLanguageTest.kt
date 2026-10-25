@@ -289,7 +289,8 @@ class CardLanguageTest : AtlasBehaviorTest() {
             }.distinct()
 }
 
-// The labels beside the icons follow the card language, not the interface's.
+// The labels beside the icons follow the card language, not the interface's: a Portuguese device opens in Português,
+// and English brings the printed words back whatever the interface says.
 @HiltAndroidTest
 @Config(qualifiers = "pt-w411dp-h1200dp-xhdpi")
 class CardLanguagePortugueseInterfaceTest : AtlasBehaviorTest() {
@@ -299,11 +300,6 @@ class CardLanguagePortugueseInterfaceTest : AtlasBehaviorTest() {
         scrollListTo(cardNamed("Eloquence"))
         card("Eloquence").performClick()
 
-        detailOf("World's End").assertIsDisplayed()
-        detailOf("Fim do Mundo").assertDoesNotExist()
-
-        compose.onNode(isSelectable() and hasText("Português")).performClick()
-
         detailOf("Fim do Mundo").assertIsDisplayed()
         detailOf("World's End").assertDoesNotExist()
 
@@ -311,6 +307,11 @@ class CardLanguagePortugueseInterfaceTest : AtlasBehaviorTest() {
 
         detailOf("World's End").assertIsDisplayed()
         detailOf("Fim do Mundo").assertDoesNotExist()
+
+        compose.onNode(isSelectable() and hasText("Português")).performClick()
+
+        detailOf("Fim do Mundo").assertIsDisplayed()
+        detailOf("World's End").assertDoesNotExist()
     }
 }
 

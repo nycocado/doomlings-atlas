@@ -37,10 +37,17 @@ class CompendiumViewModel
         private val mutableTranslations = MutableStateFlow(CardTranslations())
         private val prefs = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE)
 
-        // The language every card is read in, stored across launches. A card without it shows its printed text.
+        // The language every card is read in. Until the player picks one, nothing is stored and it is the language
+        // Android gives the app (ADR 0008); the pick is stored and wins from then on. A card without it shows its
+        // printed text.
         private val mutableCardLanguage =
             MutableStateFlow(
-                CardLanguage.entries.find { it.code == prefs.getString(CARD_LANGUAGE, null) } ?: CardLanguage.English,
+                cardLanguageOf(prefs.getString(CARD_LANGUAGE, null))
+                    ?: cardLanguageOf(
+                        context.resources.configuration.locales[0]
+                            .language,
+                    )
+                    ?: CardLanguage.English,
             )
 
         // The list's scroll position is restored too, and only matches the same filter.
@@ -80,3 +87,5 @@ class CompendiumViewModel
             savedFilter = filter
         }
     }
+
+private fun cardLanguageOf(code: String?) = CardLanguage.entries.find { it.code == code }
