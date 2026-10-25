@@ -91,8 +91,8 @@ internal class HeaderCollapse(
             )
     }
 
-    // Given before each frame's layout. The list scrolls without the header in the rail layout, so leaving it the header
-    // takes at once the state the stacked layout keeps: expanded only with the list at the top.
+    // Given before each frame's layout. The list scrolls without the header in the rail layout, so on leaving it the
+    // header takes at once the state the stacked layout keeps: expanded only with the list at the top.
     fun layout(
         rail: Boolean,
         listAtTop: Boolean,
