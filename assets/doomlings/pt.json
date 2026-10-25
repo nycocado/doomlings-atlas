@@ -176,12 +176,12 @@
   },
   "classic/traits/adorable": {
     "name": "Adorável",
-    "flavor": "Ei, você parece um trouxa. Faça cafuné na minha barriga. Agora entre nesta lava para eu flutuar até um lugar seguro."
+    "flavor": "Ei, você parece um trouxa. Faça cafuné em minha barriga. Agora entre nesta lava para eu flutuar até um lugar seguro."
   },
   "classic/traits/altruistic": {
     "name": "Altruísta",
     "effect": "O valor é igual ao tamanho da sua Gene Pool.",
-    "flavor": "Pode me emprestar uns trocados? Doei todo o meu dinheiro para a caridade."
+    "flavor": "Pode me emprestar uns trocados? Doei todo meu dinheiro para a caridade."
   },
   "classic/traits/antlers": {
     "name": "Galhada",
@@ -199,7 +199,7 @@
   "classic/traits/automimicry": {
     "name": "Automimetismo",
     "effect": "Você pode jogar Automimetismo da sua mão a qualquer momento para impedir uma ação.",
-    "flavor": "Fiz uma cara grande e assustadora para você não notar a minha carinha pequena e de verdade."
+    "flavor": "Fiz uma cara grande e assustadora para você não notar minha carinha pequena e de verdade."
   },
   "classic/traits/bad": {
     "name": "Mau",
@@ -256,7 +256,7 @@
   "classic/traits/cold-blood": {
     "name": "Sangue Frio",
     "effect": "Compre 3 cartas. Você pode jogar 1 agora.",
-    "flavor": "Eu mataria pela capacidade de controlar a minha temperatura corporal."
+    "flavor": "Eu mataria pela capacidade de controlar minha temperatura corporal."
   },
   "classic/traits/confusion": {
     "name": "Confusão",
@@ -269,7 +269,7 @@
   },
   "classic/traits/deep-roots": {
     "name": "Raízes Profundas",
-    "flavor": "Conversei sobre o clima com o meu vizinho. Agora este é o meu lar para sempre."
+    "flavor": "Conversei sobre o clima com meu vizinho. Agora este é meu lar para sempre."
   },
   "classic/traits/delicious": {
     "name": "Delicioso",
@@ -340,7 +340,7 @@
   },
   "classic/traits/fire-skin": {
     "name": "Pele de Fogo",
-    "flavor": "Acho que a sua pele está pegando fogo."
+    "flavor": "Acho que sua pele está pegando fogo."
   },
   "classic/traits/flatulence": {
     "name": "Flatulência",
@@ -349,7 +349,7 @@
   "classic/traits/flight": {
     "name": "Voo",
     "effect": "Troque de mão com um oponente.",
-    "flavor": "O sol não é páreo para as minhas asas de cera!"
+    "flavor": "O sol não é páreo para minhas asas de cera!"
   },
   "classic/traits/fortunate": {
     "name": "Afortunado",
@@ -378,12 +378,12 @@
   "classic/traits/hot-temper": {
     "name": "Pavio Curto",
     "effect": "Descarte 2 cartas da sua mão.",
-    "flavor": "Tem queijo no meu cheeseburger!"
+    "flavor": "Meu cheeseburger tem queijo!"
   },
   "classic/traits/hyper-intelligence": {
     "name": "Hiperinteligência",
     "effect": "No Fim do Mundo: Escolha uma cor. Os oponentes descartam 1 trait dessa cor da pilha de traits deles, aleatoriamente.",
-    "flavor": "E=mc, pare de olhar para a minha cabeça."
+    "flavor": "E=mc, pare de olhar para minha cabeça."
   },
   "classic/traits/immunity": {
     "name": "Imunidade",
@@ -452,7 +452,7 @@
   },
   "classic/traits/leaves": {
     "name": "Folhas",
-    "flavor": "Pedi ao meu barbeiro um corte de cuia de salada."
+    "flavor": "Pedi a meu barbeiro um corte de cuia de salada."
   },
   "classic/traits/memory": {
     "name": "Memória",
@@ -461,7 +461,7 @@
   },
   "classic/traits/migratory": {
     "name": "Migratório",
-    "flavor": "Mal posso esperar para voltar a morar com os nossos pais!"
+    "flavor": "Mal posso esperar para voltar a morar com nossos pais!"
   },
   "classic/traits/mindful": {
     "name": "Atento",
@@ -480,7 +480,7 @@
   },
   "classic/traits/nocturnal": {
     "name": "Noturno",
-    "flavor": "A escuridão é a minha musa."
+    "flavor": "A escuridão é minha musa."
   },
   "classic/traits/nosy": {
     "name": "Enxerido",
@@ -579,7 +579,7 @@
   "classic/traits/scutes": {
     "name": "Escudos",
     "effect": "Dê 1 trait da sua pilha de traits a um oponente.",
-    "flavor": "Quando isso acabar, a minha vitória será conchelebrada!"
+    "flavor": "Quando isso acabar, minha vitória será conchelebrada!"
   },
   "classic/traits/selective-memory": {
     "name": "Memória Seletiva",
@@ -613,7 +613,7 @@
   },
   "classic/traits/spiny": {
     "name": "Espinhoso",
-    "flavor": "Não faça carinho no meu peixe."
+    "flavor": "Não faça carinho em meu peixe."
   },
   "classic/traits/sticky-secretions": {
     "name": "Secreções Pegajosas",
@@ -622,7 +622,7 @@
   },
   "classic/traits/stone-skin": {
     "name": "Pele de Pedra",
-    "flavor": "Seus elogios sinceros não são páreo para o meu exterior rochoso."
+    "flavor": "Seus elogios sinceros não são páreo para meu exterior rochoso."
   },
   "classic/traits/super-spreader": {
     "name": "Superdisseminador",
@@ -707,12 +707,12 @@
   "classic/traits/vampirism": {
     "name": "Vampirismo",
     "effect": "Roube um trait da pilha de traits de um oponente. Jogue a ação dele.",
-    "flavor": "Eu quero socar o seu sanguuue."
+    "flavor": "Eu quero socar seu sanguuue."
   },
   "classic/traits/venomous": {
     "name": "Peçonhento",
     "effect": "Jogue outro trait. Depois, mova Peçonhento para a pilha de traits de um oponente.",
-    "flavor": "A minha mordida é pior do que o meu latido."
+    "flavor": "A minha mordida é pior do que meu latido."
   },
   "classic/traits/viral": {
     "name": "Viral",
@@ -727,10 +727,10 @@
   "classic/traits/warm-blood": {
     "name": "Sangue Quente",
     "effect": "+2 Gene Pool",
-    "flavor": "Você está tentando ferver o meu sangue?"
+    "flavor": "Você está tentando ferver meu sangue?"
   },
   "classic/traits/woody-stems": {
     "name": "Caules Lenhosos",
-    "flavor": "É assim que eu transporto fluido das minhas raízes para os meus brotos."
+    "flavor": "É assim que eu transporto fluido de minhas raízes para meus brotos."
   }
 }
