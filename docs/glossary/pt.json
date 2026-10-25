@@ -266,6 +266,14 @@
       "avoid": []
     },
     {
+      "en": "colorless",
+      "use": "incolor",
+      "avoid": [
+        "sem cor"
+      ],
+      "note": "Plural: incolores."
+    },
+    {
       "en": "Coral",
       "use": "coral",
       "avoid": []
@@ -351,6 +359,11 @@
       "avoid": []
     },
     {
+      "en": "effectless",
+      "use": "sem efeito",
+      "avoid": []
+    },
+    {
       "en": "end",
       "use": "terminar",
       "avoid": [
@@ -376,7 +389,7 @@
       "avoid": [
         "excluindo"
       ],
-      "note": "'(Excluding dominants.)': '(Exceto dominants.)'."
+      "note": "'(Excluding dominants.)': '(Exceto dominantes.)'."
     },
     {
       "en": "Exotic",
@@ -792,9 +805,8 @@
     {
       "en": "Shell",
       "use": "concha",
-      "avoid": [
-        "casca"
-      ]
+      "avoid": [],
+      "note": "'casca' é bark, o trait."
     },
     {
       "en": "shuffle",

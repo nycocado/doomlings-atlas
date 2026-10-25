@@ -29,6 +29,17 @@ class TranslationDataIntegrityTest {
                 ).toSet()
         }
 
+    // Same cards as the app packages: enabledSets and enabledTypes in app/build.gradle.kts.
+    private val enabledClassicIds =
+        Json
+            .parseToJsonElement(dir.resolve("cards.json").readText())
+            .jsonArray
+            .map { it.jsonObject }
+            .filter {
+                it.getValue("set").jsonPrimitive.content == "classic" &&
+                    it.getValue("type").jsonPrimitive.content in setOf("trait", "age", "catastrophe")
+            }.map { it.getValue("id").jsonPrimitive.content }
+
     private val files =
         dir
             .listFiles { file -> file.extension == "json" && file.name != "cards.json" }
@@ -81,6 +92,19 @@ class TranslationDataIntegrityTest {
                         .map { "$id.$it" }
                 }
             assertEquals(emptyList<String>(), bad, file.name)
+        }
+    }
+
+    @Test
+    fun everyEnabledClassicCardIsTranslatedInPortugueseAndSpanish() {
+        listOf("pt", "es").forEach { code ->
+            val translated =
+                files
+                    .find { it.nameWithoutExtension == code }
+                    ?.let(::fieldsOf)
+                    ?.keys
+                    .orEmpty()
+            assertEquals(emptyList<String>(), enabledClassicIds - translated, code)
         }
     }
 }
