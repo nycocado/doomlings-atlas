@@ -1,58 +1,31 @@
 {
-  "language": "es",
+  "language": "es-419",
   "keep": [
-    "Action",
-    "Adapt",
     "Age",
     "Ages",
-    "Attach",
-    "Attachment",
-    "Attachments",
-    "Awesome Power",
-    "Bargain",
-    "Buy",
     "Catastrophe",
     "Catastrophes",
-    "Cloak",
-    "Collect",
-    "Coral",
-    "Curious",
     "Deepling",
+    "Deeplings",
     "Dinoling",
     "Dinolings",
-    "Dominant",
-    "Dominants",
-    "Dragon",
-    "Drop of life",
-    "Echo",
-    "Exchange",
-    "Exotic",
-    "Fish",
+    "Doomling",
+    "Doomlings",
     "Gene Pool",
     "Glitterling",
     "Glitterlings",
     "Meaning of Life",
     "Moonling",
     "Moonlings",
-    "Mutate",
     "Mythling",
     "Mythlings",
-    "Play when",
-    "Pocket",
-    "Pocket Objective",
-    "Rush",
-    "Shell",
-    "Spell",
-    "Stabilize",
-    "Start of Turn",
-    "Suppress",
-    "Swarm",
+    "The Birth of Life",
     "Techling",
+    "Techlings",
     "Trait",
     "Traits",
     "Trinket",
-    "Trinkets",
-    "World's End"
+    "Trinkets"
   ],
   "interface": [
     {
@@ -170,6 +143,17 @@
   ],
   "cards": [
     {
+      "en": "Action",
+      "use": "acción",
+      "avoid": [],
+      "note": "Ícono de efecto."
+    },
+    {
+      "en": "Adapt",
+      "use": "Adaptación",
+      "avoid": []
+    },
+    {
       "en": "add",
       "use": "añadir",
       "avoid": [
@@ -195,6 +179,29 @@
       ]
     },
     {
+      "en": "Attach",
+      "use": "adjuntar",
+      "avoid": [
+        "acoplar"
+      ]
+    },
+    {
+      "en": "Attachment",
+      "use": "adjunto",
+      "avoid": [],
+      "note": "Plural: adjuntos."
+    },
+    {
+      "en": "Awesome Power",
+      "use": "Poder Increíble",
+      "avoid": []
+    },
+    {
+      "en": "Bargain",
+      "use": "Regateo",
+      "avoid": []
+    },
+    {
       "en": "blue",
       "use": "azul",
       "avoid": []
@@ -215,6 +222,12 @@
       ]
     },
     {
+      "en": "Buy",
+      "use": "Adquisición",
+      "avoid": [],
+      "note": "No 'comprar'."
+    },
+    {
       "en": "cannot",
       "use": "no puede",
       "avoid": []
@@ -229,8 +242,23 @@
       "note": "También para 'pick'."
     },
     {
+      "en": "Cloak",
+      "use": "Manto",
+      "avoid": []
+    },
+    {
+      "en": "Collect",
+      "use": "Recolección",
+      "avoid": []
+    },
+    {
       "en": "color",
       "use": "color",
+      "avoid": []
+    },
+    {
+      "en": "Coral",
+      "use": "coral",
       "avoid": []
     },
     {
@@ -239,6 +267,11 @@
       "avoid": [
         "computar"
       ]
+    },
+    {
+      "en": "Curious",
+      "use": "curioso",
+      "avoid": []
     },
     {
       "en": "deck",
@@ -264,19 +297,42 @@
       "note": "Sustantivo: descarte."
     },
     {
+      "en": "Dominant",
+      "use": "dominante",
+      "avoid": [],
+      "note": "Plural: dominantes."
+    },
+    {
+      "en": "Dragon",
+      "use": "dragón",
+      "avoid": []
+    },
+    {
       "en": "draw",
       "use": "robar",
       "avoid": [
-        "sacar",
-        "tomar"
+        "sacar"
       ],
       "note": "Robar una carta del mazo; 'draw' como empate es 'empatar'."
+    },
+    {
+      "en": "Drop of Life",
+      "use": "Gota de Vida",
+      "avoid": [
+        "gotita de vida"
+      ],
+      "note": "Ícono de efecto."
     },
     {
       "en": "each",
       "use": "cada",
       "avoid": [],
       "note": "También para 'every'."
+    },
+    {
+      "en": "Echo",
+      "use": "Eco",
+      "avoid": []
     },
     {
       "en": "effect",
@@ -287,8 +343,7 @@
       "en": "end",
       "use": "terminar",
       "avoid": [
-        "finalizar",
-        "acabar"
+        "finalizar"
       ],
       "note": "Terminar el turno."
     },
@@ -298,18 +353,22 @@
       "avoid": []
     },
     {
-      "en": "every",
-      "use": "cada",
+      "en": "Exchange",
+      "use": "Cambio",
       "avoid": [],
-      "note": "Igual que 'each'."
+      "note": "No 'intercambiar', que es swap."
     },
     {
       "en": "excluding",
       "use": "excepto",
       "avoid": [
-        "excluyendo",
-        "salvo"
+        "excluyendo"
       ]
+    },
+    {
+      "en": "Exotic",
+      "use": "exótico",
+      "avoid": []
     },
     {
       "en": "face value",
@@ -323,6 +382,12 @@
       "en": "fewer",
       "use": "menos",
       "avoid": []
+    },
+    {
+      "en": "Fish",
+      "use": "pez",
+      "avoid": [],
+      "note": "Plural: peces."
     },
     {
       "en": "friend",
@@ -393,9 +458,7 @@
     {
       "en": "including",
       "use": "incluyendo",
-      "avoid": [
-        "inclusive"
-      ]
+      "avoid": []
     },
     {
       "en": "increase",
@@ -415,8 +478,7 @@
       "en": "keep",
       "use": "quedarse con",
       "avoid": [
-        "mantener",
-        "guardar"
+        "mantener"
       ]
     },
     {
@@ -468,6 +530,11 @@
       "use": "debes",
       "avoid": [],
       "note": "Obligatorio: 'debes'."
+    },
+    {
+      "en": "Mutate",
+      "use": "Mutación",
+      "avoid": []
     },
     {
       "en": "negative",
@@ -555,11 +622,29 @@
       "note": "Jugar una carta; Play when permanece en inglés."
     },
     {
+      "en": "Play When",
+      "use": "Jugar cuando",
+      "avoid": [],
+      "note": "Ícono de efecto."
+    },
+    {
       "en": "player",
       "use": "jugador",
       "avoid": [
         "participante"
       ]
+    },
+    {
+      "en": "Pocket",
+      "use": "guardar en el bolsillo",
+      "avoid": [
+        "embolsar"
+      ]
+    },
+    {
+      "en": "Pocket Objective",
+      "use": "Objetivo de Bolsillo",
+      "avoid": []
     },
     {
       "en": "positive",
@@ -569,10 +654,7 @@
     {
       "en": "prevent",
       "use": "impedir",
-      "avoid": [
-        "evitar",
-        "prevenir"
-      ]
+      "avoid": []
     },
     {
       "en": "preview",
@@ -593,9 +675,7 @@
     {
       "en": "random",
       "use": "aleatorio",
-      "avoid": [
-        "al azar"
-      ]
+      "avoid": []
     },
     {
       "en": "receive",
@@ -612,16 +692,12 @@
     {
       "en": "remind",
       "use": "recordar",
-      "avoid": [
-        "avisar"
-      ]
+      "avoid": []
     },
     {
       "en": "remove",
       "use": "retirar",
-      "avoid": [
-        "quitar"
-      ]
+      "avoid": []
     },
     {
       "en": "repeat",
@@ -669,6 +745,11 @@
       ]
     },
     {
+      "en": "Rush",
+      "use": "Urgencia",
+      "avoid": []
+    },
+    {
       "en": "set",
       "use": "establecer",
       "avoid": [
@@ -680,6 +761,13 @@
       "en": "share",
       "use": "compartir",
       "avoid": []
+    },
+    {
+      "en": "Shell",
+      "use": "concha",
+      "avoid": [
+        "caparazón"
+      ]
     },
     {
       "en": "shuffle",
@@ -696,6 +784,21 @@
       ]
     },
     {
+      "en": "Spell",
+      "use": "hechizo",
+      "avoid": [
+        "conjuro"
+      ],
+      "note": "Solo en el ícono."
+    },
+    {
+      "en": "Stabilize",
+      "use": "estabilizar",
+      "avoid": [
+        "equilibrar"
+      ]
+    },
+    {
       "en": "start",
       "use": "inicio",
       "avoid": [
@@ -703,21 +806,22 @@
       ]
     },
     {
+      "en": "Start of Turn",
+      "use": "Inicio del turno",
+      "avoid": []
+    },
+    {
       "en": "steal",
       "use": "arrebatar",
       "avoid": [
-        "hurtar",
-        "quitar"
+        "hurtar"
       ],
       "note": "Con draw es robar; no se usa robar para steal."
     },
     {
       "en": "stop",
       "use": "interrumpir",
-      "avoid": [
-        "parar",
-        "detener"
-      ]
+      "avoid": []
     },
     {
       "en": "subtract",
@@ -728,20 +832,31 @@
       ]
     },
     {
+      "en": "Suppress",
+      "use": "suprimir",
+      "avoid": [
+        "anular"
+      ]
+    },
+    {
       "en": "swap",
       "use": "intercambiar",
       "avoid": [
-        "permutar",
-        "cambiar"
+        "permutar"
       ]
+    },
+    {
+      "en": "Swarm",
+      "use": "enjambre",
+      "avoid": [
+        "bandada"
+      ],
+      "note": "También el nombre de cartas: la misma palabra."
     },
     {
       "en": "then",
       "use": "luego",
-      "avoid": [
-        "después",
-        "entonces"
-      ]
+      "avoid": []
     },
     {
       "en": "ties",
@@ -784,6 +899,14 @@
       "en": "value",
       "use": "valor",
       "avoid": []
+    },
+    {
+      "en": "World's End",
+      "use": "Fin del Mundo",
+      "avoid": [
+        "apocalipsis"
+      ],
+      "note": "Ícono de efecto."
     }
   ]
 }
