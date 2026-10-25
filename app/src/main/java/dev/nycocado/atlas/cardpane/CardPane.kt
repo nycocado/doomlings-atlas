@@ -15,6 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import dev.nycocado.atlas.card.Card
+import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.carddetail.CardDetailScreen
 import dev.nycocado.atlas.ui.theme.StatusBarIcons
 import kotlinx.serialization.Serializable
@@ -29,8 +31,11 @@ data class CardKey(
 fun rememberCardPane(
     backStack: NavBackStack<NavKey>,
     cards: State<List<Card>?>,
+    translations: State<CardTranslations>,
+    language: State<CardLanguage>,
+    onLanguageChange: (CardLanguage) -> Unit,
 ): CardPane {
-    val pane = remember(backStack) { CardPane(backStack, cards) }
+    val pane = remember(backStack) { CardPane(backStack, cards, translations, language, onLanguageChange) }
     backStack.lastOrNull { it is CardKey }?.let { open -> SideEffect { pane.lastCard = (open as CardKey).id } }
     return pane
 }
@@ -39,6 +44,9 @@ fun rememberCardPane(
 class CardPane internal constructor(
     private val backStack: NavBackStack<NavKey>,
     private val cards: State<List<Card>?>,
+    private val translations: State<CardTranslations>,
+    private val language: State<CardLanguage>,
+    private val onLanguageChange: (CardLanguage) -> Unit,
 ) {
     // The card's pane takes the card with it as it fades out: the card leaves the back stack before the pane hides,
     // so the list's detail placeholder shows the last card meanwhile (#48). Never cleared: the placeholder only shows
@@ -65,7 +73,17 @@ class CardPane internal constructor(
             if (all != null && card == null) LaunchedEffect(id) { onBack() }
             // The sheet shows beside the list even while the cards load.
             Box(if (layout.sideBySide) Modifier.sheet() else Modifier) {
-                card?.let { CardDetailScreen(it, layout, onBack, onAboutClick) }
+                card?.let {
+                    CardDetailScreen(
+                        it,
+                        translations.value,
+                        language.value,
+                        onLanguageChange,
+                        layout,
+                        onBack,
+                        onAboutClick,
+                    )
+                }
             }
         }
 

@@ -39,23 +39,24 @@
     </plurals>
 
     <string name="back">Back</string>
+    <string name="card_language">Card language</string>
     <string name="type_trait" translatable="false">Trait</string>
     <string name="type_age" translatable="false">Age</string>
     <string name="type_catastrophe" translatable="false">Catastrophe</string>
-    <string name="dominant" translatable="false">Dominant</string>
-    <string name="worlds_end" translatable="false">World\'s End</string>
-    <string name="icon_action" translatable="false">Action</string>
-    <string name="icon_attachment" translatable="false">Attachment</string>
-    <string name="icon_drop_of_life" translatable="false">Drop of life</string>
-    <string name="icon_play_when" translatable="false">Play when</string>
-    <string name="icon_spell" translatable="false">Spell</string>
-    <string name="icon_suppress" translatable="false">Suppress</string>
-    <string name="icon_coral" translatable="false">Coral</string>
-    <string name="icon_curious" translatable="false">Curious</string>
-    <string name="icon_dragon" translatable="false">Dragon</string>
-    <string name="icon_exotic" translatable="false">Exotic</string>
-    <string name="icon_fish" translatable="false">Fish</string>
-    <string name="icon_shell" translatable="false">Shell</string>
+    <string name="worlds_end">World\'s End</string>
+    <string name="dominant">Dominant</string>
+    <string name="icon_action">Action</string>
+    <string name="icon_attachment">Attachment</string>
+    <string name="icon_drop_of_life">Drop of life</string>
+    <string name="icon_play_when">Play when</string>
+    <string name="icon_spell">Spell</string>
+    <string name="icon_suppress">Suppress</string>
+    <string name="icon_coral">Coral</string>
+    <string name="icon_curious">Curious</string>
+    <string name="icon_dragon">Dragon</string>
+    <string name="icon_exotic">Exotic</string>
+    <string name="icon_fish">Fish</string>
+    <string name="icon_shell">Shell</string>
 
     <string name="dock_cards">Cards</string>
     <string name="dock_score">Score</string>

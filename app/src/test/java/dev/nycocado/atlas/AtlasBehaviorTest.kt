@@ -50,7 +50,7 @@ abstract class AtlasBehaviorTest {
 
     protected fun launchPastNotice(): ActivityScenario<MainActivity> {
         context
-            .getSharedPreferences(NOTICE_PREFS, Context.MODE_PRIVATE)
+            .getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE)
             .edit()
             .putBoolean(NOTICE_SEEN, true)
             .commit()

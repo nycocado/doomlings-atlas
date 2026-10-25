@@ -1,160 +1,964 @@
 {
   "language": "pt-BR",
   "keep": [
-    "Action",
     "Age",
     "Ages",
-    "Attach",
-    "Attachment",
-    "Awesome Power",
-    "Bargain",
     "Catastrophe",
     "Catastrophes",
-    "Collect",
-    "Coral",
-    "Curious",
     "Deepling",
+    "Deeplings",
     "Dinoling",
-    "Dominant",
-    "Dragon",
-    "Drop of life",
-    "Exotic",
-    "Fish",
+    "Dinolings",
+    "Doomling",
+    "Doomlings",
     "Gene Pool",
     "Glitterling",
+    "Glitterlings",
     "Meaning of Life",
-    "Mythling",
     "Moonling",
-    "Play when",
-    "Pocket Objective",
-    "Rush",
-    "Shell",
-    "Spell",
-    "Stabilize",
-    "Suppress",
-    "Swarm",
+    "Moonlings",
+    "Mythling",
+    "Mythlings",
+    "The Birth of Life",
     "Techling",
+    "Techlings",
     "Trait",
     "Traits",
     "Trinket",
-    "World's End"
+    "Trinkets"
   ],
+  "keepNote": "Gênero dos termos em inglês: o trait, a age, a catastrophe, o Gene Pool, o Meaning of Life, o trinket. No nome de uma carta, \"Age\" vira \"Era\" (Age of Reason: Era da Razão). Nomes de cartas citados no texto ficam como impressos, em inglês (Vampirism, The Four Horsemen).",
   "interface": [
-    { "en": "about", "use": "sobre", "avoid": ["acerca"] },
-    { "en": "back", "use": "voltar", "avoid": ["retornar"] },
+    {
+      "en": "about",
+      "use": "sobre",
+      "avoid": [
+        "acerca"
+      ]
+    },
+    {
+      "en": "back",
+      "use": "voltar",
+      "avoid": [
+        "retornar"
+      ]
+    },
     {
       "en": "card",
       "use": "carta",
-      "avoid": ["card", "cards", "cartão", "cartões"],
+      "avoid": [
+        "card",
+        "cards",
+        "cartão",
+        "cartões"
+      ],
       "note": "Plural: cartas."
     },
-    { "en": "clear", "use": "limpar", "avoid": ["deletar"] },
-    { "en": "coming soon", "use": "em breve", "avoid": ["brevemente"] },
-    { "en": "got it", "use": "entendi", "avoid": ["compreendi"] },
-    { "en": "hide", "use": "ocultar", "avoid": ["esconder"] },
-    { "en": "libraries", "use": "bibliotecas", "avoid": ["livrarias"] },
-    { "en": "license", "use": "licença", "avoid": ["licenciamento"] },
+    {
+      "en": "clear",
+      "use": "limpar",
+      "avoid": [
+        "deletar"
+      ]
+    },
+    {
+      "en": "coming soon",
+      "use": "em breve",
+      "avoid": [
+        "brevemente"
+      ]
+    },
+    {
+      "en": "got it",
+      "use": "entendi",
+      "avoid": [
+        "compreendi"
+      ]
+    },
+    {
+      "en": "hide",
+      "use": "ocultar",
+      "avoid": [
+        "esconder"
+      ]
+    },
+    {
+      "en": "libraries",
+      "use": "bibliotecas",
+      "avoid": [
+        "livrarias"
+      ]
+    },
+    {
+      "en": "license",
+      "use": "licença",
+      "avoid": [
+        "licenciamento"
+      ]
+    },
     {
       "en": "point",
       "use": "ponto",
-      "avoid": ["pts"],
+      "avoid": [
+        "pts"
+      ],
       "note": "Plural: pontos; pontos de (many)."
     },
-    { "en": "score", "use": "pontuação", "avoid": ["placar", "escore"] },
+    {
+      "en": "score",
+      "use": "pontuação",
+      "avoid": [
+        "placar",
+        "escore"
+      ]
+    },
     {
       "en": "search",
       "use": "busca",
-      "avoid": ["pesquisa", "pesquisar"],
+      "avoid": [
+        "pesquisa",
+        "pesquisar"
+      ],
       "note": "Verbo: buscar. \"procurar\" só na frase 'Qual doomling você procura?'."
     },
-    { "en": "show", "use": "mostrar", "avoid": ["exibir"] },
-    { "en": "tap", "use": "toque", "avoid": ["clique", "clicar", "pressione"] },
-    { "en": "unofficial", "use": "não oficial", "avoid": ["extraoficial"] },
-    { "en": "version", "use": "versão", "avoid": [] }
+    {
+      "en": "show",
+      "use": "mostrar",
+      "avoid": [
+        "exibir"
+      ]
+    },
+    {
+      "en": "tap",
+      "use": "toque",
+      "avoid": [
+        "clique",
+        "clicar",
+        "pressione"
+      ]
+    },
+    {
+      "en": "unofficial",
+      "use": "não oficial",
+      "avoid": [
+        "extraoficial"
+      ]
+    },
+    {
+      "en": "version",
+      "use": "versão",
+      "avoid": []
+    }
   ],
   "cards": [
-    { "en": "add", "use": "adicionar", "avoid": ["acrescentar"] },
-    { "en": "choose", "use": "escolher", "avoid": ["eleger"] },
-    { "en": "color", "use": "cor", "avoid": [] },
-    { "en": "count", "use": "contar", "avoid": ["computar"] },
-    { "en": "deck", "use": "baralho", "avoid": ["deck", "monte"] },
-    { "en": "different", "use": "diferente", "avoid": [] },
+    {
+      "en": "Age (in a card name)",
+      "use": "Era",
+      "avoid": [
+        "Idade"
+      ],
+      "note": "Só no nome da carta (Era da Razão, Era do Gelo); no texto, age fica em inglês."
+    },
+    {
+      "en": "Action",
+      "use": "ação",
+      "avoid": [],
+      "note": "Ícone de efeito."
+    },
+    {
+      "en": "Adapt",
+      "use": "Adaptação",
+      "avoid": []
+    },
+    {
+      "en": "add",
+      "use": "adicionar",
+      "avoid": [
+        "acrescentar"
+      ]
+    },
+    {
+      "en": "another",
+      "use": "outro",
+      "avoid": [],
+      "note": "'Play another trait'."
+    },
+    {
+      "en": "at any time",
+      "use": "a qualquer momento",
+      "avoid": [
+        "em qualquer momento"
+      ]
+    },
+    {
+      "en": "at least",
+      "use": "pelo menos",
+      "avoid": [
+        "no mínimo",
+        "ao menos"
+      ]
+    },
+    {
+      "en": "Attach",
+      "use": "anexar",
+      "avoid": [
+        "acoplar"
+      ]
+    },
+    {
+      "en": "Attachment",
+      "use": "anexo",
+      "avoid": [],
+      "note": "Plural: anexos."
+    },
+    {
+      "en": "Awesome Power",
+      "use": "Poder Incrível",
+      "avoid": []
+    },
+    {
+      "en": "Bargain",
+      "use": "Barganha",
+      "avoid": []
+    },
+    {
+      "en": "blue",
+      "use": "azul",
+      "avoid": []
+    },
+    {
+      "en": "bonus",
+      "use": "bônus",
+      "avoid": [
+        "bonificação"
+      ]
+    },
+    {
+      "en": "bottom",
+      "use": "fundo",
+      "avoid": [],
+      "note": "Do baralho ou da pilha: 'fundo do baralho'."
+    },
+    {
+      "en": "Buy",
+      "use": "Aquisição",
+      "avoid": [],
+      "note": "Não 'comprar', que é draw."
+    },
+    {
+      "en": "cannot",
+      "use": "não pode",
+      "avoid": [],
+      "note": "Obrigatório negativo."
+    },
+    {
+      "en": "choose",
+      "use": "escolher",
+      "avoid": [
+        "eleger"
+      ],
+      "note": "Também para 'pick'."
+    },
+    {
+      "en": "Cloak",
+      "use": "Manto",
+      "avoid": []
+    },
+    {
+      "en": "Collect",
+      "use": "Coleta",
+      "avoid": []
+    },
+    {
+      "en": "color",
+      "use": "cor",
+      "avoid": []
+    },
+    {
+      "en": "colorless",
+      "use": "incolor",
+      "avoid": [
+        "sem cor"
+      ],
+      "note": "Plural: incolores."
+    },
+    {
+      "en": "Coral",
+      "use": "coral",
+      "avoid": []
+    },
+    {
+      "en": "count",
+      "use": "contar",
+      "avoid": [
+        "computar"
+      ]
+    },
+    {
+      "en": "Curious",
+      "use": "curioso",
+      "avoid": []
+    },
+    {
+      "en": "deck",
+      "use": "baralho",
+      "avoid": [
+        "deck",
+        "monte"
+      ]
+    },
+    {
+      "en": "different",
+      "use": "diferente",
+      "avoid": []
+    },
     {
       "en": "discard",
       "use": "descartar",
-      "avoid": ["dispensar", "largar"],
+      "avoid": [
+        "dispensar",
+        "largar"
+      ],
       "note": "Substantivo: descarte."
+    },
+    {
+      "en": "Dominant",
+      "use": "dominante",
+      "avoid": [
+        "dominador"
+      ],
+      "note": "Plural: dominantes."
+    },
+    {
+      "en": "Dragon",
+      "use": "dragão",
+      "avoid": []
     },
     {
       "en": "draw",
       "use": "comprar",
-      "avoid": ["puxar", "sacar"],
+      "avoid": [
+        "puxar",
+        "sacar"
+      ],
       "note": "Comprar uma carta do baralho; 'draw' no sentido de empate é 'empatar'."
     },
-    { "en": "each", "use": "cada", "avoid": [] },
-    { "en": "effect", "use": "efeito", "avoid": [] },
-    { "en": "equal", "use": "igual", "avoid": [] },
-    { "en": "fewer", "use": "menos", "avoid": [] },
-    { "en": "gain", "use": "ganhar", "avoid": ["adquirir"] },
-    { "en": "give", "use": "dar", "avoid": [] },
-    { "en": "hand", "use": "mão", "avoid": [] },
-    { "en": "ignore", "use": "ignorar", "avoid": ["desconsiderar"] },
+    {
+      "en": "Drop of Life",
+      "use": "Gota de Vida",
+      "avoid": [
+        "pingo de vida"
+      ],
+      "note": "Ícone de efeito."
+    },
+    {
+      "en": "each",
+      "use": "cada",
+      "avoid": [],
+      "note": "Também para 'every'."
+    },
+    {
+      "en": "Echo",
+      "use": "Eco",
+      "avoid": []
+    },
+    {
+      "en": "effect",
+      "use": "efeito",
+      "avoid": []
+    },
+    {
+      "en": "effectless",
+      "use": "sem efeito",
+      "avoid": []
+    },
+    {
+      "en": "end",
+      "use": "terminar",
+      "avoid": [
+        "encerrar",
+        "finalizar"
+      ],
+      "note": "Terminar o turno."
+    },
+    {
+      "en": "equal",
+      "use": "igual",
+      "avoid": []
+    },
+    {
+      "en": "Exchange",
+      "use": "Câmbio",
+      "avoid": [],
+      "note": "Não 'trocar', que é swap."
+    },
+    {
+      "en": "excluding",
+      "use": "exceto",
+      "avoid": [
+        "excluindo"
+      ],
+      "note": "'(Excluding dominants.)': '(Exceto dominantes.)'."
+    },
+    {
+      "en": "Exotic",
+      "use": "exótico",
+      "avoid": []
+    },
+    {
+      "en": "face value",
+      "use": "valor de face",
+      "avoid": [
+        "valor facial",
+        "valor nominal"
+      ]
+    },
+    {
+      "en": "fewer",
+      "use": "menos",
+      "avoid": []
+    },
+    {
+      "en": "Fish",
+      "use": "peixe",
+      "avoid": []
+    },
+    {
+      "en": "friend",
+      "use": "amigo",
+      "avoid": [
+        "aliado"
+      ],
+      "note": "Plural: amigos."
+    },
+    {
+      "en": "gain",
+      "use": "ganhar",
+      "avoid": [
+        "adquirir"
+      ]
+    },
+    {
+      "en": "give",
+      "use": "dar",
+      "avoid": []
+    },
+    {
+      "en": "green",
+      "use": "verde",
+      "avoid": []
+    },
+    {
+      "en": "hand",
+      "use": "mão",
+      "avoid": []
+    },
+    {
+      "en": "highest",
+      "use": "maior",
+      "avoid": [
+        "mais alto"
+      ],
+      "note": "'The highest Gene Pool': 'o maior Gene Pool'."
+    },
+    {
+      "en": "hold",
+      "use": "ter na mão",
+      "avoid": [
+        "segurar"
+      ],
+      "note": "'If you hold 3 or fewer cards'."
+    },
+    {
+      "en": "host",
+      "use": "hospedeiro",
+      "avoid": [
+        "anfitrião"
+      ],
+      "note": "A trait onde uma Attachment está presa."
+    },
+    {
+      "en": "ignore",
+      "use": "ignorar",
+      "avoid": [
+        "desconsiderar"
+      ]
+    },
     {
       "en": "immediately",
       "use": "imediatamente",
-      "avoid": ["instantaneamente"]
+      "avoid": [
+        "instantaneamente"
+      ]
     },
-    { "en": "left", "use": "esquerda", "avoid": [] },
+    {
+      "en": "including",
+      "use": "incluindo",
+      "avoid": []
+    },
+    {
+      "en": "increase",
+      "use": "aumentar",
+      "avoid": [
+        "elevar"
+      ]
+    },
+    {
+      "en": "instead",
+      "use": "em vez de",
+      "avoid": [
+        "ao invés de"
+      ]
+    },
+    {
+      "en": "keep",
+      "use": "ficar com",
+      "avoid": [
+        "manter"
+      ],
+      "note": "'Keep 1, discard the other 2'."
+    },
+    {
+      "en": "left",
+      "use": "esquerda",
+      "avoid": []
+    },
+    {
+      "en": "look",
+      "use": "olhar",
+      "avoid": [
+        "observar"
+      ]
+    },
+    {
+      "en": "lowest",
+      "use": "menor",
+      "avoid": [
+        "mais baixo"
+      ]
+    },
+    {
+      "en": "max",
+      "use": "máx.",
+      "avoid": [
+        "limite"
+      ],
+      "note": "'(Max +5)': '(máx. +5)'."
+    },
     {
       "en": "may",
       "use": "pode",
       "avoid": [],
       "note": "Opcional: 'você pode'."
     },
-    { "en": "more", "use": "mais", "avoid": [] },
+    {
+      "en": "more",
+      "use": "mais",
+      "avoid": []
+    },
+    {
+      "en": "move",
+      "use": "mover",
+      "avoid": [
+        "deslocar"
+      ]
+    },
     {
       "en": "must",
       "use": "deve",
       "avoid": [],
       "note": "Obrigatório: 'você deve'."
     },
-    { "en": "next", "use": "próximo", "avoid": [] },
+    {
+      "en": "Mutate",
+      "use": "Mutação",
+      "avoid": []
+    },
+    {
+      "en": "negative",
+      "use": "negativo",
+      "avoid": []
+    },
+    {
+      "en": "next",
+      "use": "próximo",
+      "avoid": []
+    },
+    {
+      "en": "now",
+      "use": "agora",
+      "avoid": []
+    },
     {
       "en": "opponent",
       "use": "oponente",
-      "avoid": ["adversário", "adversária", "rival", "inimigo"]
+      "avoid": [
+        "adversário",
+        "adversária",
+        "rival",
+        "inimigo"
+      ]
     },
-    { "en": "pass", "use": "passar", "avoid": ["repassar"] },
-    { "en": "peek", "use": "espiar", "avoid": ["espreitar", "espiadinha"] },
+    {
+      "en": "or higher",
+      "use": "ou mais",
+      "avoid": [
+        "ou maior",
+        "ou superior"
+      ],
+      "note": "'4 or higher': '4 ou mais'."
+    },
+    {
+      "en": "or lower",
+      "use": "ou menos",
+      "avoid": [
+        "ou menor",
+        "ou inferior"
+      ],
+      "note": "'3 or lower': '3 ou menos'."
+    },
+    {
+      "en": "otherwise",
+      "use": "caso contrário",
+      "avoid": [
+        "do contrário"
+      ]
+    },
+    {
+      "en": "pass",
+      "use": "passar",
+      "avoid": [
+        "repassar"
+      ]
+    },
+    {
+      "en": "peek",
+      "use": "espiar",
+      "avoid": [
+        "espreitar",
+        "espiadinha"
+      ]
+    },
     {
       "en": "pile",
       "use": "pilha",
-      "avoid": ["monte", "pile"],
+      "avoid": [
+        "monte",
+        "pile"
+      ],
       "note": "Trait pile: 'pilha de traits'."
+    },
+    {
+      "en": "place",
+      "use": "colocar",
+      "avoid": [
+        "posicionar"
+      ]
     },
     {
       "en": "play",
       "use": "jogar",
-      "avoid": ["baixar"],
+      "avoid": [
+        "baixar"
+      ],
       "note": "Jogar uma carta; Play when permanece em inglês."
     },
-    { "en": "player", "use": "jogador", "avoid": ["participante"] },
-    { "en": "random", "use": "aleatório", "avoid": ["randômico", "randomico"] },
-    { "en": "receive", "use": "receber", "avoid": [] },
+    {
+      "en": "Play When",
+      "use": "Jogar quando",
+      "avoid": [],
+      "note": "Ícone de efeito; 'play' em outro contexto é jogar."
+    },
+    {
+      "en": "player",
+      "use": "jogador",
+      "avoid": [
+        "participante"
+      ]
+    },
+    {
+      "en": "Pocket",
+      "use": "guardar no bolso",
+      "avoid": [
+        "embolsar"
+      ],
+      "note": "Verbo: 'Pocket 1 trinket'."
+    },
+    {
+      "en": "Pocket Objective",
+      "use": "Objetivo de Bolso",
+      "avoid": []
+    },
+    {
+      "en": "positive",
+      "use": "positivo",
+      "avoid": []
+    },
+    {
+      "en": "prevent",
+      "use": "impedir",
+      "avoid": []
+    },
+    {
+      "en": "preview",
+      "use": "prever",
+      "avoid": [
+        "antever"
+      ],
+      "note": "Ver a próxima Age sem jogá-la; 'peek' é espiar."
+    },
+    {
+      "en": "purple",
+      "use": "roxo",
+      "avoid": [
+        "lilás",
+        "violeta"
+      ]
+    },
+    {
+      "en": "random",
+      "use": "aleatório",
+      "avoid": [
+        "randômico",
+        "randomico"
+      ]
+    },
+    {
+      "en": "receive",
+      "use": "receber",
+      "avoid": []
+    },
+    {
+      "en": "red",
+      "use": "vermelho",
+      "avoid": []
+    },
+    {
+      "en": "remind",
+      "use": "lembrar",
+      "avoid": []
+    },
+    {
+      "en": "remove",
+      "use": "remover",
+      "avoid": [],
+      "note": "Tirar uma carta da pilha de traits."
+    },
+    {
+      "en": "repeat",
+      "use": "repetir",
+      "avoid": []
+    },
+    {
+      "en": "replay",
+      "use": "jogar de novo",
+      "avoid": [
+        "rejogar"
+      ]
+    },
+    {
+      "en": "restriction",
+      "use": "restrição",
+      "avoid": [
+        "limitação"
+      ],
+      "note": "'(Unless restricted.)': '(A menos que haja restrição.)'."
+    },
     {
       "en": "return",
       "use": "devolver",
-      "avoid": ["retornar"],
+      "avoid": [
+        "retornar"
+      ],
       "note": "Devolver uma carta ao baralho ou à mão."
     },
-    { "en": "reveal", "use": "revelar", "avoid": [] },
-    { "en": "right", "use": "direita", "avoid": [] },
-    { "en": "round", "use": "rodada", "avoid": ["ciclo"] },
-    { "en": "steal", "use": "roubar", "avoid": ["furtar", "surrupiar"] },
-    { "en": "swap", "use": "trocar", "avoid": ["permutar"] },
-    { "en": "ties", "use": "empates", "avoid": [] },
-    { "en": "top", "use": "topo", "avoid": [] },
-    { "en": "turn", "use": "turno", "avoid": [] },
-    { "en": "value", "use": "valor", "avoid": [] }
+    {
+      "en": "reveal",
+      "use": "revelar",
+      "avoid": []
+    },
+    {
+      "en": "right",
+      "use": "direita",
+      "avoid": []
+    },
+    {
+      "en": "round",
+      "use": "rodada",
+      "avoid": [
+        "ciclo"
+      ]
+    },
+    {
+      "en": "Rush",
+      "use": "Urgência",
+      "avoid": [],
+      "note": "Cabeçalho do painel de baixo."
+    },
+    {
+      "en": "set",
+      "use": "definir",
+      "avoid": [
+        "ajustar"
+      ],
+      "note": "'Set your Gene Pool to 5'."
+    },
+    {
+      "en": "share",
+      "use": "compartilhar",
+      "avoid": [
+        "partilhar"
+      ],
+      "note": "'Shares a color with the host'."
+    },
+    {
+      "en": "Shell",
+      "use": "concha",
+      "avoid": [],
+      "note": "'casca' é bark, o trait."
+    },
+    {
+      "en": "shuffle",
+      "use": "embaralhar",
+      "avoid": [
+        "misturar"
+      ]
+    },
+    {
+      "en": "skip",
+      "use": "pular",
+      "avoid": [
+        "saltar"
+      ],
+      "note": "'Skip your turn'."
+    },
+    {
+      "en": "Spell",
+      "use": "feitiço",
+      "avoid": [
+        "magia"
+      ],
+      "note": "Só no ícone."
+    },
+    {
+      "en": "Stabilize",
+      "use": "estabilizar",
+      "avoid": [
+        "equilibrar"
+      ]
+    },
+    {
+      "en": "start",
+      "use": "início",
+      "avoid": [
+        "começo"
+      ],
+      "note": "'Start of your turn': 'início do seu turno'."
+    },
+    {
+      "en": "Start of Turn",
+      "use": "Início do turno",
+      "avoid": []
+    },
+    {
+      "en": "steal",
+      "use": "roubar",
+      "avoid": [
+        "furtar",
+        "surrupiar"
+      ]
+    },
+    {
+      "en": "stop",
+      "use": "interromper",
+      "avoid": []
+    },
+    {
+      "en": "subtract",
+      "use": "subtrair",
+      "avoid": [
+        "deduzir"
+      ]
+    },
+    {
+      "en": "Suppress",
+      "use": "suprimir",
+      "avoid": [
+        "anular"
+      ]
+    },
+    {
+      "en": "swap",
+      "use": "trocar",
+      "avoid": [
+        "permutar"
+      ]
+    },
+    {
+      "en": "Swarm (in a card name)",
+      "use": "Enxame",
+      "avoid": [
+        "bando",
+        "cardume"
+      ],
+      "note": "Só no nome da carta; citada no texto, a carta fica Swarm, como impressa."
+    },
+    {
+      "en": "then",
+      "use": "depois",
+      "avoid": [
+        "em seguida"
+      ]
+    },
+    {
+      "en": "ties",
+      "use": "empates",
+      "avoid": []
+    },
+    {
+      "en": "top",
+      "use": "topo",
+      "avoid": []
+    },
+    {
+      "en": "trash",
+      "use": "eliminar",
+      "avoid": [
+        "destruir",
+        "lixo"
+      ],
+      "note": "Só com trinkets; 'descartar' é discard."
+    },
+    {
+      "en": "turn",
+      "use": "turno",
+      "avoid": []
+    },
+    {
+      "en": "unless",
+      "use": "a menos que",
+      "avoid": [
+        "exceto se",
+        "salvo se"
+      ]
+    },
+    {
+      "en": "up to",
+      "use": "até",
+      "avoid": []
+    },
+    {
+      "en": "value",
+      "use": "valor",
+      "avoid": []
+    },
+    {
+      "en": "World's End",
+      "use": "Fim do Mundo",
+      "avoid": [
+        "apocalipse"
+      ],
+      "note": "Ícone de efeito."
+    }
   ]
 }

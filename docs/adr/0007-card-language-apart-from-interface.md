@@ -1,6 +1,6 @@
 # 7. Card Language Apart from Interface Language
 
-- Status: accepted
+- Status: accepted; printed-text start amended by [0008](0008-card-language-defaults-to-the-device.md)
 - Date: 2026-10-20
 
 ## Context

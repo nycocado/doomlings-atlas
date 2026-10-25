@@ -71,9 +71,6 @@ android {
     buildFeatures {
         compose = true
     }
-    androidResources {
-        generateLocaleConfig = true
-    }
     testOptions {
         // Robolectric reads the merged resources and assets, which include the packaged cards.json.
         unitTests.isIncludeAndroidResources = true
@@ -83,6 +80,7 @@ android {
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
     lint {
         warningsAsErrors = true
+        lintConfig = file("lint.xml")
         // New library releases must not break the build; Dependabot handles updates.
         disable += setOf("GradleDependency", "NewerVersionAvailable", "AndroidGradlePluginVersion")
     }
@@ -155,7 +153,8 @@ abstract class CheckPermissions : DefaultTask() {
 }
 
 // Keeps each translation to one word per concept (CONTRIBUTING.md#translations): fail if a word that
-// docs/glossary/<language>.json rules out shows up in that language's interface strings.
+// docs/glossary/<language>.json rules out shows up in that language's interface strings or in its card
+// translations (assets/doomlings/<language>.json: card id to name, effect, flavor, worldsEnd).
 abstract class CheckGlossary : DefaultTask() {
     @get:InputDirectory
     @get:PathSensitive(PathSensitivity.RELATIVE)
@@ -165,19 +164,40 @@ abstract class CheckGlossary : DefaultTask() {
     @get:PathSensitive(PathSensitivity.RELATIVE)
     abstract val resources: DirectoryProperty
 
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val translations: DirectoryProperty
+
     @TaskAction
     fun check() {
         val problems =
             glossaries.get().asFile.listFiles { it: File -> it.extension == "json" }.orEmpty().flatMap { file ->
                 val language = file.nameWithoutExtension
                 val strings = resources.get().file("values-$language/strings.xml").asFile
-                if (!strings.isFile) return@flatMap emptyList()
-                val text =
-                    DocumentBuilderFactory
-                        .newInstance()
-                        .newDocumentBuilder()
-                        .parse(strings)
-                        .documentElement.textContent
+                val cards = translations.get().file("$language.json").asFile
+                if (!strings.isFile && !cards.isFile) return@flatMap emptyList()
+                val interfaceText =
+                    if (strings.isFile) {
+                        DocumentBuilderFactory
+                            .newInstance()
+                            .newDocumentBuilder()
+                            .parse(strings)
+                            .documentElement.textContent
+                    } else {
+                        ""
+                    }
+
+                @Suppress("UNCHECKED_CAST")
+                val cardText =
+                    if (cards.isFile) {
+                        (JsonSlurper().parse(cards) as Map<String, Map<String, String>>)
+                            .values
+                            .flatMap { it.values }
+                            .joinToString("\n")
+                    } else {
+                        ""
+                    }
+                val text = interfaceText + "\n" + cardText
 
                 @Suppress("UNCHECKED_CAST")
                 val glossary = JsonSlurper().parse(file) as Map<String, List<Any>>
@@ -201,6 +221,7 @@ val checkGlossary =
         description = "Fails if a translation uses a word its glossary in docs/glossary rules out."
         glossaries.set(rootProject.layout.projectDirectory.dir("docs/glossary"))
         resources.set(layout.projectDirectory.dir("src/main/res"))
+        translations.set(rootProject.layout.projectDirectory.dir("assets/doomlings"))
     }
 tasks.named("check") { dependsOn(checkGlossary) }
 
@@ -236,9 +257,24 @@ abstract class PackageCards : DefaultTask() {
         check(empty.isEmpty()) { "Enabled sets with no cards: ${empty.joinToString()}" }
 
         val json = temporaryDir.resolve("cards.json").apply { writeText(JsonOutput.toJson(cards)) }
+        // Translations (pt.json, es.json, ...) keep only the entries of the cards packaged.
+        val ids = cards.map { it["id"] }.toSet()
+        val translations =
+            source
+                .get()
+                .asFile
+                .listFiles { it: File ->
+                    it.extension == "json" && it.name != "cards.json"
+                }.orEmpty()
+                .map { file ->
+                    @Suppress("UNCHECKED_CAST")
+                    val all = JsonSlurper().parse(file) as Map<String, Any?>
+                    temporaryDir.resolve(file.name).apply { writeText(JsonOutput.toJson(all.filterKeys { it in ids })) }
+                }
         // Sync also deletes what a previous run left, e.g. images of a set no longer enabled.
         files.sync {
             from(json)
+            from(translations)
             from(source) { include(cards.map { it["image"] as String }) }
             into(output.dir("cards"))
         }

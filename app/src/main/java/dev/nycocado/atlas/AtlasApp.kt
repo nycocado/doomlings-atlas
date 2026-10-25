@@ -39,13 +39,15 @@ data object CompendiumKey : NavKey
 @Serializable
 data object AboutKey : NavKey
 
-internal const val NOTICE_PREFS = "atlas"
+// The one preferences file: the notice flag and the card language. The name is kept so installs keep their flag.
+internal const val APP_PREFS = "atlas"
+internal const val CARD_LANGUAGE = "card_language"
 internal const val NOTICE_SEEN = "notice_seen"
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 fun AtlasApp() {
-    val prefs = LocalContext.current.getSharedPreferences(NOTICE_PREFS, Context.MODE_PRIVATE)
+    val prefs = LocalContext.current.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE)
     var noticeSeen by remember { mutableStateOf(prefs.getBoolean(NOTICE_SEEN, false)) }
     val backStack = rememberNavBackStack(CompendiumKey)
     val viewModel: CompendiumViewModel = hiltViewModel()
@@ -55,7 +57,14 @@ fun AtlasApp() {
             noticeSeen = true
         }
     }
-    val cardPane = rememberCardPane(backStack, viewModel.cards.collectAsStateWithLifecycle())
+    val cardPane =
+        rememberCardPane(
+            backStack,
+            viewModel.cards.collectAsStateWithLifecycle(),
+            viewModel.translations.collectAsStateWithLifecycle(),
+            viewModel.cardLanguage.collectAsStateWithLifecycle(),
+            viewModel::chooseCardLanguage,
+        )
     val layout = rememberListDetailLayout(cardPane)
     val listDetail =
         rememberListDetailSceneStrategy<NavKey>(
