@@ -36,4 +36,4 @@ Custom tasks in `app/build.gradle.kts` ([docs/development.md](development.md)):
 
 - `PackageCards`, in every build: fails if an enabled set has no cards.
 - `CheckPermissions`, in `./gradlew check`: fails if the merged manifest asks for a permission missing from `app/permissions-allowlist.txt`.
-- `CheckGlossary`, in `./gradlew check`: fails if a translation uses a word its glossary in `docs/glossary` rules out.
+- `CheckGlossary`, in `./gradlew check`: fails if a translation, in the interface strings or in the language's card translation file in `assets/doomlings`, uses a word its glossary in `docs/glossary` rules out.
