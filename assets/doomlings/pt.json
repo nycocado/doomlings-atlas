@@ -12,7 +12,7 @@
     "effect": "Ignore todas as ações dos traits."
   },
   "classic/ages/age-of-wonder": {
-    "name": "Era da Maravilha",
+    "name": "Era das Maravilhas",
     "effect": "Você deve terminar seu turno com 4 cartas na mão."
   },
   "classic/ages/age-of-reason": {
@@ -29,11 +29,11 @@
   },
   "classic/ages/awakening": {
     "name": "Despertar",
-    "effect": "Preveja a próxima age antes de fazer seu turno."
+    "effect": "Preveja a próxima age antes do seu turno."
   },
   "classic/ages/birth-of-a-hero": {
     "name": "Nascimento de um Herói",
-    "effect": "Se você tem Heroico na mão, jogue-o agora sem restrição."
+    "effect": "Se você tiver Heroico na mão, jogue-o agora, sem restrição."
   },
   "classic/ages/coastal-formations": {
     "name": "Formações Costeiras",
@@ -93,7 +93,7 @@
   },
   "classic/ages/the-messiah": {
     "name": "O Messias",
-    "effect": "Jogue esta age ao contrário: o primeiro jogador por último e o último jogador primeiro."
+    "effect": "Jogue esta age na ordem inversa: o primeiro jogador joga por último, e o último, primeiro."
   },
   "classic/ages/tropical-lands": {
     "name": "Terras Tropicais",
@@ -165,7 +165,7 @@
     "worldsEnd": "-1 para cada trait azul na sua pilha de traits."
   },
   "classic/catastrophes/the-big-one": {
-    "name": "O Grande",
+    "name": "O Grande Terremoto",
     "effect": "-1 Gene Pool\n\nDê 1 carta da sua mão ao(s) oponente(s) à sua esquerda e à sua direita.",
     "worldsEnd": "-2 na sua pontuação para cada cor que faltar na sua pilha de traits."
   },
@@ -176,11 +176,11 @@
   },
   "classic/traits/adorable": {
     "name": "Adorável",
-    "flavor": "Ei, você parece um trouxa. Faça cafuné em minha barriga. Agora entre nesta lava para eu flutuar até um lugar seguro."
+    "flavor": "Ei, você tem cara de trouxa. Coce minha barriga. Agora entre nessa lava para eu sair boiando em segurança."
   },
   "classic/traits/altruistic": {
     "name": "Altruísta",
-    "effect": "O valor é igual ao tamanho da seu Gene Pool.",
+    "effect": "O valor é igual ao tamanho do seu Gene Pool.",
     "flavor": "Pode me emprestar uns trocados? Doei todo meu dinheiro para a caridade."
   },
   "classic/traits/antlers": {
@@ -194,17 +194,17 @@
   },
   "classic/traits/appealing": {
     "name": "Atraente",
-    "flavor": "Ficou feliz? Laranja que sim!"
+    "flavor": "Gostou do que viu?"
   },
   "classic/traits/automimicry": {
     "name": "Automimetismo",
     "effect": "Você pode jogar Automimetismo da sua mão a qualquer momento para impedir uma ação.",
-    "flavor": "Fiz uma cara grande e assustadora para você não notar minha carinha pequena e de verdade."
+    "flavor": "Fiz uma cara grande e assustadora para você não perceber minha carinha de verdade, que é pequenininha."
   },
   "classic/traits/bad": {
-    "name": "Mau",
+    "name": "Malvado",
     "effect": "Os oponentes descartam 2 cartas aleatórias da mão deles.",
-    "flavor": "Sem cortes, sem glória."
+    "flavor": "Quem não arrisca não petisca."
   },
   "classic/traits/bark": {
     "name": "Casca",
@@ -216,7 +216,7 @@
   },
   "classic/traits/blubber": {
     "name": "Gordura",
-    "flavor": "É gordura protetora, muito obrigado."
+    "flavor": "É gordura protetora, fique sabendo."
   },
   "classic/traits/boredom": {
     "name": "Tédio",
@@ -231,12 +231,12 @@
   "classic/traits/brave": {
     "name": "Corajoso",
     "effect": "+2 para cada trait dominante na sua mão.",
-    "flavor": "Minha fazenda fica aqui perto, então, se você está pensando em entrar em erupção, cocoricó-nem-pense nisso."
+    "flavor": "Minha fazenda fica aqui perto, então, se está pensando em entrar em erupção... cocori-nem-pensar!"
   },
   "classic/traits/brute-strength": {
     "name": "Força Bruta",
     "effect": "-1 Gene Pool",
-    "flavor": "Se destrua antes de se checar, mano!"
+    "flavor": "Primeiro arrebenta, depois pensa, mano!"
   },
   "classic/traits/camouflage": {
     "name": "Camuflagem",
@@ -246,17 +246,17 @@
   "classic/traits/chromatophores": {
     "name": "Cromatóforos",
     "effect": "Você pode jogar Cromatóforos da sua mão a qualquer momento para impedir uma ação.",
-    "flavor": "Aqui não tem polvo. Só um pouco de coral. Circulando."
+    "flavor": "Aqui não tem polvo nenhum. Só coral. Circulando."
   },
   "classic/traits/clever": {
     "name": "Esperto",
     "effect": "Os oponentes revelam 1 carta da mão para todos os jogadores. Roube 1 e jogue-a imediatamente.",
-    "flavor": "Por que os pássaros não conseguem fazer planos? Porque a agenda deles é uma bagunça de ganso."
+    "flavor": "Por que os pássaros não conseguem fazer planos? Porque vivem com a cabeça nas nuvens."
   },
   "classic/traits/cold-blood": {
     "name": "Sangue Frio",
     "effect": "Compre 3 cartas. Você pode jogar 1 agora.",
-    "flavor": "Eu mataria pela capacidade de controlar minha temperatura corporal."
+    "flavor": "Eu mataria para conseguir controlar minha temperatura corporal."
   },
   "classic/traits/confusion": {
     "name": "Confusão",
@@ -269,7 +269,7 @@
   },
   "classic/traits/deep-roots": {
     "name": "Raízes Profundas",
-    "flavor": "Conversei sobre o clima com meu vizinho. Agora este é meu lar para sempre."
+    "flavor": "Falei do tempo com o vizinho. Agora este é meu lar para sempre."
   },
   "classic/traits/delicious": {
     "name": "Delicioso",
@@ -279,22 +279,22 @@
   "classic/traits/denial": {
     "name": "Negação",
     "effect": "Ignore a próxima catastrophe. Atenção: você não pode ignorar Os Quatro Cavaleiros.",
-    "flavor": "Catastrophe schmatastrophe."
+    "flavor": "Catastrophe que nada."
   },
   "classic/traits/directly-register": {
     "name": "Registro Direto",
     "effect": "Roube um trait com valor de face 1 da pilha de traits de um oponente.",
-    "flavor": "'Miau. Sou um gato, ando com tanta precisão.' E DAÍ?"
+    "flavor": "'Miau. Sou um gato, ando com tanta precisão.' GRANDE COISA."
   },
   "classic/traits/doting": {
-    "name": "Paparicador",
+    "name": "Coruja",
     "effect": "Dê 1 carta da sua mão a um oponente.",
-    "flavor": "Tá! Esses são os últimos biscoitos. A menos que você queira mais. Eu faço mais."
+    "flavor": "Pronto! São os últimos biscoitos. A não ser que você queira mais. Eu faço mais."
   },
   "classic/traits/dreamer": {
     "name": "Sonhador",
     "effect": "+1 Gene Pool",
-    "flavor": "Um dia, serei mais do que uma bola roxa."
+    "flavor": "Um dia, ainda vou ser mais do que uma bola roxa."
   },
   "classic/traits/echolocation": {
     "name": "Ecolocalização",
@@ -302,7 +302,7 @@
     "flavor": "O ouvido que tudo vê."
   },
   "classic/traits/egg-clusters": {
-    "name": "Aglomerados de Ovos",
+    "name": "Cachos de Ovos",
     "effect": "+1 para cada trait azul na sua pilha de traits. (Incluindo este.)",
     "flavor": "Compre um, leve cem."
   },
@@ -314,16 +314,16 @@
   "classic/traits/endurance": {
     "name": "Resistência",
     "effect": "Sempre que você descartar Resistência da sua pilha de traits, devolva-a à sua pilha de traits.",
-    "flavor": "Catastrophes não podem me pisotear!"
+    "flavor": "Catastrophe nenhuma vai me pisotear!"
   },
   "classic/traits/faith": {
     "name": "Fé",
-    "effect": "No Fim do Mundo: Você pode mudar todos os seus traits de 1 cor para 1 cor alternativa.",
+    "effect": "No Fim do Mundo: Você pode mudar todos os seus traits de 1 cor para outra cor.",
     "flavor": "A razão é, de fato, o caminho para a fé, e a fé assume quando a razão não tem mais o que dizer."
   },
   "classic/traits/fangs": {
     "name": "Presas",
-    "flavor": "As ferramentas mais afiadas da cabeça."
+    "flavor": "Mais afiadas que língua de sogra."
   },
   "classic/traits/fear": {
     "name": "Medo",
@@ -332,11 +332,11 @@
   "classic/traits/fecundity": {
     "name": "Fecundidade",
     "effect": "+1 Gene Pool",
-    "flavor": "Quando você estoura..."
+    "flavor": "Depois que começa..."
   },
   "classic/traits/fine-motor-skills": {
     "name": "Coordenação Motora Fina",
-    "flavor": "Eu tracei uma forma!"
+    "flavor": "Desenhei uma forma!"
   },
   "classic/traits/fire-skin": {
     "name": "Pele de Fogo",
@@ -344,7 +344,7 @@
   },
   "classic/traits/flatulence": {
     "name": "Flatulência",
-    "flavor": "Chili cinco alarmes? Fogo no buraco!"
+    "flavor": "Feijão com pimenta? Sai de baixo!"
   },
   "classic/traits/flight": {
     "name": "Voo",
@@ -358,37 +358,37 @@
   },
   "classic/traits/gills": {
     "name": "Brânquias",
-    "flavor": "Preciso respirar um pouco de água doce."
+    "flavor": "Preciso de uma lufada de água fresca."
   },
   "classic/traits/gratitude": {
     "name": "Gratidão",
     "effect": "O valor é igual ao número de cores diferentes na sua pilha de traits.",
-    "flavor": "Nossa, eu agradeço muito por isso. Valeu. Obrigado."
+    "flavor": "Nossa, fico muito agradecido. Valeu. Obrigado."
   },
   "classic/traits/heat-vision": {
     "name": "Visão de Calor",
     "effect": "+1 para cada trait vermelho na sua pilha de traits. (Incluindo este.)",
-    "flavor": "Gostaria de fazer um brinde."
+    "flavor": "Gostaria de propor um brinde."
   },
   "classic/traits/heroic": {
     "name": "Heroico",
     "effect": "Para jogar, você deve ter 3 ou mais traits verdes na sua pilha de traits.",
-    "flavor": "No fundo, sob todos esses músculos, sou apenas super honrado e corajoso."
+    "flavor": "Lá no fundo, debaixo de todos esses músculos, sou só um cara super-honrado e corajoso."
   },
   "classic/traits/hot-temper": {
     "name": "Pavio Curto",
     "effect": "Descarte 2 cartas da sua mão.",
-    "flavor": "Meu cheeseburger tem queijo!"
+    "flavor": "Tem queijo nesse cheeseburger!"
   },
   "classic/traits/hyper-intelligence": {
     "name": "Hiperinteligência",
-    "effect": "No Fim do Mundo: Escolha uma cor. Os oponentes descartam 1 trait dessa cor da pilha de traits deles, aleatoriamente.",
-    "flavor": "E=mc, pare de olhar para minha cabeça."
+    "effect": "No Fim do Mundo: Escolha uma cor. Os oponentes descartam 1 trait aleatório dessa cor da pilha de traits deles.",
+    "flavor": "E=mc, pare de encarar minha cabeça."
   },
   "classic/traits/immunity": {
     "name": "Imunidade",
     "effect": "+2 para cada trait com valor de face negativo na sua pilha de traits.",
-    "flavor": "Você não pode me tocar."
+    "flavor": "Pode olhar, mas não pode tocar."
   },
   "classic/traits/impatience": {
     "name": "Impaciência",
@@ -398,27 +398,27 @@
   "classic/traits/introspective": {
     "name": "Introspectivo",
     "effect": "Compre 4 cartas.",
-    "flavor": "Poça, poça na rua, será que algum dia me sentirei completo?"
+    "flavor": "Poça, poça no chão, um dia vou me sentir completo ou não?"
   },
   "classic/traits/inventive": {
     "name": "Inventivo",
     "effect": "Jogue uma ação da pilha de traits de um oponente.",
-    "flavor": "Isso não dá para inventar. Mas eu consigo."
+    "flavor": "Isso ninguém inventa. Eu invento."
   },
   "classic/traits/iridescent-scales": {
     "name": "Escamas Iridescentes",
     "effect": "Compre 3 cartas.",
-    "flavor": "Tenho uma pele que parece um arco-íris. Reluzente, né?"
+    "flavor": "Minha pele é feito arco-íris. Brilha que é uma beleza, né não?"
   },
   "classic/traits/just": {
     "name": "Justo",
     "effect": "+1 Gene Pool",
-    "flavor": "Essa balança está nivelada? Não enxergo nada!"
+    "flavor": "Essa balança está equilibrada? Não enxergo nada!"
   },
   "classic/traits/kidney": {
     "name": "Rim",
     "effect": "O valor é igual ao número de Rins na sua pilha de traits. (Incluindo este.)",
-    "flavor": "...com um disfarce de careca."
+    "flavor": "...disfarçando a careca."
   },
   "classic/traits/kidney-2": {
     "name": "Rim",
@@ -438,7 +438,7 @@
   "classic/traits/kidney-5": {
     "name": "Rim",
     "effect": "O valor é igual ao número de Rins na sua pilha de traits. (Incluindo este.)",
-    "flavor": "...com um chapéu de festa."
+    "flavor": "...com um chapéu de aniversário."
   },
   "classic/traits/kidney-6": {
     "name": "Rim",
@@ -452,12 +452,12 @@
   },
   "classic/traits/leaves": {
     "name": "Folhas",
-    "flavor": "Pedi a meu barbeiro um corte de cuia de salada."
+    "flavor": "Pedi ao barbeiro um corte tigelinha de salada."
   },
   "classic/traits/memory": {
     "name": "Memória",
     "effect": "Você pode descartar sua mão e estabilizar.",
-    "flavor": "A retenção de informações, como o pedido de comida de alguém ou um anivers-...ai, não."
+    "flavor": "A retenção de informações, como o pedido de alguém no restaurante ou um aniversário de casa-...ah, não."
   },
   "classic/traits/migratory": {
     "name": "Migratório",
@@ -476,7 +476,7 @@
   "classic/traits/morality": {
     "name": "Moralidade",
     "effect": "Para jogar, você deve dar 1 trait positivo da sua pilha de traits a um oponente.",
-    "flavor": "Vou deixar que ele fique com o dinheiro do lanche. É a coisa certa a fazer."
+    "flavor": "Vou deixar ele ficar com o dinheiro do lanche. É a coisa certa a fazer."
   },
   "classic/traits/nocturnal": {
     "name": "Noturno",
@@ -485,7 +485,7 @@
   "classic/traits/nosy": {
     "name": "Enxerido",
     "effect": "Olhe 2 cartas aleatórias da mão de um oponente. Roube 1 e jogue-a imediatamente.",
-    "flavor": "O que é que você tem aí?"
+    "flavor": "E aí, o que tem na mão?"
   },
   "classic/traits/optimistic-nihilism": {
     "name": "Niilismo Otimista",
@@ -500,22 +500,22 @@
   "classic/traits/pack-behavior": {
     "name": "Comportamento de Matilha",
     "effect": "+1 para cada par de cores na sua pilha de traits.",
-    "flavor": "TODOS nós gostaríamos de sair."
+    "flavor": "TODO MUNDO aqui quer passear."
   },
   "classic/traits/painted-shell": {
     "name": "Concha Pintada",
     "effect": "Jogue uma ação da sua pilha de traits.",
-    "flavor": "Sou só um trabalho manual... por enquanto."
+    "flavor": "Sou só um trabalhinho da aula de artes... por enquanto."
   },
   "classic/traits/parasitic": {
     "name": "Parasitário",
     "effect": "Você pode jogar Parasitário da sua mão quando um oponente jogar um trait. Roube esse trait. Interrompa a ação dele.",
-    "flavor": "Todos temos aquele amigo que nunca leva dinheiro e vive bebendo sangue."
+    "flavor": "Todo mundo tem aquele amigo que nunca está com a carteira e vive sugando sangue."
   },
   "classic/traits/persuasive": {
     "name": "Persuasivo",
     "effect": "Escolha uma cor. Todos os jogadores descartam da mão todas as cartas dessa cor. (Incluindo você!)",
-    "flavor": "Mude de ideia ou eu vou gritar mais forte!"
+    "flavor": "Mude de ideia ou eu grito ainda mais!"
   },
   "classic/traits/photosynthesis": {
     "name": "Fotossíntese",
@@ -524,18 +524,18 @@
   },
   "classic/traits/poisonous": {
     "name": "Venenoso",
-    "effect": "Troque Venenoso com um trait da pilha de traits de um oponente.",
-    "flavor": "Uma maçã por dia afasta o médico. A menos que a maçã seja de uma bruxa."
+    "effect": "Troque Venenoso por um trait da pilha de traits de um oponente.",
+    "flavor": "Uma maçã por dia mantém o médico longe. A não ser que a maçã seja da bruxa."
   },
   "classic/traits/pollination": {
     "name": "Polinização",
     "effect": "+1 para cada carta na sua pilha de traits com valor de face 1. (Incluindo esta.)",
-    "flavor": "Bem, veja, Timmy, quando uma abelha e uma planta se apaixonam..."
+    "flavor": "Bom, Timmy, é assim: quando uma abelha e uma planta se apaixonam..."
   },
   "classic/traits/prepper": {
-    "name": "Sobrevivencialista",
-    "effect": "No Fim do Mundo: Escolha um efeito de Fim do Mundo entre as 3 catastrophes jogadas para os jogadores terminarem com ele.",
-    "flavor": "Mais para Fim do Mundo, Não."
+    "name": "Precavido",
+    "effect": "No Fim do Mundo: Entre as 3 catastrophes jogadas, escolha o efeito de Fim do Mundo que vai valer para todos os jogadores no final.",
+    "flavor": "Tá mais para Apocalypse No."
   },
   "classic/traits/propagation": {
     "name": "Propagação",
@@ -548,18 +548,18 @@
   },
   "classic/traits/random-fertilization": {
     "name": "Fertilização Aleatória",
-    "effect": "O valor é igual ao tamanho da seu Gene Pool.",
+    "effect": "O valor é igual ao tamanho do seu Gene Pool.",
     "flavor": "Escolha um número entre 1 e 64 trilhões."
   },
   "classic/traits/reckless": {
     "name": "Imprudente",
     "effect": "Você e um oponente descartam 1 trait da pilha de traits um do outro. (Exceto este.)",
-    "flavor": "Opinião polêmica chegando quentinha!"
+    "flavor": "Saindo uma opinião polêmica bem quentinha!"
   },
   "classic/traits/regenerative-tissue": {
     "name": "Tecido Regenerativo",
     "effect": "Sempre que você descartar um trait da sua pilha de traits, (incluindo este), compre 1. Jogue-o imediatamente. (A menos que haja restrição.) Ignore ações.",
-    "flavor": "Quantos dedos estou levantando? Espere, peraí, eles ainda estão crescendo de novo"
+    "flavor": "Quantos dedos tem aqui? Peraí, eles ainda estão nascendo de novo"
   },
   "classic/traits/retractable-claws": {
     "name": "Garras Retráteis",
@@ -569,27 +569,27 @@
   "classic/traits/saliva": {
     "name": "Saliva",
     "effect": "+1 Gene Pool",
-    "flavor": "O material de que as babas são feitas."
+    "flavor": "Somos feitos da mesma matéria que as babas."
   },
   "classic/traits/saudade": {
     "name": "Saudade",
     "effect": "+1 para cada cor diferente na sua mão.",
-    "flavor": "Eu vi, pai. Agora vamos embora!"
+    "flavor": "Já vi, pai. Agora vamos embora!"
   },
   "classic/traits/scutes": {
     "name": "Escudos",
     "effect": "Dê 1 trait da sua pilha de traits a um oponente.",
-    "flavor": "Quando isso acabar, minha vitória será conchelebrada!"
+    "flavor": "Quando isso acabar, minha vitória vai ser cascomemorada!"
   },
   "classic/traits/selective-memory": {
     "name": "Memória Seletiva",
     "effect": "Jogue 1 carta da pilha de descarte. Jogue a ação dela.",
-    "flavor": "Eu? Errado? Isso não parece certo."
+    "flavor": "Eu? Errado? Acho que não."
   },
   "classic/traits/self-awareness": {
     "name": "Autoconsciência",
     "effect": "Você pode jogar Autoconsciência da sua mão na pilha de traits de um oponente a qualquer momento.",
-    "flavor": "Hum. Acho que não sou um vampiro."
+    "flavor": "Ué. Pelo jeito, não sou vampiro."
   },
   "classic/traits/self-replicating": {
     "name": "Autorreplicante",
@@ -603,17 +603,17 @@
   },
   "classic/traits/sentience": {
     "name": "Senciência",
-    "effect": "No Fim do Mundo: Escolha uma cor. +1 para todos os traits dessa cor na sua pilha de traits.",
-    "flavor": "Estou sentindo tantas coisas agora."
+    "effect": "No Fim do Mundo: Escolha uma cor. +1 para cada trait dessa cor na sua pilha de traits.",
+    "flavor": "Estou sentindo tanta coisa agora."
   },
   "classic/traits/sneaky": {
     "name": "Sorrateiro",
     "effect": "No Fim do Mundo: Você pode jogar Sorrateiro da sua mão.",
-    "flavor": "Não viu essa vindo, né?"
+    "flavor": "Essa você não esperava, né?"
   },
   "classic/traits/spiny": {
     "name": "Espinhoso",
-    "flavor": "Não faça carinho em meu peixe."
+    "flavor": "Meu peixe não é de fazer carinho."
   },
   "classic/traits/sticky-secretions": {
     "name": "Secreções Pegajosas",
@@ -625,44 +625,44 @@
     "flavor": "Seus elogios sinceros não são páreo para meu exterior rochoso."
   },
   "classic/traits/super-spreader": {
-    "name": "Superdisseminador",
+    "name": "Supertransmissor",
     "effect": "Todos os jogadores recebem: -1 Gene Pool. (Incluindo você.)",
     "flavor": "Ah...AH...AH...alarme falso, achei que eu ia--ATCHIM!"
   },
   "classic/traits/swarm": {
     "name": "Enxame",
     "effect": "O valor é igual ao número de traits Enxame em todas as pilhas de traits. (Incluindo este.)",
-    "flavor": "Estamos aqui pelo celular novo."
+    "flavor": "Viemos pelo celular novo."
   },
   "classic/traits/swarm-2": {
     "name": "Enxame",
     "effect": "O valor é igual ao número de traits Enxame em todas as pilhas de traits. (Incluindo este.)",
-    "flavor": "Estamos aqui pelo celular novo."
+    "flavor": "Viemos pelo celular novo."
   },
   "classic/traits/swarm-3": {
     "name": "Enxame",
     "effect": "O valor é igual ao número de traits Enxame em todas as pilhas de traits. (Incluindo este.)",
-    "flavor": "Estamos aqui pelo celular novo."
+    "flavor": "Viemos pelo celular novo."
   },
   "classic/traits/swarm-4": {
     "name": "Enxame",
     "effect": "O valor é igual ao número de traits Enxame em todas as pilhas de traits. (Incluindo este.)",
-    "flavor": "Estamos aqui pelo celular novo."
+    "flavor": "Viemos pelo celular novo."
   },
   "classic/traits/swarm-5": {
     "name": "Enxame",
     "effect": "O valor é igual ao número de traits Enxame em todas as pilhas de traits. (Incluindo este.)",
-    "flavor": "Estamos aqui pelo celular novo."
+    "flavor": "Viemos pelo celular novo."
   },
   "classic/traits/sweat": {
     "name": "Suor",
     "effect": "Descarte 1 carta da sua mão.",
-    "flavor": "Eu faço supino para poder fazer brunch."
+    "flavor": "Eu malho para poder encarar o rodízio."
   },
   "classic/traits/symbiosis": {
     "name": "Simbiose",
-    "effect": "+2 para cada trait na sua menor contagem de cor. (Deve ter 2 ou mais cores. Em caso de empate, escolha 1!)",
-    "flavor": "Sim...sim! Banqueteiem-se, meus amigos parasitas!"
+    "effect": "+2 para cada trait da cor que você tem em menor quantidade. (Você deve ter 2 ou mais cores. Em caso de empate, escolha 1!)",
+    "flavor": "Isso...isso! Comam à vontade, meus amigos parasitas!"
   },
   "classic/traits/teeth": {
     "name": "Dentes",
@@ -671,13 +671,13 @@
   },
   "classic/traits/telekinetic": {
     "name": "Telecinético",
-    "effect": "Troque 1 trait da sua pilha de traits com um trait de cor diferente de um oponente.",
+    "effect": "Troque 1 trait da sua pilha de traits por um trait de um oponente que seja de cor diferente.",
     "flavor": "A capacidade de ligar a TV quando você não acha o controle remoto."
   },
   "classic/traits/tentacles": {
     "name": "Tentáculos",
-    "effect": "Troque 1 trait da sua pilha de traits com um trait da mesma cor de um oponente.",
-    "flavor": "Cuidado, pessoal! Lá vem o troca-polvo!"
+    "effect": "Troque 1 trait da sua pilha de traits por um trait de um oponente que seja da mesma cor.",
+    "flavor": "Cuidado, pessoal! Lá vem o polvo do troca-troca!"
   },
   "classic/traits/territorial": {
     "name": "Territorial",
@@ -687,12 +687,12 @@
   "classic/traits/the-third-eye": {
     "name": "O Terceiro Olho",
     "effect": "Espie a próxima age. Jogue outro trait.",
-    "flavor": "Gostou? Obrigado. Acabei de despertá-lo."
+    "flavor": "Gostou? Obrigado. Ele acabou de despertar."
   },
   "classic/traits/tiny": {
     "name": "Minúsculo",
     "effect": "-1 para cada trait na sua pilha de traits. (Incluindo este.)",
-    "flavor": "Pequenininho, miudinho, bem pequenininho."
+    "flavor": "Tiquinho, pititiquinho, pequetitinho."
   },
   "classic/traits/tiny-little-melons": {
     "name": "Melõezinhos Minúsculos",
@@ -702,22 +702,22 @@
   "classic/traits/trunk": {
     "name": "Tronco",
     "effect": "Jogue a carta do topo da pilha de descarte. Ignore a ação dela.",
-    "flavor": "Recipiente de bugigangas."
+    "flavor": "Depósito de tralha."
   },
   "classic/traits/vampirism": {
     "name": "Vampirismo",
     "effect": "Roube um trait da pilha de traits de um oponente. Jogue a ação dele.",
-    "flavor": "Eu quero socar seu sanguuue."
+    "flavor": "Eu querrro chuparrr seu sanguuue."
   },
   "classic/traits/venomous": {
     "name": "Peçonhento",
     "effect": "Jogue outro trait. Depois, mova Peçonhento para a pilha de traits de um oponente.",
-    "flavor": "Minha mordida é pior do que meu latido."
+    "flavor": "Eu não ladro, mas mordo."
   },
   "classic/traits/viral": {
     "name": "Viral",
     "effect": "No Fim do Mundo: Escolha uma cor. Os oponentes recebem -1 para cada trait dessa cor na pilha de traits deles.",
-    "flavor": "Curta, compartilhe, comente e não deixe de bater naquele botão de inscrever-se!"
+    "flavor": "Deixe seu like, compartilhe, comente e não esqueça de se inscrever no canal!"
   },
   "classic/traits/voracious": {
     "name": "Voraz",
@@ -727,10 +727,10 @@
   "classic/traits/warm-blood": {
     "name": "Sangue Quente",
     "effect": "+2 Gene Pool",
-    "flavor": "Você está tentando ferver meu sangue?"
+    "flavor": "Quer ver meu sangue ferver?"
   },
   "classic/traits/woody-stems": {
     "name": "Caules Lenhosos",
-    "flavor": "É assim que eu transporto fluido de minhas raízes para meus brotos."
+    "flavor": "É desse jeito que eu levo os fluido das raiz pros broto."
   }
 }
