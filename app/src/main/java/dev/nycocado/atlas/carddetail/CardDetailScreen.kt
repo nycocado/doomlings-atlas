@@ -1,5 +1,7 @@
 package dev.nycocado.atlas.carddetail
 
+import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.Animatable
@@ -57,6 +59,9 @@ import androidx.compose.ui.graphics.vector.VectorPath
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
@@ -110,6 +115,7 @@ import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
 import kotlinx.coroutines.launch
+import java.util.Locale
 import kotlin.random.Random
 
 @Composable
@@ -207,8 +213,7 @@ fun CardDetailContent(
                         it,
                         null,
                         language,
-                        label =
-                            TraitIcon.WorldsEnd.translatedLabel(language) ?: stringResource(R.string.worlds_end),
+                        label = cardString(TraitIcon.WorldsEnd.label, language),
                     )
                 }
             }
@@ -372,13 +377,13 @@ private fun Pills(
         }
         Pill(stringResource(type), theme.surfaceSticker, theme.onSurface)
         if (trait?.dominant == true) {
-            Pill(stringResource(R.string.dominant), theme.highlight, theme.onHighlight) {
+            Pill(cardString(R.string.dominant, language), theme.highlight, theme.onHighlight, language = language) {
                 Symbol(R.drawable.ic_symbol_dominant)
             }
         }
         trait?.icons?.forEach { icon ->
             Pill(
-                icon.translatedLabel(language) ?: stringResource(icon.label),
+                cardString(icon.label, language),
                 theme.surfaceSticker,
                 theme.onSurface,
                 language = language,
@@ -388,7 +393,8 @@ private fun Pills(
                     },
             )
         }
-        trait?.subspecies?.forEach { Pill(it, theme.surfaceSticker, theme.onSurface) }
+        // The coined -ling names stay English whatever the card language.
+        trait?.subspecies?.forEach { Pill(it, theme.surfaceSticker, theme.onSurface, language = CardLanguage.English) }
     }
 }
 
@@ -501,50 +507,26 @@ private val CardLanguage.endonym: String
             CardLanguage.Spanish -> "Español"
         }
 
-// The icon labels follow the card language, not the interface's, so they live here with the endonyms, with the words of
-// the cards in docs/glossary. English keeps the printed label of the string resources.
-private fun TraitIcon.translatedLabel(language: CardLanguage): String? =
-    when (language) {
-        CardLanguage.English -> {
-            null
-        }
-
-        CardLanguage.Portuguese -> {
-            when (this) {
-                TraitIcon.Action -> "Ação"
-                TraitIcon.Attachment -> "Anexo"
-                TraitIcon.Coral -> "Coral"
-                TraitIcon.Curious -> "Curioso"
-                TraitIcon.Dragon -> "Dragão"
-                TraitIcon.DropOfLife -> "Gota de Vida"
-                TraitIcon.Exotic -> "Exótico"
-                TraitIcon.Fish -> "Peixe"
-                TraitIcon.PlayWhen -> "Jogar quando"
-                TraitIcon.Shell -> "Concha"
-                TraitIcon.Spell -> "Feitiço"
-                TraitIcon.Suppress -> "Suprimir"
-                TraitIcon.WorldsEnd -> "Fim do Mundo"
-            }
-        }
-
-        CardLanguage.Spanish -> {
-            when (this) {
-                TraitIcon.Action -> "Acción"
-                TraitIcon.Attachment -> "Adjunto"
-                TraitIcon.Coral -> "Coral"
-                TraitIcon.Curious -> "Curioso"
-                TraitIcon.Dragon -> "Dragón"
-                TraitIcon.DropOfLife -> "Gota de Vida"
-                TraitIcon.Exotic -> "Exótico"
-                TraitIcon.Fish -> "Pez"
-                TraitIcon.PlayWhen -> "Jugar cuando"
-                TraitIcon.Shell -> "Concha"
-                TraitIcon.Spell -> "Hechizo"
-                TraitIcon.Suppress -> "Suprimir"
-                TraitIcon.WorldsEnd -> "Fin del Mundo"
-            }
-        }
+// A string in the card language, not the interface's: the labels follow the card they sit beside. AppCompatDelegate and
+// LocaleManager would change the whole app's locale, which the card language must not. It only reads a resource, so the
+// lint rule is for bundles with language splits, and the app ships as an APK.
+@SuppressLint("AppBundleLocaleChanges")
+@Composable
+private fun cardString(
+    @StringRes id: Int,
+    language: CardLanguage,
+): String {
+    val context = LocalContext.current
+    val configuration = LocalConfiguration.current
+    // A preview renders in the locale its @Preview names and ignores any other, so it shows that locale's label.
+    if (LocalInspectionMode.current) return stringResource(id)
+    return remember(context, configuration, language) {
+        context
+            .createConfigurationContext(
+                Configuration(configuration).apply { setLocale(Locale.forLanguageTag(language.code)) },
+            ).getString(id)
     }
+}
 
 // Text tagged with its language, so TalkBack reads a translation in its own language, not the interface's.
 private fun tagged(

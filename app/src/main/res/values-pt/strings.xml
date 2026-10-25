@@ -42,4 +42,19 @@
     <string name="dock_scanner">Scanner</string>
     <string name="dock_tutorial">Tutorial</string>
     <string name="coming_soon">%1$s, em breve</string>
+
+    <string name="worlds_end">Fim do Mundo</string>
+    <string name="dominant">Dominante</string>
+    <string name="icon_action">Ação</string>
+    <string name="icon_attachment">Anexo</string>
+    <string name="icon_drop_of_life">Gota de Vida</string>
+    <string name="icon_play_when">Jogar quando</string>
+    <string name="icon_spell">Feitiço</string>
+    <string name="icon_suppress">Suprimir</string>
+    <string name="icon_coral">Coral</string>
+    <string name="icon_curious">Curioso</string>
+    <string name="icon_dragon">Dragão</string>
+    <string name="icon_exotic">Exótico</string>
+    <string name="icon_fish">Peixe</string>
+    <string name="icon_shell">Concha</string>
 </resources>

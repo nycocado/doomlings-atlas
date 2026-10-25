@@ -12,10 +12,10 @@ enum class CardLanguage(
     Spanish("es"),
 }
 
-// A card's name and the text fields it has, with the field names of cards.json. Complete or absent: a translation
-// has every text field its card has and no other.
+// A card's name and the text fields it has in one language, with the field names of cards.json. In a translation file
+// it is complete or absent: every text field its card has and no other.
 @Serializable
-data class CardTranslation(
+data class CardText(
     val name: String,
     val effect: String? = null,
     val flavor: String? = null,
@@ -23,18 +23,10 @@ data class CardTranslation(
 )
 
 // Strict like decodeCards: an unknown key fails. The JSON maps card id to its translation.
-fun decodeTranslations(json: String): Map<String, CardTranslation> = Json.decodeFromString(json)
-
-// The text of a card in one language, as shown: the translation when there is one, else the printed text.
-data class CardText(
-    val name: String,
-    val effect: String?,
-    val flavor: String?,
-    val worldsEnd: String?,
-)
+fun decodeTranslations(json: String): Map<String, CardText> = Json.decodeFromString(json)
 
 class CardTranslations(
-    private val byLanguage: Map<CardLanguage, Map<String, CardTranslation>> = emptyMap(),
+    private val byLanguage: Map<CardLanguage, Map<String, CardText>> = emptyMap(),
 ) {
     // English first, then each language the card has a translation in.
     fun languages(card: Card): List<CardLanguage> =
@@ -44,10 +36,7 @@ class CardTranslations(
     fun text(
         card: NamedCard,
         language: CardLanguage,
-    ): CardText {
-        val translation = byLanguage[language]?.get(card.id) ?: return card.printedText()
-        return CardText(translation.name, translation.effect, translation.flavor, translation.worldsEnd)
-    }
+    ): CardText = byLanguage[language]?.get(card.id) ?: card.printedText()
 }
 
 fun NamedCard.printedText() =

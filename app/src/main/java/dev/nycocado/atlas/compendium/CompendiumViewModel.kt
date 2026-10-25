@@ -8,8 +8,8 @@ import androidx.lifecycle.serialization.saved
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dev.nycocado.atlas.APP_PREFS
 import dev.nycocado.atlas.CARD_LANGUAGE
-import dev.nycocado.atlas.NOTICE_PREFS
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardRepository
@@ -35,7 +35,7 @@ class CompendiumViewModel
     ) : ViewModel() {
         private val mutableCards = MutableStateFlow<List<Card>?>(null)
         private val mutableTranslations = MutableStateFlow(CardTranslations())
-        private val prefs = context.getSharedPreferences(NOTICE_PREFS, Context.MODE_PRIVATE)
+        private val prefs = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE)
 
         // The language every card is read in, stored across launches. A card without it shows its printed text.
         private val mutableCardLanguage =

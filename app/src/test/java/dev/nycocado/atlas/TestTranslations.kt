@@ -9,7 +9,7 @@ import dagger.hilt.testing.TestInstallIn
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardRepository
 import dev.nycocado.atlas.card.CardRepositoryModule
-import dev.nycocado.atlas.card.CardTranslation
+import dev.nycocado.atlas.card.CardText
 import dev.nycocado.atlas.card.CardTranslations
 import javax.inject.Singleton
 
@@ -17,14 +17,15 @@ import javax.inject.Singleton
 // shipped translations. Appealing has none: it is the card without Português.
 val testPortuguese =
     mapOf(
-        "classic/traits/adorable" to CardTranslation("Adorável", flavor = "Esfregue minha barriga."),
+        "classic/traits/adorable" to CardText("Adorável", flavor = "Esfregue minha barriga."),
         "classic/traits/altruistic" to
-            CardTranslation("Altruísta", effect = "Zumbido do tamanho da Pool.", flavor = "Doei tudo."),
-        "classic/traits/antlers" to CardTranslation("Chifres", flavor = "Fico bem na sua parede."),
+            CardText("Altruísta", effect = "Zumbido do tamanho da Pool.", flavor = "Doei tudo."),
+        "classic/traits/apex-predator" to CardText("Predador Alfa", effect = "Roube uma carta."),
+        "classic/traits/antlers" to CardText("Chifres", flavor = "Fico bem na sua parede."),
         "classic/traits/eloquence" to
-            CardTranslation("Eloquência", effect = "No Fim do Mundo: jogue outra.", flavor = "Fique quieto."),
+            CardText("Eloquência", effect = "No Fim do Mundo: jogue outra.", flavor = "Fique quieto."),
         "classic/catastrophes/ice-age" to
-            CardTranslation("Era Glacial", effect = "Descarte cartas da mão.", worldsEnd = "Menos pontos vermelhos."),
+            CardText("Era Glacial", effect = "Descarte cartas da mão.", worldsEnd = "Menos pontos vermelhos."),
     )
 
 @Module
