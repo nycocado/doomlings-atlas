@@ -17,12 +17,14 @@ import javax.inject.Singleton
 // shipped translations. Appealing has none: it is the card without Português.
 val testPortuguese =
     mapOf(
-        "classic/traits/adorable" to CardTranslation("Adorável", flavor = "Esfrega a minha barriga."),
+        "classic/traits/adorable" to CardTranslation("Adorável", flavor = "Esfregue minha barriga."),
         "classic/traits/altruistic" to
             CardTranslation("Altruísta", effect = "Zumbido do tamanho da Pool.", flavor = "Doei tudo."),
-        "classic/traits/antlers" to CardTranslation("Chifres", flavor = "Fico bem na tua parede."),
+        "classic/traits/antlers" to CardTranslation("Chifres", flavor = "Fico bem na sua parede."),
+        "classic/traits/eloquence" to
+            CardTranslation("Eloquência", effect = "No Fim do Mundo: jogue outra.", flavor = "Fique quieto."),
         "classic/catastrophes/ice-age" to
-            CardTranslation("Era Glacial", effect = "Descarta cartas da mão.", worldsEnd = "Menos pontos vermelhos."),
+            CardTranslation("Era Glacial", effect = "Descarte cartas da mão.", worldsEnd = "Menos pontos vermelhos."),
     )
 
 @Module

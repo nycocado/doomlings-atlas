@@ -28,13 +28,13 @@ class CardLanguageTest : AtlasBehaviorTest() {
         launchPastNotice()
         card("Adorable").performClick()
         detailOf("Adorable").assertIsDisplayed()
-        compose.onNodeWithText("Esfrega a minha barriga.").assertDoesNotExist()
+        compose.onNodeWithText("Esfregue minha barriga.").assertDoesNotExist()
 
         portuguese.performClick()
 
         portuguese.assertIsSelected()
         detailOf("Adorável").assertIsDisplayed()
-        detailOf("Esfrega a minha barriga.").assertIsDisplayed()
+        detailOf("Esfregue minha barriga.").assertIsDisplayed()
         button(R.string.back).performClick()
         card("Altruistic").performClick()
 
@@ -83,7 +83,7 @@ class CardLanguageTest : AtlasBehaviorTest() {
 
         detailOf("Adorable").assertIsDisplayed()
         compose.onNodeWithText("Adorável").assertDoesNotExist()
-        compose.onNodeWithText("Esfrega a minha barriga.").assertDoesNotExist()
+        compose.onNodeWithText("Esfregue minha barriga.").assertDoesNotExist()
     }
 
     @Test
@@ -96,8 +96,36 @@ class CardLanguageTest : AtlasBehaviorTest() {
         portuguese.performClick()
 
         detailOf("Era Glacial").assertIsDisplayed()
-        detailOf("Descarta cartas da mão.").assertIsDisplayed()
+        detailOf("Descarte cartas da mão.").assertIsDisplayed()
         detailOf("Menos pontos vermelhos.").assertIsDisplayed()
+    }
+
+    @Test
+    fun theLabelsBesideTheIconsFollowTheCardLanguage() {
+        launchPastNotice()
+        scrollListTo(cardNamed("Eloquence"))
+        card("Eloquence").performClick()
+        detailOf(string(R.string.worlds_end)).assertIsDisplayed()
+
+        portuguese.performClick()
+
+        detailOf("Fim do Mundo").assertIsDisplayed()
+        detailOf(string(R.string.worlds_end)).assertDoesNotExist()
+        assertEquals(listOf("pt"), languagesOf("Fim do Mundo"))
+        button(R.string.back).performClick()
+        scrollListTo(cardNamed("Altruistic"))
+        card("Altruistic").performClick()
+
+        detailOf("Gota de Vida").assertIsDisplayed()
+        detailOf(string(R.string.icon_drop_of_life)).assertDoesNotExist()
+        assertEquals(listOf("pt"), languagesOf("Gota de Vida"))
+        button(R.string.back).performClick()
+        compose.onNode(isSelectable() and hasText(string(R.string.kind_catastrophes))).performClick()
+        scrollListTo(hasContentDescription("Ice Age"))
+        compose.onNode(hasContentDescription("Ice Age")).performClick()
+
+        detailOf("FIM DO MUNDO").assertIsDisplayed()
+        detailOf(string(R.string.worlds_end).uppercase()).assertDoesNotExist()
     }
 
     @Test
@@ -150,7 +178,7 @@ class CardLanguageTest : AtlasBehaviorTest() {
 
         portuguese.performClick()
 
-        assertEquals(listOf("pt"), languagesOf("Esfrega a minha barriga."))
+        assertEquals(listOf("pt"), languagesOf("Esfregue minha barriga."))
         assertEquals(listOf("pt"), languagesOf("Adorável"))
         assertEquals(listOf("en"), languagesOf("Adorable"))
     }
