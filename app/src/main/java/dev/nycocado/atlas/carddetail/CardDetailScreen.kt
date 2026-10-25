@@ -377,7 +377,7 @@ private fun Pills(
         }
         Pill(stringResource(type), theme.surfaceSticker, theme.onSurface)
         if (trait?.dominant == true) {
-            Pill(stringResource(R.string.dominant), theme.highlight, theme.onHighlight) {
+            Pill(cardString(R.string.dominant, language), theme.highlight, theme.onHighlight, language = language) {
                 Symbol(R.drawable.ic_symbol_dominant)
             }
         }
@@ -393,7 +393,8 @@ private fun Pills(
                     },
             )
         }
-        trait?.subspecies?.forEach { Pill(it, theme.surfaceSticker, theme.onSurface) }
+        // The coined -ling names stay English whatever the card language.
+        trait?.subspecies?.forEach { Pill(it, theme.surfaceSticker, theme.onSurface, language = CardLanguage.English) }
     }
 }
 
@@ -506,8 +507,9 @@ private val CardLanguage.endonym: String
             CardLanguage.Spanish -> "Español"
         }
 
-// A string in the card language, not the interface's: the icon labels follow the card they sit beside. It only reads a
-// resource, the app's own locale stays: the lint rule is for bundles with language splits, and the app ships as an APK.
+// A string in the card language, not the interface's: the labels follow the card they sit beside. AppCompatDelegate and
+// LocaleManager would change the whole app's locale, which the card language must not. It only reads a resource, so the
+// lint rule is for bundles with language splits, and the app ships as an APK.
 @SuppressLint("AppBundleLocaleChanges")
 @Composable
 private fun cardString(

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Hand-written so Spanish stays out of the per-app language list: values-es holds only the card detail's labels. It
-     goes back to generateLocaleConfig with the Spanish interface ticket. -->
+     goes back to generateLocaleConfig with the Spanish interface ticket (#105). -->
 <locale-config xmlns:android="http://schemas.android.com/apk/res/android">
     <locale android:name="en" />
     <locale android:name="pt" />

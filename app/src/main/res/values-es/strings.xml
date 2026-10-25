@@ -1,7 +1,8 @@
-<!-- Only the labels beside the icons of the card detail, which follow the card language. The Spanish interface is a
-     later ticket; app/lint.xml mutes MissingTranslation for "es" until then. -->
+<!-- Only the labels beside the icons of the card detail, which follow the card language. The Spanish interface is
+     ticket #105; app/lint.xml mutes MissingTranslation for "es" until then. -->
 <resources>
     <string name="worlds_end">Fin del Mundo</string>
+    <string name="dominant">Dominante</string>
     <string name="icon_action">Acción</string>
     <string name="icon_attachment">Adjunto</string>
     <string name="icon_drop_of_life">Gota de Vida</string>

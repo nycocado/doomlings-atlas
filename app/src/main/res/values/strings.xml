@@ -43,8 +43,8 @@
     <string name="type_trait" translatable="false">Trait</string>
     <string name="type_age" translatable="false">Age</string>
     <string name="type_catastrophe" translatable="false">Catastrophe</string>
-    <string name="dominant" translatable="false">Dominant</string>
     <string name="worlds_end">World\'s End</string>
+    <string name="dominant">Dominant</string>
     <string name="icon_action">Action</string>
     <string name="icon_attachment">Attachment</string>
     <string name="icon_drop_of_life">Drop of life</string>

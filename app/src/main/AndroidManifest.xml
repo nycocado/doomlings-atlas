@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- UnusedAttribute: localeConfig needs API 33. UnusedTranslation: values-es serves only the card language until the
+         Spanish interface ticket (#105). -->
     <application
         android:name=".AtlasApplication"
         android:allowBackup="true"

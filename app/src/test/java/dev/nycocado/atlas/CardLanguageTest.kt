@@ -128,6 +128,20 @@ class CardLanguageTest : AtlasBehaviorTest() {
     }
 
     @Test
+    fun theDominantPillFollowsTheCardLanguage() {
+        launchPastNotice()
+        card("Apex Predator").performClick()
+        detailOf(string(R.string.dominant)).assertIsDisplayed()
+        assertEquals(listOf("en"), languagesOf("Dominant"))
+
+        portuguese.performClick()
+
+        detailOf("Dominante").assertIsDisplayed()
+        detailOf("Dominant").assertDoesNotExist()
+        assertEquals(listOf("pt"), languagesOf("Dominante"))
+    }
+
+    @Test
     fun englishBringsTheLabelsBesideTheIconsBackToTheirPrintedWords() {
         launchPastNotice()
         scrollListTo(cardNamed("Eloquence"))
