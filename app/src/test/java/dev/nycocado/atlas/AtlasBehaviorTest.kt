@@ -50,7 +50,6 @@ abstract class AtlasBehaviorTest {
 
     protected fun launch(): ActivityScenario<MainActivity> = ActivityScenario.launch(MainActivity::class.java)
 
-    // A launch after the player accepted the unofficial notice.
     protected fun launchPastNotice(): ActivityScenario<MainActivity> {
         context
             .getSharedPreferences(NOTICE_PREFS, Context.MODE_PRIVATE)
@@ -77,7 +76,6 @@ abstract class AtlasBehaviorTest {
 
     protected fun card(name: String): SemanticsNodeInteraction = compose.onNode(cardNamed(name))
 
-    // The name on the open card's detail.
     protected fun detailOf(name: String): SemanticsNodeInteraction = compose.onNodeWithText(name)
 
     // The green color filter of the compendium.
@@ -95,7 +93,6 @@ abstract class AtlasBehaviorTest {
             }
         }
 
-    // Scrolls the compendium's list until the matching node is in it.
     protected fun scrollListTo(matcher: SemanticsMatcher) {
         compose.onNode(hasScrollAction()).performScrollToNode(matcher)
     }
