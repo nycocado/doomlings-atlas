@@ -5,6 +5,7 @@ import android.os.Parcel
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.performClick
+import androidx.savedstate.read
 import dagger.hilt.android.testing.HiltAndroidTest
 import dev.nycocado.atlas.cardpane.CardKey
 import org.junit.Assert.assertTrue
@@ -112,10 +113,8 @@ class RecreationTest : AtlasBehaviorTest() {
             bundle.getBundle("value")!!.putString("id", id)
             renamed++
         }
-        bundle.keySet().forEach { key ->
-            // The typed getters that replace get() need the value's type, which a walk of the whole state doesn't know.
-            @Suppress("DEPRECATION")
-            when (val value = bundle.get(key)) {
+        bundle.read { toMap() }.values.forEach { value ->
+            when (value) {
                 is Bundle -> renamed += renameSavedCards(value, id)
                 is List<*> -> renamed += value.filterIsInstance<Bundle>().sumOf { renameSavedCards(it, id) }
             }
