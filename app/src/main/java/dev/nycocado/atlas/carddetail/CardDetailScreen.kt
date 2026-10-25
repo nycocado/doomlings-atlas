@@ -516,7 +516,8 @@ private fun cardString(
 ): String {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
-    if (LocalInspectionMode.current) return PreviewLabels[id to language] ?: stringResource(id)
+    // A preview renders in the locale its @Preview names and ignores any other, so it shows that locale's label.
+    if (LocalInspectionMode.current) return stringResource(id)
     return remember(context, configuration, language) {
         context
             .createConfigurationContext(
@@ -524,20 +525,6 @@ private fun cardString(
             ).getString(id)
     }
 }
-
-// Layout preview and the screenshot tests resolve every string in the render's own locale and ignore the one asked
-// for, so the labels the previews show are listed here, with the words of values/strings.xml and values-pt.
-private val PreviewLabels =
-    mapOf(
-        (R.string.icon_action to CardLanguage.English) to "Action",
-        (R.string.icon_action to CardLanguage.Portuguese) to "Ação",
-        (R.string.icon_drop_of_life to CardLanguage.English) to "Drop of life",
-        (R.string.icon_drop_of_life to CardLanguage.Portuguese) to "Gota de Vida",
-        (R.string.icon_play_when to CardLanguage.English) to "Play when",
-        (R.string.icon_play_when to CardLanguage.Portuguese) to "Jogar quando",
-        (R.string.worlds_end to CardLanguage.English) to "World's End",
-        (R.string.worlds_end to CardLanguage.Portuguese) to "Fim do Mundo",
-    )
 
 // Text tagged with its language, so TalkBack reads a translation in its own language, not the interface's.
 private fun tagged(

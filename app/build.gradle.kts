@@ -71,9 +71,6 @@ android {
     buildFeatures {
         compose = true
     }
-    androidResources {
-        generateLocaleConfig = true
-    }
     testOptions {
         // Robolectric reads the merged resources and assets, which include the packaged cards.json.
         unitTests.isIncludeAndroidResources = true

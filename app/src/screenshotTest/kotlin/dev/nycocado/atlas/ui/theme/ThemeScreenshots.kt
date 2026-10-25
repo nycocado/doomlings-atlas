@@ -67,17 +67,19 @@ fun CardDetailScreenshot() = CardDetailPreview()
 fun CatastropheDetailScreenshot() = CatastropheDetailPreview()
 
 @PreviewTest
-@PreviewLightDark
+@Preview(name = "Light", locale = "pt")
+@Preview(name = "Dark", locale = "pt", uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
 @Composable
 fun TranslatedTraitDetailScreenshot() = TranslatedTraitDetailPreview()
 
 @PreviewTest
-@PreviewLightDark
+@Preview(name = "Light", locale = "pt")
+@Preview(name = "Dark", locale = "pt", uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
 @Composable
 fun TranslatedCatastropheDetailScreenshot() = TranslatedCatastropheDetailPreview()
 
 @PreviewTest
-@Preview(fontScale = 2f)
+@Preview(fontScale = 2f, locale = "pt")
 @Composable
 fun TranslatedTraitDetailFontScale200Screenshot() = AtlasTheme { TranslatedTraitSample() }
 
