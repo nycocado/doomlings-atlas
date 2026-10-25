@@ -257,6 +257,14 @@
       "avoid": []
     },
     {
+      "en": "colorless",
+      "use": "incoloro",
+      "avoid": [
+        "sin color"
+      ],
+      "note": "Plural: incoloros."
+    },
+    {
       "en": "Coral",
       "use": "coral",
       "avoid": []
@@ -337,6 +345,11 @@
     {
       "en": "effect",
       "use": "efecto",
+      "avoid": []
+    },
+    {
+      "en": "effectless",
+      "use": "sin efecto",
       "avoid": []
     },
     {

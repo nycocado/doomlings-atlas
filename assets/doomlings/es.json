@@ -1,0 +1,736 @@
+{
+  "classic/ages/age-of-dracula": {
+    "name": "Age de Drácula",
+    "effect": "Descarta 1 carta aleatoria de tu mano.\n\nSi Vampirismo está en tu pila de traits, arrebata 1 carta aleatoria de la mano de un oponente."
+  },
+  "classic/ages/age-of-nietzsche": {
+    "name": "Age de Nietzsche",
+    "effect": "En lugar de estabilizar en este turno, puedes descartar tu mano y robar 3 cartas."
+  },
+  "classic/ages/age-of-peace": {
+    "name": "Age de la Paz",
+    "effect": "Ignora todas las acciones de los traits."
+  },
+  "classic/ages/age-of-wonder": {
+    "name": "Age de la Maravilla",
+    "effect": "Debes terminar tu turno con 4 cartas en la mano."
+  },
+  "classic/ages/age-of-reason": {
+    "name": "Age de la Razón",
+    "effect": "Roba 3 cartas. Quédate con 1, descarta las otras 2."
+  },
+  "classic/ages/alien-terraform": {
+    "name": "Terraformación Alienígena",
+    "effect": "Puedes descartar cartas dominantes de tu mano. Si lo haces, estabiliza inmediatamente."
+  },
+  "classic/ages/arid-lands": {
+    "name": "Tierras Áridas",
+    "effect": "Los jugadores no pueden jugar traits azules."
+  },
+  "classic/ages/awakening": {
+    "name": "Despertar",
+    "effect": "Prevé la siguiente age antes de jugar tu turno."
+  },
+  "classic/ages/birth-of-a-hero": {
+    "name": "Nacimiento de un Héroe",
+    "effect": "Si tienes Heroico en la mano, juégalo ahora sin restricción."
+  },
+  "classic/ages/coastal-formations": {
+    "name": "Formaciones Costeras",
+    "effect": "Roba 1 carta después de estabilizar."
+  },
+  "classic/ages/comet-showers": {
+    "name": "Lluvia de Cometas",
+    "effect": "Descarta 1 carta aleatoria de tu mano."
+  },
+  "classic/ages/eclipse": {
+    "name": "Eclipse",
+    "effect": "Los jugadores no pueden jugar traits rojos."
+  },
+  "classic/ages/enlightenment": {
+    "name": "Iluminación",
+    "effect": "Puedes descartar hasta 2 cartas de tu mano antes de estabilizar."
+  },
+  "classic/ages/flourish": {
+    "name": "Florecimiento",
+    "effect": "Roba 2 cartas."
+  },
+  "classic/ages/galactic-drift": {
+    "name": "Deriva Galáctica",
+    "effect": "Si juegas un trait incoloro, puedes jugar otro trait incoloro."
+  },
+  "classic/ages/glacial-drift": {
+    "name": "Deriva Glacial",
+    "effect": "Solo puedes jugar traits con un valor nominal de 3 o menos."
+  },
+  "classic/ages/high-tides": {
+    "name": "Mareas Altas",
+    "effect": "Si juegas un trait sin efecto, puedes jugar otro trait sin efecto."
+  },
+  "classic/ages/lunar-retreat": {
+    "name": "Retirada Lunar",
+    "effect": "Los jugadores no pueden jugar traits morados."
+  },
+  "classic/ages/natural-harmony": {
+    "name": "Armonía Natural",
+    "effect": "No puedes jugar un trait del mismo color que el último trait jugado."
+  },
+  "classic/ages/northern-winds": {
+    "name": "Vientos del Norte",
+    "effect": "Roba 1 carta. Descarta 1 carta de tu mano."
+  },
+  "classic/ages/prosperity": {
+    "name": "Prosperidad",
+    "effect": "Al final de tu turno, puedes elegir no estabilizar."
+  },
+  "classic/ages/reforestation": {
+    "name": "Reforestación",
+    "effect": "Los traits en tu pila de traits no pueden ser intercambiados, arrebatados ni descartados."
+  },
+  "classic/ages/tectonic-shift": {
+    "name": "Movimiento Tectónico",
+    "effect": "Los jugadores no pueden jugar traits verdes."
+  },
+  "classic/ages/the-messiah": {
+    "name": "El Mesías",
+    "effect": "Juega esta age al revés: el primer jugador al final y el último jugador al principio."
+  },
+  "classic/ages/tropical-lands": {
+    "name": "Tierras Tropicales",
+    "effect": "Los jugadores no pueden jugar traits incoloros."
+  },
+  "classic/catastrophes/ai-takeover": {
+    "name": "Dominio de la IA",
+    "effect": "-1 Gene Pool\n\nDescarta todas las cartas de tu mano, excepto 1.",
+    "worldsEnd": "Cada trait incoloro ahora vale 2. Ignora todos los efectos de los traits incoloros. (Excepto dominantes.)"
+  },
+  "classic/catastrophes/deus-ex-machina": {
+    "name": "Deus Ex Machina",
+    "effect": "+0 Gene Pool\n\nEstabiliza.\nCrisis evitada.",
+    "worldsEnd": "Roba una carta. Añade su valor nominal a tu puntuación final (máx. +5). Luego, descártala."
+  },
+  "classic/catastrophes/glacial-meltdown": {
+    "name": "Derretimiento Glacial",
+    "effect": "-1 Gene Pool\n\nDescarta 2 cartas aleatorias de tu mano.",
+    "worldsEnd": "Descarta 1 trait azul de tu pila de traits."
+  },
+  "classic/catastrophes/grey-goo": {
+    "name": "Plaga Gris",
+    "effect": "+0 Gene Pool\n\nDescarta tu mano y estabiliza.",
+    "worldsEnd": "-5 puntos para el/los jugador(es) con más traits en su pila de traits."
+  },
+  "classic/catastrophes/ice-age": {
+    "name": "Edad de Hielo",
+    "effect": "-1 Gene Pool\n\nDescarta 1 carta de tu mano por cada trait rojo en tu pila de traits.",
+    "worldsEnd": "-1 por cada trait rojo en tu pila de traits."
+  },
+  "classic/catastrophes/mass-extinction": {
+    "name": "Extinción Masiva",
+    "effect": "-1 Gene Pool\n\nDescarta 1 carta de tu mano por cada trait incoloro en tu pila de traits.",
+    "worldsEnd": "Descarta 1 trait verde de tu pila de traits."
+  },
+  "classic/catastrophes/mega-tsunami": {
+    "name": "Megatsunami",
+    "effect": "-1 Gene Pool\n\nPasa tu mano a la derecha.",
+    "worldsEnd": "Descarta 1 trait rojo de tu pila de traits."
+  },
+  "classic/catastrophes/nuclear-winter": {
+    "name": "Invierno Nuclear",
+    "effect": "-1 Gene Pool\n\nEstabiliza.\nLuego, descarta 1 carta de tu mano.",
+    "worldsEnd": "Descarta 1 trait incoloro de tu pila de traits."
+  },
+  "classic/catastrophes/overpopulation": {
+    "name": "Sobrepoblación",
+    "effect": "+1 Gene Pool\n\nRoba 1 carta por cada color en tu pila de traits.",
+    "worldsEnd": "+4 puntos para el/los jugador(es) con menos traits en su pila de traits."
+  },
+  "classic/catastrophes/pulse-event": {
+    "name": "Evento de Pulso",
+    "effect": "-1 Gene Pool\n\nDescarta 1 carta de tu mano por cada trait morado en tu pila de traits.",
+    "worldsEnd": "Descarta 1 trait morado de tu pila de traits."
+  },
+  "classic/catastrophes/retrovirus": {
+    "name": "Retrovirus",
+    "effect": "-1 Gene Pool\n\nDescarta 1 carta de tu mano por cada trait verde en tu pila de traits.",
+    "worldsEnd": "-1 por cada trait verde en tu pila de traits."
+  },
+  "classic/catastrophes/solar-flare": {
+    "name": "Erupción Solar",
+    "effect": "-1 Gene Pool\n\nDescarta la mitad de tu mano, redondeando hacia arriba.",
+    "worldsEnd": "-1 por cada trait morado en tu pila de traits."
+  },
+  "classic/catastrophes/super-volcano": {
+    "name": "Supervolcán",
+    "effect": "-1 Gene Pool\n\nDescarta 1 carta de tu mano por cada trait azul en tu pila de traits.",
+    "worldsEnd": "-1 por cada trait azul en tu pila de traits."
+  },
+  "classic/catastrophes/the-big-one": {
+    "name": "El Grande",
+    "effect": "-1 Gene Pool\n\nDa 1 carta de tu mano al/a los oponente(s) a tu izquierda y a tu derecha.",
+    "worldsEnd": "-2 a tu puntuación por cada color que falte en tu pila de traits."
+  },
+  "classic/catastrophes/the-four-horsemen": {
+    "name": "Los Cuatro Jinetes",
+    "effect": "-1 Gene Pool\n\nDescarta 1 trait de tu pila de traits.",
+    "worldsEnd": "Descarta 1 trait de tu pila de traits con un valor nominal de 4 o más."
+  },
+  "classic/traits/adorable": {
+    "name": "Adorable",
+    "flavor": "Oye, pareces un ingenuo. Frótame la barriga. Ahora métete en esta lava para que yo flote a salvo."
+  },
+  "classic/traits/altruistic": {
+    "name": "Altruista",
+    "effect": "El valor es igual al tamaño de tu Gene Pool.",
+    "flavor": "¿Me prestas algo de dinero? Doné todo el mío a la caridad."
+  },
+  "classic/traits/antlers": {
+    "name": "Cornamenta",
+    "flavor": "Seguro que me vería bien en tu pared."
+  },
+  "classic/traits/apex-predator": {
+    "name": "Superdepredador",
+    "effect": "+4 si tienes más traits en tu pila de traits que tus oponentes. (¡Los empates no cuentan!)",
+    "flavor": "¿A dónde crees que vas?"
+  },
+  "classic/traits/appealing": {
+    "name": "Atractivo",
+    "flavor": "¿Ya ves? ¡Naranjas, qué alegría!"
+  },
+  "classic/traits/automimicry": {
+    "name": "Automimetismo",
+    "effect": "Puedes jugar Automimetismo desde tu mano en cualquier momento para impedir una acción.",
+    "flavor": "Hice una cara grande y aterradora para que no notes mi carita pequeña y real."
+  },
+  "classic/traits/bad": {
+    "name": "Malo",
+    "effect": "Los oponentes descartan 2 cartas aleatorias de su mano.",
+    "flavor": "Sin cortes, no hay gloria."
+  },
+  "classic/traits/bark": {
+    "name": "Corteza",
+    "flavor": "Guau."
+  },
+  "classic/traits/big-ears": {
+    "name": "Orejas Grandes",
+    "flavor": "¿Qué?"
+  },
+  "classic/traits/blubber": {
+    "name": "Grasa",
+    "flavor": "Es grasa protectora, muchas gracias."
+  },
+  "classic/traits/boredom": {
+    "name": "Aburrimiento",
+    "effect": "El valor es igual al número de cartas con efectos en tu mano.",
+    "flavor": "No sé. ¿Qué quieres hacer TÚ?"
+  },
+  "classic/traits/branches": {
+    "name": "Ramas",
+    "effect": "+1 por cada par de traits verdes en la pila de traits de cada oponente.",
+    "flavor": "Brazos de árbol."
+  },
+  "classic/traits/brave": {
+    "name": "Valiente",
+    "effect": "+2 por cada trait dominante en tu mano.",
+    "flavor": "Mi granja está cerca, así que, si piensas en hacer erupción, quiquiriquí-ni-se-te-ocurra."
+  },
+  "classic/traits/brute-strength": {
+    "name": "Fuerza Bruta",
+    "effect": "-1 Gene Pool",
+    "flavor": "¡Destrúyete antes de revisarte, bro!"
+  },
+  "classic/traits/camouflage": {
+    "name": "Camuflaje",
+    "effect": "+1 Gene Pool. +1 por cada carta en tu mano.",
+    "flavor": "Confúndete con la naturaleza o destaca en una boda."
+  },
+  "classic/traits/chromatophores": {
+    "name": "Cromatóforos",
+    "effect": "Puedes jugar Cromatóforos desde tu mano en cualquier momento para impedir una acción.",
+    "flavor": "Aquí no hay ningún pulpo. Solo un poco de coral. Sigue tu camino."
+  },
+  "classic/traits/clever": {
+    "name": "Astuto",
+    "effect": "Los oponentes revelan 1 carta de su mano a todos los jugadores. Arrebata 1 y juégala inmediatamente.",
+    "flavor": "¿Por qué las aves no pueden hacer planes? Porque sus calendarios son un caos de ganso."
+  },
+  "classic/traits/cold-blood": {
+    "name": "Sangre Fría",
+    "effect": "Roba 3 cartas. Puedes jugar 1 ahora.",
+    "flavor": "Mataría por poder controlar mi temperatura corporal."
+  },
+  "classic/traits/confusion": {
+    "name": "Confusión",
+    "flavor": "Y quizá te preguntes: \"¿Por qué existe este trait?\""
+  },
+  "classic/traits/costly-signaling": {
+    "name": "Señalización Costosa",
+    "effect": "Devuelve un trait de un oponente a su mano. Juega otro trait.",
+    "flavor": "Como las plumas de un pavo real. O un título en filosofía."
+  },
+  "classic/traits/deep-roots": {
+    "name": "Raíces Profundas",
+    "flavor": "Hablé del clima con mi vecino. Ahora este es mi hogar para siempre."
+  },
+  "classic/traits/delicious": {
+    "name": "Delicioso",
+    "effect": "Para jugar, debes tener al menos 1 trait incoloro en tu pila de traits.",
+    "flavor": "Para salvar a una especie de la extinción, averigua cómo comerla."
+  },
+  "classic/traits/denial": {
+    "name": "Negación",
+    "effect": "Ignora la siguiente catastrophe. Advertencia: no puedes ignorar Los Cuatro Jinetes.",
+    "flavor": "Catastrophe schmatastrophe."
+  },
+  "classic/traits/directly-register": {
+    "name": "Registro Directo",
+    "effect": "Arrebata un trait con un valor nominal de 1 de la pila de traits de un oponente.",
+    "flavor": "'Miau. Soy un gato, camino con tanta precisión.' ¿Y QUÉ?"
+  },
+  "classic/traits/doting": {
+    "name": "Consentidor",
+    "effect": "Da 1 carta de tu mano a un oponente.",
+    "flavor": "¡Bueno! Estas son las últimas galletas. A menos que quieras más. Haré más."
+  },
+  "classic/traits/dreamer": {
+    "name": "Soñador",
+    "effect": "+1 Gene Pool",
+    "flavor": "Algún día seré más que una simple bola morada."
+  },
+  "classic/traits/echolocation": {
+    "name": "Ecolocalización",
+    "effect": "Hasta el Fin del Mundo: Roba 1 carta al inicio de cada uno de tus turnos.",
+    "flavor": "El oído que todo lo ve."
+  },
+  "classic/traits/egg-clusters": {
+    "name": "Racimos de Huevos",
+    "effect": "+1 por cada trait azul en tu pila de traits. (Incluyendo este.)",
+    "flavor": "Compra uno, llévate cien."
+  },
+  "classic/traits/eloquence": {
+    "name": "Elocuencia",
+    "effect": "En el Fin del Mundo: Juega otro trait. Ignora su acción.",
+    "flavor": "Di lo correcto y luego deja de hablar."
+  },
+  "classic/traits/endurance": {
+    "name": "Resistencia",
+    "effect": "Siempre que descartes Resistencia de tu pila de traits, devuélvela a tu pila de traits.",
+    "flavor": "¡Las catastrophes no pueden pisotearme!"
+  },
+  "classic/traits/faith": {
+    "name": "Fe",
+    "effect": "En el Fin del Mundo: Puedes cambiar todos tus traits de 1 color a 1 color alternativo.",
+    "flavor": "La razón es, de hecho, el camino hacia la fe, y la fe toma el relevo cuando la razón ya no puede decir más."
+  },
+  "classic/traits/fangs": {
+    "name": "Colmillos",
+    "flavor": "Las herramientas más afiladas de la cabeza."
+  },
+  "classic/traits/fear": {
+    "name": "Miedo",
+    "flavor": "¿Ya...ya t-terminaron de jugar?"
+  },
+  "classic/traits/fecundity": {
+    "name": "Fecundidad",
+    "effect": "+1 Gene Pool",
+    "flavor": "Una vez que revientas..."
+  },
+  "classic/traits/fine-motor-skills": {
+    "name": "Motricidad Fina",
+    "flavor": "¡He trazado una forma!"
+  },
+  "classic/traits/fire-skin": {
+    "name": "Piel de Fuego",
+    "flavor": "Creo que tu piel está en llamas."
+  },
+  "classic/traits/flatulence": {
+    "name": "Flatulencia",
+    "flavor": "¿Chile de 5 alarmas? ¡Fuego en el hoyo!"
+  },
+  "classic/traits/flight": {
+    "name": "Vuelo",
+    "effect": "Intercambia manos con un oponente.",
+    "flavor": "¡El sol no puede contra mis alas de cera!"
+  },
+  "classic/traits/fortunate": {
+    "name": "Afortunado",
+    "effect": "El valor es igual al número de cartas en tu mano.",
+    "flavor": "Algunos lo llaman suerte. Otros lo llaman bendición."
+  },
+  "classic/traits/gills": {
+    "name": "Branquias",
+    "flavor": "Necesito una bocanada de agua dulce."
+  },
+  "classic/traits/gratitude": {
+    "name": "Gratitud",
+    "effect": "El valor es igual al número de colores diferentes en tu pila de traits.",
+    "flavor": "Vaya, de verdad lo aprecio. Gracias. Muchas gracias."
+  },
+  "classic/traits/heat-vision": {
+    "name": "Visión de Calor",
+    "effect": "+1 por cada trait rojo en tu pila de traits. (Incluyendo este.)",
+    "flavor": "Me gustaría hacer un brindis."
+  },
+  "classic/traits/heroic": {
+    "name": "Heroico",
+    "effect": "Para jugar, debes tener 3 o más traits verdes en tu pila de traits.",
+    "flavor": "En el fondo, bajo todo este músculo, solo soy súper honorable y valiente."
+  },
+  "classic/traits/hot-temper": {
+    "name": "Mal Genio",
+    "effect": "Descarta 2 cartas de tu mano.",
+    "flavor": "¡Mi hamburguesa con queso tiene queso!"
+  },
+  "classic/traits/hyper-intelligence": {
+    "name": "Hiperinteligencia",
+    "effect": "En el Fin del Mundo: Elige un color. Los oponentes descartan 1 trait de ese color de su pila de traits de forma aleatoria.",
+    "flavor": "E=mc, deja de mirarme la cabeza."
+  },
+  "classic/traits/immunity": {
+    "name": "Inmunidad",
+    "effect": "+2 por cada trait con un valor nominal negativo en tu pila de traits.",
+    "flavor": "No puedes tocarme."
+  },
+  "classic/traits/impatience": {
+    "name": "Impaciencia",
+    "effect": "Arrebata 2 cartas aleatorias de la mano de un oponente.",
+    "flavor": "¿Vas a jugar ya de una vez?"
+  },
+  "classic/traits/introspective": {
+    "name": "Introspectivo",
+    "effect": "Roba 4 cartas.",
+    "flavor": "Charco, charquito en la calle, ¿algún día me sentiré completo?"
+  },
+  "classic/traits/inventive": {
+    "name": "Inventivo",
+    "effect": "Juega una acción de la pila de traits de un oponente.",
+    "flavor": "Esto no se puede inventar. Pero yo sí."
+  },
+  "classic/traits/iridescent-scales": {
+    "name": "Escamas Iridiscentes",
+    "effect": "Roba 3 cartas.",
+    "flavor": "Tengo la piel como un arcoíris. Reluciente, ¿no?"
+  },
+  "classic/traits/just": {
+    "name": "Justo",
+    "effect": "+1 Gene Pool",
+    "flavor": "¿Está nivelada esta balanza? ¡No veo nada!"
+  },
+  "classic/traits/kidney": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con un tupé para disimular la calva."
+  },
+  "classic/traits/kidney-2": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con una tiara."
+  },
+  "classic/traits/kidney-3": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con un gorro de elfo."
+  },
+  "classic/traits/kidney-4": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con un gorro de chef."
+  },
+  "classic/traits/kidney-5": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con un gorro de fiesta."
+  },
+  "classic/traits/kidney-6": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con un sombrero de copa."
+  },
+  "classic/traits/late": {
+    "name": "Tardío",
+    "effect": "Puedes jugar Tardío desde tu mano después de estabilizar.",
+    "flavor": "¡Perdón! Hubo un incendio, tráfico y la fila del café era larguísima..."
+  },
+  "classic/traits/leaves": {
+    "name": "Hojas",
+    "flavor": "Le pedí a mi barbero un corte de tazón de ensalada."
+  },
+  "classic/traits/memory": {
+    "name": "Memoria",
+    "effect": "Puedes descartar tu mano y estabilizar.",
+    "flavor": "La retención de información, como el pedido de comida de alguien o un anivers-...oh no."
+  },
+  "classic/traits/migratory": {
+    "name": "Migratorio",
+    "flavor": "¡No puedo esperar a volver a vivir con nuestros padres!"
+  },
+  "classic/traits/mindful": {
+    "name": "Atento",
+    "effect": "+1 por cada trait incoloro en tu pila de traits. (Incluyendo este.)",
+    "flavor": "Mientras caminas, comes y viajas, está donde estás. De lo contrario, te perderás la mayor parte de tu vida."
+  },
+  "classic/traits/mitochondrion": {
+    "name": "Mitocondria",
+    "effect": "+1 Gene Pool",
+    "flavor": "Un orgánulo que parece el peor hoyo de un minigolf."
+  },
+  "classic/traits/morality": {
+    "name": "Moralidad",
+    "effect": "Para jugar, debes dar 1 trait positivo de tu pila de traits a un oponente.",
+    "flavor": "Dejaré que se quede con su dinero del almuerzo. Es lo correcto."
+  },
+  "classic/traits/nocturnal": {
+    "name": "Nocturno",
+    "flavor": "La oscuridad es mi musa."
+  },
+  "classic/traits/nosy": {
+    "name": "Entrometido",
+    "effect": "Mira 2 cartas aleatorias de la mano de un oponente. Arrebata 1 y juégala inmediatamente.",
+    "flavor": "¿Qué tienes ahí?"
+  },
+  "classic/traits/optimistic-nihilism": {
+    "name": "Nihilismo Optimista",
+    "effect": "Provoca la siguiente catastrophe. Salta todos los turnos. Ignora todos los efectos de age en el camino. No estabilices.",
+    "flavor": "¡Nada importa!"
+  },
+  "classic/traits/overgrowth": {
+    "name": "Crecimiento Excesivo",
+    "effect": "+1 por cada trait verde en tu pila de traits. (Incluyendo este.)",
+    "flavor": "Mami, ¿por qué me arrancaste del jardín de infantes?"
+  },
+  "classic/traits/pack-behavior": {
+    "name": "Comportamiento de Manada",
+    "effect": "+1 por cada par de colores en tu pila de traits.",
+    "flavor": "A TODOS nos gustaría salir."
+  },
+  "classic/traits/painted-shell": {
+    "name": "Concha Pintada",
+    "effect": "Juega una acción de tu pila de traits.",
+    "flavor": "Solo soy un proyecto de manualidades... por ahora."
+  },
+  "classic/traits/parasitic": {
+    "name": "Parasitario",
+    "effect": "Puedes jugar Parasitario desde tu mano cuando un oponente juegue un trait. Arrebata ese trait. Interrumpe su acción.",
+    "flavor": "Todos tenemos ese amigo que nunca trae dinero y siempre anda bebiendo sangre."
+  },
+  "classic/traits/persuasive": {
+    "name": "Persuasivo",
+    "effect": "Elige un color. Todos los jugadores descartan de su mano todas las cartas de ese color. (¡Incluyéndote!)",
+    "flavor": "¡Cambia de opinión o gritaré más fuerte!"
+  },
+  "classic/traits/photosynthesis": {
+    "name": "Fotosíntesis",
+    "effect": "Roba 2 cartas. Si alguna es verde, juega 1 inmediatamente. (A menos que haya restricción.)",
+    "flavor": "Masticando unos fotones, ñam ñam ñam."
+  },
+  "classic/traits/poisonous": {
+    "name": "Venenoso",
+    "effect": "Intercambia Venenoso con un trait de la pila de traits de un oponente.",
+    "flavor": "Una manzana al día aleja al médico. A menos que la manzana sea de una bruja."
+  },
+  "classic/traits/pollination": {
+    "name": "Polinización",
+    "effect": "+1 por cada carta en tu pila de traits con un valor nominal de 1. (Incluyendo esta.)",
+    "flavor": "Pues verás, Timmy, cuando una abeja y una planta se enamoran..."
+  },
+  "classic/traits/prepper": {
+    "name": "Preparacionista",
+    "effect": "En el Fin del Mundo: Elige un efecto de Fin del Mundo de las 3 catastrophes jugadas para que los jugadores terminen con él.",
+    "flavor": "Más bien Fin del Mundo, No."
+  },
+  "classic/traits/propagation": {
+    "name": "Propagación",
+    "effect": "Juega otro trait.",
+    "flavor": "Mucho más fácil que salir con alguien."
+  },
+  "classic/traits/quick": {
+    "name": "Rápido",
+    "flavor": "¡Arre, ARRE!"
+  },
+  "classic/traits/random-fertilization": {
+    "name": "Fertilización Aleatoria",
+    "effect": "El valor es igual al tamaño de tu Gene Pool.",
+    "flavor": "Elige un número entre 1 y 64 billones."
+  },
+  "classic/traits/reckless": {
+    "name": "Temerario",
+    "effect": "Tú y un oponente descartan 1 trait de la pila de traits del otro. (Excepto este.)",
+    "flavor": "¡Opinión polémica llegando bien caliente!"
+  },
+  "classic/traits/regenerative-tissue": {
+    "name": "Tejido Regenerativo",
+    "effect": "Siempre que descartes un trait de tu pila de traits, (incluyendo este), roba 1. Juégalo inmediatamente. (A menos que haya restricción.) Ignora las acciones.",
+    "flavor": "¿Cuántos dedos estoy levantando? Espera, un momento, todavía me están volviendo a crecer"
+  },
+  "classic/traits/retractable-claws": {
+    "name": "Garras Retráctiles",
+    "effect": "Para jugar, debes descartar 1 trait rojo de tu pila de traits.",
+    "flavor": "Duele cada vez."
+  },
+  "classic/traits/saliva": {
+    "name": "Saliva",
+    "effect": "+1 Gene Pool",
+    "flavor": "De lo que están hechas las babas."
+  },
+  "classic/traits/saudade": {
+    "name": "Saudade",
+    "effect": "+1 por cada color diferente en tu mano.",
+    "flavor": "¡Ya lo vi, papá. Ahora vámonos!"
+  },
+  "classic/traits/scutes": {
+    "name": "Escudos",
+    "effect": "Da 1 trait de tu pila de traits a un oponente.",
+    "flavor": "Cuando esto termine, ¡mi victoria será conchelebrada!"
+  },
+  "classic/traits/selective-memory": {
+    "name": "Memoria Selectiva",
+    "effect": "Juega 1 carta de la pila de descarte. Juega su acción.",
+    "flavor": "¿Yo? ¿Equivocado? Eso no suena bien."
+  },
+  "classic/traits/self-awareness": {
+    "name": "Autoconciencia",
+    "effect": "Puedes jugar Autoconciencia desde tu mano en la pila de traits de un oponente en cualquier momento.",
+    "flavor": "Vaya. Supongo que no soy un vampiro."
+  },
+  "classic/traits/self-replicating": {
+    "name": "Autorreplicante",
+    "effect": "Juega 1 carta de la pila de descarte. Ignora su acción. Cuando juegues otro trait verde desde tu mano, puedes devolver este a tu mano.",
+    "flavor": "¿Más de mí? Copiado."
+  },
+  "classic/traits/selfish": {
+    "name": "Egoísta",
+    "effect": "Arrebata un trait rojo de la pila de traits de un oponente.",
+    "flavor": "¡Mío!"
+  },
+  "classic/traits/sentience": {
+    "name": "Sintiencia",
+    "effect": "En el Fin del Mundo: Elige un color. +1 por cada trait de ese color en tu pila de traits.",
+    "flavor": "Estoy sintiendo tantas cosas ahora."
+  },
+  "classic/traits/sneaky": {
+    "name": "Sigiloso",
+    "effect": "En el Fin del Mundo: Puedes jugar Sigiloso desde tu mano.",
+    "flavor": "No lo viste venir, ¿verdad?"
+  },
+  "classic/traits/spiny": {
+    "name": "Espinoso",
+    "flavor": "No acaricies a mi pez."
+  },
+  "classic/traits/sticky-secretions": {
+    "name": "Secreciones Pegajosas",
+    "effect": "+1 por cada trait morado en tu pila de traits. (Incluyendo este.)",
+    "flavor": "Dame un abrazo."
+  },
+  "classic/traits/stone-skin": {
+    "name": "Piel de Piedra",
+    "flavor": "Tus cumplidos sinceros no pueden con mi exterior escarpado."
+  },
+  "classic/traits/super-spreader": {
+    "name": "Supercontagiador",
+    "effect": "Todos los jugadores reciben: -1 Gene Pool. (Incluyéndote.)",
+    "flavor": "Ah...AH...AH...falsa alarma, pensé que iba a--¡ACHÍS!"
+  },
+  "classic/traits/swarm": {
+    "name": "Enjambre",
+    "effect": "El valor es igual al número de traits Enjambre en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Estamos aquí por el teléfono nuevo."
+  },
+  "classic/traits/swarm-2": {
+    "name": "Enjambre",
+    "effect": "El valor es igual al número de traits Enjambre en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Estamos aquí por el teléfono nuevo."
+  },
+  "classic/traits/swarm-3": {
+    "name": "Enjambre",
+    "effect": "El valor es igual al número de traits Enjambre en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Estamos aquí por el teléfono nuevo."
+  },
+  "classic/traits/swarm-4": {
+    "name": "Enjambre",
+    "effect": "El valor es igual al número de traits Enjambre en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Estamos aquí por el teléfono nuevo."
+  },
+  "classic/traits/swarm-5": {
+    "name": "Enjambre",
+    "effect": "El valor es igual al número de traits Enjambre en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Estamos aquí por el teléfono nuevo."
+  },
+  "classic/traits/sweat": {
+    "name": "Sudor",
+    "effect": "Descarta 1 carta de tu mano.",
+    "flavor": "Hago pesas para poder hacer brunch."
+  },
+  "classic/traits/symbiosis": {
+    "name": "Simbiosis",
+    "effect": "+2 por cada trait en tu menor conteo de color. (Debes tener 2 o más colores. Si hay un empate, ¡elige 1!)",
+    "flavor": "¡Sí...sí! ¡Festejen, mis amigos parásitos!"
+  },
+  "classic/traits/teeth": {
+    "name": "Dientes",
+    "effect": "+1 Gene Pool",
+    "flavor": "Una fuente de ingresos cuando eres niño."
+  },
+  "classic/traits/telekinetic": {
+    "name": "Telequinético",
+    "effect": "Intercambia 1 trait de tu pila de traits con un trait de un oponente de un color diferente.",
+    "flavor": "La habilidad de encender la tele cuando no encuentras el control remoto."
+  },
+  "classic/traits/tentacles": {
+    "name": "Tentáculos",
+    "effect": "Intercambia 1 trait de tu pila de traits con un trait de un oponente del mismo color.",
+    "flavor": "¡Cuidado, amigos! ¡Aquí viene el intercambiapulpo!"
+  },
+  "classic/traits/territorial": {
+    "name": "Territorial",
+    "effect": "Todos los oponentes descartan 1 trait rojo de su pila de traits.",
+    "flavor": "Todo lo que huele a pipí es mío."
+  },
+  "classic/traits/the-third-eye": {
+    "name": "El Tercer Ojo",
+    "effect": "Echa un vistazo a la siguiente age. Juega otro trait.",
+    "flavor": "¿Te gusta? Gracias. Acabo de despertarlo."
+  },
+  "classic/traits/tiny": {
+    "name": "Diminuto",
+    "effect": "-1 por cada trait en tu pila de traits. (Incluyendo este.)",
+    "flavor": "Chiquitito, pequeñito, bien chiquitín."
+  },
+  "classic/traits/tiny-little-melons": {
+    "name": "Melones Pequeñitos",
+    "effect": "Arrebata 1 trait verde de la pila de traits de un oponente.",
+    "flavor": "No solo pequeños, sino también diminutos."
+  },
+  "classic/traits/trunk": {
+    "name": "Tronco",
+    "effect": "Juega la carta de la parte superior de la pila de descarte. Ignora su acción.",
+    "flavor": "Contenedor de trastos."
+  },
+  "classic/traits/vampirism": {
+    "name": "Vampirismo",
+    "effect": "Arrebata un trait de la pila de traits de un oponente. Juega su acción.",
+    "flavor": "Quiero socar tu sanguuuuue."
+  },
+  "classic/traits/venomous": {
+    "name": "Ponzoñoso",
+    "effect": "Juega otro trait. Luego, mueve Ponzoñoso a la pila de traits de un oponente.",
+    "flavor": "Mi mordida es peor que mi ladrido."
+  },
+  "classic/traits/viral": {
+    "name": "Viral",
+    "effect": "En el Fin del Mundo: Elige un color. Los oponentes reciben -1 por cada trait de ese color en su pila de traits.",
+    "flavor": "¡Dale like, comparte, comenta y no olvides darle al botón de suscribirse!"
+  },
+  "classic/traits/voracious": {
+    "name": "Voraz",
+    "effect": "Juega otro trait. Luego, descarta 1 trait de tu pila de traits.",
+    "flavor": "No me mires."
+  },
+  "classic/traits/warm-blood": {
+    "name": "Sangre Caliente",
+    "effect": "+2 Gene Pool",
+    "flavor": "¿Estás tratando de hervirme la sangre?"
+  },
+  "classic/traits/woody-stems": {
+    "name": "Tallos Leñosos",
+    "flavor": "Así es como transporto fluido de mis raíces a mis brotes."
+  }
+}
