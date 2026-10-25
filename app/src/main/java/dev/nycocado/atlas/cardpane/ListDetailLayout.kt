@@ -19,10 +19,9 @@ fun rememberListDetailLayout(cardPane: CardPane): ListDetailLayout {
 
 // Decided once from the panes the window allows and whether a card is open; the screens follow it instead of deciding
 // again on their own. The compendium still decides its rail from its own width.
-@OptIn(ExperimentalMaterial3AdaptiveApi::class)
 class ListDetailLayout(
-    private val windowDirective: PaneScaffoldDirective,
-    private val isCardOpen: Boolean,
+    windowDirective: PaneScaffoldDirective,
+    isCardOpen: Boolean,
 ) {
     val sideBySide = windowDirective.maxHorizontalPartitions > 1
 

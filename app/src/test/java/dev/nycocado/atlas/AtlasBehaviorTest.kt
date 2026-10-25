@@ -5,7 +5,6 @@ import android.view.KeyEvent
 import androidx.annotation.StringRes
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
-import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.hasClickAction
@@ -32,7 +31,6 @@ import org.robolectric.annotation.Config
 // Hilt wants @HiltAndroidTest on each concrete test class, so a subclass carries it.
 @RunWith(RobolectricTestRunner::class)
 @Config(qualifiers = "w411dp-h891dp-xxhdpi")
-@OptIn(ExperimentalTestApi::class)
 abstract class AtlasBehaviorTest {
     @get:Rule(order = 0)
     val hilt = HiltAndroidRule(this)
