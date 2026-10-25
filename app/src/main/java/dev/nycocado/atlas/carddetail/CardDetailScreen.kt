@@ -65,6 +65,7 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
@@ -198,10 +199,10 @@ fun CardDetailContent(
                         )
                     }
                 }
-                Pills(trait, type)
+                Pills(trait, type, language)
                 if (languages.size > 1) LanguageSelector(languages, language, onLanguageChange)
                 if (text.effect != null || text.flavor != null) Bubble(text.effect, text.flavor, language)
-                text.worldsEnd?.let { Bubble(it, null, language, label = R.string.worlds_end) }
+                text.worldsEnd?.let { Bubble(it, null, language, label = worldsEndLabel(language)) }
             }
             Spacer(Modifier.weight(1f))
             UnofficialFooter(
@@ -346,6 +347,7 @@ private fun PointsBadge(
 private fun Pills(
     trait: Trait?,
     @StringRes type: Int,
+    language: CardLanguage,
 ) {
     val theme = AtlasTheme.colors
     FlowRow(
@@ -368,12 +370,14 @@ private fun Pills(
         }
         trait?.icons?.forEach { icon ->
             Pill(
-                stringResource(icon.label),
+                icon.translatedLabel(language) ?: stringResource(icon.label),
                 theme.surfaceSticker,
                 theme.onSurface,
-                icon.symbol?.let {
-                    { Symbol(it, actionColor = theme.trait(trait.colors.firstOrNull()).fill) }
-                },
+                language = language,
+                glyph =
+                    icon.symbol?.let {
+                        { Symbol(it, actionColor = theme.trait(trait.colors.firstOrNull()).fill) }
+                    },
             )
         }
         trait?.subspecies?.forEach { Pill(it, theme.surfaceSticker, theme.onSurface) }
@@ -385,6 +389,7 @@ private fun Pill(
     text: String,
     fill: Color,
     content: Color,
+    language: CardLanguage? = null,
     glyph: @Composable (() -> Unit)? = null,
 ) {
     Row(
@@ -396,7 +401,10 @@ private fun Pill(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         glyph?.invoke()
-        BasicText(text, style = AtlasTypography.labelLg.copy(color = content))
+        BasicText(
+            language?.let { tagged(text, it) } ?: AnnotatedString(text),
+            style = AtlasTypography.labelLg.copy(color = content),
+        )
     }
 }
 
@@ -445,7 +453,7 @@ private fun Bubble(
     text: String?,
     flavor: String?,
     language: CardLanguage,
-    @StringRes label: Int? = null,
+    label: String? = null,
 ) {
     val theme = AtlasTheme.colors
     Column(
@@ -458,7 +466,7 @@ private fun Bubble(
     ) {
         label?.let {
             BasicText(
-                stringResource(it).uppercase(),
+                tagged(it.uppercase(), language),
                 style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
             )
         }
@@ -484,6 +492,41 @@ private val CardLanguage.endonym: String
             CardLanguage.Portuguese -> "Português"
             CardLanguage.Spanish -> "Español"
         }
+
+// The icon labels follow the card language, not the interface's, so they live here with the endonyms, from the cards
+// of docs/glossary. English and the icons not listed keep the printed label of the string resources.
+private fun TraitIcon.translatedLabel(language: CardLanguage): String? =
+    when (language) {
+        CardLanguage.English -> {
+            null
+        }
+
+        CardLanguage.Portuguese -> {
+            when (this) {
+                TraitIcon.Action -> "Ação"
+                TraitIcon.DropOfLife -> "Gota de Vida"
+                TraitIcon.PlayWhen -> "Jogar quando"
+                else -> null
+            }
+        }
+
+        CardLanguage.Spanish -> {
+            when (this) {
+                TraitIcon.Action -> "Acción"
+                TraitIcon.DropOfLife -> "Gota de Vida"
+                TraitIcon.PlayWhen -> "Jugar cuando"
+                else -> null
+            }
+        }
+    }
+
+@Composable
+private fun worldsEndLabel(language: CardLanguage): String =
+    when (language) {
+        CardLanguage.English -> stringResource(R.string.worlds_end)
+        CardLanguage.Portuguese -> "Fim do Mundo"
+        CardLanguage.Spanish -> "Fin del Mundo"
+    }
 
 // Text tagged with its language, so TalkBack reads a translation in its own language, not the interface's.
 private fun tagged(

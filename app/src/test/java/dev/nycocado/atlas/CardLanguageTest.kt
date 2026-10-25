@@ -101,6 +101,26 @@ class CardLanguageTest : AtlasBehaviorTest() {
     }
 
     @Test
+    fun theLabelsBesideTheIconsFollowTheCardLanguage() {
+        launchPastNotice()
+        card("Altruistic").performClick()
+        detailOf(string(R.string.icon_drop_of_life)).assertIsDisplayed()
+
+        portuguese.performClick()
+
+        detailOf("Gota de Vida").assertIsDisplayed()
+        detailOf(string(R.string.icon_drop_of_life)).assertDoesNotExist()
+        assertEquals(listOf("pt"), languagesOf("Gota de Vida"))
+        button(R.string.back).performClick()
+        compose.onNode(isSelectable() and hasText(string(R.string.kind_catastrophes))).performClick()
+        scrollListTo(hasContentDescription("Ice Age"))
+        compose.onNode(hasContentDescription("Ice Age")).performClick()
+
+        detailOf("FIM DO MUNDO").assertIsDisplayed()
+        detailOf(string(R.string.worlds_end).uppercase()).assertDoesNotExist()
+    }
+
+    @Test
     fun theChoiceSurvivesRecreatingTheActivity() {
         val scenario = launchPastNotice()
         card("Adorable").performClick()
