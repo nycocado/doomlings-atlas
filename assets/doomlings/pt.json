@@ -712,7 +712,7 @@
   "classic/traits/venomous": {
     "name": "Peçonhento",
     "effect": "Jogue outro trait. Depois, mova Peçonhento para a pilha de traits de um oponente.",
-    "flavor": "A minha mordida é pior do que meu latido."
+    "flavor": "Minha mordida é pior do que meu latido."
   },
   "classic/traits/viral": {
     "name": "Viral",
