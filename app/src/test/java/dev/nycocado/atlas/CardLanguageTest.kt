@@ -103,10 +103,18 @@ class CardLanguageTest : AtlasBehaviorTest() {
     @Test
     fun theLabelsBesideTheIconsFollowTheCardLanguage() {
         launchPastNotice()
-        card("Altruistic").performClick()
-        detailOf(string(R.string.icon_drop_of_life)).assertIsDisplayed()
+        scrollListTo(cardNamed("Eloquence"))
+        card("Eloquence").performClick()
+        detailOf(string(R.string.worlds_end)).assertIsDisplayed()
 
         portuguese.performClick()
+
+        detailOf("Fim do Mundo").assertIsDisplayed()
+        detailOf(string(R.string.worlds_end)).assertDoesNotExist()
+        assertEquals(listOf("pt"), languagesOf("Fim do Mundo"))
+        button(R.string.back).performClick()
+        scrollListTo(cardNamed("Altruistic"))
+        card("Altruistic").performClick()
 
         detailOf("Gota de Vida").assertIsDisplayed()
         detailOf(string(R.string.icon_drop_of_life)).assertDoesNotExist()

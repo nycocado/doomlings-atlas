@@ -202,7 +202,15 @@ fun CardDetailContent(
                 Pills(trait, type, language)
                 if (languages.size > 1) LanguageSelector(languages, language, onLanguageChange)
                 if (text.effect != null || text.flavor != null) Bubble(text.effect, text.flavor, language)
-                text.worldsEnd?.let { Bubble(it, null, language, label = worldsEndLabel(language)) }
+                text.worldsEnd?.let {
+                    Bubble(
+                        it,
+                        null,
+                        language,
+                        label =
+                            TraitIcon.WorldsEnd.translatedLabel(language) ?: stringResource(R.string.worlds_end),
+                    )
+                }
             }
             Spacer(Modifier.weight(1f))
             UnofficialFooter(
@@ -493,8 +501,8 @@ private val CardLanguage.endonym: String
             CardLanguage.Spanish -> "Español"
         }
 
-// The icon labels follow the card language, not the interface's, so they live here with the endonyms, from the cards
-// of docs/glossary. English and the icons not listed keep the printed label of the string resources.
+// The icon labels follow the card language, not the interface's, so they live here with the endonyms, with the words of
+// the cards in docs/glossary. English keeps the printed label of the string resources.
 private fun TraitIcon.translatedLabel(language: CardLanguage): String? =
     when (language) {
         CardLanguage.English -> {
@@ -504,28 +512,38 @@ private fun TraitIcon.translatedLabel(language: CardLanguage): String? =
         CardLanguage.Portuguese -> {
             when (this) {
                 TraitIcon.Action -> "Ação"
+                TraitIcon.Attachment -> "Anexo"
+                TraitIcon.Coral -> "Coral"
+                TraitIcon.Curious -> "Curioso"
+                TraitIcon.Dragon -> "Dragão"
                 TraitIcon.DropOfLife -> "Gota de Vida"
+                TraitIcon.Exotic -> "Exótico"
+                TraitIcon.Fish -> "Peixe"
                 TraitIcon.PlayWhen -> "Jogar quando"
-                else -> null
+                TraitIcon.Shell -> "Concha"
+                TraitIcon.Spell -> "Feitiço"
+                TraitIcon.Suppress -> "Suprimir"
+                TraitIcon.WorldsEnd -> "Fim do Mundo"
             }
         }
 
         CardLanguage.Spanish -> {
             when (this) {
                 TraitIcon.Action -> "Acción"
+                TraitIcon.Attachment -> "Adjunto"
+                TraitIcon.Coral -> "Coral"
+                TraitIcon.Curious -> "Curioso"
+                TraitIcon.Dragon -> "Dragón"
                 TraitIcon.DropOfLife -> "Gota de Vida"
+                TraitIcon.Exotic -> "Exótico"
+                TraitIcon.Fish -> "Pez"
                 TraitIcon.PlayWhen -> "Jugar cuando"
-                else -> null
+                TraitIcon.Shell -> "Concha"
+                TraitIcon.Spell -> "Hechizo"
+                TraitIcon.Suppress -> "Suprimir"
+                TraitIcon.WorldsEnd -> "Fin del Mundo"
             }
         }
-    }
-
-@Composable
-private fun worldsEndLabel(language: CardLanguage): String =
-    when (language) {
-        CardLanguage.English -> stringResource(R.string.worlds_end)
-        CardLanguage.Portuguese -> "Fim do Mundo"
-        CardLanguage.Spanish -> "Fin del Mundo"
     }
 
 // Text tagged with its language, so TalkBack reads a translation in its own language, not the interface's.

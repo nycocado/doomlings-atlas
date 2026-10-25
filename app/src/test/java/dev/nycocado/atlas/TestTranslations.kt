@@ -21,6 +21,8 @@ val testPortuguese =
         "classic/traits/altruistic" to
             CardTranslation("Altruísta", effect = "Zumbido do tamanho da Pool.", flavor = "Doei tudo."),
         "classic/traits/antlers" to CardTranslation("Chifres", flavor = "Fico bem na tua parede."),
+        "classic/traits/eloquence" to
+            CardTranslation("Eloquência", effect = "No Fim do Mundo: joga outra.", flavor = "Cala-te."),
         "classic/catastrophes/ice-age" to
             CardTranslation("Era Glacial", effect = "Descarta cartas da mão.", worldsEnd = "Menos pontos vermelhos."),
     )
