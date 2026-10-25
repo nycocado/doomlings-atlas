@@ -67,7 +67,6 @@ import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
 import dev.nycocado.atlas.ui.theme.Space
-import dev.nycocado.atlas.ui.theme.trait
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 

@@ -12,7 +12,7 @@ import kotlin.test.assertEquals
 
 // Checks the real assets/doomlings/cards.json, every set. Decoding is strict, so it also checks required fields.
 class CardDataIntegrityTest {
-    private val dir = File(System.getProperty("cards.dir"))
+    private val dir = File(System.getProperty("cards.dir")!!)
     private val json = dir.resolve("cards.json").readText()
     private val cards = decodeCards(json)
 

@@ -113,6 +113,8 @@ class RecreationTest : AtlasBehaviorTest() {
             renamed++
         }
         bundle.keySet().forEach { key ->
+            // The typed getters that replace get() need the value's type, which a walk of the whole state doesn't know.
+            @Suppress("DEPRECATION")
             when (val value = bundle.get(key)) {
                 is Bundle -> renamed += renameSavedCards(value, id)
                 is List<*> -> renamed += value.filterIsInstance<Bundle>().sumOf { renameSavedCards(it, id) }
