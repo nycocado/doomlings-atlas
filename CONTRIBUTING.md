@@ -36,6 +36,7 @@ Doomlings LLC gave permission for this app (2026-10-15) under the fan art terms 
 - Other languages are welcome as community contributions, ideally with a second native speaker reviewing.
 - If Doomlings releases an official translation, its terminology wins.
 - Only the card types and game-structure names (Trait, Age, Catastrophe, Gene Pool, The Birth of Life, Meaning of Life, Trinket) and the coined names (Doomling, Dinoling, Techling, Mythling, Deepling, Moonling, Glitterling, and their plurals) stay in English ([GLOSSARY.md](GLOSSARY.md)). What a card identifies by an icon, a banner or a plain word (subspecies, keywords, effect icons, rule verbs) is translated with the glossary's word: the icon carries the recognition, and the printed text is one tap away.
+- A card's own name is translated, but a card name cited in a card's text, including the card citing itself, stays exactly as printed in English, so the player finds the physical card; links to the cited cards come later.
 - One word per concept. Each language has a glossary in [`docs/glossary`](docs/glossary): the terms that stay in English (`keep`) and, for every recurring concept, the word to use and the synonyms to avoid. `./gradlew check` fails if an avoided word shows up in the interface strings or in a card translation file, wherever it appears in the text, so `avoid` lists only real synonyms. To use a new term, add it to the glossary first.
 
 ## Opening an Issue

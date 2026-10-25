@@ -1,7 +1,7 @@
 {
   "classic/ages/age-of-dracula": {
     "name": "Era de Drácula",
-    "effect": "Descarte 1 carta aleatória da sua mão.\n\nSe Vampirismo estiver na sua pilha de traits, roube 1 carta aleatória da mão de um oponente."
+    "effect": "Descarte 1 carta aleatória da sua mão.\n\nSe Vampirism estiver na sua pilha de traits, roube 1 carta aleatória da mão de um oponente."
   },
   "classic/ages/age-of-nietzsche": {
     "name": "Era de Nietzsche",
@@ -33,7 +33,7 @@
   },
   "classic/ages/birth-of-a-hero": {
     "name": "Nascimento de um Herói",
-    "effect": "Se você tiver Heroico na mão, jogue-o agora, sem restrição."
+    "effect": "Se você tiver Heroic na mão, jogue-o agora, sem restrição."
   },
   "classic/ages/coastal-formations": {
     "name": "Formações Costeiras",
@@ -198,7 +198,7 @@
   },
   "classic/traits/automimicry": {
     "name": "Automimetismo",
-    "effect": "Você pode jogar Automimetismo da sua mão a qualquer momento para impedir uma ação.",
+    "effect": "Você pode jogar Automimicry da sua mão a qualquer momento para impedir uma ação.",
     "flavor": "Fiz uma cara grande e assustadora para você não perceber minha carinha de verdade, que é pequenininha."
   },
   "classic/traits/bad": {
@@ -245,7 +245,7 @@
   },
   "classic/traits/chromatophores": {
     "name": "Cromatóforos",
-    "effect": "Você pode jogar Cromatóforos da sua mão a qualquer momento para impedir uma ação.",
+    "effect": "Você pode jogar Chromatophores da sua mão a qualquer momento para impedir uma ação.",
     "flavor": "Aqui não tem polvo nenhum. Só coral. Circulando."
   },
   "classic/traits/clever": {
@@ -278,7 +278,7 @@
   },
   "classic/traits/denial": {
     "name": "Negação",
-    "effect": "Ignore a próxima catastrophe. Atenção: você não pode ignorar Os Quatro Cavaleiros.",
+    "effect": "Ignore a próxima catastrophe. Atenção: você não pode ignorar The Four Horsemen.",
     "flavor": "Catastrophe que nada."
   },
   "classic/traits/directly-register": {
@@ -313,7 +313,7 @@
   },
   "classic/traits/endurance": {
     "name": "Resistência",
-    "effect": "Sempre que você descartar Resistência da sua pilha de traits, devolva-a à sua pilha de traits.",
+    "effect": "Sempre que você descartar Endurance da sua pilha de traits, devolva-o à sua pilha de traits.",
     "flavor": "Catastrophe nenhuma vai me pisotear!"
   },
   "classic/traits/faith": {
@@ -417,37 +417,37 @@
   },
   "classic/traits/kidney": {
     "name": "Rim",
-    "effect": "O valor é igual ao número de Rins na sua pilha de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de Kidneys na sua pilha de traits. (Incluindo este.)",
     "flavor": "...disfarçando a careca."
   },
   "classic/traits/kidney-2": {
     "name": "Rim",
-    "effect": "O valor é igual ao número de Rins na sua pilha de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de Kidneys na sua pilha de traits. (Incluindo este.)",
     "flavor": "...com uma tiara."
   },
   "classic/traits/kidney-3": {
     "name": "Rim",
-    "effect": "O valor é igual ao número de Rins na sua pilha de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de Kidneys na sua pilha de traits. (Incluindo este.)",
     "flavor": "...com um gorro de elfo."
   },
   "classic/traits/kidney-4": {
     "name": "Rim",
-    "effect": "O valor é igual ao número de Rins na sua pilha de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de Kidneys na sua pilha de traits. (Incluindo este.)",
     "flavor": "...com um chapéu de chef."
   },
   "classic/traits/kidney-5": {
     "name": "Rim",
-    "effect": "O valor é igual ao número de Rins na sua pilha de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de Kidneys na sua pilha de traits. (Incluindo este.)",
     "flavor": "...com um chapéu de aniversário."
   },
   "classic/traits/kidney-6": {
     "name": "Rim",
-    "effect": "O valor é igual ao número de Rins na sua pilha de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de Kidneys na sua pilha de traits. (Incluindo este.)",
     "flavor": "...com uma cartola."
   },
   "classic/traits/late": {
     "name": "Atrasado",
-    "effect": "Você pode jogar Atrasado da sua mão depois de estabilizar.",
+    "effect": "Você pode jogar Late da sua mão depois de estabilizar.",
     "flavor": "Desculpa! Teve um incêndio, trânsito e a fila do café estava enorme..."
   },
   "classic/traits/leaves": {
@@ -509,7 +509,7 @@
   },
   "classic/traits/parasitic": {
     "name": "Parasitário",
-    "effect": "Você pode jogar Parasitário da sua mão quando um oponente jogar um trait. Roube esse trait. Interrompa a ação dele.",
+    "effect": "Você pode jogar Parasitic da sua mão quando um oponente jogar um trait. Roube esse trait. Interrompa a ação dele.",
     "flavor": "Todo mundo tem aquele amigo que nunca está com a carteira e vive sugando sangue."
   },
   "classic/traits/persuasive": {
@@ -524,7 +524,7 @@
   },
   "classic/traits/poisonous": {
     "name": "Venenoso",
-    "effect": "Troque Venenoso por um trait da pilha de traits de um oponente.",
+    "effect": "Troque Poisonous por um trait da pilha de traits de um oponente.",
     "flavor": "Uma maçã por dia mantém o médico longe. A não ser que a maçã seja da bruxa."
   },
   "classic/traits/pollination": {
@@ -588,7 +588,7 @@
   },
   "classic/traits/self-awareness": {
     "name": "Autoconsciência",
-    "effect": "Você pode jogar Autoconsciência da sua mão na pilha de traits de um oponente a qualquer momento.",
+    "effect": "Você pode jogar Self-Awareness da sua mão na pilha de traits de um oponente a qualquer momento.",
     "flavor": "Ué. Pelo jeito, não sou vampiro."
   },
   "classic/traits/self-replicating": {
@@ -608,7 +608,7 @@
   },
   "classic/traits/sneaky": {
     "name": "Sorrateiro",
-    "effect": "No Fim do Mundo: Você pode jogar Sorrateiro da sua mão.",
+    "effect": "No Fim do Mundo: Você pode jogar Sneaky da sua mão.",
     "flavor": "Essa você não esperava, né?"
   },
   "classic/traits/spiny": {
@@ -631,27 +631,27 @@
   },
   "classic/traits/swarm": {
     "name": "Enxame",
-    "effect": "O valor é igual ao número de traits Enxame em todas as pilhas de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de traits Swarm em todas as pilhas de traits. (Incluindo este.)",
     "flavor": "Viemos pelo celular novo."
   },
   "classic/traits/swarm-2": {
     "name": "Enxame",
-    "effect": "O valor é igual ao número de traits Enxame em todas as pilhas de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de traits Swarm em todas as pilhas de traits. (Incluindo este.)",
     "flavor": "Viemos pelo celular novo."
   },
   "classic/traits/swarm-3": {
     "name": "Enxame",
-    "effect": "O valor é igual ao número de traits Enxame em todas as pilhas de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de traits Swarm em todas as pilhas de traits. (Incluindo este.)",
     "flavor": "Viemos pelo celular novo."
   },
   "classic/traits/swarm-4": {
     "name": "Enxame",
-    "effect": "O valor é igual ao número de traits Enxame em todas as pilhas de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de traits Swarm em todas as pilhas de traits. (Incluindo este.)",
     "flavor": "Viemos pelo celular novo."
   },
   "classic/traits/swarm-5": {
     "name": "Enxame",
-    "effect": "O valor é igual ao número de traits Enxame em todas as pilhas de traits. (Incluindo este.)",
+    "effect": "O valor é igual ao número de traits Swarm em todas as pilhas de traits. (Incluindo este.)",
     "flavor": "Viemos pelo celular novo."
   },
   "classic/traits/sweat": {
@@ -711,7 +711,7 @@
   },
   "classic/traits/venomous": {
     "name": "Peçonhento",
-    "effect": "Jogue outro trait. Depois, mova Peçonhento para a pilha de traits de um oponente.",
+    "effect": "Jogue outro trait. Depois, mova Venomous para a pilha de traits de um oponente.",
     "flavor": "Eu não ladro, mas mordo."
   },
   "classic/traits/viral": {

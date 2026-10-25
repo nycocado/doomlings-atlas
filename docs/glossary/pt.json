@@ -27,7 +27,7 @@
     "Trinket",
     "Trinkets"
   ],
-  "keepNote": "Gênero dos termos em inglês: o trait, a age, a catastrophe, o Gene Pool, o Meaning of Life, o trinket. No nome de uma carta, \"Age\" vira \"Era\" (Age of Reason: Era da Razão).",
+  "keepNote": "Gênero dos termos em inglês: o trait, a age, a catastrophe, o Gene Pool, o Meaning of Life, o trinket. No nome de uma carta, \"Age\" vira \"Era\" (Age of Reason: Era da Razão). Nomes de cartas citados no texto ficam como impressos, em inglês (Vampirism, The Four Horsemen).",
   "interface": [
     {
       "en": "about",
@@ -895,13 +895,13 @@
       ]
     },
     {
-      "en": "Swarm",
-      "use": "enxame",
+      "en": "Swarm (in a card name)",
+      "use": "Enxame",
       "avoid": [
         "bando",
         "cardume"
       ],
-      "note": "Também o nome de cartas: a mesma palavra."
+      "note": "Só no nome da carta; citada no texto, a carta fica Swarm, como impressa."
     },
     {
       "en": "then",

@@ -1,7 +1,7 @@
 {
   "classic/ages/age-of-dracula": {
     "name": "Era de Drácula",
-    "effect": "Descarta 1 carta aleatoria de tu mano.\n\nSi Vampirismo está en tu pila de traits, arrebata 1 carta aleatoria de la mano de un oponente."
+    "effect": "Descarta 1 carta aleatoria de tu mano.\n\nSi Vampirism está en tu pila de traits, arrebata 1 carta aleatoria de la mano de un oponente."
   },
   "classic/ages/age-of-nietzsche": {
     "name": "Era de Nietzsche",
@@ -33,7 +33,7 @@
   },
   "classic/ages/birth-of-a-hero": {
     "name": "Nacimiento de un Héroe",
-    "effect": "Si tienes Heroico en la mano, juégalo ahora sin restricción."
+    "effect": "Si tienes Heroic en la mano, juégalo ahora sin restricción."
   },
   "classic/ages/coastal-formations": {
     "name": "Formaciones Costeras",
@@ -198,7 +198,7 @@
   },
   "classic/traits/automimicry": {
     "name": "Automimetismo",
-    "effect": "Puedes jugar Automimetismo desde tu mano en cualquier momento para impedir una acción.",
+    "effect": "Puedes jugar Automimicry desde tu mano en cualquier momento para impedir una acción.",
     "flavor": "Puse una cara grande y aterradora para que no notes mi verdadera carita, que es chiquita."
   },
   "classic/traits/bad": {
@@ -245,7 +245,7 @@
   },
   "classic/traits/chromatophores": {
     "name": "Cromatóforos",
-    "effect": "Puedes jugar Cromatóforos desde tu mano en cualquier momento para impedir una acción.",
+    "effect": "Puedes jugar Chromatophores desde tu mano en cualquier momento para impedir una acción.",
     "flavor": "Aquí no hay ningún pulpo. Solo coral. Circulen, circulen."
   },
   "classic/traits/clever": {
@@ -278,7 +278,7 @@
   },
   "classic/traits/denial": {
     "name": "Negación",
-    "effect": "Ignora la siguiente catastrophe. Advertencia: no puedes ignorar Los Cuatro Jinetes.",
+    "effect": "Ignora la siguiente catastrophe. Advertencia: no puedes ignorar The Four Horsemen.",
     "flavor": "¿Catastrophe? ¿Cuál catastrophe?"
   },
   "classic/traits/directly-register": {
@@ -313,7 +313,7 @@
   },
   "classic/traits/endurance": {
     "name": "Resistencia",
-    "effect": "Siempre que descartes Resistencia de tu pila de traits, devuélvela a tu pila de traits.",
+    "effect": "Siempre que descartes Endurance de tu pila de traits, devuélvelo a tu pila de traits.",
     "flavor": "¡Ninguna catastrophe me va a pisotear!"
   },
   "classic/traits/faith": {
@@ -417,37 +417,37 @@
   },
   "classic/traits/kidney": {
     "name": "Riñón",
-    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
     "flavor": "...disimulando la calva."
   },
   "classic/traits/kidney-2": {
     "name": "Riñón",
-    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
     "flavor": "...con una tiara."
   },
   "classic/traits/kidney-3": {
     "name": "Riñón",
-    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
     "flavor": "...con un gorro de elfo."
   },
   "classic/traits/kidney-4": {
     "name": "Riñón",
-    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
     "flavor": "...con un gorro de chef."
   },
   "classic/traits/kidney-5": {
     "name": "Riñón",
-    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
     "flavor": "...con un gorro de fiesta."
   },
   "classic/traits/kidney-6": {
     "name": "Riñón",
-    "effect": "El valor es igual al número de Riñones en tu pila de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
     "flavor": "...con un sombrero de copa."
   },
   "classic/traits/late": {
     "name": "Impuntual",
-    "effect": "Puedes jugar Impuntual desde tu mano después de estabilizar.",
+    "effect": "Puedes jugar Late desde tu mano después de estabilizar.",
     "flavor": "¡Perdón! Hubo un incendio, tráfico y la fila del café era larguísima..."
   },
   "classic/traits/leaves": {
@@ -509,7 +509,7 @@
   },
   "classic/traits/parasitic": {
     "name": "Parasitario",
-    "effect": "Puedes jugar Parasitario desde tu mano cuando un oponente juegue un trait. Arrebata ese trait. Interrumpe su acción.",
+    "effect": "Puedes jugar Parasitic desde tu mano cuando un oponente juegue un trait. Arrebata ese trait. Interrumpe su acción.",
     "flavor": "Todos tenemos ese amigo que nunca trae la billetera y siempre anda chupando sangre."
   },
   "classic/traits/persuasive": {
@@ -524,7 +524,7 @@
   },
   "classic/traits/poisonous": {
     "name": "Venenoso",
-    "effect": "Intercambia Venenoso con un trait de la pila de traits de un oponente.",
+    "effect": "Intercambia Poisonous con un trait de la pila de traits de un oponente.",
     "flavor": "Una manzana al día mantiene alejado al médico. A menos que te la dé una bruja."
   },
   "classic/traits/pollination": {
@@ -588,7 +588,7 @@
   },
   "classic/traits/self-awareness": {
     "name": "Autoconciencia",
-    "effect": "Puedes jugar Autoconciencia desde tu mano en la pila de traits de un oponente en cualquier momento.",
+    "effect": "Puedes jugar Self-Awareness desde tu mano en la pila de traits de un oponente en cualquier momento.",
     "flavor": "Mmm. Parece que no soy vampiro."
   },
   "classic/traits/self-replicating": {
@@ -608,7 +608,7 @@
   },
   "classic/traits/sneaky": {
     "name": "Sigiloso",
-    "effect": "En el Fin del Mundo: Puedes jugar Sigiloso desde tu mano.",
+    "effect": "En el Fin del Mundo: Puedes jugar Sneaky desde tu mano.",
     "flavor": "Esa no te la esperabas, ¿eh?"
   },
   "classic/traits/spiny": {
@@ -631,27 +631,27 @@
   },
   "classic/traits/swarm": {
     "name": "Enjambre",
-    "effect": "El valor es igual al número de traits Enjambre en todas las pilas de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de traits Swarm en todas las pilas de traits. (Incluyendo este.)",
     "flavor": "Venimos por el celular nuevo."
   },
   "classic/traits/swarm-2": {
     "name": "Enjambre",
-    "effect": "El valor es igual al número de traits Enjambre en todas las pilas de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de traits Swarm en todas las pilas de traits. (Incluyendo este.)",
     "flavor": "Venimos por el celular nuevo."
   },
   "classic/traits/swarm-3": {
     "name": "Enjambre",
-    "effect": "El valor es igual al número de traits Enjambre en todas las pilas de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de traits Swarm en todas las pilas de traits. (Incluyendo este.)",
     "flavor": "Venimos por el celular nuevo."
   },
   "classic/traits/swarm-4": {
     "name": "Enjambre",
-    "effect": "El valor es igual al número de traits Enjambre en todas las pilas de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de traits Swarm en todas las pilas de traits. (Incluyendo este.)",
     "flavor": "Venimos por el celular nuevo."
   },
   "classic/traits/swarm-5": {
     "name": "Enjambre",
-    "effect": "El valor es igual al número de traits Enjambre en todas las pilas de traits. (Incluyendo este.)",
+    "effect": "El valor es igual al número de traits Swarm en todas las pilas de traits. (Incluyendo este.)",
     "flavor": "Venimos por el celular nuevo."
   },
   "classic/traits/sweat": {
@@ -711,7 +711,7 @@
   },
   "classic/traits/venomous": {
     "name": "Ponzoñoso",
-    "effect": "Juega otro trait. Luego, mueve Ponzoñoso a la pila de traits de un oponente.",
+    "effect": "Juega otro trait. Luego, mueve Venomous a la pila de traits de un oponente.",
     "flavor": "Yo no ladro, pero muerdo."
   },
   "classic/traits/viral": {

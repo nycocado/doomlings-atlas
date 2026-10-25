@@ -2,6 +2,7 @@ package dev.nycocado.atlas.card
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonNull
+import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
@@ -107,4 +108,34 @@ class TranslationDataIntegrityTest {
             assertEquals(emptyList<String>(), enabledClassicIds - translated, code)
         }
     }
+
+    // A card name cited in the text stays as printed, so the player finds the physical card.
+    @Test
+    fun everyCardNameCitedInTheEnglishTextStaysInEnglishInTheTranslation() {
+        val englishById =
+            Json
+                .parseToJsonElement(dir.resolve("cards.json").readText())
+                .jsonArray
+                .map { it.jsonObject }
+                .associateBy { it.getValue("id").jsonPrimitive.content }
+        val names = englishById.values.mapNotNull { it["name"]?.jsonPrimitive?.contentOrNull }.toSet()
+
+        files.forEach { file ->
+            val missing =
+                fieldsOf(file).flatMap { (id, fields) ->
+                    fields.filterKeys { it == "effect" || it == "worldsEnd" }.flatMap { (field, text) ->
+                        val english =
+                            englishById
+                                .getValue(id)
+                                .getValue(field)
+                                .jsonPrimitive.content
+                        names.filter { english.cites(it) && !text.cites(it) }.map { "$id.$field: $it" }
+                    }
+                }
+            assertEquals(emptyList<String>(), missing, file.name)
+        }
+    }
+
+    // Singular or plural, and not inside a longer word: "Vampirismo" does not cite Vampirism.
+    private fun String.cites(name: String) = Regex("(?<!\\p{L})${Regex.escape(name)}s?(?!\\p{L})").containsMatchIn(this)
 }
