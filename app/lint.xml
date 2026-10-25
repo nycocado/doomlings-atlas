@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <!-- values-es holds only the labels beside the icons until the Spanish interface ticket, which deletes this rule.
+         The regexp keeps MissingTranslation on for Portuguese. -->
+    <issue id="MissingTranslation">
+        <ignore regexp="is not translated in &quot;es&quot;" />
+    </issue>
+</lint>

@@ -1,5 +1,4 @@
 package dev.nycocado.atlas
-
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.assertIsDisplayed
@@ -129,6 +128,21 @@ class CardLanguageTest : AtlasBehaviorTest() {
     }
 
     @Test
+    fun englishBringsTheLabelsBesideTheIconsBackToTheirPrintedWords() {
+        launchPastNotice()
+        scrollListTo(cardNamed("Eloquence"))
+        card("Eloquence").performClick()
+        portuguese.performClick()
+        detailOf("Fim do Mundo").assertIsDisplayed()
+
+        compose.onNode(isSelectable() and hasText("English")).performClick()
+
+        detailOf("World's End").assertIsDisplayed()
+        detailOf("Fim do Mundo").assertDoesNotExist()
+        assertEquals(listOf("en"), languagesOf("World's End"))
+    }
+
+    @Test
     fun theChoiceSurvivesRecreatingTheActivity() {
         val scenario = launchPastNotice()
         card("Adorable").performClick()
@@ -215,6 +229,31 @@ class CardLanguageTest : AtlasBehaviorTest() {
                     ?.firstOrNull()
                     ?.language
             }.distinct()
+}
+
+// The labels beside the icons follow the card language, not the interface's.
+@HiltAndroidTest
+@Config(qualifiers = "pt-w411dp-h1200dp-xhdpi")
+class CardLanguagePortugueseInterfaceTest : AtlasBehaviorTest() {
+    @Test
+    fun theLabelsBesideTheIconsStayInTheCardLanguageNotTheInterfaceOnes() {
+        launchPastNotice()
+        scrollListTo(cardNamed("Eloquence"))
+        card("Eloquence").performClick()
+
+        detailOf("World's End").assertIsDisplayed()
+        detailOf("Fim do Mundo").assertDoesNotExist()
+
+        compose.onNode(isSelectable() and hasText("Português")).performClick()
+
+        detailOf("Fim do Mundo").assertIsDisplayed()
+        detailOf("World's End").assertDoesNotExist()
+
+        compose.onNode(isSelectable() and hasText("English")).performClick()
+
+        detailOf("World's End").assertIsDisplayed()
+        detailOf("Fim do Mundo").assertDoesNotExist()
+    }
 }
 
 @HiltAndroidTest
