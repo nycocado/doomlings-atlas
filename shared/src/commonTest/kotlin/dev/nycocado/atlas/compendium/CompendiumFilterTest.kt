@@ -6,8 +6,11 @@ import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardColor.Blue
 import dev.nycocado.atlas.card.CardColor.Green
 import dev.nycocado.atlas.card.CardColor.Red
+import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.Trait
+import dev.nycocado.atlas.card.decodeTranslations
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -130,5 +133,36 @@ class CompendiumFilterTest {
     fun survivesSavingWithColorlessSelected() {
         val filter = CompendiumFilter(CardKind.Trait, "drac", setOf(null))
         assertEquals(filter, Json.decodeFromString<CompendiumFilter>(Json.encodeToString(filter)))
+    }
+
+    private val translations =
+        CardTranslations(
+            mapOf(
+                CardLanguage.Portuguese to
+                    decodeTranslations(
+                        """{"Venomous": {"name": "Venenoso", "effect": "Roube 1 carta."},
+                           "ai-takeover": {"name": "IA", "effect": "-1 Reserva", "worldsEnd": "Incolores valem 2."}}""",
+                    ),
+            ),
+        )
+
+    private fun found(
+        query: String,
+        language: CardLanguage,
+        kind: CardKind = CardKind.Trait,
+    ) = cards.filterCompendium(CompendiumFilter(kind = kind, query = query), translations, language).map { it.id }
+
+    @Test
+    fun searchFindsAWordOnlyTheTranslationHasAndStillThePrintedText() {
+        assertEquals(listOf("Venomous"), found("roube", CardLanguage.Portuguese))
+        assertEquals(listOf("Venomous"), found("venenoso", CardLanguage.Portuguese))
+        assertEquals(listOf("Venomous"), found("steal", CardLanguage.Portuguese))
+        assertEquals(listOf("ai-takeover"), found("incolores", CardLanguage.Portuguese, CardKind.Catastrophe))
+    }
+
+    @Test
+    fun searchIgnoresTranslationsInOtherLanguages() {
+        assertEquals(emptyList(), found("roube", CardLanguage.English))
+        assertEquals(emptyList(), found("roube", CardLanguage.Spanish))
     }
 }

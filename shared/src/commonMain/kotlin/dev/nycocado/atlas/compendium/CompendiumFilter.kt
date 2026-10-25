@@ -3,9 +3,12 @@ package dev.nycocado.atlas.compendium
 import dev.nycocado.atlas.card.Age
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
+import dev.nycocado.atlas.card.printedText
 import kotlinx.serialization.Serializable
 
 // The compendium's segments. Other card types (Gene Pool, Birth of Life) are not listed.
@@ -29,15 +32,23 @@ val Card.kind: CardKind?
             else -> null
         }
 
-fun List<Card>.filterCompendium(filter: CompendiumFilter): List<NamedCard> {
+// The query matches the printed text and the translation in the card language; the list stays sorted by printed name.
+fun List<Card>.filterCompendium(
+    filter: CompendiumFilter,
+    translations: CardTranslations = CardTranslations(),
+    language: CardLanguage = CardLanguage.English,
+): List<NamedCard> {
     val query = normalize(filter.query.trim())
     return filterIsInstance<NamedCard>()
         .filter { card ->
             val colorMatches =
                 filter.colors.isEmpty() || card !is Trait ||
                     card.colors.ifEmpty { listOf(null) }.any { it in filter.colors }
-            val text = if (card is Catastrophe) "${card.effect} ${card.worldsEnd}" else card.effect.orEmpty()
-            val queryMatches = query.isEmpty() || query in normalize(card.name) || query in normalize(text)
+            val queryMatches =
+                query.isEmpty() ||
+                    listOf(card.printedText(), translations.text(card, language)).any { text ->
+                        listOf(text.name, text.effect, text.worldsEnd).any { query in normalize(it.orEmpty()) }
+                    }
             card.kind == filter.kind && colorMatches && queryMatches
         }.sortedBy { normalize(it.name) }
 }

@@ -259,9 +259,24 @@ abstract class PackageCards : DefaultTask() {
         check(empty.isEmpty()) { "Enabled sets with no cards: ${empty.joinToString()}" }
 
         val json = temporaryDir.resolve("cards.json").apply { writeText(JsonOutput.toJson(cards)) }
+        // Translations (pt.json, es.json, ...) keep only the entries of the cards packaged.
+        val ids = cards.map { it["id"] }.toSet()
+        val translations =
+            source
+                .get()
+                .asFile
+                .listFiles { it: File ->
+                    it.extension == "json" && it.name != "cards.json"
+                }.orEmpty()
+                .map { file ->
+                    @Suppress("UNCHECKED_CAST")
+                    val all = JsonSlurper().parse(file) as Map<String, Any?>
+                    temporaryDir.resolve(file.name).apply { writeText(JsonOutput.toJson(all.filterKeys { it in ids })) }
+                }
         // Sync also deletes what a previous run left, e.g. images of a set no longer enabled.
         files.sync {
             from(json)
+            from(translations)
             from(source) { include(cards.map { it["image"] as String }) }
             into(output.dir("cards"))
         }

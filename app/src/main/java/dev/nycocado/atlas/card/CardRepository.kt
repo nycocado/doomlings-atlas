@@ -27,4 +27,22 @@ class CardRepository
                         .use { it.readText() },
                 )
             }
+
+        // The translation files packaged beside cards.json; a language with no file has no translations yet.
+        suspend fun translations(): CardTranslations =
+            withContext(Dispatchers.IO) {
+                val packaged = context.assets.list("cards").orEmpty()
+                CardTranslations(
+                    CardLanguage.entries
+                        .filter { "${it.code}.json" in packaged }
+                        .associateWith { language ->
+                            decodeTranslations(
+                                context.assets
+                                    .open("cards/${language.code}.json")
+                                    .bufferedReader()
+                                    .use { it.readText() },
+                            )
+                        },
+                )
+            }
     }
