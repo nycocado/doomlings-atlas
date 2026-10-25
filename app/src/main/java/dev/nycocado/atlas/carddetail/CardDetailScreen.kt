@@ -33,6 +33,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
@@ -69,7 +70,11 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.text
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -206,14 +211,25 @@ fun CardDetailContent(
                     }
                 }
                 Pills(trait, type, language)
-                if (languages.size > 1) LanguageSelector(languages, language, onLanguageChange)
-                if (text.effect != null || text.flavor != null) Bubble(text.effect, text.flavor, language)
+                val selector: (@Composable () -> Unit)? =
+                    if (languages.size > 1) {
+                        { LanguageSelector(languages, language, onLanguageChange) }
+                    } else {
+                        null
+                    }
+                val hasBubble = text.effect != null || text.flavor != null
+                // Without a text bubble to hang on, the selector takes its own row where the bubble would be.
+                if (!hasBubble && text.worldsEnd == null) {
+                    selector?.let { Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd) { it() } }
+                }
+                if (hasBubble) Bubble(text.effect, text.flavor, language, selector = selector)
                 text.worldsEnd?.let {
                     Bubble(
                         it,
                         null,
                         language,
                         label = cardString(TraitIcon.WorldsEnd.label, language),
+                        selector = selector.takeUnless { hasBubble },
                     )
                 }
             }
@@ -468,33 +484,37 @@ private fun Bubble(
     flavor: String?,
     language: CardLanguage,
     label: String? = null,
+    selector: (@Composable () -> Unit)? = null,
 ) {
     val theme = AtlasTheme.colors
-    Column(
-        Modifier
-            .padding(top = 6.dp)
-            .fillMaxWidth()
-            .sticker(Radius.md, theme.surfaceSticker, theme.outline, shadow = Shadow.stickerLg)
-            .padding(start = 18.dp, end = 18.dp, top = 18.dp, bottom = Space.s4),
-        verticalArrangement = Arrangement.spacedBy(Space.s3),
-    ) {
-        label?.let {
-            BasicText(
-                tagged(it.uppercase(), language),
-                style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
-            )
+    Box(Modifier.padding(top = 6.dp)) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .sticker(Radius.md, theme.surfaceSticker, theme.outline, shadow = Shadow.stickerLg)
+                .padding(start = 18.dp, end = 18.dp, top = 18.dp, bottom = Space.s4),
+            verticalArrangement = Arrangement.spacedBy(Space.s3),
+        ) {
+            label?.let {
+                BasicText(
+                    tagged(it.uppercase(), language),
+                    style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
+                )
+            }
+            text?.let { BasicText(tagged(it, language), style = AtlasTypography.bodyLg.copy(color = theme.onSurface)) }
+            flavor?.let {
+                BasicText(
+                    tagged(it, language),
+                    style =
+                        AtlasTypography.bodyMd.copy(
+                            color = theme.onSurfaceVariant,
+                            fontStyle = FontStyle.Italic,
+                        ),
+                )
+            }
         }
-        text?.let { BasicText(tagged(it, language), style = AtlasTypography.bodyLg.copy(color = theme.onSurface)) }
-        flavor?.let {
-            BasicText(
-                tagged(it, language),
-                style =
-                    AtlasTypography.bodyMd.copy(
-                        color = theme.onSurfaceVariant,
-                        fontStyle = FontStyle.Italic,
-                    ),
-            )
-        }
+        // Hangs on the bubble's top-right edge, 18dp above it and 14dp in, as the design sketch has it.
+        selector?.let { Box(Modifier.align(Alignment.TopEnd).offset(x = (-14).dp, y = (-18).dp)) { it() } }
     }
 }
 
@@ -542,28 +562,42 @@ private fun LanguageSelector(
 ) {
     val theme = AtlasTheme.colors
     val label = stringResource(R.string.card_language)
-    FlowRow(
-        Modifier.selectableGroup().semantics { contentDescription = label },
-        horizontalArrangement = Arrangement.spacedBy(Space.s2),
-        verticalArrangement = Arrangement.spacedBy(Space.s2),
+    // Compose widens the touch target of a 30dp option to the 48dp minimum without changing its layout.
+    Row(
+        Modifier
+            .background(theme.inverseSurface, CircleShape)
+            .padding(3.dp)
+            .selectableGroup()
+            .semantics { contentDescription = label },
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         languages.forEach { language ->
             val active = language == selected
             Box(
                 Modifier
-                    .heightIn(min = 48.dp)
-                    .sticker(
-                        CircleShape,
-                        if (active) theme.highlight else theme.surfaceSticker,
-                        theme.outline,
-                        Stroke.thin,
-                    ).selectable(active, role = Role.RadioButton) { onSelect(language) }
-                    .padding(horizontal = Space.s4),
+                    .height(30.dp)
+                    .widthIn(min = 44.dp)
+                    .clip(CircleShape)
+                    .background(if (active) theme.highlight else Color.Transparent)
+                    .selectable(active, role = Role.RadioButton) { onSelect(language) }
+                    .clearAndSetSemantics {
+                        text = tagged(language.endonym, language)
+                        this.selected = active
+                        role = Role.RadioButton
+                        onClick {
+                            onSelect(language)
+                            true
+                        }
+                    }.padding(horizontal = Space.s3),
                 contentAlignment = Alignment.Center,
             ) {
+                // TalkBack reads the endonym above, tagged with its language; the code is only for the eye.
                 BasicText(
-                    tagged(language.endonym, language),
-                    style = AtlasTypography.labelLg.copy(color = if (active) theme.onHighlight else theme.onSurface),
+                    language.code.uppercase(),
+                    style =
+                        AtlasTypography.labelSm.copy(
+                            color = if (active) theme.onHighlight else theme.onInverseSurface,
+                        ),
                 )
             }
         }

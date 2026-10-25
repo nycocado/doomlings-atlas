@@ -1,18 +1,23 @@
 package dev.nycocado.atlas
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
+import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.getUnclippedBoundsInRoot
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isSelectable
+import androidx.compose.ui.test.onAllNodesWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.test.performTextReplacement
+import androidx.compose.ui.unit.dp
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.robolectric.annotation.Config
 
@@ -209,6 +214,45 @@ class CardLanguageTest : AtlasBehaviorTest() {
         assertEquals(listOf("pt"), languagesOf("Esfregue minha barriga."))
         assertEquals(listOf("pt"), languagesOf("Adorável"))
         assertEquals(listOf("en"), languagesOf("Adorable"))
+    }
+
+    @Test
+    fun eachOptionReadsItsEndonymAloneInItsLanguage() {
+        launchPastNotice()
+        card("Adorable").performClick()
+
+        // The codes EN / PT show on screen (see the screenshots); TalkBack must not read them beside the endonym.
+        assertEquals(listOf("pt"), languagesOf("Português"))
+        assertEquals(
+            listOf("Português"),
+            portuguese.fetchSemanticsNode().config[SemanticsProperties.Text].map { it.text },
+        )
+    }
+
+    @Test
+    fun theSelectorHangsOnTheTopEdgeOfTheFirstBubble() {
+        launchPastNotice()
+        card("Adorable").performClick()
+        portuguese.performClick()
+
+        val group = button(R.string.card_language).getUnclippedBoundsInRoot()
+        val bubbleTop = detailOf("Esfregue minha barriga.").getUnclippedBoundsInRoot().top - 18.dp
+
+        assertTrue(group.top < bubbleTop && group.bottom > bubbleTop)
+    }
+
+    @Test
+    fun aCatastropheHasOneSelectorOnItsEffectBubble() {
+        launchPastNotice()
+        compose.onNode(isSelectable() and hasText(string(R.string.kind_catastrophes))).performClick()
+        scrollListTo(hasContentDescription("Ice Age"))
+        compose.onNode(hasContentDescription("Ice Age")).performClick()
+        portuguese.performClick()
+
+        compose.onAllNodesWithContentDescription(string(R.string.card_language)).assertCountEquals(1)
+        val group = button(R.string.card_language).getUnclippedBoundsInRoot()
+        val worldsEnd = detailOf("Menos pontos vermelhos.").getUnclippedBoundsInRoot()
+        assertTrue(group.bottom < worldsEnd.top)
     }
 
     @Test

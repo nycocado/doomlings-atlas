@@ -36,6 +36,7 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 
 - **Compendium**: the screen listing the cards, with search and filters.
 - **Card language**: the language card text is shown and searched in: the printed text or one translation. Chosen apart from the interface language ([ADR 0007](docs/adr/0007-card-language-apart-from-interface.md)).
+- **Language selector**: the control in the card detail that switches the card language among the languages the card has.
 - **Card detail**: the screen of one card. On a wide window it opens **beside the list**, in the **card pane**.
 - **Header**: the dark top of the compendium, with the title, sunset band and search. It **collapses** and **expands** as the list scrolls. _Avoid_: fold, for this.
 - **Fold**: only the hinge of a foldable device.
