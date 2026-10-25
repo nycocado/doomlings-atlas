@@ -1,22 +1,22 @@
 {
   "classic/ages/age-of-dracula": {
-    "name": "Age de Drácula",
+    "name": "Era de Drácula",
     "effect": "Descarte 1 carta aleatória da sua mão.\n\nSe Vampirismo estiver na sua pilha de traits, roube 1 carta aleatória da mão de um oponente."
   },
   "classic/ages/age-of-nietzsche": {
-    "name": "Age de Nietzsche",
+    "name": "Era de Nietzsche",
     "effect": "Em vez de estabilizar neste turno, você pode descartar sua mão e comprar 3 cartas."
   },
   "classic/ages/age-of-peace": {
-    "name": "Age da Paz",
+    "name": "Era da Paz",
     "effect": "Ignore todas as ações dos traits."
   },
   "classic/ages/age-of-wonder": {
-    "name": "Age da Maravilha",
+    "name": "Era da Maravilha",
     "effect": "Você deve terminar seu turno com 4 cartas na mão."
   },
   "classic/ages/age-of-reason": {
-    "name": "Age da Razão",
+    "name": "Era da Razão",
     "effect": "Compre 3 cartas. Fique com 1, descarte as outras 2."
   },
   "classic/ages/alien-terraform": {
@@ -180,7 +180,7 @@
   },
   "classic/traits/altruistic": {
     "name": "Altruísta",
-    "effect": "O valor é igual ao tamanho da sua Gene Pool.",
+    "effect": "O valor é igual ao tamanho da seu Gene Pool.",
     "flavor": "Pode me emprestar uns trocados? Doei todo meu dinheiro para a caridade."
   },
   "classic/traits/antlers": {
@@ -548,7 +548,7 @@
   },
   "classic/traits/random-fertilization": {
     "name": "Fertilização Aleatória",
-    "effect": "O valor é igual ao tamanho da sua Gene Pool.",
+    "effect": "O valor é igual ao tamanho da seu Gene Pool.",
     "flavor": "Escolha um número entre 1 e 64 trilhões."
   },
   "classic/traits/reckless": {

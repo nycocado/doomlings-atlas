@@ -27,6 +27,7 @@
     "Trinket",
     "Trinkets"
   ],
+  "keepNote": "Género de los términos en inglés: el trait, la age, la catastrophe, el Gene Pool, el Meaning of Life, el trinket. En el nombre de una carta, \"Age\" pasa a \"Era\" (Age of Reason: Era de la Razón).",
   "interface": [
     {
       "en": "about",
@@ -142,6 +143,14 @@
     }
   ],
   "cards": [
+    {
+      "en": "Age (in a card name)",
+      "use": "Era",
+      "avoid": [
+        "Edad"
+      ],
+      "note": "Solo en el nombre de la carta (Era de la Razón, Era del Hielo); en el texto, age queda en inglés."
+    },
     {
       "en": "Action",
       "use": "acción",

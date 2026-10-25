@@ -1,22 +1,22 @@
 {
   "classic/ages/age-of-dracula": {
-    "name": "Age de Drácula",
+    "name": "Era de Drácula",
     "effect": "Descarta 1 carta aleatoria de tu mano.\n\nSi Vampirismo está en tu pila de traits, arrebata 1 carta aleatoria de la mano de un oponente."
   },
   "classic/ages/age-of-nietzsche": {
-    "name": "Age de Nietzsche",
+    "name": "Era de Nietzsche",
     "effect": "En lugar de estabilizar en este turno, puedes descartar tu mano y robar 3 cartas."
   },
   "classic/ages/age-of-peace": {
-    "name": "Age de la Paz",
+    "name": "Era de la Paz",
     "effect": "Ignora todas las acciones de los traits."
   },
   "classic/ages/age-of-wonder": {
-    "name": "Age de la Maravilla",
+    "name": "Era de la Maravilla",
     "effect": "Debes terminar tu turno con 4 cartas en la mano."
   },
   "classic/ages/age-of-reason": {
-    "name": "Age de la Razón",
+    "name": "Era de la Razón",
     "effect": "Roba 3 cartas. Quédate con 1, descarta las otras 2."
   },
   "classic/ages/alien-terraform": {
@@ -120,7 +120,7 @@
     "worldsEnd": "-5 puntos para el/los jugador(es) con más traits en su pila de traits."
   },
   "classic/catastrophes/ice-age": {
-    "name": "Edad de Hielo",
+    "name": "Era del Hielo",
     "effect": "-1 Gene Pool\n\nDescarta 1 carta de tu mano por cada trait rojo en tu pila de traits.",
     "worldsEnd": "-1 por cada trait rojo en tu pila de traits."
   },
