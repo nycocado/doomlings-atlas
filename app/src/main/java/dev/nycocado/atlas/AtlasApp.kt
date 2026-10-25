@@ -40,6 +40,7 @@ data object CompendiumKey : NavKey
 data object AboutKey : NavKey
 
 internal const val NOTICE_PREFS = "atlas"
+internal const val CARD_LANGUAGE = "card_language"
 internal const val NOTICE_SEEN = "notice_seen"
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
@@ -55,7 +56,14 @@ fun AtlasApp() {
             noticeSeen = true
         }
     }
-    val cardPane = rememberCardPane(backStack, viewModel.cards.collectAsStateWithLifecycle())
+    val cardPane =
+        rememberCardPane(
+            backStack,
+            viewModel.cards.collectAsStateWithLifecycle(),
+            viewModel.translations.collectAsStateWithLifecycle(),
+            viewModel.cardLanguage.collectAsStateWithLifecycle(),
+            viewModel::chooseCardLanguage,
+        )
     val layout = rememberListDetailLayout(cardPane)
     val listDetail =
         rememberListDetailSceneStrategy<NavKey>(

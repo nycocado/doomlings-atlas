@@ -1,0 +1,203 @@
+package dev.nycocado.atlas
+
+import androidx.compose.ui.semantics.SemanticsProperties
+import androidx.compose.ui.semantics.getOrNull
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.hasContentDescription
+import androidx.compose.ui.test.hasSetTextAction
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.isSelectable
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performTextInput
+import androidx.compose.ui.test.performTextReplacement
+import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.Assert.assertEquals
+import org.junit.Test
+import org.robolectric.annotation.Config
+
+// Card names come from assets/doomlings/cards.json, the Portuguese from testPortuguese. Classic's green traits run
+// Adorable, Altruistic, Antlers, Apex Predator, Appealing.
+@HiltAndroidTest
+class CardLanguageTest : AtlasBehaviorTest() {
+    private val portuguese get() = compose.onNode(isSelectable() and hasText("Português"))
+
+    @Test
+    fun theChoiceOfOneCardOpensTheNextTranslatedCardInIt() {
+        launchPastNotice()
+        card("Adorable").performClick()
+        detailOf("Adorable").assertIsDisplayed()
+        compose.onNodeWithText("Esfrega a minha barriga.").assertDoesNotExist()
+
+        portuguese.performClick()
+
+        portuguese.assertIsSelected()
+        detailOf("Adorável").assertIsDisplayed()
+        detailOf("Esfrega a minha barriga.").assertIsDisplayed()
+        button(R.string.back).performClick()
+        card("Altruistic").performClick()
+
+        detailOf("Altruistic").assertIsDisplayed()
+        detailOf("Altruísta").assertIsDisplayed()
+        detailOf("Zumbido do tamanho da Pool.").assertIsDisplayed()
+        portuguese.assertIsSelected()
+    }
+
+    @Test
+    fun aCardWithoutThePortugueseShowsItsPrintedTextAndTheChoiceStays() {
+        launchPastNotice()
+        card("Adorable").performClick()
+        portuguese.performClick()
+        button(R.string.back).performClick()
+
+        scrollListTo(cardNamed("Appealing"))
+        card("Appealing").performClick()
+
+        detailOf("Orange you glad?").assertIsDisplayed()
+        portuguese.assertDoesNotExist()
+        button(R.string.back).performClick()
+        card("Antlers").performClick()
+        detailOf("Chifres").assertIsDisplayed()
+        portuguese.assertIsSelected()
+    }
+
+    @Test
+    fun aCardWithOnlyItsPrintedTextHasNoSelector() {
+        launchPastNotice()
+
+        scrollListTo(cardNamed("Appealing"))
+        card("Appealing").performClick()
+
+        detailOf("Appealing").assertIsDisplayed()
+        button(R.string.card_language).assertDoesNotExist()
+    }
+
+    @Test
+    fun englishBringsTheCardBackToItsPrintedText() {
+        launchPastNotice()
+        card("Adorable").performClick()
+        portuguese.performClick()
+
+        compose.onNode(isSelectable() and hasText("English")).performClick()
+
+        detailOf("Adorable").assertIsDisplayed()
+        compose.onNodeWithText("Adorável").assertDoesNotExist()
+        compose.onNodeWithText("Esfrega a minha barriga.").assertDoesNotExist()
+    }
+
+    @Test
+    fun aCatastropheShowsItsTranslatedEffectAndWorldsEnd() {
+        launchPastNotice()
+        compose.onNode(isSelectable() and hasText(string(R.string.kind_catastrophes))).performClick()
+        scrollListTo(hasContentDescription("Ice Age"))
+        compose.onNode(hasContentDescription("Ice Age")).performClick()
+
+        portuguese.performClick()
+
+        detailOf("Era Glacial").assertIsDisplayed()
+        detailOf("Descarta cartas da mão.").assertIsDisplayed()
+        detailOf("Menos pontos vermelhos.").assertIsDisplayed()
+    }
+
+    @Test
+    fun theChoiceSurvivesRecreatingTheActivity() {
+        val scenario = launchPastNotice()
+        card("Adorable").performClick()
+        portuguese.performClick()
+
+        scenario.recreate()
+
+        portuguese.assertIsSelected()
+        detailOf("Adorável").assertIsDisplayed()
+    }
+
+    @Test
+    fun theChoiceSurvivesARelaunch() {
+        val first = launchPastNotice()
+        card("Adorable").performClick()
+        portuguese.performClick()
+        first.close()
+
+        launch()
+        card("Altruistic").performClick()
+
+        detailOf("Altruísta").assertIsDisplayed()
+        portuguese.assertIsSelected()
+    }
+
+    @Test
+    fun withPortugueseChosenTheSearchFindsACardByATranslatedWord() {
+        launchPastNotice()
+        search("Zumbido")
+        card("Altruistic").assertDoesNotExist()
+        clearSearch()
+        card("Adorable").performClick()
+        portuguese.performClick()
+        button(R.string.back).performClick()
+
+        search("Zumbido")
+
+        card("Altruistic").assertIsDisplayed()
+        card("Adorable").assertDoesNotExist()
+    }
+
+    @Test
+    fun theTextIsTaggedWithItsLanguage() {
+        launchPastNotice()
+        card("Adorable").performClick()
+        assertEquals(listOf("en"), languagesOf("Adorable"))
+
+        portuguese.performClick()
+
+        assertEquals(listOf("pt"), languagesOf("Esfrega a minha barriga."))
+        assertEquals(listOf("pt"), languagesOf("Adorável"))
+        assertEquals(listOf("en"), languagesOf("Adorable"))
+    }
+
+    @Test
+    fun theSelectorPassesTheAccessibilitySweep() {
+        launchPastNotice()
+        card("Adorable").performClick()
+        portuguese.assertIsDisplayed()
+
+        assertAccessible()
+    }
+
+    private fun search(query: String) {
+        compose.onNode(hasSetTextAction()).performTextInput(query)
+        compose.waitForIdle()
+    }
+
+    private fun clearSearch() {
+        compose.onNode(hasSetTextAction()).performTextReplacement("")
+        compose.waitForIdle()
+    }
+
+    private fun languagesOf(text: String): List<String> =
+        compose
+            .onNodeWithText(text)
+            .fetchSemanticsNode()
+            .config
+            .getOrNull(SemanticsProperties.Text)
+            .orEmpty()
+            .flatMap { it.spanStyles }
+            .mapNotNull {
+                it.item.localeList
+                    ?.firstOrNull()
+                    ?.language
+            }.distinct()
+}
+
+@HiltAndroidTest
+@Config(qualifiers = "w1280dp-h800dp-xhdpi")
+class CardLanguageWideTest : AtlasBehaviorTest() {
+    @Test
+    fun theSelectorBesideTheListPassesTheAccessibilitySweep() {
+        launchPastNotice()
+        card("Adorable").performClick()
+
+        compose.onNode(isSelectable() and hasText("Português")).assertIsDisplayed()
+        assertAccessible()
+    }
+}
