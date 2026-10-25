@@ -700,7 +700,7 @@ internal fun TranslatedCatastropheDetailPreview() =
                 tilt = -3f,
                 onBack = {},
                 onAboutClick = {},
-                text = CardText("Uma catástrofe", "Texto do efeito.", null, "Texto do World's End."),
+                text = CardText("Uma catástrofe", "Texto do efeito.", null, "Texto do Fim do Mundo."),
                 languages = Both,
                 language = CardLanguage.Portuguese,
             )
