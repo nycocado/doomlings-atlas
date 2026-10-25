@@ -11,6 +11,9 @@ import dev.nycocado.atlas.about.NoticePreview
 import dev.nycocado.atlas.carddetail.CardDetailLongNamePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
+import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
+import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
+import dev.nycocado.atlas.carddetail.TranslatedTraitSample
 import dev.nycocado.atlas.cardpane.CardBesideListPreview
 import dev.nycocado.atlas.compendium.CompendiumBesideCardPreview
 import dev.nycocado.atlas.compendium.CompendiumHalfCollapsedPreview
@@ -62,6 +65,21 @@ fun CardDetailScreenshot() = CardDetailPreview()
 @PreviewLightDark
 @Composable
 fun CatastropheDetailScreenshot() = CatastropheDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun TranslatedTraitDetailScreenshot() = TranslatedTraitDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun TranslatedCatastropheDetailScreenshot() = TranslatedCatastropheDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun TranslatedTraitDetailFontScale200Screenshot() = AtlasTheme { TranslatedTraitSample() }
 
 @PreviewTest
 @PreviewLightDark

@@ -35,6 +35,7 @@
     </plurals>
 
     <string name="back">Voltar</string>
+    <string name="card_language">Idioma da carta</string>
 
     <string name="dock_cards">Cartas</string>
     <string name="dock_score">Pontuação</string>

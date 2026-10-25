@@ -32,6 +32,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -58,11 +60,16 @@ import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.intl.LocaleList
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -73,11 +80,15 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardText
+import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.card.cardImage
+import dev.nycocado.atlas.card.printedText
 import dev.nycocado.atlas.cardpane.CardStatusBarIcons
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.compendium.CardKind
@@ -103,6 +114,9 @@ import kotlin.random.Random
 @Composable
 fun CardDetailScreen(
     card: Card,
+    translations: CardTranslations,
+    chosen: CardLanguage,
+    onLanguageChange: (CardLanguage) -> Unit,
     layout: ListDetailLayout,
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
@@ -113,7 +127,11 @@ fun CardDetailScreen(
         rememberSaveable(card.id) {
             if (Random.nextBoolean()) lerp(-3f, -1.5f, Random.nextFloat()) else lerp(1.5f, 2.5f, Random.nextFloat())
         }
-    CardDetailContent(card, tilt, onBack, onAboutClick, layout)
+    // A card without the chosen language shows its printed text; the choice itself stays.
+    val languages = (card as? NamedCard)?.let { translations.languages(it) }.orEmpty()
+    val language = chosen.takeIf { it in languages } ?: CardLanguage.English
+    val text = (card as? NamedCard)?.let { translations.text(it, language) }
+    CardDetailContent(card, tilt, onBack, onAboutClick, layout, text, languages, language, onLanguageChange)
 }
 
 @Composable
@@ -123,9 +141,13 @@ fun CardDetailContent(
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
     layout: ListDetailLayout = ListDetailLayout.Single,
+    text: CardText? = (card as? NamedCard)?.printedText(),
+    languages: List<CardLanguage> = listOf(CardLanguage.English),
+    language: CardLanguage = CardLanguage.English,
+    onLanguageChange: (CardLanguage) -> Unit = {},
 ) {
     val theme = AtlasTheme.colors
-    if (card !is NamedCard) return
+    if (card !is NamedCard || text == null) return
     val type =
         when (card.kind) {
             CardKind.Trait -> R.string.type_trait
@@ -163,14 +185,23 @@ fun CardDetailContent(
                 Modifier.padding(start = Space.s5, end = Space.s5, top = 22.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp),
             ) {
-                BasicText(
-                    card.name,
-                    Modifier.semantics { heading() },
-                    style = AtlasTypography.display.copy(color = theme.onSurface),
-                )
+                Column {
+                    BasicText(
+                        tagged(card.name, CardLanguage.English),
+                        Modifier.semantics { heading() },
+                        style = AtlasTypography.display.copy(color = theme.onSurface),
+                    )
+                    if (language != CardLanguage.English) {
+                        BasicText(
+                            tagged(text.name, language),
+                            style = AtlasTypography.titleLg.copy(color = theme.onSurfaceVariant),
+                        )
+                    }
+                }
                 Pills(trait, type)
-                if (card.effect != null || trait?.flavor != null) Bubble(card.effect, trait?.flavor)
-                (card as? Catastrophe)?.let { Bubble(it.worldsEnd, null, label = R.string.worlds_end) }
+                if (languages.size > 1) LanguageSelector(languages, language, onLanguageChange)
+                if (text.effect != null || text.flavor != null) Bubble(text.effect, text.flavor, language)
+                text.worldsEnd?.let { Bubble(it, null, language, label = R.string.worlds_end) }
             }
             Spacer(Modifier.weight(1f))
             UnofficialFooter(
@@ -413,6 +444,7 @@ private fun ImageVector.withCardColor(color: Color): ImageVector =
 private fun Bubble(
     text: String?,
     flavor: String?,
+    language: CardLanguage,
     @StringRes label: Int? = null,
 ) {
     val theme = AtlasTheme.colors
@@ -430,16 +462,67 @@ private fun Bubble(
                 style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
             )
         }
-        text?.let { BasicText(it, style = AtlasTypography.bodyLg.copy(color = theme.onSurface)) }
+        text?.let { BasicText(tagged(it, language), style = AtlasTypography.bodyLg.copy(color = theme.onSurface)) }
         flavor?.let {
             BasicText(
-                it,
+                tagged(it, language),
                 style =
                     AtlasTypography.bodyMd.copy(
                         color = theme.onSurfaceVariant,
                         fontStyle = FontStyle.Italic,
                     ),
             )
+        }
+    }
+}
+
+// Each option names its language in itself, so it needs no string resource.
+private val CardLanguage.endonym: String
+    get() =
+        when (this) {
+            CardLanguage.English -> "English"
+            CardLanguage.Portuguese -> "Português"
+            CardLanguage.Spanish -> "Español"
+        }
+
+// Text tagged with its language, so TalkBack reads a translation in its own language, not the interface's.
+private fun tagged(
+    text: String,
+    language: CardLanguage,
+) = buildAnnotatedString { withStyle(SpanStyle(localeList = LocaleList(language.code))) { append(text) } }
+
+@Composable
+private fun LanguageSelector(
+    languages: List<CardLanguage>,
+    selected: CardLanguage,
+    onSelect: (CardLanguage) -> Unit,
+) {
+    val theme = AtlasTheme.colors
+    val label = stringResource(R.string.card_language)
+    FlowRow(
+        Modifier.selectableGroup().semantics { contentDescription = label },
+        horizontalArrangement = Arrangement.spacedBy(Space.s2),
+        verticalArrangement = Arrangement.spacedBy(Space.s2),
+    ) {
+        languages.forEach { language ->
+            val active = language == selected
+            Box(
+                Modifier
+                    .heightIn(min = 48.dp)
+                    .sticker(
+                        CircleShape,
+                        if (active) theme.highlight else theme.surfaceSticker,
+                        theme.outline,
+                        Stroke.thin,
+                    ).selectable(active, role = Role.RadioButton) { onSelect(language) }
+                    .padding(horizontal = Space.s4),
+                contentAlignment = Alignment.Center,
+            ) {
+                BasicText(
+                    tagged(language.endonym, language),
+                    style = AtlasTypography.labelLg.copy(color = if (active) theme.onHighlight else theme.onSurface),
+                )
+            }
         }
     }
 }
@@ -519,6 +602,49 @@ internal val LongNameTrait =
 @PreviewLightDark
 @Composable
 internal fun CardDetailLongNamePreview() = AtlasTheme { CardDetailSample(card = LongNameTrait) }
+
+private val Both = listOf(CardLanguage.English, CardLanguage.Portuguese)
+
+@Composable
+internal fun TranslatedTraitSample() =
+    BlankCardImages {
+        CardDetailContent(
+            LongNameTrait,
+            tilt = -3f,
+            onBack = {},
+            onAboutClick = {},
+            text =
+                CardText(
+                    "Fertilização Aleatória",
+                    "O valor é igual ao tamanho do seu Gene Pool.",
+                    "Escolha um número entre 1 e 64 trilhões.",
+                    null,
+                ),
+            languages = Both,
+            language = CardLanguage.Portuguese,
+        )
+    }
+
+@PreviewLightDark
+@Composable
+internal fun TranslatedTraitDetailPreview() = AtlasTheme { TranslatedTraitSample() }
+
+@PreviewLightDark
+@Composable
+internal fun TranslatedCatastropheDetailPreview() =
+    AtlasTheme {
+        BlankCardImages {
+            CardDetailContent(
+                Catastrophe("c", "classic", "", "A catastrophe", "Effect text.", "World's End text."),
+                tilt = -3f,
+                onBack = {},
+                onAboutClick = {},
+                text = CardText("Uma catástrofe", "Texto do efeito.", null, "Texto do World's End."),
+                languages = Both,
+                language = CardLanguage.Portuguese,
+            )
+        }
+    }
 
 @PreviewLightDark
 @Composable
