@@ -61,6 +61,7 @@ class TranslationDataIntegrityTest {
                         "legends-of-enderas",
                         "upgrade",
                         "imaginary-ends",
+                        "overlush",
                     )
             }.map { it.getValue("id").jsonPrimitive.content }
 
