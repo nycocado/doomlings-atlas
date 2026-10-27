@@ -1039,7 +1039,7 @@
   },
   "nightflower-island/ages/fall-nightflower-island": {
     "name": "Outono de Nightflower Island",
-    "effect": "Você pode descartar quaisquer cartas da sua mão. Se alguma delas era vermelha, compre 1 carta."
+    "effect": "Você pode descartar as cartas que quiser da sua mão. Se alguma delas for vermelha, compre 1 carta."
   },
   "nightflower-island/ages/shade-trees": {
     "name": "Árvores de Sombra",
@@ -1108,7 +1108,7 @@
   "nightflower-island/traits/ennui": {
     "name": "Tédio",
     "effect": "No Fim do Mundo: Devolva todos os seus traits sem efeito à sua mão. +4 para cada trait devolvido desta forma.",
-    "flavor": "Se a vida passa por você, a culpa é sua. Em francês, \"ennui\" se lê \"ãn-UI\"."
+    "flavor": "Se a vida passa por você, a culpa é sua."
   },
   "nightflower-island/traits/expressive": {
     "name": "Expressivo",

@@ -1039,7 +1039,7 @@
   },
   "nightflower-island/ages/fall-nightflower-island": {
     "name": "Otoño de Nightflower Island",
-    "effect": "Puedes descartar cualquier carta de tu mano. Si alguna era roja, roba 1 carta."
+    "effect": "Puedes descartar las cartas que quieras de tu mano. Si alguna era roja, roba 1 carta."
   },
   "nightflower-island/ages/shade-trees": {
     "name": "Árboles de Sombra",
@@ -1108,7 +1108,7 @@
   "nightflower-island/traits/ennui": {
     "name": "Tedio",
     "effect": "En el Fin del Mundo: Devuelve todos tus traits sin efecto a tu mano. +4 por cada trait devuelto de esta forma.",
-    "flavor": "Si la vida te pasa de largo, es culpa tuya. En francés, \"ennui\" se lee \"an-UI\"."
+    "flavor": "Si la vida te pasa de largo, es culpa tuya."
   },
   "nightflower-island/traits/expressive": {
     "name": "Expresivo",
