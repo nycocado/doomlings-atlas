@@ -229,3 +229,20 @@ fun CompendiumBesideCardSpanishScreenshot() = CompendiumBesideCardPreview()
 @Preview(device = PANE, locale = "es")
 @Composable
 fun CardBesideListSpanishScreenshot() = CardBesideListPreview()
+
+@PreviewTest
+@Preview(name = "Light", locale = "es")
+@Preview(name = "Dark", locale = "es", uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
+@Composable
+fun TranslatedTraitDetailSpanishScreenshot() = TranslatedTraitDetailPreview()
+
+@PreviewTest
+@Preview(name = "Light", locale = "es")
+@Preview(name = "Dark", locale = "es", uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
+@Composable
+fun TranslatedCatastropheDetailSpanishScreenshot() = TranslatedCatastropheDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f, locale = "es")
+@Composable
+fun TranslatedTraitDetailFontScale200SpanishScreenshot() = AtlasTheme { TranslatedTraitSample() }
