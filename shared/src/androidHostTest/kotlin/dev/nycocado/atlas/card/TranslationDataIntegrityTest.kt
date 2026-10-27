@@ -52,7 +52,14 @@ class TranslationDataIntegrityTest {
                     .getValue(
                         "set",
                     ).jsonPrimitive.content in
-                    setOf("special", "castle-glass", "nightflower-island", "shadow-puppets", "mokoko-village")
+                    setOf(
+                        "special",
+                        "castle-glass",
+                        "nightflower-island",
+                        "shadow-puppets",
+                        "mokoko-village",
+                        "legends-of-enderas",
+                    )
             }.map { it.getValue("id").jsonPrimitive.content }
 
     private val files =

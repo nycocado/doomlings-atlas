@@ -1645,5 +1645,559 @@
   "mokoko-village/traits/warning-signals": {
     "name": "Sinais de Alerta",
     "flavor": "Algumas coisas deveriam ter bandeiras vermelhas pintadas no corpo."
+  },
+  "legends-of-enderas/ages/age-of-stability": {
+    "name": "Era da Estabilidade",
+    "effect": "Você pode estabilizar até 5 imediatamente."
+  },
+  "legends-of-enderas/ages/age-of-the-first-ferns": {
+    "name": "Era das Primeiras Samambaias",
+    "effect": "Se você tiver 7 traits ou menos na sua pilha de traits, pode jogar 1 trait sem efeito agora."
+  },
+  "legends-of-enderas/ages/age-of-the-last-dragons": {
+    "name": "Era dos Últimos Dragões",
+    "effect": "Compre 3 cartas.\n\nDescarte essas cartas OU todas as outras cartas da sua mão."
+  },
+  "legends-of-enderas/ages/carbon-boom": {
+    "name": "Boom do Carbono",
+    "effect": "Compre 2 cartas do topo da pilha de descarte.\n\n(Se estiver vazia, compre do baralho de traits.)"
+  },
+  "legends-of-enderas/ages/industrial-revolution": {
+    "name": "Revolução Industrial",
+    "effect": "No seu turno:\nSe você jogar um anexo, pode jogar outro trait."
+  },
+  "legends-of-enderas/ages/open-portals": {
+    "name": "Portais Abertos",
+    "effect": "Descarte 2 cartas da mão ou 1 aleatória.\n\n(Se esse efeito esvaziar a sua mão, compre 3 cartas.)"
+  },
+  "legends-of-enderas/ages/return-of-the-ancients": {
+    "name": "Retorno dos Ancestrais",
+    "effect": "Em vez de fazer o seu turno, você pode comprar e jogar 1 carta entre as 4 do topo da pilha de descarte."
+  },
+  "legends-of-enderas/ages/thousand-year-slumber": {
+    "name": "Sono de Mil Anos",
+    "effect": "Compre 1 carta.\n\nSe você jogar Slumbering nesta age, pode comprar 4 cartas e jogar outro trait."
+  },
+  "legends-of-enderas/catastrophes/anoxic-event": {
+    "name": "Evento Anóxico",
+    "effect": "-1 Gene Pool\n\nDescarte da sua mão todas as cartas com valor de face 3 ou mais; depois, estabilize.",
+    "worldsEnd": "-7 se o seu número de traits for maior que 20."
+  },
+  "legends-of-enderas/catastrophes/discovery-of-magic": {
+    "name": "Descoberta da Magia",
+    "effect": "-1 Gene Pool\n\nDescarte 3 cartas da mão e estabilize. Os jogadores não podem descartar Mythlings.",
+    "worldsEnd": "Se você tiver algum Mythling na mão, adicione o valor de face deles à sua pontuação final."
+  },
+  "legends-of-enderas/catastrophes/planned-obsolescence": {
+    "name": "Obsolescência Programada",
+    "effect": "-1 Gene Pool\n\nDescarte 1 carta da mão para cada Techling na sua pilha de traits. Depois, compre 1 carta para cada carta que descartar.",
+    "worldsEnd": "Descarte 2 anexos da sua pilha de traits."
+  },
+  "legends-of-enderas/catastrophes/titan-s-call": {
+    "name": "Chamado do Titã",
+    "effect": "-1 Gene Pool\n\nSe você tiver algum dominante na sua pilha de traits, descarte todas as cartas da sua mão, menos 1.",
+    "worldsEnd": "+3 se você tiver um Mythling, Dinoling ou Techling dominante na sua pilha de traits.\n\n+6 se tiver 2."
+  },
+  "legends-of-enderas/traits/actuator": {
+    "name": "Atuador",
+    "effect": "Você pode remover 1 anexo da sua pilha de traits e anexá-lo a um trait de qualquer pilha de traits. (Exceto dominantes.)",
+    "flavor": "Vou pegar o U."
+  },
+  "legends-of-enderas/traits/alchemical": {
+    "name": "Alquímico",
+    "effect": "Se Alchemical for descartado da mão, anuncie! Os jogadores resolvem todos os efeitos. Depois, os oponentes descartam metade da mão deles, aleatoriamente. (Arredonde para baixo.)",
+    "flavor": "Senhoras e senhores, o grande Al Químico!"
+  },
+  "legends-of-enderas/traits/animatronic": {
+    "name": "Animatrônico",
+    "effect": "Anexe. Se o hospedeiro for:\nAzul: +1 para cada Dinoling na sua pilha de traits.\nVerde: +1 para cada Techling na sua pilha de traits.",
+    "flavor": "DINOSSAUROS ROBÔS! E também PIZZA!"
+  },
+  "legends-of-enderas/traits/automaton": {
+    "name": "Autômato",
+    "effect": "+3 se Automaton tiver um anexo.",
+    "flavor": "Processando seu comando, milorde."
+  },
+  "legends-of-enderas/traits/back-propagation": {
+    "name": "Retropropagação",
+    "effect": "Anexe. O valor de face do hospedeiro agora é 2. No Fim do Mundo: Você pode mover este anexo para outro trait da sua pilha de traits.",
+    "flavor": "Se não der certo de primeira, ou mesmo se der, tente de novo."
+  },
+  "legends-of-enderas/traits/bionic-leg": {
+    "name": "Perna Biônica",
+    "effect": "Anexe. O valor de face do hospedeiro agora é 4.",
+    "flavor": "Estou juntando dinheiro para outra. Até lá, fico preso a este chato membro robótico."
+  },
+  "legends-of-enderas/traits/biotech": {
+    "name": "Biotecnologia",
+    "flavor": "A ciência de cuidar da natureza."
+  },
+  "legends-of-enderas/traits/carnivore": {
+    "name": "Carnívoro",
+    "effect": "Descarte todos os Dinolings da sua pilha de traits. (Exceto este.)",
+    "flavor": "Uma refeição saudável e equilibrada inclui carne com dois acompanhamentos de carne."
+  },
+  "legends-of-enderas/traits/cavalier": {
+    "name": "Cavaleiro",
+    "flavor": "Qualquer dano que eu causar é uma justa causa!"
+  },
+  "legends-of-enderas/traits/chrome": {
+    "name": "Cromado",
+    "flavor": "Liso, brilhante e totalmente de propósito."
+  },
+  "legends-of-enderas/traits/chronomancer": {
+    "name": "Cronomante",
+    "effect": "Jogue outro trait. No Fim do Mundo: Faça outro turno.",
+    "flavor": "Tanta coisa para fazer, mas quem tem tempo? Ah, espera, eu tenho."
+  },
+  "legends-of-enderas/traits/colossal": {
+    "name": "Colossal",
+    "effect": "Para jogar, você deve descartar um trait com valor de face 5 ou mais da sua pilha de traits. Não pode ser removido da sua pilha de traits.",
+    "flavor": "Sempre existe um dino maior. E esse sou eu!"
+  },
+  "legends-of-enderas/traits/corroded": {
+    "name": "Corroído",
+    "effect": "Anexe a um trait de qualquer pilha de traits e depois jogue outro trait.",
+    "flavor": "Vítima da suave ferrugem do tempo."
+  },
+  "legends-of-enderas/traits/cryonics": {
+    "name": "Criônica",
+    "effect": "Anexe. Quando um trait entrar na sua pilha de traits, você pode anexar Cryonics a ele. O valor de face do hospedeiro agora é 1.",
+    "flavor": "Preservar o que amamos. Congelando."
+  },
+  "legends-of-enderas/traits/cursed": {
+    "name": "Amaldiçoado",
+    "effect": "Anexe. Se Cursed for descartado da mão ou da pilha de traits, anexe-o a um trait de um oponente.",
+    "flavor": "Quebrei um espelho debaixo da escada de uma bruxa na última sexta-feira 13."
+  },
+  "legends-of-enderas/traits/cursorial": {
+    "name": "Corredor",
+    "flavor": "Pernas de sobra."
+  },
+  "legends-of-enderas/traits/cyclopean": {
+    "name": "Cíclope",
+    "flavor": "Com um olho só, não enxergo nem um cavaleiro."
+  },
+  "legends-of-enderas/traits/dark-magic": {
+    "name": "Magia Negra",
+    "effect": "No seu turno: Você pode descartar Dark Magic da mão quando jogar um trait sem efeito. Se fizer isso, jogue uma ação em qualquer pilha de traits.",
+    "flavor": "Às vezes é preciso sacrificar uns ovos para materializar uma omelete."
+  },
+  "legends-of-enderas/traits/destructive": {
+    "name": "Destrutivo",
+    "effect": "Descarte 2 cartas aleatórias da sua mão. Os oponentes descartam da mão todas as cartas sem efeito.",
+    "flavor": "Ah, não! Essas flores estão presas no chão! É melhor eu ajudar!"
+  },
+  "legends-of-enderas/traits/dinowrangler": {
+    "name": "Domador de Dinos",
+    "effect": "Jogue 1 Dinoling da pilha de descarte. Jogue a ação dele.",
+    "flavor": "Eia, estegozinho!"
+  },
+  "legends-of-enderas/traits/enchanted": {
+    "name": "Enfeitiçado",
+    "effect": "Anexe. +3 se o hospedeiro for um Mythling. Se Enchanted for descartado da mão, você pode anexá-lo a um dominante.",
+    "flavor": "Uma espada pode transformar alguém em herói, vilão ou, tipo, 40% mais legal."
+  },
+  "legends-of-enderas/traits/enraptured": {
+    "name": "Extasiado",
+    "effect": "Se Enraptured for descartado da mão, você pode roubar um trait com valor de face 1 da pilha de traits de um oponente.",
+    "flavor": "Olha só quantos seguidores eu tenho."
+  },
+  "legends-of-enderas/traits/entangled": {
+    "name": "Emaranhado",
+    "effect": "Início do seu turno: Você pode descartar Entangled da mão. Se fizer isso, descarte 1 carta da mão, depois compre 1 carta.",
+    "flavor": "Não, VOCÊ que não é localmente real, cara."
+  },
+  "legends-of-enderas/traits/fiddlehead": {
+    "name": "Cabeça de Violino",
+    "flavor": "Me chama de Cabeça de Violino de novo e eu parto pra violinlência."
+  },
+  "legends-of-enderas/traits/filament": {
+    "name": "Filamento",
+    "effect": "Anexe. +3 para cada dominante na sua pilha de traits da mesma cor do hospedeiro.",
+    "flavor": "Acabei de ter uma ideia. Vai ser brilhante."
+  },
+  "legends-of-enderas/traits/fizzled": {
+    "name": "Efervescente",
+    "flavor": "Ingrediente-chave das piores poções e dos melhores refrigerantes."
+  },
+  "legends-of-enderas/traits/foresight": {
+    "name": "Previsão",
+    "effect": "A qualquer momento: Você pode descartar Foresight da mão para espiar a próxima age.",
+    "flavor": "Meus amigos, o futuro é brilhante. Principalmente por causa da bomba nuclear."
+  },
+  "legends-of-enderas/traits/fossil-fueled": {
+    "name": "Movido a Fóssil",
+    "effect": "Quando você anexar uma carta a Fossil Fueled, pode jogar 1 das 5 cartas do topo da pilha de descarte. Ignore a ação dela.",
+    "flavor": "A extinção é só o início."
+  },
+  "legends-of-enderas/traits/gentle": {
+    "name": "Gentil",
+    "effect": "Para jogar, você deve descartar um trait com valor de face 2 ou mais da sua pilha de traits. Os oponentes descartam 1 trait da pilha de traits deles com valor de face maior.",
+    "flavor": "Ops, acho que pisei em alguma coisa."
+  },
+  "legends-of-enderas/traits/ghostly": {
+    "name": "Fantasmal",
+    "effect": "Se Ghostly for descartado da mão, jogue-o imediatamente. Se for descartado da pilha de traits, passe-o para a mão de um oponente.",
+    "flavor": "O fantasma mais fantasma."
+  },
+  "legends-of-enderas/traits/gizmo": {
+    "name": "Geringonça",
+    "effect": "Anexe. Escolha 1.\nSe o hospedeiro for:\nVerde: Preveja a próxima age.\nRoxo: Estabilize até 6.\nAzul: Compre 2 cartas.\nVermelho: +2.\nDepois, jogue outro trait.",
+    "flavor": "Ela faz o que você quiser! Ou o que ela quiser! Ou o que for!"
+  },
+  "legends-of-enderas/traits/herbivore": {
+    "name": "Herbívoro",
+    "effect": "Você pode jogar Herbivore depois de estabilizar se o topo da pilha de descarte for verde. Depois, compre 1 carta.",
+    "flavor": "Você devia tentar comer coisas que não fogem. É bem mais fácil."
+  },
+  "legends-of-enderas/traits/hollow-bones": {
+    "name": "Ossos Ocos",
+    "effect": "Para jogar, você deve descartar 1 trait positivo da sua pilha de traits. No Fim do Mundo: Escolha uma cor. Os oponentes descartam 2 traits dessa cor da pilha de traits deles.",
+    "flavor": "Não sou gordo. Só tenho ossos ocos."
+  },
+  "legends-of-enderas/traits/ichor": {
+    "name": "Icor",
+    "effect": "Início do seu turno: Você pode descartar Ichor da mão para comprar 2 cartas.",
+    "flavor": "Não recomendado para meros mortais."
+  },
+  "legends-of-enderas/traits/imprinting": {
+    "name": "Apego",
+    "effect": "O valor é igual ao da carta do topo da pilha de descarte.",
+    "flavor": "Prazer em te conhecer, eu te amo, vamos ficar juntos para sempre."
+  },
+  "legends-of-enderas/traits/incantor": {
+    "name": "Conjurador",
+    "effect": "Se a sua mão estiver vazia, você pode comprar 4 cartas e jogar outro trait.",
+    "flavor": "Você vai se arrepender de implicar comigo depois que eu ler meu encantamento de 12.000 linhas."
+  },
+  "legends-of-enderas/traits/insatiable": {
+    "name": "Insaciável",
+    "effect": "Descarte todos os Dinolings da sua pilha de traits. (Exceto este.)",
+    "flavor": "Minha comida favorita é mais."
+  },
+  "legends-of-enderas/traits/junker": {
+    "name": "Sucateiro",
+    "effect": "Compre um Techling da pilha de descarte. Você pode jogá-lo agora. Bip bwop.",
+    "flavor": "Não consigo parar de comer sucata."
+  },
+  "legends-of-enderas/traits/kidney": {
+    "name": "Rim",
+    "effect": "O valor é igual ao número de Kidneys na sua pilha de traits. (Incluindo este.)",
+    "flavor": "...com um terópode."
+  },
+  "legends-of-enderas/traits/kidney-2": {
+    "name": "Rim",
+    "effect": "O valor é igual ao número de Kidneys na sua pilha de traits. (Incluindo este.)",
+    "flavor": "...com um chapéu de mago."
+  },
+  "legends-of-enderas/traits/kidney-3": {
+    "name": "Rim",
+    "effect": "O valor é igual ao número de Kidneys na sua pilha de traits. (Incluindo este.)",
+    "flavor": "...com um chapéu de papel-alumínio."
+  },
+  "legends-of-enderas/traits/lightweight": {
+    "name": "Leve",
+    "flavor": "Todo mundo riu de mim quando eu disse que um saco quente me levaria através do mar numa cesta mágica no céu."
+  },
+  "legends-of-enderas/traits/lumbering": {
+    "name": "Pesadão",
+    "effect": "+1 Gene Pool. Os oponentes estabilizam até o seu Gene Pool.",
+    "flavor": "Grandes passadas, menos passos."
+  },
+  "legends-of-enderas/traits/majestic": {
+    "name": "Majestoso",
+    "effect": "Jogue todas as cartas sem efeito da sua mão.",
+    "flavor": "Colhi esta flor para um amigo. Esse amigo pode ser você?"
+  },
+  "legends-of-enderas/traits/malicious": {
+    "name": "Maldoso",
+    "effect": "Escolha um oponente. Ele descarta 2 cartas aleatórias da mão dele.",
+    "flavor": "Eu não gosto de você. A minha foice também não."
+  },
+  "legends-of-enderas/traits/mecha-jaw": {
+    "name": "Mecha-Mandíbula",
+    "effect": "Anexe a um trait em qualquer pilha de traits. +5 se o hospedeiro for um Dinoling.",
+    "flavor": "Laser nos olhos vendido separadamente."
+  },
+  "legends-of-enderas/traits/mesopredator": {
+    "name": "Mesopredador",
+    "effect": "Para jogar, você deve descartar 1 trait da sua pilha de traits.",
+    "flavor": "Olha, se eu não te devorar, meu chefe vai devorar eu E você."
+  },
+  "legends-of-enderas/traits/misty": {
+    "name": "Nebuloso",
+    "effect": "Para jogar, você deve descartar 1 carta sem efeito da mão. Não estabilize!",
+    "flavor": "Uma oportunidade perdida na neblina."
+  },
+  "legends-of-enderas/traits/modular": {
+    "name": "Modular",
+    "effect": "Você pode remover 1 anexo da sua pilha de traits e anexá-lo a um trait em qualquer pilha de traits. (Exceto dominantes.)",
+    "flavor": "\"Quanto sobra de mim quando cada peça foi substituída?\" E com esse último pensamento, os neurocomponentes do robô foram arrancados e jogados fora, só para dar lugar a uma calculadora."
+  },
+  "legends-of-enderas/traits/null": {
+    "name": "Nulo",
+    "flavor": "Como assim eu não tenho valor?"
+  },
+  "legends-of-enderas/traits/ovivore": {
+    "name": "Ovívoro",
+    "effect": "Para jogar, você deve descartar um trait com valor de face 1 ou mais da sua pilha de traits.",
+    "flavor": "Gosto dos meus ovos mal passados."
+  },
+  "legends-of-enderas/traits/plastron": {
+    "name": "Plastrão",
+    "effect": "No Fim do Mundo: Você pode descartar 1 da sua pilha de traits OU jogar a carta do topo da pilha de descarte. Ignore a ação dela.",
+    "flavor": "Memória de tartaruga."
+  },
+  "legends-of-enderas/traits/refurbished": {
+    "name": "Recondicionado",
+    "effect": "Anexe. Se o hospedeiro for: Roxo: +2. Vermelho: +3. Se o hospedeiro for um Techling: +1 para cada carta na mão.",
+    "flavor": "Um ~~novo~~ brinquedo reluzente."
+  },
+  "legends-of-enderas/traits/roughrider": {
+    "name": "Cavaleiro Bravo",
+    "effect": "Você pode jogar Roughrider quando jogar um Dinoling.",
+    "flavor": "Todas as minhas batalhas me ensinaram que isso é divertido. Uiiiii!"
+  },
+  "legends-of-enderas/traits/rumbler": {
+    "name": "Brigão",
+    "effect": "-2 Gene Pool. Os oponentes estabilizam até o seu Gene Pool.",
+    "flavor": "O último cara que deu um toca aqui nele acabou esmagado."
+  },
+  "legends-of-enderas/traits/satyrical": {
+    "name": "Satírico",
+    "effect": "Você pode descartar um Mythling da mão para jogar outro trait.",
+    "flavor": "O mundo está condenado, e isso é hilário."
+  },
+  "legends-of-enderas/traits/simulated-intelligence": {
+    "name": "Inteligência Simulada",
+    "effect": "No Fim do Mundo: Se você estiver empatado com a maior pilha de traits, jogue outro trait. Caso contrário, descarte 1 da sua pilha de traits para cada oponente com mais traits do que você.",
+    "flavor": "Me coloque numa caixa, me dê comida chinesa e eu lhe digo o significado do universo."
+  },
+  "legends-of-enderas/traits/slumbering": {
+    "name": "Dorminhoco",
+    "effect": "No Fim do Mundo: Descarte 1 carta da mão.\nSe a carta for:\nRoxa: Descarte até 2 da sua pilha de traits.\nVermelha: Adicione o valor de face dela.\nVerde: Jogue 1 trait.\nAzul: +5.",
+    "flavor": "Desculpa ter dormido demais. Já é o fim do mundo?"
+  },
+  "legends-of-enderas/traits/solar-powered": {
+    "name": "Energia Solar",
+    "effect": "Anexe. O valor é igual ao valor de face do hospedeiro.",
+    "flavor": "Com garantia limitada de um bilhão de anos ou 60.000 km."
+  },
+  "legends-of-enderas/traits/sorcerer": {
+    "name": "Feiticeiro",
+    "effect": "No Fim do Mundo: Você pode estabilizar até 8.",
+    "flavor": "Abra-ca-BOMBA DE FUMAÇA!"
+  },
+  "legends-of-enderas/traits/speech-recognition": {
+    "name": "Reconhecimento de Voz",
+    "effect": "Anexe. Adicione o valor de face de 1 carta na mão que compartilhe uma cor com o hospedeiro. (Exceto dominantes.)",
+    "flavor": "O melhor conversor de voz para texto do mercado."
+  },
+  "legends-of-enderas/traits/spite": {
+    "name": "Rancor",
+    "effect": "Se Spite for descartado da mão, você pode jogá-lo na pilha de traits de um oponente. Todos os jogadores recebem: +1 Gene Pool.",
+    "flavor": "Pentear é um pesadelo."
+  },
+  "legends-of-enderas/traits/springy": {
+    "name": "Saltitante",
+    "effect": "Anexe a um trait em qualquer pilha de traits, depois roube o hospedeiro.",
+    "flavor": "Tchibóing!"
+  },
+  "legends-of-enderas/traits/steam-powered": {
+    "name": "Movido a Vapor",
+    "effect": "Anexe. Se o hospedeiro for:\nAzul: +1 Gene Pool.\nVerde: Jogue outro trait.\nRoxo: Jogue uma ação na sua pilha de traits.\nVermelho: +2.",
+    "flavor": "Desabafando e depois estourando a sua cara."
+  },
+  "legends-of-enderas/traits/stompy": {
+    "name": "Pisão",
+    "effect": "Para jogar, você deve descartar um valor de face total de 5 ou mais da sua mão, usando qualquer número de cartas. Não estabilize!",
+    "flavor": "Meus pés fazem uma coisa só, e essa coisa é barulhenta."
+  },
+  "legends-of-enderas/traits/summoner": {
+    "name": "Invocador",
+    "effect": "Descarte até 3 da mão, depois jogue 1 para cada carta descartada. Ignore ações.",
+    "flavor": "Aquele alguém que invoca umas coisas."
+  },
+  "legends-of-enderas/traits/swarm": {
+    "name": "Enxame",
+    "effect": "O valor é igual ao número de traits Swarm em todas as pilhas de traits. (Incluindo este.)",
+    "flavor": "Viemos pelo novo tablet."
+  },
+  "legends-of-enderas/traits/swarm-2": {
+    "name": "Enxame",
+    "effect": "O valor é igual ao número de traits Swarm em todas as pilhas de traits. (Incluindo este.)",
+    "flavor": "Viemos para a sessão espírita."
+  },
+  "legends-of-enderas/traits/swarm-3": {
+    "name": "Enxame",
+    "effect": "O valor é igual ao número de traits Swarm em todas as pilhas de traits. (Incluindo este.)",
+    "flavor": "Somos o novo celular."
+  },
+  "legends-of-enderas/traits/technomagik": {
+    "name": "Tecnomagia",
+    "effect": "Compre 2 cartas. Depois, você pode jogar um Mythling ou Techling da mão.",
+    "flavor": "Suficientemente avançada."
+  },
+  "legends-of-enderas/traits/terrarium": {
+    "name": "Terrário",
+    "effect": "Anexe. +1 para cada trait com o mesmo valor de face do hospedeiro.",
+    "flavor": "Comi sementes de melancia e agora elas estão crescendo no meu cérebro. Por favor, ajudem."
+  },
+  "legends-of-enderas/traits/terrifying": {
+    "name": "Aterrorizante",
+    "effect": "Descarte sua mão. Os oponentes descartam 1 Dinoling da pilha de traits deles.",
+    "flavor": "Não queria te assustar, só estou tentando te comer vivo."
+  },
+  "legends-of-enderas/traits/thunderous": {
+    "name": "Trovejante",
+    "flavor": "Que vida trovoavilhosa!"
+  },
+  "legends-of-enderas/traits/tinkerer": {
+    "name": "Engenhoqueiro",
+    "effect": "Quando você anexar um trait a Tinkerer, pode jogar outro trait.",
+    "flavor": "Craque em geringonças. Decente com trecos."
+  },
+  "legends-of-enderas/traits/titanic": {
+    "name": "Titânico",
+    "effect": "Para jogar, você deve descartar um valor de face total de 5 ou mais da sua pilha de traits, usando qualquer número de cartas. (Titanic não pode regenerar tecido!)",
+    "flavor": "Mmmm, icebúrgueres!"
+  },
+  "legends-of-enderas/traits/trabecular": {
+    "name": "Trabecular",
+    "flavor": "Vou de estruturas ósseas por 200."
+  },
+  "legends-of-enderas/traits/transistor": {
+    "name": "Transistor",
+    "effect": "Anexe. Todos os oponentes descartam da mão todas as cartas que compartilhem uma cor com o trait hospedeiro.",
+    "flavor": "Um mau contato."
+  },
+  "legends-of-enderas/traits/treads": {
+    "name": "Esteiras",
+    "effect": "Anexe. Você pode jogar outro trait que compartilhe uma cor com o hospedeiro.",
+    "flavor": "Pise pesado."
+  },
+  "legends-of-enderas/traits/venomous-projection": {
+    "name": "Projeção Venenosa",
+    "effect": "Mova 1 trait negativo da pilha de descarte para a pilha de traits de um oponente.",
+    "flavor": "Não vejo nenhuma evidência de que essa espécie cuspa veneno PORQUE AGORA ESTOU CEGO!"
+  },
+  "legends-of-enderas/traits/vigilance": {
+    "name": "Vigilância",
+    "effect": "Descarte 1 carta da mão, depois jogue a ação dela.",
+    "flavor": "Eu vigio porque me importo... com atirar em tudo que se mexe."
+  },
+  "legends-of-enderas/traits/warlocky": {
+    "name": "Bruxesco",
+    "effect": "No seu turno: Você pode descartar Warlocky da mão quando jogar um trait. Se fizer isso, jogue outro trait da mesma cor.",
+    "flavor": "Fiz um pacto de sangue com um demônio numa noite sem lua. Foi bem legal e não teve nenhuma consequência."
+  },
+  "legends-of-enderas/traits/wicked": {
+    "name": "Perverso",
+    "flavor": "Minha intenção é injusta, e meu coração é impuro."
+  },
+  "legends-of-enderas/treasures/ardent-grip": {
+    "name": "Luva Ardente",
+    "effect": "Urgência:\nDefina seu Gene Pool como 5.\n\nUrgência:\nCompre 1 carta."
+  },
+  "legends-of-enderas/treasures/black-silk": {
+    "name": "Seda Negra",
+    "effect": "Mutação:\nAzul\nou\nVermelho\n\nUrgência:\nDescarte 1 carta da mão."
+  },
+  "legends-of-enderas/treasures/box-of-rainbows": {
+    "name": "Caixa de Arco-Íris",
+    "effect": "Manto:\nImpeça um roubo. (Exceto dominantes.)\n\nUrgência:\nJogue um trait com valor de face 2 ou menos. Ignore ações."
+  },
+  "legends-of-enderas/treasures/broken-promises": {
+    "name": "Promessas Quebradas",
+    "effect": "Eco:\nAzul para Azul\nou\nRoxo para Roxo\n\nUrgência:\nCompre 2 cartas."
+  },
+  "legends-of-enderas/treasures/cataclyte": {
+    "name": "Cataclyte",
+    "effect": "Eco:\nRoxo para Roxo\nou\nVermelho para Vermelho\n\nUrgência:\nCompre 2 cartas."
+  },
+  "legends-of-enderas/treasures/chrona": {
+    "name": "Chrona",
+    "effect": "Urgência:\nCompre as 3 cartas do topo da pilha de descarte.\n\nUrgência:\nCompre 1 carta."
+  },
+  "legends-of-enderas/treasures/coda": {
+    "name": "Coda",
+    "effect": "Urgência:\nDiminua o Gene Pool em 1. Jogue 1.\n\nUrgência:\nCompre 1 carta."
+  },
+  "legends-of-enderas/treasures/dragon-scales": {
+    "name": "Escamas de Dragão",
+    "effect": "Mutação:\nVermelho\nou\nRoxo\n\nUrgência:\nDescarte 1 carta da mão."
+  },
+  "legends-of-enderas/treasures/fortune-glory": {
+    "name": "Fortuna e Glória",
+    "effect": "Urgência:\nCompre 4 cartas.\nVocê pode escolher não estabilizar."
+  },
+  "legends-of-enderas/treasures/fwip": {
+    "name": "Fwip",
+    "effect": "Urgência:\nDevolva 1 dominante da sua pilha de traits à sua mão para jogar um dominante diferente.\n\nUrgência:\nCompre 1 carta."
+  },
+  "legends-of-enderas/treasures/ghostly-boots": {
+    "name": "Botas Fantasmagóricas",
+    "effect": "Adaptação:\nAções roxas\nou\nAções vermelhas\n\nUrgência:\nEstabilize até 5."
+  },
+  "legends-of-enderas/treasures/heart-of-the-woods": {
+    "name": "Coração da Floresta",
+    "effect": "Mutação:\nQualquer Cor\n\nUrgência:\nDescarte 1 carta da mão."
+  },
+  "legends-of-enderas/treasures/reflecting-glass": {
+    "name": "Vidro Refletor",
+    "effect": "Manto:\nImpeça uma ação.\n\nUrgência:\nJogue um trait com valor de face 2 ou menos. Ignore ações."
+  },
+  "legends-of-enderas/treasures/someone-s-trash": {
+    "name": "Lixo de Alguém",
+    "effect": "Urgência:\nEmbaralhe a pilha do cofre, depois compre 2 tesouros da pilha do cofre.\n\nUrgência:\nCompre as 2 cartas do topo da pilha de descarte."
+  },
+  "legends-of-enderas/treasures/soulweaver": {
+    "name": "Tecelão de Almas",
+    "effect": "Urgência:\nDescarte até 3 da mão. Jogue 1 trait sem efeito para cada carta descartada. Depois, estabilize e pule seu turno.\n\nUrgência:\nCompre 1 carta."
+  },
+  "legends-of-enderas/treasures/summit": {
+    "name": "Cume",
+    "effect": "Urgência:\nJogue a carta do topo da pilha de descarte. Ignore ações.\n\nUrgência:\nCompre 1 carta."
+  },
+  "legends-of-enderas/treasures/the-friends-we-made-along-the-way": {
+    "name": "Os Amigos que Fizemos no Caminho",
+    "effect": "Urgência:\nJogue 2 e estabilize. Ignore ações. Depois, pule seu turno."
+  },
+  "legends-of-enderas/treasures/the-maliforms": {
+    "name": "Os Maliformes",
+    "effect": "Adaptação:\nAções de\nqualquer cor\n\nUrgência:\nEstabilize até 5."
+  },
+  "legends-of-enderas/treasures/tiny-shells": {
+    "name": "Conchinhas",
+    "effect": "Mutação:\nVerde\nou\nAzul\n\nUrgência:\nDescarte 1 carta da mão."
+  },
+  "legends-of-enderas/treasures/translator": {
+    "name": "Tradutor",
+    "effect": "Eco:\nVerde para Verde\nou\nAzul para Azul\n\nUrgência:\nCompre 2 cartas."
+  },
+  "legends-of-enderas/treasures/twisters": {
+    "name": "Redemoinhos",
+    "effect": "Urgência:\nAumente o Gene Pool em 1.\n\nUrgência:\nCompre 1 carta."
+  },
+  "legends-of-enderas/treasures/unbreakable": {
+    "name": "Inquebrável",
+    "effect": "Urgência:\nOs oponentes devolvem 1 trait sem efeito da pilha de traits deles para a mão.\n\nUrgência:\nCompre 1 carta."
+  },
+  "legends-of-enderas/treasures/vanity": {
+    "name": "Vaidade",
+    "effect": "Urgência:\nOs oponentes devolvem 1 trait sem efeito da pilha de traits deles para a mão.\n\nUrgência:\nCompre 1 carta."
+  },
+  "legends-of-enderas/treasures/wandering-root": {
+    "name": "Raiz Errante",
+    "effect": "Mutação:\nRoxo\nou\nVerde\n\nUrgência:\nDescarte 1 carta da mão."
+  },
+  "legends-of-enderas/treasures/wisdom-stick": {
+    "name": "Bastão da Sabedoria",
+    "effect": "Urgência:\nPreveja as próximas 2 ages.\n\nUrgência:\nPreveja as últimas 2 ages."
+  },
+  "legends-of-enderas/treasures/zero-point-module": {
+    "name": "Módulo de Ponto Zero",
+    "effect": "Eco:\nVermelho para Vermelho\nou\nVerde para Verde\n\nUrgência:\nCompre 2 cartas."
   }
 }
