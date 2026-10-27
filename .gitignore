@@ -13,3 +13,6 @@ local.properties
 
 # Worktrees of Claude Code agents
 .claude/worktrees/
+
+# CodeGraph index, built per checkout by `codegraph init`
+.codegraph/

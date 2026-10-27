@@ -78,4 +78,4 @@ Single-context: `GLOSSARY.md` and `docs/adr/` at the root. See [docs/agents/doma
 
 ## Tooling
 
-Prefer `rtk` over raw shell commands and `codegraph` over grep/find/reading files to explore code, whenever applicable and available. Inside agent worktrees plain `git` can be blocked by the `rtk` rewrite and Claude Code's worktree guard: use `/usr/bin/git` there (the repo's hooks still apply).
+Prefer `rtk` over raw shell commands and `codegraph` over grep/find/reading files to explore code, whenever applicable and available. Inside agent worktrees plain `git` can be blocked by the `rtk` rewrite and Claude Code's worktree guard: use `/usr/bin/git` there (the repo's hooks still apply). A hook gives each worktree its own CodeGraph index; pass the worktree's path as `projectPath` to the codegraph MCP tools, or they answer from the main checkout's branch.
