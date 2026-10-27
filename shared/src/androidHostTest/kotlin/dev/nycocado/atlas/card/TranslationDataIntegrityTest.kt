@@ -51,7 +51,7 @@ class TranslationDataIntegrityTest {
                 it
                     .getValue(
                         "set",
-                    ).jsonPrimitive.content in setOf("special", "castle-glass", "nightflower-island")
+                    ).jsonPrimitive.content in setOf("special", "castle-glass", "nightflower-island", "shadow-puppets")
             }.map { it.getValue("id").jsonPrimitive.content }
 
     private val files =
