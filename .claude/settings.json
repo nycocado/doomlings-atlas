@@ -12,7 +12,16 @@
     "mattpocock-skills@mattpocock": true
   },
   "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [{ "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/index-worktree.sh" }]
+      }
+    ],
     "PreToolUse": [
+      {
+        "matcher": "Bash|mcp__codegraph__.*",
+        "hooks": [{ "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/index-worktree.sh" }]
+      },
       {
         "matcher": "Bash",
         "hooks": [
