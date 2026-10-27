@@ -30,7 +30,7 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 - **Enabled sets** and **enabled types**: the sets and types packaged into the app (`app/build.gradle.kts`). The rest stays in the repo until its data is checked or a feature needs it.
 - **Card kind**: a segment of the compendium (Traits, Ages, Catastrophes), `CardKind` in code. Not every card type has one.
 - **Printed text**: a card's name and text as printed on it, in English.
-- **Translation**: a card's name and text in another language, written by the project and unofficial. A card may have none in a given language. _Avoid_: localization, for card text.
+- **Translation**: a card's name and text in another language, written by the project and unofficial, in one regional variant per language, declared in its glossary (pt-BR, es-419). A card may have none in a given language. _Avoid_: localization, for card text.
 
 ## The App
 

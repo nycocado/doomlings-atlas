@@ -19,7 +19,7 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game. Where it 
 | UI                                | [docs/design.md](docs/design.md), [ADR 0006](docs/adr/0006-own-design-system.md)                                                              |
 | Tests, checking a change          | [docs/testing.md](docs/testing.md); the running app only through the `verify-ui` skill                                                        |
 | Build, CI, releases, dependencies | [docs/development.md](docs/development.md)                                                                                                    |
-| Translations                      | [Translations](CONTRIBUTING.md#translations), [docs/glossary](docs/glossary)                                                                  |
+| Translations                      | Card text through the `translate-cards` skill; [docs/glossary](docs/glossary), [Translations](CONTRIBUTING.md#translations)                   |
 | A structural decision             | [docs/adr](docs/adr) and when to write one: [docs/adr/README.md](docs/adr/README.md)                                                          |
 | Why some code is the way it is    | The PR in its commit subject, `gh pr view <N>`: squash commits have no body, the PR has the why                                               |
 
