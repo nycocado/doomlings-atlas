@@ -14,8 +14,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
-import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardLibrary
+import dev.nycocado.atlas.card.CardLookup
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.carddetail.CardDetailScreen
 import dev.nycocado.atlas.ui.theme.StatusBarIcons
@@ -30,12 +31,12 @@ data class CardKey(
 @Composable
 fun rememberCardPane(
     backStack: NavBackStack<NavKey>,
-    cards: State<List<Card>?>,
+    library: State<CardLibrary>,
     translations: State<CardTranslations>,
     language: State<CardLanguage>,
     onLanguageChange: (CardLanguage) -> Unit,
 ): CardPane {
-    val pane = remember(backStack) { CardPane(backStack, cards, translations, language, onLanguageChange) }
+    val pane = remember(backStack) { CardPane(backStack, library, translations, language, onLanguageChange) }
     backStack.lastOrNull { it is CardKey }?.let { open -> SideEffect { pane.lastCard = (open as CardKey).id } }
     return pane
 }
@@ -43,7 +44,7 @@ fun rememberCardPane(
 @Stable
 class CardPane internal constructor(
     private val backStack: NavBackStack<NavKey>,
-    private val cards: State<List<Card>?>,
+    private val library: State<CardLibrary>,
     private val translations: State<CardTranslations>,
     private val language: State<CardLanguage>,
     private val onLanguageChange: (CardLanguage) -> Unit,
@@ -67,15 +68,13 @@ class CardPane internal constructor(
     // Movable, so it keeps its tilt and scroll.
     private val content =
         movableContentOf { id: String, layout: ListDetailLayout, onBack: () -> Unit, onAboutClick: () -> Unit ->
-            val all = cards.value
-            val card = all?.find { it.id == id }
-            // A back stack restored after an update can name a card the data no longer has.
-            if (all != null && card == null) LaunchedEffect(id) { onBack() }
+            val lookup = library.value.lookup(id)
+            if (lookup == CardLookup.Missing) LaunchedEffect(id) { onBack() }
             // The sheet shows beside the list even while the cards load.
             Box(if (layout.sideBySide) Modifier.sheet() else Modifier) {
-                card?.let {
+                if (lookup is CardLookup.Found) {
                     CardDetailScreen(
-                        it,
+                        lookup.card,
                         translations.value,
                         language.value,
                         onLanguageChange,

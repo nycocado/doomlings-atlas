@@ -60,7 +60,7 @@ fun AtlasApp() {
     val cardPane =
         rememberCardPane(
             backStack,
-            viewModel.cards.collectAsStateWithLifecycle(),
+            viewModel.library.collectAsStateWithLifecycle(),
             viewModel.translations.collectAsStateWithLifecycle(),
             viewModel.cardLanguage.collectAsStateWithLifecycle(),
             viewModel::chooseCardLanguage,
