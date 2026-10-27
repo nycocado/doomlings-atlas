@@ -831,5 +831,206 @@
     "name": "Pies de Tubo",
     "effect": "Juega 1 trait de la pila de descarte. Ignora su acción. Luego, descarta 1 trait de tu pila de traits.",
     "flavor": "¡Olvídate de Hollywood! ¡Soy una estrella con mi propio paseo de la fama!"
+  },
+  "castle-glass/ages/castle-glass": {
+    "name": "Castillo de Cristal",
+    "effect": "Descarta 2 cartas de tu mano.\nLuego, roba 2 cartas.\n\nLos jugadores no pueden descartar conchas, corales ni peces."
+  },
+  "castle-glass/ages/magic-hour": {
+    "name": "Hora Mágica",
+    "effect": "Roba 2 cartas.\nO establece tu Gene Pool en 5."
+  },
+  "castle-glass/catastrophes/still-water": {
+    "name": "Agua Quieta",
+    "effect": "-2 Gene Pool\n\nRoba 3 cartas. No estabilices para terminar tu turno en esta age.",
+    "worldsEnd": "+8 si tu Gene Pool es 1."
+  },
+  "castle-glass/traits/aposematic": {
+    "name": "Aposemático",
+    "effect": "Roba 1 carta. Juega 1.",
+    "flavor": "Nada grita peligro como los colores bonitos."
+  },
+  "castle-glass/traits/banal": {
+    "name": "Banal",
+    "flavor": "¿Cómo está el agua?"
+  },
+  "castle-glass/traits/benthic": {
+    "name": "Bentónico",
+    "effect": "Puedes descartar 1 carta de tu mano para jugar otro trait.",
+    "flavor": "Modelo de exhibición."
+  },
+  "castle-glass/traits/biochromatic": {
+    "name": "Biocromático",
+    "effect": "Todos los oponentes descartan todas las cartas incoloras de su mano y estabilizan.",
+    "flavor": "Llevo una vida muy colorida."
+  },
+  "castle-glass/traits/black-and-blue": {
+    "name": "Negro y Azul",
+    "flavor": "Y también un poco de verde"
+  },
+  "castle-glass/traits/brainy": {
+    "name": "Cerebral",
+    "effect": "Los oponentes no pueden jugar morado en su siguiente turno. Pero debes recordárselo.",
+    "flavor": "No olvides recordarle a la gente que no puede jugar morado en su turno."
+  },
+  "castle-glass/traits/buttery-fins": {
+    "name": "Aletas de Mantequilla",
+    "flavor": "Mejores que las aletas comunes por amplia margarina."
+  },
+  "castle-glass/traits/conchomancy": {
+    "name": "Caracolomancia",
+    "effect": "Juega en cualquier momento para echar un vistazo a la siguiente age.",
+    "flavor": "Escucha a Caracola. Caracola te dirá lo que quieres oír."
+  },
+  "castle-glass/traits/copper-band": {
+    "name": "Banda de Cobre",
+    "effect": "Juega 1 con un valor nominal de 1.",
+    "flavor": "Una banda de un solo éxito."
+  },
+  "castle-glass/traits/countershading": {
+    "name": "Contrasombreado",
+    "effect": "Puedes jugar Countershading en lugar de estabilizar para terminar tu turno.",
+    "flavor": "Ocúltate de los depredadores, a menos que estés al revés."
+  },
+  "castle-glass/traits/crystal-skeleton": {
+    "name": "Esqueleto de Cristal",
+    "effect": "Todos los jugadores descartan todas las cartas dominantes de su mano y estabilizan.",
+    "flavor": "¡Consigue hoy tu kit inicial de arrecife!"
+  },
+  "castle-glass/traits/fish-collector": {
+    "name": "Coleccionista de Peces",
+    "effect": "Arrebata un trait con un valor nominal de 1 de hasta dos pilas de traits.",
+    "flavor": "Ojalá encuentre la otra bota."
+  },
+  "castle-glass/traits/fragmentation": {
+    "name": "Fragmentación",
+    "effect": "Estabiliza hasta 4. Juega 1.",
+    "flavor": "Separémonos para poder empezar algo nuevo."
+  },
+  "castle-glass/traits/glass-predator": {
+    "name": "Depredador de Cristal",
+    "effect": "Cuando juegues Glass Predator, arrebata 1 carta de la pila de traits de un oponente. Luego, juega 1.",
+    "flavor": "Peligrosamente frágil."
+  },
+  "castle-glass/traits/glossy": {
+    "name": "Lustroso",
+    "flavor": "Quería ponerme musculoso para la playa, pero terminé pulido."
+  },
+  "castle-glass/traits/guanine-crystals": {
+    "name": "Cristales de Guanina",
+    "effect": "En lugar de estabilizar para terminar tu turno, roba 2 cartas.",
+    "flavor": "¡Ahora es mi momento de brillar!"
+  },
+  "castle-glass/traits/harboring": {
+    "name": "Acogida",
+    "effect": "Estabiliza hasta 6 para terminar este turno.",
+    "flavor": "Se aceptan nuevos inquilinos."
+  },
+  "castle-glass/traits/keystone": {
+    "name": "Piedra Angular",
+    "flavor": "Bienvenido a casa."
+  },
+  "castle-glass/traits/luminous": {
+    "name": "Luminoso",
+    "effect": "Devuelve 2 de tu pila de traits a tu mano. Luego, juega 2.",
+    "flavor": "Va nadando entre las sombras y la luz de las estrellas."
+  },
+  "castle-glass/traits/mucous-coating": {
+    "name": "Capa de Moco",
+    "effect": "+3 si tienes un coral en tu pila de traits.",
+    "flavor": "Está a la vista. O mejor dicho, en la nariz."
+  },
+  "castle-glass/traits/natural-symmetry": {
+    "name": "Simetría Natural",
+    "effect": "Todos los jugadores prevén la siguiente age.",
+    "flavor": "Un 1,618 en diseño."
+  },
+  "castle-glass/traits/opulent": {
+    "name": "Opulento",
+    "effect": "Roba 1 carta. Juega 1.",
+    "flavor": "El oro se desvanece, la riqueza se esfuma y la fortuna de nuestras vidas se mide en recuerdos."
+  },
+  "castle-glass/traits/pearl": {
+    "name": "Perla",
+    "effect": "Puedes jugar 1 trait de cada color. Ignora las acciones.",
+    "flavor": "La sorpresa de la naturaleza en una cajita."
+  },
+  "castle-glass/traits/pip": {
+    "name": "Pip",
+    "effect": "Juega todos los traits con un valor nominal de tu elección. Ignora las acciones.",
+    "flavor": "¡Pip, pip, miaurra!"
+  },
+  "castle-glass/traits/porous": {
+    "name": "Poroso",
+    "effect": "+1 Gene Pool",
+    "flavor": "Te contaría un chiste, pero tiene más huecos que gracia."
+  },
+  "castle-glass/traits/pteridines": {
+    "name": "Pteridinas",
+    "effect": "Roba 1 carta. Puedes jugarla ahora.",
+    "flavor": "El motivo de unos colores pterriblemente hermosos."
+  },
+  "castle-glass/traits/radial-symmetry": {
+    "name": "Simetría Radial",
+    "effect": "Inicio de tus turnos: Puedes descartar todas las cartas de 1 color de tu mano.",
+    "flavor": "Mantén a tus amigos cerca y a tus anémonas aún más cerca."
+  },
+  "castle-glass/traits/radiant": {
+    "name": "Radiante",
+    "effect": "Para jugar, debes tener al menos 6 traits con un valor nominal de 1 en tu pila de traits.",
+    "flavor": "Solo se deja atrapar por un abrazo cálido."
+  },
+  "castle-glass/traits/resplendent": {
+    "name": "Resplandeciente",
+    "effect": "+1 Gene Pool. Juega 1.",
+    "flavor": "Los momentos que damos por sentado."
+  },
+  "castle-glass/traits/sandy": {
+    "name": "Arenoso",
+    "effect": "Coloca la siguiente age en el fondo de la pila de ages.",
+    "flavor": "Quiero que esto dure para siempre."
+  },
+  "castle-glass/traits/sea-glass": {
+    "name": "Vidrio de Mar",
+    "effect": "Juega en cualquier momento.",
+    "flavor": "Ves Sea Glass, juegas Sea Glass."
+  },
+  "castle-glass/traits/spiny-fins": {
+    "name": "Aletas Espinosas",
+    "effect": "Juega 1. Luego, descártalo. (No puedes descartar dominantes.)",
+    "flavor": "Las ventajas son tres: agilidad, defensa y estilo."
+  },
+  "castle-glass/traits/spiral-dome": {
+    "name": "Cúpula Espiral",
+    "effect": "Roba 2 cartas.",
+    "flavor": "Retomemos esto luego, en círculos."
+  },
+  "castle-glass/traits/spiral-motion": {
+    "name": "Movimiento Espiral",
+    "effect": "Juega 1. Luego, devuélvelo a tu mano. (No puedes jugar este efecto dos veces en 1 turno.) (No puedes devolver dominantes.)",
+    "flavor": "En espiral hacia el control."
+  },
+  "castle-glass/traits/striated": {
+    "name": "Estriado",
+    "flavor": "No cuentes las líneas. Soy más joven de lo que parezco."
+  },
+  "castle-glass/traits/sunny": {
+    "name": "Soleado",
+    "effect": "Juega Sunny en cualquier momento para estabilizar hasta 8.",
+    "flavor": "Si brilla, recógelo."
+  },
+  "castle-glass/traits/tabular": {
+    "name": "Tabular",
+    "flavor": "Tráeme mis cubiertos y pon un mantel individual sobre mi cabeza."
+  },
+  "castle-glass/traits/thermal-tolerance": {
+    "name": "Tolerancia Térmica",
+    "effect": "En el Fin del Mundo: Elige un oponente. +1 por cada trait rojo en su pila de traits.",
+    "flavor": "Quien aguanta el calor se queda en la cocina."
+  },
+  "castle-glass/traits/tidal-tolerance": {
+    "name": "Tolerancia a la Marea",
+    "effect": "En el Fin del Mundo: Elige un oponente. +1 por cada trait azul en su pila de traits.",
+    "flavor": "Dejándose llevar por la marea."
   }
 }

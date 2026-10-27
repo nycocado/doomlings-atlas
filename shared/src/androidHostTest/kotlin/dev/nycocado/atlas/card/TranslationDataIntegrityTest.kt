@@ -47,7 +47,7 @@ class TranslationDataIntegrityTest {
             .parseToJsonElement(dir.resolve("cards.json").readText())
             .jsonArray
             .map { it.jsonObject }
-            .filter { it.getValue("set").jsonPrimitive.content in setOf("special") }
+            .filter { it.getValue("set").jsonPrimitive.content in setOf("special", "castle-glass") }
             .map { it.getValue("id").jsonPrimitive.content }
 
     private val files =
