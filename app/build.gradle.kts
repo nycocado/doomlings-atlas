@@ -71,6 +71,9 @@ android {
     buildFeatures {
         compose = true
     }
+    androidResources {
+        generateLocaleConfig = true
+    }
     testOptions {
         // Robolectric reads the merged resources and assets, which include the packaged cards.json.
         unitTests.isIncludeAndroidResources = true
@@ -80,7 +83,6 @@ android {
     experimentalProperties["android.experimental.enableScreenshotTest"] = true
     lint {
         warningsAsErrors = true
-        lintConfig = file("lint.xml")
         // New library releases must not break the build; Dependabot handles updates.
         disable += setOf("GradleDependency", "NewerVersionAvailable", "AndroidGradlePluginVersion")
     }

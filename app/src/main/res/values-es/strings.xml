@@ -1,6 +1,48 @@
-<!-- Only the labels beside the icons of the card detail, which follow the card language. The Spanish interface is
-     ticket #105; app/lint.xml mutes MissingTranslation for "es" until then. -->
 <resources>
+    <string name="unofficial_notice">No oficial, sin afiliación ni respaldo de Doomlings LLC</string>
+    <string name="unofficial_label">No oficial</string>
+    <string name="unofficial_explanation">Doomlings Atlas es una app complementaria gratuita y de código abierto, hecha por un fan. Las imágenes y los textos de las cartas y el nombre Doomlings son © Doomlings LLC, usados con permiso.</string>
+    <string name="got_it">Entendido</string>
+
+    <string name="about">Acerca de</string>
+    <string name="version">Versión %1$s</string>
+    <string name="licenses_app">App</string>
+    <string name="licenses_fonts">Fuentes</string>
+    <string name="licenses_libraries">Bibliotecas</string>
+    <string name="show_license">mostrar licencia</string>
+    <string name="hide_license">ocultar licencia</string>
+
+    <string name="search_placeholder">¿Qué doomling buscas?</string>
+    <string name="search_label">Buscar cartas</string>
+    <string name="clear_search">Borrar búsqueda</string>
+    <string name="no_results">Ningún doomling coincide con tu búsqueda.</string>
+
+    <string name="all_traits">Todos los traits</string>
+    <string name="all_ages">Todas las ages</string>
+    <string name="all_catastrophes">Todas las catastrophes</string>
+    <string name="color_hint">toca un color para filtrar</string>
+
+    <string name="color_blue">Azul</string>
+    <string name="color_green">Verde</string>
+    <string name="color_purple">Morado</string>
+    <string name="color_red">Rojo</string>
+    <string name="color_colorless">Incoloro</string>
+    <string name="card_points_zero">0 puntos</string>
+    <plurals name="card_points">
+        <item quantity="one">%1$s punto</item>
+        <item quantity="many">%1$s de puntos</item>
+        <item quantity="other">%1$s puntos</item>
+    </plurals>
+
+    <string name="back">Volver</string>
+    <string name="card_language">Idioma de la carta</string>
+
+    <string name="dock_cards">Cartas</string>
+    <string name="dock_score">Puntuación</string>
+    <string name="dock_scanner">Escáner</string>
+    <string name="dock_tutorial">Tutorial</string>
+    <string name="coming_soon">%1$s, próximamente</string>
+
     <string name="worlds_end">Fin del Mundo</string>
     <string name="dominant">Dominante</string>
     <string name="icon_action">Acción</string>
