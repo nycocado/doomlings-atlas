@@ -647,7 +647,7 @@
         "monte",
         "pile"
       ],
-      "note": "Trait pile: 'pilha de traits'."
+      "note": "Trait pile: 'pilha de traits'; age pile: 'pilha de ages'."
     },
     {
       "en": "place",
