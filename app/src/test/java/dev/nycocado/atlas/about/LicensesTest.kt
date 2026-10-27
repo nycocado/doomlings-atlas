@@ -16,6 +16,19 @@ class LicensesTest {
     }
 
     @Test
+    fun fontWithoutAuthorsLineIsNamedByItsFile() {
+        val fonts =
+            licenses(
+                "Atlas",
+                "GPL text",
+                mapOf("fredoka-OFL.txt" to "SIL Open Font License"),
+                emptyList(),
+            ).fonts
+
+        assertEquals(listOf("fredoka"), fonts.map { it.name })
+    }
+
+    @Test
     fun libraryIsNamedByItsSpdxId() {
         val library =
             library(
