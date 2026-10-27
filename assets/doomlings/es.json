@@ -2199,5 +2199,502 @@
   "legends-of-enderas/treasures/zero-point-module": {
     "name": "Módulo de Punto Cero",
     "effect": "Eco:\nRojo a Rojo\no\nVerde a Verde\n\nUrgencia:\nRoba 2 cartas."
+  },
+  "upgrade/ages/age-of-metadata": {
+    "name": "Era de los Metadatos",
+    "effect": "Juega esta age con tu mano revelada."
+  },
+  "upgrade/ages/badlands": {
+    "name": "Tierras Baldías",
+    "effect": "Descarta 1 carta. Baraja la pila de descarte y reparte 1 carta boca abajo a cada jugador.\n\nDevuelve las cartas restantes a la pila de descarte."
+  },
+  "upgrade/ages/ozmorian-winds": {
+    "name": "Vientos Ozmorianos",
+    "effect": "Después de estabilizar, pasa 1 carta aleatoria a tu izquierda."
+  },
+  "upgrade/catastrophes/bioengineered-plague": {
+    "name": "Peste Bioingenierizada",
+    "effect": "-1 Gene Pool\n\nCada jugador elige un color. El jugador a tu izquierda descarta de su mano todas las cartas de ese color.",
+    "worldsEnd": "Descarta 1 trait aleatorio del color que tienes en mayor cantidad en tu pila de traits. (Si 2 o más colores empatan, elige 1.)"
+  },
+  "upgrade/catastrophes/impact-event": {
+    "name": "Evento de Impacto",
+    "effect": "-1 Gene Pool\n\nDescarta 1 carta de tu mano por cada trait dominante en tu pila de traits.",
+    "worldsEnd": "-1 por cada trait en tu pila de traits con un valor nominal de 3 o más."
+  },
+  "upgrade/catastrophes/eyes-open-from-behind-the-stars": {
+    "name": "Ojos Abiertos Detrás de las Estrellas",
+    "effect": "-1 Gene Pool\n\nDescarta 1 carta de tu mano. Quien haya descartado el menor valor nominal también debe descartar 1 trait de su pila de traits.",
+    "worldsEnd": "Descarta el trait de mayor valor nominal de tu pila de traits para el Dios Antiguo."
+  },
+  "upgrade/meaning-of-life/the-armored-melon": {
+    "name": "El Melón Blindado",
+    "effect": "+3 si tienes 3-5 cartas en la mano.\n\n+6 si tienes 6 o más."
+  },
+  "upgrade/meaning-of-life/the-bilbies": {
+    "name": "Los Bilbies",
+    "effect": "+4 si tienes solo 1 trait dominante en tu pila de traits.\n\n+10 si no tienes ninguno."
+  },
+  "upgrade/meaning-of-life/the-blind-dragon": {
+    "name": "El Dragón Ciego",
+    "effect": "Para obtener esta bonificación, debes tener 5 o más de un color en tu pila de traits.\n\nAl puntuar el Meaning of Life, roba 2 cartas de Meaning of Life y añade las bonificaciones aplicables a tu puntuación final."
+  },
+  "upgrade/meaning-of-life/the-bramble-brawler": {
+    "name": "El Peleón de las Zarzas",
+    "effect": "+4 si tienes más traits morados en tu pila de traits que tus oponentes,\nY\n+1 por cada oponente con menos traits morados en su pila de traits que tú."
+  },
+  "upgrade/meaning-of-life/the-bush-kid": {
+    "name": "El Niño del Monte",
+    "effect": "+3 si tienes 3 o más Gotas de Vida en tu pila de traits,\nY\n+6 si TAMBIÉN tienes 5 o más acciones."
+  },
+  "upgrade/meaning-of-life/the-cabochon": {
+    "name": "El Cabujón",
+    "effect": "+3 si tienes solo 1 o 2 traits rojos en tu pila de traits.\n\n+6 si no tienes ninguno."
+  },
+  "upgrade/meaning-of-life/the-child-and-the-bear": {
+    "name": "El Niño y el Oso",
+    "effect": "+1 por cada par de color en tu pila de traits que comparta un color con un dominante. (máx. +5.)\n\n+2 por cada par si tienes 2 dominantes del mismo color. (máx. +10.)\n\nLos traits dominantes no cuentan para los pares de color en estas bonificaciones."
+  },
+  "upgrade/meaning-of-life/the-clashing-crabs": {
+    "name": "Los Cangrejos en Pugna",
+    "effect": "+4 si tienes más traits con valor nominal negativo en tu pila de traits que traits con un valor nominal de 4 o más.\n\n+8 si tienes la misma cantidad de ambos, o ninguno de los dos."
+  },
+  "upgrade/meaning-of-life/the-cosmic-jinx": {
+    "name": "La Mala Suerte Cósmica",
+    "effect": "+4 si tu Gene Pool es 3.\n\n+8 si tu Gene Pool es 1 o 2."
+  },
+  "upgrade/meaning-of-life/the-dancer": {
+    "name": "El Bailarín",
+    "effect": "+12 si tienes la menor puntuación, antes de las bonificaciones de Meaning of Life.\n\n+8 si estás empatado con la menor."
+  },
+  "upgrade/meaning-of-life/the-diamond-butterfly": {
+    "name": "La Mariposa de Diamante",
+    "effect": "+2 si tu pila de traits tiene menos traits azules que tus oponentes. (Incluyendo empates.)\n+2 si tienes menos traits verdes. (Incluyendo empates.)\n+6 si cumples ambos objetivos."
+  },
+  "upgrade/meaning-of-life/the-emerald-slug": {
+    "name": "La Babosa Esmeralda",
+    "effect": "+2 si tu pila de traits tiene menos traits rojos que tus oponentes. (Incluyendo empates.)\n+2 si tienes menos traits azules. (Incluyendo empates.)\n+6 si cumples ambos objetivos."
+  },
+  "upgrade/meaning-of-life/the-fellmonger": {
+    "name": "El Peletero",
+    "effect": "+3 si tienes solo 1 o 2 traits azules en tu pila de traits.\n\n+6 si no tienes ninguno."
+  },
+  "upgrade/meaning-of-life/the-fire-bandit": {
+    "name": "El Bandido del Fuego",
+    "effect": "+4 si tienes más traits rojos en tu pila de traits que tus oponentes,\nY\n+1 por cada oponente con menos traits rojos en su pila de traits que tú."
+  },
+  "upgrade/meaning-of-life/the-forest-keeper": {
+    "name": "El Guardián del Bosque",
+    "effect": "+4 si tienes más traits verdes en tu pila de traits que tus oponentes,\nY\n+1 por cada oponente con menos traits verdes en su pila de traits que tú."
+  },
+  "upgrade/meaning-of-life/the-fortunate-alchemist": {
+    "name": "El Alquimista Afortunado",
+    "effect": "+2 si tienes 2-4 traits con valor nominal 0 en tu pila de traits, incluyendo las brújulas.\n\n+9 si tienes 5.\n-4 si no tienes ninguno."
+  },
+  "upgrade/meaning-of-life/the-genial-outsider": {
+    "name": "El Forastero Afable",
+    "effect": "+3 si tienes 2 o menos Gotas de Vida en tu pila de traits.\nY\n+6 si TAMBIÉN tienes 3 o menos acciones."
+  },
+  "upgrade/meaning-of-life/the-golden-shrew": {
+    "name": "La Musaraña Dorada",
+    "effect": "+4 si tienes 9-12 traits en tu pila de traits.\n\n+7 si tienes 8 o menos."
+  },
+  "upgrade/meaning-of-life/the-hero": {
+    "name": "El Héroe",
+    "effect": "+4 por cada dominante en tu pila de traits que comparta un color/incoloro con SOLO 0-1 otro trait en tu pila de traits. (Incluyendo tu otro dominante.)\n\n+12 si, contra todo pronóstico, tienes 3 traits dominantes en tu pila de traits."
+  },
+  "upgrade/meaning-of-life/the-jellyfish": {
+    "name": "La Medusa",
+    "effect": "+3 si tienes 3-5 traits azules en tu pila de traits.\n\n+6 si tienes 6 o más."
+  },
+  "upgrade/meaning-of-life/the-jungler": {
+    "name": "El Jungler",
+    "effect": "+4 si tienes más traits incoloros en tu pila de traits que tus oponentes,\nY\n+1 por cada oponente con menos traits incoloros en su pila de traits que tú."
+  },
+  "upgrade/meaning-of-life/the-logician": {
+    "name": "El Lógico",
+    "effect": "+3 si tienes 3-5 traits sin efecto en tu pila de traits.\n\n+6 si tienes 6 o más."
+  },
+  "upgrade/meaning-of-life/the-lumberjack": {
+    "name": "El Leñador",
+    "effect": "+3 si tienes solo 1 o 2 traits verdes en tu pila de traits.\n\n+6 si no tienes ninguno."
+  },
+  "upgrade/meaning-of-life/the-lunar-guard": {
+    "name": "La Guardia Lunar",
+    "effect": "+4 si a tu pila de traits le falta 1 color o incoloro.\n\n+9 si le faltan al menos 2 colores, o al menos 1 color e incoloro."
+  },
+  "upgrade/meaning-of-life/the-magician": {
+    "name": "El Mago",
+    "effect": "+3 si tienes solo 1 o 2 traits incoloros en tu pila de traits.\n\n+6 si no tienes ninguno."
+  },
+  "upgrade/meaning-of-life/the-maven": {
+    "name": "El Erudito",
+    "effect": "+3 si tienes 10-14 traits en tu pila de traits.\n\n+7 si tienes 15 o más."
+  },
+  "upgrade/meaning-of-life/the-medicine-master": {
+    "name": "El Maestro de la Medicina",
+    "effect": "+3 si tienes 1-2 traits con valor nominal negativo en tu pila de traits.\n\n+7 si tienes 3 o más."
+  },
+  "upgrade/meaning-of-life/the-monkey-thief": {
+    "name": "El Mono Ladrón",
+    "effect": "+8 Y\n-3 por cada Gota de Vida en tu pila de traits."
+  },
+  "upgrade/meaning-of-life/the-painter": {
+    "name": "El Pintor",
+    "effect": "+3 por cada color con un número par de traits en tu pila de traits.\n(¡Los colores con 0 traits no cuentan!)"
+  },
+  "upgrade/meaning-of-life/the-parrot-s-riddle": {
+    "name": "El Acertijo del Loro",
+    "effect": "+9 Y\n-2 por cada acción en tu pila de traits."
+  },
+  "upgrade/meaning-of-life/the-rain-golem": {
+    "name": "El Golem de la Lluvia",
+    "effect": "+4 si tienes más traits azules en tu pila de traits que tus oponentes,\nY\n+1 por cada oponente con menos traits azules en su pila de traits que tú."
+  },
+  "upgrade/meaning-of-life/the-river-mist": {
+    "name": "La Neblina del Río",
+    "effect": "En el Fin del Mundo:\nRevela esta carta inmediatamente.\n+2 al conteo total de tu pila de traits.\n\n+4 si tienes la mayor cantidad de traits en tu pila de traits\nY\n+1 por cada oponente con menos traits en su pila de traits que tú."
+  },
+  "upgrade/meaning-of-life/the-ruby-tortoise": {
+    "name": "La Tortuga de Rubí",
+    "effect": "+2 si tu pila de traits tiene menos traits verdes que tus oponentes. (Incluyendo empates.)\n+2 si tienes menos traits morados. (Incluyendo empates.)\n\n+6 si cumples ambos objetivos."
+  },
+  "upgrade/meaning-of-life/the-sapphire-ladybug": {
+    "name": "La Mariquita de Zafiro",
+    "effect": "+2 si tu pila de traits tiene menos traits morados que tus oponentes. (Incluyendo empates.)\n+2 si tienes menos traits rojos. (Incluyendo empates.)\n\n+6 si cumples ambos objetivos."
+  },
+  "upgrade/meaning-of-life/the-silent-elder": {
+    "name": "El Anciano Silencioso",
+    "effect": "Si tienes 4 o menos de cada color en tu pila de traits, revela 1 carta de la parte superior del mazo de traits. Si tienes 3 o menos de cada color, revela 5.\nAñade todos los valores nominales de 4 o menos a tu puntuación final.\n(Retira las cartas reveladas del juego.)"
+  },
+  "upgrade/meaning-of-life/the-soothsayer": {
+    "name": "El Adivino",
+    "effect": "+3 si tienes solo 1 o 2 traits morados en tu pila de traits.\n\n+6 si no tienes ninguno."
+  },
+  "upgrade/meaning-of-life/the-spirit-gardener": {
+    "name": "El Jardinero Espiritual",
+    "effect": "+3 si tienes 3-5 traits incoloros en tu pila de traits.\n\n+6 si tienes 6 o más."
+  },
+  "upgrade/meaning-of-life/the-stylite": {
+    "name": "El Estilita",
+    "effect": "+3 si tu bonificación de Gota de Vida es 3-6.\n\n+7 si es 2 o menos."
+  },
+  "upgrade/meaning-of-life/the-tigris": {
+    "name": "El Tigre",
+    "effect": "+3 si tienes 3-5 traits con acciones en tu pila de traits.\n\n+6 si tienes 6 o más."
+  },
+  "upgrade/meaning-of-life/the-tracker": {
+    "name": "El Rastreador",
+    "effect": "Si tienes los 4 colores en tu pila de traits:\n\n+1 por cada trait incoloro en tu pila de traits."
+  },
+  "upgrade/meaning-of-life/the-truffle-hunter": {
+    "name": "El Cazador de Trufas",
+    "effect": "+2 si tienes 3-5 traits con valor nominal 1 en tu pila de traits.\n\n+6 si tienes 6 o más."
+  },
+  "upgrade/meaning-of-life/the-vagrant": {
+    "name": "El Vagabundo",
+    "effect": "+8 si tienes menos traits en tu pila de traits que tus oponentes.\n\n+6 si estás empatado con la menor cantidad."
+  },
+  "upgrade/meaning-of-life/the-vixen": {
+    "name": "El Zorro",
+    "effect": "+3 si tienes 3-5 traits morados en tu pila de traits.\n\n+6 si tienes 6 o más."
+  },
+  "upgrade/meaning-of-life/the-warbler": {
+    "name": "El Ave Cantora",
+    "effect": "+3 si tienes 3-5 traits verdes en tu pila de traits.\n\n+6 si tienes 6 o más."
+  },
+  "upgrade/meaning-of-life/the-warrior": {
+    "name": "El Guerrero",
+    "effect": "+3 si tienes 3-5 traits rojos en tu pila de traits.\n\n+6 si tienes 6 o más."
+  },
+  "upgrade/meaning-of-life/the-weaver": {
+    "name": "El Tejedor",
+    "effect": "+3 por cada conjunto de los 4 colores (rojo, verde, azul, morado) en tu pila de traits."
+  },
+  "upgrade/meaning-of-life/the-wilted-flower": {
+    "name": "La Flor Marchita",
+    "effect": "+4 si estás empatado con el menor Gene Pool.\n\n+7 si tienes el menor."
+  },
+  "upgrade/meaning-of-life/thunder-frogs": {
+    "name": "Ranas del Trueno",
+    "effect": "+2 por cada color diferente en tu pila de traits con exactamente un trait con valor nominal 2."
+  },
+  "upgrade/traits/acrobatic": {
+    "name": "Acrobático",
+    "flavor": "¡Me llaman Jungle Jim!"
+  },
+  "upgrade/traits/ancient": {
+    "name": "Milenario",
+    "effect": "Elige un color. Roba 10 cartas. Quédate con 1 del color elegido. Coloca el resto en el fondo del mazo.",
+    "flavor": "Si quieres pasar por mi bosque, debes decir qué es lo que más te gusta de mí."
+  },
+  "upgrade/traits/binary": {
+    "name": "Binario",
+    "effect": "Arrebata un trait con un valor nominal de 0 o 1 de la pila de traits de un oponente. Juega su acción.",
+    "flavor": "Él es un 1, yo soy un 0. Juntos, somos un 10."
+  },
+  "upgrade/traits/bionic-arm": {
+    "name": "Brazo Biónico",
+    "effect": "+1 por cada Techling en tu pila de traits. (Incluyendo este.) +2 por cada Techling si un trait está adjunto a Bionic Arm.",
+    "flavor": "Nunca más pierdas una guerra de pulgares."
+  },
+  "upgrade/traits/bloom": {
+    "name": "Floración",
+    "flavor": "¿Quién se anima a una jam session? Yo traigo la mermelada."
+  },
+  "upgrade/traits/bone-reinforcement": {
+    "name": "Refuerzo Óseo",
+    "effect": "Adjunta a un trait. El trait huésped no puede ser intercambiado ni arrebatado.",
+    "flavor": "Conseguí un seguro médico nuevo en el trabajo. Pensé en mejorar mis huesos."
+  },
+  "upgrade/traits/bony-plates": {
+    "name": "Placas Óseas",
+    "effect": "Roba 3 cartas. Puedes descartar Bony Plates para jugar 1 de ellas en lugar de eso. Descarta el resto.",
+    "flavor": "Antes de la boda, haré una despedida de soltero... estegosáurica."
+  },
+  "upgrade/traits/bullheaded": {
+    "name": "Testarudo",
+    "flavor": "¡Soy de dos colores y punto final!"
+  },
+  "upgrade/traits/carnosaur-jaw": {
+    "name": "Mandíbula de Carnosaurio",
+    "effect": "Para jugar, debes descartar 2 traits rojos de tu pila de traits.",
+    "flavor": "¡Deja de moverte! ¡No puedo verte!"
+  },
+  "upgrade/traits/ceratopsian-horns": {
+    "name": "Cuernos Ceratopsios",
+    "flavor": "Nombrados en honor al norteamericano Michael Cera."
+  },
+  "upgrade/traits/cranial-crest": {
+    "name": "Cresta Craneal",
+    "effect": "+1 por cada 3 traits con un valor nominal negativo en la pila de descarte.",
+    "flavor": "No sé para qué sirve, ¡pero ahí está!"
+  },
+  "upgrade/traits/curiosity": {
+    "name": "Curiosidad",
+    "flavor": "No soy un gato, así que estaré bien."
+  },
+  "upgrade/traits/cybernetic": {
+    "name": "Cibernético",
+    "effect": "Adjunta a un trait que no sea azul. El trait huésped ahora es azul.",
+    "flavor": "Puedo hacer varias tareas a la vez. Como frotarme la panza y darme palmaditas en la cabeza."
+  },
+  "upgrade/traits/dermal-armor": {
+    "name": "Armadura Dérmica",
+    "effect": "Puedes descartar 1 trait de tu pila de traits.",
+    "flavor": "¿Por qué no te gustó mi guion? Dímelo sin miedo. Tengo la piel gruesa."
+  },
+  "upgrade/traits/destined": {
+    "name": "Destinado",
+    "flavor": "La leyenda habla de un ser destinado a la grandeza. Lo reconoceremos por la corona realmente genial que lleva en la cabeza."
+  },
+  "upgrade/traits/diaphanous-wings": {
+    "name": "Alas Translúcidas",
+    "flavor": "Te ayudan a volar, pero se rompen fácil. Como las aerolíneas de bajo costo."
+  },
+  "upgrade/traits/dragon-heart": {
+    "name": "Corazón de Dragón",
+    "effect": "+4 si tienes los 4 colores en tu pila de traits.",
+    "flavor": "Todo se derrite en mi boca."
+  },
+  "upgrade/traits/effigial": {
+    "name": "Muñeco Vudú",
+    "effect": "Puedes jugar Effigial desde tu mano en la pila de traits de un oponente cuando juegue una acción.",
+    "flavor": "¿Cómo va el vudú?"
+  },
+  "upgrade/traits/egg-predation": {
+    "name": "Depredación de Huevos",
+    "effect": "Arrebata 1 Dinoling de la pila de traits de un oponente.",
+    "flavor": "Esto iba a ser un T-Rex. ¡Deberías agradecerme!"
+  },
+  "upgrade/traits/electromagnetic": {
+    "name": "Electromagnético",
+    "effect": "Adjunta a un trait en cualquier pila de traits. Si tiene una acción, juega esa acción ahora.",
+    "flavor": "Pone el \"rad\" en \"radiación\"."
+  },
+  "upgrade/traits/elongated-neck": {
+    "name": "Cuello Largo",
+    "effect": "Juega una acción de una carta de tu mano.",
+    "flavor": "Tengo hojas... digo, amigos en las alturas."
+  },
+  "upgrade/traits/elven-ears": {
+    "name": "Orejas Élficas",
+    "effect": "+1 por cada Mythling en TODAS las pilas de traits. (Incluyendo este.)",
+    "flavor": "¿Dices que hay oferta en flechas? Soy todo oídos."
+  },
+  "upgrade/traits/fey": {
+    "name": "Hada",
+    "effect": "Puedes jugar Fey en cualquier momento. Todos los jugadores reciben: +1 Gene Pool.",
+    "flavor": "Hada. Ángel degradado. A veces colecciona dientes."
+  },
+  "upgrade/traits/free-will": {
+    "name": "Libre Albedrío",
+    "effect": "En el Fin del Mundo: Esta carta pasa a ser del color que elijas.",
+    "flavor": "La capacidad de elegir entre el número 1 o el número 2."
+  },
+  "upgrade/traits/fronds": {
+    "name": "Follaje",
+    "effect": "Para jugar, debes descartar 1 trait de tu pila de traits. +2 Gene Pool.",
+    "flavor": "No me corto el pelo desde el Jurásico."
+  },
+  "upgrade/traits/gelatinous": {
+    "name": "Gelatinoso",
+    "effect": "Puedes jugar Gelatinous desde tu mano cuando un oponente te arrebate algo de tu mano o de tu pila de traits. (Si Gelatinous es arrebatado, descártalo.)",
+    "flavor": "Atrapado en una situación bien viscosa."
+  },
+  "upgrade/traits/gmo": {
+    "name": "Transgénico",
+    "effect": "Adjunta a un trait. +1 por cada trait de tu pila de traits del mismo color que el trait huésped.",
+    "flavor": "Soy maíz perfecto. Bip bop."
+  },
+  "upgrade/traits/grey-hat": {
+    "name": "Sombrero Gris",
+    "effect": "Mira la mano de un oponente. Arrebata 1 carta y juégala inmediatamente.",
+    "flavor": "Vivo según mi propio código."
+  },
+  "upgrade/traits/hand-wing": {
+    "name": "Mano-Ala",
+    "flavor": "Una extremidad delantera para chocar los cinco más altos."
+  },
+  "upgrade/traits/hyper-myelination": {
+    "name": "Hipermielinización",
+    "effect": "El valor es igual al tamaño del mayor Gene Pool.",
+    "flavor": "¿Mi sistema nervioso central te pone nervioso?"
+  },
+  "upgrade/traits/icy": {
+    "name": "Gélido",
+    "flavor": "Frío y hostil. Frióstil, por decirlo así."
+  },
+  "upgrade/traits/legendary": {
+    "name": "Legendario",
+    "effect": "Descarta tu mano. No estabilices.",
+    "flavor": "Todo lo que has oído de mí es verdad. Bueno, quizá solo lo bueno."
+  },
+  "upgrade/traits/lyonization": {
+    "name": "Lionización",
+    "effect": "Adjunta a un trait en cualquier pila de traits. El efecto del trait huésped ahora está inactivo.",
+    "flavor": "Común en cazadores de alienígenas modificados genéticamente. También en gatos tricolores."
+  },
+  "upgrade/traits/mecha": {
+    "name": "Mecha",
+    "effect": "Adjunta a un trait sin efecto. +1 por cada trait sin efecto en tu pila de traits.",
+    "flavor": "El atuendo definitivo para el baile de graduación."
+  },
+  "upgrade/traits/mighty": {
+    "name": "Poderoso",
+    "effect": "Descarta un trait con valor nominal de 2 de la pila de traits de un oponente.",
+    "flavor": "¡Tú mirar mi hacha linda!"
+  },
+  "upgrade/traits/mitosis": {
+    "name": "Mitosis",
+    "flavor": "Parte del camino del alma. Digo, de la célula."
+  },
+  "upgrade/traits/nano": {
+    "name": "Nano",
+    "effect": "Adjunta a un trait en cualquier pila de traits. El valor es igual al valor nominal del trait huésped.",
+    "flavor": "Somos miembros del diminuto comité tecnológico."
+  },
+  "upgrade/traits/necromantic": {
+    "name": "Necromántico",
+    "effect": "Puedes jugar Necromantic desde tu mano cuando un oponente descarte un trait. Añade ese trait a tu mano.",
+    "flavor": "¿Por qué no vamos a mi casa? Tengo espíritus de sobra."
+  },
+  "upgrade/traits/neural-link": {
+    "name": "Enlace Neural",
+    "effect": "Echa un vistazo a las siguientes 2 ages.",
+    "flavor": "Ok, computadora, ¿qué número estoy pen... ah, ya salió en la pantalla."
+  },
+  "upgrade/traits/orcish-tusks": {
+    "name": "Colmillos de Orco",
+    "effect": "Puedes jugar Orcish Tusks desde tu mano cuando un oponente juegue un trait dominante.",
+    "flavor": "Lo único que quiero para Navidad son mis dos dientes de enfrente... y quizá una guerra."
+  },
+  "upgrade/traits/phreakish-eyes": {
+    "name": "Ojos Raros",
+    "effect": "Roba 3 cartas. Todos los oponentes también roban 1 carta.",
+    "flavor": "El grande evalúa el nivel de amenaza. El pequeño detecta alergias."
+  },
+  "upgrade/traits/protofeathers": {
+    "name": "Protoplumas",
+    "effect": "Juega 2 traits más. Ignora las acciones.",
+    "flavor": "A todos les da risa mi nuevo look, pero no sé por qué tanta pelusa."
+  },
+  "upgrade/traits/pterosaur-wings": {
+    "name": "Alas de Pterosaurio",
+    "effect": "Puedes jugar 1 trait sin efecto de la pila de descarte.",
+    "flavor": "¡Mis alas... tienen dedos! ¡Tengo dedos-ala!"
+  },
+  "upgrade/traits/pycnofibers": {
+    "name": "Picnofibras",
+    "effect": "Roba 1 carta. Si es un trait dominante, descártala. Si no, juégala inmediatamente. Ignora su acción.",
+    "flavor": "Cada nota sobre mí es pura pelusa."
+  },
+  "upgrade/traits/rainbow-horn": {
+    "name": "Cuerno Arcoíris",
+    "effect": "Puedes jugar Rainbow Horn desde tu mano en cualquier momento si tienes los 4 colores en tu pila de traits.",
+    "flavor": "¡Cuerno arcoíris, yupiii!"
+  },
+  "upgrade/traits/righteous": {
+    "name": "Recto",
+    "effect": "Puedes jugar Righteous desde tu mano en cualquier momento para interrumpir una acción que afecte a un oponente.",
+    "flavor": "Lo contrario de torcido."
+  },
+  "upgrade/traits/ruggedized": {
+    "name": "Reforzado",
+    "effect": "Adjunta a un trait. El trait huésped no puede ser retirado de tu pila de traits. Puedes adjuntar a un nuevo trait huésped al final de cada turno.",
+    "flavor": "Soy maíz impenetrable. Bip bop."
+  },
+  "upgrade/traits/serrated-teeth": {
+    "name": "Dientes Serrados",
+    "effect": "+1 por cada trait dominante en la pila de descarte.",
+    "flavor": "Me comí a mi dentista."
+  },
+  "upgrade/traits/subdermal-plating": {
+    "name": "Blindaje Subdérmico",
+    "effect": "Puedes jugar esto en cualquier momento. Adjunta a un trait en cualquier pila de traits. El trait huésped no puede ser descartado.",
+    "flavor": "Ven conmigo si quieres vivir... en un planeta lejano y condenado."
+  },
+  "upgrade/traits/talons": {
+    "name": "Garras",
+    "flavor": "Tú me rascas la espalda y yo te la desgarro."
+  },
+  "upgrade/traits/terror-beak": {
+    "name": "Pico del Terror",
+    "effect": "Para jugar, debes descartar 1 trait verde de tu mano o de tu pila de traits.",
+    "flavor": "El pico va... ¡directo a la carne de mi presa!"
+  },
+  "upgrade/traits/tetrachromatic": {
+    "name": "Tetracromático",
+    "effect": "-1 por cada trait incoloro en tu pila de traits.",
+    "flavor": "Tengo conciencia cromática."
+  },
+  "upgrade/traits/thagomizer": {
+    "name": "Thagomizer",
+    "effect": "Todos los jugadores deben descartar 2 cartas de su mano. (Incluyéndote.)",
+    "flavor": "Nombrado en honor al difunto Thag Simmons. ¡Búscalo!"
+  },
+  "upgrade/traits/tiny-arms": {
+    "name": "Bracitos",
+    "effect": "+1 por cada Dinoling en la pila de descarte.",
+    "flavor": "Extiende el brazo y toca a tu presa."
+  },
+  "upgrade/traits/transgenic-modification": {
+    "name": "Modificación Transgénica",
+    "effect": "Adjunta a un trait que no sea verde. El trait huésped ahora es verde.",
+    "flavor": "Mitad luchador, mitad tomate. ¡Pega un golpe de vitamina C!"
+  },
+  "upgrade/traits/wild": {
+    "name": "Salvaje",
+    "flavor": "Mundo no dolor cuando yo masco palo."
+  },
+  "upgrade/traits/witchy": {
+    "name": "Bruja",
+    "effect": "Puedes jugar Witchy cuando sea descartado de tu mano. Devuelve Witchy a tu mano cuando sea descartado de tu pila de traits.",
+    "flavor": "¡Sopa de cola de rata, enseguida!"
+  },
+  "upgrade/traits/zombified": {
+    "name": "Zombificado",
+    "effect": "Puedes jugar Zombified en la pila de traits de un oponente cuando sea descartado de tu mano.",
+    "flavor": "Me encantaría hincarle el diente a tu cerebro..."
   }
 }

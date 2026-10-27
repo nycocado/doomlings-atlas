@@ -59,6 +59,7 @@ class TranslationDataIntegrityTest {
                         "shadow-puppets",
                         "mokoko-village",
                         "legends-of-enderas",
+                        "upgrade",
                     )
             }.map { it.getValue("id").jsonPrimitive.content }
 
