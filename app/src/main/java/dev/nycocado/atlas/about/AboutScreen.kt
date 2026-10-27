@@ -55,19 +55,6 @@ import dev.nycocado.atlas.ui.theme.sticker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-data class LicenseEntry(
-    val id: String,
-    val name: String,
-    val license: String,
-    val text: String?,
-)
-
-data class Licenses(
-    val app: LicenseEntry,
-    val fonts: List<LicenseEntry>,
-    val libraries: List<LicenseEntry>,
-)
-
 @Composable
 fun AboutScreen(onBack: () -> Unit) {
     val context = LocalContext.current
@@ -89,14 +76,12 @@ private fun loadLicenses(context: Context): Licenses {
             .bufferedReader()
             .use { it.readText() }
 
-    // OFL texts start with "Copyright ... The <font> Project Authors".
     val fonts =
-        context.assets.list("licenses").orEmpty().filter { it.endsWith("-OFL.txt") }.map { file ->
-            val text = read(file)
-            val name =
-                Regex("The (.+?) Project Authors").find(text)?.groupValues?.get(1) ?: file.removeSuffix("-OFL.txt")
-            LicenseEntry(file, name, "OFL-1.1", text)
-        }
+        context.assets
+            .list("licenses")
+            .orEmpty()
+            .filter { it.endsWith("-OFL.txt") }
+            .associateWith(::read)
     // Generated at build time by the AboutLibraries plugin from the app's dependencies.
     val libraries =
         Libs
@@ -104,22 +89,7 @@ private fun loadLicenses(context: Context): Licenses {
             .withJson(context, R.raw.aboutlibraries)
             .build()
             .libraries
-            .map { library ->
-                LicenseEntry(
-                    library.uniqueId,
-                    library.name,
-                    library.licenses.joinToString { it.spdxId ?: it.name },
-                    library.licenses
-                        .mapNotNull { it.licenseContent }
-                        .joinToString("\n\n")
-                        .ifEmpty { null },
-                )
-            }.sortedBy { it.name.lowercase() }
-    return Licenses(
-        LicenseEntry("app", context.getString(R.string.app_name), "GPL-3.0", read("LICENSE")),
-        fonts,
-        libraries,
-    )
+    return licenses(context.getString(R.string.app_name), read("LICENSE"), fonts, libraries)
 }
 
 @Composable
