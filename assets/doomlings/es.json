@@ -1420,5 +1420,230 @@
     "name": "Yobondo",
     "effect": "Puedes jugar Yobondo cuando un oponente elija como objetivo un solo trait de tu pila de traits. (¡A menos que sea el objetivo de un dominante!) En lugar de eso, ese efecto tiene como objetivo a Yobondo.",
     "flavor": "Yoh bohn doh."
+  },
+  "mokoko-village/ages/hello-farewell": {
+    "name": "Hola, Adiós",
+    "effect": "Puedes jugar 1 trait sin efecto ahora.\n\nSi lo haces, descarta 1 de tu pila de traits."
+  },
+  "mokoko-village/ages/nightflower-island": {
+    "name": "Nightflower Island",
+    "effect": "Roba 2 cartas.\nPasa 1 de tu mano a la izquierda."
+  },
+  "mokoko-village/ages/river-walk": {
+    "name": "Paseo por el Río",
+    "effect": "Si tienes 6 o más cartas en la mano, descarta 2 cartas aleatorias de tu mano.\n\nSi tienes 4 o menos, roba 2 cartas."
+  },
+  "mokoko-village/catastrophes/fatal-falls": {
+    "name": "Cascadas Fatales",
+    "effect": "+0 Gene Pool\n\nDescarta aleatoriamente todas las cartas de tu mano, excepto 2.",
+    "worldsEnd": "Juega 1. Ignora las acciones."
+  },
+  "mokoko-village/traits/abandoned": {
+    "name": "Abandonado",
+    "effect": "+1 Gene Pool. Si Abandoned es descartado de tu pila de traits, arrebata 1 rojo.",
+    "flavor": "Yo tenía una banda... hasta que me abandonó."
+  },
+  "mokoko-village/traits/alert": {
+    "name": "Alerta",
+    "effect": "Revela 2 rojos para jugar en cualquier momento.",
+    "flavor": "Quizás un poquito demasiado preparado."
+  },
+  "mokoko-village/traits/ancestral": {
+    "name": "Ancestral",
+    "effect": "En el Fin del Mundo: Puedes descartar 1 de tu pila de traits. +3 por cada color en tu pila de traits con exactamente 2 traits.",
+    "flavor": "Lo mejor del más allá es juzgar a la parentela."
+  },
+  "mokoko-village/traits/bluesy": {
+    "name": "Bluesero",
+    "effect": "+1 Gene Pool. En el Fin del Mundo: Descarta este.",
+    "flavor": "¿Adónde se fue mi amor? No sé, sé, sé, sé..."
+  },
+  "mokoko-village/traits/cairnwalker": {
+    "name": "Caminante de las Piedras",
+    "effect": "En el Fin del Mundo: Elige un color. Cuenta el valor nominal de los traits de ese color como 2.",
+    "flavor": "Mi récord es 2000 piedras."
+  },
+  "mokoko-village/traits/charged": {
+    "name": "Cargado",
+    "effect": "+1 por cada valor nominal diferente en tu pila de traits.",
+    "flavor": "Un gran poder conlleva una gran posibilidad de ganar."
+  },
+  "mokoko-village/traits/concealed": {
+    "name": "Oculto",
+    "effect": "Descarta un trait con valor nominal de 2 o más de tu pila de traits. Luego, juega otro trait.",
+    "flavor": "¿Por qué esa cara larga? Porque esta es la única máscara que cubre mi cara larga."
+  },
+  "mokoko-village/traits/devious": {
+    "name": "Malicioso",
+    "flavor": "¡Muajajajaja!"
+  },
+  "mokoko-village/traits/distrusted": {
+    "name": "Sospechoso",
+    "effect": "Descarta 1 de tu pila de traits para robar 1 carta. Puedes jugarla ahora.",
+    "flavor": "¿Esta máscara me hace ver astuto?"
+  },
+  "mokoko-village/traits/dryadic": {
+    "name": "Driádico",
+    "effect": "-2 por cada trait morado en tu pila de traits. +1 por cada verde. +1 por cada rojo.",
+    "flavor": "Lo bueno crece en los árboles."
+  },
+  "mokoko-village/traits/entwined": {
+    "name": "Entrelazado",
+    "effect": "Juega en cualquier momento: Descarta 1 de tu pila de traits. (Excepto dominantes, esto puede impedir que el trait sea intercambiado/arrebatado.)",
+    "flavor": "Todo está bien. Solo enredado."
+  },
+  "mokoko-village/traits/excluded": {
+    "name": "Excluido",
+    "effect": "Roba 4 cartas. Si Excluded es descartado de tu pila de traits, roba 4 cartas.",
+    "flavor": "Supongo que me sentaré en este rincón a esperar a que alguien me hable, entonces."
+  },
+  "mokoko-village/traits/facekeeper": {
+    "name": "Guardián de Rostros",
+    "effect": "En el Fin del Mundo: Puedes descartar hasta 3 de tu pila de traits. Luego, revela 1 carta de la parte superior del mazo de traits por cada trait descartado de esta forma. Añade sus valores nominales a tu puntuación final.",
+    "flavor": "Solo una cara más entre la multitud."
+  },
+  "mokoko-village/traits/feared": {
+    "name": "Temido",
+    "effect": "Descarta 1 de tu pila de traits y 1 de tu mano.",
+    "flavor": "¡Por favor, dejen de correr! ¡Ayúdenme a quitarme esta máscara!"
+  },
+  "mokoko-village/traits/feng-shui": {
+    "name": "Feng Shui",
+    "effect": "Descarta de tu mano un trait con valor nominal de 3 o más para jugar otro trait.",
+    "flavor": "Todo está en equilibrio. Mientras yo gane."
+  },
+  "mokoko-village/traits/gravetender": {
+    "name": "Sepulturero",
+    "effect": "En el Fin del Mundo: Roba 1 carta por cada color que falte en tu pila de traits. +2 por cada carta robada de esta forma.",
+    "flavor": "Este trabajo está por debajo de mí."
+  },
+  "mokoko-village/traits/honor": {
+    "name": "Honor",
+    "effect": "Elige a un oponente. Él elige darte: 2 cartas de su mano O 1 carta aleatoria.",
+    "flavor": "No soy un ladrón, soy un pirata. Ahora dame eso."
+  },
+  "mokoko-village/traits/jacked": {
+    "name": "Musculoso",
+    "effect": "Para jugar, debes tener 3 verdes en tu pila de traits. Descarta 1 rojo de tu mano para reducir el requisito a 2 verdes.",
+    "flavor": "Nunca te saltes el día de cortar leña."
+  },
+  "mokoko-village/traits/jejune": {
+    "name": "Frívolo",
+    "effect": "En el Fin del Mundo: Cambia hasta 4 traits de tu pila de traits a incoloros.",
+    "flavor": "¿Por qué eres tan profundo y serio? ¡Ya diviértete un poco!"
+  },
+  "mokoko-village/traits/lode": {
+    "name": "Veta",
+    "effect": "Elige un color. Roba 5 cartas. Descarta las cartas robadas del color elegido.",
+    "flavor": "No tomes esta gema por una piedra cualquiera."
+  },
+  "mokoko-village/traits/low-mane": {
+    "name": "Melena de Fideos",
+    "effect": "Todos los jugadores pueden estabilizar hasta 5. Luego, puedes revelar 2 del mismo color para jugar otro trait.",
+    "flavor": "Le falta sabor."
+  },
+  "mokoko-village/traits/mini": {
+    "name": "Pequeñito",
+    "flavor": "Tan pequeño que podrías pasar por alto su gran corazón."
+  },
+  "mokoko-village/traits/misfortune": {
+    "name": "Infortunio",
+    "effect": "En el Fin del Mundo: +2 por cada trait descartado de tu pila de traits durante la última catastrophe.",
+    "flavor": "Veo cosas que te van a pasar en el futuro."
+  },
+  "mokoko-village/traits/nurturing": {
+    "name": "Cuidador",
+    "effect": "En el Fin del Mundo: Roba 1 carta. Puedes descartar un trait con un valor nominal de 1 de tu pila de traits para jugar otro trait. Ignora su acción.",
+    "flavor": "El secreto es cariño y fertilizante."
+  },
+  "mokoko-village/traits/palmate": {
+    "name": "Palmeado",
+    "flavor": "No soy tu amigo. No te metas con este alce."
+  },
+  "mokoko-village/traits/pompadour": {
+    "name": "Copete",
+    "effect": "Para jugar, debes descartar: 1 de tu pila de traits O 1 negativo de la pila de traits de un oponente.",
+    "flavor": "Este año voy a salir en la mejor foto del anuario."
+  },
+  "mokoko-village/traits/rejected": {
+    "name": "Rechazado",
+    "effect": "Juega 1. Si Rejected es retirado de tu pila de traits, aumenta tu Gene Pool en 1.",
+    "flavor": "¡Lárgate del pueblo! No, en serio, tienes que irte."
+  },
+  "mokoko-village/traits/restorative": {
+    "name": "Reparador",
+    "effect": "Todos los jugadores pueden descartar de 0 a 3 cartas de su mano y luego estabilizar.",
+    "flavor": "Soy el único médico del pueblo, así que vuelve mañana si quieres una segunda opinión."
+  },
+  "mokoko-village/traits/scratchy-feet": {
+    "name": "Pies con Comezón",
+    "flavor": "Avanzando, comezón a comezón."
+  },
+  "mokoko-village/traits/shunned": {
+    "name": "Marginado",
+    "effect": "+5 si este es tu único morado. Si Shunned es descartado de tu pila de traits, puedes jugar hasta 2 morados. Ignora las acciones.",
+    "flavor": "Gritas «¡Ahí viene el lobo!» tres veces y de repente nadie te ayuda."
+  },
+  "mokoko-village/traits/silence": {
+    "name": "Silencio",
+    "effect": "Los oponentes ignoran las acciones en su siguiente turno. Pero debes recordárselo."
+  },
+  "mokoko-village/traits/smithy": {
+    "name": "Herrero",
+    "effect": "Revela: 2 verdes: Juega 1 verde. 2 rojos: Descarta 1 de tu pila de traits.",
+    "flavor": "Respeta a tus mayores. Y a tus soldadores."
+  },
+  "mokoko-village/traits/smooth": {
+    "name": "Elegante",
+    "effect": "Juega en cualquier momento para robar 1 carta. En el Fin del Mundo: Descarta este.",
+    "flavor": "Dar con las notas correctas es opcional."
+  },
+  "mokoko-village/traits/stargazer": {
+    "name": "Observador de Estrellas",
+    "flavor": "Solo vine por la vista."
+  },
+  "mokoko-village/traits/steady": {
+    "name": "Firme",
+    "effect": "Roba 2 cartas. Luego, revela 4 colores diferentes para robar 2 cartas.",
+    "flavor": "Siempre quiero otra vasija."
+  },
+  "mokoko-village/traits/subdued": {
+    "name": "Discreto",
+    "effect": "Juega 1. En el Fin del Mundo: Descarta este.",
+    "flavor": "¿Ya es hora de mi solo?"
+  },
+  "mokoko-village/traits/sundering": {
+    "name": "Ruptura",
+    "effect": "Inicio de tus turnos: Elige un color. Si tienes traits de ese color en tu pila de traits, descártalos.",
+    "flavor": "Di su nombre y dejará de existir."
+  },
+  "mokoko-village/traits/swarm-of-kidneys": {
+    "name": "Enjambre de Riñones",
+    "effect": "El valor es igual al número de traits Kidney en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Venimos por los sombreros nuevos."
+  },
+  "mokoko-village/traits/teeny": {
+    "name": "Chiquitín",
+    "effect": "Si tienes 11 o menos traits en tu pila de traits, triplica el valor nominal de todos tus dominantes.",
+    "flavor": "Chiquitín, pequeñín, todo chiquitín."
+  },
+  "mokoko-village/traits/unusual": {
+    "name": "Inusual",
+    "effect": "Juega 1. Si Unusual es retirado de tu pila de traits, juega 1 trait sin efecto.",
+    "flavor": "Como yo lo veo, ¡en este mundo lo usual es lo inusual!"
+  },
+  "mokoko-village/traits/veiled": {
+    "name": "Encubierto",
+    "effect": "En cualquier orden, descarta 1 de tu pila de traits y juega la carta de la parte superior de la pila de descarte. Ignora las acciones.",
+    "flavor": "Cuando se levante el viento, agita los brazos como si hicieras magia."
+  },
+  "mokoko-village/traits/virtuoso": {
+    "name": "Virtuoso",
+    "effect": "Intercambia Virtuoso con un trait con valor nominal de 3 o más de la pila de traits de un oponente. En el Fin del Mundo: Descarta este.",
+    "flavor": "Si vas a dominar un instrumento, que sea el maestro de todos los instrumentos."
+  },
+  "mokoko-village/traits/warning-signals": {
+    "name": "Señales de Alerta",
+    "flavor": "Algunas cosas deberían tener banderas rojas pintadas en el cuerpo."
   }
 }
