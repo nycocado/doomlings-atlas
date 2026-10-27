@@ -19,9 +19,9 @@ fun cardImage(image: String) = "file:///android_asset/cards/$image"
 open class CardRepository(
     private val context: Context,
 ) {
-    suspend fun cards(): List<Card> =
+    suspend fun library(): CardLibrary =
         withContext(Dispatchers.IO) {
-            decodeCards(
+            CardLibrary.decode(
                 context.assets
                     .open("cards/cards.json")
                     .bufferedReader()

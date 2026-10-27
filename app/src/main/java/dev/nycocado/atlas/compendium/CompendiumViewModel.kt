@@ -10,8 +10,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.nycocado.atlas.APP_PREFS
 import dev.nycocado.atlas.CARD_LANGUAGE
-import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardRepository
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.NamedCard
@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -33,7 +33,7 @@ class CompendiumViewModel
         @ApplicationContext context: Context,
         savedState: SavedStateHandle,
     ) : ViewModel() {
-        private val mutableCards = MutableStateFlow<List<Card>?>(null)
+        private val mutableLibrary = MutableStateFlow(CardLibrary.loading)
         private val mutableTranslations = MutableStateFlow(CardTranslations())
         private val prefs = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE)
 
@@ -56,8 +56,8 @@ class CompendiumViewModel
 
         val filter: StateFlow<CompendiumFilter> = mutableFilter.asStateFlow()
 
-        // Every card, for the detail screen; null while loading, like results.
-        val cards: StateFlow<List<Card>?> = mutableCards.asStateFlow()
+        // Every card, for the detail screen.
+        val library: StateFlow<CardLibrary> = mutableLibrary.asStateFlow()
 
         val translations: StateFlow<CardTranslations> = mutableTranslations.asStateFlow()
         val cardLanguage: StateFlow<CardLanguage> = mutableCardLanguage.asStateFlow()
@@ -65,7 +65,7 @@ class CompendiumViewModel
         // null while the cards are loading.
         val results: StateFlow<List<NamedCard>?> =
             combine(
-                mutableCards.filterNotNull(),
+                mutableLibrary.mapNotNull { it.cards },
                 mutableFilter,
                 mutableTranslations,
                 mutableCardLanguage,
@@ -73,7 +73,7 @@ class CompendiumViewModel
                 .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
         init {
-            viewModelScope.launch { mutableCards.value = repository.cards() }
+            viewModelScope.launch { mutableLibrary.value = repository.library() }
             viewModelScope.launch { mutableTranslations.value = repository.translations() }
         }
 

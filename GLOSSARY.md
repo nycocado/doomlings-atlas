@@ -29,6 +29,7 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 - **Card type**: the `type` field of a card in `cards.json` (`trait`, `age`, `catastrophe`, `birth-of-life`, `gene-pool` and others); one Kotlin class each in `Card.kt`.
 - **Enabled sets** and **enabled types**: the sets and types packaged into the app (`app/build.gradle.kts`). The rest stays in the repo until its data is checked or a feature needs it.
 - **Card kind**: a segment of the compendium (Traits, Ages, Catastrophes), `CardKind` in code. Not every card type has one.
+- **Card library**: the decoded cards of the enabled sets, `CardLibrary` in `shared`. A lookup by id finds the card, misses it (the data no longer has it) or is still loading.
 - **Printed text**: a card's name and text as printed on it, in English.
 - **Translation**: a card's name and text in another language, written by the project and unofficial, in one regional variant per language, declared in its glossary (pt-BR, es-419). A card may have none in a given language. _Avoid_: localization, for card text.
 
