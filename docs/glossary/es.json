@@ -819,7 +819,8 @@
       "use": "estabilizar",
       "avoid": [
         "equilibrar"
-      ]
+      ],
+      "note": "'Stabilize to 8': 'estabiliza hasta 8'."
     },
     {
       "en": "start",
@@ -875,6 +876,12 @@
         "bandada"
       ],
       "note": "Solo en el nombre de la carta; citada en el texto, la carta queda Swarm, como está impresa."
+    },
+    {
+      "en": "take",
+      "use": "tomar",
+      "avoid": [],
+      "note": "'Take 2 cards from the discard pile'."
     },
     {
       "en": "then",

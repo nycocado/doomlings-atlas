@@ -41,6 +41,15 @@ class TranslationDataIntegrityTest {
                     it.getValue("type").jsonPrimitive.content in setOf("trait", "age", "catastrophe")
             }.map { it.getValue("id").jsonPrimitive.content }
 
+    // Sets translated whole, every card type, before the set is enabled.
+    private val wholeSetIds =
+        Json
+            .parseToJsonElement(dir.resolve("cards.json").readText())
+            .jsonArray
+            .map { it.jsonObject }
+            .filter { it.getValue("set").jsonPrimitive.content in setOf("special") }
+            .map { it.getValue("id").jsonPrimitive.content }
+
     private val files =
         dir
             .listFiles { file -> file.extension == "json" && file.name != "cards.json" }
@@ -106,6 +115,19 @@ class TranslationDataIntegrityTest {
                     ?.keys
                     .orEmpty()
             assertEquals(emptyList<String>(), enabledClassicIds - translated, code)
+        }
+    }
+
+    @Test
+    fun everyCardOfAWholeTranslatedSetIsTranslatedInPortugueseAndSpanish() {
+        listOf("pt", "es").forEach { code ->
+            val translated =
+                files
+                    .find { it.nameWithoutExtension == code }
+                    ?.let(::fieldsOf)
+                    ?.keys
+                    .orEmpty()
+            assertEquals(emptyList<String>(), wholeSetIds - translated, code)
         }
     }
 
