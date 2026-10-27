@@ -56,6 +56,7 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
+import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.carddetail.LongNameTrait
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.ui.component.BlankCardImages
@@ -284,15 +285,14 @@ private fun CompendiumCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val trait = card as? Trait
-    val cardColors = trait?.colors
+    val face = card.face() ?: return
     val description =
         buildList {
             add(card.name)
-            cardColors?.ifEmpty { listOf(null) }?.forEach { add(stringResource(colorName(it))) }
-            trait?.points?.let { add(LocalResources.current.pointsText(it)) }
+            face.colors.forEach { add(stringResource(colorName(it))) }
+            face.faceValue?.let { add(LocalResources.current.pointsText(it)) }
         }.joinToString(", ")
-    CardThumb(card.image, card.name, cardColors, description, tilt, onClick, modifier.padding(CardMargin))
+    CardThumb(card.image, card.name, face.colors, description, tilt, onClick, modifier.padding(CardMargin))
 }
 
 @PreviewLightDark

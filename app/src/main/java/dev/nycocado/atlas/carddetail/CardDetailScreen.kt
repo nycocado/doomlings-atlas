@@ -106,7 +106,10 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.CardFace
+import dev.nycocado.atlas.card.CardFact
 import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardSection
 import dev.nycocado.atlas.card.CardText
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
@@ -114,11 +117,11 @@ import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.card.cardImage
+import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.card.printedText
 import dev.nycocado.atlas.cardpane.CardStatusBarIcons
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.compendium.CardKind
-import dev.nycocado.atlas.compendium.kind
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.RoundButton
 import dev.nycocado.atlas.ui.component.TraitGlyph
@@ -175,23 +178,17 @@ fun CardDetailContent(
 ) {
     val theme = AtlasTheme.colors
     if (card !is NamedCard || text == null) return
-    val type =
-        when (card.kind) {
-            CardKind.Trait -> R.string.type_trait
-            CardKind.Age -> R.string.type_age
-            CardKind.Catastrophe -> R.string.type_catastrophe
-            null -> return
-        }
-    val trait = card as? Trait
+    val face = card.face(text) ?: return
     // Ages and catastrophes have no color: their panel stays neutral, so it can't be read as a trait color.
+    val colored = face.colors.isNotEmpty()
     val (panel, dots) =
-        if (card is Trait) {
-            theme.trait(card.colors.firstOrNull()).let { it.fill to it.onFill }
+        if (colored) {
+            theme.trait(face.colors.first()).let { it.fill to it.onFill }
         } else {
             theme.surfaceSunk to theme.outlineSoft
         }
     // Status bar icons take the color the design puts on the panel, unless the list's header shares the bar.
-    val onPanel = if (card is Trait) dots else theme.onSurface
+    val onPanel = if (colored) dots else theme.onSurface
     CardStatusBarIcons(layout, onPanel.luminance() < 0.5f)
 
     BoxWithConstraints(Modifier.fillMaxSize().background(theme.surface)) {
@@ -204,7 +201,7 @@ fun CardDetailContent(
         ) {
             Box {
                 Panel(card.image, tilt, panel, dots, onBack)
-                trait?.points?.let {
+                face.faceValue?.let {
                     PointsBadge(it, Modifier.align(Alignment.BottomEnd).offset(x = (-64).dp, y = 30.dp))
                 }
             }
@@ -233,20 +230,23 @@ fun CardDetailContent(
                             }
                         }
                     }
-                    Pills(trait, type, language)
+                    Pills(face, language)
                     val selector: (@Composable () -> Unit)? =
                         if (languages.size > 1) {
                             { LanguageSelector(languages, language, onLanguageChange) }
                         } else {
                             null
                         }
-                    val hasBubble = text.effect != null || text.flavor != null
+                    val effect = face.section<CardSection.Effect>()
+                    val flavor = face.section<CardSection.Flavor>()
+                    val worldsEnd = face.section<CardSection.WorldsEnd>()
+                    val hasBubble = effect != null || flavor != null
                     // Without a text bubble to hang on, the selector takes its own row where the bubble would be.
-                    if (!hasBubble && text.worldsEnd == null) {
+                    if (face.sections.isEmpty()) {
                         selector?.let { Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd) { it() } }
                     }
-                    if (hasBubble) Bubble(text.effect, text.flavor, language, selector = selector)
-                    text.worldsEnd?.let {
+                    if (hasBubble) Bubble(effect, flavor, language, selector = selector)
+                    worldsEnd?.let {
                         Bubble(
                             it,
                             null,
@@ -396,47 +396,75 @@ private fun PointsBadge(
     }
 }
 
+private inline fun <reified T : CardSection> CardFace.section(): String? =
+    sections.filterIsInstance<T>().firstOrNull()?.text
+
 @Composable
 private fun Pills(
-    trait: Trait?,
-    @StringRes type: Int,
+    face: CardFace,
     language: CardLanguage,
 ) {
+    val color = face.colors.firstOrNull()
     val theme = AtlasTheme.colors
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(Space.s2),
         verticalArrangement = Arrangement.spacedBy(Space.s2),
     ) {
-        trait?.colors?.ifEmpty { listOf(null) }?.forEach { color ->
-            val palette = theme.trait(color)
-            Pill(
-                stringResource(colorName(color)),
-                palette.fill,
-                palette.onFill,
-            ) { TraitGlyph(color, palette.onFill, 18.dp) }
-        }
-        Pill(stringResource(type), theme.surfaceSticker, theme.onSurface)
-        if (trait?.dominant == true) {
-            Pill(cardString(R.string.dominant, language), theme.highlight, theme.onHighlight, language = language) {
-                Symbol(R.drawable.ic_symbol_dominant)
+        face.facts.forEach { fact ->
+            when (fact) {
+                is CardFact.Color -> {
+                    val palette = theme.trait(fact.color)
+                    Pill(
+                        stringResource(colorName(fact.color)),
+                        palette.fill,
+                        palette.onFill,
+                    ) { TraitGlyph(fact.color, palette.onFill, 18.dp) }
+                }
+
+                is CardFact.Type -> {
+                    Pill(stringResource(fact.kind.label), theme.surfaceSticker, theme.onSurface)
+                }
+
+                CardFact.Dominant -> {
+                    Pill(
+                        cardString(R.string.dominant, language),
+                        theme.highlight,
+                        theme.onHighlight,
+                        language = language,
+                    ) {
+                        Symbol(R.drawable.ic_symbol_dominant)
+                    }
+                }
+
+                is CardFact.Icon -> {
+                    Pill(
+                        cardString(fact.icon.label, language),
+                        theme.surfaceSticker,
+                        theme.onSurface,
+                        language = language,
+                        glyph =
+                            fact.icon.symbol?.let {
+                                { Symbol(it, actionColor = theme.trait(color).fill) }
+                            },
+                    )
+                }
+
+                // The coined -ling names stay English whatever the card language.
+                is CardFact.Subspecies -> {
+                    Pill(fact.name, theme.surfaceSticker, theme.onSurface, language = CardLanguage.English)
+                }
             }
         }
-        trait?.icons?.forEach { icon ->
-            Pill(
-                cardString(icon.label, language),
-                theme.surfaceSticker,
-                theme.onSurface,
-                language = language,
-                glyph =
-                    icon.symbol?.let {
-                        { Symbol(it, actionColor = theme.trait(trait.colors.firstOrNull()).fill) }
-                    },
-            )
-        }
-        // The coined -ling names stay English whatever the card language.
-        trait?.subspecies?.forEach { Pill(it, theme.surfaceSticker, theme.onSurface, language = CardLanguage.English) }
     }
 }
+
+private val CardKind.label: Int
+    @StringRes get() =
+        when (this) {
+            CardKind.Trait -> R.string.type_trait
+            CardKind.Age -> R.string.type_age
+            CardKind.Catastrophe -> R.string.type_catastrophe
+        }
 
 @Composable
 private fun Pill(
