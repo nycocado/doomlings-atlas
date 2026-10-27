@@ -60,6 +60,7 @@ class TranslationDataIntegrityTest {
                         "mokoko-village",
                         "legends-of-enderas",
                         "upgrade",
+                        "imaginary-ends",
                     )
             }.map { it.getValue("id").jsonPrimitive.content }
 
