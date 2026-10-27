@@ -836,9 +836,7 @@
     {
       "en": "Spell",
       "use": "feitiço",
-      "avoid": [
-        "magia"
-      ],
+      "avoid": [],
       "note": "Só no ícone."
     },
     {
@@ -932,8 +930,7 @@
       "en": "trash",
       "use": "eliminar",
       "avoid": [
-        "destruir",
-        "lixo"
+        "destruir"
       ],
       "note": "Só com trinkets; 'descartar' é discard."
     },

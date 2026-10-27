@@ -295,8 +295,7 @@
       "en": "deck",
       "use": "mazo",
       "avoid": [
-        "deck",
-        "baraja"
+        "deck"
       ]
     },
     {
@@ -904,8 +903,7 @@
       "en": "trash",
       "use": "eliminar",
       "avoid": [
-        "destruir",
-        "basura"
+        "destruir"
       ]
     },
     {
