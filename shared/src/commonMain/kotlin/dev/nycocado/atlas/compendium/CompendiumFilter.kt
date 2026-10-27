@@ -8,6 +8,7 @@ import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
+import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.card.printedText
 import kotlinx.serialization.Serializable
 
@@ -47,7 +48,11 @@ fun List<Card>.filterCompendium(
             val queryMatches =
                 query.isEmpty() ||
                     listOf(card.printedText(), translations.text(card, language)).any { text ->
-                        listOf(text.name, text.effect, text.worldsEnd).any { query in normalize(it.orEmpty()) }
+                        card
+                            .face(text)
+                            ?.searchable
+                            .orEmpty()
+                            .any { query in normalize(it) }
                     }
             card.kind == filter.kind && colorMatches && queryMatches
         }.sortedBy { normalize(it.name) }

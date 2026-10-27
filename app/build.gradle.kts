@@ -225,11 +225,9 @@ val checkGlossary =
     }
 tasks.named("check") { dependsOn(checkGlossary) }
 
-// Sets shipped in the APK. The rest of assets/doomlings stays in the repo until its data is checked.
-val enabledSets = listOf("classic")
-
-// Card types the app uses. Gene Pools and the Birth of Life wait for scoring (ROADMAP.md, phase 3).
-val enabledTypes = listOf("trait", "age", "catastrophe")
+// In gradle.properties, which shared's data tests read too.
+val enabledSets = providers.gradleProperty("atlas.enabledSets").get().split(",")
+val enabledTypes = providers.gradleProperty("atlas.enabledTypes").get().split(",")
 
 abstract class PackageCards : DefaultTask() {
     @get:Input

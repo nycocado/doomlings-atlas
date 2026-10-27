@@ -30,7 +30,7 @@ class TranslationDataIntegrityTest {
                 ).toSet()
         }
 
-    // Same cards as the app packages: enabledSets and enabledTypes in app/build.gradle.kts.
+    // Same cards as the app packages: atlas.enabledSets and atlas.enabledTypes in gradle.properties.
     private val enabledClassicIds =
         Json
             .parseToJsonElement(dir.resolve("cards.json").readText())

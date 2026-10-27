@@ -57,12 +57,12 @@ fun Resources.pointsText(points: Int): String =
         getQuantityString(R.plurals.card_points, points, signed(points))
     }
 
-// colors is null for cards without color (ages, catastrophes); an empty list is a colorless trait.
+// colors is empty for cards without color (ages, catastrophes); null stands for colorless.
 @Composable
 fun CardThumb(
     image: String,
     name: String,
-    colors: List<CardColor>?,
+    colors: List<CardColor?>,
     description: String,
     tilt: Float,
     onClick: () -> Unit,
@@ -96,7 +96,7 @@ fun CardThumb(
             horizontalArrangement = Arrangement.spacedBy(6.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            colors?.ifEmpty { listOf(null) }?.forEach { TraitGlyph(it, theme.trait(it).ink, 16.dp) }
+            colors.forEach { TraitGlyph(it, theme.trait(it).ink, 16.dp) }
             BasicText(name, style = AtlasTypography.titleMd.copy(color = theme.onSurface))
         }
     }
@@ -127,7 +127,7 @@ internal fun CardThumbPreview() =
             ) {
                 CardThumb("", "Blue trait", listOf(CardColor.Blue), "", -2.5f, {}, Modifier.width(150.dp))
                 CardThumb("", "Two colors", listOf(CardColor.Green, CardColor.Red), "", 2f, {}, Modifier.width(150.dp))
-                CardThumb("", "An age", null, "", 1.5f, {}, Modifier.width(150.dp))
+                CardThumb("", "An age", emptyList(), "", 1.5f, {}, Modifier.width(150.dp))
             }
         }
     }

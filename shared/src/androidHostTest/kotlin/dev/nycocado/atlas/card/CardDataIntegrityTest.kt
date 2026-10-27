@@ -53,6 +53,27 @@ class CardDataIntegrityTest {
         assertEquals(1, classic.filterIsInstance<BirthOfLife>().size, "Birth of Life")
     }
 
+    // A card type without a face would open as an empty card detail.
+    @Test
+    fun everyEnabledCardHasAFace() {
+        val sets = System.getProperty("enabled.sets")!!.split(",")
+        val types = System.getProperty("enabled.types")!!.split(",")
+        val enabled =
+            Json
+                .parseToJsonElement(json)
+                .jsonArray
+                .map { it.jsonObject }
+                .filter {
+                    it.getValue("set").jsonPrimitive.content in sets &&
+                        it.getValue("type").jsonPrimitive.content in types
+                }.map { it.getValue("id").jsonPrimitive.content }
+                .toSet()
+        assertEquals(
+            emptyList(),
+            cards.filter { it.id in enabled && (it as? NamedCard)?.face() == null }.map { it.id },
+        )
+    }
+
     @Test
     fun noTextStartsOrEndsWithWhitespace() {
         assertEquals(emptyList(), texts.filter { (_, text) -> text != text.trim() })
