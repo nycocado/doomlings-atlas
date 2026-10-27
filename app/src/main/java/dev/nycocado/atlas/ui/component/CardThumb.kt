@@ -57,7 +57,7 @@ fun Resources.pointsText(points: Int): String =
         getQuantityString(R.plurals.card_points, points, signed(points))
     }
 
-// colors is empty for cards without color (ages, catastrophes); null stands for colorless.
+// One glyph per entry of colors, null drawing the colorless one; ages and catastrophes pass none.
 @Composable
 fun CardThumb(
     image: String,

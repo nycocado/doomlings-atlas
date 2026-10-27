@@ -106,6 +106,7 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.CardFace
 import dev.nycocado.atlas.card.CardFact
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardSection
@@ -229,29 +230,16 @@ fun CardDetailContent(
                             }
                         }
                     }
-                    Pills(face.facts, face.colors.firstOrNull(), language)
+                    Pills(face, language)
                     val selector: (@Composable () -> Unit)? =
                         if (languages.size > 1) {
                             { LanguageSelector(languages, language, onLanguageChange) }
                         } else {
                             null
                         }
-                    val effect =
-                        face.sections
-                            .filterIsInstance<CardSection.Effect>()
-                            .firstOrNull()
-                            ?.text
-                    val flavor =
-                        face.sections
-                            .filterIsInstance<CardSection.Flavor>()
-                            .firstOrNull()
-                            ?.text
-                    val worldsEnd =
-                        face.sections
-                            .filterIsInstance<CardSection.WorldsEnd>()
-                            .firstOrNull()
-                            ?.text
-                    // The effect and flavor share one bubble.
+                    val effect = face.section<CardSection.Effect>()
+                    val flavor = face.section<CardSection.Flavor>()
+                    val worldsEnd = face.section<CardSection.WorldsEnd>()
                     val hasBubble = effect != null || flavor != null
                     // Without a text bubble to hang on, the selector takes its own row where the bubble would be.
                     if (face.sections.isEmpty()) {
@@ -408,18 +396,21 @@ private fun PointsBadge(
     }
 }
 
+private inline fun <reified T : CardSection> CardFace.section(): String? =
+    sections.filterIsInstance<T>().firstOrNull()?.text
+
 @Composable
 private fun Pills(
-    facts: List<CardFact>,
-    color: CardColor?,
+    face: CardFace,
     language: CardLanguage,
 ) {
+    val color = face.colors.firstOrNull()
     val theme = AtlasTheme.colors
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(Space.s2),
         verticalArrangement = Arrangement.spacedBy(Space.s2),
     ) {
-        facts.forEach { fact ->
+        face.facts.forEach { fact ->
             when (fact) {
                 is CardFact.Color -> {
                     val palette = theme.trait(fact.color)
