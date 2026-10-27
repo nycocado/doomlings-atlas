@@ -52,10 +52,9 @@ From the Classic set, in `assets/doomlings/pt.json` and `es.json`:
 | --- | --- | --- | --- |
 | Doting | Paparicador | Consentidor | the everyday word for someone who spoils others |
 | Prepper | Precavido | Precavido | an everyday adjective, like the other trait names |
-| Age of Reason | Era da Razão | Era de la Razón | "Age" in a card name is "Era" (`keepNote`) |
 | The sharpest tools in the head. | Mais afiadas que língua de sogra. | Más afilados que la lengua de mi suegra. | a local saying in place of the English idiom |
 | 5-alarm chili? Fire in the hole! | Feijão com pimenta? Sai de baixo! | ¿Frijoles bien picantes? ¡Cuerpo a tierra! | the dish and the cry each variant knows |
 | My bite is worse than my bark. | Eu não ladro, mas mordo. | Yo no ladro, pero muerdo. | the proverb's local form |
 | More like Apocalypse No. | Tá mais para Apocalypse No. | Más bien Apocalypse No. | the local releases kept the film title |
-| When this is over, my victory will be shellebrated! | …vai ser cascomemorada! | …¡con toda la coraza! | the pun rebuilt; es avoids `concha`, vulgar in parts of South America |
+| When this is over, my victory will be shellebrated! | …vai ser cascomemorada! | …¡con toda la coraza! | the pun rebuilt; in es a pun on `concha` reads vulgar in parts of South America |
 | I'd like to make a toast. | Gostaria de propor um brinde. | Quisiera proponer un brindis. | the bread pun has no equivalent: a plain line |
