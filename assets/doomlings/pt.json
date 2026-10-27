@@ -732,5 +732,104 @@
   "classic/traits/woody-stems": {
     "name": "Caules Lenhosos",
     "flavor": "É desse jeito que eu levo os fluido das raiz pros broto."
+  },
+  "special/ages/age-of-luck": {
+    "name": "Era da Sorte",
+    "effect": "Ao estabilizar, estabilize até 8."
+  },
+  "special/traits/amatoxins": {
+    "name": "Amatoxinas",
+    "effect": "No Fim do Mundo: Você pode descartar até 3 traits da sua pilha de traits. Os oponentes recebem: -2 para cada cor diferente descartada dessa forma.",
+    "flavor": "Sei que parece fofo, mas na verdade é incrivelmente perigoso."
+  },
+  "special/traits/beauty": {
+    "name": "Beleza",
+    "effect": "Devolva 1 trait à sua mão. Depois, jogue outro trait. Ignore a ação dele.",
+    "flavor": "A beleza está nos olhos de quem vê. No caso, nos seus. Afinal, quem tem esta carta na mão é você."
+  },
+  "special/traits/bones": {
+    "name": "Ossos",
+    "effect": "Pegue 2 cartas da pilha de descarte e adicione-as à sua mão.",
+    "flavor": "Melhor dentro do corpo do que fora."
+  },
+  "special/traits/charmed": {
+    "name": "Encantado",
+    "effect": "Roube 1 carta aleatória da mão de cada oponente. Jogue 1 imediatamente. Descarte as outras.",
+    "flavor": "Tô com um miau pressentimento sobre isso."
+  },
+  "special/traits/conjured": {
+    "name": "Conjurado",
+    "effect": "Não pode ser jogado da sua mão! Você pode jogar Conjured da pilha de descarte se jogar 2 ou mais cores no seu turno.",
+    "flavor": "Foi mal aparecer assim, mas você não devia mesmo ler livros antigos em voz alta."
+  },
+  "special/traits/exotic": {
+    "name": "Exótico",
+    "effect": "Para jogar, você deve descartar 2 da sua pilha de traits, depois comprar 2. Você deve jogá-los imediatamente. (A menos que haja restrição.) Descarte dominantes. Ignore ações.",
+    "flavor": "Oba! Um ambiente novo! Vou deixar tudo de pernas para o ar!"
+  },
+  "special/traits/fulfilled": {
+    "name": "Realizado",
+    "effect": "Este trait não pode ser removido da sua pilha de traits.",
+    "flavor": "Nada me falta."
+  },
+  "special/traits/gripplethorps": {
+    "name": "Gripplethorps",
+    "effect": "+3 Gene Pool",
+    "flavor": "Gripplethropple gropple... gropple thorple gripple...fa fa fa!"
+  },
+  "special/traits/headless": {
+    "name": "Sem Cabeça",
+    "effect": "+1 Gene Pool. Todos os oponentes recebem -1 Gene Pool.",
+    "flavor": "Só tentando subir na vida, sem perder a cabeça."
+  },
+  "special/traits/howler": {
+    "name": "Berrador",
+    "effect": "Todos os jogadores descartam todas as cartas da mão com valor de face 3 ou mais, depois estabilizam imediatamente.",
+    "flavor": "Não é o melhor dos vizinhos."
+  },
+  "special/traits/immortal": {
+    "name": "Imortal",
+    "effect": "-2 Gene Pool. A cada age, antes de alguém jogar o(s) efeito(s) da age, você pode descartar sua mão e comprar 3.",
+    "flavor": "Ela viaja pelo cosmos em busca da Alegria. Mas a alegria vem e vai, como sempre, para um lugar aonde ela não pode ir atrás."
+  },
+  "special/traits/juicy": {
+    "name": "Suculento",
+    "effect": "Troque 2 traits entre quaisquer 2 pilhas de traits.",
+    "flavor": "Uuh, é agora que tudo explode. Eu adoro essa parte."
+  },
+  "special/traits/magic-fingers": {
+    "name": "Dedos Mágicos",
+    "effect": "Até o Fim do Mundo: Sempre que um trait sair da sua pilha de traits, você pode jogar 1 da mesma cor para substituí-lo. Ignore ações. (Sem dominantes.)",
+    "flavor": "Abra-ca-doomling!"
+  },
+  "special/traits/neoteny": {
+    "name": "Neotenia",
+    "effect": "Se Neoteny for descartado da sua mão, em vez disso passe-o para a mão à sua esquerda. +4 se Neoteny estiver na sua mão.",
+    "flavor": "Que você continue larvinha para sempre."
+  },
+  "special/traits/pride": {
+    "name": "Orgulho",
+    "effect": "Descarte sua mão e compre 4 cartas. Não estabilize.",
+    "flavor": "Pai orgulhoso de um filhote que mordeu um aluno nota 10."
+  },
+  "special/traits/rainbow-keratin": {
+    "name": "Queratina Arco-Íris",
+    "effect": "-2 para cada Gota de Vida na sua pilha de traits. (Exceto este.) Se você tiver as 4 cores na sua pilha de traits: +2 para cada trait da cor que você tem em maior quantidade. (Em caso de empate, escolha 1!)",
+    "flavor": "Pra vida, eu só torço o bico."
+  },
+  "special/traits/rainbow-scutes": {
+    "name": "Placas Arco-Íris",
+    "effect": "Escolha uma cor. Os oponentes devem mover 1 trait de valor positivo dessa cor da pilha de traits deles para a sua.",
+    "flavor": "Tartarugamente incrível!"
+  },
+  "special/traits/shiny": {
+    "name": "Brilhante",
+    "effect": "Cada jogador recebe -1 para cada trait incolor na pilha de traits dele. (Incluindo você!)",
+    "flavor": "Se você tocar, o que de pior pode acontecer?"
+  },
+  "special/traits/tube-feet": {
+    "name": "Pés de Tubo",
+    "effect": "Jogue 1 trait da pilha de descarte. Ignore a ação dele. Depois, descarte 1 trait da sua pilha de traits.",
+    "flavor": "Esquece Hollywood! Sou uma estrela com a minha própria calçada da fama!"
   }
 }

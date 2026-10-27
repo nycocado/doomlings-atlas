@@ -846,7 +846,8 @@
       "use": "estabilizar",
       "avoid": [
         "equilibrar"
-      ]
+      ],
+      "note": "'Stabilize to 8': 'estabilize até 8'."
     },
     {
       "en": "start",
@@ -903,6 +904,12 @@
         "cardume"
       ],
       "note": "Só no nome da carta; citada no texto, a carta fica Swarm, como impressa."
+    },
+    {
+      "en": "take",
+      "use": "pegar",
+      "avoid": [],
+      "note": "'Take 2 cards from the discard pile'."
     },
     {
       "en": "then",
