@@ -184,3 +184,65 @@ fun CompendiumBesideCardPortugueseScreenshot() = CompendiumBesideCardPreview()
 @Preview(device = PANE, locale = "pt")
 @Composable
 fun CardBesideListPortugueseScreenshot() = CardBesideListPreview()
+
+@PreviewTest
+@Preview(locale = "es")
+@Composable
+fun CompendiumSpanishScreenshot() = CompendiumPreview()
+
+@PreviewTest
+@Preview(locale = "es")
+@Composable
+fun CardDetailSpanishScreenshot() = CardDetailPreview()
+
+@PreviewTest
+@Preview(locale = "es")
+@Composable
+fun CatastropheDetailSpanishScreenshot() = CatastropheDetailPreview()
+
+@PreviewTest
+@Preview(locale = "es")
+@Composable
+fun AboutSpanishScreenshot() = AboutPreview()
+
+@PreviewTest
+@Preview(locale = "es")
+@Composable
+fun NoticeSpanishScreenshot() = NoticePreview()
+
+@PreviewTest
+@Preview(locale = "es")
+@Composable
+fun UnofficialNoticeSpanishScreenshot() = UnofficialNoticePreview()
+
+@PreviewTest
+@Preview(fontScale = 2f, locale = "es")
+@Composable
+fun CompendiumFontScale200SpanishScreenshot() = CompendiumLongNamePreview()
+
+@PreviewTest
+@Preview(device = PANE, locale = "es")
+@Composable
+fun CompendiumBesideCardSpanishScreenshot() = CompendiumBesideCardPreview()
+
+@PreviewTest
+@Preview(device = PANE, locale = "es")
+@Composable
+fun CardBesideListSpanishScreenshot() = CardBesideListPreview()
+
+@PreviewTest
+@Preview(name = "Light", locale = "es")
+@Preview(name = "Dark", locale = "es", uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
+@Composable
+fun TranslatedTraitDetailSpanishScreenshot() = TranslatedTraitDetailPreview()
+
+@PreviewTest
+@Preview(name = "Light", locale = "es")
+@Preview(name = "Dark", locale = "es", uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL)
+@Composable
+fun TranslatedCatastropheDetailSpanishScreenshot() = TranslatedCatastropheDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f, locale = "es")
+@Composable
+fun TranslatedTraitDetailFontScale200SpanishScreenshot() = AtlasTheme { TranslatedTraitSample() }
