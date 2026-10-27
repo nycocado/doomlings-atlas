@@ -1032,5 +1032,203 @@
     "name": "Tolerância à Maré",
     "effect": "No Fim do Mundo: Escolha um oponente. +1 para cada trait azul na pilha de traits dele.",
     "flavor": "Só indo na onda."
+  },
+  "nightflower-island/ages/encore": {
+    "name": "Bis",
+    "effect": "Depois de estabilizar para terminar o seu turno, você pode jogar 1 se tiver este símbolo: {World's End}."
+  },
+  "nightflower-island/ages/fall-nightflower-island": {
+    "name": "Outono de Nightflower Island",
+    "effect": "Você pode descartar quaisquer cartas da sua mão. Se alguma delas era vermelha, compre 1 carta."
+  },
+  "nightflower-island/ages/shade-trees": {
+    "name": "Árvores de Sombra",
+    "effect": "Ao estabilizar, use o Gene Pool à sua esquerda ou à sua direita."
+  },
+  "nightflower-island/ages/small-age": {
+    "name": "Pequena Era",
+    "effect": "Se você jogar um trait com valor de face 1, pode definir o seu Gene Pool como 6."
+  },
+  "nightflower-island/ages/spring-nightflower-island": {
+    "name": "Primavera de Nightflower Island",
+    "effect": "Compre 2 cartas. Passe 1 verde da sua mão para a esquerda."
+  },
+  "nightflower-island/ages/summer-nightflower-island": {
+    "name": "Verão de Nightflower Island",
+    "effect": "Compre 1 carta. Se for roxa, repita."
+  },
+  "nightflower-island/ages/winter-nightflower-island": {
+    "name": "Inverno de Nightflower Island",
+    "effect": "Você pode descartar 1 azul da sua mão para comprar 2 cartas."
+  },
+  "nightflower-island/traits/arbiter": {
+    "name": "Árbitro",
+    "effect": "+1 Gene Pool",
+    "flavor": "Ruge, voa e acerta as contas."
+  },
+  "nightflower-island/traits/bangs": {
+    "name": "Franja",
+    "effect": "Para jogar, você deve descartar: 2 azuis da sua mão OU 1 azul da sua pilha de traits.",
+    "flavor": "Um penteado de arrasar."
+  },
+  "nightflower-island/traits/blundering": {
+    "name": "Pilando",
+    "effect": "Dê 1 da sua pilha de traits a um oponente OU troque Blundering por outro trait.",
+    "flavor": "Este trait deveria ser \"Pilhando\". Ops!"
+  },
+  "nightflower-island/traits/buoyant": {
+    "name": "Flutuante",
+    "effect": "Jogue até 3 traits. Ignore todas as ações, menos 1.",
+    "flavor": "Isso pode abrir uma caixa de Pandora cheia de minhocas, que seriam deliciosas."
+  },
+  "nightflower-island/traits/collective": {
+    "name": "Coletivo",
+    "effect": "+1 Gene Pool. No Fim do Mundo: Jogue até 3 traits com valor de face 1 ou menos. Ignore ações.",
+    "flavor": "Tem alguma coisa com cheiro de peixe nesse tubarão..."
+  },
+  "nightflower-island/traits/consumed": {
+    "name": "Devorado",
+    "effect": "Para jogar, você deve suprimir 2 traits positivos na sua pilha de traits.",
+    "flavor": "Ele tem mais medo de você do que você dele. Por isso está te comendo."
+  },
+  "nightflower-island/traits/corporeal": {
+    "name": "Corpóreo",
+    "effect": "Os oponentes não podem jogar dominantes no próximo turno deles. Mas você deve lembrá-los."
+  },
+  "nightflower-island/traits/decrepit": {
+    "name": "Decrépito",
+    "effect": "Jogue a qualquer momento: Escolha uma cor e, depois, revele a carta do topo do baralho de traits. Se for dessa cor, compre-a.",
+    "flavor": "Aproveite a juventude. Um dia seus olhos também vão cair."
+  },
+  "nightflower-island/traits/disbanded": {
+    "name": "Banda Desfeita",
+    "effect": "No Fim do Mundo: Descarte este e adicione 4 à sua pontuação final.",
+    "flavor": "...Até a grande turnê da reunião."
+  },
+  "nightflower-island/traits/ennui": {
+    "name": "Tédio",
+    "effect": "No Fim do Mundo: Devolva todos os seus traits sem efeito à sua mão. +4 para cada trait devolvido desta forma.",
+    "flavor": "Se a vida passa por você, a culpa é sua. Em francês, \"ennui\" se lê \"ãn-UI\"."
+  },
+  "nightflower-island/traits/expressive": {
+    "name": "Expressivo",
+    "effect": "Os oponentes não podem trocar nem roubar traits no próximo turno deles. Mas você deve lembrá-los."
+  },
+  "nightflower-island/traits/grim": {
+    "name": "Sombrio",
+    "effect": "Início dos seus turnos: Revele 2 da mesma cor. Suprima 1 delas.",
+    "flavor": "Esta cidade é grande o bastante pra nós dois, mas vou me livrar de você mesmo assim."
+  },
+  "nightflower-island/traits/heeled": {
+    "name": "Calcanhar",
+    "effect": "Descarte 1 negativo em qualquer pilha de traits.",
+    "flavor": "Às vezes você precisa bater o pé."
+  },
+  "nightflower-island/traits/honor": {
+    "name": "Honra",
+    "effect": "Escolha um oponente. Ele escolhe dar a você: 2 cartas da mão dele OU 1 carta aleatória.",
+    "flavor": "Não sou ladrão, sou pirata. Agora me dá isso aí."
+  },
+  "nightflower-island/traits/intrepid": {
+    "name": "Destemido",
+    "effect": "Se um efeito tiver 2 opções com um 'OU', você pode fazer as duas.",
+    "flavor": "O horizonte não é o fim. É o convite."
+  },
+  "nightflower-island/traits/kidney": {
+    "name": "Rim",
+    "effect": "O valor é igual ao número de Kidneys na sua pilha de traits. (Incluindo este.)",
+    "flavor": "...com uma escuridão assombrosa."
+  },
+  "nightflower-island/traits/mischievous": {
+    "name": "Travesso",
+    "effect": "No Fim do Mundo: Descarte 1 da sua pilha de traits. Conte o valor de face dele para a sua pontuação.",
+    "flavor": "Na verdade é o Sr. Vesso."
+  },
+  "nightflower-island/traits/mucus-traps": {
+    "name": "Armadilhas de Muco",
+    "effect": "Em qualquer ordem: Estabilize até 3. Compre 2 cartas.",
+    "flavor": "Não é o que parece... é meleca mesmo."
+  },
+  "nightflower-island/traits/neglected": {
+    "name": "Esquecido",
+    "effect": "Jogue 1. Se um trait for descartado da sua pilha de traits, você pode devolvê-lo e depois descartar Neglected.",
+    "flavor": "Não se preocupe, vou te amar para sempre mesmo assim."
+  },
+  "nightflower-island/traits/ohmpopo": {
+    "name": "Ohmpopo",
+    "effect": "-1 Gene Pool. Compre 3 cartas e não estabilize neste turno.",
+    "flavor": "Ohm é onde o popô está."
+  },
+  "nightflower-island/traits/performative": {
+    "name": "Teatral",
+    "effect": "Os oponentes não podem jogar um trait de valor de face 4 ou mais no próximo turno deles. Mas você deve lembrá-los."
+  },
+  "nightflower-island/traits/propeller-fins": {
+    "name": "Nadadeiras de Hélice",
+    "effect": "Anexe a um trait sem classe. O hospedeiro agora é um peixe de valor de face 1.",
+    "flavor": "Exige comer uns 23 kg de plâncton para funcionar a todo vapor por 15 minutos."
+  },
+  "nightflower-island/traits/sea-shanty": {
+    "name": "Canção de Marujo",
+    "effect": "Ganhe 2 espaços adicionais para dominantes.",
+    "flavor": "Iô-hô-hô, he he he. Mais dois dominantes pra mim, he he he."
+  },
+  "nightflower-island/traits/silence": {
+    "name": "Silêncio",
+    "effect": "Os oponentes ignoram ações no próximo turno deles. Mas você deve lembrá-los."
+  },
+  "nightflower-island/traits/skybound": {
+    "name": "Rumo ao Céu",
+    "effect": "A qualquer momento: Revele 2 azuis para mandar Skybound voando da sua mão para a pilha de traits de um oponente.",
+    "flavor": "O céu é o melhor atalho que eu conheço."
+  },
+  "nightflower-island/traits/swarm": {
+    "name": "Enxame",
+    "effect": "O valor é igual ao número de traits Swarm em todas as pilhas de traits. (Incluindo este.)",
+    "flavor": "Estamos aqui pelo novo celular-concha."
+  },
+  "nightflower-island/traits/swashbuckler": {
+    "name": "Espadachim",
+    "effect": "Aumente seu Gene Pool em 1 OU jogue 1.",
+    "flavor": "Um pirata com uma assessoria de imagem melhor."
+  },
+  "nightflower-island/traits/swindler": {
+    "name": "Trambiqueiro",
+    "effect": "Dê a um oponente 2 cartas da sua mão OU 1 da pilha de descarte.",
+    "flavor": "Nunca vi um tesouro que eu não conseguisse conquistar na lábia."
+  },
+  "nightflower-island/traits/tubular": {
+    "name": "Tubular",
+    "flavor": "Tem muita mar-avilha para ver."
+  },
+  "nightflower-island/traits/umpples": {
+    "name": "Umpples",
+    "effect": "-2 Gene Pool\n\nInício dos seus turnos: Descarte 1 para comprar 3 cartas OU compre 1 carta e diga oi para Umpples.",
+    "flavor": "Você não resiste à umpplesidade. Que pena, porque eles são tóxicos."
+  },
+  "nightflower-island/traits/unboxed": {
+    "name": "Desembrulhado",
+    "effect": "Revele 1 da sua mão. Os amigos suprimem 1 da mão deles da cor revelada. (Para a pilha de traits deles.)",
+    "flavor": "Não precisava!"
+  },
+  "nightflower-island/traits/ungrounded": {
+    "name": "Sem Castigo",
+    "effect": "Revele 3 cores diferentes para jogar a qualquer momento.",
+    "flavor": "Acho que minhas ações e o motivo de eu estar de castigo têm a ver de alguma forma..."
+  },
+  "nightflower-island/traits/versatile": {
+    "name": "Versátil",
+    "effect": "No Fim do Mundo: Jogue 1 e descarte este. Ignore ações.",
+    "flavor": "A única coisa que não consigo fazer é qualquer outra coisa."
+  },
+  "nightflower-island/traits/whiskers": {
+    "name": "Bigodes",
+    "effect": "Se Whiskers for descartado da sua mão por uma ação, você pode jogá-lo em vez disso.",
+    "flavor": "Os pelos do meu rosto estão me dizendo alguma coisa."
+  },
+  "nightflower-island/traits/wonky": {
+    "name": "Maluquinho",
+    "effect": "Crie um novo efeito. Se os seus oponentes o aprovarem, use-o e subtraia 4 da sua pontuação final.",
+    "flavor": "Se você quiser ver texto em negrito, é só olhar abaixo e ver."
   }
 }
