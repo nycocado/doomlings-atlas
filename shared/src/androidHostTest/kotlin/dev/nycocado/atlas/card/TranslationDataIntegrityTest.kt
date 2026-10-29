@@ -10,14 +10,14 @@ import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-// Checks the real translation files in assets/doomlings (pt.json, es.json), for every set and card type.
+// Checks the real translation files in assets/doomlings (each set's pt.json, es.json), for every set and card type.
 // Passes with no file present; each check starts to bite with the first one.
 class TranslationDataIntegrityTest {
-    private val dir = File(System.getProperty("cards.dir"))
+    private val cardsJson = CardAssets.cardsJson
 
     // Card id to the text fields it has, with the names of cards.json. Only the cards that can be translated.
     private val fieldsById =
-        Json.parseToJsonElement(dir.resolve("cards.json").readText()).jsonArray.associate { card ->
+        Json.parseToJsonElement(cardsJson).jsonArray.associate { card ->
             val fields = card.jsonObject
             fields.getValue("id").jsonPrimitive.content to
                 (
@@ -33,7 +33,7 @@ class TranslationDataIntegrityTest {
     // Same cards as the app packages: atlas.enabledSets and atlas.enabledTypes in gradle.properties.
     private val enabledClassicIds =
         Json
-            .parseToJsonElement(dir.resolve("cards.json").readText())
+            .parseToJsonElement(cardsJson)
             .jsonArray
             .map { it.jsonObject }
             .filter {
@@ -44,7 +44,7 @@ class TranslationDataIntegrityTest {
     // Sets translated whole, every card type, before the set is enabled.
     private val wholeSetIds =
         Json
-            .parseToJsonElement(dir.resolve("cards.json").readText())
+            .parseToJsonElement(cardsJson)
             .jsonArray
             .map { it.jsonObject }
             .filter {
@@ -65,11 +65,13 @@ class TranslationDataIntegrityTest {
                     )
             }.map { it.getValue("id").jsonPrimitive.content }
 
-    private val files =
-        dir
-            .listFiles { file -> file.extension == "json" && file.name != "cards.json" }
-            .orEmpty()
-            .toList()
+    private val files = CardAssets.translationFiles
+
+    // The set folder and file name, e.g. classic/pt.json: the name alone is the same in every set.
+    private val File.label get() = relativeTo(CardAssets.dir).path
+
+    private fun translatedIds(code: String) =
+        files.filter { it.nameWithoutExtension == code }.flatMap { fieldsOf(it).keys }.toSet()
 
     private fun fieldsOf(file: File) =
         Json.parseToJsonElement(file.readText()).jsonObject.mapValues { (_, translation) ->
@@ -92,7 +94,7 @@ class TranslationDataIntegrityTest {
     @Test
     fun everyTranslatedIdExistsInCards() {
         files.forEach { file ->
-            assertEquals(emptyList<String>(), (fieldsOf(file).keys - fieldsById.keys).toList(), file.name)
+            assertEquals(emptyList<String>(), (fieldsOf(file).keys - fieldsById.keys).toList(), file.label)
         }
     }
 
@@ -100,7 +102,7 @@ class TranslationDataIntegrityTest {
     fun everyTranslationHasExactlyTheTextFieldsOfItsCard() {
         files.forEach { file ->
             val wrong = fieldsOf(file).filter { (id, fields) -> fields.keys != fieldsById[id] }.keys
-            assertEquals(emptyList<String>(), wrong.toList(), file.name)
+            assertEquals(emptyList<String>(), wrong.toList(), file.label)
         }
     }
 
@@ -116,33 +118,21 @@ class TranslationDataIntegrityTest {
                         }.keys
                         .map { "$id.$it" }
                 }
-            assertEquals(emptyList<String>(), bad, file.name)
+            assertEquals(emptyList<String>(), bad, file.label)
         }
     }
 
     @Test
     fun everyEnabledClassicCardIsTranslatedInPortugueseAndSpanish() {
         listOf("pt", "es").forEach { code ->
-            val translated =
-                files
-                    .find { it.nameWithoutExtension == code }
-                    ?.let(::fieldsOf)
-                    ?.keys
-                    .orEmpty()
-            assertEquals(emptyList<String>(), enabledClassicIds - translated, code)
+            assertEquals(emptyList<String>(), enabledClassicIds - translatedIds(code), code)
         }
     }
 
     @Test
     fun everyCardOfAWholeTranslatedSetIsTranslatedInPortugueseAndSpanish() {
         listOf("pt", "es").forEach { code ->
-            val translated =
-                files
-                    .find { it.nameWithoutExtension == code }
-                    ?.let(::fieldsOf)
-                    ?.keys
-                    .orEmpty()
-            assertEquals(emptyList<String>(), wholeSetIds - translated, code)
+            assertEquals(emptyList<String>(), wholeSetIds - translatedIds(code), code)
         }
     }
 
@@ -151,7 +141,7 @@ class TranslationDataIntegrityTest {
     fun everyCardNameCitedInTheEnglishTextStaysInEnglishInTheTranslation() {
         val englishById =
             Json
-                .parseToJsonElement(dir.resolve("cards.json").readText())
+                .parseToJsonElement(cardsJson)
                 .jsonArray
                 .map { it.jsonObject }
                 .associateBy { it.getValue("id").jsonPrimitive.content }
@@ -169,7 +159,7 @@ class TranslationDataIntegrityTest {
                         names.filter { english.cites(it) && !text.cites(it) }.map { "$id.$field: $it" }
                     }
                 }
-            assertEquals(emptyList<String>(), missing, file.name)
+            assertEquals(emptyList<String>(), missing, file.label)
         }
     }
 

@@ -20,7 +20,7 @@ The rules shared by every language are in [CONTRIBUTING.md#translations](../../.
 
 ## 2. Translate
 
-Write into `assets/doomlings/<lang>.json`, keyed by card id, with exactly the text fields the card has in `cards.json` (`name`, `effect`, `flavor`, `worldsEnd`). Check each card against its image in `assets/doomlings/<set>/`: the art often explains a pun or a name.
+Write into `assets/doomlings/<set>/<lang>.json`, keyed by card id, with exactly the text fields the card has in the set's `cards.json` (`name`, `effect`, `flavor`, `worldsEnd`). Check each card against its image in the same folder: the art often explains a pun or a name.
 
 - **Effects** say the printed rule with the glossary's words, keeping the card's line breaks and sign formats (`+2`, `-1 Gene Pool`).
 - **Names** are what a speaker of the variant would call that trait: an everyday word over a technical one, matched to the art.
@@ -46,7 +46,7 @@ The maintainer reviews every line. The PR carries a review comment with:
 
 ## Examples
 
-From the Classic set, in `assets/doomlings/pt.json` and `es.json`:
+From the Classic set, in `assets/doomlings/classic/pt.json` and `es.json`:
 
 | Printed | pt-BR | es-419 | Why |
 | --- | --- | --- | --- |

@@ -1,0 +1,605 @@
+{
+  "imaginary-ends/ages/a-quiet-moment": {
+    "name": "Un Momento de Calma",
+    "effect": "Descarta hasta 3 cartas de tu mano.\n\nSi tu mano está vacía al inicio de tu turno, roba 4 cartas."
+  },
+  "imaginary-ends/ages/age-of-reverie": {
+    "name": "Era del Ensueño",
+    "effect": "Suprime 1 carta aleatoria de tu mano, luego pasa 1 a la izquierda."
+  },
+  "imaginary-ends/ages/age-of-solitude": {
+    "name": "Era de la Soledad",
+    "effect": "Suprime 1 carta de tu mano."
+  },
+  "imaginary-ends/ages/fading-away": {
+    "name": "Desvanecimiento",
+    "effect": "Después de jugar un trait y resolver su efecto, suprímelo. (Excepto dominantes.)"
+  },
+  "imaginary-ends/ages/glitterstorm": {
+    "name": "Tormenta de Brillantina",
+    "effect": "Descarta 1, 2 o 3 cartas aleatorias de tu mano. Luego, estabiliza."
+  },
+  "imaginary-ends/ages/moonlight": {
+    "name": "Luz de Luna",
+    "effect": "Si tu Gene Pool es 4 o más, descarta 1 carta.\n\nSi tu Gene Pool es 3 o menos, roba 2 cartas."
+  },
+  "imaginary-ends/ages/sunshine-tea-parties": {
+    "name": "Sol y Tés de la Tarde",
+    "effect": "Roba 1 carta y revélala a todos tus amigos."
+  },
+  "imaginary-ends/ages/unusual-friends": {
+    "name": "Amigos Inusuales",
+    "effect": "Si juegas un Deepling, Moonling o Glitterling, roba 2 cartas."
+  },
+  "imaginary-ends/catastrophes/abyss-stares-back": {
+    "name": "El Abismo Devuelve la Mirada",
+    "effect": "-1 Gene Pool\n\nSuprime todas las cartas de tu mano.\nEstabiliza.",
+    "worldsEnd": "-5 si tienes 12 o más traits en tu pila de traits."
+  },
+  "imaginary-ends/catastrophes/isolation": {
+    "name": "Aislamiento",
+    "effect": "-1 Gene Pool\n\nSi tienes 3 o menos cartas en la mano, suprime 1 carta aleatoria de tu mano y estabiliza.",
+    "worldsEnd": "Si tienes 3 o menos cartas en la mano, añade el valor nominal de 1 carta de tu mano a tu puntuación final."
+  },
+  "imaginary-ends/catastrophes/moonpocalypse": {
+    "name": "Lunapocalipsis",
+    "effect": "-2 Gene Pool\n\nEsta catastrophe no puede reducir tu Gene Pool a menos de 4.",
+    "worldsEnd": "-5 si tu Gene Pool es 4 o más."
+  },
+  "imaginary-ends/catastrophes/too-much-pink": {
+    "name": "Demasiado Rosa",
+    "effect": "-1 Gene Pool\n\nDescarta tu mano. Roba 4 cartas al inicio de tu turno.",
+    "worldsEnd": "Revela la carta de la parte superior del mazo de traits. +1 por cada trait de ese color en tu pila de traits."
+  },
+  "imaginary-ends/merchants/bon": {
+    "name": "Bon",
+    "effect": "Regateo:\nElimina 1 trinket, luego gana 1 trinket.\nPuedes repetir una vez."
+  },
+  "imaginary-ends/merchants/fowler": {
+    "name": "Fowler",
+    "effect": "Cambio:\nPuedes eliminar 1 trinket, luego ganar 1."
+  },
+  "imaginary-ends/merchants/fowler-2": {
+    "name": "Fowler",
+    "effect": "Cambio:\nPuedes eliminar 1 trinket, luego ganar 1."
+  },
+  "imaginary-ends/merchants/fowler-3": {
+    "name": "Fowler",
+    "effect": "Cambio:\nPuedes eliminar 1 trinket, luego ganar 1."
+  },
+  "imaginary-ends/merchants/fowler-4": {
+    "name": "Fowler",
+    "effect": "Cambio:\nPuedes eliminar 1 trinket, luego ganar 1."
+  },
+  "imaginary-ends/merchants/huk": {
+    "name": "Huk",
+    "effect": "Recolección:\nGuarda 1 trinket en el bolsillo, luego gana 1."
+  },
+  "imaginary-ends/merchants/huk-2": {
+    "name": "Huk",
+    "effect": "Recolección:\nGuarda 1 trinket en el bolsillo, luego gana 1."
+  },
+  "imaginary-ends/merchants/toddles": {
+    "name": "Toddles",
+    "effect": "Adquisición:\nGana 1 trinket.\nLuego, elimina 1."
+  },
+  "imaginary-ends/merchants/toddles-2": {
+    "name": "Toddles",
+    "effect": "Adquisición:\nGana 1 trinket.\nLuego, elimina 1."
+  },
+  "imaginary-ends/merchants/toddles-3": {
+    "name": "Toddles",
+    "effect": "Adquisición:\nGana 1 trinket.\nLuego, elimina 1."
+  },
+  "imaginary-ends/merchants/toddles-4": {
+    "name": "Toddles",
+    "effect": "Adquisición:\nGana 1 trinket.\nLuego, elimina 1."
+  },
+  "imaginary-ends/traits/atavism": {
+    "name": "Atavismo",
+    "effect": "Suprime todos los traits +/- Gene Pool de tu pila de traits. Establece tu Gene Pool en 5.",
+    "flavor": "¡Adelante, hacia el inicio!"
+  },
+  "imaginary-ends/traits/awesome": {
+    "name": "¡Increíble!",
+    "effect": "En el Fin del Mundo: Estabiliza hasta 2. Añade 2 valores nominales de tu mano a tu puntuación. (máx. +17)",
+    "flavor": "¡Témeme! ¡Jijiji!"
+  },
+  "imaginary-ends/traits/baffling": {
+    "name": "Desconcertante",
+    "effect": "Suprime 1 trait de tu pila de traits. Luego mueve Baffling a la pila de traits de un oponente.",
+    "flavor": "Te ves confundido. Eso me divierte."
+  },
+  "imaginary-ends/traits/bedazzled": {
+    "name": "Deslumbrado",
+    "effect": "Roba 1 carta. Si es una carta sin efecto, juégala ahora. Si es un Glitterling, repite esta acción.",
+    "flavor": "Usa los signos zodiacales para alinear las auras de los cristales con el chakra del corazón."
+  },
+  "imaginary-ends/traits/bubbly": {
+    "name": "Burbujeante",
+    "effect": "En el Fin del Mundo: Roba 1 carta y revélala. Si es azul o incolora, descarta 1 trait de tu pila de traits.",
+    "flavor": "Ustedes son mis mejores amiburbujas."
+  },
+  "imaginary-ends/traits/chemotroph": {
+    "name": "Quimiotrofo",
+    "effect": "Para jugar, debes suprimir 1 trait de tu pila de traits. Juega otro trait.",
+    "flavor": "¡Ooh! Un sabroso bocadito sulfúrico."
+  },
+  "imaginary-ends/traits/cryptic": {
+    "name": "Críptico",
+    "effect": "-4 si tienes 12 o más traits en tu pila de traits.",
+    "flavor": "¡Vapamopos a upusapar upun copódipigopo sepecrepetopo!"
+  },
+  "imaginary-ends/traits/decaying-ooze": {
+    "name": "Limo en Descomposición",
+    "flavor": "Hoy aquí, mañana limo."
+  },
+  "imaginary-ends/traits/dipped": {
+    "name": "Bañado",
+    "flavor": "Nunca salgo de casa sin ponerme una capa."
+  },
+  "imaginary-ends/traits/eccentric": {
+    "name": "Excéntrico",
+    "effect": "Todos tus amigos estabilizan hasta tu Gene Pool.",
+    "flavor": "A toda rareza le encanta la compañía."
+  },
+  "imaginary-ends/traits/effervescent": {
+    "name": "Espumoso",
+    "effect": "Roba 1 carta y suprímela. Si es un Deepling o un Glitterling, repite este efecto.",
+    "flavor": "Una personalidad efervescente que siempre sale a flote."
+  },
+  "imaginary-ends/traits/elegance": {
+    "name": "Elegancia",
+    "effect": "Tú y todos tus amigos pueden descartar cualquier carta negativa de su mano.",
+    "flavor": "Menos es más."
+  },
+  "imaginary-ends/traits/enigma": {
+    "name": "Enigma",
+    "effect": "+10 si tienes 10 o menos traits en tu pila de traits.",
+    "flavor": "No toda pregunta merece una respuesta."
+  },
+  "imaginary-ends/traits/ephemeral": {
+    "name": "Efímero",
+    "effect": "En el Fin del Mundo: Roba 1 carta y revélala. Si es morada o incolora, devuelve Ephemeral a tu mano.",
+    "flavor": "Solo un instante."
+  },
+  "imaginary-ends/traits/ethereal": {
+    "name": "Etéreo",
+    "effect": "Hasta el Fin del Mundo: Si tienes 6 o menos cartas en la mano al final de tu turno, puedes suprimir 1 carta de tu mano en lugar de estabilizar. (Si este efecto vacía tu mano, roba 2 cartas.)",
+    "flavor": "Demasiado perfecto para este mundo, o para el siguiente."
+  },
+  "imaginary-ends/traits/extravagant": {
+    "name": "Extravagante",
+    "effect": "Da a un amigo todos los Moonlings y Glitterlings de tu mano.",
+    "flavor": "A veces solo necesitamos un día para pasarnos de la raya."
+  },
+  "imaginary-ends/traits/feisty": {
+    "name": "Peleón",
+    "effect": "Para jugar, roba 1 carta y revélala. Si es verde, todos tus amigos aumentan su Gene Pool en 1. +1 Gene Pool.",
+    "flavor": "Es mi primer día de pirata. Todavía le estoy agarrando el truco."
+  },
+  "imaginary-ends/traits/frumious": {
+    "name": "Frumious",
+    "flavor": "No te rías de su mordida vorpal."
+  },
+  "imaginary-ends/traits/frumple-pumple": {
+    "name": "Frumple Pumple",
+    "effect": "+5 si tienes 3 o menos cartas en la mano.",
+    "flavor": "Cuando los frumples se pumplan, los pumples se ponen a frumplar."
+  },
+  "imaginary-ends/traits/fuffle-nuffs": {
+    "name": "Fuffle Nuffs",
+    "effect": "Devuelve 1 trait de tu pila de traits a tu mano. Luego, da 1 carta a un oponente.",
+    "flavor": "Nuff para todos."
+  },
+  "imaginary-ends/traits/fumplepop": {
+    "name": "Fumplepop",
+    "flavor": "Fimple limple pumple fop!"
+  },
+  "imaginary-ends/traits/glamorous": {
+    "name": "Glamoroso",
+    "flavor": "Alma con brillo."
+  },
+  "imaginary-ends/traits/gob-lopters": {
+    "name": "Gob Lopters",
+    "effect": "Para jugar, debes dar 2 cartas aleatorias de tu mano a un oponente.",
+    "flavor": "Hasta que no abres tus gob lopters, no tienes idea de hasta dónde no puedes volar."
+  },
+  "imaginary-ends/traits/gossamer": {
+    "name": "Vaporoso",
+    "flavor": "Que sea intangible no significa que no haya nada en mí."
+  },
+  "imaginary-ends/traits/grobblebobble": {
+    "name": "Grobblebobble",
+    "effect": "Grobblebobble no puede descartarse de tu mano.",
+    "flavor": "No te equivoques: un bobble que grobblea puede grobblear con bobbles, pero unos bobbles que grobblean no bobblearán un grobble. Espera... quizá lo tenemos al revés."
+  },
+  "imaginary-ends/traits/gurvendirs": {
+    "name": "Gurvendirs",
+    "effect": "Da 2 cartas de tu mano a un oponente.",
+    "flavor": "Gerv er lertle, gert er lert."
+  },
+  "imaginary-ends/traits/hidden": {
+    "name": "Escondido",
+    "effect": "Arrebata 1 trait de la pila de traits de un oponente. Luego, suprímelo.",
+    "flavor": "Aunque no me veas, estoy aquí mismo. Para ti."
+  },
+  "imaginary-ends/traits/humdumpling": {
+    "name": "Humdumpling",
+    "effect": "Da 1 carta de tu mano a un oponente. Luego, juega otro trait.",
+    "flavor": "Hum. Dum. Pling."
+  },
+  "imaginary-ends/traits/hurmflerm": {
+    "name": "Hurmflerm",
+    "effect": "-2 Gene Pool. Roba 2 cartas y no estabilices en este turno.",
+    "flavor": "Hurm flermery, hurm flermery, hurm flerm feree."
+  },
+  "imaginary-ends/traits/imaginative": {
+    "name": "Imaginativo",
+    "effect": "Elige un color y descarta la carta de la parte superior del mazo de traits. Si es del color elegido, tú y todos tus amigos roban 2 cartas. ¡Yupi!",
+    "flavor": "Mundos dentro de las palabras."
+  },
+  "imaginary-ends/traits/jibwib": {
+    "name": "Jibwib",
+    "effect": "+5 para todos los jugadores con un Gene Pool de 2 o menos.",
+    "flavor": "Swib dib."
+  },
+  "imaginary-ends/traits/lure": {
+    "name": "Señuelo",
+    "effect": "El oponente a tu derecha elige un color. Suprime todas las cartas del color elegido de tu mano.",
+    "flavor": "Soy tan indefenso... Espero que nada grande y nutritivo intente atraparme..."
+  },
+  "imaginary-ends/traits/magic-beans": {
+    "name": "Frijoles Mágicos",
+    "effect": "Roba 1 carta. Si su valor nominal es 1, juégala y repite. Ignora las acciones.",
+    "flavor": "¿Quién sabe en qué podrían convertirse?"
+  },
+  "imaginary-ends/traits/merry": {
+    "name": "Alegre",
+    "effect": "+1 por cada dominante en las pilas de traits de todos tus amigos.",
+    "flavor": "¡Quitarles a los ricos y luego, quizás, alguna cosita más!"
+  },
+  "imaginary-ends/traits/mimsy": {
+    "name": "Mimsy",
+    "effect": "Da 1 carta de tu mano a un oponente. Suprime todas las cartas de ese color de tu mano.",
+    "flavor": "Los mome raths van a outgrabear."
+  },
+  "imaginary-ends/traits/monstrosity": {
+    "name": "Monstruosidad",
+    "flavor": "Lo que cuenta es lo de adentro. Ahí también soy un monstruo."
+  },
+  "imaginary-ends/traits/mufflemops": {
+    "name": "Mufflemops",
+    "effect": "-1 Gene Pool. +1 por cada Moonling en tu pila de traits.",
+    "flavor": "El nombre completo es un trabalenguas."
+  },
+  "imaginary-ends/traits/nurplers": {
+    "name": "Nurplers",
+    "flavor": "Urt's nurpin turm!"
+  },
+  "imaginary-ends/traits/pink": {
+    "name": "Rosa",
+    "effect": "Todos tus amigos roban 1 carta.",
+    "flavor": "¡Juntos podemos crear un fucsia más brillante!"
+  },
+  "imaginary-ends/traits/polka-dots": {
+    "name": "Lunares",
+    "effect": "Descarta las 5 cartas de la parte superior del mazo de traits. Si alguna tiene un valor nominal de 0, juégala ahora. Ignora las acciones.",
+    "flavor": "¡No estoy enfermo! ¡Solo soy fabuloso!"
+  },
+  "imaginary-ends/traits/popplebelly": {
+    "name": "Popplebelly",
+    "effect": "Tu Gene Pool es 1 y no puede modificarse. Roba 2 cartas al inicio de cada uno de tus turnos.",
+    "flavor": "Cuidado con la poderosa barriga del popple."
+  },
+  "imaginary-ends/traits/rainbow-magic": {
+    "name": "Magia Arcoíris",
+    "effect": "Puedes devolver Rainbow Magic a tu mano (¡en serio!) después de estabilizar. Luego, juega 1 carta aleatoria de tu mano. Ignora restricciones y requisitos.",
+    "flavor": "He reflexionado mucho. Y refractado también."
+  },
+  "imaginary-ends/traits/remarkable": {
+    "name": "Notable",
+    "effect": "Para jugar, debes tener 3 o menos cartas en la mano. Todos tus amigos pasan su mano a la derecha (¡tú no!) y estabilizan. Luego, suprime tu mano.",
+    "flavor": "Sin comentarios."
+  },
+  "imaginary-ends/traits/rogloblers": {
+    "name": "Rogloblers"
+  },
+  "imaginary-ends/traits/scintillant": {
+    "name": "Centelleante",
+    "effect": "+1 por cada Deepling y Glitterling en tu pila de traits. (Incluyendo este.)",
+    "flavor": "Nací sirena para brillar."
+  },
+  "imaginary-ends/traits/scrappy": {
+    "name": "Remendado",
+    "effect": "Roba 2 cartas. Puedes no jugar ninguna, o jugar las dos y descartar Scrappy. Ignora las acciones.",
+    "flavor": "Esto funcionaría mejor si no tuviera dos parches en los ojos."
+  },
+  "imaginary-ends/traits/slithy": {
+    "name": "Slithy",
+    "effect": "+5 si tienes un Moonling o Deepling con una carta suprimida debajo.",
+    "flavor": "Conocido por girar y barrenar."
+  },
+  "imaginary-ends/traits/spineless": {
+    "name": "Invertebrado",
+    "effect": "Suprime todos los traits con valor nominal 1 en tu pila de traits. -1 por cada trait con valor nominal 1 en tu pila de traits.",
+    "flavor": "No tengo columna vertebral. Y además estoy muerto de miedo."
+  },
+  "imaginary-ends/traits/sprinkles": {
+    "name": "Chispas",
+    "effect": "Roba 1 carta y revélala. Si es roja o incolora, da 1 carta de tu mano a cada amigo.",
+    "flavor": "Azúcar sobre azúcar sobre azúcar."
+  },
+  "imaginary-ends/traits/still": {
+    "name": "Quieto",
+    "flavor": "Considera, por un momento, la nada."
+  },
+  "imaginary-ends/traits/stygian": {
+    "name": "Estigio",
+    "effect": "En el Fin del Mundo: Elige un color. Suprime todos los traits de ese color en tu pila de traits. -2 por cada color en tu pila de traits.",
+    "flavor": "Yo me encargo de las luces."
+  },
+  "imaginary-ends/traits/telescopic-eyes": {
+    "name": "Ojos Telescópicos",
+    "effect": "+2 por cada oponente con más traits en su pila de traits que en la tuya.",
+    "flavor": "Mis pupilos podrían aprender mucho de mis pupilas."
+  },
+  "imaginary-ends/traits/thwopplers": {
+    "name": "Thwopplers",
+    "effect": "Resta el menor Gene Pool de tu puntuación final.",
+    "flavor": "Son como brazos, pero... sí, no, son solo brazos."
+  },
+  "imaginary-ends/traits/toasty": {
+    "name": "Tostadito",
+    "flavor": "Todos mis amigos se fueron. Aplastados entre galletas y chocolate."
+  },
+  "imaginary-ends/traits/translucent": {
+    "name": "Translúcido",
+    "effect": "Suprime 1 carta de tu mano.",
+    "flavor": "Ves a través de mí."
+  },
+  "imaginary-ends/traits/turkendurt": {
+    "name": "Turkendurt",
+    "effect": "Si tu Gene Pool es 3 o menos, arrebata 1 trait de la pila de traits de un oponente.",
+    "flavor": "Ur yer, durs durt rerp fer dur turken."
+  },
+  "imaginary-ends/traits/umbleboos": {
+    "name": "Umbleboos",
+    "effect": "-2 Gene Pool. Puedes jugar Umbleboos en cualquier momento en una pila de traits con un Gene Pool de 6 o más.",
+    "flavor": "Unido por el umbelcordón hasta la madurez de wum."
+  },
+  "imaginary-ends/traits/undulating": {
+    "name": "Ondulante",
+    "effect": "En el Fin del Mundo: Suprime 1 trait en tu pila de traits.",
+    "flavor": "¡Sigue la corriente!"
+  },
+  "imaginary-ends/traits/untold": {
+    "name": "Secreto",
+    "effect": "Suprime hasta 2 traits en tu pila de traits. +1 por cada carta suprimida debajo de Untold.",
+    "flavor": "Guardián de secretos. Pero tú no lo oíste de mí."
+  },
+  "imaginary-ends/traits/urf": {
+    "name": "Urf",
+    "effect": "-3 Gene Pool. Puedes descartar Urf de tu pila de traits al inicio de tu turno para robar 3 cartas.",
+    "flavor": "Urf."
+  },
+  "imaginary-ends/traits/whimsy": {
+    "name": "Capricho",
+    "effect": "Para jugar, debes robar 1 carta y revelarla. Si no tiene acción, juégala ahora. Si es dominante, descarta la carta junto con Whimsy.",
+    "flavor": "A ver qué quizás podría pasar, supongo, probablemente."
+  },
+  "imaginary-ends/traits/whip-tail": {
+    "name": "Cola de Látigo",
+    "effect": "Suprime 1 trait en tu pila de traits.",
+    "flavor": "Adelante, tira de ella. A ver qué pasa."
+  },
+  "imaginary-ends/traits/whopple": {
+    "name": "Whopple",
+    "effect": "Si tienes 3 o menos cartas en la mano después de jugar Whopple, roba 1 carta. Luego, juega otro trait.",
+    "flavor": "Whup?"
+  },
+  "imaginary-ends/traits/wishful": {
+    "name": "Ilusionado",
+    "flavor": "¡Unicorneo porque unipuedo!"
+  },
+  "imaginary-ends/trinkets/anxiety-elixir": {
+    "name": "Elixir de la Ansiedad",
+    "effect": "Poder Increíble:\nInicio del turno: Descarta dominantes de la mano.\n\nObjetivo de Bolsillo:\nRevelar: 2 rojos en la mano.\n\nValor: 2",
+    "flavor": "Esto causa estrés. Nunca será suficiente recalcarlo."
+  },
+  "imaginary-ends/trinkets/apathy-stone": {
+    "name": "Piedra de la Apatía",
+    "effect": "Poder Increíble:\nNo puedes jugar azul.\n\nObjetivo de Bolsillo:\nJugar: 1 incoloro.\n\nValor: 2",
+    "flavor": "Contempla el increíble poder de que no te importe."
+  },
+  "imaginary-ends/trinkets/bottled-air": {
+    "name": "Aire Embotellado",
+    "effect": "Poder Increíble:\nNo puedes jugar más de 1 trait en tu turno.\n\nObjetivo de Bolsillo:\nRevelar: 2 azules en la mano.\n\nValor: 2",
+    "flavor": "Rompe en caso de emergencia."
+  },
+  "imaginary-ends/trinkets/chu-box": {
+    "name": "Caja Achú",
+    "effect": "Poder Increíble:\nNo puedes jugar dominantes.\n\nObjetivo de Bolsillo:\nRevelar: 2 verdes en la mano.\n\nValor: 2",
+    "flavor": "Hay quienes creen que una caja achú tiene las propiedades curativas de un tejido blando sin fin."
+  },
+  "imaginary-ends/trinkets/collector-s-cap": {
+    "name": "Sombrero del Coleccionista",
+    "effect": "Poder Increíble:\nSi juegas rojo, puedes robar 1 carta.\n\nObjetivo de Bolsillo:\nRevelar: 1 morado en la mano.\n\nValor: 1",
+    "flavor": "Uno en un millón."
+  },
+  "imaginary-ends/trinkets/crackle-ore": {
+    "name": "Mineral Crepitante",
+    "effect": "Poder Increíble:\nAl estabilizar, estabiliza hasta 4.\n\nObjetivo de Bolsillo:\nRobar: 2 cartas en tu turno.\n\nValor: 4",
+    "flavor": "¡La exportación más mediana de Crackletown!"
+  },
+  "imaginary-ends/trinkets/dimming-hat": {
+    "name": "Sombrero Oscurecedor",
+    "effect": "Poder Increíble:\nImpide las acciones que juegues.\n\nObjetivo de Bolsillo:\nJugar: Acción.\n\nValor: 2",
+    "flavor": "Mientras más veo, menos sé."
+  },
+  "imaginary-ends/trinkets/fool-s-gold": {
+    "name": "Oro de Tontos",
+    "effect": "Poder Increíble:\nNo puedes jugar dominantes.\n\nObjetivo de Bolsillo:\nDescartar de la mano: 1 dominante.\n\nValor: 4",
+    "flavor": "Un tipo especial de oro... confía en mí."
+  },
+  "imaginary-ends/trinkets/forbidden-mushroom": {
+    "name": "Hongo Prohibido",
+    "effect": "Poder Increíble:\nSi juegas morado, puedes robar 1 carta.\n\nObjetivo de Bolsillo:\nRevelar: 1 azul en la mano.\n\nValor: 1",
+    "flavor": "El micelio llega mucho más allá, a tierras jamás contadas."
+  },
+  "imaginary-ends/trinkets/galaxy-in-a-jar": {
+    "name": "Galaxia en un Frasco",
+    "effect": "Poder Increíble:\nNo puedes jugar traits con valor nominal 1.\n\nObjetivo de Bolsillo:\nRevelar: 2 dominantes en la mano.\n\nValor: 4",
+    "flavor": "Frágil. No agitar."
+  },
+  "imaginary-ends/trinkets/gilded-lily": {
+    "name": "Lirio Dorado",
+    "effect": "Poder Increíble:\nNo puedes robar cartas a menos que estés estabilizando.\n\nObjetivo de Bolsillo:\nRevelar: 2 incoloros en la mano.\n\nValor: 2",
+    "flavor": "Todo es mejor en oro."
+  },
+  "imaginary-ends/trinkets/glass-hammer": {
+    "name": "Martillo de Vidrio",
+    "effect": "Poder Increíble:\nNo puedes jugar traits con acciones.\n\nObjetivo de Bolsillo:\nDescartar de la mano: 1 rojo o verde.\n\nValor: 3",
+    "flavor": "Excelente para clavar un clavo. Una vez."
+  },
+  "imaginary-ends/trinkets/glitter-pouch": {
+    "name": "Bolsita de Brillantina",
+    "effect": "Poder Increíble:\nNo puedes jugar azul.\n\nObjetivo de Bolsillo:\nPila de traits: 3 verdes.\n\nValor: 3",
+    "flavor": "¡Celebra con tus amigos o véngate de quien te cae mal!"
+  },
+  "imaginary-ends/trinkets/half-off-sandwich": {
+    "name": "Sándwich a Mitad de Precio",
+    "effect": "Poder Increíble:\nLos traits negativos no pueden jugarse en tu pila de traits.\n\nObjetivo de Bolsillo:\nJugar: Valor nominal 2 o más.\n\nValor: 1",
+    "flavor": "La mitad de arriba."
+  },
+  "imaginary-ends/trinkets/harmonic-sea-shell": {
+    "name": "Caracola Armónica",
+    "effect": "Poder Increíble:\nNo puedes jugar morado.\n\nObjetivo de Bolsillo:\nPila de traits: 3 incoloros.\n\nValor: 3",
+    "flavor": "Si escuchas con atención, puedes oír el interior de una caracola."
+  },
+  "imaginary-ends/trinkets/invisible-painting": {
+    "name": "Pintura Invisible",
+    "effect": "Poder Increíble:\nInicio del turno: Puedes jugar 1 sin efecto.\n\nObjetivo de Bolsillo:\nJugar: Sin efecto.\n\nValor: 1",
+    "flavor": "Al artista le tomó 30 años aprender a hacer esto en 5 minutos."
+  },
+  "imaginary-ends/trinkets/izzy": {
+    "name": "Izzy",
+    "effect": "Poder Increíble:\nNo puedes jugar incoloro.\n\nObjetivo de Bolsillo:\nRevelar: 4 colores diferentes en la mano.\n\nValor: 5",
+    "flavor": "Ella lleva un tiempo tratando de encontrar esa pieza que le falta. ¿Tal vez puedes ayudarla?"
+  },
+  "imaginary-ends/trinkets/lemony-lemons": {
+    "name": "Limones Muy Limones",
+    "effect": "Poder Increíble:\nNo puedes jugar incoloro.\n\nObjetivo de Bolsillo:\nJugar: 1 verde.\n\nValor: 2",
+    "flavor": "Más limón que el limón promedio."
+  },
+  "imaginary-ends/trinkets/muffins": {
+    "name": "Muffins",
+    "effect": "Poder Increíble:\nNo puedes jugar traits con valor nominal 3 o más.\n\nObjetivo de Bolsillo:\nPila de traits: 2 negativos.\n\nValor: 4",
+    "flavor": "Nunca, JAMÁS escuches su caprichosa historia."
+  },
+  "imaginary-ends/trinkets/mysterious-lantern": {
+    "name": "Farol Misterioso",
+    "effect": "Poder Increíble:\nNo puedes jugar morado.\n\nObjetivo de Bolsillo:\nJugar: 1 rojo.\n\nValor: 2",
+    "flavor": "Emite una luz especial que solo se puede ver de día."
+  },
+  "imaginary-ends/trinkets/omniscient-ball": {
+    "name": "Esfera Omnisciente",
+    "effect": "Poder Increíble: No puedes jugar sin efecto.\n\nObjetivo de Bolsillo:\nRevelar: 2 incoloros en la mano.\n\nValor: 2",
+    "flavor": "Mientras más ve, más sabe."
+  },
+  "imaginary-ends/trinkets/party-mask": {
+    "name": "Máscara de Fiesta",
+    "effect": "Poder Increíble:\nNo puedes jugar Gota de Vida.\n\nObjetivo de Bolsillo:\nDescartar de la mano: 1 azul o morado.\n\nValor: 2",
+    "flavor": "Comprada a un viajero sin rostro con un abrigo muy a la moda."
+  },
+  "imaginary-ends/trinkets/perpetual-motion-machine": {
+    "name": "Máquina de Movimiento Perpetuo",
+    "effect": "Poder Increíble:\nNo puedes jugar incoloro.\n\nObjetivo de Bolsillo:\nPila de traits: 3 rojos.\n\nValor: 3",
+    "flavor": "Pilas no incluidas."
+  },
+  "imaginary-ends/trinkets/philosopher-s-key": {
+    "name": "Llave del Filósofo",
+    "effect": "Poder Increíble:\nNo puedes jugar más de 1 trait en tu turno.\n\nObjetivo de Bolsillo:\nPila de traits: 2 de cada color.\n\nValor: 5",
+    "flavor": "Algunos creen que no abre nada."
+  },
+  "imaginary-ends/trinkets/pointy-stick": {
+    "name": "Palo Puntiagudo",
+    "effect": "Poder Increíble:\nNo puedes jugar rojo.\n\nObjetivo de Bolsillo:\nJugar: 1 morado.\n\nValor: 2",
+    "flavor": "¡Puedes sacarte un ojo! ¡Entre otras funciones!"
+  },
+  "imaginary-ends/trinkets/shade-berry": {
+    "name": "Baya de la Sombra",
+    "effect": "Poder Increíble:\nPuedes descartar 1 dominante de tu pila de traits con los efectos de tus traits.\n\nObjetivo de Bolsillo:\nRetirar de la pila de traits: 1 dominante.\n\nValor: 5",
+    "flavor": "Advertencia: consumir esta baya otorga poderes extraños. Y a veces gases."
+  },
+  "imaginary-ends/trinkets/silby-bark": {
+    "name": "Corteza de Silby",
+    "effect": "Poder Increíble:\nImpide las acciones que juegues.\n\nObjetivo de Bolsillo:\nRevelar: 2 morados en la mano.\n\nValor: 2",
+    "flavor": "Sacada de contrabando de la Living Library."
+  },
+  "imaginary-ends/trinkets/spyglass": {
+    "name": "Catalejo",
+    "effect": "Poder Increíble:\nSi juegas azul, puedes robar 1 carta.\n\nObjetivo de Bolsillo:\nRevelar: 1 verde en la mano.\n\nValor: 1",
+    "flavor": "Agranda objetos lejanos."
+  },
+  "imaginary-ends/trinkets/t-o-m-four": {
+    "name": "T.O.M. Four",
+    "effect": "Poder Increíble:\nTus oponentes pueden robar 1 carta al inicio de tu turno. (Si se dan cuenta...)\n\nObjetivo de Bolsillo:\nRevelar: 3 colores diferentes en la mano.\n\nValor: 4",
+    "flavor": "¿Qué es un TOM Four? Sirve para contar chistes regulares."
+  },
+  "imaginary-ends/trinkets/terror-root": {
+    "name": "Raíz del Terror",
+    "effect": "Poder Increíble:\nNo puedes jugar verde.\n\nObjetivo de Bolsillo:\nPila de traits: 3 azules.\n\nValor: 3",
+    "flavor": "Cuando se separan del Sauce Errante, las Raíces del Terror se abren paso bajo la tierra en busca de un nuevo huésped."
+  },
+  "imaginary-ends/trinkets/tiny-house": {
+    "name": "Casita",
+    "effect": "Poder Increíble:\nInicio del turno: Puedes descartar 1 carta de la mano.\n\nObjetivo de Bolsillo:\nJugar: Valor nominal 2 o más.\n\nValor: 1",
+    "flavor": "Solo necesita un poquito de trabajo."
+  },
+  "imaginary-ends/trinkets/tome-of-common-knowledge": {
+    "name": "Tomo del Conocimiento Común",
+    "effect": "Poder Increíble:\nNo puedes jugar verde.\n\nObjetivo de Bolsillo:\nJugar: 1 azul.\n\nValor: 2",
+    "flavor": "Un hallazgo raro."
+  },
+  "imaginary-ends/trinkets/tome-of-hidden-knowledge": {
+    "name": "Tomo del Conocimiento Oculto",
+    "effect": "Poder Increíble:\nNo puedes jugar rojo.\n\nObjetivo de Bolsillo:\nPila de traits: 3 morados.\n\nValor: 3",
+    "flavor": "<información omitida.>"
+  },
+  "imaginary-ends/trinkets/treasure-goggles": {
+    "name": "Gafas del Tesoro",
+    "effect": "Poder Increíble:\nInicio del turno: Roba 1 carta.\n\nObjetivo de Bolsillo:\nJugar: Valor nominal 1.\n\nValor: 1",
+    "flavor": "¡Haz fortuna eliminando toda distracción de tu vista! Advertencia: quien use estas gafas solo verá tesoros."
+  },
+  "imaginary-ends/trinkets/unicorn-horn": {
+    "name": "Cuerno de Unicornio",
+    "effect": "Poder Increíble:\nSi juegas verde, puedes robar 1 carta.\n\nObjetivo de Bolsillo:\nRevelar: 1 rojo en la mano.\n\nValor: 1",
+    "flavor": "Una elección de moda que hará que todos se detengan en seco."
+  },
+  "imaginary-ends/trinkets/unlabeled-vial": {
+    "name": "Frasco sin Etiqueta",
+    "effect": "Poder Increíble:\nNo puedes jugar traits en los turnos de tus oponentes.\n\nObjetivo de Bolsillo:\nPila de traits: 2 dominantes.\n\nValor: 3",
+    "flavor": "Es veneno o es el antídoto. Lástima que el otro ya se vendió."
+  },
+  "imaginary-ends/trinkets/unsolvable-puzzle": {
+    "name": "Rompecabezas Irresoluble",
+    "effect": "Poder Increíble:\nAl estabilizar, estabiliza hasta 4.\n\nObjetivo de Bolsillo:\nJugar: Acción.\n\nValor: 1",
+    "flavor": "Todos los demás parecen entenderlo."
+  },
+  "imaginary-ends/trinkets/unusual-tooth": {
+    "name": "Colmillo Inusual",
+    "effect": "Poder Increíble:\nAl estabilizar, estabiliza hasta 4.\n\nObjetivo de Bolsillo:\nJugar: 1 negativo.\n\nValor: 3",
+    "flavor": "Que el dueño de este colmillo no te encuentre."
+  },
+  "imaginary-ends/trinkets/weird-map": {
+    "name": "Mapa Extraño",
+    "effect": "Poder Increíble:\nInicio del turno: Descarta 1 carta de la mano.\n\nObjetivo de Bolsillo:\nPila de traits: 4 del mismo color.\n\nValor: 4",
+    "flavor": "Ve al surueste. El sitio marca la x."
+  },
+  "imaginary-ends/trinkets/world-s-end-insurance": {
+    "name": "Seguro del Fin del Mundo",
+    "effect": "Poder Increíble:\nEn el Fin del Mundo: En lugar de perder este ítem, guárdalo en el bolsillo.\n\nObjetivo de Bolsillo:\nJugar: 2 traits en 1 turno.\n\nValor: 2",
+    "flavor": "No puedes permitirte NO tener esto."
+  }
+}

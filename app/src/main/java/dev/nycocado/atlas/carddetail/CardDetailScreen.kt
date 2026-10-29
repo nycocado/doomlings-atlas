@@ -758,7 +758,7 @@ private val SampleTrait =
         listOf(TraitIcon.Action, TraitIcon.DropOfLife, TraitIcon.PlayWhen, TraitIcon.WorldsEnd),
     )
 
-// The longest Classic card name in assets/doomlings/cards.json, verbatim.
+// The longest Classic card name in assets/doomlings/classic/cards.json, verbatim.
 internal val LongNameTrait =
     Trait(
         "classic/traits/random-fertilization",

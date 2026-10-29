@@ -1,0 +1,1586 @@
+[
+  {
+    "id": "upgrade/ages/age-of-metadata",
+    "type": "age",
+    "set": "upgrade",
+    "name": "Age of Metadata",
+    "effect": "Play this age with your hand revealed.",
+    "image": "upgrade/ages/age-of-metadata.webp"
+  },
+  {
+    "id": "upgrade/ages/badlands",
+    "type": "age",
+    "set": "upgrade",
+    "name": "Badlands",
+    "effect": "Discard 1 card. Shuffle the discard pile, and deal 1 card face down to each player.\n\nReturn any remaining cards to the discard pile.",
+    "image": "upgrade/ages/badlands.webp"
+  },
+  {
+    "id": "upgrade/ages/ozmorian-winds",
+    "type": "age",
+    "set": "upgrade",
+    "name": "Ozmorian Winds",
+    "effect": "After you stabilize, pass 1 card to your left at random.",
+    "image": "upgrade/ages/ozmorian-winds.webp"
+  },
+  {
+    "id": "upgrade/catastrophes/bioengineered-plague",
+    "type": "catastrophe",
+    "set": "upgrade",
+    "name": "Bioengineered Plague",
+    "effect": "-1 Gene Pool\n\nEach player chooses a color. The player on your left discards all cards of that color from their hand.",
+    "worldsEnd": "Discard 1 random trait from your highest color count from your trait pile. (If 2 or more colors are tied, pick 1.)",
+    "image": "upgrade/catastrophes/bioengineered-plague.webp"
+  },
+  {
+    "id": "upgrade/catastrophes/impact-event",
+    "type": "catastrophe",
+    "set": "upgrade",
+    "name": "Impact Event",
+    "effect": "-1 Gene Pool\n\nDiscard 1 card from your hand for each dominant trait in your trait pile.",
+    "worldsEnd": "-1 for each trait in your trait pile with a face value of 3 or more.",
+    "image": "upgrade/catastrophes/impact-event.webp"
+  },
+  {
+    "id": "upgrade/catastrophes/eyes-open-from-behind-the-stars",
+    "type": "catastrophe",
+    "set": "upgrade",
+    "name": "Eyes Open from Behind the Stars",
+    "effect": "-1 Gene Pool.\n\nDiscard 1 from your hand. The player(s) who discarded the lowest face value must also discard 1 from their trait pile.",
+    "worldsEnd": "Discard your highest face value trait from your trait pile to the Old God.",
+    "image": "upgrade/catastrophes/eyes-open-from-behind-the-stars.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-armored-melon",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Armored Melon",
+    "effect": "+3 if you have 3-5 cards in hand.\n\n+6 if you have 6 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-armored-melon.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-bilbies",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Bilbies",
+    "effect": "+4 if you have only 1 dominant trait in your trait pile.\n\n+10 if you have none.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-bilbies.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-blind-dragon",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Blind Dragon",
+    "effect": "To achieve this bonus, you must have 5 or more of a color in your trait pile.\n\nWhen scoring Meaning of Life, draw 2 Meaning of Life cards and add applicable bonuses to your final score.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-blind-dragon.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-bramble-brawler",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Bramble Brawler",
+    "effect": "+4 if you have more purple traits in your trait pile than your opponents,\nAND\n+1 for every opponent with fewer purple traits in their trait pile than yours.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-bramble-brawler.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-bush-kid",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Bush Kid",
+    "effect": "+3 if you have 3 or more Drop of Lifes in your trait pile,\nAND\n+6 if you ALSO have 5 or more actions.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-bush-kid.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-cabochon",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Cabochon",
+    "effect": "+3 if you have only 1 or 2 red traits in your trait pile.\n\n+6 if you have none.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-cabochon.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-child-and-the-bear",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Child and the Bear",
+    "effect": "+1 for every color pair in your trait pile that shares a color with a dominant. (Max +5.)\n\n+2 for every pair if you have 2 dominants with the same color. (Max +10.)\n\nDominant traits do not count toward color pairs for these bonuses.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-child-and-the-bear.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-clashing-crabs",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Clashing Crabs",
+    "effect": "+4 if you have more negative face value traits in your trait pile than traits with a face value 4 or higher.\n\n+8 if you have an equal number of both, or none of either.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-clashing-crabs.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-cosmic-jinx",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Cosmic Jinx",
+    "effect": "+4 if your Gene Pool is 3.\n\n+8 if your Gene Pool is 1 or 2.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-cosmic-jinx.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-dancer",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Dancer",
+    "effect": "+12 if you have the lowest score, before Meaning of Life bonuses.\n\n+8 if you are tied for the lowest.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-dancer.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-diamond-butterfly",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Diamond Butterfly",
+    "effect": "+2 if your trait pile has fewer blue traits than your opponents. (Including ties.)\n+2 for fewer green traits. (Including ties.)\n+6 if you achieve both goals.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-diamond-butterfly.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-emerald-slug",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Emerald Slug",
+    "effect": "+2 if your trait pile has fewer red traits than your opponents. (Including ties.)\n+2 for fewer blue traits. (Including ties.)\n+6 if you achieve both goals.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-emerald-slug.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-fellmonger",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Fellmonger",
+    "effect": "+3 if you have only 1 or 2 blue traits in your trait pile.\n\n+6 if you have none.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-fellmonger.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-fire-bandit",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Fire Bandit",
+    "effect": "+4 if you have more red traits in your trait pile than your opponents,\nAND\n+1 for every opponent with fewer red traits in their trait pile than yours.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-fire-bandit.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-forest-keeper",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Forest Keeper",
+    "effect": "+4 if you have more green traits in your trait pile than your opponents,\nAND\n+1 for every opponent with fewer green traits in their trait pile than yours.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-forest-keeper.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-fortunate-alchemist",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Fortunate Alchemist",
+    "effect": "+2 if you have 2-4 traits in your trait pile with a face value of 0, including Compasses.\n\n+9 if you have 5.\n-4 if you have none.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-fortunate-alchemist.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-genial-outsider",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Genial Outsider",
+    "effect": "+3 if you have 2 or fewer Drop of Lifes in your trait pile.\nAND\n+6 if you ALSO have 3 or fewer actions.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-genial-outsider.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-golden-shrew",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Golden Shrew",
+    "effect": "+4 if you have 9-12 traits in your trait pile.\n\n+7 if you have 8 or fewer.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-golden-shrew.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-hero",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Hero",
+    "effect": "+4 for each dominant in your trait pile that shares a color/colorless with ONLY 0-1 other trait in your trait pile. (Including your other dominant.)\n\n+12 if, against all odds, you have 3 dominant traits in your trait pile.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-hero.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-jellyfish",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Jellyfish",
+    "effect": "+3 if you have 3-5 blue traits in your trait pile.\n\n+6 if you have 6 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-jellyfish.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-jungler",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Jungler",
+    "effect": "+4 if you have more colorless traits in your trait pile than your opponents,\nAND\n+1 for every opponent with fewer colorless traits in their trait pile than yours.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-jungler.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-logician",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Logician",
+    "effect": "+3 if you have 3-5 effectless traits in your trait pile.\n\n+6 if you have 6 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-logician.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-lumberjack",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Lumberjack",
+    "effect": "+3 if you have only 1 or 2 green traits in your trait pile.\n\n+6 if you have none.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-lumberjack.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-lunar-guard",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Lunar Guard",
+    "effect": "+4 if your trait pile is missing 1 color or colorless.\n\n+9 if it's missing at least 2 colors, or at least 1 color and colorless.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-lunar-guard.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-magician",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Magician",
+    "effect": "+3 if you have only 1 or 2 colorless traits in your trait pile.\n\n+6 if you have none.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-magician.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-maven",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Maven",
+    "effect": "+3 if you have 10-14 traits in your trait pile.\n\n+7 if you have 15 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-maven.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-medicine-master",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Medicine Master",
+    "effect": "+3 if you have 1-2 negative face value traits in your trait pile.\n\n+7 if you have 3 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-medicine-master.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-monkey-thief",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Monkey Thief",
+    "effect": "+8 AND\n-3 for each Drop of Life in your trait pile.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-monkey-thief.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-painter",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Painter",
+    "effect": "+3 for each color in your trait pile with a color count that equals an even number.\n(Colors with 0 traits don't count!)",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-painter.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-parrot-s-riddle",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Parrot's Riddle",
+    "effect": "+9 AND\n-2 for each action in your trait pile.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-parrot-s-riddle.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-rain-golem",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Rain Golem",
+    "effect": "+4 if you have more blue traits in your trait pile than your opponents,\nAND\n+1 for every opponent with fewer blue traits in their trait pile than yours.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-rain-golem.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-river-mist",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The River Mist",
+    "effect": "At World's End:\nReveal this card immediately.\n+2 to your total trait pile count.\n\n+4 if you have the most traits in your trait pile\nAND\n+1 for each opponent with fewer traits in their trait pile than yours.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-river-mist.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-ruby-tortoise",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Ruby Tortoise",
+    "effect": "+2 if your trait pile has fewer green traits than your opponents. (Including ties.)\n+2 for fewer purple traits. (Including ties.)\n\n+6 if you achieve both goals.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-ruby-tortoise.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-sapphire-ladybug",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Sapphire Ladybug",
+    "effect": "+2 if your trait pile has fewer purple traits than your opponents. (Including ties.)\n+2 for fewer red traits. (Including ties.)\n\n+6 if you achieve both goals.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-sapphire-ladybug.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-silent-elder",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Silent Elder",
+    "effect": "If you have 4 or fewer of each color in your trait pile, reveal the top 1 card of the trait deck. If you have 3 or fewer of each color, reveal 5.\nAdd all face values of 4 or lower to your final score.\n(Remove the revealed cards from the game.)",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-silent-elder.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-soothsayer",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Soothsayer",
+    "effect": "+3 if you have only 1 or 2 purple traits in your trait pile.\n\n+6 if you have none.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-soothsayer.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-spirit-gardener",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Spirit Gardener",
+    "effect": "+3 if you have 3-5 colorless traits in your trait pile.\n\n+6 if you have 6 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-spirit-gardener.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-stylite",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Stylite",
+    "effect": "+3 if your Drop of Life bonus is 3-6.\n\n+7 if it's 2 or less.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-stylite.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-tigris",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Tigris",
+    "effect": "+3 if you have 3-5 traits with actions in your trait pile.\n\n+6 if you have 6 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-tigris.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-tracker",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Tracker",
+    "effect": "If you have all 4 colors in your trait pile:\n\n+1 for each colorless trait in your trait pile.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-tracker.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-truffle-hunter",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Truffle Hunter",
+    "effect": "+2 if you have 3-5 traits in your trait pile with a face value of 1.\n\n+6 if you have 6 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-truffle-hunter.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-vagrant",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Vagrant",
+    "effect": "+8 if you have fewer traits in your trait pile than your opponents.\n\n+6 if you're tied for the fewest.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-vagrant.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-vixen",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Vixen",
+    "effect": "+3 if you have 3-5 purple traits in your trait pile.\n\n+6 if you have 6 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-vixen.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-warbler",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Warbler",
+    "effect": "+3 if you have 3-5 green traits in your trait pile.\n\n+6 if you have 6 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-warbler.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-warrior",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Warrior",
+    "effect": "+3 if you have 3-5 red traits in your trait pile.\n\n+6 if you have 6 or more.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-warrior.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-weaver",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Weaver",
+    "effect": "+3 for each set of all 4 colors (red, green, blue, purple) in your trait pile.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-weaver.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/the-wilted-flower",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "The Wilted Flower",
+    "effect": "+4 if you are tied for the lowest Gene Pool.\n\n+7 if you have the lowest.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/the-wilted-flower.webp"
+  },
+  {
+    "id": "upgrade/meaning-of-life/thunder-frogs",
+    "type": "meaning-of-life",
+    "set": "upgrade",
+    "name": "Thunder Frogs",
+    "effect": "+2 for each different color in your trait pile with exactly one trait with a face value 2.",
+    "flavor": null,
+    "image": "upgrade/meaning-of-life/thunder-frogs.webp"
+  },
+  {
+    "id": "upgrade/traits/acrobatic",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Acrobatic",
+    "flavor": "¡Me llaman Jungle Jim!",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "green",
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "upgrade/traits/acrobatic.webp"
+  },
+  {
+    "id": "upgrade/traits/ancient",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Ancient",
+    "flavor": "If you want to pass through my forest, you must say what you like most about me.",
+    "effect": "Choose a color. Draw 10 cards. Keep 1 of the chosen color. Put the rest at the bottom of the deck.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/ancient.webp"
+  },
+  {
+    "id": "upgrade/traits/binary",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Binary",
+    "flavor": "They're a 1, I'm a 0. Together, we're a 10.",
+    "effect": "Steal a trait with a face value of 0 or 1 from an opponent's trait pile. Play its action.",
+    "points": 0,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/binary.webp"
+  },
+  {
+    "id": "upgrade/traits/bionic-arm",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Bionic Arm",
+    "flavor": "Never lose another thumb war.",
+    "effect": "+1 for each Techling in your trait pile. (Including this one.) +2 for each Techling if a trait is attached to Bionic Arm.",
+    "points": -2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/bionic-arm.webp"
+  },
+  {
+    "id": "upgrade/traits/bloom",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Bloom",
+    "flavor": "Who's up for a jam session?",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "blue",
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "upgrade/traits/bloom.webp"
+  },
+  {
+    "id": "upgrade/traits/bone-reinforcement",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Bone Reinforcement",
+    "flavor": "Got a new PPO plan through work. Figured I'd upgrade my bones.",
+    "effect": "Attach to a trait. Host trait cannot be swapped or stolen.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "attachment"
+    ],
+    "image": "upgrade/traits/bone-reinforcement.webp"
+  },
+  {
+    "id": "upgrade/traits/bony-plates",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Bony Plates",
+    "flavor": "Before the wedding, I'm throwing a steg party.",
+    "effect": "Draw 3 cards. You may discard Bony Plates to play 1 of these instead. Discard the rest.",
+    "points": 2,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/bony-plates.webp"
+  },
+  {
+    "id": "upgrade/traits/bullheaded",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Bullheaded",
+    "flavor": "I'm two colors and that's the end of it!",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "green",
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "upgrade/traits/bullheaded.webp"
+  },
+  {
+    "id": "upgrade/traits/carnosaur-jaw",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Carnosaur Jaw",
+    "flavor": "Stop moving! I can't see you!",
+    "effect": "To play, you must discard 2 red traits from your trait pile.",
+    "points": 9,
+    "colors": [
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [],
+    "image": "upgrade/traits/carnosaur-jaw.webp"
+  },
+  {
+    "id": "upgrade/traits/ceratopsian-horns",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Ceratopsian Horns",
+    "flavor": "Named after the North American Michael Cera.",
+    "effect": null,
+    "points": 4,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [],
+    "image": "upgrade/traits/ceratopsian-horns.webp"
+  },
+  {
+    "id": "upgrade/traits/cranial-crest",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Cranial Crest",
+    "flavor": "I don't know what it does, but it's there!",
+    "effect": "+1 for every 3 negative face value traits in the discard pile.",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/cranial-crest.webp"
+  },
+  {
+    "id": "upgrade/traits/curiosity",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Curiosity",
+    "flavor": "I'm not a cat, so I'll be fine.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "blue",
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "upgrade/traits/curiosity.webp"
+  },
+  {
+    "id": "upgrade/traits/cybernetic",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Cybernetic",
+    "flavor": "I can perform tasks simultaneously. Like rubbing my belly and patting my head.",
+    "effect": "Attach to a non-blue trait. Host trait is now blue.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "attachment"
+    ],
+    "image": "upgrade/traits/cybernetic.webp"
+  },
+  {
+    "id": "upgrade/traits/dermal-armor",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Dermal Armor",
+    "flavor": "Why didn't you like my script? Don't be shy. I've got thick skin.",
+    "effect": "You may discard 1 trait from your trait pile.",
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/dermal-armor.webp"
+  },
+  {
+    "id": "upgrade/traits/destined",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Destined",
+    "flavor": "Legend tells of a being meant for greatness. We will know them by the really, really cool crown on their head.",
+    "effect": null,
+    "points": 4,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [],
+    "image": "upgrade/traits/destined.webp"
+  },
+  {
+    "id": "upgrade/traits/diaphanous-wings",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Diaphanous Wings",
+    "flavor": "They help you fly, but they break easily. Like budget airlines.",
+    "effect": null,
+    "points": -1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [],
+    "image": "upgrade/traits/diaphanous-wings.webp"
+  },
+  {
+    "id": "upgrade/traits/dragon-heart",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Dragon Heart",
+    "flavor": "Everything melts in my mouth.",
+    "effect": "+4 if you have all 4 colors in your trait pile.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/dragon-heart.webp"
+  },
+  {
+    "id": "upgrade/traits/effigial",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Effigial",
+    "flavor": "How do voodoo?",
+    "effect": "You may play Effigial from your hand into an opponent's trait pile when they play an action.",
+    "points": -3,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "upgrade/traits/effigial.webp"
+  },
+  {
+    "id": "upgrade/traits/egg-predation",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Egg Predation",
+    "flavor": "This thing was going to be a T-Rex. You should be thanking me!",
+    "effect": "Steal 1 Dinoling from an opponent's trait pile.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/egg-predation.webp"
+  },
+  {
+    "id": "upgrade/traits/electromagnetic",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Electromagnetic",
+    "flavor": "Puts the 'rad' in 'radiation.'",
+    "effect": "Attach to a trait in any trait pile. If it has an action, play that action now.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "attachment"
+    ],
+    "image": "upgrade/traits/electromagnetic.webp"
+  },
+  {
+    "id": "upgrade/traits/elongated-neck",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Elongated Neck",
+    "flavor": "I've got fronds in high places.",
+    "effect": "Play an action from a card in your hand.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/elongated-neck.webp"
+  },
+  {
+    "id": "upgrade/traits/elven-ears",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Elven Ears",
+    "flavor": "A sale on arrows, you say? I'm listening.",
+    "effect": "+1 for each Mythling in ALL trait piles. (Including this one.)",
+    "points": -1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/elven-ears.webp"
+  },
+  {
+    "id": "upgrade/traits/fey",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Fey",
+    "flavor": "Fairy. Demoted angel. Occasionally collects teeth.",
+    "effect": "You may play Fey at any time. All players receive: +1 Gene Pool.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "upgrade/traits/fey.webp"
+  },
+  {
+    "id": "upgrade/traits/free-will",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Free Will",
+    "flavor": "The ability to choose between a number 1 or a number 2.",
+    "effect": "At World's End: This card becomes the color of your choice.",
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "worlds-end"
+    ],
+    "image": "upgrade/traits/free-will.webp"
+  },
+  {
+    "id": "upgrade/traits/fronds",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Fronds",
+    "flavor": "I haven't had a haircut since the Jurassic era.",
+    "effect": "To play, you must discard 1 trait from your trait pile. +2 Gene Pool.",
+    "points": 0,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [],
+    "image": "upgrade/traits/fronds.webp"
+  },
+  {
+    "id": "upgrade/traits/gelatinous",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Gelatinous",
+    "flavor": "Stuck in a real ooze-ooze situation.",
+    "effect": "You may play Gelatinous from your hand when an opponent steals from your hand or trait pile. (If Gelatinous is stolen, discard it.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "upgrade/traits/gelatinous.webp"
+  },
+  {
+    "id": "upgrade/traits/gmo",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "GMO",
+    "flavor": "I am perfect corn. Bee boop.",
+    "effect": "Attach to a trait. +1 for every trait in your trait pile of the same color as the host trait.",
+    "points": -1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "attachment",
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/gmo.webp"
+  },
+  {
+    "id": "upgrade/traits/grey-hat",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Grey Hat",
+    "flavor": "I live by my own code.",
+    "effect": "Look at an opponent's hand. Steal 1 card, and play it immediately.",
+    "points": -1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/grey-hat.webp"
+  },
+  {
+    "id": "upgrade/traits/hand-wing",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Hand-Wing",
+    "flavor": "A forelimb used for achieving the highest of fives.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "purple",
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "upgrade/traits/hand-wing.webp"
+  },
+  {
+    "id": "upgrade/traits/hyper-myelination",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Hyper-Myelination",
+    "flavor": "Does my central nervous system make you nervous?",
+    "effect": "Value is equal to the size of the highest Gene Pool.",
+    "points": null,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/hyper-myelination.webp"
+  },
+  {
+    "id": "upgrade/traits/icy",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Icy",
+    "flavor": "Frosty and hostile. Frostile, if you will.",
+    "effect": null,
+    "points": 3,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [],
+    "image": "upgrade/traits/icy.webp"
+  },
+  {
+    "id": "upgrade/traits/legendary",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Legendary",
+    "flavor": "Everything you've heard about me is true. Well, maybe just the good stuff.",
+    "effect": "Discard your hand. Do not stabilize.",
+    "points": 8,
+    "colors": [
+      "blue"
+    ],
+    "dominant": true,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [],
+    "image": "upgrade/traits/legendary.webp"
+  },
+  {
+    "id": "upgrade/traits/lyonization",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Lyonization",
+    "flavor": "Commonly found in genetically modified alien hunters. Also calico cats.",
+    "effect": "Attach to a trait in any trait pile. Host trait's effect is now inactive.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "attachment"
+    ],
+    "image": "upgrade/traits/lyonization.webp"
+  },
+  {
+    "id": "upgrade/traits/mecha",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Mecha",
+    "flavor": "The ultimate prom outfit.",
+    "effect": "Attach to an effectless trait. +1 for each effectless trait in your trait pile.",
+    "points": 0,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "attachment",
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/mecha.webp"
+  },
+  {
+    "id": "upgrade/traits/mighty",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Mighty",
+    "flavor": "Look upon I's sweet axe!",
+    "effect": "Discard a trait from an opponent's trait pile with a face value of 2.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/mighty.webp"
+  },
+  {
+    "id": "upgrade/traits/mitosis",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Mitosis",
+    "flavor": "Part of the soul cycle. I mean cell cycle.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "blue",
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "upgrade/traits/mitosis.webp"
+  },
+  {
+    "id": "upgrade/traits/nano",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Nano",
+    "flavor": "We are members of the itty bitty techie comittee.",
+    "effect": "Attach to a trait in any trait pile. Value is equal to the face value of the host trait.",
+    "points": null,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "attachment",
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/nano.webp"
+  },
+  {
+    "id": "upgrade/traits/necromantic",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Necromantic",
+    "flavor": "Why don't we head back to my place? I've got plenty of spirits.",
+    "effect": "You may play Necromantic from your hand when an opponent discards a trait. Add that trait to your hand.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "upgrade/traits/necromantic.webp"
+  },
+  {
+    "id": "upgrade/traits/neural-link",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Neural Link",
+    "flavor": "OK computer, what number am I think--oh, there it is on the screen.",
+    "effect": "Take a peek at the next 2 ages.",
+    "points": 2,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/neural-link.webp"
+  },
+  {
+    "id": "upgrade/traits/orcish-tusks",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Orcish Tusks",
+    "flavor": "All I want for Christmas is my two front teeth...and maybe a war.",
+    "effect": "You may play Orcish Tusks from your hand when an opponent plays a dominant trait.",
+    "points": 2,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "upgrade/traits/orcish-tusks.webp"
+  },
+  {
+    "id": "upgrade/traits/phreakish-eyes",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Phreakish Eyes",
+    "flavor": "The big one assesses threat level. The little one detects allergies.",
+    "effect": "Draw 3 cards. All opponents also draw a card.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/phreakish-eyes.webp"
+  },
+  {
+    "id": "upgrade/traits/protofeathers",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Protofeathers",
+    "flavor": "Everybody's tickled by my new look, but I don't know what all the fuzz is about.",
+    "effect": "Play 2 additional traits. Ignore actions.",
+    "points": -2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/protofeathers.webp"
+  },
+  {
+    "id": "upgrade/traits/pterosaur-wings",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Pterosaur Wings",
+    "flavor": "My wings...have fingers! I've got wing-fingers!",
+    "effect": "You may play 1 effectless trait from the discard pile.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/pterosaur-wings.webp"
+  },
+  {
+    "id": "upgrade/traits/pycnofibers",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Pycnofibers",
+    "flavor": "Every story about me is a fluff piece.",
+    "effect": "Draw 1 card. If it is a dominant trait, discard it. If it is not, play it immediately. Ignore its action.",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/pycnofibers.webp"
+  },
+  {
+    "id": "upgrade/traits/rainbow-horn",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Rainbow Horn",
+    "flavor": "Rainbow horn yaaaay!",
+    "effect": "You may play Rainbow Horn from your hand at any time if you have all 4 colors in your trait pile.",
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "upgrade/traits/rainbow-horn.webp"
+  },
+  {
+    "id": "upgrade/traits/righteous",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Righteous",
+    "flavor": "The opposite of wrongteous.",
+    "effect": "You may play Righteous from your hand at any time to stop an action that affects an opponent.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "upgrade/traits/righteous.webp"
+  },
+  {
+    "id": "upgrade/traits/ruggedized",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Ruggedized",
+    "flavor": "I am impenetrable corn. Bee boop.",
+    "effect": "Attach to a trait. Host trait cannot be removed from your trait pile. You may attach to a new host trait at the end of each turn.",
+    "points": 4,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "attachment"
+    ],
+    "image": "upgrade/traits/ruggedized.webp"
+  },
+  {
+    "id": "upgrade/traits/serrated-teeth",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Serrated Teeth",
+    "flavor": "I ate my dentist.",
+    "effect": "+1 for each dominant trait in the discard pile.",
+    "points": -1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/serrated-teeth.webp"
+  },
+  {
+    "id": "upgrade/traits/subdermal-plating",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Subdermal Plating",
+    "flavor": "Come with me if you want to live... on a doomed and distant planet.",
+    "effect": "You may play this at any time. Attach to a trait in any trait pile. Host trait cannot be discarded.",
+    "points": -1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "attachment",
+      "play-when"
+    ],
+    "image": "upgrade/traits/subdermal-plating.webp"
+  },
+  {
+    "id": "upgrade/traits/talons",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Talons",
+    "flavor": "You scratch my back, I'll slash yours.",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [],
+    "image": "upgrade/traits/talons.webp"
+  },
+  {
+    "id": "upgrade/traits/terror-beak",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Terror Beak",
+    "flavor": "Nose goes...into the flesh of my prey!",
+    "effect": "To play, you must discard 1 green trait from your hand or trait pile.",
+    "points": 3,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [],
+    "image": "upgrade/traits/terror-beak.webp"
+  },
+  {
+    "id": "upgrade/traits/tetrachromatic",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Tetrachromatic",
+    "flavor": "I'm color woke.",
+    "effect": "-1 for each colorless trait in your trait pile.",
+    "points": 4,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/tetrachromatic.webp"
+  },
+  {
+    "id": "upgrade/traits/thagomizer",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Thagomizer",
+    "flavor": "Named for the late Thag Simmons. Look it up!",
+    "effect": "All players must discard 2 cards from their hand. (Including yourself.)",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "upgrade/traits/thagomizer.webp"
+  },
+  {
+    "id": "upgrade/traits/tiny-arms",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Tiny Arms",
+    "flavor": "Reach out and touch prey.",
+    "effect": "+1 for each Dinoling in the discard pile.",
+    "points": -1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Dinoling"
+    ],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "upgrade/traits/tiny-arms.webp"
+  },
+  {
+    "id": "upgrade/traits/transgenic-modification",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Transgenic Modification",
+    "flavor": "Part fighter, part tomato. Packs an awesome punch of vitamin C!",
+    "effect": "Attach to a non-green trait. Host trait is now green.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Techling"
+    ],
+    "icons": [
+      "attachment"
+    ],
+    "image": "upgrade/traits/transgenic-modification.webp"
+  },
+  {
+    "id": "upgrade/traits/wild",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Wild",
+    "flavor": "World not pain when me chew stick.",
+    "effect": null,
+    "points": 4,
+    "colors": [
+      "blue",
+      "green",
+      "purple",
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "upgrade/traits/wild.webp"
+  },
+  {
+    "id": "upgrade/traits/witchy",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Witchy",
+    "flavor": "Rat's tail soup comin' right up!",
+    "effect": "You may play Witchy when it is discarded from your hand. Return Witchy to your hand when it is discarded from your trait pile.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "upgrade/traits/witchy.webp"
+  },
+  {
+    "id": "upgrade/traits/zombified",
+    "type": "trait",
+    "set": "upgrade",
+    "name": "Zombified",
+    "flavor": "I'd love to pick your brain...",
+    "effect": "You may play Zombified into an opponent's trait pile when it is discarded from your hand.",
+    "points": -2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Mythling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "upgrade/traits/zombified.webp"
+  }
+]

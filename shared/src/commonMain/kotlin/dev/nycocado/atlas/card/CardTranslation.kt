@@ -3,7 +3,8 @@ package dev.nycocado.atlas.card
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-// Language codes are the file names of the translations in assets/doomlings (pt.json) and of docs/glossary.
+// Language codes are the file names of the translations in each set folder of assets/doomlings (pt.json) and of
+// docs/glossary.
 enum class CardLanguage(
     val code: String,
 ) {

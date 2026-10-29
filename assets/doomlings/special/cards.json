@@ -1,0 +1,329 @@
+[
+  {
+    "id": "special/ages/age-of-luck",
+    "type": "age",
+    "set": "special",
+    "name": "Age of Luck",
+    "effect": "When stabilizing, stabilize to 8.",
+    "image": "special/ages/age-of-luck.webp"
+  },
+  {
+    "id": "special/traits/amatoxins",
+    "type": "trait",
+    "set": "special",
+    "name": "Amatoxins",
+    "flavor": "I know it looks cute but it's actually incredibly dangerous.",
+    "effect": "At World's End: You may discard up to 3 traits from your trait pile. Opponents receive: -2 for each different color discarded this way.",
+    "points": -1,
+    "colors": [
+      "blue",
+      "green",
+      "purple",
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "special/traits/amatoxins.webp"
+  },
+  {
+    "id": "special/traits/beauty",
+    "type": "trait",
+    "set": "special",
+    "name": "Beauty",
+    "flavor": "In the eye of the beholder. As in your eye. Since you be the holder of this card.",
+    "effect": "Return 1 trait to your hand. Then play another trait. Ignore its action.",
+    "points": 2,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "special/traits/beauty.webp"
+  },
+  {
+    "id": "special/traits/bones",
+    "type": "trait",
+    "set": "special",
+    "name": "Bones",
+    "flavor": "Better in the body than out.",
+    "effect": "Take 2 cards from the discard pile and add them to your hand.",
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "special/traits/bones.webp"
+  },
+  {
+    "id": "special/traits/charmed",
+    "type": "trait",
+    "set": "special",
+    "name": "Charmed",
+    "flavor": "I've got a bad feline about this.",
+    "effect": "Steal 1 random card from each opponent's hand. Play 1 immediately. Discard the rest.",
+    "points": 4,
+    "colors": [
+      "purple"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "special/traits/charmed.webp"
+  },
+  {
+    "id": "special/traits/conjured",
+    "type": "trait",
+    "set": "special",
+    "name": "Conjured",
+    "flavor": "Sorry I'm here, but you really shouldn't read old books out loud.",
+    "effect": "Cannot be played from your hand! You may play Conjured from the discard pile if you play 2 or more colors on your turn.",
+    "points": 4,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when"
+    ],
+    "image": "special/traits/conjured.webp"
+  },
+  {
+    "id": "special/traits/exotic",
+    "type": "trait",
+    "set": "special",
+    "name": "Exotic",
+    "flavor": "Wee! A new environment! I'm gonna throw it into complete disarray!",
+    "effect": "To play, you must discard 2 from your trait pile, then draw 2. You must play them immediately. (Unless restricted.) Discard dominants. Ignore actions.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "special/traits/exotic.webp"
+  },
+  {
+    "id": "special/traits/fulfilled",
+    "type": "trait",
+    "set": "special",
+    "name": "Fulfilled",
+    "flavor": "Want for nothing.",
+    "effect": "This trait cannot be removed from your trait pile.",
+    "points": 4,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "special/traits/fulfilled.webp"
+  },
+  {
+    "id": "special/traits/gripplethorps",
+    "type": "trait",
+    "set": "special",
+    "name": "Gripplethorps",
+    "flavor": "Gripplethropple gropple... gropple thorple gripple...fa fa fa!",
+    "effect": "+3 Gene Pool",
+    "points": 0,
+    "colors": [
+      "green"
+    ],
+    "dominant": true,
+    "subspecies": [
+      "Moonling"
+    ],
+    "icons": [],
+    "image": "special/traits/gripplethorps.webp"
+  },
+  {
+    "id": "special/traits/headless",
+    "type": "trait",
+    "set": "special",
+    "name": "Headless",
+    "flavor": "Just trying to get ahead.",
+    "effect": "+1 Gene Pool. All opponents receive -1 Gene Pool.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "special/traits/headless.webp"
+  },
+  {
+    "id": "special/traits/howler",
+    "type": "trait",
+    "set": "special",
+    "name": "Howler",
+    "flavor": "Not the greatest neighbor.",
+    "effect": "All players discard all cards from their hand with a face value of 3 or higher, then stabilize immediately.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "special/traits/howler.webp"
+  },
+  {
+    "id": "special/traits/immortal",
+    "type": "trait",
+    "set": "special",
+    "name": "Immortal",
+    "flavor": "She travels the cosmos in search of Joy. But joy comes, and joy goes all the same, to a place she cannot follow.",
+    "effect": "-2 Gene Pool. Each age, before anyone plays the age effect(s), you may discard your hand and draw 3.",
+    "points": 3,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "special/traits/immortal.webp"
+  },
+  {
+    "id": "special/traits/juicy",
+    "type": "trait",
+    "set": "special",
+    "name": "Juicy",
+    "flavor": "Ooh, this is when everything blows up. I love this part.",
+    "effect": "Swap 2 traits between any 2 trait piles.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "special/traits/juicy.webp"
+  },
+  {
+    "id": "special/traits/magic-fingers",
+    "type": "trait",
+    "set": "special",
+    "name": "Magic Fingers",
+    "flavor": "Abra-ca-doomling!",
+    "effect": "Until World's End: Anytime a trait leaves your trait pile, you may play 1 of the same color to replace it. Ignore actions. (No dominants.)",
+    "points": 3,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "special/traits/magic-fingers.webp"
+  },
+  {
+    "id": "special/traits/neoteny",
+    "type": "trait",
+    "set": "special",
+    "name": "Neoteny",
+    "flavor": "May you stay forever larval.",
+    "effect": "If Neoteny is discarded from your hand, instead pass it to the hand to your left. +4 if Neoteny is in your hand.",
+    "points": -3,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life",
+      "play-when"
+    ],
+    "image": "special/traits/neoteny.webp"
+  },
+  {
+    "id": "special/traits/pride",
+    "type": "trait",
+    "set": "special",
+    "name": "Pride",
+    "flavor": "Proud parent of a cub who bit an honor roll student.",
+    "effect": "Discard your hand and draw 4 cards. Do not stabilize.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "special/traits/pride.webp"
+  },
+  {
+    "id": "special/traits/rainbow-keratin",
+    "type": "trait",
+    "set": "special",
+    "name": "Rainbow Keratin",
+    "flavor": "My outlook on life is pretty beak.",
+    "effect": "-2 for every Drop of Life in your trait pile. (Excluding this one.) If you have all 4 colors in your trait pile: +2 for each trait in your highest color count. (If there's a tie, pick 1!)",
+    "points": 1,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "special/traits/rainbow-keratin.webp"
+  },
+  {
+    "id": "special/traits/rainbow-scutes",
+    "type": "trait",
+    "set": "special",
+    "name": "Rainbow Scutes",
+    "flavor": "Turtley awesome!",
+    "effect": "Choose a color. Opponents must move 1 positive value trait of that color from their trait pile to yours.",
+    "points": 1,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "special/traits/rainbow-scutes.webp"
+  },
+  {
+    "id": "special/traits/shiny",
+    "type": "trait",
+    "set": "special",
+    "name": "Shiny",
+    "flavor": "If you touch it, what's the worst that could happen?",
+    "effect": "Each player receives -1 for each colorless trait in their trait pile. (Including you!)",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "special/traits/shiny.webp"
+  },
+  {
+    "id": "special/traits/tube-feet",
+    "type": "trait",
+    "set": "special",
+    "name": "Tube Feet",
+    "flavor": "Forget Hollywood! I'm a star with my own walk of fame!",
+    "effect": "Play 1 trait from the discard pile. Ignore its action. Then discard 1 trait from your trait pile.",
+    "points": 2,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "special/traits/tube-feet.webp"
+  }
+]
