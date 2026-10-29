@@ -27,6 +27,18 @@
     <string name="all_catastrophes">All catastrophes</string>
     <string name="color_hint">tap a color to filter</string>
 
+    <plurals name="card_group_collapsed">
+        <item quantity="one">%1$s, %2$d variant, collapsed</item>
+        <item quantity="other">%1$s, %2$d variants, collapsed</item>
+    </plurals>
+    <plurals name="card_group_open">
+        <item quantity="one">%1$s, %2$d variant, open</item>
+        <item quantity="other">%1$s, %2$d variants, open</item>
+    </plurals>
+    <string name="card_variant_position">%1$s, variant %2$d of %3$d</string>
+    <string name="card_group_expand">Open</string>
+    <string name="card_group_collapse">Collapse</string>
+
     <string name="color_blue">Blue</string>
     <string name="color_green">Green</string>
     <string name="color_purple">Purple</string>

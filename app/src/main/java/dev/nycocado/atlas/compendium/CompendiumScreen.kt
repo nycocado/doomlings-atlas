@@ -26,7 +26,6 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
@@ -43,6 +42,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalResources
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
@@ -73,7 +73,7 @@ import kotlinx.coroutines.launch
 
 // Room inside each grid cell for the card's tilt and shadow, which draw past its bounds. Item animations draw the
 // card into a layer the size of its cell, so without this room they cut the corners and the shadow.
-private val CardMargin = 8.dp
+internal val CardMargin = 8.dp
 
 // Starts at the header's side margin, so the rail lines up with the logo above it.
 private val RailWidth = Space.s5 + 64.dp + Space.s4
@@ -83,7 +83,7 @@ private val RailMinWidth = 600.dp
 private val MoveSpec = tween<IntOffset>(350, easing = FastOutSlowInEasing)
 
 // Deterministic by position, never random per render (docs/design.md).
-private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
+internal val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
 
 @Composable
 fun CompendiumScreen(
@@ -94,14 +94,26 @@ fun CompendiumScreen(
 ) {
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val results by viewModel.results.collectAsStateWithLifecycle()
-    CompendiumContent(filter, results, viewModel::updateFilter, onCardClick, onAboutClick, layout)
+    val openGroups by viewModel.openGroups.collectAsStateWithLifecycle()
+    CompendiumContent(
+        filter,
+        results,
+        openGroups,
+        viewModel::updateFilter,
+        viewModel::toggleGroup,
+        onCardClick,
+        onAboutClick,
+        layout,
+    )
 }
 
 @Composable
 fun CompendiumContent(
     filter: CompendiumFilter,
-    results: List<NamedCard>?,
+    results: List<CompendiumEntry>?,
+    openGroups: Set<String>,
     onFilterChange: (CompendiumFilter) -> Unit,
+    onGroupToggle: (String) -> Unit,
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
     layout: ListDetailLayout = ListDetailLayout.Single,
@@ -195,17 +207,50 @@ fun CompendiumContent(
                                 )
                             }
                         }
-                        itemsIndexed(results.orEmpty(), key = { _, card -> card.id }) { index, card ->
+                        results.orEmpty().forEachIndexed { index, entry ->
                             val tilt = Tilts[index % Tilts.size]
-                            CompendiumCard(
-                                card,
-                                tilt,
-                                {
-                                    focusManager.clearFocus()
-                                    onCardClick(card.id)
-                                },
-                                Modifier.animateItem(placementSpec = MoveSpec),
-                            )
+                            when (entry) {
+                                is CompendiumEntry.Single -> {
+                                    item(key = entry.card.id) {
+                                        CompendiumCard(
+                                            entry.card,
+                                            tilt,
+                                            {
+                                                focusManager.clearFocus()
+                                                onCardClick(entry.card.id)
+                                            },
+                                            Modifier.animateItem(placementSpec = MoveSpec),
+                                        )
+                                    }
+                                }
+
+                                is CompendiumEntry.Group -> {
+                                    if (entry.name in openGroups) {
+                                        fullWidth("group:${entry.name}") {
+                                            OpenGroup(
+                                                entry,
+                                                { onGroupToggle(entry.name) },
+                                                {
+                                                    focusManager.clearFocus()
+                                                    onCardClick(it.id)
+                                                },
+                                            )
+                                        }
+                                    } else {
+                                        item(key = "group:${entry.name}") {
+                                            GroupStack(
+                                                entry,
+                                                tilt,
+                                                {
+                                                    focusManager.clearFocus()
+                                                    onGroupToggle(entry.name)
+                                                },
+                                                Modifier.animateItem(placementSpec = MoveSpec),
+                                            )
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -278,12 +323,14 @@ private fun LazyGridScope.fullWidth(
     }
 }
 
+// A variant also says its place in the group.
 @Composable
-private fun CompendiumCard(
+internal fun CompendiumCard(
     card: NamedCard,
     tilt: Float,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    position: Pair<Int, Int>? = null,
 ) {
     val face = card.face() ?: return
     val description =
@@ -291,8 +338,33 @@ private fun CompendiumCard(
             add(card.name)
             face.colors.forEach { add(stringResource(colorName(it))) }
             face.faceValue?.let { add(LocalResources.current.pointsText(it)) }
-        }.joinToString(", ")
+        }.joinToString(", ").let { described ->
+            position?.let { (at, of) -> stringResource(R.string.card_variant_position, described, at, of) } ?: described
+        }
     CardThumb(card.image, card.name, face.colors, description, tilt, onClick, modifier.padding(CardMargin))
+}
+
+// The first variant's art and colors stand for the group.
+@Composable
+private fun GroupStack(
+    group: CompendiumEntry.Group,
+    tilt: Float,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val first = group.variants.first()
+    val colors = first.face()?.colors.orEmpty()
+    CardThumb(
+        first.image,
+        groupTitle(group),
+        colors,
+        pluralStringResource(R.plurals.card_group_collapsed, group.variants.size, group.name, group.variants.size),
+        tilt,
+        onClick,
+        modifier.padding(CardMargin),
+        stack = true,
+        onClickLabel = stringResource(R.string.card_group_expand),
+    )
 }
 
 @PreviewLightDark
@@ -337,7 +409,9 @@ private fun CompendiumSample(
                 }.let { if (longName) listOf(LongNameTrait) + it else it }
         CompendiumContent(
             CompendiumFilter(colors = setOf(CardColor.Green)),
-            cards,
+            cards.map(CompendiumEntry::Single),
+            emptySet(),
+            {},
             {},
             {},
             {},

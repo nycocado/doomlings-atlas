@@ -5,10 +5,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicText
@@ -26,6 +29,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil3.ColorImage
 import coil3.annotation.ExperimentalCoilApi
@@ -57,7 +61,8 @@ fun Resources.pointsText(points: Int): String =
         getQuantityString(R.plurals.card_points, points, signed(points))
     }
 
-// One glyph per entry of colors, null drawing the colorless one; ages and catastrophes pass none.
+// One glyph per entry of colors, null drawing the colorless one; ages and catastrophes pass none. A stack is a card
+// group: two silhouettes behind the art, with the count in the name and nothing over the art.
 @Composable
 fun CardThumb(
     image: String,
@@ -67,6 +72,8 @@ fun CardThumb(
     tilt: Float,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    stack: Boolean = false,
+    onClickLabel: String? = null,
 ) {
     val theme = AtlasTheme.colors
     val interactions = remember { MutableInteractionSource() }
@@ -74,23 +81,33 @@ fun CardThumb(
     Column(
         modifier
             .rotate(tilt)
-            .clickable(interactions, FocusRing(theme.focusRing, Radius.cardSm), onClick = onClick)
-            .clearAndSetSemantics {
+            .clickable(
+                interactions,
+                FocusRing(theme.focusRing, Radius.cardSm),
+                onClickLabel = onClickLabel,
+                onClick = onClick,
+            ).clearAndSetSemantics {
                 contentDescription = description
                 role = Role.Button
-                onClick { onClick().let { true } }
+                onClick(onClickLabel) { onClick().let { true } }
             },
     ) {
-        AsyncImage(
-            model = cardImage(image),
-            contentDescription = null,
-            modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(CARD_RATIO)
-                    .sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker)
-                    .clip(Radius.cardSm),
-        )
+        Box(Modifier.fillMaxWidth().aspectRatio(CARD_RATIO)) {
+            if (stack) {
+                // Offset and tilt stay within the margin the compendium leaves around each card.
+                StackBehind(3.dp, -2.dp, 2.5f, sink)
+                StackBehind(-3.dp, -1.dp, -2.5f, sink)
+            }
+            AsyncImage(
+                model = cardImage(image),
+                contentDescription = null,
+                modifier =
+                    Modifier
+                        .matchParentSize()
+                        .sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker)
+                        .clip(Radius.cardSm),
+            )
+        }
         Row(
             Modifier.padding(top = Space.s3),
             horizontalArrangement = Arrangement.spacedBy(6.dp),
@@ -100,6 +117,23 @@ fun CardThumb(
             BasicText(name, style = AtlasTypography.titleMd.copy(color = theme.onSurface))
         }
     }
+}
+
+@Composable
+private fun BoxScope.StackBehind(
+    x: Dp,
+    y: Dp,
+    tilt: Float,
+    sink: Dp,
+) {
+    val theme = AtlasTheme.colors
+    Box(
+        Modifier
+            .matchParentSize()
+            .offset(x, y)
+            .rotate(tilt)
+            .sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker),
+    )
 }
 
 // Card images live in the generated assets, so previews show a blank card.
