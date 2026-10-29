@@ -10,8 +10,8 @@ import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-// Checks the real translation files in assets/doomlings (each set's pt.json, es.json), for every set and card type.
-// Passes with no file present; each check starts to bite with the first one.
+// Checks the real translation files in assets/doomlings (each set's pt.json, es.json), for every set and card type:
+// every set with text is translated whole into every card language.
 class TranslationDataIntegrityTest {
     private val cardsJson = CardAssets.cardsJson
 
@@ -35,7 +35,6 @@ class TranslationDataIntegrityTest {
     // The set folder and file name, e.g. classic/pt.json: the name alone is the same in every set.
     private val File.label get() = relativeTo(CardAssets.dir).path
 
-    // The ids of the cards in the set folder a translation file sits in.
     private fun setIdsOf(file: File) =
         CardAssets.cardsByFolder[file.parentFile.name].orEmpty().map { it.getValue("id").jsonPrimitive.content }
 
@@ -109,6 +108,19 @@ class TranslationDataIntegrityTest {
                 }
             assertEquals(emptyList<String>(), bad, file.label)
         }
+    }
+
+    @Test
+    fun everySetWithTextHasAFileForEveryCardLanguage() {
+        val names = CardLanguage.entries.filter { it != CardLanguage.English }.map { "${it.code}.json" }
+        val missing =
+            CardAssets.cardsByFolder
+                .filterValues { cards ->
+                    cards.any { fieldsById[it.getValue("id").jsonPrimitive.content].orEmpty().isNotEmpty() }
+                }.keys
+                .flatMap { folder -> names.map { "$folder/$it" } }
+                .filterNot { CardAssets.dir.resolve(it).isFile }
+        assertEquals(emptyList<String>(), missing)
     }
 
     // A set is translated whole into a language or not at all. Cards with no text, like the Gene Pools, have no entry.

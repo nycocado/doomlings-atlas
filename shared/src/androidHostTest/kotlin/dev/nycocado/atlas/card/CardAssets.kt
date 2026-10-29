@@ -20,7 +20,6 @@ object CardAssets {
 
     private val setFolders = dir.listFiles { file -> file.resolve("cards.json").isFile }.orEmpty().sorted()
 
-    // Each set folder's cards, by folder name.
     val cardsByFolder: Map<String, List<JsonObject>> =
         setFolders.associate { folder ->
             folder.name to
@@ -35,7 +34,8 @@ object CardAssets {
             folder.listFiles { file -> file.extension == "json" && file.name != "cards.json" }.orEmpty().sorted()
         }
 
-    // A JSON object's keys in file order, repeats included: parsing keeps only the last of two equal keys.
+    // A JSON object's keys in file order, repeats included: parsing keeps only the last of two equal keys, and
+    // kotlinx-serialization, the project's JSON library, has no option to reject them.
     fun keysOf(file: File): List<String> = Json.decodeFromString(KeysInOrder, file.readText())
 
     private object KeysInOrder : DeserializationStrategy<List<String>> {
@@ -48,6 +48,7 @@ object CardAssets {
                         val index = decodeElementIndex(descriptor)
                         if (index == CompositeDecoder.DECODE_DONE) break
                         add(decodeStringElement(descriptor, index))
+                        // A map's elements alternate key and value, each with its own index.
                         decodeSerializableElement(descriptor, decodeElementIndex(descriptor), JsonElement.serializer())
                     }
                 }
