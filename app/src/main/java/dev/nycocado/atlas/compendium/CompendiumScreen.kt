@@ -189,7 +189,7 @@ fun CompendiumContent(
                         modifier =
                             Modifier
                                 .clipScrollableContainer(Orientation.Vertical)
-                                .groupBands(grid, bands, theme.surfaceSunk, theme.outlineSoft),
+                                .groupBands(grid, bands, theme.outlineSoft, theme.outline),
                         contentPadding =
                             PaddingValues(
                                 start = GridSidePadding,
