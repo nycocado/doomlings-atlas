@@ -13,8 +13,8 @@ import dev.nycocado.atlas.card.CardText
 import dev.nycocado.atlas.card.CardTranslations
 import javax.inject.Singleton
 
-// Made-up Portuguese for a few Classic cards (ids from assets/doomlings/classic/cards.json), so UI tests don't depend on the
-// shipped translations. Appealing has none: it is the card without Português.
+// Made-up Portuguese for a few Classic cards (ids from assets/doomlings/classic/cards.json), so UI tests don't depend
+// on the shipped translations. Appealing has none: it is the card without Português.
 val testPortuguese =
     mapOf(
         "classic/traits/adorable" to CardText("Adorável", flavor = "Esfregue minha barriga."),

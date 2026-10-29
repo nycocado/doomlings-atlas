@@ -9,8 +9,8 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import dev.nycocado.atlas.ui.component.pointsText
 import org.junit.Test
 
-// Card names come from assets/doomlings/classic/cards.json: Classic's green traits, in the compendium's alphabetical order,
-// run from Appealing to Woody Stems.
+// Card names come from assets/doomlings/classic/cards.json: Classic's green traits, in the compendium's alphabetical
+// order, run from Appealing to Woody Stems.
 @HiltAndroidTest
 class PhoneBrowsingTest : AtlasBehaviorTest() {
     @Test

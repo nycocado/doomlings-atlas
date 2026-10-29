@@ -3,7 +3,8 @@ package dev.nycocado.atlas.card
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-// One class per "type" in the card data (assets/doomlings/<set>/cards.json), with only the fields printed on that kind of card.
+// One class per "type" in the card data (assets/doomlings/<set>/cards.json), with only the fields printed on that kind
+// of card.
 @Serializable
 sealed interface Card {
     val id: String

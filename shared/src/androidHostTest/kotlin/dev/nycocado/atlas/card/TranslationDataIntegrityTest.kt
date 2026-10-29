@@ -67,7 +67,7 @@ class TranslationDataIntegrityTest {
 
     private val files = CardAssets.translationFiles
 
-    // The set folder and file name, e.g. classic/pt.json: every set has a pt.json.
+    // The set folder and file name, e.g. classic/pt.json: the name alone is the same in every set.
     private val File.label get() = relativeTo(CardAssets.dir).path
 
     private fun translatedIds(code: String) =
