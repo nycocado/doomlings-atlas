@@ -9,20 +9,14 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -43,10 +37,8 @@ import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
-import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.pressSink
 import dev.nycocado.atlas.ui.theme.sinkingSticker
-import androidx.compose.ui.graphics.drawscope.Stroke as DrawStroke
 
 // A variant's place in its card group, 1-based.
 internal data class VariantPosition(
@@ -106,104 +98,6 @@ internal fun GroupCollapse(
     }
 }
 
-// The grid items of an open card group, by key: the collapse cell first, then the variants.
-internal class GroupBand(
-    val keys: List<Any>,
-)
-
-// The band behind an open group's cells, drawn from the grid because the cells are plain grid items that wrap from row
-// to row with the rest. The rows fuse into one shape that also covers the gap between them, and only its outline is
-// stroked; it stays within the grid's content, so where the group goes on to the next row it ends at the content's
-// edge. Every corner is rounded the same, the concave ones that a row step makes too. The outline is built by hand as a
-// polygon with rounded corners: no composable lays out a band behind the cells of a lazy grid, and combining one
-// rectangle per row would still leave the corners to round.
-internal fun Modifier.groupBands(
-    state: LazyGridState,
-    bands: List<GroupBand>,
-    fill: Color,
-    border: Color,
-): Modifier =
-    drawBehind {
-        val radius = 22.dp.toPx()
-        val contentRight = size.width - 2 * GridSidePadding.toPx()
-        val visible = state.layoutInfo.visibleItemsInfo
-        // Item offsets leave out the grid's content padding.
-        translate(GridSidePadding.toPx(), state.layoutInfo.beforeContentPadding.toFloat()) {
-            bands.forEach { band ->
-                val rows =
-                    visible
-                        .filter { it.key in band.keys }
-                        .groupBy { it.row }
-                        .toSortedMap()
-                        .values
-                        .map { row ->
-                            val starts = row.any { it.key == band.keys.first() }
-                            val ends = row.any { it.key == band.keys.last() }
-                            BandRow(
-                                left = if (starts) row.minOf { it.offset.x }.toFloat() else 0f,
-                                right = if (ends) row.maxOf { it.offset.x + it.size.width }.toFloat() else contentRight,
-                                top = row.minOf { it.offset.y }.toFloat(),
-                                bottom = row.maxOf { it.offset.y + it.size.height }.toFloat(),
-                            )
-                        }
-                if (rows.isNotEmpty()) {
-                    val shape = roundedOutline(bandOutline(rows), radius)
-                    drawPath(shape, fill)
-                    drawPath(shape, border, style = DrawStroke(Stroke.thin.toPx()))
-                }
-            }
-        }
-    }
-
-internal data class BandRow(
-    val left: Float,
-    val right: Float,
-    val top: Float,
-    val bottom: Float,
-)
-
-// The corners of the fused rows, clockwise from the top left, with no point that lies on a straight line: each row
-// reaches down to the top of the next.
-internal fun bandOutline(rows: List<BandRow>): List<Offset> {
-    val reach = rows.mapIndexed { index, row -> row.copy(bottom = rows.getOrNull(index + 1)?.top ?: row.bottom) }
-    val points =
-        mutableListOf(Offset(reach.first().left, reach.first().top), Offset(reach.first().right, reach.first().top))
-    reach.zipWithNext().forEach { (row, next) ->
-        points += Offset(row.right, row.bottom)
-        points += Offset(next.right, row.bottom)
-    }
-    points += Offset(reach.last().right, reach.last().bottom)
-    points += Offset(reach.last().left, reach.last().bottom)
-    reach.zipWithNext().reversed().forEach { (row, next) ->
-        points += Offset(next.left, next.top)
-        points += Offset(row.left, next.top)
-    }
-    val corners = points.filterIndexed { index, point -> point != points[(index + 1) % points.size] }
-    return corners.filterIndexed { index, point ->
-        val before = corners[(index + corners.size - 1) % corners.size]
-        val after = corners[(index + 1) % corners.size]
-        (point.x == before.x && point.x == after.x).not() && (point.y == before.y && point.y == after.y).not()
-    }
-}
-
-// A closed path through the corners, each rounded with a quarter arc that is at most half of either side.
-internal fun roundedOutline(
-    corners: List<Offset>,
-    radius: Float,
-): Path =
-    Path().apply {
-        corners.forEachIndexed { index, corner ->
-            val before = corners[(index + corners.size - 1) % corners.size]
-            val after = corners[(index + 1) % corners.size]
-            val cut = minOf(radius, (corner - before).getDistance() / 2, (after - corner).getDistance() / 2)
-            val enter = corner + (before - corner) / (corner - before).getDistance() * cut
-            val leave = corner + (after - corner) / (after - corner).getDistance() * cut
-            if (index == 0) moveTo(enter.x, enter.y) else lineTo(enter.x, enter.y)
-            quadraticTo(corner.x, corner.y, leave.x, leave.y)
-        }
-        close()
-    }
-
 // The first variant's art and colors stand for the group.
 @Composable
 internal fun GroupStack(
@@ -243,11 +137,17 @@ internal fun CardGroupOpenPreview() = GroupSample(open = true)
 @Composable
 internal fun CardGroupOpenWidePreview() = GroupSample(open = true, variants = 9, before = 2)
 
+// Two open groups one after the other, to see that their bands keep apart.
+@PreviewLightDark
+@Composable
+internal fun CardGroupAdjacentPreview() = GroupSample(open = true, variants = 2, adjacent = true)
+
 @Composable
 private fun GroupSample(
     open: Boolean,
     variants: Int = 3,
     before: Int = 0,
+    adjacent: Boolean = false,
 ) = AtlasTheme {
     BlankCardImages {
         fun trait(
@@ -259,10 +159,26 @@ private fun GroupSample(
             (1..before).map { CompendiumEntry.Single(trait("before-$it", "Before $it")) } +
                 listOf(
                     CompendiumEntry.Group("Kidney", (1..variants).map { trait("kidney-$it", "Kidney") }),
+                ) +
+                (
+                    if (adjacent) {
+                        listOf(
+                            CompendiumEntry.Group(
+                                "Swarm",
+                                (1..variants).map {
+                                    trait("swarm-$it", "Swarm")
+                                },
+                            ),
+                        )
+                    } else {
+                        emptyList()
+                    }
+                ) +
+                listOf(
                     CompendiumEntry.Single(trait("impatience", "Impatience")),
                     CompendiumEntry.Single(trait("late", "Late")),
                 ),
-            if (open) setOf("Kidney") else emptySet(),
+            if (open) setOf("Kidney", "Swarm") else emptySet(),
             {},
             {},
             {},

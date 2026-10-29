@@ -124,10 +124,12 @@ fun CompendiumContent(
             )
         }
     val grid = rememberLazyGridState()
+    val cellBounds = remember { CellBounds() }
     val bands =
         remember(results, openGroups) {
             results.orEmpty().filterIsInstance<CompendiumEntry.Group>().filter { it.name in openGroups }.map { group ->
-                GroupBand(listOf(group.gridKey) + group.variants.map { it.id })
+                val keys = listOf(group.gridKey) + group.variants.map { it.id }
+                GroupBand(keys.first(), keys.last(), keys.toSet())
             }
         }
     val scope = rememberCoroutineScope()
@@ -189,7 +191,7 @@ fun CompendiumContent(
                         modifier =
                             Modifier
                                 .clipScrollableContainer(Orientation.Vertical)
-                                .groupBands(grid, bands, theme.outlineSoft, theme.outline),
+                                .groupBands(grid, bands, cellBounds, theme.outlineSoft, theme.outline),
                         contentPadding =
                             PaddingValues(
                                 start = GridSidePadding,
@@ -238,7 +240,10 @@ fun CompendiumContent(
                                             GroupCollapse(
                                                 entry,
                                                 { toggleGroup(entry.name) },
-                                                Modifier.animateItem(placementSpec = MoveSpec).padding(CardMargin),
+                                                Modifier
+                                                    .animateItem(placementSpec = MoveSpec)
+                                                    .reportBounds(entry.gridKey, cellBounds)
+                                                    .padding(CardMargin),
                                             )
                                         }
                                         itemsIndexed(entry.variants, key = {
@@ -251,7 +256,9 @@ fun CompendiumContent(
                                                 variant,
                                                 tiltAt(number),
                                                 { openCard(variant.id) },
-                                                Modifier.animateItem(placementSpec = MoveSpec),
+                                                Modifier
+                                                    .animateItem(placementSpec = MoveSpec)
+                                                    .reportBounds(variant.id, cellBounds),
                                                 VariantPosition(number + 1, entry.variants.size),
                                             )
                                         }

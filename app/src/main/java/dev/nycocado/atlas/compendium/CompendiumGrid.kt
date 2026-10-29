@@ -12,6 +12,9 @@ internal val CardMargin = 8.dp
 // The grid's side padding, where the first cell starts: the cards sit at the screen margin.
 internal val GridSidePadding = Space.s5 - CardMargin
 
+// How far a group's band stays inside its cells' edges, so that two bands next to each other keep apart.
+internal val BandInset = 3.dp
+
 internal val CellMinWidth = 150.dp
 
 // Between two cells; the cards' own margins add the rest of the 18dp across and 22dp down.

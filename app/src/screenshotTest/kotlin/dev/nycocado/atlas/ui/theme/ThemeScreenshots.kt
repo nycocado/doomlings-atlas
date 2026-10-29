@@ -15,6 +15,7 @@ import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitSample
 import dev.nycocado.atlas.cardpane.CardBesideListPreview
+import dev.nycocado.atlas.compendium.CardGroupAdjacentPreview
 import dev.nycocado.atlas.compendium.CardGroupCollapsedPreview
 import dev.nycocado.atlas.compendium.CardGroupOpenPreview
 import dev.nycocado.atlas.compendium.CardGroupOpenWidePreview
@@ -74,6 +75,11 @@ fun CardGroupCollapsedScreenshot() = CardGroupCollapsedPreview()
 @PreviewLightDark
 @Composable
 fun CardGroupOpenScreenshot() = CardGroupOpenPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun CardGroupAdjacentScreenshot() = CardGroupAdjacentPreview()
 
 @PreviewTest
 @Preview(fontScale = 2f)
