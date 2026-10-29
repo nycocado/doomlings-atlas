@@ -18,9 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.geometry.CornerRadius
-import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.RoundRect
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Path
@@ -114,9 +112,11 @@ internal class GroupBand(
 )
 
 // The band behind an open group's cells, drawn from the grid because the cells are plain grid items that wrap from row
-// to row with the rest. One bar per row, each its own shape: rounded and closed only where the group starts and ends,
-// and open, with no border, where it goes on to the next row, running to the edge of the grid's content. No composable
-// lays out a band behind cells of a lazy grid.
+// to row with the rest. The rows fuse into one shape that also covers the gap between them, and only its outline is
+// stroked; it stays within the grid's content, so where the group goes on to the next row it ends at the content's
+// edge. Every corner is rounded the same, the concave ones that a row step makes too. The outline is built by hand as a
+// polygon with rounded corners: no composable lays out a band behind the cells of a lazy grid, and combining one
+// rectangle per row would still leave the corners to round.
 internal fun Modifier.groupBands(
     state: LazyGridState,
     bands: List<GroupBand>,
@@ -125,50 +125,83 @@ internal fun Modifier.groupBands(
 ): Modifier =
     drawBehind {
         val radius = 22.dp.toPx()
-        val corner = CornerRadius(radius)
-        val stroke = DrawStroke(Stroke.thin.toPx())
         val contentRight = size.width - 2 * GridSidePadding.toPx()
         val visible = state.layoutInfo.visibleItemsInfo
         // Item offsets leave out the grid's content padding.
         translate(GridSidePadding.toPx(), state.layoutInfo.beforeContentPadding.toFloat()) {
             bands.forEach { band ->
-                visible.filter { it.key in band.keys }.groupBy { it.row }.values.forEach { row ->
-                    val starts = row.any { it.key == band.keys.first() }
-                    val ends = row.any { it.key == band.keys.last() }
-                    val left = if (starts) row.minOf { it.offset.x }.toFloat() else 0f
-                    val right = if (ends) row.maxOf { it.offset.x + it.size.width }.toFloat() else contentRight
-                    val top = row.minOf { it.offset.y }.toFloat()
-                    val bottom = row.maxOf { it.offset.y + it.size.height }.toFloat()
-                    val start = if (starts) corner else CornerRadius.Zero
-                    val end = if (ends) corner else CornerRadius.Zero
-                    val bar = RoundRect(left, top, right, bottom, start, end, end, start)
-                    drawPath(Path().apply { addRoundRect(bar) }, fill)
-                    drawPath(
-                        Path().apply {
-                            val rl = start.x
-                            val rr = end.x
-                            moveTo(left + rl, top)
-                            lineTo(right - rr, top)
-                            if (ends) {
-                                arcTo(Rect(right - 2 * radius, top, right, top + 2 * radius), -90f, 90f, false)
-                                lineTo(right, bottom - radius)
-                                arcTo(Rect(right - 2 * radius, bottom - 2 * radius, right, bottom), 0f, 90f, false)
-                            } else {
-                                moveTo(right, bottom)
-                            }
-                            lineTo(left + rl, bottom)
-                            if (starts) {
-                                arcTo(Rect(left, bottom - 2 * radius, left + 2 * radius, bottom), 90f, 90f, false)
-                                lineTo(left, top + radius)
-                                arcTo(Rect(left, top, left + 2 * radius, top + 2 * radius), 180f, 90f, false)
-                            }
-                        },
-                        border,
-                        style = stroke,
-                    )
+                val rows =
+                    visible
+                        .filter { it.key in band.keys }
+                        .groupBy { it.row }
+                        .toSortedMap()
+                        .values
+                        .map { row ->
+                            val starts = row.any { it.key == band.keys.first() }
+                            val ends = row.any { it.key == band.keys.last() }
+                            BandRow(
+                                left = if (starts) row.minOf { it.offset.x }.toFloat() else 0f,
+                                right = if (ends) row.maxOf { it.offset.x + it.size.width }.toFloat() else contentRight,
+                                top = row.minOf { it.offset.y }.toFloat(),
+                                bottom = row.maxOf { it.offset.y + it.size.height }.toFloat(),
+                            )
+                        }
+                if (rows.isNotEmpty()) {
+                    val shape = roundedOutline(bandOutline(rows), radius)
+                    drawPath(shape, fill)
+                    drawPath(shape, border, style = DrawStroke(Stroke.thin.toPx()))
                 }
             }
         }
+    }
+
+internal data class BandRow(
+    val left: Float,
+    val right: Float,
+    val top: Float,
+    val bottom: Float,
+)
+
+// The corners of the fused rows, clockwise from the top left, with no point that lies on a straight line: each row
+// reaches down to the top of the next.
+internal fun bandOutline(rows: List<BandRow>): List<Offset> {
+    val reach = rows.mapIndexed { index, row -> row.copy(bottom = rows.getOrNull(index + 1)?.top ?: row.bottom) }
+    val points =
+        mutableListOf(Offset(reach.first().left, reach.first().top), Offset(reach.first().right, reach.first().top))
+    reach.zipWithNext().forEach { (row, next) ->
+        points += Offset(row.right, row.bottom)
+        points += Offset(next.right, row.bottom)
+    }
+    points += Offset(reach.last().right, reach.last().bottom)
+    points += Offset(reach.last().left, reach.last().bottom)
+    reach.zipWithNext().reversed().forEach { (row, next) ->
+        points += Offset(next.left, next.top)
+        points += Offset(row.left, next.top)
+    }
+    val corners = points.filterIndexed { index, point -> point != points[(index + 1) % points.size] }
+    return corners.filterIndexed { index, point ->
+        val before = corners[(index + corners.size - 1) % corners.size]
+        val after = corners[(index + 1) % corners.size]
+        (point.x == before.x && point.x == after.x).not() && (point.y == before.y && point.y == after.y).not()
+    }
+}
+
+// A closed path through the corners, each rounded with a quarter arc that is at most half of either side.
+internal fun roundedOutline(
+    corners: List<Offset>,
+    radius: Float,
+): Path =
+    Path().apply {
+        corners.forEachIndexed { index, corner ->
+            val before = corners[(index + corners.size - 1) % corners.size]
+            val after = corners[(index + 1) % corners.size]
+            val cut = minOf(radius, (corner - before).getDistance() / 2, (after - corner).getDistance() / 2)
+            val enter = corner + (before - corner) / (corner - before).getDistance() * cut
+            val leave = corner + (after - corner) / (after - corner).getDistance() * cut
+            if (index == 0) moveTo(enter.x, enter.y) else lineTo(enter.x, enter.y)
+            quadraticTo(corner.x, corner.y, leave.x, leave.y)
+        }
+        close()
     }
 
 // The first variant's art and colors stand for the group.
@@ -205,15 +238,16 @@ internal fun CardGroupCollapsedPreview() = GroupSample(open = false)
 @Composable
 internal fun CardGroupOpenPreview() = GroupSample(open = true)
 
-// Enough variants to wrap on a wide window too.
+// Enough variants to wrap on a wide window too, after cards that make the group start and end in the middle of a row.
 @PreviewLightDark
 @Composable
-internal fun CardGroupOpenWidePreview() = GroupSample(open = true, variants = 9)
+internal fun CardGroupOpenWidePreview() = GroupSample(open = true, variants = 9, before = 2)
 
 @Composable
 private fun GroupSample(
     open: Boolean,
     variants: Int = 3,
+    before: Int = 0,
 ) = AtlasTheme {
     BlankCardImages {
         fun trait(
@@ -222,11 +256,12 @@ private fun GroupSample(
         ) = Trait(id, "classic", "", name, null, null, null, listOf(CardColor.Red), false, emptyList(), emptyList())
         CompendiumContent(
             CompendiumFilter(colors = setOf(CardColor.Red)),
-            listOf(
-                CompendiumEntry.Group("Kidney", (1..variants).map { trait("kidney-$it", "Kidney") }),
-                CompendiumEntry.Single(trait("impatience", "Impatience")),
-                CompendiumEntry.Single(trait("late", "Late")),
-            ),
+            (1..before).map { CompendiumEntry.Single(trait("before-$it", "Before $it")) } +
+                listOf(
+                    CompendiumEntry.Group("Kidney", (1..variants).map { trait("kidney-$it", "Kidney") }),
+                    CompendiumEntry.Single(trait("impatience", "Impatience")),
+                    CompendiumEntry.Single(trait("late", "Late")),
+                ),
             if (open) setOf("Kidney") else emptySet(),
             {},
             {},
