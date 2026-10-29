@@ -1,7 +1,6 @@
 package dev.nycocado.atlas.compendium
 
 import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clipScrollableContainer
@@ -27,12 +26,14 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshotFlow
@@ -123,6 +124,12 @@ fun CompendiumContent(
             )
         }
     val grid = rememberLazyGridState()
+    val bands =
+        remember(results, openGroups) {
+            results.orEmpty().filterIsInstance<CompendiumEntry.Group>().filter { it.name in openGroups }.map { group ->
+                GroupBand(listOf(group.gridKey) + group.variants.map { it.id })
+            }
+        }
     val scope = rememberCoroutineScope()
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
     // outside it, scrolling the list or opening a card.
@@ -179,11 +186,14 @@ fun CompendiumContent(
                         state = grid,
                         columns = GridCells.Adaptive(CellMinWidth),
                         // The grid's own clip leaves out the items fading out after a filter.
-                        modifier = Modifier.clipScrollableContainer(Orientation.Vertical),
+                        modifier =
+                            Modifier
+                                .clipScrollableContainer(Orientation.Vertical)
+                                .groupBands(grid, bands, theme.surfaceSunk, theme.outlineSoft),
                         contentPadding =
                             PaddingValues(
-                                start = Space.s5 - CardMargin,
-                                end = Space.s5 - CardMargin,
+                                start = GridSidePadding,
+                                end = GridSidePadding,
                                 top = Space.s4,
                                 bottom = Space.s5 - CardMargin,
                             ),
@@ -224,11 +234,25 @@ fun CompendiumContent(
 
                                 is CompendiumEntry.Group -> {
                                     if (entry.name in openGroups) {
-                                        fullWidth(entry.gridKey, MoveSpec) {
-                                            OpenGroup(
+                                        item(key = entry.gridKey) {
+                                            GroupCollapse(
                                                 entry,
                                                 { toggleGroup(entry.name) },
-                                                { openCard(it.id) },
+                                                Modifier.animateItem(placementSpec = MoveSpec).padding(CardMargin),
+                                            )
+                                        }
+                                        itemsIndexed(entry.variants, key = {
+                                            _,
+                                            variant,
+                                            ->
+                                            variant.id
+                                        }) { number, variant ->
+                                            CompendiumCard(
+                                                variant,
+                                                tiltAt(number),
+                                                { openCard(variant.id) },
+                                                Modifier.animateItem(placementSpec = MoveSpec),
+                                                VariantPosition(number + 1, entry.variants.size),
                                             )
                                         }
                                     } else {
@@ -303,13 +327,12 @@ private fun ListAndDock(
 
 private fun LazyGridScope.fullWidth(
     key: String,
-    placement: FiniteAnimationSpec<IntOffset>? = null,
     content: @Composable () -> Unit,
 ) = item(key = key, span = { GridItemSpan(maxLineSpan) }) {
     Box(
         Modifier
             .fillMaxWidth()
-            .animateItem(placementSpec = placement)
+            .animateItem(placementSpec = null)
             .padding(start = CardMargin, end = CardMargin, bottom = CardMargin),
     ) {
         content()

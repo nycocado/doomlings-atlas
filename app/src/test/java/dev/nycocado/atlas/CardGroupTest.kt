@@ -36,7 +36,7 @@ class CardGroupTest : AtlasBehaviorTest() {
 
         compose.onNode(kidneyStack).assertDoesNotExist()
         compose.onNode(openGroup("Kidney", 6)).assertExists()
-        variants("Kidney", 6).assertCountEquals(6)
+        assertAllVariants("Kidney", 6)
         scrollListTo(openGroup("Kidney", 6))
         compose.waitForIdle()
         compose.onNode(openGroup("Kidney", 6)).performClick()
@@ -66,9 +66,9 @@ class CardGroupTest : AtlasBehaviorTest() {
         scrollListTo(swarmStack)
         compose.onNode(swarmStack).performClick()
 
-        variants("Swarm", 5).assertCountEquals(5)
+        assertAllVariants("Swarm", 5)
         scrollListTo(openGroup("Kidney", 6))
-        variants("Kidney", 6).assertCountEquals(6)
+        assertAllVariants("Kidney", 6)
     }
 
     @Test
@@ -80,7 +80,7 @@ class CardGroupTest : AtlasBehaviorTest() {
         scenario.recreate()
 
         scrollListTo(openGroup("Kidney", 6))
-        variants("Kidney", 6).assertCountEquals(6)
+        assertAllVariants("Kidney", 6)
     }
 
     @Test
@@ -131,7 +131,16 @@ class CardGroupTest : AtlasBehaviorTest() {
         compose.onNode(green).performClick()
 
         scrollListTo(openGroup("Kidney", 6))
-        variants("Kidney", 6).assertCountEquals(6)
+        assertAllVariants("Kidney", 6)
+    }
+
+    // The variants are items of the lazy grid, so each is scrolled to before it is looked for.
+    private fun assertAllVariants(
+        name: String,
+        count: Int,
+    ) = (1..count).forEach { position ->
+        scrollListTo(variant(name, position, count))
+        compose.onNode(variant(name, position, count)).assertExists()
     }
 
     private fun collapsedStack(

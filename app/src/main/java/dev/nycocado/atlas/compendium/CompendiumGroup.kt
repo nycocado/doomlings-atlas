@@ -1,34 +1,37 @@
 package dev.nycocado.atlas.compendium
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.RoundRect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathOperation
+import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
+import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.CardColor
-import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.cardpane.ListDetailLayout
@@ -38,8 +41,11 @@ import dev.nycocado.atlas.ui.component.describedButton
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Radius
+import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
+import dev.nycocado.atlas.ui.theme.sticker
+import androidx.compose.ui.graphics.drawscope.Stroke as DrawStroke
 
 // A variant's place in its card group, 1-based.
 internal data class VariantPosition(
@@ -47,12 +53,11 @@ internal data class VariantPosition(
     val count: Int,
 )
 
-// An open card group: the stack gives way to its variants in a band that starts with the button that collapses it.
+// The first cell of an open card group, where its stack was: the button that collapses it.
 @Composable
-internal fun OpenGroup(
+internal fun GroupCollapse(
     group: CompendiumEntry.Group,
     onCollapse: () -> Unit,
-    onVariantClick: (NamedCard) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val theme = AtlasTheme.colors
@@ -60,55 +65,92 @@ internal fun OpenGroup(
     Column(
         modifier
             .fillMaxWidth()
-            .background(theme.surfaceSunk, Radius.md)
-            .border(Stroke.thin, theme.outlineSoft, Radius.md)
-            .padding(Space.s2),
+            .aspectRatio(CARD_RATIO)
+            .sticker(Radius.cardSm, theme.surfaceSticker, theme.outline, shadow = Shadow.sticker)
+            .describedButton(
+                pluralStringResource(R.plurals.card_group_open, count, group.name, count),
+                remember { MutableInteractionSource() },
+                stringResource(R.string.card_group_collapse),
+                onCollapse,
+            ).padding(Space.s2),
+        verticalArrangement = Arrangement.spacedBy(Space.s2, Alignment.CenterVertically),
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Row(
-            Modifier
-                .fillMaxWidth()
-                .heightIn(min = 48.dp)
-                .describedButton(
-                    pluralStringResource(R.plurals.card_group_open, count, group.name, count),
-                    remember { MutableInteractionSource() },
-                    stringResource(R.string.card_group_collapse),
-                    Radius.md,
-                    onCollapse,
-                ).padding(horizontal = CardMargin),
-            horizontalArrangement = Arrangement.spacedBy(Space.s2),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            // The back chevron turned to point up.
-            Image(
-                painterResource(R.drawable.ic_back),
-                null,
-                Modifier.size(22.dp).rotate(90f),
-                colorFilter = ColorFilter.tint(theme.onSurface),
-            )
-            BasicText(groupTitle(group), style = AtlasTypography.titleMd.copy(color = theme.onSurface))
-        }
-        // Nothing existing fits: the variants must line up with the grid's columns, FlowRow has no adaptive columns,
-        // a grid can't nest in the scrolling one, and a band can't be drawn around separate grid items.
-        BoxWithConstraints(Modifier.fillMaxWidth()) {
-            val columns = ((maxWidth + CellGapAcross) / (CellMinWidth + CellGapAcross)).toInt().coerceAtLeast(1)
-            val cell = (maxWidth - CellGapAcross * (columns - 1)) / columns
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(CellGapAcross),
-                verticalArrangement = Arrangement.spacedBy(CellGapDown),
-            ) {
-                group.variants.forEachIndexed { index, variant ->
-                    CompendiumCard(
-                        variant,
-                        tiltAt(index),
-                        { onVariantClick(variant) },
-                        Modifier.width(cell),
-                        VariantPosition(index + 1, count),
-                    )
+        // The back chevron turned to point up.
+        Image(
+            painterResource(R.drawable.ic_back),
+            null,
+            Modifier.size(28.dp).rotate(90f),
+            colorFilter = ColorFilter.tint(theme.onSurface),
+        )
+        BasicText(
+            groupTitle(group),
+            style = AtlasTypography.titleMd.copy(color = theme.onSurface, textAlign = TextAlign.Center),
+        )
+    }
+}
+
+// The grid items of an open card group, by key: the collapse cell first, then the variants.
+internal class GroupBand(
+    val keys: List<Any>,
+)
+
+// The band behind an open group's cells, drawn from the grid because the cells are plain grid items that wrap from row
+// to row with the rest: one rectangle per row, rounded only where the group starts and ends, and running off the grid's
+// edge where it goes on to the next row, so no border closes it there. No composable lays out a band behind cells of a
+// lazy grid.
+internal fun Modifier.groupBands(
+    state: LazyGridState,
+    bands: List<GroupBand>,
+    fill: Color,
+    border: Color,
+): Modifier =
+    drawBehind {
+        val corner = CornerRadius(22.dp.toPx())
+        val bleed = 24.dp.toPx()
+        val seam = CellGapDown.toPx() / 2 + 1
+        val visible = state.layoutInfo.visibleItemsInfo
+        bands.forEach { band ->
+            val rows = visible.filter { it.key in band.keys }.groupBy { it.row }.values
+            val shape =
+                rows
+                    .map { row ->
+                        val starts = row.any { it.key == band.keys.first() }
+                        val ends = row.any { it.key == band.keys.last() }
+                        val left = if (starts) row.minOf { it.offset.x }.toFloat() else -bleed
+                        val right =
+                            if (ends) {
+                                row.maxOf { it.offset.x + it.size.width }.toFloat()
+                            } else {
+                                size.width +
+                                    bleed
+                            }
+                        val top = row.minOf { it.offset.y } - if (starts) 0f else seam
+                        val bottom = row.maxOf { it.offset.y + it.size.height } + if (ends) 0f else seam
+                        Path().apply {
+                            addRoundRect(
+                                RoundRect(
+                                    left,
+                                    top,
+                                    right,
+                                    bottom,
+                                    topLeftCornerRadius = if (starts) corner else CornerRadius.Zero,
+                                    topRightCornerRadius = if (starts && ends) corner else CornerRadius.Zero,
+                                    bottomRightCornerRadius = if (ends) corner else CornerRadius.Zero,
+                                    bottomLeftCornerRadius = if (starts && ends) corner else CornerRadius.Zero,
+                                ),
+                            )
+                        }
+                    }.reduceOrNull { all, row -> Path.combine(PathOperation.Union, all, row) }
+            if (shape != null) {
+                // Item offsets leave out the grid's content padding.
+                translate(GridSidePadding.toPx(), state.layoutInfo.beforeContentPadding.toFloat()) {
+                    drawPath(shape, fill)
+                    drawPath(shape, border, style = DrawStroke(Stroke.thin.toPx()))
                 }
             }
         }
     }
-}
 
 // The first variant's art and colors stand for the group.
 @Composable
