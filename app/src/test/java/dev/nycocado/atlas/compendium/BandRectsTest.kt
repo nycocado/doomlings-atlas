@@ -6,11 +6,11 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 // A grid of 3 columns of 100 wide with a gap of 2, rows 160 tall with a gap of 6, in a viewport 1000 tall whose content
-// runs from x = 10 to x = 322; the band is inset by 3.
+// runs from x = 10 to x = 322; the band is inset by 1.
 class BandRectsTest {
     private val left = 10f
     private val right = 322f
-    private val inset = 3f
+    private val inset = 1f
 
     private fun cell(
         key: String,
@@ -21,7 +21,16 @@ class BandRectsTest {
     private fun rects(
         band: GroupBand,
         vararg cells: BandCell,
-    ) = bandRects(band, cells.toList(), left, right, 0f, 1000f, inset, overscan = 50f)
+    ) = bandRects(
+        band,
+        cells.toList(),
+        contentLeft = left,
+        contentRight = right,
+        viewportTop = 0f,
+        viewportBottom = 1000f,
+        inset = inset,
+        overscan = 50f,
+    )
 
     private val band = GroupBand("collapse", "v3", setOf("collapse", "v1", "v2", "v3"))
 
@@ -31,7 +40,7 @@ class BandRectsTest {
 
         val result = rects(single, cell("collapse", 0, 0), cell("v1", 0, 1), cell("v2", 0, 2))
 
-        assertEquals(listOf(Rect(13f, 3f, 311f, 157f)), result)
+        assertEquals(listOf(Rect(11f, 1f, 313f, 159f)), result)
     }
 
     @Test
@@ -39,14 +48,14 @@ class BandRectsTest {
         val result = rects(band, cell("collapse", 0, 0), cell("v1", 0, 1), cell("v2", 0, 2), cell("v3", 1, 0))
 
         // The first row reaches down to the top of the second, which is as wide as its one cell.
-        assertEquals(listOf(Rect(13f, 3f, 319f, 166f), Rect(13f, 166f, 107f, 323f)), result)
+        assertEquals(listOf(Rect(11f, 1f, 321f, 166f), Rect(11f, 166f, 109f, 325f)), result)
     }
 
     @Test
     fun aGroupThatStartsMidRowRunsFromItsFirstCellAndContinuesFromTheContentEdge() {
         val result = rects(band, cell("collapse", 0, 1), cell("v1", 0, 2), cell("v2", 1, 0), cell("v3", 1, 1))
 
-        assertEquals(listOf(Rect(115f, 3f, 319f, 166f), Rect(13f, 166f, 209f, 323f)), result)
+        assertEquals(listOf(Rect(113f, 1f, 321f, 166f), Rect(11f, 166f, 211f, 325f)), result)
     }
 
     // The collapse cell alone in the last column: the second row ends before the first begins, so there is nothing
@@ -57,15 +66,15 @@ class BandRectsTest {
 
         val result = rects(two, cell("collapse", 0, 2), cell("v1", 1, 0), cell("v2", 1, 1))
 
-        assertEquals(listOf(Rect(217f, 3f, 319f, 157f), Rect(13f, 169f, 209f, 323f)), result)
+        assertEquals(listOf(Rect(215f, 1f, 321f, 159f), Rect(11f, 167f, 211f, 325f)), result)
     }
 
     @Test
     fun aGroupThatEndsTheListIsClosedAtItsLastCell() {
         val result = rects(band, cell("collapse", 0, 2), cell("v1", 1, 0), cell("v2", 1, 1), cell("v3", 1, 2))
 
-        assertEquals(323f, result.last().bottom)
-        assertEquals(311f, result.last().right)
+        assertEquals(325f, result.last().bottom)
+        assertEquals(313f, result.last().right)
     }
 
     @Test
@@ -76,7 +85,7 @@ class BandRectsTest {
         assertEquals(1, result.size)
         assertTrue(result.single().top < 0f)
         // And it goes on from the content's left edge, not from a cell.
-        assertEquals(13f, result.single().left)
+        assertEquals(11f, result.single().left)
     }
 
     @Test
@@ -84,7 +93,7 @@ class BandRectsTest {
         val result = rects(band, cell("collapse", 5, 0), cell("v1", 5, 1), cell("v2", 5, 2))
 
         assertTrue(result.single().bottom > 1000f)
-        assertEquals(319f, result.single().right)
+        assertEquals(321f, result.single().right)
     }
 
     @Test
@@ -93,7 +102,17 @@ class BandRectsTest {
         val second = GroupBand("b", "b1", setOf("b", "b1"))
 
         val one = rects(first, cell("a", 0, 0), cell("a1", 0, 1))
-        val other = bandRects(second, listOf(cell("b", 0, 2), cell("b1", 1, 0)), left, right, 0f, 1000f, inset, 50f)
+        val other =
+            bandRects(
+                second,
+                listOf(cell("b", 0, 2), cell("b1", 1, 0)),
+                left,
+                right,
+                viewportTop = 0f,
+                viewportBottom = 1000f,
+                inset = inset,
+                overscan = 50f,
+            )
 
         assertTrue(one.single().right < other.first().left)
         assertTrue(other.first().top >= one.single().top)

@@ -12,8 +12,9 @@ internal val CardMargin = 8.dp
 // The grid's side padding, where the first cell starts: the cards sit at the screen margin.
 internal val GridSidePadding = Space.s5 - CardMargin
 
-// How far a group's band stays inside its cells' edges, so that two bands next to each other keep apart.
-internal val BandInset = 3.dp
+// How far a group's band stays inside its cells' edges, so that two bands next to each other keep apart. The cards'
+// margin is left for their tilt and shadow.
+internal val BandInset = 1.dp
 
 internal val CellMinWidth = 150.dp
 
@@ -27,3 +28,9 @@ private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
 internal fun tiltAt(index: Int) = Tilts[index % Tilts.size]
 
 internal val CompendiumEntry.Group.gridKey get() = "group:$name"
+
+// The grid items of an open group, in order: its collapse cell, then its variants.
+internal fun CompendiumEntry.Group.band(): GroupBand {
+    val keys = listOf(gridKey) + variants.map { it.id }
+    return GroupBand(keys.first(), keys.last(), keys.toSet())
+}

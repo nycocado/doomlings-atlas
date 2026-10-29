@@ -77,6 +77,9 @@ private val RailWidth = Space.s5 + 64.dp + Space.s4
 
 private val RailMinWidth = 600.dp
 
+// The key of a variant in the grid: its card.
+private val VariantKey: (Int, NamedCard) -> Any = { _, variant -> variant.id }
+
 private val MoveSpec = tween<IntOffset>(350, easing = FastOutSlowInEasing)
 
 @Composable
@@ -127,10 +130,11 @@ fun CompendiumContent(
     val cellBounds = remember { CellBounds() }
     val bands =
         remember(results, openGroups) {
-            results.orEmpty().filterIsInstance<CompendiumEntry.Group>().filter { it.name in openGroups }.map { group ->
-                val keys = listOf(group.gridKey) + group.variants.map { it.id }
-                GroupBand(keys.first(), keys.last(), keys.toSet())
-            }
+            results
+                .orEmpty()
+                .filterIsInstance<CompendiumEntry.Group>()
+                .filter { it.name in openGroups }
+                .map { it.band() }
         }
     val scope = rememberCoroutineScope()
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
@@ -246,12 +250,7 @@ fun CompendiumContent(
                                                     .padding(CardMargin),
                                             )
                                         }
-                                        itemsIndexed(entry.variants, key = {
-                                            _,
-                                            variant,
-                                            ->
-                                            variant.id
-                                        }) { number, variant ->
+                                        itemsIndexed(entry.variants, key = VariantKey) { number, variant ->
                                             CompendiumCard(
                                                 variant,
                                                 tiltAt(number),

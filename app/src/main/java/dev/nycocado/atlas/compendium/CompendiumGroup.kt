@@ -156,29 +156,14 @@ private fun GroupSample(
         ) = Trait(id, "classic", "", name, null, null, null, listOf(CardColor.Red), false, emptyList(), emptyList())
         CompendiumContent(
             CompendiumFilter(colors = setOf(CardColor.Red)),
-            (1..before).map { CompendiumEntry.Single(trait("before-$it", "Before $it")) } +
-                listOf(
-                    CompendiumEntry.Group("Kidney", (1..variants).map { trait("kidney-$it", "Kidney") }),
-                ) +
-                (
-                    if (adjacent) {
-                        listOf(
-                            CompendiumEntry.Group(
-                                "Swarm",
-                                (1..variants).map {
-                                    trait("swarm-$it", "Swarm")
-                                },
-                            ),
-                        )
-                    } else {
-                        emptyList()
-                    }
-                ) +
-                listOf(
-                    CompendiumEntry.Single(trait("impatience", "Impatience")),
-                    CompendiumEntry.Single(trait("late", "Late")),
-                ),
-            if (open) setOf("Kidney", "Swarm") else emptySet(),
+            buildList {
+                (1..before).forEach { add(CompendiumEntry.Single(trait("before-$it", "Before $it"))) }
+                add(CompendiumEntry.Group("Kidney", (1..variants).map { trait("kidney-$it", "Kidney") }))
+                if (adjacent) add(CompendiumEntry.Group("Swarm", (1..variants).map { trait("swarm-$it", "Swarm") }))
+                add(CompendiumEntry.Single(trait("impatience", "Impatience")))
+                add(CompendiumEntry.Single(trait("late", "Late")))
+            },
+            if (open) setOfNotNull("Kidney", "Swarm".takeIf { adjacent }) else emptySet(),
             {},
             {},
             {},

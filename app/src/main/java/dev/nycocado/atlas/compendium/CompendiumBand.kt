@@ -4,6 +4,7 @@ import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Rect
@@ -17,6 +18,8 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.layout.boundsInParent
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Density
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Stroke as StrokeWidth
 
@@ -107,20 +110,37 @@ internal fun bandRects(
     }
 }
 
+// What the bands are drawn with, which depends only on the colors and the density, so it is made once.
+private class BandLook(
+    density: Density,
+    fillColor: Color,
+) {
+    val radius = Radius.md.topStart.toPx(Size.Zero, density)
+    private val corners = PathEffect.cornerPathEffect(radius)
+    val stroke = Stroke(with(density) { StrokeWidth.thin.toPx() }, pathEffect = corners)
+
+    // A fill takes no path effect, so the corners are rounded on a paint.
+    val fill =
+        Paint().apply {
+            color = fillColor
+            pathEffect = corners
+        }
+}
+
 // The band behind an open group's cells, drawn from the grid because the cells are plain grid items that wrap from row
 // to row with the rest. The rects of its rows are united and the outline is stroked once, with every corner rounded,
 // the concave ones that a row step makes too.
+@Composable
 internal fun Modifier.groupBands(
     state: LazyGridState,
     bands: List<GroupBand>,
     cells: CellBounds,
     fill: Color,
     border: Color,
-): Modifier =
-    drawBehind {
-        val radius = Radius.md.topStart.toPx(Size.Zero, this)
-        val corners = PathEffect.cornerPathEffect(radius)
-        val stroke = Stroke(StrokeWidth.thin.toPx(), pathEffect = corners)
+): Modifier {
+    val density = LocalDensity.current
+    val look = remember(density, fill) { BandLook(density, fill) }
+    return drawBehind {
         val padding = GridSidePadding.toPx()
         val onScreen = state.layoutInfo.visibleItemsInfo.associateBy { it.key }
         bands.forEach { band ->
@@ -143,25 +163,19 @@ internal fun Modifier.groupBands(
                     bandRects(
                         band,
                         inBand,
-                        padding,
-                        size.width - padding,
-                        0f,
-                        size.height,
-                        BandInset.toPx(),
-                        2 * radius,
+                        contentLeft = padding,
+                        contentRight = size.width - padding,
+                        viewportTop = 0f,
+                        viewportBottom = size.height,
+                        inset = BandInset.toPx(),
+                        // The rounded end is a radius long and its stroke has width: twice the radius puts both
+                        // well outside the viewport.
+                        overscan = 2 * look.radius,
                     ).map { Path().apply { addRect(it) } }
                         .reduce { all, rect -> Path.combine(PathOperation.Union, all, rect) }
-                // A fill takes no path effect: the corners are rounded on the paint.
-                drawIntoCanvas { canvas ->
-                    canvas.drawPath(
-                        shape,
-                        Paint().apply {
-                            color = fill
-                            pathEffect = corners
-                        },
-                    )
-                }
-                drawPath(shape, border, style = stroke)
+                drawIntoCanvas { it.drawPath(shape, look.fill) }
+                drawPath(shape, border, style = look.stroke)
             }
         }
     }
+}
