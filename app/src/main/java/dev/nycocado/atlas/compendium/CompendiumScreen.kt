@@ -1,6 +1,7 @@
 package dev.nycocado.atlas.compendium
 
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.FiniteAnimationSpec
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clipScrollableContainer
@@ -60,6 +61,7 @@ import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.carddetail.LongNameTrait
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.ui.component.BlankCardImages
+import dev.nycocado.atlas.ui.component.CardStack
 import dev.nycocado.atlas.ui.component.CardThumb
 import dev.nycocado.atlas.ui.component.Dock
 import dev.nycocado.atlas.ui.component.colorName
@@ -71,19 +73,12 @@ import dev.nycocado.atlas.ui.theme.Space
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
-// Room inside each grid cell for the card's tilt and shadow, which draw past its bounds. Item animations draw the
-// card into a layer the size of its cell, so without this room they cut the corners and the shadow.
-internal val CardMargin = 8.dp
-
 // Starts at the header's side margin, so the rail lines up with the logo above it.
 private val RailWidth = Space.s5 + 64.dp + Space.s4
 
 private val RailMinWidth = 600.dp
 
 private val MoveSpec = tween<IntOffset>(350, easing = FastOutSlowInEasing)
-
-// Deterministic by position, never random per render (docs/design.md).
-internal val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
 
 @Composable
 fun CompendiumScreen(
@@ -134,6 +129,14 @@ fun CompendiumContent(
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
     // outside it, scrolling the list or opening a card.
     val focusManager = LocalFocusManager.current
+    val openCard: (String) -> Unit = {
+        focusManager.clearFocus()
+        onCardClick(it)
+    }
+    val toggleGroup: (String) -> Unit = {
+        focusManager.clearFocus()
+        onGroupToggle(it)
+    }
     LaunchedEffect(grid) {
         snapshotFlow { grid.isScrollInProgress }.filter { it }.collect { focusManager.clearFocus() }
     }
@@ -176,7 +179,7 @@ fun CompendiumContent(
                 list = {
                     LazyVerticalGrid(
                         state = grid,
-                        columns = GridCells.Adaptive(150.dp),
+                        columns = GridCells.Adaptive(CellMinWidth),
                         // The grid's own clip leaves out the items fading out after a filter.
                         modifier = Modifier.clipScrollableContainer(Orientation.Vertical),
                         contentPadding =
@@ -186,8 +189,8 @@ fun CompendiumContent(
                                 top = Space.s4,
                                 bottom = Space.s5 - CardMargin,
                             ),
-                        horizontalArrangement = Arrangement.spacedBy(18.dp - CardMargin * 2),
-                        verticalArrangement = Arrangement.spacedBy(22.dp - CardMargin * 2),
+                        horizontalArrangement = Arrangement.spacedBy(CellGapAcross),
+                        verticalArrangement = Arrangement.spacedBy(CellGapDown),
                     ) {
                         fullWidth("filters") { Filters(filter, onFilterChange) }
                         if (results?.isEmpty() == true) {
@@ -208,17 +211,14 @@ fun CompendiumContent(
                             }
                         }
                         results.orEmpty().forEachIndexed { index, entry ->
-                            val tilt = Tilts[index % Tilts.size]
+                            val tilt = tiltAt(index)
                             when (entry) {
                                 is CompendiumEntry.Single -> {
                                     item(key = entry.card.id) {
                                         CompendiumCard(
                                             entry.card,
                                             tilt,
-                                            {
-                                                focusManager.clearFocus()
-                                                onCardClick(entry.card.id)
-                                            },
+                                            { openCard(entry.card.id) },
                                             Modifier.animateItem(placementSpec = MoveSpec),
                                         )
                                     }
@@ -226,25 +226,19 @@ fun CompendiumContent(
 
                                 is CompendiumEntry.Group -> {
                                     if (entry.name in openGroups) {
-                                        fullWidth("group:${entry.name}") {
+                                        fullWidth(entry.gridKey, MoveSpec) {
                                             OpenGroup(
                                                 entry,
-                                                { onGroupToggle(entry.name) },
-                                                {
-                                                    focusManager.clearFocus()
-                                                    onCardClick(it.id)
-                                                },
+                                                { toggleGroup(entry.name) },
+                                                { openCard(it.id) },
                                             )
                                         }
                                     } else {
-                                        item(key = "group:${entry.name}") {
+                                        item(key = entry.gridKey) {
                                             GroupStack(
                                                 entry,
                                                 tilt,
-                                                {
-                                                    focusManager.clearFocus()
-                                                    onGroupToggle(entry.name)
-                                                },
+                                                { toggleGroup(entry.name) },
                                                 Modifier.animateItem(placementSpec = MoveSpec),
                                             )
                                         }
@@ -311,26 +305,26 @@ private fun ListAndDock(
 
 private fun LazyGridScope.fullWidth(
     key: String,
+    placement: FiniteAnimationSpec<IntOffset>? = null,
     content: @Composable () -> Unit,
 ) = item(key = key, span = { GridItemSpan(maxLineSpan) }) {
     Box(
         Modifier
             .fillMaxWidth()
-            .animateItem(placementSpec = null)
+            .animateItem(placementSpec = placement)
             .padding(start = CardMargin, end = CardMargin, bottom = CardMargin),
     ) {
         content()
     }
 }
 
-// A variant also says its place in the group.
 @Composable
 internal fun CompendiumCard(
     card: NamedCard,
     tilt: Float,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    position: Pair<Int, Int>? = null,
+    position: VariantPosition? = null,
 ) {
     val face = card.face() ?: return
     val description =
@@ -339,7 +333,8 @@ internal fun CompendiumCard(
             face.colors.forEach { add(stringResource(colorName(it))) }
             face.faceValue?.let { add(LocalResources.current.pointsText(it)) }
         }.joinToString(", ").let { described ->
-            position?.let { (at, of) -> stringResource(R.string.card_variant_position, described, at, of) } ?: described
+            position?.let { stringResource(R.string.card_variant_position, described, it.number, it.count) }
+                ?: described
         }
     CardThumb(card.image, card.name, face.colors, description, tilt, onClick, modifier.padding(CardMargin))
 }
@@ -354,16 +349,15 @@ private fun GroupStack(
 ) {
     val first = group.variants.first()
     val colors = first.face()?.colors.orEmpty()
-    CardThumb(
+    CardStack(
         first.image,
         groupTitle(group),
         colors,
         pluralStringResource(R.plurals.card_group_collapsed, group.variants.size, group.name, group.variants.size),
         tilt,
         onClick,
+        stringResource(R.string.card_group_expand),
         modifier.padding(CardMargin),
-        stack = true,
-        onClickLabel = stringResource(R.string.card_group_expand),
     )
 }
 

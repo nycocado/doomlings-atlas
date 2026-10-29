@@ -3,7 +3,6 @@ package dev.nycocado.atlas.compendium
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -20,15 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.clearAndSetSemantics
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.onClick
-import androidx.compose.ui.semantics.role
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
@@ -37,18 +32,18 @@ import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.ui.component.BlankCardImages
+import dev.nycocado.atlas.ui.component.describedButton
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
-import dev.nycocado.atlas.ui.theme.FocusRing
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
-import dev.nycocado.atlas.ui.theme.trait
 
-// The same columns as the grid around it (Adaptive 150dp, 18dp between cards), so variants line up with the cards
-// above and below the band.
-private val CellMinWidth = 150.dp
-private val CellGap = 18.dp - CardMargin * 2
+// A variant's place in its card group, 1-based.
+internal data class VariantPosition(
+    val number: Int,
+    val count: Int,
+)
 
 // An open card group: the stack gives way to its variants in a band that starts with the button that collapses it.
 @Composable
@@ -60,56 +55,51 @@ internal fun OpenGroup(
 ) {
     val theme = AtlasTheme.colors
     val count = group.variants.size
-    val description = pluralStringResource(R.plurals.card_group_open, count, group.name, count)
-    val interactions = remember { MutableInteractionSource() }
-    val label = stringResource(R.string.card_group_collapse)
     Column(
         modifier
             .fillMaxWidth()
             .background(theme.surfaceSunk, Radius.md)
             .border(Stroke.thin, theme.outlineSoft, Radius.md)
-            .padding(horizontal = Space.s2, vertical = Space.s2),
+            .padding(Space.s2),
     ) {
         Row(
             Modifier
                 .fillMaxWidth()
                 .heightIn(min = 48.dp)
-                .clickable(
-                    interactions,
-                    FocusRing(theme.focusRing, Radius.cardSm),
-                    onClickLabel = label,
-                    onClick = onCollapse,
-                ).padding(horizontal = CardMargin)
-                .clearAndSetSemantics {
-                    contentDescription = description
-                    role = Role.Button
-                    onClick(label) { onCollapse().let { true } }
-                },
+                .describedButton(
+                    pluralStringResource(R.plurals.card_group_open, count, group.name, count),
+                    remember { MutableInteractionSource() },
+                    stringResource(R.string.card_group_collapse),
+                    onCollapse,
+                ).padding(horizontal = CardMargin),
             horizontalArrangement = Arrangement.spacedBy(Space.s2),
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            // The back chevron turned to point up.
             Image(
-                painterResource(R.drawable.ic_collapse),
+                painterResource(R.drawable.ic_back),
                 null,
-                Modifier.size(22.dp),
+                Modifier.size(22.dp).rotate(90f),
                 colorFilter = ColorFilter.tint(theme.onSurface),
             )
             BasicText(groupTitle(group), style = AtlasTypography.titleMd.copy(color = theme.onSurface))
         }
+        // Nothing existing fits: the variants must line up with the grid's columns, FlowRow has no adaptive columns,
+        // a grid can't nest in the scrolling one, and a band can't be drawn around separate grid items.
         BoxWithConstraints(Modifier.fillMaxWidth()) {
-            val columns = ((maxWidth + CellGap) / (CellMinWidth + CellGap)).toInt().coerceAtLeast(1)
-            val cell = (maxWidth - CellGap * (columns - 1)) / columns
+            val columns = ((maxWidth + CellGapAcross) / (CellMinWidth + CellGapAcross)).toInt().coerceAtLeast(1)
+            val cell = (maxWidth - CellGapAcross * (columns - 1)) / columns
             FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(CellGap),
-                verticalArrangement = Arrangement.spacedBy(22.dp - CardMargin * 2),
+                horizontalArrangement = Arrangement.spacedBy(CellGapAcross),
+                verticalArrangement = Arrangement.spacedBy(CellGapDown),
             ) {
                 group.variants.forEachIndexed { index, variant ->
                     CompendiumCard(
                         variant,
-                        Tilts[index % Tilts.size],
+                        tiltAt(index),
                         { onVariantClick(variant) },
                         Modifier.width(cell),
-                        position = index + 1 to count,
+                        VariantPosition(index + 1, count),
                     )
                 }
             }
@@ -117,7 +107,9 @@ internal fun OpenGroup(
     }
 }
 
-internal fun groupTitle(group: CompendiumEntry.Group) = "${group.name} ×${group.variants.size}"
+@Composable
+internal fun groupTitle(group: CompendiumEntry.Group) =
+    stringResource(R.string.card_group_title, group.name, group.variants.size)
 
 @PreviewLightDark
 @Composable

@@ -2,7 +2,6 @@ package dev.nycocado.atlas.ui.component
 
 import android.content.res.Resources
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicText
@@ -23,11 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.onClick
-import androidx.compose.ui.semantics.role
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -42,7 +37,6 @@ import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
-import dev.nycocado.atlas.ui.theme.FocusRing
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
@@ -61,8 +55,8 @@ fun Resources.pointsText(points: Int): String =
         getQuantityString(R.plurals.card_points, points, signed(points))
     }
 
-// One glyph per entry of colors, null drawing the colorless one; ages and catastrophes pass none. A stack is a card
-// group: two silhouettes behind the art, with the count in the name and nothing over the art.
+// One glyph per entry of colors, null drawing the colorless one; ages and catastrophes pass none. What goes behind the
+// art is drawn by `behind`, given how far the pressed card sinks.
 @Composable
 fun CardThumb(
     image: String,
@@ -72,32 +66,15 @@ fun CardThumb(
     tilt: Float,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    stack: Boolean = false,
     onClickLabel: String? = null,
+    behind: @Composable BoxScope.(sink: Dp) -> Unit = {},
 ) {
     val theme = AtlasTheme.colors
     val interactions = remember { MutableInteractionSource() }
     val sink = pressSink(interactions, Shadow.sticker)
-    Column(
-        modifier
-            .rotate(tilt)
-            .clickable(
-                interactions,
-                FocusRing(theme.focusRing, Radius.cardSm),
-                onClickLabel = onClickLabel,
-                onClick = onClick,
-            ).clearAndSetSemantics {
-                contentDescription = description
-                role = Role.Button
-                onClick(onClickLabel) { onClick().let { true } }
-            },
-    ) {
+    Column(modifier.rotate(tilt).describedButton(description, interactions, onClickLabel, onClick)) {
         Box(Modifier.fillMaxWidth().aspectRatio(CARD_RATIO)) {
-            if (stack) {
-                // Offset and tilt stay within the margin the compendium leaves around each card.
-                StackBehind(3.dp, -2.dp, 2.5f, sink)
-                StackBehind(-3.dp, -1.dp, -2.5f, sink)
-            }
+            behind(sink)
             AsyncImage(
                 model = cardImage(image),
                 contentDescription = null,
@@ -117,23 +94,6 @@ fun CardThumb(
             BasicText(name, style = AtlasTypography.titleMd.copy(color = theme.onSurface))
         }
     }
-}
-
-@Composable
-private fun BoxScope.StackBehind(
-    x: Dp,
-    y: Dp,
-    tilt: Float,
-    sink: Dp,
-) {
-    val theme = AtlasTheme.colors
-    Box(
-        Modifier
-            .matchParentSize()
-            .offset(x, y)
-            .rotate(tilt)
-            .sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker),
-    )
 }
 
 // Card images live in the generated assets, so previews show a blank card.

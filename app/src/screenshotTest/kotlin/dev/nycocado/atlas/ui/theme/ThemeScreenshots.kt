@@ -21,6 +21,7 @@ import dev.nycocado.atlas.compendium.CompendiumBesideCardPreview
 import dev.nycocado.atlas.compendium.CompendiumHalfCollapsedPreview
 import dev.nycocado.atlas.compendium.CompendiumLongNamePreview
 import dev.nycocado.atlas.compendium.CompendiumPreview
+import dev.nycocado.atlas.ui.component.CardStackPreview
 import dev.nycocado.atlas.ui.component.CardThumbPreview
 import dev.nycocado.atlas.ui.component.DockPreview
 import dev.nycocado.atlas.ui.component.RoundButtonPreview
@@ -42,6 +43,11 @@ fun TraitGlyphScreenshot() = TraitGlyphPreview()
 @PreviewLightDark
 @Composable
 fun CardThumbScreenshot() = CardThumbPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun CardStackScreenshot() = CardStackPreview()
 
 @PreviewTest
 @PreviewLightDark

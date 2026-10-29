@@ -93,6 +93,47 @@ class CardGroupTest : AtlasBehaviorTest() {
         compose.onNode(kidneyStack).assertIsDisplayed()
     }
 
+    // The words themselves, not the resources: this is what TalkBack reads.
+    @Test
+    fun talkBackReadsTheStackAndEachVariantInWords() {
+        launchPastNotice()
+        scrollListTo(hasContentDescription("Kidney, 6 variants, collapsed"))
+        compose.onNode(hasContentDescription("Kidney, 6 variants, collapsed")).performClick()
+
+        scrollListTo(hasContentDescription("Kidney, 6 variants, open"))
+        compose.onNode(hasContentDescription("Kidney, 6 variants, open")).assertExists()
+        scrollListTo(hasContentDescription("Kidney, Red, variant 2 of 6"))
+        compose.onNode(hasContentDescription("Kidney, Red, variant 2 of 6")).assertExists()
+    }
+
+    @Test
+    fun anOpenGroupIsAccessibleWithNoCardOpen() {
+        launchPastNotice()
+        scrollListTo(kidneyStack)
+        compose.onNode(kidneyStack).performClick()
+        scrollListTo(openGroup("Kidney", 6))
+
+        text(R.string.search_placeholder).assertIsDisplayed()
+        assertAccessible()
+    }
+
+    // A filter that leaves out every Kidney (they are red) hides the group, which is still open when it comes back.
+    @Test
+    fun anOpenGroupHiddenByTheFilterIsStillOpenWhenItComesBack() {
+        launchPastNotice()
+        scrollListTo(kidneyStack)
+        compose.onNode(kidneyStack).performClick()
+        scrollListTo(green)
+        compose.onNode(green).performClick()
+
+        compose.onNode(openGroup("Kidney", 6)).assertDoesNotExist()
+        compose.onNode(kidneyStack).assertDoesNotExist()
+        compose.onNode(green).performClick()
+
+        scrollListTo(openGroup("Kidney", 6))
+        variants("Kidney", 6).assertCountEquals(6)
+    }
+
     private fun collapsedStack(
         name: String,
         count: Int,
