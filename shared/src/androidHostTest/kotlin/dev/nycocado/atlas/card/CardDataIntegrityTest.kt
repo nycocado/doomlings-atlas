@@ -102,6 +102,19 @@ class CardDataIntegrityTest {
         )
     }
 
+    @Test
+    fun everyCardIsInItsSetFolder() {
+        assertEquals(
+            emptyList(),
+            CardAssets.cardsByFolder.flatMap { (folder, cards) ->
+                cards
+                    .map { it.getValue("set").jsonPrimitive.content to it.getValue("id").jsonPrimitive.content }
+                    .filter { (set, id) -> set != folder || !id.startsWith("$folder/") }
+                    .map { (_, id) -> "$folder: $id" }
+            },
+        )
+    }
+
     // Each set keeps its images in its own folder (assets/doomlings/NOTICE.md).
     @Test
     fun everyImageIsInsideItsSetFolder() {

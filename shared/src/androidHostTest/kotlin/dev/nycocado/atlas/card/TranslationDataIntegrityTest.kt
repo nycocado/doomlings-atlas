@@ -10,8 +10,8 @@ import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-// Checks the real translation files in assets/doomlings (each set's pt.json, es.json), for every set and card type.
-// Passes with no file present; each check starts to bite with the first one.
+// Checks the real translation files in assets/doomlings (each set's pt.json, es.json), for every set and card type:
+// every set with text is translated whole into every card language.
 class TranslationDataIntegrityTest {
     private val cardsJson = CardAssets.cardsJson
 
@@ -30,48 +30,13 @@ class TranslationDataIntegrityTest {
                 ).toSet()
         }
 
-    // Same cards as the app packages: atlas.enabledSets and atlas.enabledTypes in gradle.properties.
-    private val enabledClassicIds =
-        Json
-            .parseToJsonElement(cardsJson)
-            .jsonArray
-            .map { it.jsonObject }
-            .filter {
-                it.getValue("set").jsonPrimitive.content == "classic" &&
-                    it.getValue("type").jsonPrimitive.content in setOf("trait", "age", "catastrophe")
-            }.map { it.getValue("id").jsonPrimitive.content }
-
-    // Sets translated whole, every card type, before the set is enabled.
-    private val wholeSetIds =
-        Json
-            .parseToJsonElement(cardsJson)
-            .jsonArray
-            .map { it.jsonObject }
-            .filter {
-                it
-                    .getValue(
-                        "set",
-                    ).jsonPrimitive.content in
-                    setOf(
-                        "special",
-                        "castle-glass",
-                        "nightflower-island",
-                        "shadow-puppets",
-                        "mokoko-village",
-                        "legends-of-enderas",
-                        "upgrade",
-                        "imaginary-ends",
-                        "overlush",
-                    )
-            }.map { it.getValue("id").jsonPrimitive.content }
-
     private val files = CardAssets.translationFiles
 
     // The set folder and file name, e.g. classic/pt.json: the name alone is the same in every set.
     private val File.label get() = relativeTo(CardAssets.dir).path
 
-    private fun translatedIds(code: String) =
-        files.filter { it.nameWithoutExtension == code }.flatMap { fieldsOf(it).keys }.toSet()
+    private fun setIdsOf(file: File) =
+        CardAssets.cardsByFolder[file.parentFile.name].orEmpty().map { it.getValue("id").jsonPrimitive.content }
 
     private fun fieldsOf(file: File) =
         Json.parseToJsonElement(file.readText()).jsonObject.mapValues { (_, translation) ->
@@ -95,6 +60,29 @@ class TranslationDataIntegrityTest {
     fun everyTranslatedIdExistsInCards() {
         files.forEach { file ->
             assertEquals(emptyList<String>(), (fieldsOf(file).keys - fieldsById.keys).toList(), file.label)
+        }
+    }
+
+    @Test
+    fun noFileRepeatsACard() {
+        files.forEach { file ->
+            assertEquals(
+                emptyList<String>(),
+                CardAssets
+                    .keysOf(file)
+                    .groupBy { it }
+                    .filterValues { it.size > 1 }
+                    .keys
+                    .toList(),
+                file.label,
+            )
+        }
+    }
+
+    @Test
+    fun everyFileTranslatesOnlyCardsOfItsSet() {
+        files.forEach { file ->
+            assertEquals(emptyList<String>(), (fieldsOf(file).keys - setIdsOf(file).toSet()).toList(), file.label)
         }
     }
 
@@ -123,16 +111,24 @@ class TranslationDataIntegrityTest {
     }
 
     @Test
-    fun everyEnabledClassicCardIsTranslatedInPortugueseAndSpanish() {
-        listOf("pt", "es").forEach { code ->
-            assertEquals(emptyList<String>(), enabledClassicIds - translatedIds(code), code)
-        }
+    fun everySetWithTextHasAFileForEveryCardLanguage() {
+        val names = CardLanguage.entries.filter { it != CardLanguage.English }.map { "${it.code}.json" }
+        val missing =
+            CardAssets.cardsByFolder
+                .filterValues { cards ->
+                    cards.any { fieldsById[it.getValue("id").jsonPrimitive.content].orEmpty().isNotEmpty() }
+                }.keys
+                .flatMap { folder -> names.map { "$folder/$it" } }
+                .filterNot { CardAssets.dir.resolve(it).isFile }
+        assertEquals(emptyList<String>(), missing)
     }
 
+    // A set is translated whole into a language or not at all. Cards with no text, like the Gene Pools, have no entry.
     @Test
-    fun everyCardOfAWholeTranslatedSetIsTranslatedInPortugueseAndSpanish() {
-        listOf("pt", "es").forEach { code ->
-            assertEquals(emptyList<String>(), wholeSetIds - translatedIds(code), code)
+    fun everyFileTranslatesEveryCardWithTextOfItsSet() {
+        files.forEach { file ->
+            val missing = setIdsOf(file).filter { fieldsById[it].orEmpty().isNotEmpty() } - fieldsOf(file).keys
+            assertEquals(emptyList<String>(), missing, file.label)
         }
     }
 
