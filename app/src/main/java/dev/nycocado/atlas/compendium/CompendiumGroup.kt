@@ -5,6 +5,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -32,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
+import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.face
@@ -55,7 +57,7 @@ internal data class VariantPosition(
 )
 
 // The first cell of an open card group, where its stack was: a round button that collapses it, with the group's name
-// and count under it. The cell is as wide as a card's, so the variants after it keep the grid's columns.
+// and count under it, centered in a cell the size of a card's art, so the variants after it keep the grid's columns.
 @Composable
 internal fun GroupCollapse(
     group: CompendiumEntry.Group,
@@ -67,8 +69,8 @@ internal fun GroupCollapse(
     val interactions = remember { MutableInteractionSource() }
     val sink = pressSink(interactions, Shadow.sticker)
     Column(
-        modifier.fillMaxWidth().padding(top = Space.s2),
-        verticalArrangement = Arrangement.spacedBy(Space.s2),
+        modifier.fillMaxWidth().aspectRatio(CARD_RATIO),
+        verticalArrangement = Arrangement.spacedBy(Space.s2, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(
