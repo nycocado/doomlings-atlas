@@ -1,0 +1,785 @@
+[
+  {
+    "id": "mokoko-village/ages/hello-farewell",
+    "type": "age",
+    "set": "mokoko-village",
+    "name": "Hello, Farewell",
+    "effect": "You may play 1 effectless now.\n\nIf you do, discard 1 from your trait pile.",
+    "image": "mokoko-village/ages/hello-farewell.webp"
+  },
+  {
+    "id": "mokoko-village/ages/nightflower-island",
+    "type": "age",
+    "set": "mokoko-village",
+    "name": "Nightflower Island",
+    "effect": "Draw 2.\nPass 1 from hand left.",
+    "image": "mokoko-village/ages/nightflower-island.webp"
+  },
+  {
+    "id": "mokoko-village/ages/river-walk",
+    "type": "age",
+    "set": "mokoko-village",
+    "name": "River Walk",
+    "effect": "If you hold 6 or more cards, discard 2 from hand at random.\n\nIf you hold 4 or fewer, draw 2.",
+    "image": "mokoko-village/ages/river-walk.webp"
+  },
+  {
+    "id": "mokoko-village/catastrophes/fatal-falls",
+    "type": "catastrophe",
+    "set": "mokoko-village",
+    "name": "Fatal Falls",
+    "effect": "+0 Gene Pool\n\nRandomly discard all but 2 cards from hand.",
+    "worldsEnd": "Play 1. Ignore actions.",
+    "image": "mokoko-village/catastrophes/fatal-falls.webp"
+  },
+  {
+    "id": "mokoko-village/traits/abandoned",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Abandoned",
+    "flavor": "I used to be in a band...",
+    "effect": "+1 Gene Pool. If Abandoned is discarded from your trait pile, steal 1 red.",
+    "points": -2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "mokoko-village/traits/abandoned.webp"
+  },
+  {
+    "id": "mokoko-village/traits/alert",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Alert",
+    "flavor": "Maybe a little too ready.",
+    "effect": "Reveal 2 reds to play at any time.",
+    "points": 2,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when"
+    ],
+    "image": "mokoko-village/traits/alert.webp"
+  },
+  {
+    "id": "mokoko-village/traits/ancestral",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Ancestral",
+    "flavor": "The best part of the afterlife is judging your kin.",
+    "effect": "At World's End: You may discard 1 from your trait pile. +3 for each color in your trait pile with exactly 2 traits.",
+    "points": 1,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/ancestral.webp"
+  },
+  {
+    "id": "mokoko-village/traits/bluesy",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Bluesy",
+    "flavor": "Where did my honey go? I don't nuh-nuh-nuh know.",
+    "effect": "+1 Gene Pool. At World's End: Discard this.",
+    "points": 0,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/bluesy.webp"
+  },
+  {
+    "id": "mokoko-village/traits/cairnwalker",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Cairnwalker",
+    "flavor": "My record is 2,000 stones.",
+    "effect": "At World's End: Choose a color. Score the face value of traits of that color as 2.",
+    "points": 2,
+    "colors": [
+      "blue"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/cairnwalker.webp"
+  },
+  {
+    "id": "mokoko-village/traits/charged",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Charged",
+    "flavor": "With great power comes great winnability.",
+    "effect": "+1 for each unique face value in your trait pile.",
+    "points": null,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "dragon",
+      "drop-of-life"
+    ],
+    "image": "mokoko-village/traits/charged.webp"
+  },
+  {
+    "id": "mokoko-village/traits/concealed",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Concealed",
+    "flavor": "Why the long face? Because this is the only mask that covers my long face.",
+    "effect": "Discard a face value of 2 or higher from your trait pile. Then play another trait.",
+    "points": 3,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/concealed.webp"
+  },
+  {
+    "id": "mokoko-village/traits/devious",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Devious",
+    "flavor": "Mua ha ha ha ha!",
+    "effect": null,
+    "points": 3,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "mokoko-village/traits/devious.webp"
+  },
+  {
+    "id": "mokoko-village/traits/distrusted",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Distrusted",
+    "flavor": "Does this mask make me look cunning?",
+    "effect": "Discard 1 from your trait pile to draw 1. You may play it now.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/distrusted.webp"
+  },
+  {
+    "id": "mokoko-village/traits/dryadic",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Dryadic",
+    "flavor": "Good things come in trees.",
+    "effect": "-2 for each purple trait in your trait pile. +1 for each green. +1 for each red.",
+    "points": -1,
+    "colors": [
+      "green"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "mokoko-village/traits/dryadic.webp"
+  },
+  {
+    "id": "mokoko-village/traits/entwined",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Entwined",
+    "flavor": "Everything's vine.",
+    "effect": "Play at any time: Discard 1 from your trait pile. (Excluding dominants, this can stop the trait from being swapped/stolen.)",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when"
+    ],
+    "image": "mokoko-village/traits/entwined.webp"
+  },
+  {
+    "id": "mokoko-village/traits/excluded",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Excluded",
+    "flavor": "I guess I'll just sit in this corner and wait for someone to talk to me then.",
+    "effect": "Draw 4. If Excluded is discarded from your trait pile, draw 4.",
+    "points": -1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/excluded.webp"
+  },
+  {
+    "id": "mokoko-village/traits/facekeeper",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Facekeeper",
+    "flavor": "Just one of the guise.",
+    "effect": "At World's End: You may discard up to 3 from your trait pile. Then reveal 1 from the top of the trait deck for each trait discarded this way. Add their face values to your final score.",
+    "points": 2,
+    "colors": [
+      "green"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/facekeeper.webp"
+  },
+  {
+    "id": "mokoko-village/traits/feared",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Feared",
+    "flavor": "Please stop running! Help me get this mask off!",
+    "effect": "Discard 1 from your trait pile, and 1 from hand.",
+    "points": 2,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/feared.webp"
+  },
+  {
+    "id": "mokoko-village/traits/feng-shui",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Feng Shui",
+    "flavor": "Everything is balanced. As long as I win.",
+    "effect": "Discard a face value 3 or higher from hand to play another trait.",
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/feng-shui.webp"
+  },
+  {
+    "id": "mokoko-village/traits/gravetender",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Gravetender",
+    "flavor": "This job is beneath me.",
+    "effect": "At World's End: Draw 1 for each color missing from your trait pile. +2 for each card drawn this way.",
+    "points": 4,
+    "colors": [
+      "purple"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/gravetender.webp"
+  },
+  {
+    "id": "mokoko-village/traits/honor",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Honor",
+    "flavor": "I'm not a thief, I'm a pirate. Now give me that.",
+    "effect": "Choose an opponent. They choose to give you: 2 cards from hand OR 1 random card.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/honor.webp"
+  },
+  {
+    "id": "mokoko-village/traits/jacked",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Jacked",
+    "flavor": "Never skip chop day.",
+    "effect": "To play, you must have 3 greens in your trait pile. Discard 1 red in hand to reduce the requirement to 2 greens.",
+    "points": 5,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "mokoko-village/traits/jacked.webp"
+  },
+  {
+    "id": "mokoko-village/traits/jejune",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Jejune",
+    "flavor": "Why are you so deep and serious? Just have some fun already!",
+    "effect": "At World's End: Change up to 4 traits in your trait pile to colorless.",
+    "points": 4,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/jejune.webp"
+  },
+  {
+    "id": "mokoko-village/traits/lode",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Lode",
+    "flavor": "Don't take this gem for granite.",
+    "effect": "Choose a color. Draw 5. Discard the chosen color from the drawn cards.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/lode.webp"
+  },
+  {
+    "id": "mokoko-village/traits/low-mane",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Low Mane",
+    "flavor": "This needs flavor.",
+    "effect": "All players may stabilize to 5. Then you may reveal 2 of the same color to play another trait.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/low-mane.webp"
+  },
+  {
+    "id": "mokoko-village/traits/mini",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Mini",
+    "flavor": "So small, you might miss the big heart.",
+    "effect": null,
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "mokoko-village/traits/mini.webp"
+  },
+  {
+    "id": "mokoko-village/traits/misfortune",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Misfortune",
+    "flavor": "I see things happening to you in the future.",
+    "effect": "At World's End: +2 for each trait discarded from your trait pile during the final catastrophe.",
+    "points": 0,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/misfortune.webp"
+  },
+  {
+    "id": "mokoko-village/traits/nurturing",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Nurturing",
+    "flavor": "The secret is love and fertilizer.",
+    "effect": "At World's End: Draw 1. You may discard a face value 1 from your trait pile to play another trait. Ignore its action.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/nurturing.webp"
+  },
+  {
+    "id": "mokoko-village/traits/palmate",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Palmate",
+    "flavor": "I ain't your pal, mate. Don't moose with me.",
+    "effect": null,
+    "points": 4,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "mokoko-village/traits/palmate.webp"
+  },
+  {
+    "id": "mokoko-village/traits/pompadour",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Pompadour",
+    "flavor": "This year, I'm going to take the best yearbook picture.",
+    "effect": "To play, you must discard: 1 from your trait pile OR 1 negative from an opponent's trait pile.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "mokoko-village/traits/pompadour.webp"
+  },
+  {
+    "id": "mokoko-village/traits/rejected",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Rejected",
+    "flavor": "Get outta town! No, seriously, you need to leave.",
+    "effect": "Play 1. If Rejected is removed from your trait pile, increase your Gene Pool by 1.",
+    "points": -1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/rejected.webp"
+  },
+  {
+    "id": "mokoko-village/traits/restorative",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Restorative",
+    "flavor": "I'm the only doctor in town, so come back tomorrow if you'd like a second opinion.",
+    "effect": "All players may discard 0-3 cards from hand, then stabilize.",
+    "points": 3,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/restorative.webp"
+  },
+  {
+    "id": "mokoko-village/traits/scratchy-feet",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Scratchy Feet",
+    "flavor": "Moving forward, itch by itch.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "mokoko-village/traits/scratchy-feet.webp"
+  },
+  {
+    "id": "mokoko-village/traits/shunned",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Shunned",
+    "flavor": "You cry wolf three times, and suddenly no one will help you.",
+    "effect": "+5 if this is your only purple. If Shunned is discarded from your trait pile, you may play up to 2 purples. Ignore actions.",
+    "points": -1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "mokoko-village/traits/shunned.webp"
+  },
+  {
+    "id": "mokoko-village/traits/silence",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Silence",
+    "flavor": null,
+    "effect": "Opponents ignore actions on their next turn. But you must remind them.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/silence.webp"
+  },
+  {
+    "id": "mokoko-village/traits/smithy",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Smithy",
+    "flavor": "Respect your welders.",
+    "effect": "Reveal: 2 greens: Play 1 green. 2 reds: Discard 1 from your trait pile.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/smithy.webp"
+  },
+  {
+    "id": "mokoko-village/traits/smooth",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Smooth",
+    "flavor": "Hitting the right notes is optional.",
+    "effect": "Play at any time to draw 1. At World's End: Discard this.",
+    "points": 0,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when",
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/smooth.webp"
+  },
+  {
+    "id": "mokoko-village/traits/stargazer",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Stargazer",
+    "flavor": "Just here for the view.",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "mokoko-village/traits/stargazer.webp"
+  },
+  {
+    "id": "mokoko-village/traits/steady",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Steady",
+    "flavor": "I urn for more.",
+    "effect": "Draw 2. Then reveal 4 different colors to draw 2.",
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/steady.webp"
+  },
+  {
+    "id": "mokoko-village/traits/subdued",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Subdued",
+    "flavor": "Is it time for my solo?",
+    "effect": "Play 1. At World's End: Discard this.",
+    "points": 0,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/subdued.webp"
+  },
+  {
+    "id": "mokoko-village/traits/sundering",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Sundering",
+    "flavor": "Speak its name and it shall be no more.",
+    "effect": "Start of your turns: Choose a color. If you have traits of that color in your trait pile, discard them.",
+    "points": 6,
+    "colors": [
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "mokoko-village/traits/sundering.webp"
+  },
+  {
+    "id": "mokoko-village/traits/swarm-of-kidneys",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Swarm of Kidneys",
+    "flavor": "We're here for the new hats.",
+    "effect": "Value is equal to the number of Kidney traits in all trait piles. (Including this one.)",
+    "points": null,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "mokoko-village/traits/swarm-of-kidneys.webp"
+  },
+  {
+    "id": "mokoko-village/traits/teeny",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Teeny",
+    "flavor": "Weddle eddle, tinsie winsie.",
+    "effect": "If you have 11 or fewer traits in your trait pile, triple the face value of all your dominants.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "mokoko-village/traits/teeny.webp"
+  },
+  {
+    "id": "mokoko-village/traits/unusual",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Unusual",
+    "flavor": "The way I see it, in this world, it is the usual that is unusual!",
+    "effect": "Play 1. If Unusual is removed from your trait pile, play 1 effectless.",
+    "points": -1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/unusual.webp"
+  },
+  {
+    "id": "mokoko-village/traits/veiled",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Veiled",
+    "flavor": "When the wind picks up, wave your arms around like you are doing magic.",
+    "effect": "In any order, discard 1 from your trait pile, and play the top of the discard pile. Ignore actions.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "mokoko-village/traits/veiled.webp"
+  },
+  {
+    "id": "mokoko-village/traits/virtuoso",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Virtuoso",
+    "flavor": "If you're going to master an instrument, let it be the master of all instruments.",
+    "effect": "Swap Virtuoso with a face value 3 or higher from an opponent's trait pile. At World's End: Discard this.",
+    "points": 0,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "worlds-end"
+    ],
+    "image": "mokoko-village/traits/virtuoso.webp"
+  },
+  {
+    "id": "mokoko-village/traits/warning-signals",
+    "type": "trait",
+    "set": "mokoko-village",
+    "name": "Warning Signals",
+    "flavor": "Some things should really just have red flags painted on their bodies.",
+    "effect": null,
+    "points": -1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "mokoko-village/traits/warning-signals.webp"
+  }
+]

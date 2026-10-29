@@ -6,14 +6,13 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
-import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-// Checks the real assets/doomlings/cards.json, every set. Decoding is strict, so it also checks required fields.
+// Checks the real card data of every set in assets/doomlings. Decoding is strict, so it also checks required fields.
 class CardDataIntegrityTest {
-    private val dir = File(System.getProperty("cards.dir")!!)
-    private val json = dir.resolve("cards.json").readText()
+    private val dir = CardAssets.dir
+    private val json = CardAssets.cardsJson
     private val cards = decodeCards(json)
 
     // Every string in the data, any field and set, as card id to text.

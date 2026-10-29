@@ -23,7 +23,7 @@ private const val SIDEWAYS = "w891dp-h411dp-land-xxhdpi"
 private const val UNFOLDED = "w900dp-h1200dp-xhdpi"
 
 // The phone on its side gives the compendium the rail layout, where the list scrolls without the header; back upright,
-// the stacked layout's header follows the list. Card names come from assets/doomlings/cards.json.
+// the stacked layout's header follows the list. Card names come from assets/doomlings/classic/cards.json.
 @HiltAndroidTest
 class HeaderAfterRailTest : AtlasBehaviorTest() {
     @Test

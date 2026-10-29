@@ -15,7 +15,7 @@ import org.junit.Test
 import org.robolectric.annotation.Config
 
 // An unfolded foldable: wide enough for a card beside the list, which then has room for two columns of cards and four
-// on its own. Card names come from assets/doomlings/cards.json.
+// on its own. Card names come from assets/doomlings/classic/cards.json.
 @OptIn(ExperimentalTestApi::class)
 @HiltAndroidTest
 @Config(qualifiers = "w852dp-h883dp-xhdpi")
