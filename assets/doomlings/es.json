@@ -99,6 +99,10 @@
     "name": "Tierras Tropicales",
     "effect": "Los jugadores no pueden jugar traits incoloros."
   },
+  "classic/birth-of-life/the-birth-of-life": {
+    "name": "The Birth of Life",
+    "effect": "Establece tu Gene Pool en 5.\nJuega 1 trait en cada turno.\nEstabiliza para terminar tu turno."
+  },
   "classic/catastrophes/ai-takeover": {
     "name": "Dominio de la IA",
     "effect": "-1 Gene Pool\n\nDescarta todas las cartas de tu mano, excepto 1.",
