@@ -43,7 +43,6 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalResources
-import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.liveRegion
@@ -61,7 +60,6 @@ import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.carddetail.LongNameTrait
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.ui.component.BlankCardImages
-import dev.nycocado.atlas.ui.component.CardStack
 import dev.nycocado.atlas.ui.component.CardThumb
 import dev.nycocado.atlas.ui.component.Dock
 import dev.nycocado.atlas.ui.component.colorName
@@ -337,28 +335,6 @@ internal fun CompendiumCard(
                 ?: described
         }
     CardThumb(card.image, card.name, face.colors, description, tilt, onClick, modifier.padding(CardMargin))
-}
-
-// The first variant's art and colors stand for the group.
-@Composable
-private fun GroupStack(
-    group: CompendiumEntry.Group,
-    tilt: Float,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val first = group.variants.first()
-    val colors = first.face()?.colors.orEmpty()
-    CardStack(
-        first.image,
-        groupTitle(group),
-        colors,
-        pluralStringResource(R.plurals.card_group_collapsed, group.variants.size, group.name, group.variants.size),
-        tilt,
-        onClick,
-        stringResource(R.string.card_group_expand),
-        modifier.padding(CardMargin),
-    )
 }
 
 @PreviewLightDark

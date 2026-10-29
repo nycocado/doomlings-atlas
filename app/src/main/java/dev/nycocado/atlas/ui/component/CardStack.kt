@@ -16,10 +16,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.ui.theme.AtlasTheme
-import dev.nycocado.atlas.ui.theme.Radius
-import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
-import dev.nycocado.atlas.ui.theme.sinkingSticker
 
 // A card group: the thumbnail of its first variant with two silhouettes behind the art, and the count in the name.
 // Nothing goes over the art.
@@ -46,13 +43,12 @@ private fun BoxScope.Silhouette(
     tilt: Float,
     sink: Dp,
 ) {
-    val theme = AtlasTheme.colors
     Box(
         Modifier
             .matchParentSize()
             .offset(x, y)
             .rotate(tilt)
-            .sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker),
+            .cardSticker(sink),
     )
 }
 

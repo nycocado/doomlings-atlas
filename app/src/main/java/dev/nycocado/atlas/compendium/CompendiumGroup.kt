@@ -30,8 +30,10 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
+import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.ui.component.BlankCardImages
+import dev.nycocado.atlas.ui.component.CardStack
 import dev.nycocado.atlas.ui.component.describedButton
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
@@ -70,6 +72,7 @@ internal fun OpenGroup(
                     pluralStringResource(R.plurals.card_group_open, count, group.name, count),
                     remember { MutableInteractionSource() },
                     stringResource(R.string.card_group_collapse),
+                    Radius.md,
                     onCollapse,
                 ).padding(horizontal = CardMargin),
             horizontalArrangement = Arrangement.spacedBy(Space.s2),
@@ -105,6 +108,28 @@ internal fun OpenGroup(
             }
         }
     }
+}
+
+// The first variant's art and colors stand for the group.
+@Composable
+internal fun GroupStack(
+    group: CompendiumEntry.Group,
+    tilt: Float,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val first = group.variants.first()
+    val colors = first.face()?.colors.orEmpty()
+    CardStack(
+        first.image,
+        groupTitle(group),
+        colors,
+        pluralStringResource(R.plurals.card_group_collapsed, group.variants.size, group.name, group.variants.size),
+        tilt,
+        onClick,
+        stringResource(R.string.card_group_expand),
+        modifier.padding(CardMargin),
+    )
 }
 
 @Composable

@@ -55,6 +55,13 @@ fun Resources.pointsText(points: Int): String =
         getQuantityString(R.plurals.card_points, points, signed(points))
     }
 
+// The card's body: the sticker look of its art, and of the silhouettes behind a stack.
+@Composable
+internal fun Modifier.cardSticker(sink: Dp): Modifier {
+    val theme = AtlasTheme.colors
+    return sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker)
+}
+
 // One glyph per entry of colors, null drawing the colorless one; ages and catastrophes pass none. What goes behind the
 // art is drawn by `behind`, given how far the pressed card sinks.
 @Composable
@@ -72,7 +79,7 @@ fun CardThumb(
     val theme = AtlasTheme.colors
     val interactions = remember { MutableInteractionSource() }
     val sink = pressSink(interactions, Shadow.sticker)
-    Column(modifier.rotate(tilt).describedButton(description, interactions, onClickLabel, onClick)) {
+    Column(modifier.rotate(tilt).describedButton(description, interactions, onClickLabel, onClick = onClick)) {
         Box(Modifier.fillMaxWidth().aspectRatio(CARD_RATIO)) {
             behind(sink)
             AsyncImage(
@@ -81,7 +88,7 @@ fun CardThumb(
                 modifier =
                     Modifier
                         .matchParentSize()
-                        .sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker)
+                        .cardSticker(sink)
                         .clip(Radius.cardSm),
             )
         }
