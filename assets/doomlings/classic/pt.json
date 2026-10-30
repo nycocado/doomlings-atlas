@@ -479,7 +479,7 @@
   },
   "classic/traits/morality": {
     "name": "Moralidade",
-    "effect": "Para jogar, você deve dar 1 trait positivo da sua pilha de traits a um oponente.",
+    "effect": "Para jogar, você deve dar 1 trait de valor positivo da sua pilha de traits a um oponente.",
     "flavor": "Vou deixar ele ficar com o dinheiro do lanche. É a coisa certa a fazer."
   },
   "classic/traits/nocturnal": {

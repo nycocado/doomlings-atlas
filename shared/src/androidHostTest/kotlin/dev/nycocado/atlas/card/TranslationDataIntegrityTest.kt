@@ -38,11 +38,6 @@ class TranslationDataIntegrityTest {
     private fun setIdsOf(file: File) =
         CardAssets.cardsByFolder[file.parentFile.name].orEmpty().map { it.getValue("id").jsonPrimitive.content }
 
-    private fun fieldsOf(file: File) =
-        Json.parseToJsonElement(file.readText()).jsonObject.mapValues { (_, translation) ->
-            translation.jsonObject.mapValues { (_, value) -> value.jsonPrimitive.content }
-        }
-
     @Test
     fun everyFileIsNamedAfterACardLanguage() {
         assertEquals(
@@ -59,7 +54,11 @@ class TranslationDataIntegrityTest {
     @Test
     fun everyTranslatedIdExistsInCards() {
         files.forEach { file ->
-            assertEquals(emptyList<String>(), (fieldsOf(file).keys - fieldsById.keys).toList(), file.label)
+            assertEquals(
+                emptyList<String>(),
+                (CardAssets.translationsOf(file).keys - fieldsById.keys).toList(),
+                file.label,
+            )
         }
     }
 
@@ -82,14 +81,18 @@ class TranslationDataIntegrityTest {
     @Test
     fun everyFileTranslatesOnlyCardsOfItsSet() {
         files.forEach { file ->
-            assertEquals(emptyList<String>(), (fieldsOf(file).keys - setIdsOf(file).toSet()).toList(), file.label)
+            assertEquals(
+                emptyList<String>(),
+                (CardAssets.translationsOf(file).keys - setIdsOf(file).toSet()).toList(),
+                file.label,
+            )
         }
     }
 
     @Test
     fun everyTranslationHasExactlyTheTextFieldsOfItsCard() {
         files.forEach { file ->
-            val wrong = fieldsOf(file).filter { (id, fields) -> fields.keys != fieldsById[id] }.keys
+            val wrong = CardAssets.translationsOf(file).filter { (id, fields) -> fields.keys != fieldsById[id] }.keys
             assertEquals(emptyList<String>(), wrong.toList(), file.label)
         }
     }
@@ -98,7 +101,7 @@ class TranslationDataIntegrityTest {
     fun noTranslatedFieldIsEmptyOrHasStrayWhitespace() {
         files.forEach { file ->
             val bad =
-                fieldsOf(file).flatMap { (id, fields) ->
+                CardAssets.translationsOf(file).flatMap { (id, fields) ->
                     fields
                         .filter { (_, text) ->
                             text.isEmpty() ||
@@ -127,7 +130,8 @@ class TranslationDataIntegrityTest {
     @Test
     fun everyFileTranslatesEveryCardWithTextOfItsSet() {
         files.forEach { file ->
-            val missing = setIdsOf(file).filter { fieldsById[it].orEmpty().isNotEmpty() } - fieldsOf(file).keys
+            val missing =
+                setIdsOf(file).filter { fieldsById[it].orEmpty().isNotEmpty() } - CardAssets.translationsOf(file).keys
             assertEquals(emptyList<String>(), missing, file.label)
         }
     }
@@ -145,7 +149,7 @@ class TranslationDataIntegrityTest {
 
         files.forEach { file ->
             val missing =
-                fieldsOf(file).flatMap { (id, fields) ->
+                CardAssets.translationsOf(file).flatMap { (id, fields) ->
                     fields.filterKeys { it == "effect" || it == "worldsEnd" }.flatMap { (field, text) ->
                         val english =
                             englishById

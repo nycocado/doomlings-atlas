@@ -129,6 +129,22 @@ class CardDataIntegrityTest {
     }
 
     @Test
+    fun noTextOpensMoreParenthesesThanItCloses() {
+        val translated =
+            CardAssets.translationFiles.flatMap { file ->
+                CardAssets.translationsOf(file).flatMap { (id, fields) ->
+                    fields.values.map { "${file.relativeTo(dir).path} $id" to it }
+                }
+            }
+        assertEquals(
+            emptyList(),
+            (texts + translated)
+                .filter { (_, text) -> text.count { it == '(' } > text.count { it == ')' } }
+                .map { (where, text) -> "$where: $text" },
+        )
+    }
+
+    @Test
     fun noTraitRepeatsAColor() {
         assertEquals(
             emptyList(),

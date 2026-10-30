@@ -46,7 +46,7 @@
     "type": "catastrophe",
     "set": "upgrade",
     "name": "Eyes Open from Behind the Stars",
-    "effect": "-1 Gene Pool.\n\nDiscard 1 from your hand. The player(s) who discarded the lowest face value must also discard 1 from their trait pile.",
+    "effect": "-1 Gene Pool\n\nDiscard 1 from your hand. The player(s) who discarded the lowest face value must also discard 1 from their trait pile.",
     "worldsEnd": "Discard your highest face value trait from your trait pile to the Old God.",
     "image": "upgrade/catastrophes/eyes-open-from-behind-the-stars.webp"
   },
@@ -952,7 +952,7 @@
     "set": "upgrade",
     "name": "Gelatinous",
     "flavor": "Stuck in a real ooze-ooze situation.",
-    "effect": "You may play Gelatinous from your hand when an opponent steals from your hand or trait pile. (If Gelatinous is stolen, discard it.",
+    "effect": "You may play Gelatinous from your hand when an opponent steals from your hand or trait pile. (If Gelatinous is stolen, discard it.)",
     "points": 2,
     "colors": [
       "red"
