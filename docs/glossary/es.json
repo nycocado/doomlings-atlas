@@ -15,6 +15,8 @@
     "Glitterling",
     "Glitterlings",
     "Meaning of Life",
+    "Merchant",
+    "Merchants",
     "Moonling",
     "Moonlings",
     "Mythling",
@@ -24,10 +26,12 @@
     "Techlings",
     "Trait",
     "Traits",
+    "Treasure",
+    "Treasures",
     "Trinket",
     "Trinkets"
   ],
-  "keepNote": "Género de los términos en inglés: el trait, la age, la catastrophe, el Gene Pool, el Meaning of Life, el trinket. En el nombre de una carta, \"Age\" pasa a \"Era\" (Age of Reason: Era de la Razón). Los nombres de cartas citados en el texto quedan como están impresos, en inglés (Vampirism, The Four Horsemen).",
+  "keepNote": "Género de los términos en inglés: el trait, la age, la catastrophe, el Gene Pool, el Meaning of Life, el merchant, el treasure, el trinket. En el nombre de una carta, \"Age\" pasa a \"Era\" (Age of Reason: Era de la Razón). Los nombres de cartas citados en el texto quedan como están impresos, en inglés (Vampirism, The Four Horsemen).",
   "styleNote": "Español latinoamericano neutro, con tuteo (\"tú puedes\", no \"vos\" ni \"usted\"), como habla un jugador en la mesa: registro ligero en el flavor, preciso en el effect. Evita regionalismos de un solo país y juegos de palabras que suenen vulgares en alguna región (un chiste con \"concha\", aunque \"concha\" sea la palabra para shell). Los nombres de trait son palabras cotidianas (Consentidor, Precavido). Los juegos de palabras y referencias pasan a equivalentes latinoamericanos que encajen con el arte (\"¿Frijoles bien picantes? ¡Cuerpo a tierra!\"); sin equivalente, una frase simple. Un personaje puede tener voz propia, como el habla rural de Woody Stems.",
   "interface": [
     {
