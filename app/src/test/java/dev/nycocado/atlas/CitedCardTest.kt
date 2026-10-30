@@ -90,6 +90,18 @@ class CitedCardTest : AtlasBehaviorTest() {
     }
 
     @Test
+    fun tappingBackTwiceWhileACitedCardFadesOutLeavesTheCiterOpen() {
+        launchPastNotice()
+        openAgeOfDracula()
+        tapVampirism()
+        detailOf("Vampirism").assertIsDisplayed()
+
+        tapBackAgainMidFade()
+
+        detailOf("Age of Dracula").assertIsDisplayed()
+    }
+
+    @Test
     fun aCitedCardOpensFromTheTranslatedText() {
         val scenario = launchPastNotice()
         openAgeOfDracula()

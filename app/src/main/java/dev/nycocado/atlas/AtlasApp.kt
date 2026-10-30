@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.edit
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
@@ -38,6 +39,12 @@ data object CompendiumKey : NavKey
 
 @Serializable
 data object AboutKey : NavKey
+
+// A screen fading out keeps its back button, which can fire again after the screen left: it must not take the screen
+// below with it.
+fun NavBackStack<NavKey>.leave(key: NavKey) {
+    if (lastOrNull() == key) removeLastOrNull()
+}
 
 // The one preferences file: the notice flag and the card language. The name is kept so installs keep their flag.
 internal const val APP_PREFS = "atlas"
@@ -73,12 +80,14 @@ fun AtlasApp() {
         )
     // The list and the card share one scene beside each other, which NavDisplay sees as having nothing to go back to:
     // without this, back leaves the app instead of closing the card.
-    BackHandler(enabled = layout.besideCard && backStack.lastOrNull() is CardKey, onBack = cardPane::close)
+    BackHandler(enabled = layout.besideCard && backStack.lastOrNull() is CardKey, onBack = {
+        (backStack.lastOrNull() as? CardKey)?.let(cardPane::close)
+    })
     NavDisplay(
         backStack = backStack,
         // Shows wherever the panes leave room, like around the fold.
         modifier = Modifier.background(AtlasTheme.colors.surface),
-        onBack = { backStack.removeLastOrNull() },
+        onBack = { if (backStack.size > 1) backStack.removeLastOrNull() },
         sceneStrategies = listOf(listDetail),
         entryProvider =
             entryProvider {
@@ -112,7 +121,7 @@ fun AtlasApp() {
                 ) { key ->
                     cardPane.Detail(key, layout) { backStack.add(AboutKey) }
                 }
-                entry<AboutKey> { AboutScreen { backStack.removeLastOrNull() } }
+                entry<AboutKey> { AboutScreen { backStack.leave(AboutKey) } }
             },
     )
 }

@@ -27,6 +27,26 @@ class PhoneBrowsingTest : AtlasBehaviorTest() {
     }
 
     @Test
+    fun tappingBackTwiceWhileACardFadesOutStaysOnTheList() {
+        launchPastNotice()
+        card("Adorable").performClick()
+
+        tapBackAgainMidFade()
+
+        text(R.string.search_placeholder).assertIsDisplayed()
+    }
+
+    @Test
+    fun tappingBackTwiceWhileAboutFadesOutStaysOnTheList() {
+        launchPastNotice()
+        button(R.string.about).performClick()
+
+        tapBackAgainMidFade()
+
+        text(R.string.search_placeholder).assertIsDisplayed()
+    }
+
+    @Test
     fun backFromACardKeepsTheFilterAndTheScroll() {
         val scenario = launchPastNotice()
         compose.onNode(green).performClick()
