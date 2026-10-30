@@ -12,6 +12,7 @@ import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import java.io.File
 
 // The real assets/doomlings, where each set folder holds its cards.json and translations (pt.json, es.json).
@@ -32,6 +33,12 @@ object CardAssets {
     val translationFiles =
         setFolders.flatMap { folder ->
             folder.listFiles { file -> file.extension == "json" && file.name != "cards.json" }.orEmpty().sorted()
+        }
+
+    // Card id to field name to text, of one translation file.
+    fun translationsOf(file: File): Map<String, Map<String, String>> =
+        Json.parseToJsonElement(file.readText()).jsonObject.mapValues { (_, translation) ->
+            translation.jsonObject.mapValues { (_, value) -> value.jsonPrimitive.content }
         }
 
     // A JSON object's keys in file order, repeats included: parsing keeps only the last of two equal keys, and
