@@ -4,7 +4,11 @@
     "type": "age",
     "set": "nightflower-island",
     "name": "Encore",
-    "effect": "After you stabilize to end your turn, you may play 1 if it has this symbol: {World's End}.",
+    "effects": [
+      {
+        "text": "After you stabilize to end your turn, you may play 1 if it has this symbol: {worlds-end}."
+      }
+    ],
     "image": "nightflower-island/ages/encore.webp"
   },
   {
@@ -12,7 +16,11 @@
     "type": "age",
     "set": "nightflower-island",
     "name": "Fall Nightflower Island",
-    "effect": "You may discard any cards from hand. If any were red, draw 1.",
+    "effects": [
+      {
+        "text": "You may discard any cards from hand. If any were red, draw 1."
+      }
+    ],
     "image": "nightflower-island/ages/fall-nightflower-island.webp"
   },
   {
@@ -20,7 +28,11 @@
     "type": "age",
     "set": "nightflower-island",
     "name": "Shade Trees",
-    "effect": "When stabilizing, use the Gene Pool on your left or right.",
+    "effects": [
+      {
+        "text": "When stabilizing, use the Gene Pool on your left or right."
+      }
+    ],
     "image": "nightflower-island/ages/shade-trees.webp"
   },
   {
@@ -28,7 +40,11 @@
     "type": "age",
     "set": "nightflower-island",
     "name": "Small Age",
-    "effect": "If you play a face value 1, you may set your Gene Pool to 6.",
+    "effects": [
+      {
+        "text": "If you play a face value 1, you may set your Gene Pool to 6."
+      }
+    ],
     "image": "nightflower-island/ages/small-age.webp"
   },
   {
@@ -36,7 +52,11 @@
     "type": "age",
     "set": "nightflower-island",
     "name": "Spring Nightflower Island",
-    "effect": "Draw 2. Pass 1 green from hand left.",
+    "effects": [
+      {
+        "text": "Draw 2. Pass 1 green from hand left."
+      }
+    ],
     "image": "nightflower-island/ages/spring-nightflower-island.webp"
   },
   {
@@ -44,7 +64,11 @@
     "type": "age",
     "set": "nightflower-island",
     "name": "Summer Nightflower Island",
-    "effect": "Draw 1. If purple, repeat.",
+    "effects": [
+      {
+        "text": "Draw 1. If purple, repeat."
+      }
+    ],
     "image": "nightflower-island/ages/summer-nightflower-island.webp"
   },
   {
@@ -52,7 +76,11 @@
     "type": "age",
     "set": "nightflower-island",
     "name": "Winter Nightflower Island",
-    "effect": "You may discard 1 blue from hand to draw 2.",
+    "effects": [
+      {
+        "text": "You may discard 1 blue from hand to draw 2."
+      }
+    ],
     "image": "nightflower-island/ages/winter-nightflower-island.webp"
   },
   {
@@ -61,7 +89,8 @@
     "set": "nightflower-island",
     "name": "Arbiter",
     "flavor": "Roars, soars, and settles scores.",
-    "effect": "+1 Gene Pool",
+    "effects": [],
+    "genePool": 1,
     "points": 3,
     "colors": [
       "green"
@@ -79,7 +108,12 @@
     "set": "nightflower-island",
     "name": "Bangs",
     "flavor": "Banging hair style",
-    "effect": "To play, you must discard: 2 blues from hand OR 1 blue from your trait pile.",
+    "effects": [
+      {
+        "text": "To play, you must discard: 2 blues from hand OR 1 blue from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue"
@@ -95,7 +129,13 @@
     "set": "nightflower-island",
     "name": "Blundering",
     "flavor": "This trait is supposed to be \"Plundering.\" Whoops!",
-    "effect": "Give 1 from your trait pile to an opponent OR swap Blundering with another trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Give 1 from your trait pile to an opponent OR swap Blundering with another trait."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -113,7 +153,12 @@
     "set": "nightflower-island",
     "name": "Buoyant",
     "flavor": "This might open a can of worms, which would be delicious.",
-    "effect": "Play up to 3 traits. Ignore all but 1 action.",
+    "effects": [
+      {
+        "text": "Play up to 3 traits. Ignore all but 1 action ({action})."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [
       "blue"
@@ -132,7 +177,17 @@
     "set": "nightflower-island",
     "name": "Collective",
     "flavor": "There's something fishy about this shark...",
-    "effect": "+1 Gene Pool. At World's End: Play up to 3 traits with a face value of 1 or lower. Ignore actions.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Play up to 3 traits with a face value of 1 or lower."
+      },
+      {
+        "kind": "note",
+        "text": "Ignore actions ({action})."
+      }
+    ],
+    "genePool": 1,
     "points": 1,
     "colors": [
       "blue"
@@ -151,7 +206,12 @@
     "set": "nightflower-island",
     "name": "Consumed",
     "flavor": "It's more scared of you than you are of it. That's why it's eating you.",
-    "effect": "To play, you must suppress 2 positive traits in your trait pile.",
+    "effects": [
+      {
+        "text": "To play, you must suppress 2 positive traits in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 8,
     "colors": [
       "purple"
@@ -171,7 +231,13 @@
     "set": "nightflower-island",
     "name": "Corporeal",
     "flavor": null,
-    "effect": "Opponents cannot play dominants on their next turn. But you must remind them.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Opponents cannot play dominants on their next turn. But you must remind them."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -191,7 +257,13 @@
     "set": "nightflower-island",
     "name": "Decrepit",
     "flavor": "Enjoy your youth. Someday your eyes will fall out too.",
-    "effect": "Play at any time: Choose a color, then reveal the top of the trait deck. If it matches, draw it.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "Play at any time: Choose a color, then reveal the top of the trait deck. If it matches, draw it."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "green"
@@ -212,7 +284,13 @@
     "set": "nightflower-island",
     "name": "Disbanded",
     "flavor": "...Until the big reunion tour.",
-    "effect": "At World's End: Discard this and add 4 to your final score.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Discard this and add 4 to your final score."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "blue",
@@ -234,7 +312,13 @@
     "set": "nightflower-island",
     "name": "Ennui",
     "flavor": "If life passes you by, that's on you. Although phonetically it's \"on-WEE\".",
-    "effect": "At World's End: Return all your effectless traits to hand. +4 for each trait returned this way.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Return all your effectless traits to hand. +4 for each trait returned this way."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "blue"
@@ -253,7 +337,13 @@
     "set": "nightflower-island",
     "name": "Expressive",
     "flavor": null,
-    "effect": "Opponents cannot swap or steal traits on their next turn. But you must remind them.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Opponents cannot swap or steal traits on their next turn. But you must remind them."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -273,7 +363,12 @@
     "set": "nightflower-island",
     "name": "Grim",
     "flavor": "This town is big enough for the two of us, but I'm gettin' rid of you all the same.",
-    "effect": "Start of your turns: Reveal 2 of the same color. Suppress 1 of them.",
+    "effects": [
+      {
+        "text": "Start of your turns: Reveal 2 of the same color. Suppress 1 of them."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [],
     "dominant": true,
@@ -291,7 +386,13 @@
     "set": "nightflower-island",
     "name": "Heeled",
     "flavor": "Sometimes you need to put your foot down.",
-    "effect": "Discard a negative in any trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard a negative in any trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -307,7 +408,13 @@
     "set": "nightflower-island",
     "name": "Honor",
     "flavor": "I'm not a thief, I'm a pirate. Now give me that.",
-    "effect": "Choose an opponent. They choose to give you: 2 cards from hand OR 1 random card.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Choose an opponent. They choose to give you: 2 cards from hand OR 1 random card."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -325,7 +432,12 @@
     "set": "nightflower-island",
     "name": "Intrepid",
     "flavor": "The horizon ain't the end. It's the invitation.",
-    "effect": "If an effect has 2 choices with an 'OR', you may do both.",
+    "effects": [
+      {
+        "text": "If an effect has 2 choices with an 'OR', you may do both."
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [
       "red"
@@ -341,7 +453,12 @@
     "set": "nightflower-island",
     "name": "Kidney",
     "flavor": "...with a haunting darkness.",
-    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [],
     "dominant": false,
@@ -359,7 +476,13 @@
     "set": "nightflower-island",
     "name": "Mischievous",
     "flavor": "It's actually Mister Chievous.",
-    "effect": "At World's End: Discard 1 from your trait pile. Count its face value towards your score.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Discard 1 from your trait pile. Count its face value towards your score."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -378,7 +501,13 @@
     "set": "nightflower-island",
     "name": "Mucus Traps",
     "flavor": "It's snot. What it looks like.",
-    "effect": "In any order: Stabilize to 3. Draw 2.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "In any order: Stabilize to 3. Draw 2."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green"
@@ -397,7 +526,16 @@
     "set": "nightflower-island",
     "name": "Neglected",
     "flavor": "Don't worry, I'll still love you forever.",
-    "effect": "Play 1. If a trait is discarded from your trait pile, you may return it and then discard Neglected.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Play 1."
+      },
+      {
+        "text": "If a trait is discarded from your trait pile, you may return it and then discard Neglected."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "blue"
@@ -415,7 +553,13 @@
     "set": "nightflower-island",
     "name": "Ohmpopo",
     "flavor": "Ohm is where the popo is.",
-    "effect": "-1 Gene Pool. Draw 3 and do not stabilize this turn.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 3 and do not stabilize this turn."
+      }
+    ],
+    "genePool": -1,
     "points": 3,
     "colors": [
       "blue"
@@ -435,7 +579,13 @@
     "set": "nightflower-island",
     "name": "Performative",
     "flavor": null,
-    "effect": "Opponents cannot play a face value 4 or higher on their next turn. But you must remind them.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Opponents cannot play a face value 4 or higher on their next turn. But you must remind them."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -455,7 +605,12 @@
     "set": "nightflower-island",
     "name": "Propeller Fins",
     "flavor": "Requires eating 50 pounds of plankton to fully power for 15 minutes.",
-    "effect": "Attach to a trait with no Class. Host is now a face value 1 Fish.",
+    "effects": [
+      {
+        "text": "Attach to a trait with no Class. Host is now a face value 1 Fish ({fish})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue",
@@ -477,7 +632,12 @@
     "set": "nightflower-island",
     "name": "Sea Shanty",
     "flavor": "Yo ho ho, he he he. Two more dominants for me he he.",
-    "effect": "Gain 2 additional dominant slots.",
+    "effects": [
+      {
+        "text": "Gain 2 additional dominant slots."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "purple"
@@ -493,7 +653,13 @@
     "set": "nightflower-island",
     "name": "Silence",
     "flavor": null,
-    "effect": "Opponents ignore actions on their next turn. But you must remind them.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Opponents ignore actions ({action}) on their next turn. But you must remind them."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -513,7 +679,13 @@
     "set": "nightflower-island",
     "name": "Skybound",
     "flavor": "The sky is the best shortcut I know.",
-    "effect": "At any time: Reveal 2 blues to send Skybound flying from hand to an opponent's trait pile.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "At any time: Reveal 2 blues to send Skybound flying from hand to an opponent's trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [],
     "dominant": false,
@@ -529,7 +701,12 @@
     "set": "nightflower-island",
     "name": "Swarm",
     "flavor": "We're here for the new shell phone.",
-    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "green"
@@ -548,7 +725,13 @@
     "set": "nightflower-island",
     "name": "Swashbuckler",
     "flavor": "A pirate with a better PR team.",
-    "effect": "Increase your Gene Pool by 1 OR play 1.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Increase your Gene Pool by 1 OR play 1."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -564,7 +747,13 @@
     "set": "nightflower-island",
     "name": "Swindler",
     "flavor": "I've never seen a treasure I couldn't lie my way into.",
-    "effect": "Give an Opponent 2 from hand OR 1 from the discard pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Give an Opponent 2 from hand OR 1 from the discard pile."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green"
@@ -582,7 +771,8 @@
     "set": "nightflower-island",
     "name": "Tubular",
     "flavor": "There's a lot to sea.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -599,7 +789,12 @@
     "set": "nightflower-island",
     "name": "Umpples",
     "flavor": "You can't resist the umppleness. Which is unfortunate because they are toxic.",
-    "effect": "-2 Gene Pool\n\nStart of your turns: Discard 1 to draw 3 OR draw 1 and say hi to Umpples.",
+    "effects": [
+      {
+        "text": "Start of your turns: Discard 1 to draw 3 OR draw 1 and say hi to Umpples."
+      }
+    ],
+    "genePool": -2,
     "points": 2,
     "colors": [
       "green"
@@ -617,7 +812,16 @@
     "set": "nightflower-island",
     "name": "Unboxed",
     "flavor": "You shouldn't have!",
-    "effect": "Reveal 1 from hand. Friends suppress 1 from hand of the revealed color. (Into their trait pile.)",
+    "effects": [
+      {
+        "text": "Reveal 1 from hand. Friends suppress 1 from hand of the revealed color."
+      },
+      {
+        "kind": "note",
+        "text": "(Into their trait pile.)"
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green",
@@ -640,7 +844,13 @@
     "set": "nightflower-island",
     "name": "Ungrounded",
     "flavor": "I think my actions and why I was grounded are somehow connected...",
-    "effect": "Reveal 3 different colors to play at any time.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "Reveal 3 different colors to play at any time."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -658,7 +868,13 @@
     "set": "nightflower-island",
     "name": "Versatile",
     "flavor": "The only thing I can't do is anything else.",
-    "effect": "At World's End: Play 1 and discard this. Ignore actions.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Play 1 and discard this. Ignore actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -674,7 +890,13 @@
     "set": "nightflower-island",
     "name": "Whiskers",
     "flavor": "The hairs on my face are telling me something.",
-    "effect": "If Whiskers is discarded from hand by an action, you may play it instead.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "If Whiskers is discarded from hand by an action ({action}), you may play it instead."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "red"
@@ -692,7 +914,12 @@
     "set": "nightflower-island",
     "name": "Wonky",
     "flavor": "If you want to see bolded text, simply look below and view it.",
-    "effect": "Create a new effect. If your opponents approve it, use it and subtract 4 from your final score.",
+    "effects": [
+      {
+        "text": "Create a new effect.\n\nIf your opponents approve it, use it and subtract 4 from your final score."
+      }
+    ],
+    "genePool": null,
     "points": 6,
     "colors": [
       "purple"

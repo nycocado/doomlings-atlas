@@ -8,7 +8,7 @@ class CardLibraryTest {
         CardLibrary.decode(
             """
             [{"id": "classic/traits/adorable", "type": "trait", "set": "classic", "name": "Adorable",
-              "flavor": "Rub my belly.", "effect": null, "points": 4, "colors": ["purple"],
+              "flavor": "Rub my belly.", "effects": [], "genePool": null, "points": 4, "colors": ["purple"],
               "dominant": false, "subspecies": [], "icons": [],
               "image": "classic/traits/adorable.webp"},
              {"id": "classic/gene-pools/blue", "type": "gene-pool", "set": "classic", "image": "b.jpg"}]

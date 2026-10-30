@@ -2,6 +2,7 @@ package dev.nycocado.atlas.card
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonNull
+import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
@@ -15,20 +16,35 @@ import kotlin.test.assertEquals
 class TranslationDataIntegrityTest {
     private val cardsJson = CardAssets.cardsJson
 
-    // Card id to the text fields it has, with the names of cards.json. Only the cards that can be translated.
+    // Card id to the text fields a translation has, with the names of the translation files: a translation still writes
+    // the effects of a card as one flat `effect` (Gene Pool line included), and a Catastrophe's World's End as `worldsEnd`.
     private val fieldsById =
         Json.parseToJsonElement(cardsJson).jsonArray.associate { card ->
             val fields = card.jsonObject
             fields.getValue("id").jsonPrimitive.content to
-                (
-                    listOf("name", "effect", "flavor", "worldsEnd").filter {
-                        fields[it].let { v ->
-                            v != null &&
-                                v !is JsonNull
-                        }
+                buildSet {
+                    if (fields["name"] != null) add("name")
+                    if (effectsOf(fields).isNotEmpty() || fields["genePool"].let { it != null && it !is JsonNull }) {
+                        add("effect")
                     }
-                ).toSet()
+                    if (fields["flavor"].let { it != null && it !is JsonNull }) add("flavor")
+                    if (fields.getValue("type").jsonPrimitive.content == "catastrophe") add("worldsEnd")
+                }
         }
+
+    private fun effectsOf(card: JsonObject) = card["effects"]?.jsonArray.orEmpty().map { it.jsonObject }
+
+    // The English text a translation field stands for.
+    private fun englishText(
+        card: JsonObject,
+        field: String,
+    ): String {
+        val isWorldsEnd = { effect: JsonObject -> effect["kind"]?.jsonPrimitive?.content == "worlds-end" }
+        val catastrophe = card.getValue("type").jsonPrimitive.content == "catastrophe"
+        return effectsOf(card)
+            .filter { !catastrophe || isWorldsEnd(it) == (field == "worldsEnd") }
+            .joinToString("\n\n") { it.getValue("text").jsonPrimitive.content }
+    }
 
     private val files = CardAssets.translationFiles
 
@@ -151,11 +167,7 @@ class TranslationDataIntegrityTest {
             val missing =
                 CardAssets.translationsOf(file).flatMap { (id, fields) ->
                     fields.filterKeys { it == "effect" || it == "worldsEnd" }.flatMap { (field, text) ->
-                        val english =
-                            englishById
-                                .getValue(id)
-                                .getValue(field)
-                                .jsonPrimitive.content
+                        val english = englishText(englishById.getValue(id), field)
                         names.filter { english.cites(it) && !text.cites(it) }.map { "$id.$field: $it" }
                     }
                 }

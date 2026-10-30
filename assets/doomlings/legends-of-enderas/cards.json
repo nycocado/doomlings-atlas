@@ -4,7 +4,11 @@
     "type": "age",
     "set": "legends-of-enderas",
     "name": "Age of Stability",
-    "effect": "You may stabilize to 5 immediately.",
+    "effects": [
+      {
+        "text": "You may stabilize to 5 immediately."
+      }
+    ],
     "image": "legends-of-enderas/ages/age-of-stability.webp"
   },
   {
@@ -12,7 +16,11 @@
     "type": "age",
     "set": "legends-of-enderas",
     "name": "Age of the First Ferns",
-    "effect": "If you have 7 or fewer traits in your trait pile, you may play 1 effectless now.",
+    "effects": [
+      {
+        "text": "If you have 7 or fewer traits in your trait pile, you may play 1 effectless now."
+      }
+    ],
     "image": "legends-of-enderas/ages/age-of-the-first-ferns.webp"
   },
   {
@@ -20,7 +28,11 @@
     "type": "age",
     "set": "legends-of-enderas",
     "name": "Age of the Last Dragons",
-    "effect": "Draw 3.\n\nDiscard them OR all other cards in your hand.",
+    "effects": [
+      {
+        "text": "Draw 3.\n\nDiscard them OR all other cards in your hand."
+      }
+    ],
     "image": "legends-of-enderas/ages/age-of-the-last-dragons.webp"
   },
   {
@@ -28,7 +40,11 @@
     "type": "age",
     "set": "legends-of-enderas",
     "name": "Carbon Boom",
-    "effect": "Draw 2 from the top of the discard pile.\n\n(If empty, draw from the trait deck.)",
+    "effects": [
+      {
+        "text": "Draw 2 from the top of the discard pile.\n\n(If empty, draw from the trait deck.)"
+      }
+    ],
     "image": "legends-of-enderas/ages/carbon-boom.webp"
   },
   {
@@ -36,7 +52,11 @@
     "type": "age",
     "set": "legends-of-enderas",
     "name": "Industrial Revolution",
-    "effect": "On your turn:\nIf you play an attachment, you may play another trait.",
+    "effects": [
+      {
+        "text": "On your turn:\nIf you play an attachment ({attachment}), you may play another trait."
+      }
+    ],
     "image": "legends-of-enderas/ages/industrial-revolution.webp"
   },
   {
@@ -44,7 +64,11 @@
     "type": "age",
     "set": "legends-of-enderas",
     "name": "Open Portals",
-    "effect": "Discard 2 from hand, or 1 at random.\n\n(If this effect empties your hand, draw 3.)",
+    "effects": [
+      {
+        "text": "Discard 2 from hand, or 1 at random.\n\n(If this effect empties your hand, draw 3.)"
+      }
+    ],
     "image": "legends-of-enderas/ages/open-portals.webp"
   },
   {
@@ -52,7 +76,11 @@
     "type": "age",
     "set": "legends-of-enderas",
     "name": "Return of the Ancients",
-    "effect": "Instead of taking your turn, you may draw and play 1 from the top 4 of the discard pile.",
+    "effects": [
+      {
+        "text": "Instead of taking your turn, you may draw and play 1 from the top 4 of the discard pile."
+      }
+    ],
     "image": "legends-of-enderas/ages/return-of-the-ancients.webp"
   },
   {
@@ -60,7 +88,11 @@
     "type": "age",
     "set": "legends-of-enderas",
     "name": "Thousand-Year Slumber",
-    "effect": "Draw 1.\n\nIf you play Slumbering this age, you may draw 4 and play another trait.",
+    "effects": [
+      {
+        "text": "Draw 1.\n\nIf you play Slumbering this age, you may draw 4 and play another trait."
+      }
+    ],
     "image": "legends-of-enderas/ages/thousand-year-slumber.webp"
   },
   {
@@ -68,8 +100,16 @@
     "type": "catastrophe",
     "set": "legends-of-enderas",
     "name": "Anoxic Event",
-    "effect": "-1 Gene Pool\n\nDiscard all face value 3 or higher from hand, then stabilize.",
-    "worldsEnd": "-7 if your trait count is higher than 20.",
+    "effects": [
+      {
+        "text": "Discard all face value 3 or higher from hand, then stabilize."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "-7 if your trait count is higher than 20."
+      }
+    ],
+    "genePool": -1,
     "image": "legends-of-enderas/catastrophes/anoxic-event.webp"
   },
   {
@@ -77,8 +117,16 @@
     "type": "catastrophe",
     "set": "legends-of-enderas",
     "name": "Discovery of Magic",
-    "effect": "-1 Gene Pool\n\nDiscard 3 from hand and stabilize. Cannot discard Mythlings.",
-    "worldsEnd": "If you hold any Mythlings, add their face value to your final score.",
+    "effects": [
+      {
+        "text": "Discard 3 from hand and stabilize. Cannot discard Mythlings ({mythling})."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "If you hold any Mythlings ({mythling}), add their face value to your final score."
+      }
+    ],
+    "genePool": -1,
     "image": "legends-of-enderas/catastrophes/discovery-of-magic.webp"
   },
   {
@@ -86,8 +134,16 @@
     "type": "catastrophe",
     "set": "legends-of-enderas",
     "name": "Planned Obsolescence",
-    "effect": "-1 Gene Pool\n\nDiscard 1 from hand for each Techling in your trait pile. Then draw 1 for each card you discard.",
-    "worldsEnd": "Discard 2 attachments in your trait pile.",
+    "effects": [
+      {
+        "text": "Discard 1 from hand for each Techling ({techling}) in your trait pile. Then draw 1 for each card you discard."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "Discard 2 attachments in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "legends-of-enderas/catastrophes/planned-obsolescence.webp"
   },
   {
@@ -95,8 +151,16 @@
     "type": "catastrophe",
     "set": "legends-of-enderas",
     "name": "Titan's Call",
-    "effect": "-1 Gene Pool\n\nIf you have any dominants in your trait pile, discard all but 1 from hand.",
-    "worldsEnd": "+3 if you have a dominant Mythling, Dinoling, or Techling in your trait pile.\n\n+6 if you have 2.",
+    "effects": [
+      {
+        "text": "If you have any dominants in your trait pile, discard all but 1 from hand."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "+3 if you have a dominant Mythling ({mythling}), Dinoling ({dinoling}), or Techling ({techling}) in your trait pile.\n\n+6 if you have 2."
+      }
+    ],
+    "genePool": -1,
     "image": "legends-of-enderas/catastrophes/titan-s-call.webp"
   },
   {
@@ -105,7 +169,17 @@
     "set": "legends-of-enderas",
     "name": "Actuator",
     "flavor": "I'm gonna get U.",
-    "effect": "You may remove 1 attachment from your trait pile and attach it to a trait in any trait pile. (Excluding dominants.)",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "You may remove 1 attachment from your trait pile and attach it to a trait in any trait pile."
+      },
+      {
+        "kind": "note",
+        "text": "(Excluding dominants.)"
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -125,7 +199,16 @@
     "set": "legends-of-enderas",
     "name": "Alchemical",
     "flavor": "Ladies and gentlemen, Mr. Al Chemical!",
-    "effect": "If Alchemical is discarded from hand, announce it! Players resolve all effects. Then opponents discard half their hand at random. (Round down.)",
+    "effects": [
+      {
+        "text": "If Alchemical is discarded from hand, announce it!\n\nPlayers resolve all effects.\n\nThen opponents discard half their hand at random."
+      },
+      {
+        "kind": "note",
+        "text": "(Round down.)"
+      }
+    ],
+    "genePool": null,
     "points": -4,
     "colors": [
       "red"
@@ -145,7 +228,12 @@
     "set": "legends-of-enderas",
     "name": "Animatronic",
     "flavor": "ROBOT DINOSAURS! Also, PIZZA!",
-    "effect": "Attach. If host is:\nBlue: +1 for each Dinoling in your trait pile.\nGreen: +1 for each Techling in your trait pile.",
+    "effects": [
+      {
+        "text": "Attach. If host is:\nBlue: +1 for each Dinoling ({dinoling}) in your trait pile.\nGreen: +1 for each Techling ({techling}) in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue",
@@ -168,7 +256,12 @@
     "set": "legends-of-enderas",
     "name": "Automaton",
     "flavor": "Processing your command, m'lord.",
-    "effect": "+3 if Automaton has an attachment.",
+    "effects": [
+      {
+        "text": "+3 if Automaton has an attachment."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue",
@@ -190,7 +283,16 @@
     "set": "legends-of-enderas",
     "name": "Back Propagation",
     "flavor": "If at first you don't succeed, or even if you do, try again.",
-    "effect": "Attach. Host's face value is now 2. At World's End: You may move this attachment to another trait in your trait pile.",
+    "effects": [
+      {
+        "text": "Attach. Host's face value is now 2."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "You may move this attachment to another trait in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -212,7 +314,12 @@
     "set": "legends-of-enderas",
     "name": "Bionic Leg",
     "flavor": "I'm saving up for another one. Until then, I'm stuck with this pesky robot limb.",
-    "effect": "Attach. Host's face value is now 4.",
+    "effects": [
+      {
+        "text": "Attach. Host's face value is now 4."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -233,7 +340,8 @@
     "set": "legends-of-enderas",
     "name": "Biotech",
     "flavor": "The science of nurturing nature.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -251,7 +359,17 @@
     "set": "legends-of-enderas",
     "name": "Carnivore",
     "flavor": "A healthy, balanced meal includes meat with two sides of meat.",
-    "effect": "Discard all Dinolings from your trait pile. (Excluding this one.)",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard all Dinolings ({dinoling}) from your trait pile."
+      },
+      {
+        "kind": "note",
+        "text": "(Excluding this one.)"
+      }
+    ],
+    "genePool": null,
     "points": 6,
     "colors": [
       "green"
@@ -271,7 +389,8 @@
     "set": "legends-of-enderas",
     "name": "Cavalier",
     "flavor": "Any harm I cause is joustified!",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -287,7 +406,8 @@
     "set": "legends-of-enderas",
     "name": "Chrome",
     "flavor": "Smooth, shiny, and totally a choice.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 4,
     "colors": [
       "blue"
@@ -305,7 +425,16 @@
     "set": "legends-of-enderas",
     "name": "Chronomancer",
     "flavor": "So many moves to make, but who has the time? Oh, wait, I do.",
-    "effect": "Play another trait. At World's End: Take another turn.",
+    "effects": [
+      {
+        "text": "Play another trait."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "Take another turn."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -325,7 +454,16 @@
     "set": "legends-of-enderas",
     "name": "Colossal",
     "flavor": "There's always a bigger dino. And that's me!",
-    "effect": "To play, you must discard a face value 5 or higher from your trait pile. Cannot be removed from your trait pile.",
+    "effects": [
+      {
+        "text": "To play, you must discard a face value 5 or higher from your trait pile."
+      },
+      {
+        "kind": "note",
+        "text": "Cannot be removed from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 7,
     "colors": [
       "green"
@@ -343,7 +481,12 @@
     "set": "legends-of-enderas",
     "name": "Corroded",
     "flavor": "A victim of time's gentle rust.",
-    "effect": "Attach to a trait in any trait pile, then play another trait.",
+    "effects": [
+      {
+        "text": "Attach to a trait in any trait pile, then play another trait."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "red"
@@ -363,7 +506,13 @@
     "set": "legends-of-enderas",
     "name": "Cryonics",
     "flavor": "Preserving what we love. By freezing it.",
-    "effect": "Attach. When a trait enters your trait pile, you may attach Cryonics to it. Host's face value is now 1.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "Attach. When a trait enters your trait pile, you may attach Cryonics to it.\n\nHost's face value is now 1."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -385,7 +534,12 @@
     "set": "legends-of-enderas",
     "name": "Cursed",
     "flavor": "I broke a mirror under a witch's ladder last Friday the 13th.",
-    "effect": "Attach. If Cursed is discarded from hand or trait pile, attach it to an opponent's trait.",
+    "effects": [
+      {
+        "text": "Attach. If Cursed is discarded from hand or trait pile, attach it to an opponent's trait."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [],
     "dominant": false,
@@ -404,7 +558,8 @@
     "set": "legends-of-enderas",
     "name": "Cursorial",
     "flavor": "Legs for days.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -422,7 +577,8 @@
     "set": "legends-of-enderas",
     "name": "Cyclopean",
     "flavor": "Eye can't see at knight.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -440,7 +596,12 @@
     "set": "legends-of-enderas",
     "name": "Dark Magic",
     "flavor": "Sometimes you gotta sacrifice a couple of eggs to materialize an omelet.",
-    "effect": "On your turn: You may discard Dark Magic from hand when you play an effectless. If you do, play an action in any trait pile.",
+    "effects": [
+      {
+        "text": "On your turn: You may discard Dark Magic from hand when you play an effectless. If you do, play an action ({action}) in any trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -3,
     "colors": [
       "purple"
@@ -460,7 +621,13 @@
     "set": "legends-of-enderas",
     "name": "Destructive",
     "flavor": "Oh no! These flowers are stuck in the ground! I better help!",
-    "effect": "Discard 2 from hand at random. Opponents discard all effectless from hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard 2 from hand at random.\n\nOpponents discard all effectless from hand."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "red"
@@ -481,7 +648,13 @@
     "set": "legends-of-enderas",
     "name": "Dinowrangler",
     "flavor": "Git along, lil steggy!",
-    "effect": "Play 1 Dinoling from the discard pile. Play its action.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Play 1 Dinoling ({dinoling}) from the discard pile. Play its action ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green"
@@ -501,7 +674,15 @@
     "set": "legends-of-enderas",
     "name": "Enchanted",
     "flavor": "A sword can make someone a hero, a villain, or, like, 40% cooler.",
-    "effect": "Attach. +3 if host is a Mythling. If Enchanted is discarded from hand, you may attach to a dominant.",
+    "effects": [
+      {
+        "text": "Attach. +3 if host is a Mythling ({mythling})."
+      },
+      {
+        "text": "If Enchanted is discarded from hand, you may attach to a dominant."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -523,7 +704,12 @@
     "set": "legends-of-enderas",
     "name": "Enraptured",
     "flavor": "Check out my following.",
-    "effect": "If Enraptured is discarded from hand, you may steal a face value 1 from an opponent's trait pile.",
+    "effects": [
+      {
+        "text": "If Enraptured is discarded from hand, you may steal a face value 1 from an opponent's trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "purple"
@@ -543,7 +729,12 @@
     "set": "legends-of-enderas",
     "name": "Entangled",
     "flavor": "No, YOU'RE not locally real, man.",
-    "effect": "Start of your turn: You may discard Entangled from hand. If you do, discard 1 from hand, then draw 1.",
+    "effects": [
+      {
+        "text": "Start of your turn: You may discard Entangled from hand. If you do, discard 1 from hand, then draw 1."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "green"
@@ -563,7 +754,8 @@
     "set": "legends-of-enderas",
     "name": "Fiddlehead",
     "flavor": "Call me a Fiddlehead again and I may get violin.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green"
@@ -581,7 +773,12 @@
     "set": "legends-of-enderas",
     "name": "Filament",
     "flavor": "I just got an idea. It's going to be lit.",
-    "effect": "Attach. +3 for each dominant in your trait pile of the same color as the host.",
+    "effects": [
+      {
+        "text": "Attach. +3 for each dominant in your trait pile of the same color as the host."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -600,7 +797,8 @@
     "set": "legends-of-enderas",
     "name": "Fizzled",
     "flavor": "A key component for the worst potions and best soft drinks.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -618,7 +816,12 @@
     "set": "legends-of-enderas",
     "name": "Foresight",
     "flavor": "My friends, the future is bright. Mainly due to the nuclear bomb.",
-    "effect": "At any time: You may discard Foresight from hand to peek at the next age.",
+    "effects": [
+      {
+        "text": "At any time: You may discard Foresight from hand to peek at the next age."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "green"
@@ -638,7 +841,16 @@
     "set": "legends-of-enderas",
     "name": "Fossil Fueled",
     "flavor": "Extinction is only the beginning.",
-    "effect": "When you attach a card to Fossil Fueled, you may play 1 from the top 5 of the discard pile. Ignore its action.",
+    "effects": [
+      {
+        "text": "When you attach a card to Fossil Fueled, you may play 1 from the top 5 of the discard pile."
+      },
+      {
+        "kind": "note",
+        "text": "Ignore its action ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": false,
@@ -655,7 +867,12 @@
     "set": "legends-of-enderas",
     "name": "Gentle",
     "flavor": "Oops, I think I stepped on something.",
-    "effect": "To play, you must discard a face value 2 or higher from your trait pile. Opponents discard 1 from their trait pile with a higher face value.",
+    "effects": [
+      {
+        "text": "To play, you must discard a face value 2 or higher from your trait pile. Opponents discard 1 from their trait pile with a higher face value."
+      }
+    ],
+    "genePool": null,
     "points": 6,
     "colors": [
       "purple"
@@ -673,7 +890,12 @@
     "set": "legends-of-enderas",
     "name": "Ghostly",
     "flavor": "The ghost with the most.",
-    "effect": "If Ghostly is discarded from hand, play it immediately. If discarded from trait pile, pass it to an opponent's hand.",
+    "effects": [
+      {
+        "text": "If Ghostly is discarded from hand, play it immediately. If discarded from trait pile, pass it to an opponent's hand."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [],
     "dominant": false,
@@ -691,7 +913,12 @@
     "set": "legends-of-enderas",
     "name": "Gizmo",
     "flavor": "It does whatever you want it to do! Or whatever it wants to do! Or whatever!",
-    "effect": "Attach. Choose 1.\nIf host is:\nGreen: Preview the next age.\nPurple: Stabilize to 6.\nBlue: Draw 2.\nRed: +2\nThen play another trait.",
+    "effects": [
+      {
+        "text": "Attach. Choose 1.\nIf host is:\nGreen: Preview the next age.\nPurple: Stabilize to 6.\nBlue: Draw 2.\nRed: +2\nThen play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -711,7 +938,13 @@
     "set": "legends-of-enderas",
     "name": "Herbivore",
     "flavor": "You should try eating things that don't run away. Much easier.",
-    "effect": "You may play Herbivore after you stabilize if the top of the discard pile is green. Then draw 1.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Herbivore after you stabilize if the top of the discard pile is green. Then draw 1."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -729,7 +962,12 @@
     "set": "legends-of-enderas",
     "name": "Hollow Bones",
     "flavor": "I'm not fat. I'm just hollow-boned.",
-    "effect": "To play, you must discard 1 positive trait from your trait pile. At World's End: Choose a color. Opponents discard 2 from their trait pile of that color.",
+    "effects": [
+      {
+        "text": "To play, you must discard 1 positive trait from your trait pile. At World's End: Choose a color. Opponents discard 2 from their trait pile of that color."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -749,7 +987,12 @@
     "set": "legends-of-enderas",
     "name": "Ichor",
     "flavor": "Not recommended for mere mortals.",
-    "effect": "Start of your turn: You may discard Ichor from hand to draw 2.",
+    "effects": [
+      {
+        "text": "Start of your turn: You may discard Ichor from hand to draw 2."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "blue"
@@ -769,7 +1012,12 @@
     "set": "legends-of-enderas",
     "name": "Imprinting",
     "flavor": "Nice to meet you, I love you, let's stay together forever.",
-    "effect": "Value is equal to the top card of the discard pile.",
+    "effects": [
+      {
+        "text": "Value is equal to the top card of the discard pile."
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "purple"
@@ -789,7 +1037,13 @@
     "set": "legends-of-enderas",
     "name": "Incantor",
     "flavor": "You're going to regret bullying me after I read my 12,000 line incantation.",
-    "effect": "If your hand is empty, you may draw 4 and play another trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "If your hand is empty, you may draw 4 and play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "red"
@@ -809,7 +1063,17 @@
     "set": "legends-of-enderas",
     "name": "Insatiable",
     "flavor": "My favorite food is more.",
-    "effect": "Discard all Dinolings from your trait pile. (Excluding this one.)",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard all Dinolings ({dinoling}) from your trait pile."
+      },
+      {
+        "kind": "note",
+        "text": "(Excluding this one.)"
+      }
+    ],
+    "genePool": null,
     "points": 6,
     "colors": [
       "red"
@@ -829,7 +1093,13 @@
     "set": "legends-of-enderas",
     "name": "Junker",
     "flavor": "I can't stop eating garbage.",
-    "effect": "Draw a Techling from the discard pile. You may play it now. Bip bwop.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw a Techling ({techling}) from the discard pile. You may play it now. Bip bwop."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -847,7 +1117,12 @@
     "set": "legends-of-enderas",
     "name": "Kidney",
     "flavor": "...with a theropod.",
-    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "red"
@@ -867,7 +1142,12 @@
     "set": "legends-of-enderas",
     "name": "Kidney",
     "flavor": "...with a wizard's hat.",
-    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "purple"
@@ -887,7 +1167,12 @@
     "set": "legends-of-enderas",
     "name": "Kidney",
     "flavor": "...with a tin foil hat.",
-    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [],
     "dominant": false,
@@ -905,7 +1190,8 @@
     "set": "legends-of-enderas",
     "name": "Lightweight",
     "flavor": "They all laughed at me when I said a hot bag would carry me across the sea in a magical sky basket.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [],
     "dominant": false,
@@ -921,7 +1207,13 @@
     "set": "legends-of-enderas",
     "name": "Lumbering",
     "flavor": "Big moves with fewer steps.",
-    "effect": "+1 Gene Pool. Opponents stabilize to your Gene Pool.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Opponents stabilize to your Gene Pool."
+      }
+    ],
+    "genePool": 1,
     "points": 3,
     "colors": [
       "blue"
@@ -941,7 +1233,13 @@
     "set": "legends-of-enderas",
     "name": "Majestic",
     "flavor": "I picked this flower for a friend. Can that friend be you?",
-    "effect": "Play every effectless from hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Play every effectless from hand."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "green",
@@ -963,7 +1261,13 @@
     "set": "legends-of-enderas",
     "name": "Malicious",
     "flavor": "I don't like you. My scythe doesn't like you either.",
-    "effect": "Choose an opponent. They discard 2 from their hand at random.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Choose an opponent. They discard 2 from their hand at random."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -983,7 +1287,12 @@
     "set": "legends-of-enderas",
     "name": "Mecha-Jaw",
     "flavor": "Laser eye sold separately.",
-    "effect": "Attach to a trait in any trait pile. +5 if host is a Dinoling.",
+    "effects": [
+      {
+        "text": "Attach to a trait in any trait pile. +5 if host is a Dinoling ({dinoling})."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [
       "purple",
@@ -1006,7 +1315,12 @@
     "set": "legends-of-enderas",
     "name": "Mesopredator",
     "flavor": "Look, if I don't eat you, my boss is going to eat me AND you.",
-    "effect": "To play, you must discard 1 from your trait pile.",
+    "effects": [
+      {
+        "text": "To play, you must discard 1 from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue"
@@ -1024,7 +1338,12 @@
     "set": "legends-of-enderas",
     "name": "Misty",
     "flavor": "A mist opportunity.",
-    "effect": "To play, you must discard 1 effectless from hand. Do not stabilize!",
+    "effects": [
+      {
+        "text": "To play, you must discard 1 effectless from hand.\n\nDo not stabilize!"
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [
       "blue",
@@ -1044,7 +1363,17 @@
     "set": "legends-of-enderas",
     "name": "Modular",
     "flavor": "How much of me am I once every part has been replaced?\" And with this final thought, the robot's neuroparts were yanked and trashed, only to be replaced with a calculator.",
-    "effect": "You may remove 1 attachment from your trait pile and attach it to a trait in any trait pile. (Excluding dominants.)",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "You may remove 1 attachment from your trait pile and attach it to a trait in any trait pile."
+      },
+      {
+        "kind": "note",
+        "text": "(Excluding dominants.)"
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -1064,7 +1393,8 @@
     "set": "legends-of-enderas",
     "name": "Null",
     "flavor": "What do you mean I have no value?",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 0,
     "colors": [
       "purple"
@@ -1082,7 +1412,12 @@
     "set": "legends-of-enderas",
     "name": "Ovivore",
     "flavor": "I prefer my eggs easy.",
-    "effect": "To play, you must discard a face value 1 or higher from your trait pile.",
+    "effects": [
+      {
+        "text": "To play, you must discard a face value 1 or higher from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [
       "purple"
@@ -1100,7 +1435,13 @@
     "set": "legends-of-enderas",
     "name": "Plastron",
     "flavor": "Turtle recall.",
-    "effect": "At World's End: You may discard 1 from your trait pile, OR play the top card from the discard pile. Ignore its action.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "You may discard 1 from your trait pile, OR play the top card from the discard pile. Ignore its action ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -1120,7 +1461,12 @@
     "set": "legends-of-enderas",
     "name": "Refurbished",
     "flavor": "A shiny ~~new~~ toy.",
-    "effect": "Attach. If host is: Purple: +2. Red: +3. If host is a Techling: +1 for each card in hand.",
+    "effects": [
+      {
+        "text": "Attach. If host is: Purple: +2. Red: +3. If host is a Techling ({techling}): +1 for each card in hand."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -1141,7 +1487,13 @@
     "set": "legends-of-enderas",
     "name": "Roughrider",
     "flavor": "All of my battles have taught me that this is fun. Weeeeee!",
-    "effect": "You may play Roughrider when you play a Dinoling.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Roughrider when you play a Dinoling ({dinoling})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -1161,7 +1513,13 @@
     "set": "legends-of-enderas",
     "name": "Rumbler",
     "flavor": "The last guy who gave him a high five got squished.",
-    "effect": "-2 Gene Pool. Opponents stabilize to your Gene Pool.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Opponents stabilize to your Gene Pool."
+      }
+    ],
+    "genePool": -2,
     "points": 5,
     "colors": [
       "red"
@@ -1181,7 +1539,13 @@
     "set": "legends-of-enderas",
     "name": "Satyrical",
     "flavor": "The world is doomed, and that's hilarious.",
-    "effect": "You may discard a Mythling from hand to play another trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "You may discard a Mythling ({mythling}) from hand to play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -1201,7 +1565,13 @@
     "set": "legends-of-enderas",
     "name": "Simulated Intelligence",
     "flavor": "Put me in a box, feed me Chinese, and I'll tell you the meaning of the universe.",
-    "effect": "At World's End: If you are tied for the highest trait pile count, play another trait. Otherwise, discard 1 from your trait pile for each opponent with more traits than you.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "If you are tied for the highest trait pile count, play another trait. Otherwise, discard 1 from your trait pile for each opponent with more traits than you."
+      }
+    ],
+    "genePool": null,
     "points": 6,
     "colors": [
       "purple"
@@ -1221,7 +1591,13 @@
     "set": "legends-of-enderas",
     "name": "Slumbering",
     "flavor": "Sorry I overslept. Is it the end of the world already?",
-    "effect": "At World's End: Discard 1 from hand.\nIf the card is:\nPurple: Discard up to 2 from your trait pile.\nRed: Add its face value.\nGreen: Play 1 trait.\nBlue: +5.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Discard 1 from hand.\nIf the card is:\nPurple: Discard up to 2 from your trait pile.\nRed: Add its face value.\n\nGreen: Play 1 trait.\nBlue: +5."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "green"
@@ -1244,7 +1620,12 @@
     "set": "legends-of-enderas",
     "name": "Solar-Powered",
     "flavor": "Backed by a billion-year/36,000-mile limited warranty.",
-    "effect": "Attach. Value is equal to host's face value.",
+    "effects": [
+      {
+        "text": "Attach. Value is equal to host's face value."
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "blue"
@@ -1265,7 +1646,13 @@
     "set": "legends-of-enderas",
     "name": "Sorcerer",
     "flavor": "Alaca-SMOKE BOMB!",
-    "effect": "At World's End: You may stabilize to 8.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "You may stabilize to 8."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -1283,7 +1670,12 @@
     "set": "legends-of-enderas",
     "name": "Speech Recognition",
     "flavor": "The best peach-to-text translator on the barket.",
-    "effect": "Attach. Add the face value of 1 card in hand that shares a color with the host. (Excluding dominants.)",
+    "effects": [
+      {
+        "text": "Attach. Add the face value of 1 card in hand that shares a color with the host.\n\n(Excluding dominants.)"
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -1304,7 +1696,15 @@
     "set": "legends-of-enderas",
     "name": "Spite",
     "flavor": "Combing is a nightmare.",
-    "effect": "If Spite is discarded from hand, you may play it in an opponent's trait pile. All players receive: +1 Gene Pool.",
+    "effects": [
+      {
+        "text": "If Spite is discarded from hand, you may play it in an opponent's trait pile."
+      },
+      {
+        "text": "All players receive: +1 Gene Pool."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [
       "green"
@@ -1324,7 +1724,12 @@
     "set": "legends-of-enderas",
     "name": "Springy",
     "flavor": "Spra-boing!",
-    "effect": "Attach to a trait in any trait pile, then steal the host.",
+    "effects": [
+      {
+        "text": "Attach to a trait in any trait pile, then steal the host."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "purple"
@@ -1344,7 +1749,12 @@
     "set": "legends-of-enderas",
     "name": "Steam-Powered",
     "flavor": "Blowing off steam and then your face.",
-    "effect": "Attach. If host is:\nBlue: +1 Gene Pool.\nGreen: Play another trait.\nPurple: Play an action in your trait pile.\nRed: +2.",
+    "effects": [
+      {
+        "text": "Attach. If host is:\nBlue: +1 Gene Pool.\nGreen: Play another trait.\nPurple: Play an action ({action}) in your trait pile.\nRed: +2."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": true,
@@ -1363,7 +1773,12 @@
     "set": "legends-of-enderas",
     "name": "Stompy",
     "flavor": "My feet do one thing and that thing is loud.",
-    "effect": "To play, you must discard a total face value of 5 or higher from hand using any number of cards. Do not stabilize!",
+    "effects": [
+      {
+        "text": "To play, you must discard a total face value of 5 or higher from hand using any number of cards. Do not stabilize!"
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [],
     "dominant": false,
@@ -1379,7 +1794,16 @@
     "set": "legends-of-enderas",
     "name": "Summoner",
     "flavor": "The someone who summons some things.",
-    "effect": "Discard up to 3 from hand, then play 1 for each discarded card. Ignore actions.",
+    "effects": [
+      {
+        "text": "Discard up to 3 from hand, then play 1 for each discarded card."
+      },
+      {
+        "kind": "note",
+        "text": "Ignore actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -1397,7 +1821,12 @@
     "set": "legends-of-enderas",
     "name": "Swarm",
     "flavor": "We're here for the new tablet.",
-    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "green"
@@ -1417,7 +1846,12 @@
     "set": "legends-of-enderas",
     "name": "Swarm",
     "flavor": "We're here for the seance.",
-    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "purple"
@@ -1437,7 +1871,12 @@
     "set": "legends-of-enderas",
     "name": "Swarm",
     "flavor": "We are the new phone.",
-    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [],
     "dominant": false,
@@ -1455,7 +1894,13 @@
     "set": "legends-of-enderas",
     "name": "Technomagik",
     "flavor": "Sufficiently advanced.",
-    "effect": "Draw 2. Then you may play a Mythling or Techling from hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 2. Then you may play a Mythling ({mythling}) or Techling ({techling}) from hand."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "green",
@@ -1477,7 +1922,12 @@
     "set": "legends-of-enderas",
     "name": "Terrarium",
     "flavor": "I ate watermelon seeds and now they're growing in my brain. Please help.",
-    "effect": "Attach. +1 for each trait of the same face value as the host.",
+    "effects": [
+      {
+        "text": "Attach. +1 for each trait of the same face value as the host."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "green"
@@ -1498,7 +1948,13 @@
     "set": "legends-of-enderas",
     "name": "Terrifying",
     "flavor": "I didn't mean to scare you, I'm just trying to eat you alive.",
-    "effect": "Discard your hand. Opponents discard 1 Dinoling from their trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard your hand. Opponents discard 1 Dinoling ({dinoling}) from their trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -1518,7 +1974,8 @@
     "set": "legends-of-enderas",
     "name": "Thunderous",
     "flavor": "Life is thunderful.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 4,
     "colors": [],
     "dominant": false,
@@ -1534,7 +1991,12 @@
     "set": "legends-of-enderas",
     "name": "Tinkerer",
     "flavor": "Proficient with thingamajigs. Decent with whatchamacallits.",
-    "effect": "When you attach a trait to Tinkerer, you may play another trait.",
+    "effects": [
+      {
+        "text": "When you attach a trait to Tinkerer, you may play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green"
@@ -1552,7 +2014,12 @@
     "set": "legends-of-enderas",
     "name": "Titanic",
     "flavor": "Mmmm, icebergers!",
-    "effect": "To play, you must discard a total face value of 5 or higher from your trait pile using any number of cards. (Titanic cannot regenerate tissue!)",
+    "effects": [
+      {
+        "text": "To play, you must discard a total face value of 5 or higher from your trait pile using any number of cards.\n\n(Titanic cannot regenerate tissue!)"
+      }
+    ],
+    "genePool": null,
     "points": 10,
     "colors": [],
     "dominant": true,
@@ -1568,7 +2035,8 @@
     "set": "legends-of-enderas",
     "name": "Trabecular",
     "flavor": "I'll take bone structures for $200.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [
       "red"
@@ -1586,7 +2054,12 @@
     "set": "legends-of-enderas",
     "name": "Transistor",
     "flavor": "One bad switch.",
-    "effect": "Attach. All opponents discard all cards from their hand that share a color with the host trait.",
+    "effects": [
+      {
+        "text": "Attach. All opponents discard all cards from their hand that share a color with the host trait."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -1606,7 +2079,12 @@
     "set": "legends-of-enderas",
     "name": "Treads",
     "flavor": "Tread heavily.",
-    "effect": "Attach. You may play another trait that shares a color with the host.",
+    "effects": [
+      {
+        "text": "Attach. You may play another trait that shares a color with the host."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -1626,7 +2104,13 @@
     "set": "legends-of-enderas",
     "name": "Venomous Projection",
     "flavor": "I can see no evidence that this species actually spits venom BECAUSE I AM NOW BLIND!",
-    "effect": "Move 1 negative trait from the discard pile to an opponent's trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Move 1 negative trait from the discard pile to an opponent's trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -1646,7 +2130,13 @@
     "set": "legends-of-enderas",
     "name": "Vigilance",
     "flavor": "I watch because I care... about shooting stuff.",
-    "effect": "Discard 1 from hand, then play its action.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard 1 from hand, then play its action ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green"
@@ -1666,7 +2156,12 @@
     "set": "legends-of-enderas",
     "name": "Warlocky",
     "flavor": "Made a blood pact with a demon under a moonless night. It was pretty cool and there were no consequences.",
-    "effect": "On your turn: You may discard Warlocky from hand when you play a trait. If you do, play another trait of the same color.",
+    "effects": [
+      {
+        "text": "On your turn: You may discard Warlocky from hand when you play a trait. If you do, play another trait of the same color."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [],
     "dominant": false,
@@ -1684,7 +2179,8 @@
     "set": "legends-of-enderas",
     "name": "Wicked",
     "flavor": "My intent is unjust, and my heart is unpure.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -1701,7 +2197,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Ardent Grip",
-    "effect": "Rush:\nSet your Gene Pool to 5.\n\nRush:\nDraw 1.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Set your Gene Pool to 5."
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 1."
+      }
+    ],
     "image": "legends-of-enderas/treasures/ardent-grip.webp"
   },
   {
@@ -1709,7 +2214,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Black Silk",
-    "effect": "Mutate:\nBlue\nor\nRed\n\nRush:\nDiscard 1 from hand.",
+    "effects": [
+      {
+        "kind": "mutate",
+        "text": "Blue\nor\nRed"
+      },
+      {
+        "kind": "rush",
+        "text": "Discard 1 from hand."
+      }
+    ],
     "image": "legends-of-enderas/treasures/black-silk.webp"
   },
   {
@@ -1717,7 +2231,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Box of Rainbows",
-    "effect": "Cloak:\nPrevent a Steal. (Excluding dominants.)\n\nRush:\nPlay face value 2 or lower. Ignore actions.",
+    "effects": [
+      {
+        "kind": "cloak",
+        "text": "Prevent a Steal. (Excluding dominants.)"
+      },
+      {
+        "kind": "rush",
+        "text": "Play face value 2 or lower. Ignore actions ({action})."
+      }
+    ],
     "image": "legends-of-enderas/treasures/box-of-rainbows.webp"
   },
   {
@@ -1725,7 +2248,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Broken Promises",
-    "effect": "Echo:\nBlue to Blue\nor\nPurple to Purple\n\nRush:\nDraw 2.",
+    "effects": [
+      {
+        "kind": "echo",
+        "text": "Blue to Blue\nor\nPurple to Purple"
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 2."
+      }
+    ],
     "image": "legends-of-enderas/treasures/broken-promises.webp"
   },
   {
@@ -1733,7 +2265,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Cataclyte",
-    "effect": "Echo:\nPurple to Purple\nor\nRed to Red\n\nRush:\nDraw 2.",
+    "effects": [
+      {
+        "kind": "echo",
+        "text": "Purple to Purple\nor\nRed to Red"
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 2."
+      }
+    ],
     "image": "legends-of-enderas/treasures/cataclyte.webp"
   },
   {
@@ -1741,7 +2282,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Chrona",
-    "effect": "Rush:\nDraw the top 3 cards in the discard pile.\n\nRush:\nDraw 1.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Draw the top 3 cards in the discard pile."
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 1."
+      }
+    ],
     "image": "legends-of-enderas/treasures/chrona.webp"
   },
   {
@@ -1749,7 +2299,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Coda",
-    "effect": "Rush:\nDecrease Gene Pool by 1. Play 1.\n\nRush:\nDraw 1.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Decrease Gene Pool by 1. Play 1."
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 1."
+      }
+    ],
     "image": "legends-of-enderas/treasures/coda.webp"
   },
   {
@@ -1757,7 +2316,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Dragon Scales",
-    "effect": "Mutate:\nRed\nor\nPurple\n\nRush:\nDiscard 1 from hand.",
+    "effects": [
+      {
+        "kind": "mutate",
+        "text": "Red\nor\nPurple"
+      },
+      {
+        "kind": "rush",
+        "text": "Discard 1 from hand."
+      }
+    ],
     "image": "legends-of-enderas/treasures/dragon-scales.webp"
   },
   {
@@ -1765,7 +2333,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Fortune & Glory",
-    "effect": "Rush:\nDraw 4.\nYou may choose not to stabilize.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Draw 4.\nYou may choose not to stabilize."
+      }
+    ],
     "image": "legends-of-enderas/treasures/fortune-glory.webp"
   },
   {
@@ -1773,7 +2346,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Fwip",
-    "effect": "Rush:\nReturn 1 dominant in your trait pile to your hand to play a different dominant.\n\nRush:\nDraw 1.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Return 1 dominant in your trait pile to your hand to play a different dominant."
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 1."
+      }
+    ],
     "image": "legends-of-enderas/treasures/fwip.webp"
   },
   {
@@ -1781,7 +2363,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Ghostly Boots",
-    "effect": "Adapt:\nPurple actions\nor\nRed actions\n\nRush:\nStabilize to 5.",
+    "effects": [
+      {
+        "kind": "adapt",
+        "text": "Purple actions\nor\nRed actions ({action})"
+      },
+      {
+        "kind": "rush",
+        "text": "Stabilize to 5."
+      }
+    ],
     "image": "legends-of-enderas/treasures/ghostly-boots.webp"
   },
   {
@@ -1789,7 +2380,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Heart of the Woods",
-    "effect": "Mutate:\nAny Color\n\nRush:\nDiscard 1 from hand.",
+    "effects": [
+      {
+        "kind": "mutate",
+        "text": "Any Color"
+      },
+      {
+        "kind": "rush",
+        "text": "Discard 1 from hand."
+      }
+    ],
     "image": "legends-of-enderas/treasures/heart-of-the-woods.webp"
   },
   {
@@ -1797,7 +2397,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Reflecting Glass",
-    "effect": "Cloak:\nPrevent an action.\n\nRush:\nPlay face value 2 or lower. Ignore actions.",
+    "effects": [
+      {
+        "kind": "cloak",
+        "text": "Prevent an action."
+      },
+      {
+        "kind": "rush",
+        "text": "Play face value 2 or lower. Ignore actions ({action})."
+      }
+    ],
     "image": "legends-of-enderas/treasures/reflecting-glass.webp"
   },
   {
@@ -1805,7 +2414,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Someone's Trash",
-    "effect": "Rush:\nShuffle the coffer pile, then draw 2 treasures from the coffer pile.\n\nRush:\nDraw the top 2 from the discard pile.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Shuffle the coffer pile, then draw 2 treasures from the coffer pile."
+      },
+      {
+        "kind": "rush",
+        "text": "Draw the top 2 from the discard pile."
+      }
+    ],
     "image": "legends-of-enderas/treasures/someone-s-trash.webp"
   },
   {
@@ -1813,7 +2431,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Soulweaver",
-    "effect": "Rush:\nDiscard up to 3 from hand. Play 1 effectless for each discarded card. Then stabilize and skip your turn.\n\nRush:\nDraw 1.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Discard up to 3 from hand. Play 1 effectless for each discarded card. Then stabilize and skip your turn."
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 1."
+      }
+    ],
     "image": "legends-of-enderas/treasures/soulweaver.webp"
   },
   {
@@ -1821,7 +2448,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Summit",
-    "effect": "Rush:\nPlay the top of the discard pile. Ignore actions.\n\nRush:\nDraw 1.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Play the top of the discard pile. Ignore actions ({action})."
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 1."
+      }
+    ],
     "image": "legends-of-enderas/treasures/summit.webp"
   },
   {
@@ -1829,7 +2465,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "The Friends We Made Along the Way",
-    "effect": "Rush:\nPlay 2 and stabilize. Ignore actions. Then skip your turn.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Play 2 and stabilize. Ignore actions ({action}). Then skip your turn."
+      }
+    ],
     "image": "legends-of-enderas/treasures/the-friends-we-made-along-the-way.webp"
   },
   {
@@ -1837,7 +2478,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "The Maliforms",
-    "effect": "Adapt:\nAny Color\nactions\n\nRush:\nStabilize to 5.",
+    "effects": [
+      {
+        "kind": "adapt",
+        "text": "Any Color\nactions"
+      },
+      {
+        "kind": "rush",
+        "text": "Stabilize to 5."
+      }
+    ],
     "image": "legends-of-enderas/treasures/the-maliforms.webp"
   },
   {
@@ -1845,7 +2495,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Tiny Shells",
-    "effect": "Mutate:\nGreen\nor\nBlue\n\nRush:\nDiscard 1 from hand.",
+    "effects": [
+      {
+        "kind": "mutate",
+        "text": "Green\nor\nBlue"
+      },
+      {
+        "kind": "rush",
+        "text": "Discard 1 from hand."
+      }
+    ],
     "image": "legends-of-enderas/treasures/tiny-shells.webp"
   },
   {
@@ -1853,7 +2512,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Translator",
-    "effect": "Echo:\nGreen to Green\nor\nBlue to Blue\n\nRush:\nDraw 2.",
+    "effects": [
+      {
+        "kind": "echo",
+        "text": "Green to Green\nor\nBlue to Blue"
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 2."
+      }
+    ],
     "image": "legends-of-enderas/treasures/translator.webp"
   },
   {
@@ -1861,7 +2529,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Twisters",
-    "effect": "Rush:\nIncrease Gene Pool by 1.\n\nRush:\nDraw 1.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Increase Gene Pool by 1."
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 1."
+      }
+    ],
     "image": "legends-of-enderas/treasures/twisters.webp"
   },
   {
@@ -1869,7 +2546,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Unbreakable",
-    "effect": "Rush:\nOpponents return 1 effectless from trait pile to hand.\n\nRush:\nDraw 1.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Opponents return 1 effectless from trait pile to hand."
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 1."
+      }
+    ],
     "image": "legends-of-enderas/treasures/unbreakable.webp"
   },
   {
@@ -1877,7 +2563,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Vanity",
-    "effect": "Rush:\nOpponents return 1 effectless from trait pile to hand.\n\nRush:\nDraw 1.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Opponents return 1 effectless from trait pile to hand."
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 1."
+      }
+    ],
     "image": "legends-of-enderas/treasures/vanity.webp"
   },
   {
@@ -1885,7 +2580,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Wandering Root",
-    "effect": "Mutate:\nPurple\nor\nGreen\n\nRush:\nDiscard 1 from hand.",
+    "effects": [
+      {
+        "kind": "mutate",
+        "text": "Purple\nor\nGreen"
+      },
+      {
+        "kind": "rush",
+        "text": "Discard 1 from hand."
+      }
+    ],
     "image": "legends-of-enderas/treasures/wandering-root.webp"
   },
   {
@@ -1893,7 +2597,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Wisdom Stick",
-    "effect": "Rush:\nPreview the next 2 ages.\n\nRush:\nPreview the last 2 ages.",
+    "effects": [
+      {
+        "kind": "rush",
+        "text": "Preview the next 2 ages."
+      },
+      {
+        "kind": "rush",
+        "text": "Preview the last 2 ages."
+      }
+    ],
     "image": "legends-of-enderas/treasures/wisdom-stick.webp"
   },
   {
@@ -1901,7 +2614,16 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Zero-Point Module",
-    "effect": "Echo:\nRed to Red\nor\nGreen to Green\n\nRush:\nDraw 2.",
+    "effects": [
+      {
+        "kind": "echo",
+        "text": "Red to Red\nor\nGreen to Green"
+      },
+      {
+        "kind": "rush",
+        "text": "Draw 2."
+      }
+    ],
     "image": "legends-of-enderas/treasures/zero-point-module.webp"
   }
 ]

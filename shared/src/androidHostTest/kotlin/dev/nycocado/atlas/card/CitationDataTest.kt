@@ -11,10 +11,9 @@ class CitationDataTest {
     fun citationsOfTheCardTextsAreTheReviewedOnes() {
         val found =
             library.cards!!.filterIsInstance<NamedCard>().flatMap { card ->
-                val fields = listOf("effect" to card.effect, "worldsEnd" to (card as? Catastrophe)?.worldsEnd)
-                fields.flatMap { (field, text) ->
-                    library.citations(card, text.orEmpty()).map {
-                        "${card.id}.$field: ${text!!.substring(it.range)} -> ${it.cardId}"
+                card.effects.flatMapIndexed { index, effect ->
+                    library.citations(card, effect.text).map {
+                        "${card.id}.effects[$index]: ${effect.text.substring(it.range)} -> ${it.cardId}"
                     }
                 }
             }
@@ -23,11 +22,11 @@ class CitationDataTest {
 
     private val expected =
         listOf(
-            "classic/ages/age-of-dracula.effect: Vampirism -> classic/traits/vampirism",
-            "classic/ages/birth-of-a-hero.effect: Heroic -> classic/traits/heroic",
-            "classic/traits/denial.effect: The Four Horsemen -> classic/catastrophes/the-four-horsemen",
-            "legends-of-enderas/ages/thousand-year-slumber.effect: Slumbering -> legends-of-enderas/traits/slumbering",
-            "mokoko-village/traits/swarm-of-kidneys.effect: Kidney -> classic/traits/kidney",
-            "overlush/ages/the-legend-of-mokoko-village.effect: Heroic -> classic/traits/heroic",
+            "classic/ages/age-of-dracula.effects[1]: Vampirism -> classic/traits/vampirism",
+            "classic/ages/birth-of-a-hero.effects[0]: Heroic -> classic/traits/heroic",
+            "classic/traits/denial.effects[0]: The Four Horsemen -> classic/catastrophes/the-four-horsemen",
+            "legends-of-enderas/ages/thousand-year-slumber.effects[0]: Slumbering -> legends-of-enderas/traits/slumbering",
+            "mokoko-village/traits/swarm-of-kidneys.effects[0]: Kidney -> classic/traits/kidney",
+            "overlush/ages/the-legend-of-mokoko-village.effects[0]: Heroic -> classic/traits/heroic",
         )
 }

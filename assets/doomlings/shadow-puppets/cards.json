@@ -4,7 +4,11 @@
     "type": "age",
     "set": "shadow-puppets",
     "name": "Shadow Puppets",
-    "effect": "Start of your turn: You may swap hands with an opponent.",
+    "effects": [
+      {
+        "text": "Start of your turn: You may swap hands with an opponent."
+      }
+    ],
     "image": "shadow-puppets/ages/shadow-puppets.webp"
   },
   {
@@ -12,7 +16,11 @@
     "type": "age",
     "set": "shadow-puppets",
     "name": "Toddles' Emporium of Lost Things",
-    "effect": "Draw 3.\nThen discard 2 from hand at random.",
+    "effects": [
+      {
+        "text": "Draw 3.\nThen discard 2 from hand at random."
+      }
+    ],
     "image": "shadow-puppets/ages/toddles-emporium-of-lost-things.webp"
   },
   {
@@ -20,8 +28,16 @@
     "type": "catastrophe",
     "set": "shadow-puppets",
     "name": "Regret",
-    "effect": "-1 Gene Pool\n\nReturn 1 from your trait pile to hand.",
-    "worldsEnd": "Subtract the face value of 1 card in hand from your final score.",
+    "effects": [
+      {
+        "text": "Return 1 from your trait pile to hand."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "Subtract the face value of 1 card in hand from your final score."
+      }
+    ],
+    "genePool": -1,
     "image": "shadow-puppets/catastrophes/regret.webp"
   },
   {
@@ -30,7 +46,8 @@
     "set": "shadow-puppets",
     "name": "Ashen",
     "flavor": "Pales in comparison.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -48,7 +65,12 @@
     "set": "shadow-puppets",
     "name": "Bound",
     "flavor": "A marionette you'll never forget.",
-    "effect": "Peek at the top 4 of the trait deck. Draw 1. You may play it. If any are negative, you may play them into any trait pile(s) and ignore actions.",
+    "effects": [
+      {
+        "text": "Peek at the top 4 of the trait deck. Draw 1. You may play it. If any are negative, you may play them into any trait pile(s) and ignore actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "red"
@@ -66,7 +88,13 @@
     "set": "shadow-puppets",
     "name": "Broken",
     "flavor": "Not the toy you needed. But the toy that needed you.",
-    "effect": "You may play Broken into a friend's trait pile when they play a trait. Steal it and stop its action. They may play another trait.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Broken into a friend's trait pile when they play a trait. Steal it and stop its action ({action}). They may play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -84,7 +112,13 @@
     "set": "shadow-puppets",
     "name": "Cracked",
     "flavor": "I had a great fall! Thanks for asking!",
-    "effect": "Reveal the top of the trait deck. Purple: Swap Cracked with a trait in a friend's trait pile. Blue: Return it to their hand. Red: Steal 1 from their trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Reveal the top of the trait deck. Purple: Swap Cracked with a trait in a friend's trait pile. Blue: Return it to their hand. Red: Steal 1 from their trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -104,7 +138,12 @@
     "set": "shadow-puppets",
     "name": "Dark Thoughts",
     "flavor": "You don't want to know what's in here.",
-    "effect": "Steal 1 from an opponent's trait pile. Then suppress Dark Thoughts.",
+    "effects": [
+      {
+        "text": "Steal 1 from an opponent's trait pile. Then suppress Dark Thoughts."
+      }
+    ],
+    "genePool": null,
     "points": -3,
     "colors": [
       "green"
@@ -124,7 +163,12 @@
     "set": "shadow-puppets",
     "name": "Drowned",
     "flavor": "1,000 voices shouting, and not one heard.",
-    "effect": "Suppress 1 from each opponent's hand at random. Opponents stabilize immediately.",
+    "effects": [
+      {
+        "text": "Suppress 1 from each opponent's hand at random. Opponents stabilize immediately."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -144,7 +188,8 @@
     "set": "shadow-puppets",
     "name": "Frayed",
     "flavor": "Hold me close and we can play. Till time runs out and we're old and frayed.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -162,7 +207,12 @@
     "set": "shadow-puppets",
     "name": "Fumboh",
     "flavor": "A wise moon elder who, upon entering a room, has already overstayed his welcome.",
-    "effect": "-2 Gene Pool. Start of turn: You may discard Fumboh from your trait pile to play another trait.",
+    "effects": [
+      {
+        "text": "Start of turn: You may discard Fumboh from your trait pile to play another trait."
+      }
+    ],
+    "genePool": -2,
     "points": 2,
     "colors": [
       "green"
@@ -180,7 +230,13 @@
     "set": "shadow-puppets",
     "name": "Furp",
     "flavor": "In space, no one can hear you furp.",
-    "effect": "-2 Gene Pool. Steal 1 from an opponent's trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Steal 1 from an opponent's trait pile."
+      }
+    ],
+    "genePool": -2,
     "points": 2,
     "colors": [
       "red"
@@ -200,7 +256,8 @@
     "set": "shadow-puppets",
     "name": "Gloump",
     "flavor": "I've never melt so alive.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue",
@@ -221,7 +278,12 @@
     "set": "shadow-puppets",
     "name": "Immutable",
     "flavor": "I don't know why you won't change your mind to the way I see it.",
-    "effect": "Excluding dominants, if you have 6 or fewer traits in your trait pile, they cannot be swapped or stolen. Start of your turns: You may suppress 1 trait in your trait pile.",
+    "effects": [
+      {
+        "text": "Excluding dominants, if you have 6 or fewer traits in your trait pile, they cannot be swapped or stolen.\n\nStart of your turns: You may suppress 1 trait in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "red"
@@ -241,7 +303,13 @@
     "set": "shadow-puppets",
     "name": "Imperfect",
     "flavor": "I didn't say I'm perfect.",
-    "effect": "Reveal the top of the trait deck. Any color: Swap Imperfect with a trait in a friend's trait pile. Colorless: Move Imperfect to a friend's trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Reveal the top of the trait deck. Any color: Swap Imperfect with a trait in a friend's trait pile. Colorless: Move Imperfect to a friend's trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -259,7 +327,12 @@
     "set": "shadow-puppets",
     "name": "Inescapable",
     "flavor": "You can't run, but you shouldn't hide.",
-    "effect": "All players suppress 1 from their hand.",
+    "effects": [
+      {
+        "text": "All players suppress 1 from their hand."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -279,7 +352,8 @@
     "set": "shadow-puppets",
     "name": "Mumbleyops",
     "flavor": "Undisputed best at thumb wars. Very disputed best at hugs.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": -2,
     "colors": [
       "purple"
@@ -297,7 +371,8 @@
     "set": "shadow-puppets",
     "name": "Mumpf",
     "flavor": "Mumpf's the word.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -315,7 +390,8 @@
     "set": "shadow-puppets",
     "name": "Outgrown",
     "flavor": "Nowadays the kids play a game called Leave Me in the Toy Chest.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -333,7 +409,12 @@
     "set": "shadow-puppets",
     "name": "Possessed",
     "flavor": "Mom, the toy is floating again!",
-    "effect": "Suppress 2 from a friend's hand at random.",
+    "effects": [
+      {
+        "text": "Suppress 2 from a friend's hand at random."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green",
@@ -355,7 +436,13 @@
     "set": "shadow-puppets",
     "name": "Quiet",
     "flavor": "Loud thoughts mute words.",
-    "effect": "At World's End: Suppress 1 positive face value from your trait pile.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Suppress 1 positive face value from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [
       "green"
@@ -376,7 +463,12 @@
     "set": "shadow-puppets",
     "name": "Repressed",
     "flavor": "I'm just going to not remember this and it should be no problem.",
-    "effect": "Excluding Repressed, if you have 6 or fewer traits in your trait pile, suppress 1 from an opponent's trait pile.",
+    "effects": [
+      {
+        "text": "Excluding Repressed, if you have 6 or fewer traits in your trait pile, suppress 1 from an opponent's trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "red"
@@ -396,7 +488,12 @@
     "set": "shadow-puppets",
     "name": "Self-Doubt",
     "flavor": "No one can doubt themself quite like you!",
-    "effect": "Double the face value of each trait in your trait pile that is the only trait of that color. This effect excludes dominants entirely.",
+    "effects": [
+      {
+        "text": "Double the face value of each trait in your trait pile that is the only trait of that color. This effect excludes dominants entirely."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [],
     "dominant": true,
@@ -414,7 +511,12 @@
     "set": "shadow-puppets",
     "name": "Shrouded",
     "flavor": "Your secret's safe with me. Until it's not.",
-    "effect": "Suppress 1 from your hand. Start of your turns: You may draw all suppressed cards from under Shrouded.",
+    "effects": [
+      {
+        "text": "Suppress 1 from your hand. Start of your turns: You may draw all suppressed cards from under Shrouded."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": false,
@@ -433,7 +535,13 @@
     "set": "shadow-puppets",
     "name": "Soft",
     "flavor": "Down fur whatever.",
-    "effect": "Reveal the top of the trait deck. Blue: Increase Gene Pool by 1. Red: Decrease Gene Pool by 1 and play 1. Colorless: Do either.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Reveal the top of the trait deck. Blue: Increase Gene Pool by 1. Red: Decrease Gene Pool by 1 and play 1. Colorless: Do either."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -453,7 +561,12 @@
     "set": "shadow-puppets",
     "name": "Stitched",
     "flavor": "Nothing is what it seams.",
-    "effect": "Start of your turns: You may discard a positive trait from your trait pile to play 1. Ignore its action.",
+    "effects": [
+      {
+        "text": "Start of your turns: You may discard a positive trait from your trait pile to play 1. Ignore its action ({action})."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [
       "green"
@@ -471,7 +584,13 @@
     "set": "shadow-puppets",
     "name": "Strung Up",
     "flavor": "The result of an artist staying up 3 days straight.",
-    "effect": "Peek at the top of the trait deck, then play another trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Peek at the top of the trait deck, then play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -491,7 +610,13 @@
     "set": "shadow-puppets",
     "name": "Stuffy",
     "flavor": "Stuff is for sharing. Now share with me.",
-    "effect": "All friends give you 1 from their hand at random. Then they draw 1.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All friends give you 1 from their hand at random. Then they draw 1."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -511,7 +636,13 @@
     "set": "shadow-puppets",
     "name": "Toh",
     "flavor": "Comb toh pahpah.",
-    "effect": "You may play Toh when a trait is discarded from your trait pile. (Unless targeted by a dominant!) Return that trait to your hand.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Toh when a trait is discarded from your trait pile.\n\n(Unless targeted by a dominant!)\n\nReturn that trait to your hand."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -531,7 +662,13 @@
     "set": "shadow-puppets",
     "name": "Too Many Eyes",
     "flavor": "Minions with opinions.",
-    "effect": "At any time: Play into any trait pile. Too Many Eyes cannot be removed from your trait pile.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "At any time: Play into any trait pile. Too Many Eyes cannot be removed from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "blue"
@@ -551,7 +688,12 @@
     "set": "shadow-puppets",
     "name": "Tumpleyo",
     "flavor": "It's pronounced, \"Tumpleyo.",
-    "effect": "If your Gene Pool is: 4: -4, 3: +2, 2: +4, 1: +8",
+    "effects": [
+      {
+        "text": "If your Gene Pool is: 4: -4, 3: +2, 2: +4, 1: +8"
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -569,7 +711,12 @@
     "set": "shadow-puppets",
     "name": "Umbral",
     "flavor": "These belong to the shadows meow.",
-    "effect": "Swap hands with an opponent. Then suppress your hand.",
+    "effects": [
+      {
+        "text": "Swap hands with an opponent. Then suppress your hand."
+      }
+    ],
+    "genePool": null,
     "points": -4,
     "colors": [],
     "dominant": false,
@@ -587,7 +734,8 @@
     "set": "shadow-puppets",
     "name": "Unsettling",
     "flavor": "Where do I begin?",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 4,
     "colors": [],
     "dominant": false,
@@ -603,7 +751,13 @@
     "set": "shadow-puppets",
     "name": "Velvet",
     "flavor": "I love you and want to make you a real trait in my trait pile.",
-    "effect": "Reveal the top of the trait deck. Then steal 1 from an opponent's trait pile that matches the color of the revealed trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Reveal the top of the trait deck. Then steal 1 from an opponent's trait pile that matches the color of the revealed trait."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -623,7 +777,8 @@
     "set": "shadow-puppets",
     "name": "Wasahmbo!",
     "flavor": "Fusion power core not included.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 0,
     "colors": [
       "blue",
@@ -645,7 +800,12 @@
     "set": "shadow-puppets",
     "name": "Wojo Mon",
     "flavor": "In the darkness he paints the shadows.",
-    "effect": "Swap Gene Pools with an opponent.",
+    "effects": [
+      {
+        "text": "Swap Gene Pools with an opponent."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "purple"
@@ -663,7 +823,13 @@
     "set": "shadow-puppets",
     "name": "Womp",
     "flavor": "Womp womp.",
-    "effect": "Start of opponent's turn: You may play Womp into their trait pile to skip their turn.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "Start of opponent's turn: You may play Womp into their trait pile to skip their turn."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -683,7 +849,13 @@
     "set": "shadow-puppets",
     "name": "Wuhbumbo",
     "flavor": "Wuhbumbo never fumbohs.",
-    "effect": "All players pass 1 random card right. You may play another trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All players pass 1 random card right. You may play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -703,7 +875,12 @@
     "set": "shadow-puppets",
     "name": "Yabba Bo",
     "flavor": "Har bu go.",
-    "effect": "Start of your turns: You may give an opponent 1 from your hand.",
+    "effects": [
+      {
+        "text": "Start of your turns: You may give an opponent 1 from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "blue"
@@ -721,7 +898,13 @@
     "set": "shadow-puppets",
     "name": "Yobondo",
     "flavor": "Yoh bohn doh.",
-    "effect": "You may play Yobondo when an opponent targets a single trait in your trait pile. (Unless targeted by a dominant!) That effect targets Yobondo instead.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Yobondo when an opponent targets a single trait in your trait pile.\n\n(Unless targeted by a dominant!) That effect targets Yobondo instead."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "purple"

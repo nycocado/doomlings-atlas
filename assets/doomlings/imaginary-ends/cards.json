@@ -4,7 +4,11 @@
     "type": "age",
     "set": "imaginary-ends",
     "name": "A Quiet Moment",
-    "effect": "Discard up to 3 from your hand.\n\nIf you start your turn with an empty hand, draw 4.",
+    "effects": [
+      {
+        "text": "Discard up to 3 from your hand.\n\nIf you start your turn with an empty hand, draw 4."
+      }
+    ],
     "image": "imaginary-ends/ages/a-quiet-moment.webp"
   },
   {
@@ -12,7 +16,11 @@
     "type": "age",
     "set": "imaginary-ends",
     "name": "Age of Reverie",
-    "effect": "Suppress 1 random card from hand, then pass 1 left.",
+    "effects": [
+      {
+        "text": "Suppress 1 random card from hand, then pass 1 left."
+      }
+    ],
     "image": "imaginary-ends/ages/age-of-reverie.webp"
   },
   {
@@ -20,7 +28,11 @@
     "type": "age",
     "set": "imaginary-ends",
     "name": "Age of Solitude",
-    "effect": "Suppress 1 card from your hand.",
+    "effects": [
+      {
+        "text": "Suppress 1 card from your hand."
+      }
+    ],
     "image": "imaginary-ends/ages/age-of-solitude.webp"
   },
   {
@@ -28,7 +40,15 @@
     "type": "age",
     "set": "imaginary-ends",
     "name": "Fading Away",
-    "effect": "After playing a trait and resolving its effect, suppress it. (Excluding dominants.)",
+    "effects": [
+      {
+        "text": "After playing a trait and resolving its effect, suppress it."
+      },
+      {
+        "kind": "note",
+        "text": "(Excluding dominants.)"
+      }
+    ],
     "image": "imaginary-ends/ages/fading-away.webp"
   },
   {
@@ -36,7 +56,11 @@
     "type": "age",
     "set": "imaginary-ends",
     "name": "Glitterstorm",
-    "effect": "Discard 1, 2, or 3 cards from your hand at random. Then stabilize.",
+    "effects": [
+      {
+        "text": "Discard 1, 2, or 3 cards from your hand at random. Then stabilize."
+      }
+    ],
     "image": "imaginary-ends/ages/glitterstorm.webp"
   },
   {
@@ -44,7 +68,11 @@
     "type": "age",
     "set": "imaginary-ends",
     "name": "Moonlight",
-    "effect": "If your Gene Pool is 4 or higher, discard 1. \n\nIf your Gene Pool is 3 or lower, draw 2.",
+    "effects": [
+      {
+        "text": "If your Gene Pool is 4 or higher, discard 1.\n\nIf your Gene Pool is 3 or lower, draw 2."
+      }
+    ],
     "image": "imaginary-ends/ages/moonlight.webp"
   },
   {
@@ -52,7 +80,11 @@
     "type": "age",
     "set": "imaginary-ends",
     "name": "Sunshine & Tea Parties",
-    "effect": "Draw 1 and reveal it to all your friends.",
+    "effects": [
+      {
+        "text": "Draw 1 and reveal it to all your friends."
+      }
+    ],
     "image": "imaginary-ends/ages/sunshine-tea-parties.webp"
   },
   {
@@ -60,7 +92,11 @@
     "type": "age",
     "set": "imaginary-ends",
     "name": "Unusual Friends",
-    "effect": "If you play a Deepling, Moonling, or Glitterling, draw 2.",
+    "effects": [
+      {
+        "text": "If you play a Deepling ({deepling}), Moonling ({moonling}), or Glitterling ({glitterling}), draw 2."
+      }
+    ],
     "image": "imaginary-ends/ages/unusual-friends.webp"
   },
   {
@@ -68,8 +104,16 @@
     "type": "catastrophe",
     "set": "imaginary-ends",
     "name": "Abyss Stares Back",
-    "effect": "-1 Gene Pool\n\nSuppress all cards from your hand.\nStabilize.",
-    "worldsEnd": "-5 if you have 12 or more traits in your trait pile.",
+    "effects": [
+      {
+        "text": "Suppress all cards from your hand.\nStabilize."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "-5 if you have 12 or more traits in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "imaginary-ends/catastrophes/abyss-stares-back.webp"
   },
   {
@@ -77,8 +121,16 @@
     "type": "catastrophe",
     "set": "imaginary-ends",
     "name": "Isolation",
-    "effect": "-1 Gene Pool\n\nIf you hold 3 or fewer cards, suppress 1 random card in your hand and stabilize.",
-    "worldsEnd": "If you hold 3 or fewer cards, add the face value of 1 card in your hand to your final score.",
+    "effects": [
+      {
+        "text": "If you hold 3 or fewer cards, suppress 1 random card in your hand and stabilize."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "If you hold 3 or fewer cards, add the face value of 1 card in your hand to your final score."
+      }
+    ],
+    "genePool": -1,
     "image": "imaginary-ends/catastrophes/isolation.webp"
   },
   {
@@ -86,8 +138,16 @@
     "type": "catastrophe",
     "set": "imaginary-ends",
     "name": "Moonpocalypse",
-    "effect": "-2 Gene Pool\n\nThis catastrophe cannot reduce your Gene Pool lower than 4.",
-    "worldsEnd": "-5 if your Gene Pool is 4 or higher.",
+    "effects": [
+      {
+        "text": "This catastrophe cannot reduce your Gene Pool lower than 4."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "-5 if your Gene Pool is 4 or higher."
+      }
+    ],
+    "genePool": -2,
     "image": "imaginary-ends/catastrophes/moonpocalypse.webp"
   },
   {
@@ -95,8 +155,16 @@
     "type": "catastrophe",
     "set": "imaginary-ends",
     "name": "Too Much Pink",
-    "effect": "-1 Gene Pool\n\nDiscard your hand. Draw 4 at the start of your turn.",
-    "worldsEnd": "Reveal the top card of the trait deck. +1 for each trait of that color in your trait pile.",
+    "effects": [
+      {
+        "text": "Discard your hand. Draw 4 at the start of your turn."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "Reveal the top card of the trait deck. +1 for each trait of that color in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "imaginary-ends/catastrophes/too-much-pink.webp"
   },
   {
@@ -104,7 +172,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Bon",
-    "effect": "Bargain:\nTrash 1 trinket, then gain 1 trinket.\nYou may repeat once.",
+    "effects": [
+      {
+        "kind": "bargain",
+        "text": "Trash 1 trinket, then gain 1 trinket.\nYou may repeat once."
+      }
+    ],
     "image": "imaginary-ends/merchants/bon.webp"
   },
   {
@@ -112,7 +185,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Fowler",
-    "effect": "Exchange:\nYou may trash 1 trinket, then gain 1.",
+    "effects": [
+      {
+        "kind": "exchange",
+        "text": "You may trash 1 trinket, then gain 1."
+      }
+    ],
     "image": "imaginary-ends/merchants/fowler.webp"
   },
   {
@@ -120,7 +198,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Fowler",
-    "effect": "Exchange:\nYou may trash 1 trinket, then gain 1.",
+    "effects": [
+      {
+        "kind": "exchange",
+        "text": "You may trash 1 trinket, then gain 1."
+      }
+    ],
     "image": "imaginary-ends/merchants/fowler-2.webp"
   },
   {
@@ -128,7 +211,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Fowler",
-    "effect": "Exchange:\nYou may trash 1 trinket, then gain 1.",
+    "effects": [
+      {
+        "kind": "exchange",
+        "text": "You may trash 1 trinket, then gain 1."
+      }
+    ],
     "image": "imaginary-ends/merchants/fowler-3.webp"
   },
   {
@@ -136,7 +224,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Fowler",
-    "effect": "Exchange:\nYou may trash 1 trinket, then gain 1.",
+    "effects": [
+      {
+        "kind": "exchange",
+        "text": "You may trash 1 trinket, then gain 1."
+      }
+    ],
     "image": "imaginary-ends/merchants/fowler-4.webp"
   },
   {
@@ -144,7 +237,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Huk",
-    "effect": "Collect:\nPocket 1 trinket, then gain 1.",
+    "effects": [
+      {
+        "kind": "collect",
+        "text": "Pocket 1 trinket, then gain 1."
+      }
+    ],
     "image": "imaginary-ends/merchants/huk.webp"
   },
   {
@@ -152,7 +250,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Huk",
-    "effect": "Collect:\nPocket 1 trinket, then gain 1.",
+    "effects": [
+      {
+        "kind": "collect",
+        "text": "Pocket 1 trinket, then gain 1."
+      }
+    ],
     "image": "imaginary-ends/merchants/huk-2.webp"
   },
   {
@@ -160,7 +263,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Toddles",
-    "effect": "Buy:\nGain 1 trinket.\nThen trash 1.",
+    "effects": [
+      {
+        "kind": "buy",
+        "text": "Gain 1 trinket.\nThen trash 1."
+      }
+    ],
     "image": "imaginary-ends/merchants/toddles.webp"
   },
   {
@@ -168,7 +276,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Toddles",
-    "effect": "Buy:\nGain 1 trinket.\nThen trash 1.",
+    "effects": [
+      {
+        "kind": "buy",
+        "text": "Gain 1 trinket.\nThen trash 1."
+      }
+    ],
     "image": "imaginary-ends/merchants/toddles-2.webp"
   },
   {
@@ -176,7 +289,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Toddles",
-    "effect": "Buy:\nGain 1 trinket.\nThen trash 1.",
+    "effects": [
+      {
+        "kind": "buy",
+        "text": "Gain 1 trinket.\nThen trash 1."
+      }
+    ],
     "image": "imaginary-ends/merchants/toddles-3.webp"
   },
   {
@@ -184,7 +302,12 @@
     "type": "merchant",
     "set": "imaginary-ends",
     "name": "Toddles",
-    "effect": "Buy:\nGain 1 trinket.\nThen trash 1.",
+    "effects": [
+      {
+        "kind": "buy",
+        "text": "Gain 1 trinket.\nThen trash 1."
+      }
+    ],
     "image": "imaginary-ends/merchants/toddles-4.webp"
   },
   {
@@ -193,7 +316,12 @@
     "set": "imaginary-ends",
     "name": "Atavism",
     "flavor": "Onward, to the beginning!",
-    "effect": "Suppress all +/- Gene Pool traits in your trait pile. Set your Gene Pool to 5.",
+    "effects": [
+      {
+        "text": "Suppress all +/- Gene Pool traits in your trait pile. Set your Gene Pool to 5."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "blue"
@@ -213,7 +341,16 @@
     "set": "imaginary-ends",
     "name": "Awesome!",
     "flavor": "Fear me! Tehee!",
-    "effect": "At World's End: Stabilize to 2. Add 2 face values in your hand to your score. (Max +17)",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Stabilize to 2."
+      },
+      {
+        "text": "Add 2 face values in your hand to your score.\n\n(Max +17)"
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue",
@@ -237,7 +374,12 @@
     "set": "imaginary-ends",
     "name": "Baffling",
     "flavor": "You look confused. This amuses me.",
-    "effect": "Suppress 1 trait in your trait pile. Then move Baffling to an opponent's trait pile.",
+    "effects": [
+      {
+        "text": "Suppress 1 trait in your trait pile. Then move Baffling to an opponent's trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [
       "purple"
@@ -257,7 +399,13 @@
     "set": "imaginary-ends",
     "name": "Bedazzled",
     "flavor": "Use star signs to align crystal auras to one's heart chakra.",
-    "effect": "Draw 1. If it is effectless, play it now. If it is a Glitterling, repeat this action.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 1. If it is effectless, play it now. If it is a Glitterling ({glitterling}), repeat this action."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -277,7 +425,13 @@
     "set": "imaginary-ends",
     "name": "Bubbly",
     "flavor": "You guys are my burst friends.",
-    "effect": "At World's End: Draw 1 and reveal it. If it is blue or colorless, discard 1 trait from your trait pile.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Draw 1 and reveal it. If it is blue or colorless, discard 1 trait from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue"
@@ -297,7 +451,12 @@
     "set": "imaginary-ends",
     "name": "Chemotroph",
     "flavor": "Ooh! A tasty sulfuric snack.",
-    "effect": "To play, you must suppress 1 trait in your trait pile. Play another trait.",
+    "effects": [
+      {
+        "text": "To play, you must suppress 1 trait in your trait pile. Play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "green"
@@ -317,7 +476,12 @@
     "set": "imaginary-ends",
     "name": "Cryptic",
     "flavor": "Etslay seuay ay ecretsay odecay!",
-    "effect": "-4 if you have 12 or more traits in your trait pile.",
+    "effects": [
+      {
+        "text": "-4 if you have 12 or more traits in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [
       "blue"
@@ -337,7 +501,8 @@
     "set": "imaginary-ends",
     "name": "Decaying Ooze",
     "flavor": "Here today, goo tomorrow.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": -4,
     "colors": [
       "red"
@@ -355,7 +520,8 @@
     "set": "imaginary-ends",
     "name": "Dipped",
     "flavor": "I never go out without putting a coat on.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -373,7 +539,13 @@
     "set": "imaginary-ends",
     "name": "Eccentric",
     "flavor": "Oddity loves company.",
-    "effect": "All your friends stabilize to your Gene Pool.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All your friends stabilize to your Gene Pool."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue",
@@ -395,7 +567,12 @@
     "set": "imaginary-ends",
     "name": "Effervescent",
     "flavor": "A spirited personality that rises to the top.",
-    "effect": "Draw 1 and suppress it. If it is a Deepling or Glitterling, repeat this effect.",
+    "effects": [
+      {
+        "text": "Draw 1 and suppress it. If it is a Deepling ({deepling}) or Glitterling ({glitterling}), repeat this effect."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -416,7 +593,13 @@
     "set": "imaginary-ends",
     "name": "Elegance",
     "flavor": "Less is more.",
-    "effect": "You and all your friends may discard any negative cards from hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "You and all your friends may discard any negative cards from hand."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -436,7 +619,12 @@
     "set": "imaginary-ends",
     "name": "Enigma",
     "flavor": "You don't want an answer to every question.",
-    "effect": "+10 if you have 10 or fewer traits in your trait pile.",
+    "effects": [
+      {
+        "text": "+10 if you have 10 or fewer traits in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -3,
     "colors": [
       "purple"
@@ -456,7 +644,13 @@
     "set": "imaginary-ends",
     "name": "Ephemeral",
     "flavor": "Only a moment.",
-    "effect": "At World's End: Draw 1 and reveal it. If it is purple or colorless, return Ephemeral to your hand.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Draw 1 and reveal it. If it is purple or colorless, return Ephemeral to your hand."
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [
       "purple"
@@ -476,7 +670,12 @@
     "set": "imaginary-ends",
     "name": "Ethereal",
     "flavor": "Too perfect for this world, or the next.",
-    "effect": "Until World's End: If you hold 6 or fewer cards at the end of your turn, you may suppress 1 from your hand instead of stabilizing. (If this effect empties your hand, draw 2.)",
+    "effects": [
+      {
+        "text": "Until World's End: If you hold 6 or fewer cards at the end of your turn, you may suppress 1 from your hand instead of stabilizing.\n\n(If this effect empties your hand, draw 2.)"
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -496,7 +695,13 @@
     "set": "imaginary-ends",
     "name": "Extravagant",
     "flavor": "Sometimes we just need a day to overdo it.",
-    "effect": "Give a friend all Moonlings and Glitterlings in your hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Give a friend all Moonlings ({moonling}) and Glitterlings ({glitterling}) in your hand."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -517,7 +722,12 @@
     "set": "imaginary-ends",
     "name": "Feisty",
     "flavor": "It's my first day pirating. I'm still getting into the swing of things.",
-    "effect": "To play, draw 1 and reveal it. If it is green, all your friends increase their Gene Pool by 1. +1 Gene Pool.",
+    "effects": [
+      {
+        "text": "To play, draw 1 and reveal it. If it is green, all your friends increase their Gene Pool by 1."
+      }
+    ],
+    "genePool": 1,
     "points": 2,
     "colors": [
       "green"
@@ -535,7 +745,8 @@
     "set": "imaginary-ends",
     "name": "Frumious",
     "flavor": "Don't chortle at its vorpal bite.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green",
@@ -555,7 +766,12 @@
     "set": "imaginary-ends",
     "name": "Frumple Pumple",
     "flavor": "When the frumples get pumpled, the pumples get frumpling.",
-    "effect": "+5 if you hold 3 or fewer cards.",
+    "effects": [
+      {
+        "text": "+5 if you hold 3 or fewer cards."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "green"
@@ -575,7 +791,13 @@
     "set": "imaginary-ends",
     "name": "Fuffle Nuffs",
     "flavor": "Nuff to go around.",
-    "effect": "Return 1 trait from your trait pile to your hand. Then give 1 card to an opponent.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Return 1 trait from your trait pile to your hand. Then give 1 card to an opponent."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue"
@@ -595,7 +817,8 @@
     "set": "imaginary-ends",
     "name": "Fumplepop",
     "flavor": "Fimple limple pumple fop!",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": -2,
     "colors": [
       "blue"
@@ -613,7 +836,8 @@
     "set": "imaginary-ends",
     "name": "Glamorous",
     "flavor": "Glossed soul.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue",
@@ -633,7 +857,12 @@
     "set": "imaginary-ends",
     "name": "Gob Lopters",
     "flavor": "Until you spread your gob lopters, you have no idea how far you can't fly.",
-    "effect": "To play, you must give an opponent 2 random cards from your hand.",
+    "effects": [
+      {
+        "text": "To play, you must give an opponent 2 random cards from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [],
     "dominant": false,
@@ -649,7 +878,8 @@
     "set": "imaginary-ends",
     "name": "Gossamer",
     "flavor": "Just because I'm insubstantial doesn't mean there's nothing to me.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green",
@@ -669,7 +899,12 @@
     "set": "imaginary-ends",
     "name": "Grobblebobble",
     "flavor": "Make no mistake: A bobble that grobbles can grobble with bobbles, but grobbling bobbles won't bobble a grobble. Wait...maybe we have that backwards.",
-    "effect": "Grobblebobble cannot be discarded from your hand.",
+    "effects": [
+      {
+        "text": "Grobblebobble cannot be discarded from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -687,7 +922,13 @@
     "set": "imaginary-ends",
     "name": "Gurvendirs",
     "flavor": "Gerv er lertle, gert er lert.",
-    "effect": "Give an opponent 2 cards from your hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Give an opponent 2 cards from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue"
@@ -707,7 +948,12 @@
     "set": "imaginary-ends",
     "name": "Hidden",
     "flavor": "Even if you can't see me, I'm right here. For you.",
-    "effect": "Steal 1 trait from an opponent's trait pile. Then suppress it.",
+    "effects": [
+      {
+        "text": "Steal 1 trait from an opponent's trait pile. Then suppress it."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -727,7 +973,13 @@
     "set": "imaginary-ends",
     "name": "Humdumpling",
     "flavor": "Hum.\" \"Dum.\" \"Pling.",
-    "effect": "Give an opponent 1 card from your hand. Then play another trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Give an opponent 1 card from your hand. Then play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "red"
@@ -747,7 +999,13 @@
     "set": "imaginary-ends",
     "name": "Hurmflerm",
     "flavor": "Hurm flermery, hurm flermery, hurm flerm feree.",
-    "effect": "-2 Gene Pool. Draw 2 and do not stabilize this turn.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 2 and do not stabilize this turn."
+      }
+    ],
+    "genePool": -2,
     "points": 5,
     "colors": [
       "blue"
@@ -767,7 +1025,13 @@
     "set": "imaginary-ends",
     "name": "Imaginative",
     "flavor": "Worlds within words.",
-    "effect": "Choose a color and discard the top card of the trait deck. If it is the chosen color, you and all your friends draw 2. Yay!",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Choose a color and discard the top card of the trait deck. If it is the chosen color, you and all your friends draw 2. Yay!"
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue"
@@ -787,7 +1051,12 @@
     "set": "imaginary-ends",
     "name": "Jibwib",
     "flavor": "Swib dib.",
-    "effect": "+5 to all players with a Gene Pool of 2 or lower.",
+    "effects": [
+      {
+        "text": "+5 to all players with a Gene Pool of 2 or lower."
+      }
+    ],
+    "genePool": null,
     "points": 6,
     "colors": [],
     "dominant": true,
@@ -805,7 +1074,12 @@
     "set": "imaginary-ends",
     "name": "Lure",
     "flavor": "I'm so helpless... I hope nothing big and nutritious tries to get me...",
-    "effect": "The opponent on your right chooses a color. Suppress all cards of the chosen color from your hand.",
+    "effects": [
+      {
+        "text": "The opponent on your right chooses a color. Suppress all cards of the chosen color from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -825,7 +1099,17 @@
     "set": "imaginary-ends",
     "name": "Magic Beans",
     "flavor": "Who knows what these could grow into?",
-    "effect": "Draw 1. If its face value is 1, play it and repeat. Ignore actions.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 1. If its face value is 1, play it and repeat."
+      },
+      {
+        "kind": "note",
+        "text": "Ignore actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -845,7 +1129,12 @@
     "set": "imaginary-ends",
     "name": "Merry",
     "flavor": "Steal from the rich and then maybe a second thing!",
-    "effect": "+1 for every dominant in all your friends' trait piles.",
+    "effects": [
+      {
+        "text": "+1 for every dominant in all your friends' trait piles."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "green"
@@ -865,7 +1154,12 @@
     "set": "imaginary-ends",
     "name": "Mimsy",
     "flavor": "Mome raths gonna outgrabe.",
-    "effect": "Give an opponent 1 card from your hand. Suppress all cards of that color in your hand.",
+    "effects": [
+      {
+        "text": "Give an opponent 1 card from your hand. Suppress all cards of that color in your hand."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -886,7 +1180,8 @@
     "set": "imaginary-ends",
     "name": "Monstrosity",
     "flavor": "It's what's on the inside that counts. I'm a monster there too.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -904,7 +1199,12 @@
     "set": "imaginary-ends",
     "name": "Mufflemops",
     "flavor": "The full name is a mumfull.",
-    "effect": "-1 Gene Pool. +1 for each Moonling in your trait pile.",
+    "effects": [
+      {
+        "text": "+1 for each Moonling ({moonling}) in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "points": 1,
     "colors": [
       "green"
@@ -924,7 +1224,8 @@
     "set": "imaginary-ends",
     "name": "Nurplers",
     "flavor": "Urt's nurpin turm!",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -942,7 +1243,13 @@
     "set": "imaginary-ends",
     "name": "Pink",
     "flavor": "Together, we can create a brighter fuchsia!",
-    "effect": "All your friends draw 1.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All your friends draw 1."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [],
     "dominant": false,
@@ -960,7 +1267,13 @@
     "set": "imaginary-ends",
     "name": "Polka Dots",
     "flavor": "I'm not sick! I'm just fabulous!",
-    "effect": "Discard the top 5 cards from the trait deck. If any have a face value of 0, play them now. Ignore actions.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard the top 5 cards from the trait deck. If any have a face value of 0, play them now. Ignore actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -980,7 +1293,15 @@
     "set": "imaginary-ends",
     "name": "Popplebelly",
     "flavor": "Beware the mighty belly of the popple.",
-    "effect": "Your Gene Pool is 1 and cannot be modified. Draw 2 at the start of each of your turns.",
+    "effects": [
+      {
+        "text": "Your Gene Pool is 1 and cannot be modified."
+      },
+      {
+        "text": "Draw 2 at the start of each of your turns."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "green"
@@ -998,7 +1319,12 @@
     "set": "imaginary-ends",
     "name": "Rainbow Magic",
     "flavor": "I've been doing a lot of reflecting. And refracting.",
-    "effect": "You may return Rainbow Magic to your hand (seriously!) after you stabilize. Then play 1 random card from your hand. Ignore restrictions and requirements.",
+    "effects": [
+      {
+        "text": "You may return Rainbow Magic to your hand (seriously!) after you stabilize. Then play 1 random card from your hand. Ignore restrictions and requirements."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue",
@@ -1019,7 +1345,12 @@
     "set": "imaginary-ends",
     "name": "Remarkable",
     "flavor": "No comment.",
-    "effect": "To play, you must hold 3 or fewer cards. All your friends pass their hands right (not you!) and stabilize. Then, suppress your hand.",
+    "effects": [
+      {
+        "text": "To play, you must hold 3 or fewer cards. All your friends pass their hands right (not you!) and stabilize. Then, suppress your hand."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -1041,7 +1372,8 @@
     "set": "imaginary-ends",
     "name": "Rogloblers",
     "flavor": null,
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": -3,
     "colors": [
       "red"
@@ -1059,7 +1391,12 @@
     "set": "imaginary-ends",
     "name": "Scintillant",
     "flavor": "I was mermaid to shine.",
-    "effect": "+1 for every Deepling and Glitterling in your trait pile. (Including this one.)",
+    "effects": [
+      {
+        "text": "+1 for every Deepling ({deepling}) and Glitterling ({glitterling}) in your trait pile.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": -3,
     "colors": [
       "blue",
@@ -1081,7 +1418,17 @@
     "set": "imaginary-ends",
     "name": "Scrappy",
     "flavor": "This thing would work better if I didn't have two eyepatches.",
-    "effect": "Draw 2. You may play neither, or play both and discard Scrappy. Ignore actions.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 2. You may play neither, or play both and discard Scrappy."
+      },
+      {
+        "kind": "note",
+        "text": "Ignore actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -1101,7 +1448,12 @@
     "set": "imaginary-ends",
     "name": "Slithy",
     "flavor": "Known to gimble and gyre.",
-    "effect": "+5 if you have a Moonling or Deepling with a suppressed card under it.",
+    "effects": [
+      {
+        "text": "+5 if you have a Moonling ({moonling}) or Deepling ({deepling}) with a suppressed card under it."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "purple",
@@ -1123,7 +1475,15 @@
     "set": "imaginary-ends",
     "name": "Spineless",
     "flavor": "I don't have a backbone. Also, I'm really scared.",
-    "effect": "Suppress all face value 1 traits in your trait pile. -1 for each face value 1 trait in your trait pile.",
+    "effects": [
+      {
+        "text": "Suppress all face value 1 traits in your trait pile."
+      },
+      {
+        "text": "-1 for each face value 1 trait in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [],
     "dominant": false,
@@ -1142,7 +1502,13 @@
     "set": "imaginary-ends",
     "name": "Sprinkles",
     "flavor": "Sugar on sugar on sugar.",
-    "effect": "Draw 1 and reveal it. If it is red or colorless, give each friend 1 card from your hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 1 and reveal it. If it is red or colorless, give each friend 1 card from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "red"
@@ -1162,7 +1528,8 @@
     "set": "imaginary-ends",
     "name": "Still",
     "flavor": "Consider, for a moment, nothing.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 4,
     "colors": [
       "green"
@@ -1180,7 +1547,16 @@
     "set": "imaginary-ends",
     "name": "Stygian",
     "flavor": "I'll get the lights.",
-    "effect": "At World's End: Choose a color. Suppress all traits of that color in your trait pile. -2 for each color in your trait pile.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Choose a color. Suppress all traits of that color in your trait pile."
+      },
+      {
+        "text": "-2 for each color in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 10,
     "colors": [],
     "dominant": true,
@@ -1200,7 +1576,12 @@
     "set": "imaginary-ends",
     "name": "Telescopic Eyes",
     "flavor": "My pupils could learn a lot from my pupils.",
-    "effect": "+2 for each opponent with more traits in their trait pile than yours.",
+    "effects": [
+      {
+        "text": "+2 for each opponent with more traits in their trait pile than yours."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": false,
@@ -1218,7 +1599,12 @@
     "set": "imaginary-ends",
     "name": "Thwopplers",
     "flavor": "They're like arms, but...yeah, no, they're just arms.",
-    "effect": "Subtract the lowest Gene Pool from your final score.",
+    "effects": [
+      {
+        "text": "Subtract the lowest Gene Pool from your final score."
+      }
+    ],
+    "genePool": null,
     "points": 6,
     "colors": [],
     "dominant": false,
@@ -1236,7 +1622,8 @@
     "set": "imaginary-ends",
     "name": "Toasty",
     "flavor": "All my friends are gone. Smooshed between crackers and chocolate.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [],
     "dominant": false,
@@ -1252,7 +1639,12 @@
     "set": "imaginary-ends",
     "name": "Translucent",
     "flavor": "You see right through me.",
-    "effect": "Suppress 1 card from your hand.",
+    "effects": [
+      {
+        "text": "Suppress 1 card from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -1270,7 +1662,13 @@
     "set": "imaginary-ends",
     "name": "Turkendurt",
     "flavor": "Ur yer, durs durt rerp fer dur turken.",
-    "effect": "If your Gene Pool is 3 or lower, steal 1 trait from an opponent's trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "If your Gene Pool is 3 or lower, steal 1 trait from an opponent's trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -1290,7 +1688,13 @@
     "set": "imaginary-ends",
     "name": "Umbleboos",
     "flavor": "Attached by umblecord until the ripe age of wum.",
-    "effect": "-2 Gene Pool. You may play Umbleboos at any time into a trait pile with a Gene Pool of 6 or higher.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Umbleboos at any time into a trait pile with a Gene Pool of 6 or higher."
+      }
+    ],
+    "genePool": -2,
     "points": 1,
     "colors": [
       "green"
@@ -1310,7 +1714,13 @@
     "set": "imaginary-ends",
     "name": "Undulating",
     "flavor": "Whoa with the flow.",
-    "effect": "At World's End: Suppress 1 trait in your trait pile.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Suppress 1 trait in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -1331,7 +1741,15 @@
     "set": "imaginary-ends",
     "name": "Untold",
     "flavor": "Keeper of secrets. But you didn't hear that from me.",
-    "effect": "Suppress up to 2 traits in your trait pile. +1 for each suppressed card under Untold.",
+    "effects": [
+      {
+        "text": "Suppress up to 2 traits in your trait pile."
+      },
+      {
+        "text": "+1 for each suppressed card under Untold."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "red"
@@ -1352,7 +1770,12 @@
     "set": "imaginary-ends",
     "name": "Urf",
     "flavor": "Urf.",
-    "effect": "-3 Gene Pool. You may discard Urf from your trait pile at the start of your turn to draw 3.",
+    "effects": [
+      {
+        "text": "You may discard Urf from your trait pile at the start of your turn to draw 3."
+      }
+    ],
+    "genePool": -3,
     "points": 3,
     "colors": [
       "red"
@@ -1370,7 +1793,12 @@
     "set": "imaginary-ends",
     "name": "Whimsy",
     "flavor": "Let's see what maybe might happen I guess probably.",
-    "effect": "To play, you must draw 1 and reveal it. If it has no action, play it now. If it is dominant, discard the card along with Whimsy.",
+    "effects": [
+      {
+        "text": "To play, you must draw 1 and reveal it. If it has no action ({action}), play it now. If it is dominant, discard the card along with Whimsy."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [],
     "dominant": false,
@@ -1386,7 +1814,12 @@
     "set": "imaginary-ends",
     "name": "Whip Tail",
     "flavor": "Go ahead, pull on it. See what happens.",
-    "effect": "Suppress 1 trait in your trait pile.",
+    "effects": [
+      {
+        "text": "Suppress 1 trait in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green"
@@ -1406,7 +1839,13 @@
     "set": "imaginary-ends",
     "name": "Whopple",
     "flavor": "Whup?",
-    "effect": "If you hold 3 or fewer cards after you play Whopple, draw 1. Then play another trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "If you hold 3 or fewer cards after you play Whopple, draw 1. Then play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -1426,7 +1865,8 @@
     "set": "imaginary-ends",
     "name": "Wishful",
     "flavor": "I unicorn 'cause I unican!",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -1443,7 +1883,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Anxiety Elixir",
-    "effect": "Awesome Power:\nStart of Turn: Discard dominants from hand.\n\nPocket Objective:\nReveal: 2 reds in hand.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Start of Turn: Discard dominants from hand."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 2 reds in hand."
+      }
+    ],
+    "value": 2,
     "flavor": "This causes stress. Can't stress that enough.",
     "image": "imaginary-ends/trinkets/anxiety-elixir.webp"
   },
@@ -1452,7 +1902,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Apathy Stone",
-    "effect": "Awesome Power:\nCannot play blue.\n\nPocket Objective:\nPlay: 1 colorless.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play blue."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: 1 colorless."
+      }
+    ],
+    "value": 2,
     "flavor": "Behold, the unbelievable power of not caring.",
     "image": "imaginary-ends/trinkets/apathy-stone.webp"
   },
@@ -1461,7 +1921,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Bottled Air",
-    "effect": "Awesome Power:\nCannot play more than 1 trait on your turn.\n\nPocket Objective:\nReveal: 2 blues in hand.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play more than 1 trait on your turn."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 2 blues in hand."
+      }
+    ],
+    "value": 2,
     "flavor": "Break in case of emergency.",
     "image": "imaginary-ends/trinkets/bottled-air.webp"
   },
@@ -1470,7 +1940,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Chu Box",
-    "effect": "Awesome Power:\nCannot play dominants.\n\nPocket Objective:\nReveal: 2 greens in hand.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play dominants."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 2 greens in hand."
+      }
+    ],
+    "value": 2,
     "flavor": "There are those who believe a chu box provides the healing properties of endless soft tissue.",
     "image": "imaginary-ends/trinkets/chu-box.webp"
   },
@@ -1479,7 +1959,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Collector's Cap",
-    "effect": "Awesome Power:\nIf you play red, you may draw 1.\n\nPocket Objective:\nReveal: 1 purple in hand.\n\nValue: 1",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "If you play red, you may draw 1."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 1 purple in hand."
+      }
+    ],
+    "value": 1,
     "flavor": "One of a million.",
     "image": "imaginary-ends/trinkets/collector-s-cap.webp"
   },
@@ -1488,7 +1978,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Crackle Ore",
-    "effect": "Awesome Power:\nWhen stabilizing, stabilize to 4.\n\nPocket Objective:\nDraw: 2 on your turn.\n\nValue: 4",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "When stabilizing, stabilize to 4."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Draw: 2 on your turn."
+      }
+    ],
+    "value": 4,
     "flavor": "Crackletown's mediumist export!",
     "image": "imaginary-ends/trinkets/crackle-ore.webp"
   },
@@ -1497,7 +1997,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Dimming Hat",
-    "effect": "Awesome Power:\nPrevent actions that you play.\n\nPocket Objective:\nPlay: Action.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Prevent actions that you play."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: Action."
+      }
+    ],
+    "value": 2,
     "flavor": "The more I see the less I know.",
     "image": "imaginary-ends/trinkets/dimming-hat.webp"
   },
@@ -1506,7 +2016,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Fool's Gold",
-    "effect": "Awesome Power:\nCannot play dominants.\n\nPocket Objective:\nHand discard: 1 dominant.\n\nValue: 4",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play dominants."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Hand discard: 1 dominant."
+      }
+    ],
+    "value": 4,
     "flavor": "A special kind of gold... trust me.",
     "image": "imaginary-ends/trinkets/fool-s-gold.webp"
   },
@@ -1515,7 +2035,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Forbidden Mushroom",
-    "effect": "Awesome Power:\nIf you play purple, you may draw 1.\n\nPocket Objective:\nReveal: 1 blue in hand.\n\nValue: 1",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "If you play purple, you may draw 1."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 1 blue in hand."
+      }
+    ],
+    "value": 1,
     "flavor": "The mycelium reaches far beyond to lands untold.",
     "image": "imaginary-ends/trinkets/forbidden-mushroom.webp"
   },
@@ -1524,7 +2054,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Galaxy in a Jar",
-    "effect": "Awesome Power:\nCannot play face value 1.\n\nPocket Objective:\nReveal: 2 dominants in hand.\n\nValue: 4",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play face value 1."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 2 dominants in hand."
+      }
+    ],
+    "value": 4,
     "flavor": "Fragile. Do not shake.",
     "image": "imaginary-ends/trinkets/galaxy-in-a-jar.webp"
   },
@@ -1533,7 +2073,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Gilded Lily",
-    "effect": "Awesome Power:\nCannot draw unless stabilizing.\n\nPocket Objective:\nReveal: 2 colorless in hand.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot draw unless stabilizing."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 2 colorless in hand."
+      }
+    ],
+    "value": 2,
     "flavor": "Everything's better in gold.",
     "image": "imaginary-ends/trinkets/gilded-lily.webp"
   },
@@ -1542,7 +2092,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Glass Hammer",
-    "effect": "Awesome Power:\nCannot play traits with actions.\n\nPocket Objective:\nHand discard: 1 red or green.\n\nValue: 3",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play traits with actions ({action})."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Hand discard: 1 red or green."
+      }
+    ],
+    "value": 3,
     "flavor": "Great for hammering a nail. Once.",
     "image": "imaginary-ends/trinkets/glass-hammer.webp"
   },
@@ -1551,7 +2111,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Glitter Pouch",
-    "effect": "Awesome Power:\nCannot play blue.\n\nPocket Objective:\nTrait pile: 3 greens.\n\nValue: 3",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play blue."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Trait pile: 3 greens."
+      }
+    ],
+    "value": 3,
     "flavor": "Celebrate your friends or take revenge on your enemies!",
     "image": "imaginary-ends/trinkets/glitter-pouch.webp"
   },
@@ -1560,7 +2130,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Half-Off Sandwich",
-    "effect": "Awesome Power:\nNegative traits cannot be played in your trait pile.\n\nPocket Objective:\nPlay: Face value 2 or higher.\n\nValue: 1",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Negative traits cannot be played in your trait pile."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: Face value 2 or higher."
+      }
+    ],
+    "value": 1,
     "flavor": "The top half.",
     "image": "imaginary-ends/trinkets/half-off-sandwich.webp"
   },
@@ -1569,7 +2149,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Harmonic Sea Shell",
-    "effect": "Awesome Power:\nCannot play purple.\n\nPocket Objective:\nTrait pile: 3 colorless.\n\nValue: 3",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play purple."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Trait pile: 3 colorless."
+      }
+    ],
+    "value": 3,
     "flavor": "If you listen closely, you can hear the inside of a sea shell.",
     "image": "imaginary-ends/trinkets/harmonic-sea-shell.webp"
   },
@@ -1578,7 +2168,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Invisible Painting",
-    "effect": "Awesome Power:\nStart of Turn: You may play 1 effectless.\n\nPocket Objective:\nPlay: Effectless.\n\nValue: 1",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Start of Turn: You may play 1 effectless."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: Effectless."
+      }
+    ],
+    "value": 1,
     "flavor": "It took the artist 30 years to learn how to make this in 5 minutes.",
     "image": "imaginary-ends/trinkets/invisible-painting.webp"
   },
@@ -1587,7 +2187,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Izzy",
-    "effect": "Awesome Power:\nCannot play colorless.\n\nPocket Objective:\nReveal: 4 different colors in hand.\n\nValue: 5",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play colorless."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 4 different colors in hand."
+      }
+    ],
+    "value": 5,
     "flavor": "She has been trying to find that missing piece of herself for a while. Perhaps you can help?",
     "image": "imaginary-ends/trinkets/izzy.webp"
   },
@@ -1596,7 +2206,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Lemony Lemons",
-    "effect": "Awesome Power:\nCannot play colorless.\n\nPocket Objective:\nPlay: 1 green.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play colorless."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: 1 green."
+      }
+    ],
+    "value": 2,
     "flavor": "More lemon than the average lemon.",
     "image": "imaginary-ends/trinkets/lemony-lemons.webp"
   },
@@ -1605,7 +2225,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Muffins",
-    "effect": "Awesome Power:\nCannot play face value 3 or higher.\n\nPocket Objective:\nTrait pile: 2 negatives.\n\nValue: 4",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play face value 3 or higher."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Trait pile: 2 negatives."
+      }
+    ],
+    "value": 4,
     "flavor": "Never EVER listen to his whimsical tale.",
     "image": "imaginary-ends/trinkets/muffins.webp"
   },
@@ -1614,7 +2244,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Mysterious Lantern",
-    "effect": "Awesome Power:\nCannot play purple.\n\nPocket Objective:\nPlay: 1 red.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play purple."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: 1 red."
+      }
+    ],
+    "value": 2,
     "flavor": "Emits a special light that can only be seen in the day.",
     "image": "imaginary-ends/trinkets/mysterious-lantern.webp"
   },
@@ -1623,7 +2263,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Omniscient Ball",
-    "effect": "Awesome Power: Cannot play effectless.\n\nPocket Objective:\nReveal: 2 colorless in hand.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play effectless."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 2 colorless in hand."
+      }
+    ],
+    "value": 2,
     "flavor": "The more it sees the more it knows.",
     "image": "imaginary-ends/trinkets/omniscient-ball.webp"
   },
@@ -1632,7 +2282,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Party Mask",
-    "effect": "Awesome Power: \nCannot play Drop of Life.\n\nPocket Objective:\nHand discard: 1 blue or purple.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play Drop of Life."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Hand discard: 1 blue or purple."
+      }
+    ],
+    "value": 2,
     "flavor": "Purchased from a faceless traveler in a really trendy coat.",
     "image": "imaginary-ends/trinkets/party-mask.webp"
   },
@@ -1641,7 +2301,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Perpetual Motion Machine",
-    "effect": "Awesome Power:\nCannot play colorless.\n\nPocket Objective:\nTrait pile: 3 reds.\n\nValue: 3",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play colorless."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Trait pile: 3 reds."
+      }
+    ],
+    "value": 3,
     "flavor": "Batteries not included.",
     "image": "imaginary-ends/trinkets/perpetual-motion-machine.webp"
   },
@@ -1650,7 +2320,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Philosopher's Key",
-    "effect": "Awesome Power:\nCannot play more than 1 trait on your turn.\n\nPocket Objective:\nTrait pile: 2 of each color.\n\nValue: 5",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play more than 1 trait on your turn."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Trait pile: 2 of each color."
+      }
+    ],
+    "value": 5,
     "flavor": "Some think it unlocks nothing.",
     "image": "imaginary-ends/trinkets/philosopher-s-key.webp"
   },
@@ -1659,7 +2339,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Pointy Stick",
-    "effect": "Awesome Power:\nCannot play red.\n\nPocket Objective:\nPlay: 1 purple.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play red."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: 1 purple."
+      }
+    ],
+    "value": 2,
     "flavor": "You can poke an eye out! Among other functions!",
     "image": "imaginary-ends/trinkets/pointy-stick.webp"
   },
@@ -1668,7 +2358,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Shade Berry",
-    "effect": "Awesome Power:\nYou may discard 1 dominant in your trait pile with your trait effects.\n\nPocket Objective:\nTrait pile removal: 1 dominant.\n\nValue: 5",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "You may discard 1 dominant in your trait pile with your trait effects."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Trait pile removal: 1 dominant."
+      }
+    ],
+    "value": 5,
     "flavor": "Warning: consuming this berry grants strange powers. And sometimes gas.",
     "image": "imaginary-ends/trinkets/shade-berry.webp"
   },
@@ -1677,7 +2377,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Silby Bark",
-    "effect": "Awesome Power:\nPrevent actions that you play.\n\nPocket Objective:\nReveal: 2 purples in hand.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Prevent actions that you play."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 2 purples in hand."
+      }
+    ],
+    "value": 2,
     "flavor": "Smuggled from the Living Library.",
     "image": "imaginary-ends/trinkets/silby-bark.webp"
   },
@@ -1686,7 +2396,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Spyglass",
-    "effect": "Awesome Power:\nIf you play blue, you may draw 1.\n\nPocket Objective:\nReveal: 1 green in hand.\n\nValue: 1",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "If you play blue, you may draw 1."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 1 green in hand."
+      }
+    ],
+    "value": 1,
     "flavor": "Embiggens distant objects.",
     "image": "imaginary-ends/trinkets/spyglass.webp"
   },
@@ -1695,7 +2415,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "T.O.M. Four",
-    "effect": "Awesome Power:\nYour opponents may draw 1 at the start of your turn. (If they notice...)\n\nPocket Objective:\nReveal: 3 different colors in hand.\n\nValue: 4",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Your opponents may draw 1 at the start of your turn. (If they notice...)"
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 3 different colors in hand."
+      }
+    ],
+    "value": 4,
     "flavor": "What's a TOM Four? For telling okay jokes.",
     "image": "imaginary-ends/trinkets/t-o-m-four.webp"
   },
@@ -1704,7 +2434,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Terror Root",
-    "effect": "Awesome Power:\nCannot play green.\n\nPocket Objective:\nTrait pile: 3 blues.\n\nValue: 3",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play green."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Trait pile: 3 blues."
+      }
+    ],
+    "value": 3,
     "flavor": "When severed from the Wandering Willow, Terror Roots burrow through the soil in search of a new host.",
     "image": "imaginary-ends/trinkets/terror-root.webp"
   },
@@ -1713,7 +2453,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Tiny House",
-    "effect": "Awesome Power:\nStart of turn: You may discard 1 from hand.\n\nPocket Objective:\nPlay: Face value 2 or higher.\n\nValue: 1",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Start of turn: You may discard 1 from hand."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: Face value 2 or higher."
+      }
+    ],
+    "value": 1,
     "flavor": "It needs a little bit of work.",
     "image": "imaginary-ends/trinkets/tiny-house.webp"
   },
@@ -1722,7 +2472,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Tome of Common Knowledge",
-    "effect": "Awesome Power:\nCannot play green.\n\nPocket Objective:\nPlay: 1 blue.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play green."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: 1 blue."
+      }
+    ],
+    "value": 2,
     "flavor": "A rare find.",
     "image": "imaginary-ends/trinkets/tome-of-common-knowledge.webp"
   },
@@ -1731,7 +2491,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Tome of Hidden Knowledge",
-    "effect": "Awesome Power:\nCannot play red.\n\nPocket Objective:\nTrait pile: 3 purples.\n\nValue: 3",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play red."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Trait pile: 3 purples."
+      }
+    ],
+    "value": 3,
     "flavor": "<information redacted.>",
     "image": "imaginary-ends/trinkets/tome-of-hidden-knowledge.webp"
   },
@@ -1740,7 +2510,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Treasure Goggles",
-    "effect": "Awesome Power:\nStart of turn: Draw 1.\n\nPocket Objective:\nPlay: Face value of 1.\n\nValue: 1",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Start of turn: Draw 1."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: Face value of 1."
+      }
+    ],
+    "value": 1,
     "flavor": "Make your fortune by eliminating all distractions from sight! Warning: the wearer of these goggles will only see treasure.",
     "image": "imaginary-ends/trinkets/treasure-goggles.webp"
   },
@@ -1749,7 +2529,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Unicorn Horn",
-    "effect": "Awesome Power:\nIf you play green, you may draw 1.\n\nPocket Objective:\nReveal: 1 red in hand.\n\nValue: 1",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "If you play green, you may draw 1."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Reveal: 1 red in hand."
+      }
+    ],
+    "value": 1,
     "flavor": "A fashion choice that will make everyone stop in their tracks.",
     "image": "imaginary-ends/trinkets/unicorn-horn.webp"
   },
@@ -1758,7 +2548,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Unlabeled Vial",
-    "effect": "Awesome Power:\nCannot play traits on opponents' turns.\n\nPocket Objective:\nTrait pile: 2 dominants.\n\nValue: 3",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Cannot play traits on opponents' turns."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Trait pile: 2 dominants."
+      }
+    ],
+    "value": 3,
     "flavor": "It's either a poison or the antidote. Too bad the other one already sold.",
     "image": "imaginary-ends/trinkets/unlabeled-vial.webp"
   },
@@ -1767,7 +2567,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Unsolvable Puzzle",
-    "effect": "Awesome Power:\nWhen stabilizing, stabilize to 4.\n\nPocket Objective:\nPlay: Action.\n\nValue: 1",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "When stabilizing, stabilize to 4."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: Action."
+      }
+    ],
+    "value": 1,
     "flavor": "Everyone else seems to get it.",
     "image": "imaginary-ends/trinkets/unsolvable-puzzle.webp"
   },
@@ -1776,7 +2586,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Unusual Tooth",
-    "effect": "Awesome Power:\nWhen stabilizing, stabilize to 4.\n\nPocket Objective:\nPlay: 1 negative.\n\nValue: 3",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "When stabilizing, stabilize to 4."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: 1 negative."
+      }
+    ],
+    "value": 3,
     "flavor": "Don't let the owner of this gnasher find you.",
     "image": "imaginary-ends/trinkets/unusual-tooth.webp"
   },
@@ -1785,7 +2605,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "Weird Map",
-    "effect": "Awesome Power:\nStart of Turn: Discard 1 from hand.\n\nPocket Objective:\nTrait pile: 4 of the same color.\n\nValue: 4",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "Start of Turn: Discard 1 from hand."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Trait pile: 4 of the same color."
+      }
+    ],
+    "value": 4,
     "flavor": "Head sorth weast. Spot marks the x.",
     "image": "imaginary-ends/trinkets/weird-map.webp"
   },
@@ -1794,7 +2624,17 @@
     "type": "trinket",
     "set": "imaginary-ends",
     "name": "World's End Insurance",
-    "effect": "Awesome Power:\nAt World's End: Instead of losing this item, pocket it.\n\nPocket Objective:\nPlay: 2 traits on 1 turn.\n\nValue: 2",
+    "effects": [
+      {
+        "kind": "awesome-power",
+        "text": "At World's End: Instead of losing this item, pocket it."
+      },
+      {
+        "kind": "pocket-objective",
+        "text": "Play: 2 traits on 1 turn."
+      }
+    ],
+    "value": 2,
     "flavor": "You can't afford NOT to have this.",
     "image": "imaginary-ends/trinkets/world-s-end-insurance.webp"
   }

@@ -9,6 +9,8 @@ import dev.nycocado.atlas.card.CardColor.Red
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
+import dev.nycocado.atlas.card.Effect
+import dev.nycocado.atlas.card.EffectKind
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.decodeTranslations
 import kotlinx.serialization.json.Json
@@ -20,7 +22,24 @@ class CompendiumFilterTest {
         name: String,
         vararg colors: CardColor,
         effect: String? = null,
-    ) = Trait(name, "classic", "$name.webp", name, null, effect, 1, colors.toList(), false, emptyList(), emptyList())
+    ) = Trait(
+        name,
+        "classic",
+        "$name.webp",
+        name,
+        null,
+        listOfNotNull(
+            effect?.let {
+                Effect(text = it)
+            },
+        ),
+        null,
+        1,
+        colors.toList(),
+        false,
+        emptyList(),
+        emptyList(),
+    )
 
     private val cards =
         listOf(
@@ -28,9 +47,28 @@ class CompendiumFilterTest {
             trait("Camouflage", Blue),
             trait("Brave", Blue, Green),
             trait("Prickly"),
-            Age("age-of-dracula", "classic", "a.webp", "Age of Dracula", "If Vampirism is in your pile..."),
-            Catastrophe("ai-takeover", "classic", "c.webp", "AI Takeover", "-1 Gene Pool", "Colorless traits worth 2."),
-            BirthOfLife("birth", "classic", "b.webp", "The Birth of Life", "Set your Gene Pool to 5."),
+            Age(
+                "age-of-dracula",
+                "classic",
+                "a.webp",
+                "Age of Dracula",
+                listOf(Effect(text = "If Vampirism is in your pile...")),
+            ),
+            Catastrophe(
+                "ai-takeover",
+                "classic",
+                "c.webp",
+                "AI Takeover",
+                listOf(Effect(EffectKind.WorldsEnd, "Colorless traits worth 2.")),
+                -1,
+            ),
+            BirthOfLife(
+                "birth",
+                "classic",
+                "b.webp",
+                "The Birth of Life",
+                listOf(Effect(text = "Set your Gene Pool to 5.")),
+            ),
         )
 
     private fun names(filter: CompendiumFilter) = cards.filterCompendium(filter).map { (it as? Trait)?.name ?: it.id }
@@ -95,14 +133,48 @@ class CompendiumFilterTest {
     fun searchesSymbolsInTheEffect() {
         val cards =
             listOf(
-                trait("Gainer", effect = "+1 Gene Pool."),
-                trait("Loser", effect = "-1 Gene Pool."),
+                trait("Gainer", effect = "Score +1 per card."),
+                trait("Loser", effect = "Score -1 per card."),
                 trait("Drawer", effect = "Draw 1 card."),
             )
         assertEquals(
             listOf("Gainer", "Drawer", "Loser"),
             cards.filterCompendium(CompendiumFilter(query = "+1")).map { it.name },
         )
+    }
+
+    @Test
+    fun searchFindsWordsOfAnyEffectButNotATokensName() {
+        val cards =
+            listOf(
+                Trait(
+                    "Pearl",
+                    "classic",
+                    "p.webp",
+                    "Pearl",
+                    null,
+                    listOf(
+                        Effect(EffectKind.Action, "Ignore actions ({action})."),
+                        Effect(EffectKind.WorldsEnd, "Add 2 for each Shell ({shell})."),
+                        Effect(null, "Play 1 with this symbol: {worlds-end}."),
+                    ),
+                    null,
+                    1,
+                    emptyList(),
+                    false,
+                    emptyList(),
+                    emptyList(),
+                ),
+            )
+
+        fun found(query: String) = cards.filterCompendium(CompendiumFilter(query = query)).map { it.name }
+
+        assertEquals(listOf("Pearl"), found("ignore"))
+        assertEquals(listOf("Pearl"), found("for each shell"))
+        assertEquals(listOf("Pearl"), found("symbol"))
+        assertEquals(emptyList(), found("worlds-end"))
+        assertEquals(emptyList(), found("{"))
+        assertEquals(emptyList(), found("action)"))
     }
 
     @Test

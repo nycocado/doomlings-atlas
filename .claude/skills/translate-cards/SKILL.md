@@ -20,7 +20,7 @@ The rules shared by every language are in [CONTRIBUTING.md#translations](../../.
 
 ## 2. Translate
 
-Write into `assets/doomlings/<set>/<lang>.json`, keyed by card id, with exactly the text fields the card has in the set's `cards.json` (`name`, `effect`, `flavor`, `worldsEnd`). Check each card against its image in the same folder: the art often explains a pun or a name.
+Write into `assets/doomlings/<set>/<lang>.json`, keyed by card id, with exactly the text fields the card has in the set's `cards.json` (`name`, `effect`, `flavor`, `worldsEnd`). Until #164 a translation keeps `effect` as one flat text of all the effects of the card (its Gene Pool line included), and `worldsEnd` for a Catastrophe, though `cards.json` now has `effects` and `genePool` ([ADR 0009](../../../docs/adr/0009-card-text-as-a-list-of-effects.md)). Check each card against its image in the same folder: the art often explains a pun or a name.
 
 - **Effects** say the printed rule with the glossary's words, keeping the card's line breaks and sign formats (`+2`, `-1 Gene Pool`).
 - **Names** are what a speaker of the variant would call that trait: an everyday word over a technical one, matched to the art.

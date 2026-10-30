@@ -23,6 +23,7 @@ class CardGroupTest {
         "$name$number.webp",
         name,
         null,
+        emptyList(),
         null,
         1,
         colors.toList(),
