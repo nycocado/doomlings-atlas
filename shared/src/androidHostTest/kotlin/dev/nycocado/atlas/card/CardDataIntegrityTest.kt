@@ -43,7 +43,8 @@ class CardDataIntegrityTest {
         assertEquals(emptyList(), cards.map { it.image }.filterNot { dir.resolve(it).isFile })
     }
 
-    // The app packages card images as WebP (assets/doomlings/NOTICE.md): the header says RIFF....WEBP.
+    // The app packages card images as WebP (assets/doomlings/NOTICE.md). The JVM has no WebP reader, so this checks
+    // the file header.
     @Test
     fun everyCardImageIsWebP() {
         assertEquals(
