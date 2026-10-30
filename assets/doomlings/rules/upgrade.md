@@ -44,7 +44,7 @@ They must be attached to a "host trait," even if played randomly! IF THERE ARE N
 
 HOST TRAITS: Dominant traits cannot be host traits. Traits with the attach effect cannot be host traits. A host trait cannot have more than 1 attachment.
 
-SWAP/STEAL/DISCARD: Attachments cannot be individually swapped, stolen, or discarded. By default, IF THE HOST TRAIT IS:
+SWAP/STEAL/DISCARD Attachments cannot be individually swapped, stolen, or discarded. By default, IF THE HOST TRAIT IS:
 
 - SWAPPED: The attachment sticks with the host trait.
 - STOLEN: The attachment sticks with the host trait.

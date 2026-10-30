@@ -11,7 +11,7 @@ CASTLE GLASS
 
 Greetings, traveler! Welcome to Castle Glass, the city made of sand. Collect all the memories you can before the tides rise and wash the city away.
 
-The Castle Glass Bolster Expansion introduces trait classes to the game and with it, three new classes: Shells, Coral, and Fish. [class icons]
+The Castle Glass Bolster Expansion introduces trait classes to the game and with it, three new classes: Shells [icon], Coral [icon], and Fish [icon].
 
 (See the Class Bonuses divider card for more details.)
 
@@ -44,6 +44,6 @@ Each example is a row of class cards with its total; the class labels are in the
 - 0 + 0 = 0 pts.
 - 1 + 1 + 0 = 2 pts.
 - 1 + 2 + 3 = 6 pts.
-- 1 + 2 + 1 + 3 = 7 pts.
+- Coral 1 + Curious Coral 2, Shell 1 + Exotic Shell 3 = 7 pts.
 
 The cards of each row and the check and cross marks over them are shown as icons.

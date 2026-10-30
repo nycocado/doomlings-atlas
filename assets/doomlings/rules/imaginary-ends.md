@@ -51,7 +51,7 @@ SETUP: Game setup is as normal, but now each of the 3 age stacks should have 1 b
 
 Shuffle the trinkets. Place them face down to create the trinket deck. After traits are dealt, each player gains 2 trinkets. They keep 1 trinket and trash the other.
 
-TRASH PILE: When you trash a trinket, place it face up in a 'trash pile'. If the trinket deck runs out, shuffle the trash pile to create a new trinket deck. It is possible to completely run out of trinkets-this is fine, continue play as normal.
+TRASH PILE: When you trash a trinket, place it face up in a 'trash pile'. If the trinket deck runs out, shuffle the trash pile to create a new trinket deck. It is possible to completely run out of trinkets–this is fine, continue play as normal.
 
 MERCHANTS: The four merchants function similarly to ages and interact with trinkets.
 
