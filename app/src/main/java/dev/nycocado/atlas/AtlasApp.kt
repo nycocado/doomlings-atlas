@@ -97,10 +97,11 @@ fun AtlasApp() {
                         layout = layout,
                     )
                 }
-                // One content key for every card, so picking another card beside the list only changes what the
-                // pane shows instead of replacing the pane (which also flickered the status bar icons).
+                // One content key for every card at a depth, so picking another card beside the list only changes what
+                // the pane shows instead of replacing the pane (which also flickered the status bar icons). A cited
+                // card sits on top of its citer, so it needs a key of its own.
                 entry<CardKey>(
-                    clazzContentKey = { "card" },
+                    clazzContentKey = { "card ${it.depth}" },
                     metadata =
                         ListDetailSceneStrategy.detailPane() +
                             ListDetailSceneStrategy.paneAnimation(

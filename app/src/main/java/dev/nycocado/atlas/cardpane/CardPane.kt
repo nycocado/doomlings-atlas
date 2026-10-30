@@ -25,6 +25,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CardKey(
     val id: String,
+    // How many cards sit under this one, each opened from a name cited in the one below.
+    val depth: Int = 0,
 ) : NavKey
 
 // The back stack is the only record of the open card, so it is restored with it.
@@ -40,6 +42,12 @@ fun rememberCardPane(
     backStack.lastOrNull { it is CardKey }?.let { open -> SideEffect { pane.lastCard = (open as CardKey).id } }
     return pane
 }
+
+// movableContentOf takes at most four parameters.
+private class Opens(
+    val about: () -> Unit,
+    val card: (String) -> Unit,
+)
 
 @Stable
 class CardPane internal constructor(
@@ -61,13 +69,18 @@ class CardPane internal constructor(
         backStack.add(CardKey(id))
     }
 
+    // On top of the open card, which back returns to.
+    fun openCited(id: String) {
+        backStack.add(CardKey(id, backStack.count { it is CardKey }))
+    }
+
     fun close() {
         backStack.removeLastOrNull()
     }
 
     // Movable, so it keeps its tilt and scroll.
     private val content =
-        movableContentOf { id: String, layout: ListDetailLayout, onBack: () -> Unit, onAboutClick: () -> Unit ->
+        movableContentOf { id: String, layout: ListDetailLayout, onBack: () -> Unit, opens: Opens ->
             val lookup = library.value.lookup(id)
             if (lookup == CardLookup.Missing) LaunchedEffect(id) { onBack() }
             // The sheet shows beside the list even while the cards load.
@@ -79,8 +92,10 @@ class CardPane internal constructor(
                         language.value,
                         onLanguageChange,
                         layout,
+                        library.value,
                         onBack,
-                        onAboutClick,
+                        opens.about,
+                        opens.card,
                     )
                 }
             }
@@ -91,11 +106,11 @@ class CardPane internal constructor(
         id: String,
         layout: ListDetailLayout,
         onAboutClick: () -> Unit,
-    ) = content(id, layout, ::close, onAboutClick)
+    ) = content(id, layout, ::close, Opens(onAboutClick, ::openCited))
 
     @Composable
     fun DetailPlaceholder(layout: ListDetailLayout) {
-        lastCard?.let { content(it, layout, {}, {}) }
+        lastCard?.let { content(it, layout, {}, Opens({}, {})) }
     }
 }
 
