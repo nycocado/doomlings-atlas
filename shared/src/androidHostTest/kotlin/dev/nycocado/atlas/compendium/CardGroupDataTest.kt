@@ -3,6 +3,7 @@ package dev.nycocado.atlas.compendium
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardAssets
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.decodeCards
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -18,7 +19,7 @@ class CardGroupDataTest {
     private fun entries(
         filter: CompendiumFilter = CompendiumFilter(),
         from: List<Card> = classic,
-    ) = from.filterCompendium(filter).groupByName()
+    ) = CardLibrary.of(from).groupByName(from.filterCompendium(filter))
 
     private fun List<CompendiumEntry>.group(name: String) =
         filterIsInstance<CompendiumEntry.Group>().single { it.name == name }

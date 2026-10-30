@@ -32,14 +32,14 @@ class CitationTest {
     private fun citations(
         name: String,
         text: String,
-    ) = library.citations(card(name), text).map { text.substring(it.range) to it.cardId }
+    ) = library.citations(card(name), text).map { text.substring(it.range) to it.card.id }
 
     @Test
     fun citesAnotherCardAtItsPlaceInTheText() {
         val citation = library.citations(card("Eater"), "Discard Kidney now.").single()
 
         assertEquals(8..13, citation.range)
-        assertEquals("classic/traits/kidney", citation.cardId)
+        assertEquals("classic/traits/kidney", citation.card.id)
     }
 
     @Test

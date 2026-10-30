@@ -4,6 +4,7 @@ import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardColor.Blue
 import dev.nycocado.atlas.card.CardColor.Green
 import dev.nycocado.atlas.card.CardColor.Red
+import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import kotlin.test.Test
@@ -47,7 +48,7 @@ class CardGroupTest {
     private fun entries(
         cards: List<NamedCard>,
         filter: CompendiumFilter = CompendiumFilter(),
-    ) = cards.filterCompendium(filter).groupByName()
+    ) = CardLibrary.of(cards).groupByName(cards.filterCompendium(filter))
 
     @Test
     fun cardsSharingANameFormOneGroupOfAllTheirVariants() {
