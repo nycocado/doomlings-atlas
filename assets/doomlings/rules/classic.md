@@ -100,7 +100,7 @@ Team Doomlings KS: Christine Petrowich, Gregory Frank, James Freeman, Patrick Jo
 Notable playtesters/smelltesters: Miranda Liebsack, Anthony Rath, Nick Moore, Seth Reger, Rebecca Svehla, Angela McMahon.
 Couldn't have done it without: Brooke Anne, Charles Como.
 Immortalized Cards: Clever (Ono) - Lucy Koerbel/Michael Koerbel, Doting - Rachael Donovan/Becky Cassel, Eloquence - Mary Anne Meyer, Fortunate - Dianne Shackelford, Bad - Linda Barnes.
-Honorary cards: Acrobatic - James Freeman, Bloom - Margaret Blueberri/Jeff Dean, Witchy/Mecha - Christine Petrowich, The Magician - Patrick Jones, Ozmorian Winds - David Liebsack/Eric Carda, Coastal Formations - Rachael Donovan/Becky Cassel, Eloquence - Mary Anne Meyer, Fortunate - Dianne Shackelford, Adorable - Truffles.
+Honorary cards: Acrobatic - James Freeman, Bloom - Margaret Blueberri/Jeff Dean, Witchy/Mecha - Christine Petrowich, The Magician - Patrick Jones, Ozmorian Winds - David Liebsack/Eric Carda, Coastal Formations - Sarah Meyer, Adorable - Truffles.
 Shoutout to Heather and Matt Hahn, Kathy McCoy, Chris Bednarowicz, Matthew Bednarowicz.
 Thank you to my loving wife for continuing to support my spontaneous obsessions, however they turn out. Dedicated to Mary Anne and Leroy Meyer.
 Developers: Chris Svehla and Eric McCoy.

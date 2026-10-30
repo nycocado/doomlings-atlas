@@ -6,13 +6,13 @@ Source: [rulesheet](../../assets/doomlings/rules/castle-glass.pdf) and its [tran
 
 ## Components
 
-30 traits (7 dominants), 2 ages and 1 catastrophe. The expansion adds trait classes, with three new ones: Shells, Coral and Fish. A trait's class is at the bottom of the card. A class can be Curious (Curious Shell) or Exotic (Exotic Fish), which is worth more.
+30 traits (7 dominants), 2 ages and 1 catastrophe. The expansion adds trait classes, with three new ones: Shells, Coral and Fish. A trait's class is at the bottom of the card. Some class cards are labelled Curious (e.g. Curious Shell) or Exotic (e.g. Exotic Fish), and are worth more.
 
 ## Scoring
 
 After counting the Drop of Life bonuses at the end of the game, sort your class cards.
 
-- A class with 2 or more cards in your trait pile scores for each of its cards: +1 for a class card, +2 for a Curious one, +3 for an Exotic one.
-- A class with fewer than 2 cards scores nothing.
+- If you have 2 or more cards from the same class, each card in that class scores extra points: +1 for a class card, +2 for a Curious one, +3 for an Exotic one.
+- A lone card of a class scores nothing, as in the rulesheet's first example.
 
 Examples from the rulesheet: 2 cards of different classes score 0; Shell, Shell and a Coral score 2 (the Coral is alone); Shell, Curious Shell and Exotic Shell score 6; Coral and Curious Coral plus Shell and Exotic Shell score 7.

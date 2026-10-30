@@ -12,7 +12,7 @@ Source: [rulesheet](../../assets/doomlings/rules/upgrade.pdf) and its [transcrip
 - Mythlings: 16 traits (1 dominant), 1 age, 1 catastrophe. Their cards say what to do; no new rules.
 - Multicolor: 1 dominant with all four colors, 6 traits with two colors and 1 colorless trait. A border with several colors counts as each of its colors, and icons above the face value show them for color-blind players.
 
-Techlings, Dinolings and Mythlings are added to or removed from the decks to taste.
+Dinolings and Mythlings can simply be added or removed to taste. For Techlings, the rulesheet recommends knowing the base game first.
 
 ## Meaning of Life
 
@@ -22,7 +22,7 @@ After dealing the traits as in Classic (5 each):
 
 1. Shuffle the Meaning of Life cards.
 2. Deal 2 to each player, face down.
-3. Each player secretly keeps 1 and returns the other to the box. They may look at both before choosing.
+3. Each player secretly keeps 1 and returns the other to the box. They may look at their hand before choosing.
 
 ### Scoring
 
@@ -40,4 +40,4 @@ After dealing the traits as in Classic (5 each):
 - An attachment alone cannot be picked by a random discard, swap or steal. When the host is considered for one, set the attachment aside and shuffle the suitable targets; if the host ends up selected, follow the rules above.
 - An attachment counts toward the trait count and the color count.
 
-Open question: this rulesheet does not say whether an attachment may itself be dominant; the Legends of Enderas rulesheet only says that a dominant attachment with a host counts as 1 dominant ([legends-of-enderas.md](legends-of-enderas.md#attachments)).
+This rulesheet does not cover dominant attachments. The Legends of Enderas rulesheet treats a dominant attachment with its host as 1 dominant ([legends-of-enderas.md](legends-of-enderas.md#attachments)).
