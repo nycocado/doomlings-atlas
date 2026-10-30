@@ -1,0 +1,766 @@
+[
+  {
+    "id": "castle-glass/ages/castle-glass",
+    "type": "age",
+    "set": "castle-glass",
+    "name": "Castle Glass",
+    "effect": "Discard 2 from hand.\nThen draw 2.\n\nCannot discard Shells, Corals, or Fish.",
+    "image": "castle-glass/ages/castle-glass.webp"
+  },
+  {
+    "id": "castle-glass/ages/magic-hour",
+    "type": "age",
+    "set": "castle-glass",
+    "name": "Magic Hour",
+    "effect": "Draw 2.\nOr set your Gene Pool to 5.",
+    "image": "castle-glass/ages/magic-hour.webp"
+  },
+  {
+    "id": "castle-glass/catastrophes/still-water",
+    "type": "catastrophe",
+    "set": "castle-glass",
+    "name": "Still Water",
+    "effect": "-2 Gene Pool\n\nDraw 3. Do not stabilize to end your turn this age.",
+    "worldsEnd": "+8 if your Gene Pool is 1.",
+    "image": "castle-glass/catastrophes/still-water.webp"
+  },
+  {
+    "id": "castle-glass/traits/aposematic",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Aposematic",
+    "flavor": "Nothing screams danger like pretty colors.",
+    "effect": "Draw 1. Play 1.",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "fish"
+    ],
+    "image": "castle-glass/traits/aposematic.webp"
+  },
+  {
+    "id": "castle-glass/traits/banal",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Banal",
+    "flavor": "How's the water?",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "green",
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "fish"
+    ],
+    "image": "castle-glass/traits/banal.webp"
+  },
+  {
+    "id": "castle-glass/traits/benthic",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Benthic",
+    "flavor": "Floor model.",
+    "effect": "You may discard 1 from hand to play another trait.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "fish"
+    ],
+    "image": "castle-glass/traits/benthic.webp"
+  },
+  {
+    "id": "castle-glass/traits/biochromatic",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Biochromatic",
+    "flavor": "I live a colorful life.",
+    "effect": "All opponents discard all colorless from hand and stabilize.",
+    "points": 2,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "coral"
+    ],
+    "image": "castle-glass/traits/biochromatic.webp"
+  },
+  {
+    "id": "castle-glass/traits/black-and-blue",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Black and Blue",
+    "flavor": "And a little green, too",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "blue",
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "curious",
+      "fish"
+    ],
+    "image": "castle-glass/traits/black-and-blue.webp"
+  },
+  {
+    "id": "castle-glass/traits/brainy",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Brainy",
+    "flavor": "Don't forget to remind people they can't play purple on their turn.",
+    "effect": "Opponents cannot play purple on their next turn. But you must remind them.",
+    "points": 3,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "coral"
+    ],
+    "image": "castle-glass/traits/brainy.webp"
+  },
+  {
+    "id": "castle-glass/traits/buttery-fins",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Buttery Fins",
+    "flavor": "Better than regular fins by a wide margarine.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "exotic",
+      "fish"
+    ],
+    "image": "castle-glass/traits/buttery-fins.webp"
+  },
+  {
+    "id": "castle-glass/traits/conchomancy",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Conchomancy",
+    "flavor": "Listen to Conchy. Conchy will tell you what you want to hear.",
+    "effect": "Play at any time to peek at the next age.",
+    "points": 0,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "curious",
+      "play-when",
+      "shell"
+    ],
+    "image": "castle-glass/traits/conchomancy.webp"
+  },
+  {
+    "id": "castle-glass/traits/copper-band",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Copper Band",
+    "flavor": "A one-hit wonder.",
+    "effect": "Play 1 with a face value of 1.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "fish"
+    ],
+    "image": "castle-glass/traits/copper-band.webp"
+  },
+  {
+    "id": "castle-glass/traits/countershading",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Countershading",
+    "flavor": "Hide from predators, unless you're upside down.",
+    "effect": "You may play Countershading instead of stabilizing to end your turn.",
+    "points": 1,
+    "colors": [
+      "purple",
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "fish",
+      "play-when"
+    ],
+    "image": "castle-glass/traits/countershading.webp"
+  },
+  {
+    "id": "castle-glass/traits/crystal-skeleton",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Crystal Skeleton",
+    "flavor": "Get your reef starter kit today!",
+    "effect": "All players discard all dominants from hand and stabilize.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "coral"
+    ],
+    "image": "castle-glass/traits/crystal-skeleton.webp"
+  },
+  {
+    "id": "castle-glass/traits/fish-collector",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Fish Collector",
+    "flavor": "I hope I can find the other boot.",
+    "effect": "Steal a face value 1 from up to two trait piles.",
+    "points": 0,
+    "colors": [
+      "blue",
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "castle-glass/traits/fish-collector.webp"
+  },
+  {
+    "id": "castle-glass/traits/fragmentation",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Fragmentation",
+    "flavor": "Let's break up, so we can start something new.",
+    "effect": "Stabilize to 4. Play 1.",
+    "points": -1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "coral",
+      "curious"
+    ],
+    "image": "castle-glass/traits/fragmentation.webp"
+  },
+  {
+    "id": "castle-glass/traits/glass-predator",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Glass Predator",
+    "flavor": "Dangerously fragile.",
+    "effect": "When you play Glass Predator, steal 1 from an opponent's trait pile. Then play 1.",
+    "points": -3,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "fish"
+    ],
+    "image": "castle-glass/traits/glass-predator.webp"
+  },
+  {
+    "id": "castle-glass/traits/glossy",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Glossy",
+    "flavor": "I wanted to get buff for the beach, but I got buffed instead.",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "shell"
+    ],
+    "image": "castle-glass/traits/glossy.webp"
+  },
+  {
+    "id": "castle-glass/traits/guanine-crystals",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Guanine Crystals",
+    "flavor": "Now's my time to shine!",
+    "effect": "Instead of stabilizing to end your turn, draw 2.",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "curious",
+      "fish"
+    ],
+    "image": "castle-glass/traits/guanine-crystals.webp"
+  },
+  {
+    "id": "castle-glass/traits/harboring",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Harboring",
+    "flavor": "Now accepting new tenants.",
+    "effect": "Stabilize to 6 to end this turn.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "coral",
+      "curious"
+    ],
+    "image": "castle-glass/traits/harboring.webp"
+  },
+  {
+    "id": "castle-glass/traits/keystone",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Keystone",
+    "flavor": "Welcome home.",
+    "effect": null,
+    "points": 5,
+    "colors": [
+      "purple"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "coral",
+      "exotic"
+    ],
+    "image": "castle-glass/traits/keystone.webp"
+  },
+  {
+    "id": "castle-glass/traits/luminous",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Luminous",
+    "flavor": "Swims between shadows and starlight.",
+    "effect": "Return 2 from your trait pile to hand. Then play 2.",
+    "points": 1,
+    "colors": [
+      "blue",
+      "green"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "exotic",
+      "fish"
+    ],
+    "image": "castle-glass/traits/luminous.webp"
+  },
+  {
+    "id": "castle-glass/traits/mucous-coating",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Mucous Coating",
+    "flavor": "It's a little on the nose.",
+    "effect": "+3 if you have a Coral in your trait pile.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "fish"
+    ],
+    "image": "castle-glass/traits/mucous-coating.webp"
+  },
+  {
+    "id": "castle-glass/traits/natural-symmetry",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Natural Symmetry",
+    "flavor": "A 1.618 on design.",
+    "effect": "All players preview the next age.",
+    "points": 3,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "shell"
+    ],
+    "image": "castle-glass/traits/natural-symmetry.webp"
+  },
+  {
+    "id": "castle-glass/traits/opulent",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Opulent",
+    "flavor": "Gold fades, riches vanish, and the wealth of our lives is measured in memory.",
+    "effect": "Draw 1. Play 1.",
+    "points": 3,
+    "colors": [
+      "purple",
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "exotic",
+      "fish"
+    ],
+    "image": "castle-glass/traits/opulent.webp"
+  },
+  {
+    "id": "castle-glass/traits/pearl",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Pearl",
+    "flavor": "Nature's prize in a box.",
+    "effect": "You may play 1 trait of each color. Ignore actions.",
+    "points": 0,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "exotic",
+      "shell"
+    ],
+    "image": "castle-glass/traits/pearl.webp"
+  },
+  {
+    "id": "castle-glass/traits/pip",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Pip",
+    "flavor": "Pip, pip, purray!",
+    "effect": "Play all traits of a face value of your choice. Ignore actions.",
+    "points": 0,
+    "colors": [
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "shell"
+    ],
+    "image": "castle-glass/traits/pip.webp"
+  },
+  {
+    "id": "castle-glass/traits/porous",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Porous",
+    "flavor": "I could tell you a joke, but it would be in pore taste.",
+    "effect": "+1 Gene Pool",
+    "points": 0,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "curious",
+      "shell"
+    ],
+    "image": "castle-glass/traits/porous.webp"
+  },
+  {
+    "id": "castle-glass/traits/pteridines",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Pteridines",
+    "flavor": "The reason for the pteruly beautiful colors.",
+    "effect": "Draw 1. You may play it now.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "fish"
+    ],
+    "image": "castle-glass/traits/pteridines.webp"
+  },
+  {
+    "id": "castle-glass/traits/radial-symmetry",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Radial Symmetry",
+    "flavor": "Keep your friends close and your anemones closer.",
+    "effect": "Start of your turns: You may discard all of 1 color from your hand.",
+    "points": 3,
+    "colors": [
+      "blue"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "coral",
+      "curious"
+    ],
+    "image": "castle-glass/traits/radial-symmetry.webp"
+  },
+  {
+    "id": "castle-glass/traits/radiant",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Radiant",
+    "flavor": "Never caught but for a warm embrace.",
+    "effect": "To play, you must have at least 6 face value 1s in your trait pile.",
+    "points": 7,
+    "colors": [
+      "purple",
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "exotic",
+      "fish"
+    ],
+    "image": "castle-glass/traits/radiant.webp"
+  },
+  {
+    "id": "castle-glass/traits/resplendent",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Resplendent",
+    "flavor": "The moments we take for granted.",
+    "effect": "+1 Gene Pool. Play 1.",
+    "points": 1,
+    "colors": [
+      "blue",
+      "green"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "exotic",
+      "fish"
+    ],
+    "image": "castle-glass/traits/resplendent.webp"
+  },
+  {
+    "id": "castle-glass/traits/sandy",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Sandy",
+    "flavor": "I want this to last forever.",
+    "effect": "Place the next age at the bottom of the age pile.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "exotic",
+      "shell"
+    ],
+    "image": "castle-glass/traits/sandy.webp"
+  },
+  {
+    "id": "castle-glass/traits/sea-glass",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Sea Glass",
+    "flavor": "See Sea Glass, play Sea Glass.",
+    "effect": "Play at any time.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when",
+      "shell"
+    ],
+    "image": "castle-glass/traits/sea-glass.webp"
+  },
+  {
+    "id": "castle-glass/traits/spiny-fins",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Spiny Fins",
+    "flavor": "The advantages are threefold: agility, defense, and style.",
+    "effect": "Play 1. Then discard it. (Cannot discard dominants.)",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "curious",
+      "fish"
+    ],
+    "image": "castle-glass/traits/spiny-fins.webp"
+  },
+  {
+    "id": "castle-glass/traits/spiral-dome",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Spiral Dome",
+    "flavor": "Let's circle back on these.",
+    "effect": "Draw 2.",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "curious",
+      "shell"
+    ],
+    "image": "castle-glass/traits/spiral-dome.webp"
+  },
+  {
+    "id": "castle-glass/traits/spiral-motion",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Spiral Motion",
+    "flavor": "Spiraling into control.",
+    "effect": "Play 1. Then return it to your hand. (Cannot play this effect twice in 1 turn.) (Cannot return dominants.)",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action",
+      "fish"
+    ],
+    "image": "castle-glass/traits/spiral-motion.webp"
+  },
+  {
+    "id": "castle-glass/traits/striated",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Striated",
+    "flavor": "Don't count the lines. I'm younger than I look.",
+    "effect": null,
+    "points": 3,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "shell"
+    ],
+    "image": "castle-glass/traits/striated.webp"
+  },
+  {
+    "id": "castle-glass/traits/sunny",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Sunny",
+    "flavor": "If it's shiny, pick it up.",
+    "effect": "Play Sunny at any time to stabilize to 8.",
+    "points": 3,
+    "colors": [
+      "green"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "play-when"
+    ],
+    "image": "castle-glass/traits/sunny.webp"
+  },
+  {
+    "id": "castle-glass/traits/tabular",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Tabular",
+    "flavor": "Fetch me my cutlery, and set a placemat upon my head.",
+    "effect": null,
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "coral",
+      "exotic"
+    ],
+    "image": "castle-glass/traits/tabular.webp"
+  },
+  {
+    "id": "castle-glass/traits/thermal-tolerance",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Thermal Tolerance",
+    "flavor": "The ability to stay in the kitchen.",
+    "effect": "At World's End: Choose an opponent. +1 for each red in their trait pile.",
+    "points": -1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "coral",
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "castle-glass/traits/thermal-tolerance.webp"
+  },
+  {
+    "id": "castle-glass/traits/tidal-tolerance",
+    "type": "trait",
+    "set": "castle-glass",
+    "name": "Tidal Tolerance",
+    "flavor": "Along for the tide.",
+    "effect": "At World's End: Choose an opponent. +1 for each blue in their trait pile.",
+    "points": -1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "coral",
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "castle-glass/traits/tidal-tolerance.webp"
+  }
+]

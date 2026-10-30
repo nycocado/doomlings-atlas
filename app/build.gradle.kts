@@ -156,7 +156,7 @@ abstract class CheckPermissions : DefaultTask() {
 
 // Keeps each translation to one word per concept (CONTRIBUTING.md#translations): fail if a word that
 // docs/glossary/<language>.json rules out shows up in that language's interface strings or in its card
-// translations (assets/doomlings/<language>.json: card id to name, effect, flavor, worldsEnd).
+// translations (assets/doomlings/<set>/<language>.json: card id to name, effect, flavor, worldsEnd).
 abstract class CheckGlossary : DefaultTask() {
     @get:InputDirectory
     @get:PathSensitive(PathSensitivity.RELATIVE)
@@ -176,8 +176,11 @@ abstract class CheckGlossary : DefaultTask() {
             glossaries.get().asFile.listFiles { it: File -> it.extension == "json" }.orEmpty().flatMap { file ->
                 val language = file.nameWithoutExtension
                 val strings = resources.get().file("values-$language/strings.xml").asFile
-                val cards = translations.get().file("$language.json").asFile
-                if (!strings.isFile && !cards.isFile) return@flatMap emptyList()
+                val cards =
+                    translations.get().asFile.listFiles().orEmpty().map { it.resolve("$language.json") }.filter {
+                        it.isFile
+                    }
+                if (!strings.isFile && cards.isEmpty()) return@flatMap emptyList()
                 val interfaceText =
                     if (strings.isFile) {
                         DocumentBuilderFactory
@@ -191,14 +194,10 @@ abstract class CheckGlossary : DefaultTask() {
 
                 @Suppress("UNCHECKED_CAST")
                 val cardText =
-                    if (cards.isFile) {
-                        (JsonSlurper().parse(cards) as Map<String, Map<String, String>>)
-                            .values
-                            .flatMap { it.values }
-                            .joinToString("\n")
-                    } else {
-                        ""
-                    }
+                    cards
+                        .flatMap { (JsonSlurper().parse(it) as Map<String, Map<String, String>>).values }
+                        .flatMap { it.values }
+                        .joinToString("\n")
                 val text = interfaceText + "\n" + cardText
 
                 @Suppress("UNCHECKED_CAST")
@@ -248,28 +247,38 @@ abstract class PackageCards : DefaultTask() {
     @get:Inject
     abstract val files: FileSystemOperations
 
+    // Each set folder holds its cards.json and translations (pt.json, es.json, ...); the APK gets one file of each,
+    // joined from the enabled sets.
     @TaskAction
     fun pack() {
+        val folders = sets.get().map { source.dir(it).get().asFile }
+
         @Suppress("UNCHECKED_CAST")
-        val all = JsonSlurper().parse(source.file("cards.json").get().asFile) as List<Map<String, Any?>>
+        val all =
+            folders
+                .map { it.resolve("cards.json") }
+                .filter { it.isFile }
+                .flatMap { JsonSlurper().parse(it) as List<Map<String, Any?>> }
         val cards = all.filter { it["set"] in sets.get() && it["type"] in types.get() }
         val empty = sets.get() - cards.map { it["set"] }.toSet()
         check(empty.isEmpty()) { "Enabled sets with no cards: ${empty.joinToString()}" }
 
         val json = temporaryDir.resolve("cards.json").apply { writeText(JsonOutput.toJson(cards)) }
-        // Translations (pt.json, es.json, ...) keep only the entries of the cards packaged.
+        // Translations keep only the entries of the cards packaged.
         val ids = cards.map { it["id"] }.toSet()
         val translations =
-            source
-                .get()
-                .asFile
-                .listFiles { it: File ->
-                    it.extension == "json" && it.name != "cards.json"
-                }.orEmpty()
-                .map { file ->
+            folders
+                .flatMap { folder ->
+                    folder
+                        .listFiles { it: File ->
+                            it.extension == "json" && it.name != "cards.json"
+                        }.orEmpty()
+                        .toList()
+                }.groupBy { it.name }
+                .map { (name, files) ->
                     @Suppress("UNCHECKED_CAST")
-                    val all = JsonSlurper().parse(file) as Map<String, Any?>
-                    temporaryDir.resolve(file.name).apply { writeText(JsonOutput.toJson(all.filterKeys { it in ids })) }
+                    val all = files.map { JsonSlurper().parse(it) as Map<String, Any?> }.reduce { a, b -> a + b }
+                    temporaryDir.resolve(name).apply { writeText(JsonOutput.toJson(all.filterKeys { it in ids })) }
                 }
         // Sync also deletes what a previous run left, e.g. images of a set no longer enabled.
         files.sync {

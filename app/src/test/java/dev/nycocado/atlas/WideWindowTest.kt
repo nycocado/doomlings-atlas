@@ -12,7 +12,7 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test
 import org.robolectric.annotation.Config
 
-// From 840dp wide the card opens beside the list. Card names come from assets/doomlings/cards.json.
+// From 840dp wide the card opens beside the list. Card names come from assets/doomlings/classic/cards.json.
 @OptIn(ExperimentalTestApi::class)
 @HiltAndroidTest
 @Config(qualifiers = "w1280dp-h800dp-xhdpi")

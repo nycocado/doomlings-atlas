@@ -4,7 +4,7 @@
 path=$(jq -r '.tool_input.file_path // empty')
 
 case "$path" in
-*/app/permissions-allowlist.txt | */.github/workflows/release* | *.jks | *.keystore | *.p12 | */assets/doomlings/cards.json)
+*/app/permissions-allowlist.txt | */.github/workflows/release* | *.jks | *.keystore | *.p12 | */assets/doomlings/*/cards.json)
     jq -n --arg path "$path" '{hookSpecificOutput: {
         hookEventName: "PreToolUse",
         permissionDecision: "ask",

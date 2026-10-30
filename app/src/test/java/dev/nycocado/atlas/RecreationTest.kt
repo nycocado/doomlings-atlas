@@ -13,7 +13,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.robolectric.Robolectric
 
-// Card names come from assets/doomlings/cards.json, as in PhoneBrowsingTest.
+// Card names come from assets/doomlings/classic/cards.json, as in PhoneBrowsingTest.
 @HiltAndroidTest
 class RecreationTest : AtlasBehaviorTest() {
     @Test
