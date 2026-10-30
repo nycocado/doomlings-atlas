@@ -24,12 +24,12 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 
 ## Expansion Card Types
 
-Each is explained by the rulesheet of its set, in [`assets/doomlings/rules`](assets/doomlings/rules). The rules themselves come with scoring ([docs/rules.md](docs/rules.md)).
+Their rules are in the rulesheet of each set, in [`assets/doomlings/rules`](assets/doomlings/rules); [docs/rules.md](docs/rules.md) covers only Classic until scoring (phase 4).
 
-- **Meaning of Life**: a hidden objective card of Upgrade (`MoL` on the card). Each player keeps 1 secretly, and at the end of the game, after all other points, adds its bonus if they met its objective; with several thresholds, only the best one applies. [Rulesheet](assets/doomlings/rules/upgrade.pdf).
-- **Treasure**: a card of Legends of Enderas that a player keeps hidden, apart from their **hand**: it neither counts for effects nor for **Stabilize**. A player draws one when an **Age** is revealed and has fewer than 2, and may use any number in a turn, one effect each. Used ones go to the coffer pile, and all are discarded when the last **Catastrophe** is revealed. [Rulesheet](assets/doomlings/rules/legends-of-enderas.pdf).
-- **Merchant**: one of the four age-like cards of Imaginary Ends (Bon, Fowler, Huk, Toddles) that work with **Trinkets**; each age stack holds 2 of them besides its basic age and **Catastrophe**. [Rulesheet](assets/doomlings/rules/imaginary-ends.pdf).
-- **Trinket**: a card of Imaginary Ends with a pocket objective and a power that works while it is face up. Meeting the objective **pockets** it: kept face down beside the **Trait pile**, safe from being trashed or taken, and its points count at **World's End**. Face-up trinkets are trashed then. A trinket's power beats **Age** and **Trait** effects. [Rulesheet](assets/doomlings/rules/imaginary-ends.pdf).
+- **Meaning of Life**: a hidden objective card of Upgrade (`MoL` on the card): each player keeps one secretly, and its bonus counts at the end of the game if they met it. [Rulesheet](assets/doomlings/rules/upgrade.pdf).
+- **Treasure**: a hidden one-use card of Legends of Enderas, held apart from the hand. Its glyphs say when it can be used. [Rulesheet](assets/doomlings/rules/legends-of-enderas.pdf).
+- **Merchant**: one of the four cards of Imaginary Ends that work like ages and interact with trinkets. [Rulesheet](assets/doomlings/rules/imaginary-ends.pdf).
+- **Trinket**: a card of Imaginary Ends with an objective and a power that works while it is face up; meeting the objective keeps its points for World's End. [Rulesheet](assets/doomlings/rules/imaginary-ends.pdf).
 
 ## Card Data
 
