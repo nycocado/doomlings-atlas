@@ -379,6 +379,7 @@ private fun CompendiumSample(
                         "",
                         "${it.name} trait",
                         null,
+                        emptyList(),
                         null,
                         1,
                         listOf(it),

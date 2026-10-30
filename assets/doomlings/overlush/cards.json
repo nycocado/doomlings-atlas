@@ -4,7 +4,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Age of Adventure",
-    "effect": "Discard up to 4 from your hand.\n\nDraw 1. If it's a color you just discarded, you may play it now.\n(Excluding dominants.)\nIgnore actions.",
+    "effects": [
+      {
+        "text": "Discard up to 4 from your hand.\n\nDraw 1. If it's a color you just discarded, you may play it now.\n\n(Excluding dominants.)\nIgnore actions ({action})."
+      }
+    ],
     "image": "overlush/ages/age-of-adventure.webp"
   },
   {
@@ -12,7 +16,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Age of Certainty",
-    "effect": "For this age, flip the deck upside down and draw cards face-up.",
+    "effects": [
+      {
+        "text": "For this age, flip the deck upside down and draw cards face-up."
+      }
+    ],
     "image": "overlush/ages/age-of-certainty.webp"
   },
   {
@@ -20,7 +28,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Age of Discovery",
-    "effect": "Draw 3 cards.",
+    "effects": [
+      {
+        "text": "Draw 3 cards."
+      }
+    ],
     "image": "overlush/ages/age-of-discovery.webp"
   },
   {
@@ -28,7 +40,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Age of Doubt",
-    "effect": "Players cannot play traits with a negative face value.",
+    "effects": [
+      {
+        "text": "Players cannot play traits with a negative face value."
+      }
+    ],
     "image": "overlush/ages/age-of-doubt.webp"
   },
   {
@@ -36,7 +52,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Age of Envy",
-    "effect": "At the end of your turn, stabilize to the size of the Gene Pool on your right.",
+    "effects": [
+      {
+        "text": "At the end of your turn, stabilize to the size of the Gene Pool on your right."
+      }
+    ],
     "image": "overlush/ages/age-of-envy.webp"
   },
   {
@@ -44,7 +64,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Backwoods Melodies",
-    "effect": "Play all negative face value traits from your hand.\n(Excluding dominants.)\nIgnore actions.",
+    "effects": [
+      {
+        "text": "Play all negative face value traits from your hand.\n\n(Excluding dominants.)\nIgnore actions ({action})."
+      }
+    ],
     "image": "overlush/ages/backwoods-melodies.webp"
   },
   {
@@ -52,7 +76,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Cleansing Rains",
-    "effect": "You may discard any number of cards from your hand.",
+    "effects": [
+      {
+        "text": "You may discard any number of cards from your hand."
+      }
+    ],
     "image": "overlush/ages/cleansing-rains.webp"
   },
   {
@@ -60,7 +88,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Crackletown",
-    "effect": "Choose a color.\nThe player on your left passes you 1 of that color from their hand.",
+    "effects": [
+      {
+        "text": "Choose a color.\nThe player on your left passes you 1 of that color from their hand."
+      }
+    ],
     "image": "overlush/ages/crackletown.webp"
   },
   {
@@ -68,7 +100,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Dueling Moons",
-    "effect": "Place 1 from your hand on top of the trait deck, OR\ndraw 1 from the bottom of the trait deck.",
+    "effects": [
+      {
+        "text": "Place 1 from your hand on top of the trait deck, OR\ndraw 1 from the bottom of the trait deck."
+      }
+    ],
     "image": "overlush/ages/dueling-moons.webp"
   },
   {
@@ -76,7 +112,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Glimmering Gardens",
-    "effect": "You may discard 1 trait from your trait pile.",
+    "effects": [
+      {
+        "text": "You may discard 1 trait from your trait pile."
+      }
+    ],
     "image": "overlush/ages/glimmering-gardens.webp"
   },
   {
@@ -84,7 +124,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Harlequin Falls",
-    "effect": "Choose a color, then draw 3. Keep all of your chosen color and discard the rest.",
+    "effects": [
+      {
+        "text": "Choose a color, then draw 3. Keep all of your chosen color and discard the rest."
+      }
+    ],
     "image": "overlush/ages/harlequin-falls.webp"
   },
   {
@@ -92,7 +136,11 @@
     "type": "age",
     "set": "overlush",
     "name": "King of the Jungle",
-    "effect": "All players reveal 1 card from their hand. If you show the highest face value, keep your cards. Otherwise, discard your hand and draw 3.\n(No ties!)",
+    "effects": [
+      {
+        "text": "All players reveal 1 card from their hand. If you show the highest face value, keep your cards. Otherwise, discard your hand and draw 3.\n\n(No ties!)"
+      }
+    ],
     "image": "overlush/ages/king-of-the-jungle.webp"
   },
   {
@@ -100,7 +148,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Lingering Shadows",
-    "effect": "Players cannot play multi-color traits.",
+    "effects": [
+      {
+        "text": "Players cannot play multi-color traits."
+      }
+    ],
     "image": "overlush/ages/lingering-shadows.webp"
   },
   {
@@ -108,7 +160,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Lunar Advance",
-    "effect": "You may discard all purple cards from your hand.",
+    "effects": [
+      {
+        "text": "You may discard all purple cards from your hand."
+      }
+    ],
     "image": "overlush/ages/lunar-advance.webp"
   },
   {
@@ -116,7 +172,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Misty Groves",
-    "effect": "You may discard all green cards from your hand.",
+    "effects": [
+      {
+        "text": "You may discard all green cards from your hand."
+      }
+    ],
     "image": "overlush/ages/misty-groves.webp"
   },
   {
@@ -124,7 +184,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Nostalgia",
-    "effect": "You may return a trait in your trait pile to your hand.",
+    "effects": [
+      {
+        "text": "You may return a trait in your trait pile to your hand."
+      }
+    ],
     "image": "overlush/ages/nostalgia.webp"
   },
   {
@@ -132,7 +196,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Rainstorms",
-    "effect": "You may discard all blue cards from your hand.",
+    "effects": [
+      {
+        "text": "You may discard all blue cards from your hand."
+      }
+    ],
     "image": "overlush/ages/rainstorms.webp"
   },
   {
@@ -140,7 +208,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Ramblin' RIver Markets",
-    "effect": "In turn order, choose a color.\nNeither you nor the player to your left may play that color this age.",
+    "effects": [
+      {
+        "text": "In turn order, choose a color.\nNeither you nor the player to your left may play that color this age."
+      }
+    ],
     "image": "overlush/ages/ramblin-river-markets.webp"
   },
   {
@@ -148,7 +220,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Rustling Meadows",
-    "effect": "You may discard 1 from your hand. If you do, draw 1 to replace it.",
+    "effects": [
+      {
+        "text": "You may discard 1 from your hand. If you do, draw 1 to replace it."
+      }
+    ],
     "image": "overlush/ages/rustling-meadows.webp"
   },
   {
@@ -156,7 +232,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Slumberwood",
-    "effect": "Players cannot play dominant traits.",
+    "effects": [
+      {
+        "text": "Players cannot play dominant traits."
+      }
+    ],
     "image": "overlush/ages/slumberwood.webp"
   },
   {
@@ -164,7 +244,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Star Tails",
-    "effect": "Draw 3 cards.\nYou may not draw any more cards this turn.",
+    "effects": [
+      {
+        "text": "Draw 3 cards.\nYou may not draw any more cards this turn."
+      }
+    ],
     "image": "overlush/ages/star-tails.webp"
   },
   {
@@ -172,7 +256,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Summer Solstice",
-    "effect": "You may discard all red cards from your hand.",
+    "effects": [
+      {
+        "text": "You may discard all red cards from your hand."
+      }
+    ],
     "image": "overlush/ages/summer-solstice.webp"
   },
   {
@@ -180,7 +268,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Swamplands",
-    "effect": "If you play any traits with actions, discard them after you stabilize, wherever they are.",
+    "effects": [
+      {
+        "text": "If you play any traits with actions ({action}), discard them after you stabilize, wherever they are."
+      }
+    ],
     "image": "overlush/ages/swamplands.webp"
   },
   {
@@ -188,7 +280,11 @@
     "type": "age",
     "set": "overlush",
     "name": "Tangled Canopies",
-    "effect": "Shuffle the discard pile into the trait deck.",
+    "effects": [
+      {
+        "text": "Shuffle the discard pile into the trait deck."
+      }
+    ],
     "image": "overlush/ages/tangled-canopies.webp"
   },
   {
@@ -196,7 +292,11 @@
     "type": "age",
     "set": "overlush",
     "name": "The Legend of Mokoko Village",
-    "effect": "Draw 1.\nIf Heroic is in your trait pile, you may play 2 traits on your turn if you ignore their actions.",
+    "effects": [
+      {
+        "text": "Draw 1.\nIf Heroic is in your trait pile, you may play 2 traits on your turn if you ignore their actions ({action})."
+      }
+    ],
     "image": "overlush/ages/the-legend-of-mokoko-village.webp"
   },
   {
@@ -204,7 +304,11 @@
     "type": "age",
     "set": "overlush",
     "name": "The Living Library",
-    "effect": "Before you stabilize, you may replay an action in your trait pile.",
+    "effects": [
+      {
+        "text": "Before you stabilize, you may replay an action ({action}) in your trait pile."
+      }
+    ],
     "image": "overlush/ages/the-living-library.webp"
   },
   {
@@ -212,7 +316,11 @@
     "type": "age",
     "set": "overlush",
     "name": "The Painted Valley",
-    "effect": "Choose a color, then draw 1. If it is your chosen color, all opponents also draw 1.",
+    "effects": [
+      {
+        "text": "Choose a color, then draw 1. If it is your chosen color, all opponents also draw 1."
+      }
+    ],
     "image": "overlush/ages/the-painted-valley.webp"
   },
   {
@@ -220,7 +328,11 @@
     "type": "age",
     "set": "overlush",
     "name": "The Stranger",
-    "effect": "Draw 1.\nYou may play it immediately.\n(Excluding dominants.)\nIgnore actions.",
+    "effects": [
+      {
+        "text": "Draw 1.\nYou may play it immediately.\n\n(Excluding dominants.)\nIgnore actions ({action})."
+      }
+    ],
     "image": "overlush/ages/the-stranger.webp"
   },
   {
@@ -228,8 +340,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Algal Superbloom",
-    "effect": "+0 Gene Pool\n\nDraw 1 for each negative face value in your trait pile.",
-    "worldsEnd": "+1 for each blue trait in the trait pile to your left.",
+    "effects": [
+      {
+        "text": "Draw 1 for each negative face value in your trait pile."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "+1 for each blue trait in the trait pile to your left."
+      }
+    ],
+    "genePool": 0,
     "image": "overlush/catastrophes/algal-superbloom.webp"
   },
   {
@@ -237,8 +357,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Ancient Corruption",
-    "effect": "-1 Gene Pool\n\nDiscard all actions from your hand.",
-    "worldsEnd": "-1 for all actions in your trait pile.",
+    "effects": [
+      {
+        "text": "Discard all actions ({action}) from your hand."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "-1 for all actions ({action}) in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/ancient-corruption.webp"
   },
   {
@@ -246,8 +374,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Ashlands",
-    "effect": "-1 Gene Pool\n\nDiscard all purple and blue cards from your hand and stabilize.",
-    "worldsEnd": "-4 if you have 2 or fewer purple traits in your trait pile.",
+    "effects": [
+      {
+        "text": "Discard all purple and blue cards from your hand and stabilize."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "-4 if you have 2 or fewer purple traits in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/ashlands.webp"
   },
   {
@@ -255,8 +391,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Choking Vines",
-    "effect": "-1 Gene Pool\n\nIgnore blue and green actions.",
-    "worldsEnd": "+1 for each green trait in the trait pile to your left.",
+    "effects": [
+      {
+        "text": "Ignore blue and green actions ({action})."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "+1 for each green trait in the trait pile to your left."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/choking-vines.webp"
   },
   {
@@ -264,8 +408,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Ecological Collapse",
-    "effect": "-1 Gene Pool\n\nDiscard 1 from your hand for each color in your trait pile.",
-    "worldsEnd": "+2 for every negative face value in your trait pile.",
+    "effects": [
+      {
+        "text": "Discard 1 from your hand for each color in your trait pile."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "+2 for every negative face value in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/ecological-collapse.webp"
   },
   {
@@ -273,8 +425,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Endless Monsoon",
-    "effect": "-1 Gene Pool\n\nPass all purple cards from your hand right.",
-    "worldsEnd": "-1 for each card in your hand.",
+    "effects": [
+      {
+        "text": "Pass all purple cards from your hand right."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "-1 for each card in your hand."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/endless-monsoon.webp"
   },
   {
@@ -282,8 +442,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Great Deluge",
-    "effect": "-1 Gene Pool\n\nPass all blue cards from your hand right.",
-    "worldsEnd": "-4 if you have 2 or fewer blue traits in your trait pile.",
+    "effects": [
+      {
+        "text": "Pass all blue cards from your hand right."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "-4 if you have 2 or fewer blue traits in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/great-deluge.webp"
   },
   {
@@ -291,8 +459,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Invasive Species",
-    "effect": "-1 Gene Pool\n\nPass all green cards from your hand right.",
-    "worldsEnd": "Discard a card from your hand with a face value of 7 or less and add it to your final score.",
+    "effects": [
+      {
+        "text": "Pass all green cards from your hand right."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "Discard a card from your hand with a face value of 7 or less and add it to your final score."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/invasive-species.webp"
   },
   {
@@ -300,8 +476,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Jungle Rot",
-    "effect": "-1 Gene Pool\n\nIgnore red and purple actions.",
-    "worldsEnd": "-4 if you have 2 or fewer green traits in your trait pile.",
+    "effects": [
+      {
+        "text": "Ignore red and purple actions ({action})."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "-4 if you have 2 or fewer green traits in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/jungle-rot.webp"
   },
   {
@@ -309,8 +493,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Planetary Deforestation",
-    "effect": "-1 Gene Pool\n\nDiscard all green and red cards from your hand and stabilize.",
-    "worldsEnd": "Subtract your Gene Pool from your final score.",
+    "effects": [
+      {
+        "text": "Discard all green and red cards from your hand and stabilize."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "Subtract your Gene Pool from your final score."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/planetary-deforestation.webp"
   },
   {
@@ -318,8 +510,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Sacrifice",
-    "effect": "-1 Gene Pool\n\nReturn a positive face value trait to your hand.",
-    "worldsEnd": "-4 if you have 2 or fewer red traits in your trait pile.",
+    "effects": [
+      {
+        "text": "Return a positive face value trait to your hand."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "-4 if you have 2 or fewer red traits in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/sacrifice.webp"
   },
   {
@@ -327,8 +527,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Strange Matter",
-    "effect": "-1 Gene Pool\n\nPass all red cards from your hand right.",
-    "worldsEnd": "-2 for every Drop of Life in your trait pile.",
+    "effects": [
+      {
+        "text": "Pass all red cards from your hand right."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "-2 for every Drop of Life ({drop-of-life}) in your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/strange-matter.webp"
   },
   {
@@ -336,8 +544,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Tragedy of the Commons",
-    "effect": "-1 Gene Pool\n\nChoose a color in your hand to keep. Discard the rest.",
-    "worldsEnd": "Discard a Drop of Life from your trait pile.",
+    "effects": [
+      {
+        "text": "Choose a color in your hand to keep. Discard the rest."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "Discard a Drop of Life from your trait pile."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/tragedy-of-the-commons.webp"
   },
   {
@@ -345,8 +561,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Tropical Superstorm",
-    "effect": "-1 Gene Pool\n\nPass all colorless cards in your hand right.",
-    "worldsEnd": "+1 for each purple trait in the trait pile to your left.",
+    "effects": [
+      {
+        "text": "Pass all colorless cards in your hand right."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "+1 for each purple trait in the trait pile to your left."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/tropical-superstorm.webp"
   },
   {
@@ -354,8 +578,16 @@
     "type": "catastrophe",
     "set": "overlush",
     "name": "Volcanic Winter",
-    "effect": "-1 Gene Pool\n\nDiscard all cards from your hand with a face value of 4 or greater.",
-    "worldsEnd": "+1 for each red trait in the trait pile to your left.",
+    "effects": [
+      {
+        "text": "Discard all cards from your hand with a face value of 4 or greater."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "+1 for each red trait in the trait pile to your left."
+      }
+    ],
+    "genePool": -1,
     "image": "overlush/catastrophes/volcanic-winter.webp"
   },
   {
@@ -364,7 +596,12 @@
     "set": "overlush",
     "name": "Adrenalized",
     "flavor": "Let's do this. Let's cause some anxiety!",
-    "effect": "When you begin your turn with 2 or fewer cards in hand, draw 4 immediately.",
+    "effects": [
+      {
+        "text": "When you begin your turn with 2 or fewer cards in hand, draw 4 immediately."
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [],
     "dominant": true,
@@ -378,7 +615,13 @@
     "set": "overlush",
     "name": "Agile",
     "flavor": "Light-footed, quick-witted, and acute as heck.",
-    "effect": "You may discard up to 3 traits from your trait pile. You must discard 1 from your hand for each trait discarded this way.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "You may discard up to 3 traits from your trait pile. You must discard 1 from your hand for each trait discarded this way."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "red"
@@ -396,7 +639,13 @@
     "set": "overlush",
     "name": "Antennae",
     "flavor": "I'm waiting to harvest its syrupy excretions. This is normal.",
-    "effect": "Play an action from a red trait in your trait pile. Then discard all cards from your hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Play an action ({action}) from a red trait in your trait pile. Then discard all cards from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -414,7 +663,12 @@
     "set": "overlush",
     "name": "Apricity",
     "flavor": "When the sun's warmth makes the winter's chill bearable.",
-    "effect": "If you hold 8 or fewer cards, you may choose not to stabilize.",
+    "effects": [
+      {
+        "text": "If you hold 8 or fewer cards, you may choose not to stabilize."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "blue"
@@ -430,7 +684,13 @@
     "set": "overlush",
     "name": "Arrested Muscles",
     "flavor": "Be still, my kneading paw.",
-    "effect": "Draw a trait from the discard pile with a face value of 2.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw a trait from the discard pile with a face value of 2."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -448,7 +708,12 @@
     "set": "overlush",
     "name": "Backbiter",
     "flavor": "Mmmm, cold shoulder...",
-    "effect": "+3 if you have a negative trait in your trait pile.",
+    "effects": [
+      {
+        "text": "+3 if you have a negative trait in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -466,7 +731,8 @@
     "set": "overlush",
     "name": "Barbels",
     "flavor": "Fish whiskers. Fishskers.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -482,7 +748,12 @@
     "set": "overlush",
     "name": "Big Feller",
     "flavor": "Now THIS is how you take shelter!",
-    "effect": "+6 if you have 4 or fewer traits with a face value of 1 or lower.",
+    "effects": [
+      {
+        "text": "+6 if you have 4 or fewer traits with a face value of 1 or lower."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue"
@@ -500,7 +771,12 @@
     "set": "overlush",
     "name": "Bitter Berries",
     "flavor": "Gripe for the picking.",
-    "effect": "+1 for each purple or each green trait in your trait pile, whichever is the lower color count. (If there's a tie, pick 1!)",
+    "effects": [
+      {
+        "text": "+1 for each purple or each green trait in your trait pile, whichever is the lower color count.\n\n(If there's a tie, pick 1!)"
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green",
@@ -519,7 +795,13 @@
     "set": "overlush",
     "name": "Blossom",
     "flavor": "Life is a sundae, and friends are the cherry on top.",
-    "effect": "At World's End: Draw 4 cards. You may play 1 from your hand. Play actions.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Draw 4 cards. You may play 1 from your hand. Play actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -537,7 +819,13 @@
     "set": "overlush",
     "name": "Booming Call",
     "flavor": null,
-    "effect": "Swap Booming Call with a trait in an opponent's trait pile. Play its action. You may not use Booming Call's action again this turn.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Swap Booming Call with a trait in an opponent's trait pile. Play its action ({action}). You may not use Booming Call's action again this turn."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "red"
@@ -555,7 +843,13 @@
     "set": "overlush",
     "name": "Booster",
     "flavor": "Put me down when you need a quick pick-me-up.",
-    "effect": "You may play Booster at any time. Stabilize immediately.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Booster at any time. Stabilize immediately."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "green"
@@ -573,7 +867,13 @@
     "set": "overlush",
     "name": "Bottomfeeder",
     "flavor": "You won't believe what some people throw out. Or up.",
-    "effect": "+2 Gene Pool. Draw 2 from the bottom of the trait deck.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 2 from the bottom of the trait deck."
+      }
+    ],
+    "genePool": 2,
     "points": -1,
     "colors": [
       "blue"
@@ -591,7 +891,13 @@
     "set": "overlush",
     "name": "Bushwhacker",
     "flavor": "I'm feeling hacky and slashy today.",
-    "effect": "All players discard 1 card from their hand. You may draw any 1 card from the discard pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All players discard 1 card from their hand. You may draw any 1 card from the discard pile."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -609,7 +915,13 @@
     "set": "overlush",
     "name": "Caffeinated",
     "flavor": "Sleep is for slackers.",
-    "effect": "All players draw 3 cards and give 1 to the opponent on their right.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All players draw 3 cards and give 1 to the opponent on their right."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": false,
@@ -625,7 +937,12 @@
     "set": "overlush",
     "name": "Cap",
     "flavor": "Really ties an outfit together.",
-    "effect": "+1 Gene Pool. If Cap is discarded from your trait pile, draw 3 cards.",
+    "effects": [
+      {
+        "text": "If Cap is discarded from your trait pile, draw 3 cards."
+      }
+    ],
+    "genePool": 1,
     "points": -1,
     "colors": [
       "blue"
@@ -641,7 +958,13 @@
     "set": "overlush",
     "name": "Cheek Pouches",
     "flavor": "It's okay, I'm not eating them. I'm storing them to eat them later.",
-    "effect": "Draw 2 cards. Do not stabilize this turn.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 2 cards. Do not stabilize this turn."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -659,7 +982,13 @@
     "set": "overlush",
     "name": "Chompers",
     "flavor": "Chompa-chompa.",
-    "effect": "At World's End: All opponents discard 1 effectless trait from their trait pile at random. Draw 1 for each card discarded.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "All opponents discard 1 effectless trait from their trait pile at random. Draw 1 for each card discarded."
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [
       "red"
@@ -677,7 +1006,12 @@
     "set": "overlush",
     "name": "Citrus",
     "flavor": "When life gives you me, congratulations!",
-    "effect": "To play, you must have 1 negative face value trait in your trait pile. +2 Gene Pool",
+    "effects": [
+      {
+        "text": "To play, you must have 1 negative face value trait in your trait pile."
+      }
+    ],
+    "genePool": 2,
     "points": 0,
     "colors": [
       "green"
@@ -693,7 +1027,13 @@
     "set": "overlush",
     "name": "Cocoa",
     "flavor": "Ope, there I go spillin' my beans again.",
-    "effect": "Draw 3 cards. Give 2 cards from your hand to the opponent(s) of your choice.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 3 cards. Give 2 cards from your hand to the opponent(s) of your choice."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -711,7 +1051,12 @@
     "set": "overlush",
     "name": "Collector",
     "flavor": "I don't have that one yet!",
-    "effect": "When you play Collector from your hand, draw 4 cards. You may play 1 of each color drawn. Discard dominants. Ignore actions.",
+    "effects": [
+      {
+        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each color drawn. Discard dominants. Ignore actions."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [],
     "dominant": false,
@@ -725,7 +1070,13 @@
     "set": "overlush",
     "name": "Compound Eyes",
     "flavor": "Even my eyes have eyes.",
-    "effect": "Play an action from a purple trait in your trait pile. Then discard a random card from your hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Play an action ({action}) from a purple trait in your trait pile. Then discard a random card from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "blue"
@@ -743,7 +1094,12 @@
     "set": "overlush",
     "name": "Constrictor",
     "flavor": "Think of it like a long, strong, final hug.",
-    "effect": "All opponents receive: -1 Gene Pool.",
+    "effects": [
+      {
+        "text": "All opponents receive: -1 Gene Pool."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "purple"
@@ -759,7 +1115,16 @@
     "set": "overlush",
     "name": "Contagious",
     "flavor": "Would you like some tee-hee?",
-    "effect": "Swap Contagious with a red trait in an opponent's trait pile. -1 for every green trait in your trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Swap Contagious with a red trait in an opponent's trait pile."
+      },
+      {
+        "text": "-1 for every green trait in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "blue"
@@ -778,7 +1143,13 @@
     "set": "overlush",
     "name": "Dart",
     "flavor": "I'm actually just getting into a toxic relationship.",
-    "effect": "Cannot be played on your turn! Play Dart when an opponent removes a trait from your trait pile.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "Cannot be played on your turn! Play Dart when an opponent removes a trait from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -796,7 +1167,8 @@
     "set": "overlush",
     "name": "Docile",
     "flavor": "Tame traveler.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 4,
     "colors": [],
     "dominant": false,
@@ -810,7 +1182,8 @@
     "set": "overlush",
     "name": "Down",
     "flavor": "Do I look soft to you?",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green"
@@ -826,7 +1199,8 @@
     "set": "overlush",
     "name": "Ear Flaps",
     "flavor": "Hi! I'm the elephant in the room. I'd love it if you all talked about me!",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -840,7 +1214,13 @@
     "set": "overlush",
     "name": "Electroreception",
     "flavor": "Here fishy fishy...",
-    "effect": "Draw 3 cards from the bottom of the trait deck. You may play an action from 1.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 3 cards from the bottom of the trait deck. You may play an action ({action}) from 1."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -858,7 +1238,13 @@
     "set": "overlush",
     "name": "Elusive",
     "flavor": "Play the fox.",
-    "effect": "Cannot be played on your turn! When Elusive enters your hand during an age effect or an opponent's turn, you may play it immediately.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "Cannot be played on your turn! When Elusive enters your hand during an age effect or an opponent's turn, you may play it immediately."
+      }
+    ],
+    "genePool": null,
     "points": 6,
     "colors": [
       "green"
@@ -876,7 +1262,12 @@
     "set": "overlush",
     "name": "Epic",
     "flavor": "Give me a worthy foe!",
-    "effect": "To play, you must have no dominants in your trait pile. Epic fills your 1st and 2nd dominant slots.",
+    "effects": [
+      {
+        "text": "To play, you must have no dominants in your trait pile. Epic fills your 1st and 2nd dominant slots."
+      }
+    ],
+    "genePool": null,
     "points": 10,
     "colors": [
       "red"
@@ -892,7 +1283,12 @@
     "set": "overlush",
     "name": "Euphoric",
     "flavor": "I'm on top of the world! Even though it's ending...",
-    "effect": "+6 if you have 4 or more purple traits in your trait pile.",
+    "effects": [
+      {
+        "text": "+6 if you have 4 or more purple traits in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "red"
@@ -910,7 +1306,13 @@
     "set": "overlush",
     "name": "Eusocial",
     "flavor": "Teamwork makes the dream work. Now team, work so I can dream.",
-    "effect": "All players give 1 random card from their hand to the opponent on their left.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All players give 1 random card from their hand to the opponent on their left."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -928,7 +1330,13 @@
     "set": "overlush",
     "name": "Eyestalks",
     "flavor": "Protrusions commonly associated with a state of awooga.",
-    "effect": "Take a peek at an opponent's hand. Then play another trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Take a peek at an opponent's hand. Then play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "green"
@@ -946,7 +1354,12 @@
     "set": "overlush",
     "name": "Fabled",
     "flavor": "The moral of the story is I'm amazing.",
-    "effect": "To play, you must discard 4 different colors from your hand. +1 Gene Pool",
+    "effects": [
+      {
+        "text": "To play, you must discard 4 different colors from your hand."
+      }
+    ],
+    "genePool": 1,
     "points": 6,
     "colors": [],
     "dominant": true,
@@ -960,7 +1373,8 @@
     "set": "overlush",
     "name": "Face Hugger",
     "flavor": "We are friends now.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -976,7 +1390,8 @@
     "set": "overlush",
     "name": "Fardingbag",
     "flavor": "The upper stomach of a cow. What else would it be?",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [
       "green",
@@ -993,7 +1408,13 @@
     "set": "overlush",
     "name": "Fearful Symmetry",
     "flavor": "Once you see the pattern, it's too late.",
-    "effect": "You may play another trait with a face value of 2. Play its action",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "You may play another trait with a face value of 2. Play its action ({action})"
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -1011,7 +1432,12 @@
     "set": "overlush",
     "name": "Fierce",
     "flavor": "You're gonna need a smaller trait pile.",
-    "effect": "You may discard up to 2 traits from your trait pile. Draw 2 for each card discarded.",
+    "effects": [
+      {
+        "text": "You may discard up to 2 traits from your trait pile. Draw 2 for each card discarded."
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [
       "blue"
@@ -1027,7 +1453,8 @@
     "set": "overlush",
     "name": "Filter Feeder",
     "flavor": "Plankton, algae, tin cans... put it all in, I'll sort it out later.",
-    "effect": "+1 Gene Pool",
+    "effects": [],
+    "genePool": 1,
     "points": 1,
     "colors": [
       "blue",
@@ -1044,7 +1471,13 @@
     "set": "overlush",
     "name": "Firebite",
     "flavor": "I have improved your situation by leaps and burns.",
-    "effect": "You may play Firebite after you stabilize to steal 1 random card from each opponent's hand.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Firebite after you stabilize to steal 1 random card from each opponent's hand."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "red"
@@ -1062,7 +1495,8 @@
     "set": "overlush",
     "name": "Fleece",
     "flavor": "I make my own sweaters!",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -1078,7 +1512,12 @@
     "set": "overlush",
     "name": "Fleshy Scales",
     "flavor": "Squishy armor.",
-    "effect": "If Fleshy Scales is removed from your trait pile, draw 1 card.",
+    "effects": [
+      {
+        "text": "If Fleshy Scales is removed from your trait pile, draw 1 card."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "red"
@@ -1094,7 +1533,8 @@
     "set": "overlush",
     "name": "Floofy",
     "flavor": "Cuter than most buttons.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": false,
@@ -1108,7 +1548,8 @@
     "set": "overlush",
     "name": "Freckles",
     "flavor": "No two are the same.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -1124,7 +1565,13 @@
     "set": "overlush",
     "name": "Grooming Claws",
     "flavor": "Do your nails, then nail your do.",
-    "effect": "All players discard 1 from their hand at random.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All players discard 1 from their hand at random."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -1142,7 +1589,8 @@
     "set": "overlush",
     "name": "Gular Pouch",
     "flavor": "It appears I have no choice but to stick my neck out for everyone.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple",
@@ -1159,7 +1607,12 @@
     "set": "overlush",
     "name": "Harmony",
     "flavor": "A one, two, a one, two, three, four...",
-    "effect": "+2 for each set of all 4 colors in your trait pile.",
+    "effects": [
+      {
+        "text": "+2 for each set of all 4 colors in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [],
     "dominant": true,
@@ -1175,7 +1628,12 @@
     "set": "overlush",
     "name": "Harrier",
     "flavor": "A bird in the hand is worth...several points, so play it!",
-    "effect": "Until World's End: After you stabilize, you may discard 1 effectless trait from your hand to draw 3 cards.",
+    "effects": [
+      {
+        "text": "Until World's End: After you stabilize, you may discard 1 effectless trait from your hand to draw 3 cards."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue"
@@ -1191,7 +1649,13 @@
     "set": "overlush",
     "name": "Haustorium",
     "flavor": "Reach deep down and see what you find.",
-    "effect": "Shuffle the discard pile into the trait deck, then discard your hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Shuffle the discard pile into the trait deck, then discard your hand."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue",
@@ -1210,7 +1674,12 @@
     "set": "overlush",
     "name": "Hive Mind",
     "flavor": "Great hives think alike.",
-    "effect": "Swap up to 2 positive face value traits from your trait pile with any traits from any trait pile(s).",
+    "effects": [
+      {
+        "text": "Swap up to 2 positive face value traits from your trait pile with any traits from any trait pile(s)."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -1226,7 +1695,13 @@
     "set": "overlush",
     "name": "Hydrofuge",
     "flavor": "Hello, moisture, my greatest foe.",
-    "effect": "Play an action from a blue trait in an opponent's trait pile. Return that trait to its owner's hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Play an action ({action}) from a blue trait in an opponent's trait pile. Return that trait to its owner's hand."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -1242,7 +1717,12 @@
     "set": "overlush",
     "name": "Illusory",
     "flavor": "Let there be sleight.",
-    "effect": "Until World's End: After stabilizing, if you played no actions on your turn, you may play an action from a card in your hand, then discard it. (Ignore all other actions.)",
+    "effects": [
+      {
+        "text": "Until World's End: After stabilizing, if you played no actions ({action}) on your turn, you may play an action from a card in your hand, then discard it.\n\n(Ignore all other actions.)"
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue"
@@ -1258,7 +1738,8 @@
     "set": "overlush",
     "name": "Indomitable",
     "flavor": "Go big or go rilla.",
-    "effect": "-2 Gene Pool",
+    "effects": [],
+    "genePool": -2,
     "points": 8,
     "colors": [
       "red"
@@ -1274,7 +1755,13 @@
     "set": "overlush",
     "name": "Infectious",
     "flavor": "Achoo!",
-    "effect": "-1 Gene Pool. Swap Infectious with a blue trait in an opponent's trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Swap Infectious with a blue trait in an opponent's trait pile."
+      }
+    ],
+    "genePool": -1,
     "points": 1,
     "colors": [
       "green",
@@ -1293,7 +1780,12 @@
     "set": "overlush",
     "name": "Ironwood",
     "flavor": "Deep down, under this hardened bark exterior, I'm actually just a tree.",
-    "effect": "Excluding dominants, if you have 5 or fewer green traits in your trait pile, they cannot be removed.",
+    "effects": [
+      {
+        "text": "Excluding dominants, if you have 5 or fewer green traits in your trait pile, they cannot be removed."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "green"
@@ -1309,7 +1801,13 @@
     "set": "overlush",
     "name": "Jumpy",
     "flavor": "Oh, this is rare. They only made a ribbited number of these.",
-    "effect": "Steal 1 trait from an opponent's trait pile whose Gene Pool is greater than yours.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Steal 1 trait from an opponent's trait pile whose Gene Pool is greater than yours."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -1327,7 +1825,12 @@
     "set": "overlush",
     "name": "Kidney",
     "flavor": "...with a jungle crown.",
-    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "green"
@@ -1345,7 +1848,12 @@
     "set": "overlush",
     "name": "Kidney",
     "flavor": "...with a pith helmet.",
-    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "green"
@@ -1363,7 +1871,12 @@
     "set": "overlush",
     "name": "Kidney",
     "flavor": "...with a tutti frutti.",
-    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "green"
@@ -1381,7 +1894,12 @@
     "set": "overlush",
     "name": "Kidney",
     "flavor": "...with a cat that's a hat.",
-    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "green"
@@ -1399,7 +1917,12 @@
     "set": "overlush",
     "name": "Kidney",
     "flavor": "...with a monkey idol.",
-    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "green"
@@ -1417,7 +1940,16 @@
     "set": "overlush",
     "name": "Lily Pad",
     "flavor": "The original waterbed.",
-    "effect": "At World's End: Return up to 3 traits from your trait pile to your hand. +1 for each trait returned this way.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Return up to 3 traits from your trait pile to your hand."
+      },
+      {
+        "text": "+1 for each trait returned this way."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue",
@@ -1437,7 +1969,13 @@
     "set": "overlush",
     "name": "Lucky",
     "flavor": "Fortune favors the bunny.",
-    "effect": "You may play Lucky at any time.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Lucky at any time."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [],
     "dominant": false,
@@ -1453,7 +1991,8 @@
     "set": "overlush",
     "name": "Mammoth",
     "flavor": "Woolly, woolly, woolly big.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 4,
     "colors": [
       "red"
@@ -1469,7 +2008,13 @@
     "set": "overlush",
     "name": "Mandibles",
     "flavor": "Well, flossing is easy.",
-    "effect": "Play an action from a green trait in an opponent's trait pile. Then return it to its owner's hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Play an action ({action}) from a green trait in an opponent's trait pile. Then return it to its owner's hand."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "red"
@@ -1487,7 +2032,8 @@
     "set": "overlush",
     "name": "Mane",
     "flavor": "You're gonna win by a hair. By one of my thick, luscious hairs.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 4,
     "colors": [
       "green"
@@ -1503,7 +2049,12 @@
     "set": "overlush",
     "name": "Meek",
     "flavor": "I'm inheriting WHAT!?",
-    "effect": "If there are 3 or fewer red traits in your trait pile, they cannot be removed.",
+    "effects": [
+      {
+        "text": "If there are 3 or fewer red traits in your trait pile, they cannot be removed."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -1519,7 +2070,12 @@
     "set": "overlush",
     "name": "Metamorphosis",
     "flavor": "I'm the prettiest moth at the ball!",
-    "effect": "To play, you must discard 3 traits from your trait pile with a face value of 1 or higher.",
+    "effects": [
+      {
+        "text": "To play, you must discard 3 traits from your trait pile with a face value of 1 or higher."
+      }
+    ],
+    "genePool": null,
     "points": 9,
     "colors": [],
     "dominant": true,
@@ -1533,7 +2089,16 @@
     "set": "overlush",
     "name": "Mimicry",
     "flavor": "One and NOT done! One and NOT done!",
-    "effect": "If you only play 1 trait on your turns, you may play 1 trait with a face value of 1 after you stabilize. Ignore its action.",
+    "effects": [
+      {
+        "text": "If you only play 1 trait on your turns, you may play 1 trait with a face value of 1 after you stabilize."
+      },
+      {
+        "kind": "note",
+        "text": "Ignore its action ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -1549,7 +2114,13 @@
     "set": "overlush",
     "name": "Motion Dazzle",
     "flavor": "Blinded by the stripe.",
-    "effect": "+1 Gene Pool. You may play Motion Dazzle from your hand when a trait leaves your trait pile.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Motion Dazzle from your hand when a trait leaves your trait pile."
+      }
+    ],
+    "genePool": 1,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -1565,7 +2136,13 @@
     "set": "overlush",
     "name": "Muse",
     "flavor": "Just waiting for inspiration.",
-    "effect": "Cannot be played on your turn! If Muse is discarded from your hand, you may instead play it into your trait pile.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "Cannot be played on your turn! If Muse is discarded from your hand, you may instead play it into your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 6,
     "colors": [
       "red"
@@ -1583,7 +2160,12 @@
     "set": "overlush",
     "name": "Mutualism",
     "flavor": "You're my new best friend! What's your name again?",
-    "effect": "All opponents receive: +1 Gene Pool. Add the value of the highest Gene Pool to your final score.",
+    "effects": [
+      {
+        "text": "All opponents receive: +1 Gene Pool. Add the value of the highest Gene Pool to your final score."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": true,
@@ -1599,7 +2181,12 @@
     "set": "overlush",
     "name": "Mycelium",
     "flavor": "Of course you can join my network. There's so mush room.",
-    "effect": "If Mycelium is removed from your trait pile on your turn, you may first play the top card of the discard pile. Play actions.",
+    "effects": [
+      {
+        "text": "If Mycelium is removed from your trait pile on your turn, you may first play the top card of the discard pile. Play actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -1615,7 +2202,12 @@
     "set": "overlush",
     "name": "Mycotoxins",
     "flavor": "It's always nice catching up with mold friends.",
-    "effect": "If Mycotoxins is discarded from your trait pile, all players discard 2 from their hand at random and stabilize immediately.",
+    "effects": [
+      {
+        "text": "If Mycotoxins is discarded from your trait pile, all players discard 2 from their hand at random and stabilize immediately."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": false,
@@ -1629,7 +2221,13 @@
     "set": "overlush",
     "name": "Nectar",
     "flavor": "Get a little, give a little.",
-    "effect": "At World's End: Choose a color. All opponents may play 1 of the chosen color. (Excluding dominants.) Ignore actions.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Choose a color. All opponents may play 1 of the chosen color.\n\n(Excluding dominants.) Ignore actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 8,
     "colors": [
       "green"
@@ -1647,7 +2245,13 @@
     "set": "overlush",
     "name": "Nimble",
     "flavor": "Ready to take one for the team.",
-    "effect": "You may discard Nimble from your hand during your turn to discard a trait from your trait pile.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may discard Nimble from your hand during your turn to discard a trait from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": false,
@@ -1663,7 +2267,16 @@
     "set": "overlush",
     "name": "Noxious",
     "flavor": "Don't be silly, my father was Obnoxious. You can call me unpleasant.",
-    "effect": "Swap Noxious with a purple trait in an opponent's trait pile. -1 for every red trait in your trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Swap Noxious with a purple trait in an opponent's trait pile."
+      },
+      {
+        "text": "-1 for every red trait in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "green"
@@ -1682,7 +2295,12 @@
     "set": "overlush",
     "name": "Nuptial Plumage",
     "flavor": "I vow to never, EVER stop talking about my feathers.",
-    "effect": "+2 for every color you have 3 or more of in your trait pile.",
+    "effects": [
+      {
+        "text": "+2 for every color you have 3 or more of in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -1700,7 +2318,13 @@
     "set": "overlush",
     "name": "Nutty",
     "flavor": "I certainly pecan't. Perhaps you pe-could?",
-    "effect": "Choose an opponent. They draw 3 cards and give 1 to you.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Choose an opponent. They draw 3 cards and give 1 to you."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "red"
@@ -1718,7 +2342,13 @@
     "set": "overlush",
     "name": "Opposable Thumbs",
     "flavor": "Monkey see, monkey do.",
-    "effect": "To play, you must have a dominant trait in your trait pile. Play this as an exact copy of your other dominant now and for the rest of the game.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "To play, you must have a dominant trait in your trait pile. Play this as an exact copy of your other dominant now and for the rest of the game."
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [],
     "dominant": true,
@@ -1736,7 +2366,17 @@
     "set": "overlush",
     "name": "Patches",
     "flavor": "I like to doodle in the sand with my wisdom stick.",
-    "effect": "You may play Patches after a trait is removed from your trait pile. Return that trait to your trait pile. (Unless removed by a dominant!)",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Patches after a trait is removed from your trait pile. Return that trait to your trait pile."
+      },
+      {
+        "kind": "note",
+        "text": "(Unless removed by a dominant!)"
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "green"
@@ -1754,7 +2394,13 @@
     "set": "overlush",
     "name": "Pinchy",
     "flavor": "No one's above the claw.",
-    "effect": "You may play Pinchy when an opponent plays a trait. Stop its action and add it to your hand. That opponent may play another trait.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Pinchy when an opponent plays a trait. Stop its action ({action}) and add it to your hand. That opponent may play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "blue",
@@ -1773,7 +2419,13 @@
     "set": "overlush",
     "name": "Playful",
     "flavor": "Mixing pleasure with pleasure.",
-    "effect": "All players give you 1 random card from their hand. Then give each player 1 from your hand in return.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All players give you 1 random card from their hand. Then give each player 1 from your hand in return."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -1791,7 +2443,13 @@
     "set": "overlush",
     "name": "Procrastination",
     "flavor": "I was going to go to the gym, but it didn't work out with my schedule.",
-    "effect": "You may play Procrastination after last player's turn ends. If you do, take another turn this age.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Procrastination after last player's turn ends. If you do, take another turn this age."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [
       "green"
@@ -1809,7 +2467,12 @@
     "set": "overlush",
     "name": "Prolific",
     "flavor": "I have produced many works! Though many of them don't work...",
-    "effect": "+6 if you have 4 or more green traits in your trait pile.",
+    "effects": [
+      {
+        "text": "+6 if you have 4 or more green traits in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "blue"
@@ -1827,7 +2490,12 @@
     "set": "overlush",
     "name": "Prowler",
     "flavor": "Night-skulking, shadow-lurking, spooky looky-loo.",
-    "effect": "All opponents receive: -2 for each color they have less of in their trait pile than yours.",
+    "effects": [
+      {
+        "text": "All opponents receive: -2 for each color they have less of in their trait pile than yours."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -1845,7 +2513,13 @@
     "set": "overlush",
     "name": "Psychedelic",
     "flavor": "Whoa...I think I've seen this before.",
-    "effect": "Restart the age. You are now 1st player. Take your turn. (You may not restart catastrophes.)",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Restart the age. You are now 1st player. Take your turn.\n\n(You may not restart catastrophes.)"
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -1863,7 +2537,13 @@
     "set": "overlush",
     "name": "Pyrophyte",
     "flavor": "Blaze of glory? Sounds like something I'd like to go out in.",
-    "effect": "At World's End: Draw 4 cards. You may play any with a face value of 2 or lower. Ignore actions.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Draw 4 cards. You may play any with a face value of 2 or lower. Ignore actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -1881,7 +2561,13 @@
     "set": "overlush",
     "name": "Quills",
     "flavor": "I've got some...tips... ...sharp...ideas...a few...pointers... if you quill...eheh...",
-    "effect": "You may play Quills into an opponent's trait pile when they remove a trait from your trait pile.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Quills into an opponent's trait pile when they remove a trait from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [
       "blue"
@@ -1899,7 +2585,12 @@
     "set": "overlush",
     "name": "Ravenous",
     "flavor": "Always wants another bite.",
-    "effect": "When you play a red trait on your turn, draw 3 cards before playing its effect.",
+    "effects": [
+      {
+        "text": "When you play a red trait on your turn, draw 3 cards before playing its effect."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue"
@@ -1915,7 +2606,13 @@
     "set": "overlush",
     "name": "Rover",
     "flavor": "I'm neither here nor there.",
-    "effect": "Choose a color. Look at the bottom 5 cards in the trait deck. You may play 1 of the chosen color.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Choose a color. Look at the bottom 5 cards in the trait deck. You may play 1 of the chosen color."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green"
@@ -1933,7 +2630,8 @@
     "set": "overlush",
     "name": "Ruffled",
     "flavor": "It's not that I'm moody, it's that everything is annoying.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 4,
     "colors": [
       "blue"
@@ -1949,7 +2647,13 @@
     "set": "overlush",
     "name": "Sapient",
     "flavor": "Knowing that we're doomed is easy. The real trick is knowing when.",
-    "effect": "Take a peek at the final 2 ages in the age pile, OR take a peek at the next age.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Take a peek at the final 2 ages in the age pile, OR take a peek at the next age."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": false,
@@ -1965,7 +2669,12 @@
     "set": "overlush",
     "name": "Scavenger",
     "flavor": "Just because it's in the trash doesn't mean it's garbage.",
-    "effect": "When stabilizing, you may instead draw from the top of the discard pile.",
+    "effects": [
+      {
+        "text": "When stabilizing, you may instead draw from the top of the discard pile."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -1981,7 +2690,8 @@
     "set": "overlush",
     "name": "Scruffy",
     "flavor": "I'll take a bath once everybody stops hugging me.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -1997,7 +2707,16 @@
     "set": "overlush",
     "name": "Seedwing",
     "flavor": "Oh, cool! I mean, this won't help me fly, but I'm gonna look so good as I fall!",
-    "effect": "On your turn, you may discard Seedwing from your trait pile and play an additional trait. Ignore its action.",
+    "effects": [
+      {
+        "text": "On your turn, you may discard Seedwing from your trait pile and play an additional trait."
+      },
+      {
+        "kind": "note",
+        "text": "Ignore its action ({action})."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "green"
@@ -2013,7 +2732,13 @@
     "set": "overlush",
     "name": "Seeker",
     "flavor": "According to this map, the treasure is located in the...friends we made along the way!?",
-    "effect": "Choose a face value. Draw 5 cards. Play 1 of the chosen face value. Discard the rest.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Choose a face value. Draw 5 cards. Play 1 of the chosen face value. Discard the rest."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -2029,7 +2754,13 @@
     "set": "overlush",
     "name": "Self-Pruning",
     "flavor": "Why do I do this to myself?!",
-    "effect": "Discard 1 from your trait pile OR 1 from your hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard 1 from your trait pile OR 1 from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -2047,7 +2778,13 @@
     "set": "overlush",
     "name": "Shady",
     "flavor": "A cool spot with no cover charge.",
-    "effect": "Draw 3 cards. Play 1 card from your hand into an opponent's trait pile. No dominants. Ignore its action.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 3 cards. Play 1 card from your hand into an opponent's trait pile. No dominants. Ignore its action ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -2065,7 +2802,12 @@
     "set": "overlush",
     "name": "Shy",
     "flavor": "I love when everyone is around! Then I can hide in the background...",
-    "effect": "+5 if you have at least 2 of each color in your trait pile.",
+    "effects": [
+      {
+        "text": "+5 if you have at least 2 of each color in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -2081,7 +2823,12 @@
     "set": "overlush",
     "name": "Silk",
     "flavor": "I made this myself! Out of...myself...",
-    "effect": "To play, you must have a Gene Pool of 4 or less. +2 Gene Pool.",
+    "effects": [
+      {
+        "text": "To play, you must have a Gene Pool of 4 or less."
+      }
+    ],
+    "genePool": 2,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -2095,7 +2842,12 @@
     "set": "overlush",
     "name": "Skimmer",
     "flavor": "Fly, my marvelous dragon, fly!",
-    "effect": "Once per turn, after you play an effectless trait, you may replay 1 action from your trait pile.",
+    "effects": [
+      {
+        "text": "Once per turn, after you play an effectless trait, you may replay 1 action ({action}) from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -2111,7 +2863,13 @@
     "set": "overlush",
     "name": "Sleek",
     "flavor": "I go down smooth. Ask any snake.",
-    "effect": "Return a trait with an action from your trait pile to your hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Return a trait with an action ({action}) from your trait pile to your hand."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -2129,7 +2887,13 @@
     "set": "overlush",
     "name": "Sleepy",
     "flavor": "Wake me up when everything's not on fire.",
-    "effect": "You may play Sleepy after a catastrophe is turned to ignore the Gene Pool effect.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Sleepy after a catastrophe is turned to ignore the Gene Pool effect."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "blue"
@@ -2147,7 +2911,8 @@
     "set": "overlush",
     "name": "Slender Gams",
     "flavor": "Shaving them is an issue.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -2163,7 +2928,13 @@
     "set": "overlush",
     "name": "Snap-Trap",
     "flavor": "An open-and-shut case of gimme dat.",
-    "effect": "You may play Snap-Trap when an opponent plays 2 or more traits on their turn. Steal 1 of those traits.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Snap-Trap when an opponent plays 2 or more traits on their turn. Steal 1 of those traits."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple",
@@ -2182,7 +2953,13 @@
     "set": "overlush",
     "name": "Snuffler",
     "flavor": "A nose for truffle.",
-    "effect": "Discard all cards with effects from your hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard all cards with effects from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -2200,7 +2977,12 @@
     "set": "overlush",
     "name": "Sour Grapes",
     "flavor": "A source of bad whine.",
-    "effect": "+1 for each blue or each red trait in your trait pile, whichever is the lower color count. (If there's a tie, pick 1!)",
+    "effects": [
+      {
+        "text": "+1 for each blue or each red trait in your trait pile, whichever is the lower color count.\n\n(If there's a tie, pick 1!)"
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue",
@@ -2219,7 +3001,12 @@
     "set": "overlush",
     "name": "Sparkles",
     "flavor": "Glitter goes great with everything.",
-    "effect": "Traits in your hand count toward your Drop of Life bonuses in your trait pile.",
+    "effects": [
+      {
+        "text": "Traits in your hand count toward your Drop of Life ({drop-of-life}) bonuses in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "purple"
@@ -2237,7 +3024,8 @@
     "set": "overlush",
     "name": "Spearfisher",
     "flavor": "Talk about getting stuck with the bill.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [
       "blue",
@@ -2254,7 +3042,8 @@
     "set": "overlush",
     "name": "Spectacled",
     "flavor": "These eyes help me see who's who.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -2270,7 +3059,12 @@
     "set": "overlush",
     "name": "Spicy",
     "flavor": "Prudent people prefer pickling particularly piquant peppers.",
-    "effect": "+1 for each red or each green trait in your trait pile, whichever is the lower color count. (If there's a tie, pick 1!)",
+    "effects": [
+      {
+        "text": "+1 for each red or each green trait in your trait pile, whichever is the lower color count.\n\n(If there's a tie, pick 1!)"
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green",
@@ -2289,7 +3083,12 @@
     "set": "overlush",
     "name": "Spores",
     "flavor": "A group of fun guys and fun gals.",
-    "effect": "If Spores is discarded from your trait pile, gain: +1 Gene Pool.",
+    "effects": [
+      {
+        "text": "If Spores is discarded from your trait pile, gain: +1 Gene Pool."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -2305,7 +3104,13 @@
     "set": "overlush",
     "name": "Spots",
     "flavor": "They make you hard to spot.",
-    "effect": "At World's End: Choose a color. All opponents reveal all cards of that color from their hand. Play 1 immediately. Ignore actions.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "Choose a color. All opponents reveal all cards of that color from their hand. Play 1 immediately. Ignore actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 5,
     "colors": [
       "red"
@@ -2323,7 +3128,13 @@
     "set": "overlush",
     "name": "Sprightly",
     "flavor": "Ready to spring into action.",
-    "effect": "Play an action from your trait pile. Then discard that trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Play an action ({action}) from your trait pile. Then discard that trait."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -2341,7 +3152,13 @@
     "set": "overlush",
     "name": "Stasher",
     "flavor": "You think I'm keeping that? You must be nuts.",
-    "effect": "You may place up to 3 cards from your hand at the bottom of the trait deck.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "You may place up to 3 cards from your hand at the bottom of the trait deck."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -2359,7 +3176,8 @@
     "set": "overlush",
     "name": "Sticky Stalks",
     "flavor": "I'll save you for later.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -2375,7 +3193,13 @@
     "set": "overlush",
     "name": "Stinging Tendrils",
     "flavor": "This would look better over there.",
-    "effect": "Swap 1 trait from your trait pile with 1 from an opponent's trait pile of a different color. (Excluding this one.)",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Swap 1 trait from your trait pile with 1 from an opponent's trait pile of a different color.\n\n(Excluding this one.)"
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "purple"
@@ -2393,7 +3217,12 @@
     "set": "overlush",
     "name": "Strange",
     "flavor": "Whimmy zap bam woppa tummy tam wapple!",
-    "effect": "Until World's End: When you play an effectless trait, you may trigger a catastrophic effect from any previously played catastrophe.",
+    "effects": [
+      {
+        "text": "Until World's End: When you play an effectless trait, you may trigger a catastrophic effect from any previously played catastrophe."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [],
     "dominant": true,
@@ -2407,7 +3236,13 @@
     "set": "overlush",
     "name": "Super Sneaky",
     "flavor": "Honey, has the couch always been propped up at a 45 degree angle?",
-    "effect": "Cannot be played on your turn! At World's End: You may play Super Sneaky from your hand.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "Cannot be played on your turn! At World's End: You may play Super Sneaky from your hand."
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [
       "purple"
@@ -2426,7 +3261,13 @@
     "set": "overlush",
     "name": "Swampy",
     "flavor": "Nice, I've hit rock bottom.",
-    "effect": "Draw 3 cards from the bottom of the trait deck.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 3 cards from the bottom of the trait deck."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue",
@@ -2445,7 +3286,12 @@
     "set": "overlush",
     "name": "Swarm",
     "flavor": "We're here for the new phone.",
-    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "blue"
@@ -2463,7 +3309,12 @@
     "set": "overlush",
     "name": "Swarm",
     "flavor": "We're here for the new phone.",
-    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "green"
@@ -2481,7 +3332,12 @@
     "set": "overlush",
     "name": "Swarm",
     "flavor": "We're here for the new phone.",
-    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [],
     "dominant": false,
@@ -2497,7 +3353,12 @@
     "set": "overlush",
     "name": "Swarm",
     "flavor": "We're here for the new phone.",
-    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "purple"
@@ -2515,7 +3376,12 @@
     "set": "overlush",
     "name": "Swarm",
     "flavor": "We're here for the new phone.",
-    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "effects": [
+      {
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+      }
+    ],
+    "genePool": null,
     "points": null,
     "colors": [
       "red"
@@ -2533,7 +3399,12 @@
     "set": "overlush",
     "name": "Sweet",
     "flavor": "I love deeply, I love sweetly, oh how I carabao you.",
-    "effect": "+1 for each green or each blue trait in your trait pile, whichever is the lower color count. (If there's a tie, pick 1!)",
+    "effects": [
+      {
+        "text": "+1 for each green or each blue trait in your trait pile, whichever is the lower color count.\n\n(If there's a tie, pick 1!)"
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue",
@@ -2552,7 +3423,12 @@
     "set": "overlush",
     "name": "Sycophant",
     "flavor": "Will you sign this lock of hair? It's yours, obviously.",
-    "effect": "+5 if any opponent has 5 or more red traits in their trait pile.",
+    "effects": [
+      {
+        "text": "+5 if any opponent has 5 or more red traits in their trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -2568,7 +3444,12 @@
     "set": "overlush",
     "name": "Tenacious",
     "flavor": "Unearth your potential.",
-    "effect": "+6 if you have 4 or more red traits in your trait pile.",
+    "effects": [
+      {
+        "text": "+6 if you have 4 or more red traits in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "green"
@@ -2586,7 +3467,8 @@
     "set": "overlush",
     "name": "Tiny Teeth",
     "flavor": "For munchin', crunchin' and scrunchin'.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [],
     "dominant": false,
@@ -2600,7 +3482,13 @@
     "set": "overlush",
     "name": "Toe Beans",
     "flavor": "They make me sneaky and are fun to squish.",
-    "effect": "Steal a trait from an opponent's trait pile with a negative face value.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Steal a trait from an opponent's trait pile with a negative face value."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -2618,7 +3506,13 @@
     "set": "overlush",
     "name": "Torpor",
     "flavor": "I must rest so that my mind and body may be ready for the return of my favorite seasonal sandwich.",
-    "effect": "Draw 2 from the bottom of the trait deck, OR place 1 from your hand at the bottom of the trait deck.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 2 from the bottom of the trait deck, OR place 1 from your hand at the bottom of the trait deck."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -2636,7 +3530,16 @@
     "set": "overlush",
     "name": "Toxic",
     "flavor": "Whenever she talks, it makes you sick.",
-    "effect": "Swap Toxic with a green trait in an opponent's trait pile. If Toxic is discarded from your trait pile, draw 2.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Swap Toxic with a green trait in an opponent's trait pile."
+      },
+      {
+        "text": "If Toxic is discarded from your trait pile, draw 2."
+      }
+    ],
+    "genePool": null,
     "points": -2,
     "colors": [
       "blue",
@@ -2655,7 +3558,13 @@
     "set": "overlush",
     "name": "Trapper",
     "flavor": "Pretty cold outside. Might catch somethin'.",
-    "effect": "Place up to 5 dominant traits from the discard pile on top of the trait deck in any order.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Place up to 5 dominant traits from the discard pile on top of the trait deck in any order."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
@@ -2673,7 +3582,13 @@
     "set": "overlush",
     "name": "Tricky Vines",
     "flavor": "I distract you with this one while I smack you with this one!",
-    "effect": "All players pass their hands right. Then you may play another trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All players pass their hands right. Then you may play another trait."
+      }
+    ],
+    "genePool": null,
     "points": 0,
     "colors": [
       "green"
@@ -2691,7 +3606,13 @@
     "set": "overlush",
     "name": "Trippy",
     "flavor": "Whoah.",
-    "effect": "You may play Trippy at any time and draw 3 cards.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "You may play Trippy at any time and draw 3 cards."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [],
     "dominant": false,
@@ -2707,7 +3628,8 @@
     "set": "overlush",
     "name": "Ursine",
     "flavor": "Real bear hugs are usually fatal.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -2721,7 +3643,13 @@
     "set": "overlush",
     "name": "Vagabond",
     "flavor": "I play by nobody's rules! Not even my own.",
-    "effect": "All opponents play 1 trait. (No dominants.) Ignore actions. Steal 1 of those traits OR play an additional trait.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All opponents play 1 trait. (No dominants.) Ignore actions ({action}). Steal 1 of those traits OR play an additional trait."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "purple"
@@ -2739,7 +3667,12 @@
     "set": "overlush",
     "name": "Vivacious",
     "flavor": "Love your life.",
-    "effect": "+6 if you have 4 or more blue traits in your trait pile.",
+    "effects": [
+      {
+        "text": "+6 if you have 4 or more blue traits in your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "purple"
@@ -2757,7 +3690,13 @@
     "set": "overlush",
     "name": "Wanderlust",
     "flavor": "I'm not lost! I just don't know where I am.",
-    "effect": "Draw 1 card. You may either play it now OR draw 1 from the bottom of the trait deck. You may instead play that card now.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 1 card. You may either play it now OR draw 1 from the bottom of the trait deck. You may instead play that card now."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": false,
@@ -2773,7 +3712,8 @@
     "set": "overlush",
     "name": "Webber",
     "flavor": "Some duct tape would probably fix this.",
-    "effect": null,
+    "effects": [],
+    "genePool": null,
     "points": 3,
     "colors": [
       "red"
@@ -2789,7 +3729,12 @@
     "set": "overlush",
     "name": "Whistler",
     "flavor": "EeEe! Ee! EeEeEeEe!",
-    "effect": "Until World's End: You may discard up to 2 from your hand before stabilizing.",
+    "effects": [
+      {
+        "text": "Until World's End: You may discard up to 2 from your hand before stabilizing."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "blue"
@@ -2805,7 +3750,13 @@
     "set": "overlush",
     "name": "Willow",
     "flavor": "Throws the good kind of shade.",
-    "effect": "Draw 3 cards. Discard 3 cards from your hand to the bottom of the trait deck.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Draw 3 cards. Discard 3 cards from your hand to the bottom of the trait deck."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "blue"
@@ -2823,7 +3774,13 @@
     "set": "overlush",
     "name": "Woolly",
     "flavor": "I've had enough of this cat's stomach. It's time I make my exit!",
-    "effect": "Discard the top card of the trait deck. All players must discard all cards of that color from their hand and stabilize immediately.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard the top card of the trait deck. All players must discard all cards of that color from their hand and stabilize immediately."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -2841,7 +3798,12 @@
     "set": "overlush",
     "name": "Xylophage",
     "flavor": "Shucks; now I need a toothpick.",
-    "effect": "To play, you must discard 1 green trait from your trait pile. +1 Gene Pool",
+    "effects": [
+      {
+        "text": "To play, you must discard 1 green trait from your trait pile."
+      }
+    ],
+    "genePool": 1,
     "points": 2,
     "colors": [
       "purple"

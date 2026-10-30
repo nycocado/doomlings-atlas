@@ -2,6 +2,7 @@ package dev.nycocado.atlas.card
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlin.reflect.KClass
 
 // One class per "type" in the card data (assets/doomlings/<set>/cards.json), with only the fields printed on that kind
 // of card.
@@ -15,7 +16,7 @@ sealed interface Card {
 @Serializable
 sealed interface NamedCard : Card {
     val name: String
-    val effect: String?
+    val effects: List<Effect>
 }
 
 @Serializable
@@ -26,7 +27,9 @@ data class Trait(
     override val image: String,
     override val name: String,
     val flavor: String?,
-    override val effect: String?,
+    override val effects: List<Effect>,
+    // The "+N Gene Pool" line, as a number.
+    val genePool: Int?,
     // null when the value depends on the game ("Value is equal to...").
     val points: Int?,
     // Empty for colorless traits.
@@ -35,7 +38,7 @@ data class Trait(
     val subspecies: List<String>,
     val icons: List<TraitIcon>,
 ) : NamedCard {
-    val effectless: Boolean get() = effect == null
+    val effectless: Boolean get() = effects.isEmpty() && genePool == null
 }
 
 @Serializable
@@ -45,7 +48,7 @@ data class Age(
     override val set: String,
     override val image: String,
     override val name: String,
-    override val effect: String,
+    override val effects: List<Effect>,
 ) : NamedCard
 
 @Serializable
@@ -55,8 +58,8 @@ data class Catastrophe(
     override val set: String,
     override val image: String,
     override val name: String,
-    override val effect: String,
-    val worldsEnd: String,
+    override val effects: List<Effect>,
+    val genePool: Int?,
 ) : NamedCard
 
 @Serializable
@@ -66,7 +69,7 @@ data class BirthOfLife(
     override val set: String,
     override val image: String,
     override val name: String,
-    override val effect: String,
+    override val effects: List<Effect>,
 ) : NamedCard
 
 // Only the color and art are printed on it.
@@ -85,7 +88,7 @@ data class MeaningOfLife(
     override val set: String,
     override val image: String,
     override val name: String,
-    override val effect: String,
+    override val effects: List<Effect>,
     val flavor: String?,
 ) : NamedCard
 
@@ -96,7 +99,8 @@ data class Trinket(
     override val set: String,
     override val image: String,
     override val name: String,
-    override val effect: String,
+    override val effects: List<Effect>,
+    val value: Int,
     val flavor: String,
 ) : NamedCard
 
@@ -107,7 +111,7 @@ data class Treasure(
     override val set: String,
     override val image: String,
     override val name: String,
-    override val effect: String,
+    override val effects: List<Effect>,
 ) : NamedCard
 
 @Serializable
@@ -117,8 +121,72 @@ data class Merchant(
     override val set: String,
     override val image: String,
     override val name: String,
-    override val effect: String,
+    override val effects: List<Effect>,
 ) : NamedCard
+
+// One section of a card's printed text, in printed order. No kind is a plain effect. The text may hold tokens in braces
+// ({action}) for the inline icons.
+@Serializable
+data class Effect(
+    val kind: EffectKind? = null,
+    val text: String,
+)
+
+// The kinds for when the text applies and for small-type notes fit any card with text. A label kind is the printed label
+// of a text section and only its card type has it.
+@Serializable
+enum class EffectKind(
+    val labelOf: KClass<out NamedCard>? = null,
+) {
+    @SerialName("action")
+    Action,
+
+    @SerialName("play-when")
+    PlayWhen,
+
+    @SerialName("worlds-end")
+    WorldsEnd,
+
+    @SerialName("note")
+    Note,
+
+    @SerialName("awesome-power")
+    AwesomePower(Trinket::class),
+
+    @SerialName("pocket-objective")
+    PocketObjective(Trinket::class),
+
+    @SerialName("rush")
+    Rush(Treasure::class),
+
+    @SerialName("mutate")
+    Mutate(Treasure::class),
+
+    @SerialName("echo")
+    Echo(Treasure::class),
+
+    @SerialName("cloak")
+    Cloak(Treasure::class),
+
+    @SerialName("adapt")
+    Adapt(Treasure::class),
+
+    @SerialName("exchange")
+    Exchange(Merchant::class),
+
+    @SerialName("buy")
+    Buy(Merchant::class),
+
+    @SerialName("collect")
+    Collect(Merchant::class),
+
+    @SerialName("bargain")
+    Bargain(Merchant::class),
+
+    ;
+
+    fun allowedOn(card: NamedCard) = labelOf == null || labelOf.isInstance(card)
+}
 
 @Serializable
 enum class CardColor {

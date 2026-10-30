@@ -2,6 +2,7 @@ package dev.nycocado.atlas.card
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
@@ -16,16 +17,88 @@ class CardDataIntegrityTest {
     private val json = CardAssets.cardsJson
     private val cards = decodeCards(json)
 
-    // Every string in the data, any field and set, as card id to text.
+    // Every string in the data, any field and set, as card id to text. The fields of an effect count too.
     private val texts =
         Json.parseToJsonElement(json).jsonArray.flatMap { card ->
             val fields = card.jsonObject
             val id = fields.getValue("id").jsonPrimitive.content
             fields.values
                 .flatMap { it as? JsonArray ?: listOf(it) }
+                .flatMap { if (it is JsonObject) it.values else listOf(it) }
                 .filter { it is JsonPrimitive && it.isString }
                 .map { id to (it as JsonPrimitive).content }
         }
+
+    private val effects = cards.filterIsInstance<NamedCard>().flatMap { card -> card.effects.map { card to it } }
+
+    @Test
+    fun everyEffectKindIsAllowedOnItsCardType() {
+        assertEquals(
+            emptyList(),
+            effects.filter { (card, effect) -> effect.kind?.allowedOn(card) == false }.map { (card, effect) ->
+                "${card.id}: ${effect.kind}"
+            },
+        )
+    }
+
+    @Test
+    fun everyTokenIsAKnownIcon() {
+        val known =
+            setOf(
+                "action",
+                "attachment",
+                "drop-of-life",
+                "worlds-end",
+                "compass",
+                "coral",
+                "fish",
+                "shell",
+                "mythling",
+                "dinoling",
+                "techling",
+                "deepling",
+                "moonling",
+                "glitterling",
+            )
+        assertEquals(
+            emptyList(),
+            effects.flatMap { (card, effect) ->
+                Regex("""\{([^}]*)}""").findAll(effect.text).map { it.groupValues[1] }.filter { it !in known }.map {
+                    "${card.id}: {$it}"
+                }
+            },
+        )
+    }
+
+    @Test
+    fun noEffectTextHasAGenePoolLineOrALabelItShouldHaveAsAKind() {
+        // A line of its own: "All players receive: -1 Gene Pool." is rules text.
+        val genePoolLine = Regex("""(^|\n)[+-]\d+ Gene Pool\.?(\n|$)""")
+        val labels =
+            Regex(
+                """^(Awesome Power|Pocket Objective|Rush|Mutate|Echo|Cloak|Adapt|Exchange|Buy|Collect|Bargain|""" +
+                    """At World's End):""",
+            )
+
+        // "At World's End:" stays in the text of a Play When section or a label whose condition it is (Sneaky).
+        fun Effect.hasLabel() =
+            labels.find(text)?.let {
+                it.groupValues[1] != "At World's End" ||
+                    (kind != EffectKind.PlayWhen && kind?.labelOf == null)
+            } ==
+                true
+        assertEquals(
+            emptyList(),
+            effects
+                .filter { (_, effect) -> genePoolLine.containsMatchIn(effect.text) || effect.hasLabel() }
+                .map { (card, effect) -> "${card.id}: ${effect.text.take(40)}" },
+        )
+    }
+
+    @Test
+    fun noEffectTextIsEmpty() {
+        assertEquals(emptyList(), effects.filter { (_, effect) -> effect.text.isBlank() }.map { (card, _) -> card.id })
+    }
 
     @Test
     fun idsAreUnique() {
@@ -112,7 +185,7 @@ class CardDataIntegrityTest {
         assertEquals(emptyList(), texts.filter { (_, text) -> text != text.trim() })
     }
 
-    // An effectless trait has a null effect, never an empty one.
+    // An effectless trait has no effects, never an empty one.
     @Test
     fun noTextIsEmpty() {
         assertEquals(emptyList(), texts.filter { (_, text) -> text.isEmpty() })

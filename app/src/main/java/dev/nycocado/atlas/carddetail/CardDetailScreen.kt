@@ -120,6 +120,8 @@ import dev.nycocado.atlas.card.CardText
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.Citation
+import dev.nycocado.atlas.card.Effect
+import dev.nycocado.atlas.card.EffectKind
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
@@ -261,25 +263,35 @@ fun CardDetailContent(
                         } else {
                             null
                         }
-                    val effect = face.section<CardSection.Effect>()
+                    val effects = face.sections.filterIsInstance<CardSection.Effect>()
                     val flavor = face.section<CardSection.Flavor>()
-                    val worldsEnd = face.section<CardSection.WorldsEnd>()
-                    val hasBubble = effect != null || flavor != null
+                    val genePool = face.genePool?.let { stringResource(R.string.gene_pool_line, signedPlus(it)) }
+                    // A card with only a Gene Pool line or a flavor still has its one bubble.
+                    val blocks =
+                        effects
+                            .ifEmpty { listOf(null) }
+                            .takeIf {
+                                effects.isNotEmpty() || flavor != null ||
+                                    genePool != null
+                            }.orEmpty()
                     // Without a text bubble to hang on, the selector takes its own row where the bubble would be.
-                    if (face.sections.isEmpty()) {
+                    if (blocks.isEmpty()) {
                         selector?.let { Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd) { it() } }
                     }
-                    if (hasBubble) Bubble(effect, flavor, language, card, library, onCardClick, selector = selector)
-                    worldsEnd?.let {
+                    blocks.forEachIndexed { index, effect ->
                         Bubble(
-                            it,
-                            null,
+                            effect?.text,
+                            flavor.takeIf { index == blocks.lastIndex },
                             language,
                             card,
                             library,
                             onCardClick,
-                            label = cardString(TraitIcon.WorldsEnd.label, language),
-                            selector = selector.takeUnless { hasBubble },
+                            label =
+                                effect?.kind?.takeIf { it == EffectKind.WorldsEnd }?.let {
+                                    cardString(TraitIcon.WorldsEnd.label, language)
+                                },
+                            genePool = genePool.takeIf { index == 0 },
+                            selector = selector.takeIf { index == 0 },
                         )
                     }
                 }
@@ -423,6 +435,9 @@ private fun PointsBadge(
     }
 }
 
+// The printed line is "+N Gene Pool", and "+0" when it only restates the pool.
+private fun signedPlus(n: Int) = if (n < 0) signed(n) else "+$n"
+
 private inline fun <reified T : CardSection> CardFace.section(): String? =
     sections.filterIsInstance<T>().firstOrNull()?.text
 
@@ -562,6 +577,7 @@ private data class BubbleText(
     val label: String?,
     val text: String?,
     val flavor: String?,
+    val genePool: String?,
     val language: CardLanguage,
 )
 
@@ -574,6 +590,7 @@ private fun Bubble(
     library: CardLibrary,
     onCardClick: (String) -> Unit,
     label: String? = null,
+    genePool: String? = null,
     selector: (@Composable () -> Unit)? = null,
 ) {
     val theme = AtlasTheme.colors
@@ -587,7 +604,7 @@ private fun Bubble(
         ) {
             // The bubble wraps this, so it resizes with the crossfade.
             AnimatedContent(
-                BubbleText(label, text, flavor, language),
+                BubbleText(label, text, flavor, genePool, language),
                 transitionSpec = LanguageChange,
                 label = "bubble text",
             ) { shown ->
@@ -596,6 +613,12 @@ private fun Bubble(
                         BasicText(
                             tagged(it.uppercase(), shown.language),
                             style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
+                        )
+                    }
+                    shown.genePool?.let {
+                        BasicText(
+                            tagged(it, shown.language),
+                            style = AtlasTypography.bodyLg.copy(color = theme.onSurface),
                         )
                     }
                     shown.text?.let {
@@ -807,7 +830,8 @@ private val SampleTrait =
         "",
         "Blue trait",
         "Flavor text goes here.",
-        "Effect text goes here.",
+        listOf(Effect(text = "Effect text goes here.")),
+        null,
         -1,
         listOf(CardColor.Blue),
         true,
@@ -823,7 +847,8 @@ internal val LongNameTrait =
         "",
         "Random Fertilization",
         "Pick a number between 1 and 64 trillion.",
-        "Value is equal to the size of your Gene Pool.",
+        listOf(Effect(text = "Value is equal to the size of your Gene Pool.")),
+        null,
         null,
         listOf(CardColor.Green),
         false,
@@ -861,13 +886,16 @@ internal fun TranslatedTraitSample() =
 @Composable
 internal fun TranslatedTraitDetailPreview() = AtlasTheme { TranslatedTraitSample() }
 
+private val CatastropheEffects =
+    listOf(Effect(text = "Effect text."), Effect(EffectKind.WorldsEnd, "World's End text."))
+
 @PreviewLightDark
 @Composable
 internal fun TranslatedCatastropheDetailPreview() =
     AtlasTheme {
         BlankCardImages {
             CardDetailContent(
-                Catastrophe("c", "classic", "", "A catastrophe", "Effect text.", "World's End text."),
+                Catastrophe("c", "classic", "", "A catastrophe", CatastropheEffects, null),
                 tilt = -3f,
                 onBack = {},
                 onAboutClick = {},
@@ -884,7 +912,7 @@ internal fun CatastropheDetailPreview() =
     AtlasTheme {
         BlankCardImages {
             CardDetailContent(
-                Catastrophe("c", "classic", "", "A catastrophe", "Effect text.", "World's End text."),
+                Catastrophe("c", "classic", "", "A catastrophe", CatastropheEffects, null),
                 tilt = -3f,
                 onBack = {},
                 onAboutClick = {},
@@ -904,8 +932,12 @@ internal fun CitedCardDetailPreview() =
                     "classic",
                     "",
                     "Age of Dracula",
-                    "Discard 1 random card from your hand.\n\n" +
-                        "If Vampirism is in your trait pile, steal 1 random card from an opponent's hand.",
+                    listOf(
+                        Effect(text = "Discard 1 random card from your hand."),
+                        Effect(
+                            text = "If Vampirism is in your trait pile, steal 1 random card from an opponent's hand.",
+                        ),
+                    ),
                 ),
                 tilt = -3f,
                 onBack = {},
@@ -913,7 +945,7 @@ internal fun CitedCardDetailPreview() =
                 library =
                     CardLibrary.decode(
                         """[{"id": "classic/traits/vampirism", "type": "trait", "set": "classic", "name": "Vampirism",
-                        "flavor": null, "effect": null, "points": 3, "colors": ["purple"], "dominant": true,
+                        "flavor": null, "effects": [], "genePool": null, "points": 3, "colors": ["purple"], "dominant": true,
                         "subspecies": [], "icons": [], "image": ""}]""",
                     ),
             )

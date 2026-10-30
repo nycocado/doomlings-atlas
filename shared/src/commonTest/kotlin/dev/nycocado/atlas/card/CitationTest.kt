@@ -8,7 +8,9 @@ class CitationTest {
         name: String,
         effect: String?,
     ) = """{"id": "classic/traits/${name.lowercase()}", "type": "trait", "set": "classic", "name": "$name",
-        "flavor": null, "effect": ${effect?.let { "\"$it\"" }}, "points": 1, "colors": [], "dominant": false,
+        "flavor": null, "effects": [${effect?.let {
+        "{\"text\": \"$it\"}"
+    }.orEmpty()}], "genePool": null, "points": 1, "colors": [], "dominant": false,
         "subspecies": [], "icons": [], "image": "x.webp"}"""
 
     private val library =

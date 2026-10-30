@@ -145,7 +145,20 @@ private fun GroupSample(
         fun trait(
             id: String,
             name: String,
-        ) = Trait(id, "classic", "", name, null, null, null, listOf(CardColor.Red), false, emptyList(), emptyList())
+        ) = Trait(
+            id,
+            "classic",
+            "",
+            name,
+            null,
+            emptyList(),
+            null,
+            null,
+            listOf(CardColor.Red),
+            false,
+            emptyList(),
+            emptyList(),
+        )
         CompendiumContent(
             CompendiumFilter(colors = setOf(CardColor.Red)),
             listOf(

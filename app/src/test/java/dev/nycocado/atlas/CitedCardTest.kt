@@ -8,6 +8,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isSelectable
+import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performFirstLinkClick
 import androidx.compose.ui.test.performTouchInput
@@ -58,7 +59,8 @@ class CitedCardTest : AtlasBehaviorTest() {
         openAgeOfDracula()
         val effect = compose.onNode(hasText("Vampirism", substring = true))
         val unscrolled = effect.fetchSemanticsNode().positionInRoot
-        effect.performTouchInput { swipeUp(startY = bottom, endY = top, durationMillis = 100) }
+        // The citing effect is its own block now, short and low on the screen: the swipe goes over the whole card.
+        compose.onRoot().performTouchInput { swipeUp(startY = bottom * 0.8f, endY = top, durationMillis = 100) }
         compose.waitForIdle()
         val before = effect.fetchSemanticsNode().positionInRoot
         effect.assertIsDisplayed()

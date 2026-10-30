@@ -57,6 +57,7 @@
     <string name="type_age" translatable="false">Age</string>
     <string name="type_catastrophe" translatable="false">Catastrophe</string>
     <string name="worlds_end">World\'s End</string>
+    <string name="gene_pool_line" translatable="false">%1$s Gene Pool</string>
     <string name="dominant">Dominant</string>
     <string name="icon_action">Action</string>
     <string name="icon_attachment">Attachment</string>

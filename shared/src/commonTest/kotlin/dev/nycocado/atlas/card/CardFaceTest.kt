@@ -13,6 +13,7 @@ class CardFaceTest {
             "classic/traits/confusion.webp",
             "Confusion",
             "And you might ask yourself, \"Why does this trait exist?",
+            emptyList(),
             null,
             -2,
             emptyList(),
@@ -28,6 +29,7 @@ class CardFaceTest {
             "castle-glass/traits/black-and-blue.webp",
             "Black and Blue",
             "And a little green, too",
+            emptyList(),
             null,
             1,
             listOf(CardColor.Blue, CardColor.Green),
@@ -57,7 +59,10 @@ class CardFaceTest {
             "imaginary-ends/traits/awesome.webp",
             "Awesome!",
             "Fear me! Tehee!",
-            "At World's End: Stabilize to 2. Add 2 face values in your hand to your score. (Max +17)",
+            listOf(
+                Effect(EffectKind.WorldsEnd, "Stabilize to 2. Add 2 face values in your hand to your score. (Max +17)"),
+            ),
+            null,
             1,
             listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red),
             true,
@@ -90,7 +95,8 @@ class CardFaceTest {
             "classic/traits/altruistic.webp",
             "Altruistic",
             "Can I borrow a few bucks? I donated all my money to charity.",
-            "Value is equal to the size of your Gene Pool.",
+            listOf(Effect(text = "Value is equal to the size of your Gene Pool.")),
+            null,
             null,
             emptyList(),
             false,
@@ -110,22 +116,31 @@ class CardFaceTest {
             "classic",
             "classic/catastrophes/ai-takeover.webp",
             "AI Takeover",
-            "-1 Gene Pool\n\nDiscard all but 1 card from your hand.",
-            "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
-        )
-
-    @Test
-    fun aCatastropheHasWorldsEndAsItsOwnSection() {
-        assertEquals(
             listOf(
-                CardSection.Effect("-1 Gene Pool\n\nDiscard all but 1 card from your hand."),
-                CardSection.WorldsEnd(
+                Effect(text = "Discard all but 1 card from your hand."),
+                Effect(
+                    EffectKind.WorldsEnd,
                     "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
                 ),
             ),
-            aiTakeover.face()?.sections,
+            -1,
         )
-        assertEquals(listOf(CardFact.Type(CardKind.Catastrophe)), aiTakeover.face()?.facts)
+
+    @Test
+    fun aCatastropheHasOneSectionPerEffectAndItsGenePool() {
+        val face = aiTakeover.face()
+        assertEquals(
+            listOf(
+                CardSection.Effect("Discard all but 1 card from your hand."),
+                CardSection.Effect(
+                    "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
+                    EffectKind.WorldsEnd,
+                ),
+            ),
+            face?.sections,
+        )
+        assertEquals(-1, face?.genePool)
+        assertEquals(listOf(CardFact.Type(CardKind.Catastrophe)), face?.facts)
     }
 
     @Test
@@ -137,16 +152,49 @@ class CardFaceTest {
     }
 
     @Test
-    fun searchIsByNameEffectAndWorldsEndButNotFlavor() {
+    fun searchIsByNameAndEveryEffectButNotFlavor() {
         assertEquals(
             listOf(
                 "AI Takeover",
-                "-1 Gene Pool\n\nDiscard all but 1 card from your hand.",
+                "Discard all but 1 card from your hand.",
                 "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
             ),
             aiTakeover.face()?.searchable,
         )
         assertEquals(listOf("Confusion"), confusion.face()?.searchable)
+    }
+
+    @Test
+    fun searchLeavesOutTokens() {
+        val pearl =
+            Age(
+                "a",
+                "classic",
+                "a.webp",
+                "Age",
+                listOf(Effect(text = "Ignore actions ({action}) and Shells ({shell}).")),
+            )
+
+        assertEquals(listOf("Age", "Ignore actions and Shells."), pearl.face()?.searchable)
+        assertEquals(
+            listOf(CardSection.Effect("Ignore actions ({action}) and Shells ({shell}).")),
+            pearl.face()?.sections,
+        )
+    }
+
+    @Test
+    fun aTranslationsFlatTextIsOnePlainSectionAndItsWorldsEndAnother() {
+        val face =
+            aiTakeover.face(CardText("Tomada pela IA", "-1 Reserva\n\nDescarte.", worldsEnd = "Incolores valem 2."))
+
+        assertEquals(
+            listOf(
+                CardSection.Effect("-1 Reserva\n\nDescarte."),
+                CardSection.Effect("Incolores valem 2.", EffectKind.WorldsEnd),
+            ),
+            face?.sections,
+        )
+        assertEquals(null, face?.genePool)
     }
 
     @Test

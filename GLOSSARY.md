@@ -10,7 +10,7 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 - **Dominant**: a trait with a gold border and star. Once played it can't leave its pile, and each player plays only 2 ([one exception](docs/rules/classic.md#dominant-traits)).
 - **Face value**: the number printed at the bottom of a trait. Bonuses are counted apart from it. _Avoid_: points (for the printed number), score.
 - **Compass star**: a trait whose value "is equal to" something in the game; it has no fixed face value (`points: null` in the data).
-- **Effect**: the text at the bottom of a card. A trait without one is **effectless**.
+- **Effect**: a section of the text at the bottom of a card. A card has one or more, each with an optional **kind** (when it applies, a small-type note, or a label such as Rush). A trait without any is **effectless**.
 - **Citation**: a card name printed in another card's effect or World's End. It stays as printed in every translation (#91), and in the card detail it opens that card.
 - **Action**, **Play When**, **World's End**, **Drop of Life**: the icons that say when a trait's effect applies ([docs/rules/classic.md](docs/rules/classic.md#icons)).
 - **Age**: the card flipped at the start of each round; its effect lasts that round.

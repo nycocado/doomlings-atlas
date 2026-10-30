@@ -4,7 +4,11 @@
     "type": "age",
     "set": "special",
     "name": "Age of Luck",
-    "effect": "When stabilizing, stabilize to 8.",
+    "effects": [
+      {
+        "text": "When stabilizing, stabilize to 8."
+      }
+    ],
     "image": "special/ages/age-of-luck.webp"
   },
   {
@@ -13,7 +17,13 @@
     "set": "special",
     "name": "Amatoxins",
     "flavor": "I know it looks cute but it's actually incredibly dangerous.",
-    "effect": "At World's End: You may discard up to 3 traits from your trait pile. Opponents receive: -2 for each different color discarded this way.",
+    "effects": [
+      {
+        "kind": "worlds-end",
+        "text": "You may discard up to 3 traits from your trait pile.\n\nOpponents receive: -2 for each different color discarded this way."
+      }
+    ],
+    "genePool": null,
     "points": -1,
     "colors": [
       "blue",
@@ -35,7 +45,13 @@
     "set": "special",
     "name": "Beauty",
     "flavor": "In the eye of the beholder. As in your eye. Since you be the holder of this card.",
-    "effect": "Return 1 trait to your hand. Then play another trait. Ignore its action.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Return 1 trait to your hand. Then play another trait. Ignore its action ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "green"
@@ -53,7 +69,13 @@
     "set": "special",
     "name": "Bones",
     "flavor": "Better in the body than out.",
-    "effect": "Take 2 cards from the discard pile and add them to your hand.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Take 2 cards from the discard pile and add them to your hand."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [],
     "dominant": false,
@@ -69,7 +91,12 @@
     "set": "special",
     "name": "Charmed",
     "flavor": "I've got a bad feline about this.",
-    "effect": "Steal 1 random card from each opponent's hand. Play 1 immediately. Discard the rest.",
+    "effects": [
+      {
+        "text": "Steal 1 random card from each opponent's hand. Play 1 immediately. Discard the rest."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [
       "purple"
@@ -85,7 +112,13 @@
     "set": "special",
     "name": "Conjured",
     "flavor": "Sorry I'm here, but you really shouldn't read old books out loud.",
-    "effect": "Cannot be played from your hand! You may play Conjured from the discard pile if you play 2 or more colors on your turn.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "Cannot be played from your hand! You may play Conjured from the discard pile if you play 2 or more colors on your turn."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [],
     "dominant": false,
@@ -101,7 +134,12 @@
     "set": "special",
     "name": "Exotic",
     "flavor": "Wee! A new environment! I'm gonna throw it into complete disarray!",
-    "effect": "To play, you must discard 2 from your trait pile, then draw 2. You must play them immediately. (Unless restricted.) Discard dominants. Ignore actions.",
+    "effects": [
+      {
+        "text": "To play, you must discard 2 from your trait pile, then draw 2. You must play them immediately.\n\n(Unless restricted.) Discard dominants. Ignore actions ({action})."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "red"
@@ -117,7 +155,12 @@
     "set": "special",
     "name": "Fulfilled",
     "flavor": "Want for nothing.",
-    "effect": "This trait cannot be removed from your trait pile.",
+    "effects": [
+      {
+        "text": "This trait cannot be removed from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 4,
     "colors": [],
     "dominant": false,
@@ -131,7 +174,8 @@
     "set": "special",
     "name": "Gripplethorps",
     "flavor": "Gripplethropple gropple... gropple thorple gripple...fa fa fa!",
-    "effect": "+3 Gene Pool",
+    "effects": [],
+    "genePool": 3,
     "points": 0,
     "colors": [
       "green"
@@ -149,7 +193,12 @@
     "set": "special",
     "name": "Headless",
     "flavor": "Just trying to get ahead.",
-    "effect": "+1 Gene Pool. All opponents receive -1 Gene Pool.",
+    "effects": [
+      {
+        "text": "All opponents receive -1 Gene Pool."
+      }
+    ],
+    "genePool": 1,
     "points": 2,
     "colors": [
       "purple"
@@ -165,7 +214,13 @@
     "set": "special",
     "name": "Howler",
     "flavor": "Not the greatest neighbor.",
-    "effect": "All players discard all cards from their hand with a face value of 3 or higher, then stabilize immediately.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "All players discard all cards from their hand with a face value of 3 or higher, then stabilize immediately."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -183,7 +238,12 @@
     "set": "special",
     "name": "Immortal",
     "flavor": "She travels the cosmos in search of Joy. But joy comes, and joy goes all the same, to a place she cannot follow.",
-    "effect": "-2 Gene Pool. Each age, before anyone plays the age effect(s), you may discard your hand and draw 3.",
+    "effects": [
+      {
+        "text": "Each age, before anyone plays the age effect(s), you may discard your hand and draw 3."
+      }
+    ],
+    "genePool": -2,
     "points": 3,
     "colors": [],
     "dominant": true,
@@ -197,7 +257,13 @@
     "set": "special",
     "name": "Juicy",
     "flavor": "Ooh, this is when everything blows up. I love this part.",
-    "effect": "Swap 2 traits between any 2 trait piles.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Swap 2 traits between any 2 trait piles."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "purple"
@@ -215,7 +281,12 @@
     "set": "special",
     "name": "Magic Fingers",
     "flavor": "Abra-ca-doomling!",
-    "effect": "Until World's End: Anytime a trait leaves your trait pile, you may play 1 of the same color to replace it. Ignore actions. (No dominants.)",
+    "effects": [
+      {
+        "text": "Until World's End: Anytime a trait leaves your trait pile, you may play 1 of the same color to replace it. Ignore actions ({action}).\n\n(No dominants.)"
+      }
+    ],
+    "genePool": null,
     "points": 3,
     "colors": [],
     "dominant": true,
@@ -229,7 +300,16 @@
     "set": "special",
     "name": "Neoteny",
     "flavor": "May you stay forever larval.",
-    "effect": "If Neoteny is discarded from your hand, instead pass it to the hand to your left. +4 if Neoteny is in your hand.",
+    "effects": [
+      {
+        "kind": "play-when",
+        "text": "If Neoteny is discarded from your hand, instead pass it to the hand to your left."
+      },
+      {
+        "text": "+4 if Neoteny is in your hand."
+      }
+    ],
+    "genePool": null,
     "points": -3,
     "colors": [
       "blue"
@@ -248,7 +328,13 @@
     "set": "special",
     "name": "Pride",
     "flavor": "Proud parent of a cub who bit an honor roll student.",
-    "effect": "Discard your hand and draw 4 cards. Do not stabilize.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Discard your hand and draw 4 cards. Do not stabilize."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "red"
@@ -266,7 +352,12 @@
     "set": "special",
     "name": "Rainbow Keratin",
     "flavor": "My outlook on life is pretty beak.",
-    "effect": "-2 for every Drop of Life in your trait pile. (Excluding this one.) If you have all 4 colors in your trait pile: +2 for each trait in your highest color count. (If there's a tie, pick 1!)",
+    "effects": [
+      {
+        "text": "-2 for every Drop of Life ({drop-of-life}) in your trait pile. (Excluding this one.) If you have all 4 colors in your trait pile: +2 for each trait in your highest color count.\n\n(If there's a tie, pick 1!)"
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": true,
@@ -282,7 +373,12 @@
     "set": "special",
     "name": "Rainbow Scutes",
     "flavor": "Turtley awesome!",
-    "effect": "Choose a color. Opponents must move 1 positive value trait of that color from their trait pile to yours.",
+    "effects": [
+      {
+        "text": "Choose a color. Opponents must move 1 positive value trait of that color from their trait pile to yours."
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [],
     "dominant": true,
@@ -296,7 +392,16 @@
     "set": "special",
     "name": "Shiny",
     "flavor": "If you touch it, what's the worst that could happen?",
-    "effect": "Each player receives -1 for each colorless trait in their trait pile. (Including you!)",
+    "effects": [
+      {
+        "text": "Each player receives -1 for each colorless trait in their trait pile."
+      },
+      {
+        "kind": "note",
+        "text": "(Including you!)"
+      }
+    ],
+    "genePool": null,
     "points": 1,
     "colors": [
       "green"
@@ -314,7 +419,13 @@
     "set": "special",
     "name": "Tube Feet",
     "flavor": "Forget Hollywood! I'm a star with my own walk of fame!",
-    "effect": "Play 1 trait from the discard pile. Ignore its action. Then discard 1 trait from your trait pile.",
+    "effects": [
+      {
+        "kind": "action",
+        "text": "Play 1 trait from the discard pile. Ignore its action ({action}). Then discard 1 trait from your trait pile."
+      }
+    ],
+    "genePool": null,
     "points": 2,
     "colors": [
       "blue"
