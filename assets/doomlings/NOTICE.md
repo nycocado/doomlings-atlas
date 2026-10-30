@@ -16,7 +16,7 @@ Everything in this folder (card images, card text and the Doomlings name) is © 
 
 ## Sources
 
-- Card images come from Ryeera's [Doomlings Tabletop Simulator mod](https://steamcommunity.com/sharedfiles/filedetails/?id=3151925153), which uses high-resolution images provided by the Doomlings team. Card images were converted to lossy WebP at quality 80, about 541×757 pixels.
+- Card images come from Ryeera's [Doomlings Tabletop Simulator mod](https://steamcommunity.com/sharedfiles/filedetails/?id=3151925153), which uses high-resolution images provided by the Doomlings team. Card images were converted to lossy WebP at quality 80, about 541×757 pixels. Headless was scaled down from a larger image; Conjured, Immortal and The Bramble Brawler only exist at 400×562 in the mod and were scaled up.
 - Card text and data come from the same mod. Each card was checked against its image.
 - The Classic rulesheet is the [official PDF](https://cdn.shopify.com/s/files/1/0554/6190/4593/files/Doomlings_Rulebook.pdf?v=1709671623) from the Doomlings website, kept here because the site now links the 3rd edition rules.
 - The rulesheets of Upgrade, Imaginary Ends, Legends of Enderas and Castle Glass are pages of the rules guide PDF embedded in the same mod ([PDF](https://steamusercontent-a.akamaihd.net/ugc/11787521121722816433/C759C9139A4B6BAE9EDDF63A7A06955A1411EF64/)), split by set and otherwise unchanged. Doomlings does not host a rulesheet for these expansions, so the guide is the source. It shows the official Doomlings rules cards laid out by Ryeera, with his own additions (page numbers, title banners, a thank-you note on the Castle Glass page and a photo and its caption on a Legends of Enderas page), which are not © Doomlings LLC.
