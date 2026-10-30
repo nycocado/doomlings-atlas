@@ -132,22 +132,14 @@ internal fun CardGroupCollapsedPreview() = GroupSample(open = false)
 @Composable
 internal fun CardGroupOpenPreview() = GroupSample(open = true)
 
-// Enough variants to wrap on a wide window too, after cards that make the group start and end in the middle of a row.
 @PreviewLightDark
 @Composable
-internal fun CardGroupOpenWidePreview() = GroupSample(open = true, variants = 9, before = 2)
-
-// Two open groups one after the other.
-@PreviewLightDark
-@Composable
-internal fun CardGroupAdjacentPreview() = GroupSample(open = true, variants = 2, adjacent = true)
+internal fun CardGroupOpenWidePreview() = GroupSample(open = true, variants = 9)
 
 @Composable
 private fun GroupSample(
     open: Boolean,
     variants: Int = 3,
-    before: Int = 0,
-    adjacent: Boolean = false,
 ) = AtlasTheme {
     BlankCardImages {
         fun trait(
@@ -156,14 +148,12 @@ private fun GroupSample(
         ) = Trait(id, "classic", "", name, null, null, null, listOf(CardColor.Red), false, emptyList(), emptyList())
         CompendiumContent(
             CompendiumFilter(colors = setOf(CardColor.Red)),
-            buildList {
-                (1..before).forEach { add(CompendiumEntry.Single(trait("before-$it", "Before $it"))) }
-                add(CompendiumEntry.Group("Kidney", (1..variants).map { trait("kidney-$it", "Kidney") }))
-                if (adjacent) add(CompendiumEntry.Group("Swarm", (1..variants).map { trait("swarm-$it", "Swarm") }))
-                add(CompendiumEntry.Single(trait("impatience", "Impatience")))
-                add(CompendiumEntry.Single(trait("late", "Late")))
-            },
-            if (open) setOfNotNull("Kidney", "Swarm".takeIf { adjacent }) else emptySet(),
+            listOf(
+                CompendiumEntry.Group("Kidney", (1..variants).map { trait("kidney-$it", "Kidney") }),
+                CompendiumEntry.Single(trait("impatience", "Impatience")),
+                CompendiumEntry.Single(trait("late", "Late")),
+            ),
+            if (open) setOf("Kidney") else emptySet(),
             {},
             {},
             {},

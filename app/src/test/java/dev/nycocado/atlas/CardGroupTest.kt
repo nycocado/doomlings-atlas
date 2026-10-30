@@ -1,5 +1,6 @@
 package dev.nycocado.atlas
 
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.SemanticsMatcher
@@ -9,6 +10,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.performClick
 import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 // Classic has 6 Kidneys and 5 Swarms (assets/doomlings/cards.json); the other names in these tests are unique.
@@ -98,10 +100,13 @@ class CardGroupTest : AtlasBehaviorTest() {
     fun talkBackReadsTheStackAndEachVariantInWords() {
         launchPastNotice()
         scrollListTo(hasContentDescription("Kidney, 6 variants, collapsed"))
+        assertEquals("Open", clickLabel(hasContentDescription("Kidney, 6 variants, collapsed")))
         compose.onNode(hasContentDescription("Kidney, 6 variants, collapsed")).performClick()
 
         scrollListTo(hasContentDescription("Kidney, 6 variants, open"))
         compose.onNode(hasContentDescription("Kidney, 6 variants, open")).assertExists()
+        // What TalkBack says a double tap does.
+        assertEquals("Collapse", clickLabel(hasContentDescription("Kidney, 6 variants, open")))
         scrollListTo(hasContentDescription("Kidney, Red, variant 2 of 6"))
         compose.onNode(hasContentDescription("Kidney, Red, variant 2 of 6")).assertExists()
     }
@@ -133,6 +138,14 @@ class CardGroupTest : AtlasBehaviorTest() {
         scrollListTo(openGroup("Kidney", 6))
         assertAllVariants("Kidney", 6)
     }
+
+    private fun clickLabel(matcher: SemanticsMatcher) =
+        compose
+            .onNode(matcher)
+            .fetchSemanticsNode()
+            .config
+            .getOrNull(SemanticsActions.OnClick)
+            ?.label
 
     // The variants are items of the lazy grid, so each is scrolled to before it is looked for.
     private fun assertAllVariants(

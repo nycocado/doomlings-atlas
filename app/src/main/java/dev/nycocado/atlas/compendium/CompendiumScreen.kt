@@ -76,9 +76,6 @@ private val RailWidth = Space.s5 + 64.dp + Space.s4
 
 private val RailMinWidth = 600.dp
 
-// The key of a variant in the grid: its card.
-private val VariantKey: (Int, NamedCard) -> Any = { _, variant -> variant.id }
-
 private val MoveSpec = tween<IntOffset>(350, easing = FastOutSlowInEasing)
 
 @Composable
@@ -234,7 +231,12 @@ fun CompendiumContent(
                                                 Modifier.animateItem(placementSpec = MoveSpec).padding(CardMargin),
                                             )
                                         }
-                                        itemsIndexed(entry.variants, key = VariantKey) { number, variant ->
+                                        itemsIndexed(entry.variants, key = {
+                                            _,
+                                            variant,
+                                            ->
+                                            variant.id
+                                        }) { number, variant ->
                                             CompendiumCard(
                                                 variant,
                                                 tiltAt(number),
@@ -328,7 +330,7 @@ private fun LazyGridScope.fullWidth(
 }
 
 @Composable
-internal fun CompendiumCard(
+private fun CompendiumCard(
     card: NamedCard,
     tilt: Float,
     onClick: () -> Unit,
