@@ -5,7 +5,7 @@ How the engineering skills read this repo's domain documentation. It is a single
 ## Before Exploring, Read These
 
 - **[`GLOSSARY.md`](../../GLOSSARY.md)**: the words for game and app concepts.
-- **[`docs/rules.md`](../rules.md)**: the game rules (Classic), for anything about cards, games or scoring.
+- **[`docs/rules/`](../rules/README.md)**: the game rules, one file per set, for anything about cards, games or scoring.
 - **[`docs/adr/`](../adr)**: the ADRs that touch the area you're about to work in.
 
 Translated words are not domain terms: each language's word list is in [`docs/glossary/`](../glossary), checked by `./gradlew check`.

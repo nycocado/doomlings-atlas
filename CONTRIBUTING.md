@@ -79,7 +79,7 @@ You are responsible for every line you submit, however it was written. Make sure
 - [docs/development.md](docs/development.md): building the app, conventions, CI and releases.
 - [docs/testing.md](docs/testing.md): which tests a change needs.
 - [docs/design.md](docs/design.md): the visual design.
-- [docs/rules.md](docs/rules.md): the game rules the app implements.
+- [docs/rules](docs/rules/README.md): the game rules the app implements, one file per set.
 - [docs/adr](docs/adr): architecture decisions. Read them before proposing structural changes; changing one means a new ADR, following [docs/adr/README.md](docs/adr/README.md).
 - [AGENTS.md](AGENTS.md): extra rules for AI agents.
 

@@ -43,7 +43,7 @@ class CardDataIntegrityTest {
         assertEquals(emptyList(), cards.map { it.image }.filterNot { dir.resolve(it).isFile })
     }
 
-    // Counts from the official rulesheet (docs/rules.md), an independent source for the data.
+    // Counts from the official rulesheet (docs/rules/classic.md), an independent source for the data.
     @Test
     fun classicHasTheRulesheetAgesAndCatastrophes() {
         val classic = cards.filter { it.set == "classic" }

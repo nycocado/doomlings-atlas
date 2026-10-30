@@ -15,7 +15,7 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game. Where it 
 | Working on                        | Read                                                                                                                                          |
 | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | Anything                          | [GLOSSARY.md](GLOSSARY.md), [docs/architecture.md](docs/architecture.md)                                                                      |
-| Card data, game rules, scoring    | [docs/rules.md](docs/rules.md), [ADR 0005](docs/adr/0005-scoring-rules-in-card-data.md), [Doomlings Assets](CONTRIBUTING.md#doomlings-assets) |
+| Card data, game rules, scoring    | [docs/rules](docs/rules/README.md), [ADR 0005](docs/adr/0005-scoring-rules-in-card-data.md), [Doomlings Assets](CONTRIBUTING.md#doomlings-assets) |
 | UI                                | [docs/design.md](docs/design.md), [ADR 0006](docs/adr/0006-own-design-system.md)                                                              |
 | Tests, checking a change          | [docs/testing.md](docs/testing.md); the running app only through the `verify-ui` skill                                                        |
 | Build, CI, releases, dependencies | [docs/development.md](docs/development.md)                                                                                                    |

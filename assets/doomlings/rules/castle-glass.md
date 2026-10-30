@@ -39,11 +39,11 @@ Points per card:
 
 ### Examples
 
-Each example is a row of class cards with its total; the class labels are in the icons.
+Each example is a row of class cards with its total.
 
-- 0 + 0 = 0 pts.
-- 1 + 1 + 0 = 2 pts.
-- 1 + 2 + 3 = 6 pts.
+- Shell 0 + Coral 0 = 0 pts.
+- Shell 1 + Shell 1 + Coral 0 = 2 pts.
+- Shell 1 + Curious Shell 2 + Exotic Shell 3 = 6 pts.
 - Coral 1 + Curious Coral 2, Shell 1 + Exotic Shell 3 = 7 pts.
 
 The cards of each row and the check and cross marks over them are shown as icons.

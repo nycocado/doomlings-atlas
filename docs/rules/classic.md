@@ -2,7 +2,7 @@
 
 Summary of the official rules for Doomlings Classic (2nd edition), the edition this app targets. It is a reference for implementing the app, written in our own words. The official rulesheet is authoritative; if this file disagrees with it, the rulesheet wins.
 
-Source: [official rulesheet](../assets/doomlings/rules/classic.pdf) ([original link](https://cdn.shopify.com/s/files/1/0554/6190/4593/files/Doomlings_Rulebook.pdf?v=1709671623), 2024 upload, matches the Classic card counts: 25 ages, 15 catastrophes, 1 Birth of Life).
+Source: [official rulesheet](../../assets/doomlings/rules/classic.pdf) and its [transcription](../../assets/doomlings/rules/classic.md) ([original link](https://cdn.shopify.com/s/files/1/0554/6190/4593/files/Doomlings_Rulebook.pdf?v=1709671623), 2024 upload, matches the Classic card counts: 25 ages, 15 catastrophes, 1 Birth of Life).
 
 ## Components
 
