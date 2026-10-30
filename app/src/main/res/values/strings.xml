@@ -58,6 +58,18 @@
     <string name="type_catastrophe" translatable="false">Catastrophe</string>
     <string name="worlds_end">World\'s End</string>
     <string name="gene_pool_line" translatable="false">%1$s Gene Pool</string>
+    <string name="effect_awesome_power">Awesome Power</string>
+    <string name="effect_pocket_objective">Pocket Objective</string>
+    <string name="effect_rush">Rush</string>
+    <string name="effect_mutate">Mutate</string>
+    <string name="effect_echo">Echo</string>
+    <string name="effect_cloak">Cloak</string>
+    <string name="effect_adapt">Adapt</string>
+    <string name="effect_exchange">Exchange</string>
+    <string name="effect_buy">Buy</string>
+    <string name="effect_collect">Collect</string>
+    <string name="effect_bargain">Bargain</string>
+    <string name="value_line">Value: %1$s</string>
     <string name="dominant">Dominant</string>
     <string name="icon_action">Action</string>
     <string name="icon_attachment">Attachment</string>

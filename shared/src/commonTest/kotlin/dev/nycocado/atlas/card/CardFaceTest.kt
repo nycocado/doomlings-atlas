@@ -211,6 +211,11 @@ class CardFaceTest {
     }
 
     @Test
+    fun onlyATrinketHasAValue() {
+        assertEquals(null, confusion.face()?.value)
+    }
+
+    @Test
     fun aColorlessTraitHasOneColorlessFact() {
         assertEquals(
             listOf(CardFact.Color(null), CardFact.Type(CardKind.Trait)),

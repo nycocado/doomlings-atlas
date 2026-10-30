@@ -12,6 +12,8 @@ data class CardFace(
     val sections: List<CardSection>,
     // The "+N Gene Pool" line, for the app to write in the card language. A translation has it in its effect text.
     val genePool: Int?,
+    // A Trinket's Value, for the app to write in the card language.
+    val value: Int?,
     // What the compendium search matches: the name and the text of every effect, without tokens.
     val searchable: List<String>,
 ) {
@@ -57,13 +59,14 @@ sealed interface CardSection {
 private val token = Regex("""\s*\(\{[^}]*\}\)|\{[^}]*\}""")
 
 // A token is an icon, not a word to search for. A parenthesized one goes with its parentheses and the space before them.
-internal fun withoutTokens(text: String) = text.replace(token, "")
+fun withoutTokens(text: String) = text.replace(token, "")
 
 // The text is the printed text or a translation of this card. null for a card type without a card kind, which the app
 // doesn't show.
 fun NamedCard.face(text: CardText = printedText()): CardFace? {
     val kind = kind ?: return null
     val trait = this as? Trait
+    val trinket = this as? Trinket
     // A translation's flat text is one plain effect, and a Catastrophe's World's End another.
     val effects =
         text.effects
@@ -84,6 +87,7 @@ fun NamedCard.face(text: CardText = printedText()): CardFace? {
         trait?.points,
         sections,
         text.genePool,
+        trinket?.value,
         listOf(text.name) + sections.filterIsInstance<CardSection.Effect>().map { withoutTokens(it.text) },
     )
 }

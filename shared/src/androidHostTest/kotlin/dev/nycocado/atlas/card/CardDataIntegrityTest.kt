@@ -185,7 +185,6 @@ class CardDataIntegrityTest {
         assertEquals(emptyList(), texts.filter { (_, text) -> text != text.trim() })
     }
 
-    // An effectless trait has no effects, never an empty one.
     @Test
     fun noTextIsEmpty() {
         assertEquals(emptyList(), texts.filter { (_, text) -> text.isEmpty() })

@@ -59,6 +59,18 @@
     <string name="coming_soon">%1$s, próximamente</string>
 
     <string name="worlds_end">Fin del Mundo</string>
+    <string name="effect_awesome_power">Poder Increíble</string>
+    <string name="effect_pocket_objective">Objetivo de Bolsillo</string>
+    <string name="effect_rush">Urgencia</string>
+    <string name="effect_mutate">Mutación</string>
+    <string name="effect_echo">Eco</string>
+    <string name="effect_cloak">Manto</string>
+    <string name="effect_adapt">Adaptación</string>
+    <string name="effect_exchange">Cambio</string>
+    <string name="effect_buy">Adquisición</string>
+    <string name="effect_collect">Recolección</string>
+    <string name="effect_bargain">Regateo</string>
+    <string name="value_line">Valor: %1$s</string>
     <string name="dominant">Dominante</string>
     <string name="icon_action">Acción</string>
     <string name="icon_attachment">Adjunto</string>

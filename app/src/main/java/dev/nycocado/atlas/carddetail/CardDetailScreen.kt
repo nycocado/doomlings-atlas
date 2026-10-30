@@ -128,6 +128,7 @@ import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.card.printedText
+import dev.nycocado.atlas.card.withoutTokens
 import dev.nycocado.atlas.cardpane.CardStatusBarIcons
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.compendium.CardKind
@@ -265,31 +266,36 @@ fun CardDetailContent(
                         }
                     val effects = face.sections.filterIsInstance<CardSection.Effect>()
                     val flavor = face.section<CardSection.Flavor>()
-                    val genePool = face.genePool?.let { stringResource(R.string.gene_pool_line, signedPlus(it)) }
-                    // A card with only a Gene Pool line or a flavor still has its one bubble.
-                    val blocks =
-                        effects
-                            .ifEmpty { listOf(null) }
-                            .takeIf {
-                                effects.isNotEmpty() || flavor != null ||
-                                    genePool != null
-                            }.orEmpty()
+                    val genePool = face.genePool?.let { cardString(R.string.gene_pool_line, language, signedPlus(it)) }
+                    val value = face.value?.let { cardString(R.string.value_line, language, signed(it)) }
+                    val hasBubble = effects.isNotEmpty() || flavor != null || genePool != null
+                    // A card with only a Gene Pool line or a flavor still has its one bubble, with no effect.
+                    val blocks: List<CardSection.Effect?> =
+                        if (hasBubble) {
+                            effects.ifEmpty {
+                                listOf(
+                                    null,
+                                )
+                            }
+                        } else {
+                            emptyList()
+                        }
                     // Without a text bubble to hang on, the selector takes its own row where the bubble would be.
                     if (blocks.isEmpty()) {
                         selector?.let { Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd) { it() } }
                     }
                     blocks.forEachIndexed { index, effect ->
+                        val kindLabel = effect?.kind?.label?.let { cardString(it, language) }
                         Bubble(
-                            effect?.text,
+                            effect?.let {
+                                shownEffectText(it, kindLabel, value.takeIf { index == blocks.lastIndex })
+                            },
                             flavor.takeIf { index == blocks.lastIndex },
                             language,
                             card,
                             library,
                             onCardClick,
-                            label =
-                                effect?.kind?.takeIf { it == EffectKind.WorldsEnd }?.let {
-                                    cardString(TraitIcon.WorldsEnd.label, language)
-                                },
+                            label = kindLabel.takeIf { effect?.kind == EffectKind.WorldsEnd },
                             genePool = genePool.takeIf { index == 0 },
                             selector = selector.takeIf { index == 0 },
                         )
@@ -434,6 +440,36 @@ private fun PointsBadge(
         BasicText(signed(points), style = AtlasTypography.numeralLg.copy(color = theme.onHighlight))
     }
 }
+
+// What a block shows of an effect, as the card prints it: a label kind heads its text, the Value ends the last block,
+// and the tokens, which are for search and for the symbols of a later change, are left out.
+internal fun shownEffectText(
+    effect: CardSection.Effect,
+    kindLabel: String?,
+    value: String?,
+): String {
+    val labelled = if (effect.kind?.labelOf != null && kindLabel != null) "$kindLabel:\n" else ""
+    return labelled + withoutTokens(effect.text) + value?.let { "\n\n$it" }.orEmpty()
+}
+
+// The label a kind has, other than the plain timings.
+private val EffectKind.label: Int?
+    @StringRes get() =
+        when (this) {
+            EffectKind.WorldsEnd -> R.string.worlds_end
+            EffectKind.AwesomePower -> R.string.effect_awesome_power
+            EffectKind.PocketObjective -> R.string.effect_pocket_objective
+            EffectKind.Rush -> R.string.effect_rush
+            EffectKind.Mutate -> R.string.effect_mutate
+            EffectKind.Echo -> R.string.effect_echo
+            EffectKind.Cloak -> R.string.effect_cloak
+            EffectKind.Adapt -> R.string.effect_adapt
+            EffectKind.Exchange -> R.string.effect_exchange
+            EffectKind.Buy -> R.string.effect_buy
+            EffectKind.Collect -> R.string.effect_collect
+            EffectKind.Bargain -> R.string.effect_bargain
+            EffectKind.Action, EffectKind.PlayWhen, EffectKind.Note -> null
+        }
 
 // The printed line is "+N Gene Pool", and "+0" when it only restates the pool.
 private fun signedPlus(n: Int) = if (n < 0) signed(n) else "+$n"
@@ -674,16 +710,17 @@ private val CardLanguage.endonym: String
 private fun cardString(
     @StringRes id: Int,
     language: CardLanguage,
+    vararg args: Any,
 ): String {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
     // A preview renders in the locale its @Preview names and ignores any other, so it shows that locale's label.
-    if (LocalInspectionMode.current) return stringResource(id)
-    return remember(context, configuration, language) {
+    if (LocalInspectionMode.current) return stringResource(id, *args)
+    return remember(context, configuration, language, args.toList()) {
         context
             .createConfigurationContext(
                 Configuration(configuration).apply { setLocale(Locale.forLanguageTag(language.code)) },
-            ).getString(id)
+            ).getString(id, *args)
     }
 }
 
