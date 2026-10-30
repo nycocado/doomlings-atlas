@@ -11,6 +11,7 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 - **Face value**: the number printed at the bottom of a trait. Bonuses are counted apart from it. _Avoid_: points (for the printed number), score.
 - **Compass star**: a trait whose value "is equal to" something in the game; it has no fixed face value (`points: null` in the data).
 - **Effect**: the text at the bottom of a card. A trait without one is **effectless**.
+- **Citation**: a card name printed in another card's effect or World's End. It stays as printed in every translation (#91), and in the card detail it opens that card.
 - **Action**, **Play When**, **World's End**, **Drop of Life**: the icons that say when a trait's effect applies ([docs/rules.md](docs/rules.md#icons)).
 - **Age**: the card flipped at the start of each round; its effect lasts that round.
 - **Catastrophe**: a card of the age deck that ends an era and changes every Gene Pool; the third one ends the game. Its **World's End** effect counts only then.

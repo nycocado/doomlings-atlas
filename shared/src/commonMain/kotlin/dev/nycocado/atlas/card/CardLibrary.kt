@@ -10,25 +10,6 @@ class CardLibrary private constructor(
             else -> cards.find { it.id == id }?.let(CardLookup::Found) ?: CardLookup.Missing
         }
 
-    // One alternation, longest names first so a name wins over a shorter one inside it. A name is a whole word, with its
-    // exact capitals, alone or with a plural "s".
-    private val citedNames: Regex? by lazy {
-        val names =
-            cards
-                ?.filterIsInstance<NamedCard>()
-                ?.map { it.name }
-                ?.distinct()
-                ?.sortedByDescending { it.length }
-        names
-            ?.takeIf { it.isNotEmpty() }
-            ?.joinToString(
-                "|",
-                "(?<!\\p{L})(?:",
-                ")s?(?!\\p{L})",
-            ) { Regex.escape(it) }
-            ?.toRegex()
-    }
-
     // Copies of a card share its name, and so do some cards of different sets: the first one in the data is cited.
     private val idsByName: Map<String, String> by lazy {
         cards
@@ -36,6 +17,16 @@ class CardLibrary private constructor(
             ?.distinctBy { it.name }
             ?.associate { it.name to it.id }
             .orEmpty()
+    }
+
+    // One alternation, longest names first so a name wins over a shorter one inside it. A name is a whole word, with its
+    // exact capitals, alone or with a plural "s".
+    private val citedNames: Regex? by lazy {
+        idsByName.keys
+            .sortedByDescending { it.length }
+            .takeIf { it.isNotEmpty() }
+            ?.joinToString("|", "(?<!\\p{L})(?:", ")s?(?!\\p{L})") { Regex.escape(it) }
+            ?.toRegex()
     }
 
     // The card names cited in a text of the card, in any language, empty while the cards load. A card does not cite
@@ -70,7 +61,6 @@ sealed interface CardLookup {
     data object Loading : CardLookup
 }
 
-// A card name cited in a card's text, at its place in that text.
 data class Citation(
     val range: IntRange,
     val cardId: String,

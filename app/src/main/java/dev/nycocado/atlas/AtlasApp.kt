@@ -110,7 +110,7 @@ fun AtlasApp() {
                                 boundsAnimationSpec = snap(),
                             ),
                 ) { key ->
-                    cardPane.Detail(key.id, layout) { backStack.add(AboutKey) }
+                    cardPane.Detail(key, layout) { backStack.add(AboutKey) }
                 }
                 entry<AboutKey> { AboutScreen { backStack.removeLastOrNull() } }
             },

@@ -11,6 +11,7 @@ import dev.nycocado.atlas.about.NoticePreview
 import dev.nycocado.atlas.carddetail.CardDetailLongNamePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
+import dev.nycocado.atlas.carddetail.CitedCardDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitSample
@@ -246,3 +247,8 @@ fun TranslatedCatastropheDetailSpanishScreenshot() = TranslatedCatastropheDetail
 @Preview(fontScale = 2f, locale = "es")
 @Composable
 fun TranslatedTraitDetailFontScale200SpanishScreenshot() = AtlasTheme { TranslatedTraitSample() }
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun CitedCardDetailScreenshot() = CitedCardDetailPreview()

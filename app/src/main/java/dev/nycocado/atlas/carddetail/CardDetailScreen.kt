@@ -106,6 +106,7 @@ import androidx.compose.ui.unit.round
 import androidx.compose.ui.util.lerp
 import coil3.compose.AsyncImage
 import dev.nycocado.atlas.R
+import dev.nycocado.atlas.card.Age
 import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
@@ -169,17 +170,17 @@ fun CardDetailScreen(
     val language = chosen.takeIf { it in languages } ?: CardLanguage.English
     val text = (card as? NamedCard)?.let { translations.text(it, language) }
     CardDetailContent(
-        card,
-        tilt,
-        onBack,
-        onAboutClick,
-        layout,
-        text,
-        languages,
-        language,
-        onLanguageChange,
-        library,
-        onCardClick,
+        card = card,
+        tilt = tilt,
+        onBack = onBack,
+        onAboutClick = onAboutClick,
+        layout = layout,
+        text = text,
+        languages = languages,
+        language = language,
+        onLanguageChange = onLanguageChange,
+        library = library,
+        onCardClick = onCardClick,
     )
 }
 
@@ -667,7 +668,6 @@ private fun tagged(
     onCardClick: (String) -> Unit = {},
 ) = buildAnnotatedString {
     withStyle(SpanStyle(localeList = LocaleList(language.code))) { append(text) }
-    // Underlined like the unofficial notice, the one other thing in the app that opens somewhere.
     val link = TextLinkStyles(SpanStyle(textDecoration = TextDecoration.Underline))
     for ((range, cardId) in citations) {
         addLink(LinkAnnotation.Clickable(cardId, link) { onCardClick(cardId) }, range.first, range.last + 1)
@@ -867,6 +867,34 @@ internal fun CatastropheDetailPreview() =
                 tilt = -3f,
                 onBack = {},
                 onAboutClick = {},
+            )
+        }
+    }
+
+// Age of Dracula and Vampirism as in assets/doomlings/cards.json, so the name Vampirism is underlined.
+@PreviewLightDark
+@Composable
+internal fun CitedCardDetailPreview() =
+    AtlasTheme {
+        BlankCardImages {
+            CardDetailContent(
+                Age(
+                    "classic/ages/age-of-dracula",
+                    "classic",
+                    "",
+                    "Age of Dracula",
+                    "Discard 1 random card from your hand.\n\n" +
+                        "If Vampirism is in your trait pile, steal 1 random card from an opponent's hand.",
+                ),
+                tilt = -3f,
+                onBack = {},
+                onAboutClick = {},
+                library =
+                    CardLibrary.decode(
+                        """[{"id": "classic/traits/vampirism", "type": "trait", "set": "classic", "name": "Vampirism",
+                        "flavor": null, "effect": null, "points": 3, "colors": ["purple"], "dominant": true,
+                        "subspecies": [], "icons": [], "image": ""}]""",
+                    ),
             )
         }
     }

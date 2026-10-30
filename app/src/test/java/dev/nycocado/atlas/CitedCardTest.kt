@@ -1,13 +1,21 @@
 package dev.nycocado.atlas
 
+import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.ExperimentalTestApi
+import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isSelectable
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performFirstLinkClick
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.swipeUp
 import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.robolectric.annotation.Config
 
@@ -18,15 +26,57 @@ class CitedCardTest : AtlasBehaviorTest() {
     private fun openAgeOfDracula() {
         text(R.string.kind_ages).performClick()
         compose.onNode(hasContentDescription("Age of Dracula")).performClick()
-        detailOf("Age of Dracula").assertIsDisplayed()
     }
 
     private fun tapVampirism() = compose.onNode(hasText("Vampirism", substring = true)).performFirstLinkClick()
 
     @Test
+    fun theCitedNameIsALinkInsideTheEffect() {
+        launchPastNotice()
+        openAgeOfDracula()
+
+        val link =
+            compose
+                .onNode(
+                    SemanticsMatcher.keyIsDefined(SemanticsProperties.LinkTestMarker),
+                ).fetchSemanticsNode()
+
+        // TalkBack reads the effect around the link, and announces the name in it as a link.
+        val effect =
+            link.parent!!
+                .config[SemanticsProperties.Text]
+                .single()
+                .text
+        assertTrue("If Vampirism is in your trait pile" in effect)
+        assertTrue(SemanticsActions.OnClick in link.config)
+    }
+
+    @Test
+    @Config(qualifiers = "w360dp-h640dp-xhdpi")
+    fun theCiterKeepsItsScrollAfterBack() {
+        val scenario = launchPastNotice()
+        openAgeOfDracula()
+        val effect = compose.onNode(hasText("Vampirism", substring = true))
+        val unscrolled = effect.fetchSemanticsNode().positionInRoot
+        effect.performTouchInput { swipeUp(startY = bottom, endY = top, durationMillis = 100) }
+        compose.waitForIdle()
+        val before = effect.fetchSemanticsNode().positionInRoot
+        effect.assertIsDisplayed()
+        assertNotEquals(unscrolled, before)
+
+        tapVampirism()
+        detailOf("Vampirism").assertIsDisplayed()
+        pressBack(scenario)
+
+        effect.assertIsDisplayed()
+        assertEquals(before, effect.fetchSemanticsNode().positionInRoot)
+    }
+
+    @Test
     fun aCitedCardOpensAndBackReturnsToTheCiter() {
         val scenario = launchPastNotice()
         openAgeOfDracula()
+        detailOf("Age of Dracula").assertIsDisplayed()
         assertAccessible()
 
         tapVampirism()
@@ -43,6 +93,7 @@ class CitedCardTest : AtlasBehaviorTest() {
     fun aCitedCardOpensFromTheTranslatedText() {
         val scenario = launchPastNotice()
         openAgeOfDracula()
+        detailOf("Age of Dracula").assertIsDisplayed()
         compose.onNode(isSelectable() and hasText("Português")).performClick()
         compose.onNode(hasText("pilha de traits", substring = true)).assertIsDisplayed()
 
@@ -60,6 +111,7 @@ class CitedCardTest : AtlasBehaviorTest() {
     fun aCitedCardOpensBesideTheListAndBackReturnsToTheCiter() {
         val scenario = launchPastNotice()
         openAgeOfDracula()
+        detailOf("Age of Dracula").assertIsDisplayed()
         assertAccessible()
 
         tapVampirism()

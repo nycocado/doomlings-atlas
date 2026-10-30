@@ -39,15 +39,9 @@ fun rememberCardPane(
     onLanguageChange: (CardLanguage) -> Unit,
 ): CardPane {
     val pane = remember(backStack) { CardPane(backStack, library, translations, language, onLanguageChange) }
-    backStack.lastOrNull { it is CardKey }?.let { open -> SideEffect { pane.lastCard = (open as CardKey).id } }
+    backStack.lastOrNull { it is CardKey }?.let { open -> SideEffect { pane.lastCard = open as CardKey } }
     return pane
 }
-
-// movableContentOf takes at most four parameters.
-private class Opens(
-    val about: () -> Unit,
-    val card: (String) -> Unit,
-)
 
 @Stable
 class CardPane internal constructor(
@@ -60,7 +54,7 @@ class CardPane internal constructor(
     // The card's pane takes the card with it as it fades out: the card leaves the back stack before the pane hides,
     // so the list's detail placeholder shows the last card meanwhile (#48). Never cleared: the placeholder only shows
     // beside the list, and clearing it at the wrong frame would empty the pane mid-fade.
-    internal var lastCard by mutableStateOf<String?>(null)
+    internal var lastCard by mutableStateOf<CardKey?>(null)
 
     val isOpen: Boolean get() = backStack.any { it is CardKey }
 
@@ -78,39 +72,43 @@ class CardPane internal constructor(
         backStack.removeLastOrNull()
     }
 
-    // Movable, so it keeps its tilt and scroll.
-    private val content =
-        movableContentOf { id: String, layout: ListDetailLayout, onBack: () -> Unit, opens: Opens ->
-            val lookup = library.value.lookup(id)
-            if (lookup == CardLookup.Missing) LaunchedEffect(id) { onBack() }
-            // The sheet shows beside the list even while the cards load.
-            Box(if (layout.sideBySide) Modifier.sheet() else Modifier) {
-                if (lookup is CardLookup.Found) {
-                    CardDetailScreen(
-                        lookup.card,
-                        translations.value,
-                        language.value,
-                        onLanguageChange,
-                        layout,
-                        library.value,
-                        onBack,
-                        opens.about,
-                        opens.card,
-                    )
+    // Movable, so it keeps its tilt and scroll. One per depth, as a cited card and its citer are on screen together.
+    private val contents = mutableMapOf<Int, @Composable (String, ListDetailLayout, Boolean, () -> Unit) -> Unit>()
+
+    private fun contentAt(depth: Int) =
+        contents.getOrPut(depth) {
+            movableContentOf { id: String, layout: ListDetailLayout, interactive: Boolean, onAboutClick: () -> Unit ->
+                val lookup = library.value.lookup(id)
+                if (lookup == CardLookup.Missing && interactive) LaunchedEffect(id) { close() }
+                // The sheet shows beside the list even while the cards load.
+                Box(if (layout.sideBySide) Modifier.sheet() else Modifier) {
+                    if (lookup is CardLookup.Found) {
+                        CardDetailScreen(
+                            lookup.card,
+                            translations.value,
+                            language.value,
+                            onLanguageChange,
+                            layout,
+                            library.value,
+                            if (interactive) ::close else ({}),
+                            onAboutClick,
+                            if (interactive) ::openCited else ({}),
+                        )
+                    }
                 }
             }
         }
 
     @Composable
     fun Detail(
-        id: String,
+        key: CardKey,
         layout: ListDetailLayout,
         onAboutClick: () -> Unit,
-    ) = content(id, layout, ::close, Opens(onAboutClick, ::openCited))
+    ) = contentAt(key.depth)(key.id, layout, true, onAboutClick)
 
     @Composable
     fun DetailPlaceholder(layout: ListDetailLayout) {
-        lastCard?.let { content(it, layout, {}, Opens({}, {})) }
+        lastCard?.let { contentAt(it.depth)(it.id, layout, false, {}) }
     }
 }
 
