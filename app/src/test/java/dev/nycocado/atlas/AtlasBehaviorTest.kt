@@ -115,15 +115,25 @@ abstract class AtlasBehaviorTest {
                 .fetchSemanticsNodes()
                 // Scrolled out of the window: nothing for a player to hit.
                 .filterNot { it.touchBoundsInRoot.isEmpty }
-                .filter { node ->
+                .filterNot { node ->
                     node.config
                         .getOrNull(SemanticsProperties.Text)
                         .orEmpty()
-                        .isEmpty() &&
+                        .isNotEmpty() ||
                         node.config
                             .getOrNull(SemanticsProperties.ContentDescription)
                             .orEmpty()
-                            .isEmpty()
+                            .isNotEmpty() ||
+                        // A link is announced as a link inside the text around it, which is its label.
+                        (
+                            SemanticsProperties.LinkTestMarker in node.config &&
+                                generateSequence(node.parent) { it.parent }.any {
+                                    it.config
+                                        .getOrNull(SemanticsProperties.Text)
+                                        .orEmpty()
+                                        .isNotEmpty()
+                                }
+                        )
                 }
         check(unlabeled.isEmpty()) {
             "Clickable without a label:\n" +
