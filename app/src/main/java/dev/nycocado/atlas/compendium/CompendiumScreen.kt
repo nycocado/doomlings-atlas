@@ -78,6 +78,8 @@ private val RailMinWidth = 600.dp
 
 private val MoveSpec = tween<IntOffset>(350, easing = FastOutSlowInEasing)
 
+private val VariantKey: (Int, NamedCard) -> Any = { _, variant -> variant.id }
+
 @Composable
 fun CompendiumScreen(
     viewModel: CompendiumViewModel,
@@ -231,12 +233,7 @@ fun CompendiumContent(
                                                 Modifier.animateItem(placementSpec = MoveSpec).padding(CardMargin),
                                             )
                                         }
-                                        itemsIndexed(entry.variants, key = {
-                                            _,
-                                            variant,
-                                            ->
-                                            variant.id
-                                        }) { number, variant ->
+                                        itemsIndexed(entry.variants, key = VariantKey) { number, variant ->
                                             CompendiumCard(
                                                 variant,
                                                 tiltAt(number),
