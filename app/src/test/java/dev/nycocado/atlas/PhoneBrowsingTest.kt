@@ -46,17 +46,6 @@ class PhoneBrowsingTest : AtlasBehaviorTest() {
         text(R.string.search_placeholder).assertIsDisplayed()
     }
 
-    // The leaving screen keeps its back button until the fade ends, so a second tap lands on it.
-    private fun tapBackAgainMidFade() {
-        compose.waitForIdle()
-        compose.mainClock.autoAdvance = false
-        button(R.string.back).performClick()
-        compose.mainClock.advanceTimeBy(50)
-        button(R.string.back).performClick()
-        compose.mainClock.autoAdvance = true
-        compose.waitForIdle()
-    }
-
     @Test
     fun backFromACardKeepsTheFilterAndTheScroll() {
         val scenario = launchPastNotice()

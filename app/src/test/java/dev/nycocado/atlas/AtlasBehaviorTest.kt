@@ -13,8 +13,11 @@ import androidx.compose.ui.test.hasScrollAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isSelectable
 import androidx.compose.ui.test.junit4.v2.createEmptyComposeRule
+import androidx.compose.ui.test.onAllNodesWithContentDescription
+import androidx.compose.ui.test.onFirst
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToNode
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
@@ -93,6 +96,18 @@ abstract class AtlasBehaviorTest {
 
     protected fun scrollListTo(matcher: SemanticsMatcher) {
         compose.onNode(hasScrollAction()).performScrollToNode(matcher)
+    }
+
+    // The leaving screen keeps its back button until the fade ends, so a second tap lands on it.
+    protected fun tapBackAgainMidFade() {
+        compose.waitForIdle()
+        compose.mainClock.autoAdvance = false
+        button(R.string.back).performClick()
+        compose.mainClock.advanceTimeBy(50)
+        // A screen under the leaving one fades in with its own back button, so both are there.
+        compose.onAllNodesWithContentDescription(string(R.string.back)).onFirst().performClick()
+        compose.mainClock.autoAdvance = true
+        compose.waitForIdle()
     }
 
     // The back button or gesture, as the system dispatches it: a key down and a key up, once the screen has settled.
