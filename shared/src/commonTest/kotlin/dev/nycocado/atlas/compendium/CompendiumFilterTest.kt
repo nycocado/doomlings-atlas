@@ -99,7 +99,10 @@ class CompendiumFilterTest {
                 trait("Loser", effect = "-1 Gene Pool."),
                 trait("Drawer", effect = "Draw 1 card."),
             )
-        assertEquals(listOf("Gainer"), cards.filterCompendium(CompendiumFilter(query = "+1")).map { it.name })
+        assertEquals(
+            listOf("Gainer", "Drawer", "Loser"),
+            cards.filterCompendium(CompendiumFilter(query = "+1")).map { it.name },
+        )
     }
 
     @Test
@@ -174,14 +177,72 @@ class CompendiumFilterTest {
         assertEquals(listOf("Venomous"), names(CompendiumFilter(query = "venomuos")))
     }
 
+    private fun found(
+        cards: List<Trait>,
+        query: String,
+    ) = cards.filterCompendium(CompendiumFilter(query = query)).map { it.name }
+
     @Test
     fun longNamesAllowTwoErrorsAndShortOnesNone() {
         assertEquals(listOf("Camouflage"), names(CompendiumFilter(query = "camuflagge")))
-        assertEquals(emptyList(), names(CompendiumFilter(query = "camuflagee-x")))
+        assertEquals(emptyList(), names(CompendiumFilter(query = "camufllagee")))
         val short = listOf(trait("Fur"))
-        assertEquals(listOf("Fur"), short.filterCompendium(CompendiumFilter(query = "fur")).map { it.name })
-        assertEquals(emptyList(), short.filterCompendium(CompendiumFilter(query = "fyr")).map { it.name })
-        assertEquals(emptyList(), short.filterCompendium(CompendiumFilter(query = "fru")).map { it.name })
+        assertEquals(listOf("Fur"), found(short, "fur"))
+        assertEquals(emptyList(), found(short, "fyr"))
+        assertEquals(emptyList(), found(short, "fru"))
+    }
+
+    @Test
+    fun theShorterWordSetsTheErrorLimit() {
+        val short = listOf(trait("Fur"))
+        assertEquals(listOf("Fur"), found(short, "fu"))
+        assertEquals(emptyList(), found(short, "furr"))
+    }
+
+    @Test
+    fun twoErrorsFindANameWordButNotAnEffectWord() {
+        assertEquals(listOf("Hibernation"), found(listOf(trait("Hibernation")), "hibrenatoin"))
+        assertEquals(emptyList(), found(listOf(trait("Aaa", effect = "Hibernation.")), "hibrenatoin"))
+        assertEquals(listOf("Aaa"), found(listOf(trait("Aaa", effect = "Hibernation.")), "hibrenation"))
+    }
+
+    @Test
+    fun theQueryMayMixTheNameAndTheEffect() {
+        assertEquals(listOf("Venomous"), names(CompendiumFilter(query = "venomous steal")))
+        assertEquals(listOf("Venomous"), names(CompendiumFilter(query = "venomuos steel")))
+        assertEquals(listOf("Venomous"), names(CompendiumFilter(query = "card ven")))
+    }
+
+    @Test
+    fun theWordsOfAQueryMatchInOneLanguage() {
+        assertEquals(listOf("Venomous"), found("venenoso roube", CardLanguage.Portuguese))
+        assertEquals(listOf("Venomous"), found("venomous steal", CardLanguage.Portuguese))
+        assertEquals(emptyList(), found("venenoso steal", CardLanguage.Portuguese))
+    }
+
+    @Test
+    fun symbolsAndSpacesOnlySeparateWords() {
+        val cards = listOf(trait("Spiky", effect = "Don't discard cards."), trait("Cold-blooded"))
+        assertEquals(listOf("Spiky"), found(cards, "don't discrad"))
+        assertEquals(listOf("Spiky"), found(cards, "don't  discard"))
+        assertEquals(listOf("Cold-blooded"), found(cards, "cold blooded"))
+        assertEquals(listOf("Cold-blooded"), found(cards, "cold bloded"))
+        assertEquals(emptyList(), found(cards, "+"))
+    }
+
+    @Test
+    fun numbersMatchExactly() {
+        val cards = listOf(trait("Aaa", effect = "Draw 12 cards."))
+        assertEquals(listOf("Aaa"), found(cards, "12 cards"))
+        assertEquals(emptyList(), found(cards, "1 cards"))
+        assertEquals(emptyList(), found(cards, "13 cards"))
+    }
+
+    @Test
+    fun aPieceInsideAWordOnlyCountsForTheWholeQuery() {
+        assertEquals(listOf("Camouflage"), names(CompendiumFilter(query = "oufla")))
+        assertEquals(emptyList(), names(CompendiumFilter(query = "oufla steal")))
+        assertEquals(emptyList(), names(CompendiumFilter(query = "ouflage card")))
     }
 
     @Test
@@ -203,25 +264,16 @@ class CompendiumFilterTest {
         val cards =
             listOf(
                 trait("Aaa", effect = "Draw a cart."),
-                trait("Bbb", effect = "Draw 1 card."),
-                trait("Ccc", effect = "Draw cards now."),
-                trait("Ddd", effect = "Draw card."),
+                trait("Bbb", effect = "Card to draw."),
+                trait("Ccc", effect = "Draw card."),
             )
-        assertEquals(
-            listOf("Ccc", "Ddd", "Bbb", "Aaa"),
-            cards.filterCompendium(CompendiumFilter(query = "draw card")).map { it.name },
-        )
-        val names = listOf(trait("Arave"), trait("Brave"))
-        assertEquals(
-            listOf("Brave", "Arave"),
-            names.filterCompendium(CompendiumFilter(query = "brave")).map { it.name },
-        )
+        assertEquals(listOf("Ccc", "Bbb", "Aaa"), found(cards, "draw card"))
     }
 
     @Test
     fun typosIgnoreCaseAndAccentsInTheTranslation() {
         assertEquals(listOf("Venomous"), found("ROÚBR", CardLanguage.Portuguese))
-        assertEquals(listOf("Venomous"), found("venénoso", CardLanguage.Portuguese))
+        assertEquals(listOf("Venomous"), found("VENÉNOOS", CardLanguage.Portuguese))
         assertEquals(emptyList(), found("roubr", CardLanguage.English))
     }
 }
