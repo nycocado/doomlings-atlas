@@ -671,7 +671,12 @@ private fun citedStyle(
     theme: AtlasColors,
 ): SpanStyle {
     val trait = (cited as? CardLookup.Found)?.card as? Trait
-    return trait?.let { theme.trait(it.colors.firstOrNull()) }?.let { SpanStyle(background = it.fill, color = it.onFill) }
+    return trait
+        ?.let {
+            theme.trait(
+                it.colors.firstOrNull(),
+            )
+        }?.let { SpanStyle(background = it.fill, color = it.onFill) }
         ?: SpanStyle(background = theme.outlineSoft, color = theme.onSurface)
 }
 

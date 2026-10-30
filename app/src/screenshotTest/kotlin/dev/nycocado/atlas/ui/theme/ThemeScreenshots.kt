@@ -16,10 +16,14 @@ import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitSample
 import dev.nycocado.atlas.cardpane.CardBesideListPreview
+import dev.nycocado.atlas.compendium.CardGroupCollapsedPreview
+import dev.nycocado.atlas.compendium.CardGroupOpenPreview
+import dev.nycocado.atlas.compendium.CardGroupOpenWidePreview
 import dev.nycocado.atlas.compendium.CompendiumBesideCardPreview
 import dev.nycocado.atlas.compendium.CompendiumHalfCollapsedPreview
 import dev.nycocado.atlas.compendium.CompendiumLongNamePreview
 import dev.nycocado.atlas.compendium.CompendiumPreview
+import dev.nycocado.atlas.ui.component.CardStackPreview
 import dev.nycocado.atlas.ui.component.CardThumbPreview
 import dev.nycocado.atlas.ui.component.DockPreview
 import dev.nycocado.atlas.ui.component.RoundButtonPreview
@@ -45,6 +49,11 @@ fun CardThumbScreenshot() = CardThumbPreview()
 @PreviewTest
 @PreviewLightDark
 @Composable
+fun CardStackScreenshot() = CardStackPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
 fun DockScreenshot() = DockPreview()
 
 @PreviewTest
@@ -56,6 +65,26 @@ fun CompendiumScreenshot() = CompendiumPreview()
 @PreviewLightDark
 @Composable
 fun CompendiumHalfCollapsedScreenshot() = CompendiumHalfCollapsedPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun CardGroupCollapsedScreenshot() = CardGroupCollapsedPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun CardGroupOpenScreenshot() = CardGroupOpenPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun CardGroupCollapsedFontScale200Screenshot() = CardGroupCollapsedPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun CardGroupOpenFontScale200Screenshot() = CardGroupOpenPreview()
 
 @PreviewTest
 @PreviewLightDark
@@ -153,6 +182,16 @@ fun CompendiumFontScale200PortugueseScreenshot() = CompendiumLongNamePreview()
 @Preview(fontScale = 2f)
 @Composable
 fun CardDetailFontScale200Screenshot() = CardDetailLongNamePreview()
+
+@PreviewTest
+@Preview(name = "Light", device = "spec:width=1280dp,height=800dp,dpi=240")
+@Preview(
+    name = "Dark",
+    device = "spec:width=1280dp,height=800dp,dpi=240",
+    uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
+)
+@Composable
+fun CardGroupOpenTabletScreenshot() = CardGroupOpenWidePreview()
 
 @PreviewTest
 @Preview(device = "spec:width=1280dp,height=800dp,dpi=240")

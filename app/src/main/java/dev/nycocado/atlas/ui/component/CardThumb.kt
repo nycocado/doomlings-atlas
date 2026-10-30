@@ -2,9 +2,10 @@ package dev.nycocado.atlas.ui.component
 
 import android.content.res.Resources
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
@@ -20,12 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.onClick
-import androidx.compose.ui.semantics.role
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil3.ColorImage
 import coil3.annotation.ExperimentalCoilApi
@@ -38,7 +37,6 @@ import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
-import dev.nycocado.atlas.ui.theme.FocusRing
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
@@ -57,7 +55,15 @@ fun Resources.pointsText(points: Int): String =
         getQuantityString(R.plurals.card_points, points, signed(points))
     }
 
-// One glyph per entry of colors, null drawing the colorless one; ages and catastrophes pass none.
+// The card's body: the sticker look of its art, and of the silhouettes behind a stack.
+@Composable
+internal fun Modifier.cardSticker(sink: Dp): Modifier {
+    val theme = AtlasTheme.colors
+    return sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker)
+}
+
+// One glyph per entry of colors, null drawing the colorless one; ages and catastrophes pass none. What goes behind the
+// art is drawn by `behind`, given how far the pressed card sinks.
 @Composable
 fun CardThumb(
     image: String,
@@ -67,30 +73,25 @@ fun CardThumb(
     tilt: Float,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    onClickLabel: String? = null,
+    behind: @Composable BoxScope.(sink: Dp) -> Unit = {},
 ) {
     val theme = AtlasTheme.colors
     val interactions = remember { MutableInteractionSource() }
     val sink = pressSink(interactions, Shadow.sticker)
-    Column(
-        modifier
-            .rotate(tilt)
-            .clickable(interactions, FocusRing(theme.focusRing, Radius.cardSm), onClick = onClick)
-            .clearAndSetSemantics {
-                contentDescription = description
-                role = Role.Button
-                onClick { onClick().let { true } }
-            },
-    ) {
-        AsyncImage(
-            model = cardImage(image),
-            contentDescription = null,
-            modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .aspectRatio(CARD_RATIO)
-                    .sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker)
-                    .clip(Radius.cardSm),
-        )
+    Column(modifier.rotate(tilt).describedButton(description, interactions, onClickLabel, onClick = onClick)) {
+        Box(Modifier.fillMaxWidth().aspectRatio(CARD_RATIO)) {
+            behind(sink)
+            AsyncImage(
+                model = cardImage(image),
+                contentDescription = null,
+                modifier =
+                    Modifier
+                        .matchParentSize()
+                        .cardSticker(sink)
+                        .clip(Radius.cardSm),
+            )
+        }
         Row(
             Modifier.padding(top = Space.s3),
             horizontalArrangement = Arrangement.spacedBy(6.dp),

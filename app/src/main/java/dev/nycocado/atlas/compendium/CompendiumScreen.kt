@@ -71,10 +71,6 @@ import dev.nycocado.atlas.ui.theme.Space
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
-// Room inside each grid cell for the card's tilt and shadow, which draw past its bounds. Item animations draw the
-// card into a layer the size of its cell, so without this room they cut the corners and the shadow.
-private val CardMargin = 8.dp
-
 // Starts at the header's side margin, so the rail lines up with the logo above it.
 private val RailWidth = Space.s5 + 64.dp + Space.s4
 
@@ -82,8 +78,7 @@ private val RailMinWidth = 600.dp
 
 private val MoveSpec = tween<IntOffset>(350, easing = FastOutSlowInEasing)
 
-// Deterministic by position, never random per render (docs/design.md).
-private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
+private val VariantKey: (Int, NamedCard) -> Any = { _, variant -> variant.id }
 
 @Composable
 fun CompendiumScreen(
@@ -94,14 +89,26 @@ fun CompendiumScreen(
 ) {
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val results by viewModel.results.collectAsStateWithLifecycle()
-    CompendiumContent(filter, results, viewModel::updateFilter, onCardClick, onAboutClick, layout)
+    val openGroups by viewModel.openGroups.collectAsStateWithLifecycle()
+    CompendiumContent(
+        filter,
+        results,
+        openGroups,
+        viewModel::updateFilter,
+        viewModel::toggleGroup,
+        onCardClick,
+        onAboutClick,
+        layout,
+    )
 }
 
 @Composable
 fun CompendiumContent(
     filter: CompendiumFilter,
-    results: List<NamedCard>?,
+    results: List<CompendiumEntry>?,
+    openGroups: Set<String>,
     onFilterChange: (CompendiumFilter) -> Unit,
+    onGroupToggle: (String) -> Unit,
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
     layout: ListDetailLayout = ListDetailLayout.Single,
@@ -122,6 +129,14 @@ fun CompendiumContent(
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
     // outside it, scrolling the list or opening a card.
     val focusManager = LocalFocusManager.current
+    val openCard: (String) -> Unit = {
+        focusManager.clearFocus()
+        onCardClick(it)
+    }
+    val toggleGroup: (String) -> Unit = {
+        focusManager.clearFocus()
+        onGroupToggle(it)
+    }
     LaunchedEffect(grid) {
         snapshotFlow { grid.isScrollInProgress }.filter { it }.collect { focusManager.clearFocus() }
     }
@@ -164,18 +179,18 @@ fun CompendiumContent(
                 list = {
                     LazyVerticalGrid(
                         state = grid,
-                        columns = GridCells.Adaptive(150.dp),
+                        columns = GridCells.Adaptive(CellMinWidth),
                         // The grid's own clip leaves out the items fading out after a filter.
                         modifier = Modifier.clipScrollableContainer(Orientation.Vertical),
                         contentPadding =
                             PaddingValues(
-                                start = Space.s5 - CardMargin,
-                                end = Space.s5 - CardMargin,
+                                start = GridSidePadding,
+                                end = GridSidePadding,
                                 top = Space.s4,
                                 bottom = Space.s5 - CardMargin,
                             ),
-                        horizontalArrangement = Arrangement.spacedBy(18.dp - CardMargin * 2),
-                        verticalArrangement = Arrangement.spacedBy(22.dp - CardMargin * 2),
+                        horizontalArrangement = Arrangement.spacedBy(CellGapAcross),
+                        verticalArrangement = Arrangement.spacedBy(CellGapDown),
                     ) {
                         fullWidth("filters") { Filters(filter, onFilterChange) }
                         if (results?.isEmpty() == true) {
@@ -195,17 +210,50 @@ fun CompendiumContent(
                                 )
                             }
                         }
-                        itemsIndexed(results.orEmpty(), key = { _, card -> card.id }) { index, card ->
-                            val tilt = Tilts[index % Tilts.size]
-                            CompendiumCard(
-                                card,
-                                tilt,
-                                {
-                                    focusManager.clearFocus()
-                                    onCardClick(card.id)
-                                },
-                                Modifier.animateItem(placementSpec = MoveSpec),
-                            )
+                        results.orEmpty().forEachIndexed { index, entry ->
+                            val tilt = tiltAt(index)
+                            when (entry) {
+                                is CompendiumEntry.Single -> {
+                                    item(key = entry.card.id) {
+                                        CompendiumCard(
+                                            entry.card,
+                                            tilt,
+                                            { openCard(entry.card.id) },
+                                            Modifier.animateItem(placementSpec = MoveSpec),
+                                        )
+                                    }
+                                }
+
+                                is CompendiumEntry.Group -> {
+                                    if (entry.name in openGroups) {
+                                        item(key = entry.gridKey) {
+                                            GroupCollapse(
+                                                entry,
+                                                { toggleGroup(entry.name) },
+                                                Modifier.animateItem(placementSpec = MoveSpec).padding(CardMargin),
+                                            )
+                                        }
+                                        itemsIndexed(entry.variants, key = VariantKey) { number, variant ->
+                                            CompendiumCard(
+                                                variant,
+                                                tiltAt(number),
+                                                { openCard(variant.id) },
+                                                Modifier.animateItem(placementSpec = MoveSpec),
+                                                VariantPosition(number + 1, entry.variants.size),
+                                            )
+                                        }
+                                    } else {
+                                        item(key = entry.gridKey) {
+                                            GroupStack(
+                                                entry,
+                                                tilt,
+                                                { toggleGroup(entry.name) },
+                                                Modifier.animateItem(placementSpec = MoveSpec),
+                                            )
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -284,6 +332,7 @@ private fun CompendiumCard(
     tilt: Float,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    position: VariantPosition? = null,
 ) {
     val face = card.face() ?: return
     val description =
@@ -291,7 +340,10 @@ private fun CompendiumCard(
             add(card.name)
             face.colors.forEach { add(stringResource(colorName(it))) }
             face.faceValue?.let { add(LocalResources.current.pointsText(it)) }
-        }.joinToString(", ")
+        }.joinToString(", ").let { described ->
+            position?.let { stringResource(R.string.card_variant_position, described, it.number, it.count) }
+                ?: described
+        }
     CardThumb(card.image, card.name, face.colors, description, tilt, onClick, modifier.padding(CardMargin))
 }
 
@@ -337,7 +389,9 @@ private fun CompendiumSample(
                 }.let { if (longName) listOf(LongNameTrait) + it else it }
         CompendiumContent(
             CompendiumFilter(colors = setOf(CardColor.Green)),
-            cards,
+            cards.map(CompendiumEntry::Single),
+            emptySet(),
+            {},
             {},
             {},
             {},
