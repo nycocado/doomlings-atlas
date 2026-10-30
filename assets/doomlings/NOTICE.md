@@ -16,6 +16,6 @@ Everything in this folder (card images, card text and the Doomlings name) is © 
 
 ## Sources
 
-- Card images come from Ryeera's [Doomlings Tabletop Simulator mod](https://steamcommunity.com/sharedfiles/filedetails/?id=3151925153), which uses high-resolution images provided by the Doomlings team. Card images were converted to WebP.
+- Card images come from Ryeera's [Doomlings Tabletop Simulator mod](https://steamcommunity.com/sharedfiles/filedetails/?id=3151925153), which uses high-resolution images provided by the Doomlings team. Card images were converted to lossy WebP at quality 80, about 541×757 pixels.
 - Card text and data come from the same mod. Each card was checked against its image.
 - The rulesheet is the [official PDF](https://cdn.shopify.com/s/files/1/0554/6190/4593/files/Doomlings_Rulebook.pdf?v=1709671623) from the Doomlings website, kept here because the site now links the 3rd edition rules.
