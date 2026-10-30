@@ -114,6 +114,7 @@ import dev.nycocado.atlas.card.CardFace
 import dev.nycocado.atlas.card.CardFact
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardLibrary
+import dev.nycocado.atlas.card.CardLookup
 import dev.nycocado.atlas.card.CardSection
 import dev.nycocado.atlas.card.CardText
 import dev.nycocado.atlas.card.CardTranslations
@@ -135,6 +136,7 @@ import dev.nycocado.atlas.ui.component.UnofficialFooter
 import dev.nycocado.atlas.ui.component.colorName
 import dev.nycocado.atlas.ui.component.pointsText
 import dev.nycocado.atlas.ui.component.signed
+import dev.nycocado.atlas.ui.theme.AtlasColors
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Radius
@@ -598,7 +600,9 @@ private fun Bubble(
                     }
                     shown.text?.let {
                         BasicText(
-                            tagged(it, shown.language, library.citations(card, it), onCardClick),
+                            tagged(it, shown.language, library.citations(card, it), onCardClick) { cardId ->
+                                highlight(library.lookup(cardId), theme)
+                            },
                             style = AtlasTypography.bodyLg.copy(color = theme.onSurface),
                         )
                     }
@@ -660,16 +664,27 @@ private fun cardString(
     }
 }
 
+// A cited card's name in its first color, like a highlighter; a card without color in the neutral tone.
+private fun highlight(
+    cited: CardLookup,
+    theme: AtlasColors,
+): SpanStyle {
+    val color = ((cited as? CardLookup.Found)?.card as? Trait)?.colors?.firstOrNull()
+    return color?.let { theme.trait(it) }?.let { SpanStyle(background = it.fill, color = it.onFill) }
+        ?: SpanStyle(background = theme.surfaceSunk, color = theme.onSurface)
+}
+
 // Text tagged with its language, so TalkBack reads a translation in its own language, not the interface's.
 private fun tagged(
     text: String,
     language: CardLanguage,
     citations: List<Citation> = emptyList(),
     onCardClick: (String) -> Unit = {},
+    citedStyle: (String) -> SpanStyle = { SpanStyle() },
 ) = buildAnnotatedString {
     withStyle(SpanStyle(localeList = LocaleList(language.code))) { append(text) }
-    val link = TextLinkStyles(SpanStyle(textDecoration = TextDecoration.Underline))
     for ((range, cardId) in citations) {
+        val link = TextLinkStyles(citedStyle(cardId).copy(textDecoration = TextDecoration.Underline))
         addLink(LinkAnnotation.Clickable(cardId, link) { onCardClick(cardId) }, range.first, range.last + 1)
     }
 }
