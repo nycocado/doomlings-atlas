@@ -13,7 +13,7 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 - **Effect**: a section of the text at the bottom of a card. A card has one or more, each with an optional **kind** (when it applies, a small-type note, or a label such as Rush). A trait without any is **effectless**.
 - **Token**: an inline icon in an effect's text, written in braces (`{action}`).
 - **Value**: a Trinket's points, kept apart from its effects.
-- **Citation**: a card name printed in another card's effect or World's End. It stays as printed in every translation (#91), and in the card detail it opens that card.
+- **Citation**: a card name printed in another card's effect. It stays as printed in every translation (#91), and in the card detail it opens that card; a name its variants share opens the first of them.
 - **Action**, **Play When**, **World's End**, **Drop of Life**: the icons that say when a trait's effect applies ([docs/rules/classic.md](docs/rules/classic.md#icons)).
 - **Age**: the card flipped at the start of each round; its effect lasts that round.
 - **Catastrophe**: a card of the age deck that ends an era and changes every Gene Pool; the third one ends the game. Its **World's End** effect counts only then.
