@@ -2,7 +2,7 @@
 
 The app's visual design: a game table at sunset, with **stickers** (thick outline, hard shadow, everything rounded like the doomlings) and **cards lying on the table**, slightly tilted. Built in Compose on our own design system ([ADR 0006](adr/0006-own-design-system.md)).
 
-This file covers the look only. Screen flows, scoring steps and game rules are decided per feature, following [ROADMAP.md](../ROADMAP.md) and [rules.md](rules.md).
+This file covers the look only. Screen flows, scoring steps and game rules are decided per feature, following [ROADMAP.md](../ROADMAP.md) and [docs/rules](rules/README.md).
 
 ## Files
 

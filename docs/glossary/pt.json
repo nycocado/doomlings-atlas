@@ -15,6 +15,8 @@
     "Glitterling",
     "Glitterlings",
     "Meaning of Life",
+    "Merchant",
+    "Merchants",
     "Moonling",
     "Moonlings",
     "Mythling",
@@ -24,10 +26,12 @@
     "Techlings",
     "Trait",
     "Traits",
+    "Treasure",
+    "Treasures",
     "Trinket",
     "Trinkets"
   ],
-  "keepNote": "Gênero dos termos em inglês: o trait, a age, a catastrophe, o Gene Pool, o Meaning of Life, o trinket. No nome de uma carta, \"Age\" vira \"Era\" (Age of Reason: Era da Razão). Nomes de cartas citados no texto ficam como impressos, em inglês (Vampirism, The Four Horsemen).",
+  "keepNote": "Gênero dos termos em inglês: o trait, a age, a catastrophe, o Gene Pool, o Meaning of Life, o merchant, o treasure, o trinket. No nome de uma carta, \"Age\" vira \"Era\" (Age of Reason: Era da Razão). Nomes de cartas citados no texto ficam como impressos, em inglês (Vampirism, The Four Horsemen).",
   "styleNote": "Português do Brasil, como um jogador brasileiro fala na mesa: \"você\", registro leve e coloquial no flavor (\"Tá mais para...\"), preciso no effect. Nomes de trait são palavras do dia a dia (Paparicador, Precavido). Trocadilhos e referências viram equivalentes brasileiros que combinem com a arte (\"Feijão com pimenta? Sai de baixo!\"); sem equivalente, uma frase simples. Um personagem pode ter voz própria, como o falar caipira de Woody Stems.",
   "interface": [
     {
