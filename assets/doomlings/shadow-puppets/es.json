@@ -1,0 +1,192 @@
+{
+  "shadow-puppets/ages/shadow-puppets": {
+    "name": "Teatro de Sombras",
+    "effect": "Inicio de tu turno: Puedes intercambiar tu mano con la de un oponente."
+  },
+  "shadow-puppets/ages/toddles-emporium-of-lost-things": {
+    "name": "Emporio de Cosas Perdidas de Toddles",
+    "effect": "Roba 3 cartas.\nLuego, descarta 2 cartas aleatorias de tu mano."
+  },
+  "shadow-puppets/catastrophes/regret": {
+    "name": "Arrepentimiento",
+    "effect": "-1 Gene Pool\n\nDevuelve 1 de tu pila de traits a tu mano.",
+    "worldsEnd": "Resta de tu puntuación final el valor nominal de 1 carta de tu mano."
+  },
+  "shadow-puppets/traits/ashen": {
+    "name": "Ceniciento",
+    "flavor": "Palidece en comparación."
+  },
+  "shadow-puppets/traits/bound": {
+    "name": "Atado",
+    "effect": "Echa un vistazo a las 4 cartas de la parte superior del mazo de traits. Roba 1 carta. Puedes jugarla. Si alguna de ellas es negativa, puedes jugarlas en la(s) pila(s) de traits que quieras e ignorar las acciones.",
+    "flavor": "Una marioneta que nunca olvidarás."
+  },
+  "shadow-puppets/traits/broken": {
+    "name": "Roto",
+    "effect": "Puedes jugar Broken en la pila de traits de un amigo cuando juegue un trait. Arrebata ese trait e interrumpe su acción. Ese amigo puede jugar otro trait.",
+    "flavor": "No es el juguete que necesitabas. Pero sí el juguete que te necesitaba a ti."
+  },
+  "shadow-puppets/traits/cracked": {
+    "name": "Agrietado",
+    "effect": "Revela la carta de la parte superior del mazo de traits. Morado: Intercambia Cracked con un trait de la pila de traits de un amigo. Azul: Devuélvelo a su mano. Rojo: Arrebata 1 de su pila de traits.",
+    "flavor": "¡Tuve una gran caída! ¡Gracias por preguntar!"
+  },
+  "shadow-puppets/traits/dark-thoughts": {
+    "name": "Pensamientos Oscuros",
+    "effect": "Arrebata 1 de la pila de traits de un oponente. Luego, suprime Dark Thoughts.",
+    "flavor": "No quieres saber lo que hay aquí dentro."
+  },
+  "shadow-puppets/traits/drowned": {
+    "name": "Ahogado",
+    "effect": "Suprime 1 carta aleatoria de la mano de cada oponente. Los oponentes estabilizan inmediatamente.",
+    "flavor": "Mil voces gritando y ninguna escuchada."
+  },
+  "shadow-puppets/traits/frayed": {
+    "name": "Deshilachado",
+    "flavor": "Abrázame fuerte y vamos a jugar. Hasta que se acabe el tiempo y nos empecemos a deshilachar."
+  },
+  "shadow-puppets/traits/fumboh": {
+    "name": "Fumboh",
+    "effect": "-2 Gene Pool. Inicio del turno: Puedes descartar Fumboh de tu pila de traits para jugar otro trait.",
+    "flavor": "Un sabio anciano lunar que, al entrar a una habitación, ya abusó de la hospitalidad."
+  },
+  "shadow-puppets/traits/furp": {
+    "name": "Furp",
+    "effect": "-2 Gene Pool. Arrebata 1 de la pila de traits de un oponente.",
+    "flavor": "En el espacio, nadie puede oírte furpar."
+  },
+  "shadow-puppets/traits/gloump": {
+    "name": "Gloump",
+    "flavor": "Nunca me derretí tan vivo."
+  },
+  "shadow-puppets/traits/immutable": {
+    "name": "Inmutable",
+    "effect": "Excepto dominantes, si tienes 6 traits o menos en tu pila de traits, no pueden ser intercambiados ni arrebatados. Inicio de tus turnos: Puedes suprimir 1 trait de tu pila de traits.",
+    "flavor": "No sé por qué no cambias de opinión para verlo a mi manera."
+  },
+  "shadow-puppets/traits/imperfect": {
+    "name": "Imperfecto",
+    "effect": "Revela la carta de la parte superior del mazo de traits. Cualquier color: Intercambia Imperfect con un trait de la pila de traits de un amigo. Incoloro: Mueve Imperfect a la pila de traits de un amigo.",
+    "flavor": "Nunca dije que fuera perfecto."
+  },
+  "shadow-puppets/traits/inescapable": {
+    "name": "Inevitable",
+    "effect": "Todos los jugadores suprimen 1 carta de su mano.",
+    "flavor": "No puedes correr, pero tampoco deberías esconderte."
+  },
+  "shadow-puppets/traits/mumbleyops": {
+    "name": "Mumbleyops",
+    "flavor": "Campeón indiscutible de guerra de pulgares. Campeón muy discutible de abrazos."
+  },
+  "shadow-puppets/traits/mumpf": {
+    "name": "Mumpf",
+    "flavor": "Mi boca es una tumba. Mumpf."
+  },
+  "shadow-puppets/traits/outgrown": {
+    "name": "Superado",
+    "flavor": "Hoy en día los niños juegan a Déjame en el Baúl de Juguetes."
+  },
+  "shadow-puppets/traits/possessed": {
+    "name": "Poseído",
+    "effect": "Suprime 2 cartas aleatorias de la mano de un amigo.",
+    "flavor": "¡Mamá, el juguete está flotando otra vez!"
+  },
+  "shadow-puppets/traits/quiet": {
+    "name": "Callado",
+    "effect": "En el Fin del Mundo: Suprime 1 trait con valor nominal positivo de tu pila de traits.",
+    "flavor": "Los pensamientos ruidosos silencian las palabras."
+  },
+  "shadow-puppets/traits/repressed": {
+    "name": "Reprimido",
+    "effect": "Excepto Repressed, si tienes 6 traits o menos en tu pila de traits, suprime 1 de la pila de traits de un oponente.",
+    "flavor": "Simplemente voy a olvidar esto y no habrá ningún problema."
+  },
+  "shadow-puppets/traits/self-doubt": {
+    "name": "Inseguro",
+    "effect": "Duplica el valor nominal de cada trait de tu pila de traits que sea el único trait de ese color. Este efecto excluye por completo a los dominantes.",
+    "flavor": "¡Nadie duda de sí mismo como tú!"
+  },
+  "shadow-puppets/traits/shrouded": {
+    "name": "Velado",
+    "effect": "Suprime 1 de tu mano. Inicio de tus turnos: Puedes robar todas las cartas suprimidas que están debajo de Shrouded.",
+    "flavor": "Tu secreto está a salvo conmigo. Hasta que deje de estarlo."
+  },
+  "shadow-puppets/traits/soft": {
+    "name": "Suave",
+    "effect": "Revela la carta de la parte superior del mazo de traits. Azul: Aumenta el Gene Pool en 1. Rojo: Disminuye el Gene Pool en 1 y juega 1. Incoloro: Haz cualquiera de los dos.",
+    "flavor": "Dispuesto a lo que sea."
+  },
+  "shadow-puppets/traits/stitched": {
+    "name": "Cosido",
+    "effect": "Inicio de tus turnos: Puedes descartar un trait positivo de tu pila de traits para jugar 1. Ignora su acción.",
+    "flavor": "Hay más remiendos de lo que parece."
+  },
+  "shadow-puppets/traits/strung-up": {
+    "name": "Colgado",
+    "effect": "Echa un vistazo a la carta de la parte superior del mazo de traits. Luego, juega otro trait.",
+    "flavor": "El resultado de un artista que lleva 3 días seguidos sin dormir."
+  },
+  "shadow-puppets/traits/stuffy": {
+    "name": "Peluche",
+    "effect": "Todos los amigos te dan 1 carta aleatoria de su mano. Luego, roban 1 carta.",
+    "flavor": "Las cosas son para compartir. Ahora comparte conmigo."
+  },
+  "shadow-puppets/traits/toh": {
+    "name": "Toh",
+    "effect": "Puedes jugar Toh cuando un trait sea descartado de tu pila de traits. (¡A menos que sea el objetivo de un dominante!) Devuelve ese trait a tu mano.",
+    "flavor": "Comb toh pahpah."
+  },
+  "shadow-puppets/traits/too-many-eyes": {
+    "name": "Demasiados Ojos",
+    "effect": "En cualquier momento: Juega en cualquier pila de traits. Too Many Eyes no puede ser retirado de tu pila de traits.",
+    "flavor": "Secuaces con opiniones."
+  },
+  "shadow-puppets/traits/tumpleyo": {
+    "name": "Tumpleyo",
+    "effect": "Si tu Gene Pool es: 4: -4, 3: +2, 2: +4, 1: +8",
+    "flavor": "Se pronuncia \"Tumpleyo\"."
+  },
+  "shadow-puppets/traits/umbral": {
+    "name": "Sombrío",
+    "effect": "Intercambia tu mano con la de un oponente. Luego, suprime tu mano.",
+    "flavor": "Ahora estas son de las sombras. Miau."
+  },
+  "shadow-puppets/traits/unsettling": {
+    "name": "Inquietante",
+    "flavor": "¿Por dónde empiezo?"
+  },
+  "shadow-puppets/traits/velvet": {
+    "name": "Terciopelo",
+    "effect": "Revela la carta de la parte superior del mazo de traits. Luego, arrebata de la pila de traits de un oponente 1 trait del mismo color que el trait revelado.",
+    "flavor": "Te amo y quiero convertirte en un trait de verdad en mi pila de traits."
+  },
+  "shadow-puppets/traits/wasahmbo": {
+    "name": "Wasahmbo!",
+    "flavor": "Núcleo de energía de fusión no incluido."
+  },
+  "shadow-puppets/traits/wojo-mon": {
+    "name": "Wojo Mon",
+    "effect": "Intercambia tu Gene Pool con el de un oponente.",
+    "flavor": "En la oscuridad, él pinta las sombras."
+  },
+  "shadow-puppets/traits/womp": {
+    "name": "Womp",
+    "effect": "Inicio del turno del oponente: Puedes jugar Womp en su pila de traits para saltar su turno.",
+    "flavor": "Womp womp."
+  },
+  "shadow-puppets/traits/wuhbumbo": {
+    "name": "Wuhbumbo",
+    "effect": "Todos los jugadores pasan 1 carta aleatoria a la derecha. Puedes jugar otro trait.",
+    "flavor": "Wuhbumbo nunca falla."
+  },
+  "shadow-puppets/traits/yabba-bo": {
+    "name": "Yabba Bo",
+    "effect": "Inicio de tus turnos: Puedes dar 1 carta de tu mano a un oponente.",
+    "flavor": "Har bu go."
+  },
+  "shadow-puppets/traits/yobondo": {
+    "name": "Yobondo",
+    "effect": "Puedes jugar Yobondo cuando un oponente elija como objetivo un solo trait de tu pila de traits. (¡A menos que sea el objetivo de un dominante!) En lugar de eso, ese efecto tiene como objetivo a Yobondo.",
+    "flavor": "Yoh bohn doh."
+  }
+}

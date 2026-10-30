@@ -21,8 +21,8 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.robolectric.annotation.Config
 
-// Card names come from assets/doomlings/cards.json, the Portuguese from testPortuguese. Classic's green traits run
-// Adorable, Altruistic, Antlers, Apex Predator, Appealing.
+// Card names come from assets/doomlings/classic/cards.json, the Portuguese from testPortuguese. Classic's green traits
+// run Adorable, Altruistic, Antlers, Apex Predator, Appealing.
 @HiltAndroidTest
 class CardLanguageTest : AtlasBehaviorTest() {
     private val portuguese get() = compose.onNode(isSelectable() and hasText("Português"))

@@ -49,7 +49,17 @@ Then, right after the repository goes public, since the free plan offers these o
 - Actions runs for outside contributors wait for the maintainer's approval, and the maintainer's GitHub account uses two-factor authentication.
 - The first APK published, and Doomlings told that the repository is public.
 
-## 3. Manual Scoring (Planned)
+## 3. Every Set (Planned)
+
+- Every set and every card type in the compendium, after the per-set card data and its integrity checks.
+- Card kinds in a scrollable row: Traits, Ages (with The Birth of Life), Catastrophes, Gene Pools, Meanings of Life, Treasures, Trinkets and Merchants. A kind with no card in the filtered sets doesn't show.
+- A set filter in a sheet, for every card kind, with the sets in release order (the year printed on the cards) and Special last.
+- The card detail names the card's set and shows both colors of a dual-color trait; every trait icon has its symbol.
+- The expansions' official rulesheets in the asset folder, as the source for their card types in the glossary.
+- Every card image in WebP.
+- No declaration of the sets a player owns: the set filter covers it.
+
+## 4. Manual Scoring (Planned)
 
 - Players added by name at the start of the game, each with the Gene Pool card in front of them.
 - Players enter the full final state: each player's trait pile and hand, catastrophes, World's End.
@@ -59,13 +69,13 @@ Then, right after the repository goes public, since the free plan offers these o
 - An in-progress game survives the app being killed; no game history.
 - Tests for every card with a special effect, plus real games with hand-checked scores.
 
-## 4. Card Scanner (Planned)
+## 5. Card Scanner (Planned)
 
 - Card recognition from the camera, running on the device.
 - Compendium search by image: photograph a card to open it.
 - In a photo of the whole table, each player's Gene Pool card identifies which trait pile belongs to whom.
 
-## 5. Game Tutorial (Planned)
+## 6. Game Tutorial (Planned)
 
 - Interactive tutorial in the app languages.
 - Links to the official rulebook and videos.

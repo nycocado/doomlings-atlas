@@ -1,0 +1,738 @@
+[
+  {
+    "id": "shadow-puppets/ages/shadow-puppets",
+    "type": "age",
+    "set": "shadow-puppets",
+    "name": "Shadow Puppets",
+    "effect": "Start of your turn: You may swap hands with an opponent.",
+    "image": "shadow-puppets/ages/shadow-puppets.webp"
+  },
+  {
+    "id": "shadow-puppets/ages/toddles-emporium-of-lost-things",
+    "type": "age",
+    "set": "shadow-puppets",
+    "name": "Toddles' Emporium of Lost Things",
+    "effect": "Draw 3.\nThen discard 2 from hand at random.",
+    "image": "shadow-puppets/ages/toddles-emporium-of-lost-things.webp"
+  },
+  {
+    "id": "shadow-puppets/catastrophes/regret",
+    "type": "catastrophe",
+    "set": "shadow-puppets",
+    "name": "Regret",
+    "effect": "-1 Gene Pool\n\nReturn 1 from your trait pile to hand.",
+    "worldsEnd": "Subtract the face value of 1 card in hand from your final score.",
+    "image": "shadow-puppets/catastrophes/regret.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/ashen",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Ashen",
+    "flavor": "Pales in comparison.",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/ashen.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/bound",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Bound",
+    "flavor": "A marionette you'll never forget.",
+    "effect": "Peek at the top 4 of the trait deck. Draw 1. You may play it. If any are negative, you may play them into any trait pile(s) and ignore actions.",
+    "points": 4,
+    "colors": [
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/bound.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/broken",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Broken",
+    "flavor": "Not the toy you needed. But the toy that needed you.",
+    "effect": "You may play Broken into a friend's trait pile when they play a trait. Steal it and stop its action. They may play another trait.",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "shadow-puppets/traits/broken.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/cracked",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Cracked",
+    "flavor": "I had a great fall! Thanks for asking!",
+    "effect": "Reveal the top of the trait deck. Purple: Swap Cracked with a trait in a friend's trait pile. Blue: Return it to their hand. Red: Steal 1 from their trait pile.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "shadow-puppets/traits/cracked.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/dark-thoughts",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Dark Thoughts",
+    "flavor": "You don't want to know what's in here.",
+    "effect": "Steal 1 from an opponent's trait pile. Then suppress Dark Thoughts.",
+    "points": -3,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [
+      "suppress"
+    ],
+    "image": "shadow-puppets/traits/dark-thoughts.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/drowned",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Drowned",
+    "flavor": "1,000 voices shouting, and not one heard.",
+    "effect": "Suppress 1 from each opponent's hand at random. Opponents stabilize immediately.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [
+      "suppress"
+    ],
+    "image": "shadow-puppets/traits/drowned.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/frayed",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Frayed",
+    "flavor": "Hold me close and we can play. Till time runs out and we're old and frayed.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/frayed.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/fumboh",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Fumboh",
+    "flavor": "A wise moon elder who, upon entering a room, has already overstayed his welcome.",
+    "effect": "-2 Gene Pool. Start of turn: You may discard Fumboh from your trait pile to play another trait.",
+    "points": 2,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/fumboh.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/furp",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Furp",
+    "flavor": "In space, no one can hear you furp.",
+    "effect": "-2 Gene Pool. Steal 1 from an opponent's trait pile.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "shadow-puppets/traits/furp.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/gloump",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Gloump",
+    "flavor": "I've never melt so alive.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "blue",
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling",
+      "Glitterling",
+      "Moonling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/gloump.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/immutable",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Immutable",
+    "flavor": "I don't know why you won't change your mind to the way I see it.",
+    "effect": "Excluding dominants, if you have 6 or fewer traits in your traits in your trait pile, they cannot be swapped or stolen. Start of your turns: You may suppress 1 trait in your trait pile.",
+    "points": 3,
+    "colors": [
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [
+      "suppress"
+    ],
+    "image": "shadow-puppets/traits/immutable.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/imperfect",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Imperfect",
+    "flavor": "I didn't say I'm perfect.",
+    "effect": "Reveal the top of the trait deck. Any color: Swap Imperfect with a trait in a friend's trait pile. Colorless: Move Imperfect to a friend's trait pile.",
+    "points": 0,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "shadow-puppets/traits/imperfect.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/inescapable",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Inescapable",
+    "flavor": "You can't run, but you shouldn't hide.",
+    "effect": "All players suppress 1 from their hand.",
+    "points": 3,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [
+      "suppress"
+    ],
+    "image": "shadow-puppets/traits/inescapable.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/mumbleyops",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Mumbleyops",
+    "flavor": "Undisputed best at thumb wars. Very disputed best at hugs.",
+    "effect": null,
+    "points": -2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Moonling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/mumbleyops.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/mumpf",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Mumpf",
+    "flavor": "Mumpf's the word.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Moonling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/mumpf.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/outgrown",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Outgrown",
+    "flavor": "Nowadays the kids play a game called Leave Me in the Toy Chest.",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/outgrown.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/possessed",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Possessed",
+    "flavor": "Mom, the toy is floating again!",
+    "effect": "Suppress 2 from a friend's hand at random.",
+    "points": 1,
+    "colors": [
+      "green",
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling",
+      "Glitterling"
+    ],
+    "icons": [
+      "suppress"
+    ],
+    "image": "shadow-puppets/traits/possessed.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/quiet",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Quiet",
+    "flavor": "Loud thoughts mute words.",
+    "effect": "At World's End: Suppress 1 positive face value from your trait pile.",
+    "points": 5,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [
+      "suppress",
+      "worlds-end"
+    ],
+    "image": "shadow-puppets/traits/quiet.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/repressed",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Repressed",
+    "flavor": "I'm just going to not remember this and it should be no problem.",
+    "effect": "Excluding Repressed, if you have 6 or fewer traits in your trait pile, suppress 1 from an opponent's trait pile.",
+    "points": 3,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [
+      "suppress"
+    ],
+    "image": "shadow-puppets/traits/repressed.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/self-doubt",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Self-Doubt",
+    "flavor": "No one can doubt themself quite like you!",
+    "effect": "Double the face value of each trait in your trait pile that is the only trait of that color. This effect excludes dominants entirely.",
+    "points": 4,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "shadow-puppets/traits/self-doubt.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/shrouded",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Shrouded",
+    "flavor": "Your secret's safe with me. Until it's not.",
+    "effect": "Suppress 1 from your hand. Start of your turns: You may draw all suppressed cards from under Shrouded.",
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Deepling",
+      "Moonling"
+    ],
+    "icons": [
+      "suppress"
+    ],
+    "image": "shadow-puppets/traits/shrouded.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/soft",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Soft",
+    "flavor": "Down fur whatever.",
+    "effect": "Reveal the top of the trait deck. Blue: Increase Gene Pool by 1. Red: Decrease Gene Pool by 1 and play 1. Colorless: Do either.",
+    "points": 2,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "shadow-puppets/traits/soft.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/stitched",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Stitched",
+    "flavor": "Nothing is what it seams.",
+    "effect": "Start of your turns: You may discard a positive trait from your trait pile to play 1. Ignore its action.",
+    "points": -2,
+    "colors": [
+      "green"
+    ],
+    "dominant": true,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/stitched.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/strung-up",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Strung Up",
+    "flavor": "The result of an artist staying up 3 days straight.",
+    "effect": "Peek at the top of the trait deck, then play another trait.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "shadow-puppets/traits/strung-up.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/stuffy",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Stuffy",
+    "flavor": "Stuff is for sharing. Now share with me.",
+    "effect": "All friends give you 1 from their hand at random. Then they draw 1.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "shadow-puppets/traits/stuffy.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/toh",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Toh",
+    "flavor": "Comb toh pahpah.",
+    "effect": "You may play Toh when a trait is discarded from your trait pile. (Unless targeted by a dominant!) Return that trait to your hand.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Moonling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "shadow-puppets/traits/toh.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/too-many-eyes",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Too Many Eyes",
+    "flavor": "Minions with opinions.",
+    "effect": "At any time: Play into any trait pile. Too Many Eyes cannot be removed from your trait pile.",
+    "points": -1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "shadow-puppets/traits/too-many-eyes.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/tumpleyo",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Tumpleyo",
+    "flavor": "It's pronounced, \"Tumpleyo.",
+    "effect": "If your Gene Pool is: 4: -4, 3: +2, 2: +4, 1: +8",
+    "points": 0,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Moonling"
+    ],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "shadow-puppets/traits/tumpleyo.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/umbral",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Umbral",
+    "flavor": "These belong to the shadows meow.",
+    "effect": "Swap hands with an opponent. Then suppress your hand.",
+    "points": -4,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [
+      "suppress"
+    ],
+    "image": "shadow-puppets/traits/umbral.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/unsettling",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Unsettling",
+    "flavor": "Where do I begin?",
+    "effect": null,
+    "points": 4,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [
+      "Deepling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/unsettling.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/velvet",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Velvet",
+    "flavor": "I love you and want to make you a real trait in my trait pile.",
+    "effect": "Reveal the top of the trait deck. Then steal 1 from an opponent's trait pile that matches the color of the revealed trait.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Glitterling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "shadow-puppets/traits/velvet.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/wasahmbo",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Wasahmbo!",
+    "flavor": "Fusion power core not included.",
+    "effect": null,
+    "points": 0,
+    "colors": [
+      "blue",
+      "green",
+      "purple",
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Glitterling",
+      "Moonling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/wasahmbo.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/wojo-mon",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Wojo Mon",
+    "flavor": "In the darkness he paints the shadows.",
+    "effect": "Swap Gene Pools with an opponent.",
+    "points": 4,
+    "colors": [
+      "purple"
+    ],
+    "dominant": true,
+    "subspecies": [
+      "Moonling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/wojo-mon.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/womp",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Womp",
+    "flavor": "Womp womp.",
+    "effect": "Start of opponent's turn: You may play Womp into their trait pile to skip their turn.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Moonling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "shadow-puppets/traits/womp.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/wuhbumbo",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Wuhbumbo",
+    "flavor": "Wuhbumbo never fumbohs.",
+    "effect": "All players pass 1 random card right. You may play another trait.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Moonling"
+    ],
+    "icons": [
+      "action"
+    ],
+    "image": "shadow-puppets/traits/wuhbumbo.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/yabba-bo",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Yabba Bo",
+    "flavor": "Har bu go.",
+    "effect": "Start of your turns: You may give an opponent 1 from your hand.",
+    "points": 4,
+    "colors": [
+      "blue"
+    ],
+    "dominant": true,
+    "subspecies": [
+      "Moonling"
+    ],
+    "icons": [],
+    "image": "shadow-puppets/traits/yabba-bo.webp"
+  },
+  {
+    "id": "shadow-puppets/traits/yobondo",
+    "type": "trait",
+    "set": "shadow-puppets",
+    "name": "Yobondo",
+    "flavor": "Yoh bohn doh.",
+    "effect": "You may play Yobondo when an opponent targets a single trait in your trait pile. (Unless targeted by a dominant!) That effect targets Yobondo instead.",
+    "points": -1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [
+      "Moonling"
+    ],
+    "icons": [
+      "play-when"
+    ],
+    "image": "shadow-puppets/traits/yobondo.webp"
+  }
+]

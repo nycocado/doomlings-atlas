@@ -1,0 +1,101 @@
+{
+  "special/ages/age-of-luck": {
+    "name": "Era de la Suerte",
+    "effect": "Al estabilizar, estabiliza hasta 8."
+  },
+  "special/traits/amatoxins": {
+    "name": "Amatoxinas",
+    "effect": "En el Fin del Mundo: Puedes descartar hasta 3 traits de tu pila de traits. Los oponentes reciben: -2 por cada color diferente descartado de esta manera.",
+    "flavor": "Sé que parece lindo, pero en realidad es increíblemente peligroso."
+  },
+  "special/traits/beauty": {
+    "name": "Belleza",
+    "effect": "Devuelve 1 trait a tu mano. Luego, juega otro trait. Ignora su acción.",
+    "flavor": "La belleza está en el ojo de quien mira. En este caso, en el tuyo. Porque quien tiene esta carta en la mano eres tú."
+  },
+  "special/traits/bones": {
+    "name": "Huesos",
+    "effect": "Toma 2 cartas de la pila de descarte y añádelas a tu mano.",
+    "flavor": "Mejor dentro del cuerpo que fuera."
+  },
+  "special/traits/charmed": {
+    "name": "Encantado",
+    "effect": "Arrebata 1 carta aleatoria de la mano de cada oponente. Juega 1 inmediatamente. Descarta las demás.",
+    "flavor": "Tengo un miau presentimiento sobre esto."
+  },
+  "special/traits/conjured": {
+    "name": "Conjurado",
+    "effect": "¡No puede jugarse desde tu mano! Puedes jugar Conjured desde la pila de descarte si juegas 2 o más colores en tu turno.",
+    "flavor": "Perdón por aparecer así, pero de verdad no deberías leer libros antiguos en voz alta."
+  },
+  "special/traits/exotic": {
+    "name": "Exótico",
+    "effect": "Para jugar, debes descartar 2 de tu pila de traits, luego robar 2. Debes jugarlos inmediatamente. (A menos que haya restricción.) Descarta los dominantes. Ignora las acciones.",
+    "flavor": "¡Yupi! ¡Un ambiente nuevo! ¡Voy a ponerlo todo patas arriba!"
+  },
+  "special/traits/fulfilled": {
+    "name": "Realizado",
+    "effect": "Este trait no puede ser retirado de tu pila de traits.",
+    "flavor": "Nada me falta."
+  },
+  "special/traits/gripplethorps": {
+    "name": "Gripplethorps",
+    "effect": "+3 Gene Pool",
+    "flavor": "Gripplethropple gropple... gropple thorple gripple...fa fa fa!"
+  },
+  "special/traits/headless": {
+    "name": "Sin Cabeza",
+    "effect": "+1 Gene Pool. Todos los oponentes reciben -1 Gene Pool.",
+    "flavor": "Solo intento salir adelante, sin perder la cabeza."
+  },
+  "special/traits/howler": {
+    "name": "Aullador",
+    "effect": "Todos los jugadores descartan todas las cartas de su mano con valor nominal de 3 o más, luego estabilizan inmediatamente.",
+    "flavor": "No es el mejor vecino."
+  },
+  "special/traits/immortal": {
+    "name": "Inmortal",
+    "effect": "-2 Gene Pool. En cada age, antes de que alguien juegue el(los) efecto(s) de la age, puedes descartar tu mano y robar 3.",
+    "flavor": "Ella viaja por el cosmos en busca de la Alegría. Pero la alegría viene y se va, como siempre, a un lugar adonde ella no puede seguirla."
+  },
+  "special/traits/juicy": {
+    "name": "Jugoso",
+    "effect": "Intercambia 2 traits entre 2 pilas de traits cualesquiera.",
+    "flavor": "Ooh, aquí es cuando todo explota. Me encanta esta parte."
+  },
+  "special/traits/magic-fingers": {
+    "name": "Dedos Mágicos",
+    "effect": "Hasta el Fin del Mundo: Siempre que un trait salga de tu pila de traits, puedes jugar 1 del mismo color para reemplazarlo. Ignora las acciones. (Sin dominantes.)",
+    "flavor": "¡Abra-ca-doomling!"
+  },
+  "special/traits/neoteny": {
+    "name": "Neotenia",
+    "effect": "Si Neoteny es descartado de tu mano, en lugar de eso pásalo a la mano de tu izquierda. +4 si Neoteny está en tu mano.",
+    "flavor": "Ojalá te quedes larva para siempre."
+  },
+  "special/traits/pride": {
+    "name": "Orgullo",
+    "effect": "Descarta tu mano y roba 4 cartas. No estabilices.",
+    "flavor": "Orgulloso padre de un cachorro que mordió a un alumno estrella."
+  },
+  "special/traits/rainbow-keratin": {
+    "name": "Queratina Arcoíris",
+    "effect": "-2 por cada Gota de Vida en tu pila de traits. (Excepto este.) Si tienes los 4 colores en tu pila de traits: +2 por cada trait del color que tienes en mayor cantidad. (Si hay empate, ¡elige 1!)",
+    "flavor": "Mi visión de la vida es bastante sombría."
+  },
+  "special/traits/rainbow-scutes": {
+    "name": "Placas Arcoíris",
+    "effect": "Elige un color. Los oponentes deben mover 1 trait de valor positivo de ese color de su pila de traits a la tuya.",
+    "flavor": "¡Tortugamente genial!"
+  },
+  "special/traits/shiny": {
+    "name": "Brillante",
+    "effect": "Cada jugador recibe -1 por cada trait incoloro en su pila de traits. (¡Incluyéndote!)",
+    "flavor": "Si lo tocas, ¿qué es lo peor que podría pasar?"
+  },
+  "special/traits/tube-feet": {
+    "name": "Pies de Tubo",
+    "effect": "Juega 1 trait de la pila de descarte. Ignora su acción. Luego, descarta 1 trait de tu pila de traits.",
+    "flavor": "¡Olvídate de Hollywood! ¡Soy una estrella con mi propio paseo de la fama!"
+  }
+}

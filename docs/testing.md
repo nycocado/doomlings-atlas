@@ -7,7 +7,7 @@ Which tests a change needs, where they live and how to check the running app. Co
 | Kind        | What it checks                                                         | Runs on                 | Lives in                                               |
 | ----------- | ---------------------------------------------------------------------- | ----------------------- | ------------------------------------------------------ |
 | Unit        | One function or class, pure logic                                      | JVM, no Android         | `shared/src/commonTest`, `app/src/test`                |
-| Data        | The real `assets/doomlings/cards.json`, every set (unit tests on data) | JVM                     | `shared/src/androidHostTest` (`CardDataIntegrityTest`) |
+| Data        | The real card data and translations of every set in `assets/doomlings` | JVM                     | `shared/src/androidHostTest` (`CardDataIntegrityTest`) |
 | Integration | Real parts together: a ViewModel with saved state, Android resources   | JVM with Robolectric    | `app/src/test`                                         |
 | UI          | Compose screens: what shows, taps, navigation, accessibility           | JVM with Robolectric    | `app/src/test`                                         |
 | Screenshot  | How a preview looks, against a saved image                             | JVM (preview rendering) | `app/src/screenshotTest`                               |
@@ -30,7 +30,7 @@ All of them run on the JVM; none needs an emulator or device.
 Robolectric is set up in `app`. The UI tests in `app/src/test` run the real app: the real `MainActivity` with Hilt (`@HiltAndroidTest`, `HiltTestApplication`) and the enabled sets' card data, packaged into the assets. They drive it like a player with Compose's test APIs and check what shows.
 
 - Extend `AtlasBehaviorTest`: it sets the phone-sized window, Hilt and the Compose rule. Put `@HiltAndroidTest` on the test class itself, as Hilt requires.
-- Look text up by its string resource (`text(R.string.about)`, `button(R.string.back)`), never hard-coded (points with `pointsText`); take card names from `assets/doomlings/cards.json`.
+- Look text up by its string resource (`text(R.string.about)`, `button(R.string.back)`), never hard-coded (points with `pointsText`); take card names from the set's `cards.json` (`assets/doomlings/classic/cards.json`).
 - The notice's "seen" flag lives in the preferences named by `APP_PREFS` and `NOTICE_SEEN`: `launch()` starts as on first launch, `launchPastNotice()` after accepting it.
 - Robolectric runs on Android 16 (SDK 36) with native graphics, set in `app/src/test/resources/robolectric.properties`: Espresso, which Compose tests idle through, can't inject input on Android 17 yet. Change `sdk` there once it can.
 - Compose's built-in accessibility checks don't run on Robolectric: they report NOT_RUN, as they only evaluate Android views, not Compose content ("Composable content is not evaluated in this environment"). They are not set up here, and `assertAccessible()` replaces them for labels.

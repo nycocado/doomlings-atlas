@@ -1,0 +1,2346 @@
+[
+  {
+    "id": "classic/ages/age-of-dracula",
+    "type": "age",
+    "set": "classic",
+    "name": "Age of Dracula",
+    "effect": "Discard 1 random card from your hand.\n\nIf Vampirism is in your trait pile, steal 1 random card from an opponent's hand.",
+    "image": "classic/ages/age-of-dracula.webp"
+  },
+  {
+    "id": "classic/ages/age-of-nietzsche",
+    "type": "age",
+    "set": "classic",
+    "name": "Age of Nietzsche",
+    "effect": "Instead of stabilizing this turn, you may discard your hand and draw 3 cards.",
+    "image": "classic/ages/age-of-nietzsche.webp"
+  },
+  {
+    "id": "classic/ages/age-of-peace",
+    "type": "age",
+    "set": "classic",
+    "name": "Age of Peace",
+    "effect": "Ignore all trait actions.",
+    "image": "classic/ages/age-of-peace.webp"
+  },
+  {
+    "id": "classic/ages/age-of-wonder",
+    "type": "age",
+    "set": "classic",
+    "name": "Age of Wonder",
+    "effect": "You must end your turn with 4 cards in your hand.",
+    "image": "classic/ages/age-of-wonder.webp"
+  },
+  {
+    "id": "classic/ages/age-of-reason",
+    "type": "age",
+    "set": "classic",
+    "name": "Age of Reason",
+    "effect": "Draw 3 cards. Keep 1, discard the other 2.",
+    "image": "classic/ages/age-of-reason.webp"
+  },
+  {
+    "id": "classic/ages/alien-terraform",
+    "type": "age",
+    "set": "classic",
+    "name": "Alien Terraform",
+    "effect": "You may discard dominant cards from your hand. If you do, then stabilize immediately.",
+    "image": "classic/ages/alien-terraform.webp"
+  },
+  {
+    "id": "classic/ages/arid-lands",
+    "type": "age",
+    "set": "classic",
+    "name": "Arid Lands",
+    "effect": "Players cannot play blue traits.",
+    "image": "classic/ages/arid-lands.webp"
+  },
+  {
+    "id": "classic/ages/awakening",
+    "type": "age",
+    "set": "classic",
+    "name": "Awakening",
+    "effect": "Preview the next age before you take your turn.",
+    "image": "classic/ages/awakening.webp"
+  },
+  {
+    "id": "classic/ages/birth-of-a-hero",
+    "type": "age",
+    "set": "classic",
+    "name": "Birth of a Hero",
+    "effect": "If you hold Heroic, play it now without restriction.",
+    "image": "classic/ages/birth-of-a-hero.webp"
+  },
+  {
+    "id": "classic/ages/coastal-formations",
+    "type": "age",
+    "set": "classic",
+    "name": "Coastal Formations",
+    "effect": "Draw 1 card after you stabilize.",
+    "image": "classic/ages/coastal-formations.webp"
+  },
+  {
+    "id": "classic/ages/comet-showers",
+    "type": "age",
+    "set": "classic",
+    "name": "Comet Showers",
+    "effect": "Discard 1 card from your hand at random.",
+    "image": "classic/ages/comet-showers.webp"
+  },
+  {
+    "id": "classic/ages/eclipse",
+    "type": "age",
+    "set": "classic",
+    "name": "Eclipse",
+    "effect": "Players cannot play red traits.",
+    "image": "classic/ages/eclipse.webp"
+  },
+  {
+    "id": "classic/ages/enlightenment",
+    "type": "age",
+    "set": "classic",
+    "name": "Enlightenment",
+    "effect": "You may discard up to 2 cards from your hand before you stabilize.",
+    "image": "classic/ages/enlightenment.webp"
+  },
+  {
+    "id": "classic/ages/flourish",
+    "type": "age",
+    "set": "classic",
+    "name": "Flourish",
+    "effect": "Draw 2 cards.",
+    "image": "classic/ages/flourish.webp"
+  },
+  {
+    "id": "classic/ages/galactic-drift",
+    "type": "age",
+    "set": "classic",
+    "name": "Galactic Drift",
+    "effect": "If you play a colorless trait, you may play another colorless trait.",
+    "image": "classic/ages/galactic-drift.webp"
+  },
+  {
+    "id": "classic/ages/glacial-drift",
+    "type": "age",
+    "set": "classic",
+    "name": "Glacial Drift",
+    "effect": "You may only play traits with a face value of 3 or lower.",
+    "image": "classic/ages/glacial-drift.webp"
+  },
+  {
+    "id": "classic/ages/high-tides",
+    "type": "age",
+    "set": "classic",
+    "name": "High Tides",
+    "effect": "If you play an effectless trait, you may play another effectless trait.",
+    "image": "classic/ages/high-tides.webp"
+  },
+  {
+    "id": "classic/ages/lunar-retreat",
+    "type": "age",
+    "set": "classic",
+    "name": "Lunar Retreat",
+    "effect": "Players cannot play purple traits.",
+    "image": "classic/ages/lunar-retreat.webp"
+  },
+  {
+    "id": "classic/ages/natural-harmony",
+    "type": "age",
+    "set": "classic",
+    "name": "Natural Harmony",
+    "effect": "You may not play a trait of the same color as the last trait played.",
+    "image": "classic/ages/natural-harmony.webp"
+  },
+  {
+    "id": "classic/ages/northern-winds",
+    "type": "age",
+    "set": "classic",
+    "name": "Northern Winds",
+    "effect": "Draw 1 card. Discard 1 card from your hand.",
+    "image": "classic/ages/northern-winds.webp"
+  },
+  {
+    "id": "classic/ages/prosperity",
+    "type": "age",
+    "set": "classic",
+    "name": "Prosperity",
+    "effect": "At the end of your turn, you may choose not to stabilize.",
+    "image": "classic/ages/prosperity.webp"
+  },
+  {
+    "id": "classic/ages/reforestation",
+    "type": "age",
+    "set": "classic",
+    "name": "Reforestation",
+    "effect": "Traits in your trait pile cannot be swapped, stolen, or discarded.",
+    "image": "classic/ages/reforestation.webp"
+  },
+  {
+    "id": "classic/ages/tectonic-shift",
+    "type": "age",
+    "set": "classic",
+    "name": "Tectonic Shift",
+    "effect": "Players cannot play green traits.",
+    "image": "classic/ages/tectonic-shift.webp"
+  },
+  {
+    "id": "classic/ages/the-messiah",
+    "type": "age",
+    "set": "classic",
+    "name": "The Messiah",
+    "effect": "Play this age in reverse: first player last and last player first.",
+    "image": "classic/ages/the-messiah.webp"
+  },
+  {
+    "id": "classic/ages/tropical-lands",
+    "type": "age",
+    "set": "classic",
+    "name": "Tropical Lands",
+    "effect": "Players cannot play colorless traits.",
+    "image": "classic/ages/tropical-lands.webp"
+  },
+  {
+    "id": "classic/birth-of-life/the-birth-of-life",
+    "type": "birth-of-life",
+    "set": "classic",
+    "name": "The Birth of Life",
+    "effect": "Set your Gene Pool to 5.\nPlay 1 trait each turn.\nStabilize to end your turn.",
+    "image": "classic/birth-of-life/the-birth-of-life.webp"
+  },
+  {
+    "id": "classic/catastrophes/ai-takeover",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "AI Takeover",
+    "effect": "-1 Gene Pool\n\nDiscard all but 1 card from your hand.",
+    "worldsEnd": "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
+    "image": "classic/catastrophes/ai-takeover.webp"
+  },
+  {
+    "id": "classic/catastrophes/deus-ex-machina",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Deus Ex Machina",
+    "effect": "+0 Gene Pool\n\nStabilize.\nCrisis averted.",
+    "worldsEnd": "Draw a card. Add its face value to your final score (+5 max). Then discard it.",
+    "image": "classic/catastrophes/deus-ex-machina.webp"
+  },
+  {
+    "id": "classic/catastrophes/glacial-meltdown",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Glacial Meltdown",
+    "effect": "-1 Gene Pool\n\nDiscard 2 cards from your hand at random.",
+    "worldsEnd": "Discard 1 blue trait from your trait pile.",
+    "image": "classic/catastrophes/glacial-meltdown.webp"
+  },
+  {
+    "id": "classic/catastrophes/grey-goo",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Grey Goo",
+    "effect": "+0 Gene Pool\n\nDiscard your hand and stabilize.",
+    "worldsEnd": "-5 points to the player(s) with the most traits in their trait pile.",
+    "image": "classic/catastrophes/grey-goo.webp"
+  },
+  {
+    "id": "classic/catastrophes/ice-age",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Ice Age",
+    "effect": "-1 Gene Pool\n\nDiscard 1 card from your hand for every red trait in your trait pile.",
+    "worldsEnd": "-1 for every red trait in your trait pile.",
+    "image": "classic/catastrophes/ice-age.webp"
+  },
+  {
+    "id": "classic/catastrophes/mass-extinction",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Mass Extinction",
+    "effect": "-1 Gene Pool\n\nDiscard 1 card from your hand for every colorless trait in your trait pile.",
+    "worldsEnd": "Discard 1 green trait from your trait pile.",
+    "image": "classic/catastrophes/mass-extinction.webp"
+  },
+  {
+    "id": "classic/catastrophes/mega-tsunami",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Mega Tsunami",
+    "effect": "-1 Gene Pool\n\nPass your hand to the right.",
+    "worldsEnd": "Discard 1 red trait from your trait pile.",
+    "image": "classic/catastrophes/mega-tsunami.webp"
+  },
+  {
+    "id": "classic/catastrophes/nuclear-winter",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Nuclear Winter",
+    "effect": "-1 Gene Pool\n\nStabilize.\nThen discard 1 card from your hand.",
+    "worldsEnd": "Discard 1 colorless trait from your trait pile.",
+    "image": "classic/catastrophes/nuclear-winter.webp"
+  },
+  {
+    "id": "classic/catastrophes/overpopulation",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Overpopulation",
+    "effect": "+1 Gene Pool\n\nDraw 1 card for every color type in your trait pile.",
+    "worldsEnd": "+4 points to the player(s) with the fewest traits in their trait pile.",
+    "image": "classic/catastrophes/overpopulation.webp"
+  },
+  {
+    "id": "classic/catastrophes/pulse-event",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Pulse Event",
+    "effect": "-1 Gene Pool\n\nDiscard 1 card from your hand for every purple trait in your trait pile.",
+    "worldsEnd": "Discard 1 purple trait from your trait pile.",
+    "image": "classic/catastrophes/pulse-event.webp"
+  },
+  {
+    "id": "classic/catastrophes/retrovirus",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Retrovirus",
+    "effect": "-1 Gene Pool\n\nDiscard 1 card from your hand for every green trait in your trait pile.",
+    "worldsEnd": "-1 for every green trait in your trait pile.",
+    "image": "classic/catastrophes/retrovirus.webp"
+  },
+  {
+    "id": "classic/catastrophes/solar-flare",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Solar Flare",
+    "effect": "-1 Gene Pool\n\nDiscard half your hand rounded up.",
+    "worldsEnd": "-1 for every purple trait in your trait pile.",
+    "image": "classic/catastrophes/solar-flare.webp"
+  },
+  {
+    "id": "classic/catastrophes/super-volcano",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "Super Volcano",
+    "effect": "-1 Gene Pool\n\nDiscard 1 card from your hand for every blue trait in your trait pile.",
+    "worldsEnd": "-1 for every blue trait in your trait pile.",
+    "image": "classic/catastrophes/super-volcano.webp"
+  },
+  {
+    "id": "classic/catastrophes/the-big-one",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "The Big One",
+    "effect": "-1 Gene Pool\n\nGive 1 card from your hand to the opponent(s) on your left and right.",
+    "worldsEnd": "-2 to your score for each color missing from your trait pile.",
+    "image": "classic/catastrophes/the-big-one.webp"
+  },
+  {
+    "id": "classic/catastrophes/the-four-horsemen",
+    "type": "catastrophe",
+    "set": "classic",
+    "name": "The Four Horsemen",
+    "effect": "-1 Gene Pool\n\nDiscard 1 trait from your trait pile.",
+    "worldsEnd": "Discard 1 trait from your trait pile with a face value of 4 or higher.",
+    "image": "classic/catastrophes/the-four-horsemen.webp"
+  },
+  {
+    "id": "classic/gene-pools/blue",
+    "type": "gene-pool",
+    "set": "classic",
+    "image": "classic/gene-pools/blue.jpg"
+  },
+  {
+    "id": "classic/gene-pools/black",
+    "type": "gene-pool",
+    "set": "classic",
+    "image": "classic/gene-pools/black.jpg"
+  },
+  {
+    "id": "classic/gene-pools/rainbow",
+    "type": "gene-pool",
+    "set": "classic",
+    "image": "classic/gene-pools/rainbow.jpg"
+  },
+  {
+    "id": "classic/gene-pools/pink",
+    "type": "gene-pool",
+    "set": "classic",
+    "image": "classic/gene-pools/pink.jpg"
+  },
+  {
+    "id": "classic/gene-pools/green",
+    "type": "gene-pool",
+    "set": "classic",
+    "image": "classic/gene-pools/green.jpg"
+  },
+  {
+    "id": "classic/gene-pools/orange",
+    "type": "gene-pool",
+    "set": "classic",
+    "image": "classic/gene-pools/orange.jpg"
+  },
+  {
+    "id": "classic/traits/adorable",
+    "type": "trait",
+    "set": "classic",
+    "name": "Adorable",
+    "flavor": "Hey, you look like a sucker. Rub my belly. Now, get in this lava so I can float to safety.",
+    "effect": null,
+    "points": 4,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/adorable.webp"
+  },
+  {
+    "id": "classic/traits/altruistic",
+    "type": "trait",
+    "set": "classic",
+    "name": "Altruistic",
+    "flavor": "Can I borrow a few bucks? I donated all my money to charity.",
+    "effect": "Value is equal to the size of your Gene Pool.",
+    "points": null,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/altruistic.webp"
+  },
+  {
+    "id": "classic/traits/antlers",
+    "type": "trait",
+    "set": "classic",
+    "name": "Antlers",
+    "flavor": "Bet I'd look good on your wall.",
+    "effect": null,
+    "points": 3,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/antlers.webp"
+  },
+  {
+    "id": "classic/traits/apex-predator",
+    "type": "trait",
+    "set": "classic",
+    "name": "Apex Predator",
+    "flavor": "Where do you think you're goin'?",
+    "effect": "+4 if you have more traits in your trait pile than your opponents. (Ties don't count!)",
+    "points": 4,
+    "colors": [
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/apex-predator.webp"
+  },
+  {
+    "id": "classic/traits/appealing",
+    "type": "trait",
+    "set": "classic",
+    "name": "Appealing",
+    "flavor": "Orange you glad?",
+    "effect": null,
+    "points": 3,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/appealing.webp"
+  },
+  {
+    "id": "classic/traits/automimicry",
+    "type": "trait",
+    "set": "classic",
+    "name": "Automimicry",
+    "flavor": "I made a big, scary face so you don't notice my small, real face.",
+    "effect": "You may play Automimicry from your hand at any time to prevent an action.",
+    "points": -1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when"
+    ],
+    "image": "classic/traits/automimicry.webp"
+  },
+  {
+    "id": "classic/traits/bad",
+    "type": "trait",
+    "set": "classic",
+    "name": "Bad",
+    "flavor": "No cuts, no glory.",
+    "effect": "Opponents discard 2 cards from their hand at random.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/bad.webp"
+  },
+  {
+    "id": "classic/traits/bark",
+    "type": "trait",
+    "set": "classic",
+    "name": "Bark",
+    "flavor": "Woof.",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/bark.webp"
+  },
+  {
+    "id": "classic/traits/big-ears",
+    "type": "trait",
+    "set": "classic",
+    "name": "Big Ears",
+    "flavor": "What?",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/big-ears.webp"
+  },
+  {
+    "id": "classic/traits/blubber",
+    "type": "trait",
+    "set": "classic",
+    "name": "Blubber",
+    "flavor": "It's protective fat, thank you very much.",
+    "effect": null,
+    "points": 4,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/blubber.webp"
+  },
+  {
+    "id": "classic/traits/boredom",
+    "type": "trait",
+    "set": "classic",
+    "name": "Boredom",
+    "flavor": "I don't know. What do YOU want to do?",
+    "effect": "Value is equal to the number of cards in your hand with effects.",
+    "points": null,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/boredom.webp"
+  },
+  {
+    "id": "classic/traits/branches",
+    "type": "trait",
+    "set": "classic",
+    "name": "Branches",
+    "flavor": "Tree arms.",
+    "effect": "+1 for every pair of green traits in each opponent's trait pile.",
+    "points": 0,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/branches.webp"
+  },
+  {
+    "id": "classic/traits/brave",
+    "type": "trait",
+    "set": "classic",
+    "name": "Brave",
+    "flavor": "My farm's nearby, so if you're thinking about erupting, cock-a-doodle-don't you dare.",
+    "effect": "+2 for each dominant trait in your hand.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/brave.webp"
+  },
+  {
+    "id": "classic/traits/brute-strength",
+    "type": "trait",
+    "set": "classic",
+    "name": "Brute Strength",
+    "flavor": "Wreck yourself before you check yourself bro!",
+    "effect": "-1 Gene Pool",
+    "points": 4,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/brute-strength.webp"
+  },
+  {
+    "id": "classic/traits/camouflage",
+    "type": "trait",
+    "set": "classic",
+    "name": "Camouflage",
+    "flavor": "Blend in with the wilderness or stand out at a wedding.",
+    "effect": "+1 Gene Pool. +1 for each card in your hand.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/camouflage.webp"
+  },
+  {
+    "id": "classic/traits/chromatophores",
+    "type": "trait",
+    "set": "classic",
+    "name": "Chromatophores",
+    "flavor": "No octopus here. Just some coral. Move along.",
+    "effect": "You may play Chromatophores from your hand at any time to prevent an action.",
+    "points": 0,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when"
+    ],
+    "image": "classic/traits/chromatophores.webp"
+  },
+  {
+    "id": "classic/traits/clever",
+    "type": "trait",
+    "set": "classic",
+    "name": "Clever",
+    "flavor": "Why can't birds make plans? Because their calendars are loosey-goosey.",
+    "effect": "Opponents reveal 1 card in their hand to all players. Steal 1, and play it immediately.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/clever.webp"
+  },
+  {
+    "id": "classic/traits/cold-blood",
+    "type": "trait",
+    "set": "classic",
+    "name": "Cold Blood",
+    "flavor": "I would kill for the ability to control my body temperature.",
+    "effect": "Draw 3 cards. You may play 1 now.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/cold-blood.webp"
+  },
+  {
+    "id": "classic/traits/confusion",
+    "type": "trait",
+    "set": "classic",
+    "name": "Confusion",
+    "flavor": "And you might ask yourself, \"Why does this trait exist?",
+    "effect": null,
+    "points": -2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/confusion.webp"
+  },
+  {
+    "id": "classic/traits/costly-signaling",
+    "type": "trait",
+    "set": "classic",
+    "name": "Costly Signaling",
+    "flavor": "Like peacock feathers. Or a philosophy degree.",
+    "effect": "Return an opponent's trait to their hand. Play another trait.",
+    "points": -2,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/costly-signaling.webp"
+  },
+  {
+    "id": "classic/traits/deep-roots",
+    "type": "trait",
+    "set": "classic",
+    "name": "Deep Roots",
+    "flavor": "I discussed the weather with my neighbor. This is now my forever home.",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/deep-roots.webp"
+  },
+  {
+    "id": "classic/traits/delicious",
+    "type": "trait",
+    "set": "classic",
+    "name": "Delicious",
+    "flavor": "To save a species from extinction, figure out how to eat it.",
+    "effect": "To play, you must have at least 1 colorless trait in your trait pile.",
+    "points": 4,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/delicious.webp"
+  },
+  {
+    "id": "classic/traits/denial",
+    "type": "trait",
+    "set": "classic",
+    "name": "Denial",
+    "flavor": "Catastrophe schmatastrophe.",
+    "effect": "Ignore the next catastrophe. Warning: You cannot ignore The Four Horsemen.",
+    "points": 4,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/denial.webp"
+  },
+  {
+    "id": "classic/traits/directly-register",
+    "type": "trait",
+    "set": "classic",
+    "name": "Directly Register",
+    "flavor": "'Meow. I'm a cat, I walk so precisely.' BIG DEAL.",
+    "effect": "Steal a trait with a face value of 1 from an opponent's trait pile.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/directly-register.webp"
+  },
+  {
+    "id": "classic/traits/doting",
+    "type": "trait",
+    "set": "classic",
+    "name": "Doting",
+    "flavor": "OK! These are the last of the cookies. Unless you want more. I'll make more.",
+    "effect": "Give an opponent 1 card from your hand.",
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/doting.webp"
+  },
+  {
+    "id": "classic/traits/dreamer",
+    "type": "trait",
+    "set": "classic",
+    "name": "Dreamer",
+    "flavor": "Someday, I'll be more than just a purple ball.",
+    "effect": "+1 Gene Pool",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/dreamer.webp"
+  },
+  {
+    "id": "classic/traits/echolocation",
+    "type": "trait",
+    "set": "classic",
+    "name": "Echolocation",
+    "flavor": "The all-seeing ear.",
+    "effect": "Until World's End: Draw 1 card at the start of each of your turns.",
+    "points": 4,
+    "colors": [
+      "blue"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/echolocation.webp"
+  },
+  {
+    "id": "classic/traits/egg-clusters",
+    "type": "trait",
+    "set": "classic",
+    "name": "Egg Clusters",
+    "flavor": "Buy one, get one hundred.",
+    "effect": "+1 for each blue trait in your trait pile. (Including this one.)",
+    "points": -1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/egg-clusters.webp"
+  },
+  {
+    "id": "classic/traits/eloquence",
+    "type": "trait",
+    "set": "classic",
+    "name": "Eloquence",
+    "flavor": "Say the right thing, then stop talking.",
+    "effect": "At World's End: Play another trait. Ignore its action.",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "worlds-end"
+    ],
+    "image": "classic/traits/eloquence.webp"
+  },
+  {
+    "id": "classic/traits/endurance",
+    "type": "trait",
+    "set": "classic",
+    "name": "Endurance",
+    "flavor": "Catastrophes can't trample me!",
+    "effect": "Whenever you discard Endurance from your trait pile, return it to your trait pile.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/endurance.webp"
+  },
+  {
+    "id": "classic/traits/faith",
+    "type": "trait",
+    "set": "classic",
+    "name": "Faith",
+    "flavor": "Reason is in fact the path to faith, and faith takes over when reason can say no more.",
+    "effect": "At World's End: You may change all of your traits of 1 color to 1 alternative color.",
+    "points": 4,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "worlds-end"
+    ],
+    "image": "classic/traits/faith.webp"
+  },
+  {
+    "id": "classic/traits/fangs",
+    "type": "trait",
+    "set": "classic",
+    "name": "Fangs",
+    "flavor": "The sharpest tools in the head.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/fangs.webp"
+  },
+  {
+    "id": "classic/traits/fear",
+    "type": "trait",
+    "set": "classic",
+    "name": "Fear",
+    "flavor": "Are they...are they d-done playing yet?",
+    "effect": null,
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/fear.webp"
+  },
+  {
+    "id": "classic/traits/fecundity",
+    "type": "trait",
+    "set": "classic",
+    "name": "Fecundity",
+    "flavor": "Once you pop...",
+    "effect": "+1 Gene Pool",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/fecundity.webp"
+  },
+  {
+    "id": "classic/traits/fine-motor-skills",
+    "type": "trait",
+    "set": "classic",
+    "name": "Fine Motor Skills",
+    "flavor": "I have traced a shape!",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/fine-motor-skills.webp"
+  },
+  {
+    "id": "classic/traits/fire-skin",
+    "type": "trait",
+    "set": "classic",
+    "name": "Fire Skin",
+    "flavor": "I think your skin is on fire.",
+    "effect": null,
+    "points": 3,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/fire-skin.webp"
+  },
+  {
+    "id": "classic/traits/flatulence",
+    "type": "trait",
+    "set": "classic",
+    "name": "Flatulence",
+    "flavor": "5-alarm chili? Fire in the hole!",
+    "effect": null,
+    "points": 3,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/flatulence.webp"
+  },
+  {
+    "id": "classic/traits/flight",
+    "type": "trait",
+    "set": "classic",
+    "name": "Flight",
+    "flavor": "The sun is no match for my waxy wings!",
+    "effect": "Swap hands with an opponent.",
+    "points": 2,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/flight.webp"
+  },
+  {
+    "id": "classic/traits/fortunate",
+    "type": "trait",
+    "set": "classic",
+    "name": "Fortunate",
+    "flavor": "Some call it luck. Some call it a blessing.",
+    "effect": "Value is equal to the number of cards in your hand.",
+    "points": null,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/fortunate.webp"
+  },
+  {
+    "id": "classic/traits/gills",
+    "type": "trait",
+    "set": "classic",
+    "name": "Gills",
+    "flavor": "I need a breath of fresh water.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/gills.webp"
+  },
+  {
+    "id": "classic/traits/gratitude",
+    "type": "trait",
+    "set": "classic",
+    "name": "Gratitude",
+    "flavor": "Gee, I really appreciate this. Thanks. Thank you.",
+    "effect": "Value is equal to the number of different colors in your trait pile.",
+    "points": null,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/gratitude.webp"
+  },
+  {
+    "id": "classic/traits/heat-vision",
+    "type": "trait",
+    "set": "classic",
+    "name": "Heat Vision",
+    "flavor": "I'd like to make a toast.",
+    "effect": "+1 for each red trait in your trait pile. (Including this one.)",
+    "points": -1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/heat-vision.webp"
+  },
+  {
+    "id": "classic/traits/heroic",
+    "type": "trait",
+    "set": "classic",
+    "name": "Heroic",
+    "flavor": "Deep down, under all this muscle, I'm just super honorable and courageous.",
+    "effect": "To play, you must have 3 or more green traits in your trait pile.",
+    "points": 7,
+    "colors": [
+      "green"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/heroic.webp"
+  },
+  {
+    "id": "classic/traits/hot-temper",
+    "type": "trait",
+    "set": "classic",
+    "name": "Hot Temper",
+    "flavor": "There's cheese on my cheeseburger!",
+    "effect": "Discard 2 cards from your hand.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/hot-temper.webp"
+  },
+  {
+    "id": "classic/traits/hyper-intelligence",
+    "type": "trait",
+    "set": "classic",
+    "name": "Hyper-Intelligence",
+    "flavor": "E=mc stop staring at my head.",
+    "effect": "At World's End: Choose a color. Opponents discard 1 trait of that color from their trait pile at random.",
+    "points": 4,
+    "colors": [
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "worlds-end"
+    ],
+    "image": "classic/traits/hyper-intelligence.webp"
+  },
+  {
+    "id": "classic/traits/immunity",
+    "type": "trait",
+    "set": "classic",
+    "name": "Immunity",
+    "flavor": "Can't touch this.",
+    "effect": "+2 for each trait with a negative face value in your trait pile.",
+    "points": 4,
+    "colors": [
+      "blue"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/immunity.webp"
+  },
+  {
+    "id": "classic/traits/impatience",
+    "type": "trait",
+    "set": "classic",
+    "name": "Impatience",
+    "flavor": "Would you make a move already?",
+    "effect": "Steal 2 random cards from an opponent's hand.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/impatience.webp"
+  },
+  {
+    "id": "classic/traits/introspective",
+    "type": "trait",
+    "set": "classic",
+    "name": "Introspective",
+    "flavor": "Puddle, puddle on the street, will I ever feel complete?",
+    "effect": "Draw 4 cards.",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/introspective.webp"
+  },
+  {
+    "id": "classic/traits/inventive",
+    "type": "trait",
+    "set": "classic",
+    "name": "Inventive",
+    "flavor": "You can't make this stuff up. But I can.",
+    "effect": "Play an action from an opponent's trait pile.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/inventive.webp"
+  },
+  {
+    "id": "classic/traits/iridescent-scales",
+    "type": "trait",
+    "set": "classic",
+    "name": "Iridescent Scales",
+    "flavor": "I got rainbow-like skin. Lustrous, ain't it?",
+    "effect": "Draw 3 cards.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/iridescent-scales.webp"
+  },
+  {
+    "id": "classic/traits/just",
+    "type": "trait",
+    "set": "classic",
+    "name": "Just",
+    "flavor": "Are these scales balanced? I can't see a thing!",
+    "effect": "+1 Gene Pool",
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/just.webp"
+  },
+  {
+    "id": "classic/traits/kidney",
+    "type": "trait",
+    "set": "classic",
+    "name": "Kidney",
+    "flavor": "...with a combover.",
+    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "points": null,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/kidney.webp"
+  },
+  {
+    "id": "classic/traits/kidney-2",
+    "type": "trait",
+    "set": "classic",
+    "name": "Kidney",
+    "flavor": "...with a tiara.",
+    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "points": null,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/kidney-2.webp"
+  },
+  {
+    "id": "classic/traits/kidney-3",
+    "type": "trait",
+    "set": "classic",
+    "name": "Kidney",
+    "flavor": "...with an elf hat.",
+    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "points": null,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/kidney-3.webp"
+  },
+  {
+    "id": "classic/traits/kidney-4",
+    "type": "trait",
+    "set": "classic",
+    "name": "Kidney",
+    "flavor": "...with a chef's toque.",
+    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "points": null,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/kidney-4.webp"
+  },
+  {
+    "id": "classic/traits/kidney-5",
+    "type": "trait",
+    "set": "classic",
+    "name": "Kidney",
+    "flavor": "...with a party cap.",
+    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "points": null,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/kidney-5.webp"
+  },
+  {
+    "id": "classic/traits/kidney-6",
+    "type": "trait",
+    "set": "classic",
+    "name": "Kidney",
+    "flavor": "...with a topper.",
+    "effect": "Value is equal to the number of Kidneys in your trait pile. (Including this one.)",
+    "points": null,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/kidney-6.webp"
+  },
+  {
+    "id": "classic/traits/late",
+    "type": "trait",
+    "set": "classic",
+    "name": "Late",
+    "flavor": "Sorry! There was a fire, and traffic, and the line for coffee was really long...",
+    "effect": "You may play Late from your hand after you stabilize.",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when"
+    ],
+    "image": "classic/traits/late.webp"
+  },
+  {
+    "id": "classic/traits/leaves",
+    "type": "trait",
+    "set": "classic",
+    "name": "Leaves",
+    "flavor": "I asked my barber for a salad bowl cut.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/leaves.webp"
+  },
+  {
+    "id": "classic/traits/memory",
+    "type": "trait",
+    "set": "classic",
+    "name": "Memory",
+    "flavor": "The retention of information, like someone's food order or an anniv-...oh no.",
+    "effect": "You may discard your hand and stabilize.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/memory.webp"
+  },
+  {
+    "id": "classic/traits/migratory",
+    "type": "trait",
+    "set": "classic",
+    "name": "Migratory",
+    "flavor": "Can't wait to move back in with our parents!",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/migratory.webp"
+  },
+  {
+    "id": "classic/traits/mindful",
+    "type": "trait",
+    "set": "classic",
+    "name": "Mindful",
+    "flavor": "As you walk and eat and travel, be where you are. Otherwise you will miss out on most of your life.",
+    "effect": "+1 for each colorless trait in your trait pile. (Including this one.)",
+    "points": 0,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/mindful.webp"
+  },
+  {
+    "id": "classic/traits/mitochondrion",
+    "type": "trait",
+    "set": "classic",
+    "name": "Mitochondrion",
+    "flavor": "An organelle resembling the worst hole on a miniature golf course.",
+    "effect": "+1 Gene Pool",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/mitochondrion.webp"
+  },
+  {
+    "id": "classic/traits/morality",
+    "type": "trait",
+    "set": "classic",
+    "name": "Morality",
+    "flavor": "I'll let him keep his lunch money. It's the right thing to do.",
+    "effect": "To play, you must give 1 positive trait from your trait pile to an opponent.",
+    "points": 5,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/morality.webp"
+  },
+  {
+    "id": "classic/traits/nocturnal",
+    "type": "trait",
+    "set": "classic",
+    "name": "Nocturnal",
+    "flavor": "The dark is my muse.",
+    "effect": null,
+    "points": 3,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/nocturnal.webp"
+  },
+  {
+    "id": "classic/traits/nosy",
+    "type": "trait",
+    "set": "classic",
+    "name": "Nosy",
+    "flavor": "Whatchya holdin'?",
+    "effect": "Look at 2 random cards from an opponent's hand. Steal 1, and play it immediately.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/nosy.webp"
+  },
+  {
+    "id": "classic/traits/optimistic-nihilism",
+    "type": "trait",
+    "set": "classic",
+    "name": "Optimistic Nihilism",
+    "flavor": "Nothing matters!",
+    "effect": "Bring about the next catastrophe. Skip all turns. Ignore all age effects along the way. Do not stabilize.",
+    "points": 4,
+    "colors": [],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/optimistic-nihilism.webp"
+  },
+  {
+    "id": "classic/traits/overgrowth",
+    "type": "trait",
+    "set": "classic",
+    "name": "Overgrowth",
+    "flavor": "Mommy, why did you pull me out of kindergarten?",
+    "effect": "+1 for each green trait in your trait pile. (Including this one.)",
+    "points": -1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/overgrowth.webp"
+  },
+  {
+    "id": "classic/traits/pack-behavior",
+    "type": "trait",
+    "set": "classic",
+    "name": "Pack Behavior",
+    "flavor": "We would ALL like to go outside.",
+    "effect": "+1 for every color pair in your trait pile.",
+    "points": 3,
+    "colors": [
+      "green"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/pack-behavior.webp"
+  },
+  {
+    "id": "classic/traits/painted-shell",
+    "type": "trait",
+    "set": "classic",
+    "name": "Painted Shell",
+    "flavor": "I'm just an arts and crafts project... for now.",
+    "effect": "Play an action from your trait pile.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/painted-shell.webp"
+  },
+  {
+    "id": "classic/traits/parasitic",
+    "type": "trait",
+    "set": "classic",
+    "name": "Parasitic",
+    "flavor": "We all have that one friend who never has their credit card and is constantly drinking blood.",
+    "effect": "You may play Parasitic from your hand when an opponent plays a trait. Steal that trait. Stop its action.",
+    "points": -2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when"
+    ],
+    "image": "classic/traits/parasitic.webp"
+  },
+  {
+    "id": "classic/traits/persuasive",
+    "type": "trait",
+    "set": "classic",
+    "name": "Persuasive",
+    "flavor": "Change your mind or I will yell louder!",
+    "effect": "Choose a color. All players discard all cards of that color from their hand. (Including yourself!)",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/persuasive.webp"
+  },
+  {
+    "id": "classic/traits/photosynthesis",
+    "type": "trait",
+    "set": "classic",
+    "name": "Photosynthesis",
+    "flavor": "Munchin' some photons, nom nom nom.",
+    "effect": "Draw 2 cards. If either are green, play 1 immediately. (Unless restricted.)",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/photosynthesis.webp"
+  },
+  {
+    "id": "classic/traits/poisonous",
+    "type": "trait",
+    "set": "classic",
+    "name": "Poisonous",
+    "flavor": "An apple a day keeps the doctor away. Unless the apple is from a witch.",
+    "effect": "Swap Poisonous with a trait from an opponent's trait pile.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/poisonous.webp"
+  },
+  {
+    "id": "classic/traits/pollination",
+    "type": "trait",
+    "set": "classic",
+    "name": "Pollination",
+    "flavor": "Well, you see, Timmy, when a bee and a plant fall in love...",
+    "effect": "+1 for every card in your trait pile with a face value of 1. (Including this one.)",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/pollination.webp"
+  },
+  {
+    "id": "classic/traits/prepper",
+    "type": "trait",
+    "set": "classic",
+    "name": "Prepper",
+    "flavor": "More like Apocalypse No.",
+    "effect": "At World's End: Choose a World's End effect from the 3 catastrophes played for players to end on.",
+    "points": 2,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "worlds-end"
+    ],
+    "image": "classic/traits/prepper.webp"
+  },
+  {
+    "id": "classic/traits/propagation",
+    "type": "trait",
+    "set": "classic",
+    "name": "Propagation",
+    "flavor": "Much easier than dating.",
+    "effect": "Play another trait.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/propagation.webp"
+  },
+  {
+    "id": "classic/traits/quick",
+    "type": "trait",
+    "set": "classic",
+    "name": "Quick",
+    "flavor": "Hyah, HYAH!",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/quick.webp"
+  },
+  {
+    "id": "classic/traits/random-fertilization",
+    "type": "trait",
+    "set": "classic",
+    "name": "Random Fertilization",
+    "flavor": "Pick a number between 1 and 64 trillion.",
+    "effect": "Value is equal to the size of your Gene Pool.",
+    "points": null,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/random-fertilization.webp"
+  },
+  {
+    "id": "classic/traits/reckless",
+    "type": "trait",
+    "set": "classic",
+    "name": "Reckless",
+    "flavor": "Hot take comin' in hot!",
+    "effect": "You and an opponent discard 1 trait from each other's trait pile. (Excluding this one.)",
+    "points": 3,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/reckless.webp"
+  },
+  {
+    "id": "classic/traits/regenerative-tissue",
+    "type": "trait",
+    "set": "classic",
+    "name": "Regenerative Tissue",
+    "flavor": "How many fingers am I holding up? Wait, hold on, they're still growing back",
+    "effect": "Anytime you discard a trait from your trait pile, (including this one), draw 1. Play it immediately. (Unless restricted.) Ignore actions.",
+    "points": 0,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/regenerative-tissue.webp"
+  },
+  {
+    "id": "classic/traits/retractable-claws",
+    "type": "trait",
+    "set": "classic",
+    "name": "Retractable Claws",
+    "flavor": "Hurts every time.",
+    "effect": "To play, you must discard 1 red trait from your trait pile.",
+    "points": 5,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/retractable-claws.webp"
+  },
+  {
+    "id": "classic/traits/saliva",
+    "type": "trait",
+    "set": "classic",
+    "name": "Saliva",
+    "flavor": "The stuff that drools are made of.",
+    "effect": "+1 Gene Pool",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/saliva.webp"
+  },
+  {
+    "id": "classic/traits/saudade",
+    "type": "trait",
+    "set": "classic",
+    "name": "Saudade",
+    "flavor": "I saw it, Dad. Now let's go!",
+    "effect": "+1 for each different color in your hand.",
+    "points": 1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/saudade.webp"
+  },
+  {
+    "id": "classic/traits/scutes",
+    "type": "trait",
+    "set": "classic",
+    "name": "Scutes",
+    "flavor": "When this is over, my victory will be shellebrated!",
+    "effect": "Give an opponent 1 trait from your trait pile.",
+    "points": 3,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/scutes.webp"
+  },
+  {
+    "id": "classic/traits/selective-memory",
+    "type": "trait",
+    "set": "classic",
+    "name": "Selective Memory",
+    "flavor": "Me? Wrong? That doesn't sound right.",
+    "effect": "Play 1 card from the discard pile. Play its action.",
+    "points": 0,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/selective-memory.webp"
+  },
+  {
+    "id": "classic/traits/self-awareness",
+    "type": "trait",
+    "set": "classic",
+    "name": "Self-Awareness",
+    "flavor": "Huh. I guess I'm not a vampire.",
+    "effect": "You may play Self-Awareness from your hand into an opponent's trait pile at any time.",
+    "points": -1,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when"
+    ],
+    "image": "classic/traits/self-awareness.webp"
+  },
+  {
+    "id": "classic/traits/self-replicating",
+    "type": "trait",
+    "set": "classic",
+    "name": "Self-Replicating",
+    "flavor": "More me? Copy that.",
+    "effect": "Play 1 card from the discard pile. Ignore its action. When you play another green trait from your hand, you may return this to your hand.",
+    "points": 0,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/self-replicating.webp"
+  },
+  {
+    "id": "classic/traits/selfish",
+    "type": "trait",
+    "set": "classic",
+    "name": "Selfish",
+    "flavor": "Mine!",
+    "effect": "Steal a red trait from an opponent's trait pile.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/selfish.webp"
+  },
+  {
+    "id": "classic/traits/sentience",
+    "type": "trait",
+    "set": "classic",
+    "name": "Sentience",
+    "flavor": "I'm feeling so many things right now.",
+    "effect": "At World's End: Choose a color. +1 for all traits of that color in your trait pile.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "classic/traits/sentience.webp"
+  },
+  {
+    "id": "classic/traits/sneaky",
+    "type": "trait",
+    "set": "classic",
+    "name": "Sneaky",
+    "flavor": "Didn't see that comin', did ya?",
+    "effect": "At World's End: You may play Sneaky from your hand.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "play-when",
+      "worlds-end"
+    ],
+    "image": "classic/traits/sneaky.webp"
+  },
+  {
+    "id": "classic/traits/spiny",
+    "type": "trait",
+    "set": "classic",
+    "name": "Spiny",
+    "flavor": "Don't pet my fish.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/spiny.webp"
+  },
+  {
+    "id": "classic/traits/sticky-secretions",
+    "type": "trait",
+    "set": "classic",
+    "name": "Sticky Secretions",
+    "flavor": "Give me a hug.",
+    "effect": "+1 for each purple trait in your trait pile. (Including this one.)",
+    "points": -1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/sticky-secretions.webp"
+  },
+  {
+    "id": "classic/traits/stone-skin",
+    "type": "trait",
+    "set": "classic",
+    "name": "Stone Skin",
+    "flavor": "Your heartfelt compliments are no match for my craggy exterior.",
+    "effect": null,
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/stone-skin.webp"
+  },
+  {
+    "id": "classic/traits/super-spreader",
+    "type": "trait",
+    "set": "classic",
+    "name": "Super Spreader",
+    "flavor": "Ah...AH...AH...false alarm, I thought I was gon--CHOO!",
+    "effect": "All players receive: -1 Gene Pool. (Including yourself.)",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/super-spreader.webp"
+  },
+  {
+    "id": "classic/traits/swarm",
+    "type": "trait",
+    "set": "classic",
+    "name": "Swarm",
+    "flavor": "We're here for the new phone.",
+    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "points": null,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/swarm.webp"
+  },
+  {
+    "id": "classic/traits/swarm-2",
+    "type": "trait",
+    "set": "classic",
+    "name": "Swarm",
+    "flavor": "We're here for the new phone.",
+    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "points": null,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/swarm-2.webp"
+  },
+  {
+    "id": "classic/traits/swarm-3",
+    "type": "trait",
+    "set": "classic",
+    "name": "Swarm",
+    "flavor": "We're here for the new phone.",
+    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "points": null,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/swarm-3.webp"
+  },
+  {
+    "id": "classic/traits/swarm-4",
+    "type": "trait",
+    "set": "classic",
+    "name": "Swarm",
+    "flavor": "We're here for the new phone.",
+    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "points": null,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/swarm-4.webp"
+  },
+  {
+    "id": "classic/traits/swarm-5",
+    "type": "trait",
+    "set": "classic",
+    "name": "Swarm",
+    "flavor": "We're here for the new phone.",
+    "effect": "Value is equal to the number of Swarm traits in all trait piles. (Including this one.)",
+    "points": null,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/swarm-5.webp"
+  },
+  {
+    "id": "classic/traits/sweat",
+    "type": "trait",
+    "set": "classic",
+    "name": "Sweat",
+    "flavor": "I bench so I can brunch.",
+    "effect": "Discard 1 card from your hand.",
+    "points": 2,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/sweat.webp"
+  },
+  {
+    "id": "classic/traits/symbiosis",
+    "type": "trait",
+    "set": "classic",
+    "name": "Symbiosis",
+    "flavor": "Yes...yes! Feast, my parasitic friends!",
+    "effect": "+2 for every trait in your lowest color count. (Must have 2 or more colors. If there's a tie, pick 1!)",
+    "points": 3,
+    "colors": [
+      "green"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/symbiosis.webp"
+  },
+  {
+    "id": "classic/traits/teeth",
+    "type": "trait",
+    "set": "classic",
+    "name": "Teeth",
+    "flavor": "A source of income when you're a child.",
+    "effect": "+1 Gene Pool",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/teeth.webp"
+  },
+  {
+    "id": "classic/traits/telekinetic",
+    "type": "trait",
+    "set": "classic",
+    "name": "Telekinetic",
+    "flavor": "The ability to turn on the TV when you can't find the remote.",
+    "effect": "Swap 1 trait from your trait pile with an opponent's trait of a different color.",
+    "points": 1,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/telekinetic.webp"
+  },
+  {
+    "id": "classic/traits/tentacles",
+    "type": "trait",
+    "set": "classic",
+    "name": "Tentacles",
+    "flavor": "Watch out, folks! Here comes the swap-topus!",
+    "effect": "Swap 1 trait from your trait pile with an opponent's trait of the same color.",
+    "points": 1,
+    "colors": [
+      "blue"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/tentacles.webp"
+  },
+  {
+    "id": "classic/traits/territorial",
+    "type": "trait",
+    "set": "classic",
+    "name": "Territorial",
+    "flavor": "Everything that smells like pee is mine.",
+    "effect": "All opponents discard 1 red trait from their trait pile.",
+    "points": 1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/territorial.webp"
+  },
+  {
+    "id": "classic/traits/the-third-eye",
+    "type": "trait",
+    "set": "classic",
+    "name": "The Third Eye",
+    "flavor": "You like it? Thanks. I just awoke it.",
+    "effect": "Take a peek at the next age. Play another trait.",
+    "points": 0,
+    "colors": [],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/the-third-eye.webp"
+  },
+  {
+    "id": "classic/traits/tiny",
+    "type": "trait",
+    "set": "classic",
+    "name": "Tiny",
+    "flavor": "Widdle iddle, teensie weensie.",
+    "effect": "-1 for each trait in your trait pile. (Including this one.)",
+    "points": 17,
+    "colors": [
+      "blue"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life"
+    ],
+    "image": "classic/traits/tiny.webp"
+  },
+  {
+    "id": "classic/traits/tiny-little-melons",
+    "type": "trait",
+    "set": "classic",
+    "name": "Tiny Little Melons",
+    "flavor": "Not just little, but also tiny.",
+    "effect": "Steal 1 green trait from an opponent's trait pile.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/tiny-little-melons.webp"
+  },
+  {
+    "id": "classic/traits/trunk",
+    "type": "trait",
+    "set": "classic",
+    "name": "Trunk",
+    "flavor": "Container of junk.",
+    "effect": "Play the top card from the discard pile. Ignore its action.",
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/trunk.webp"
+  },
+  {
+    "id": "classic/traits/vampirism",
+    "type": "trait",
+    "set": "classic",
+    "name": "Vampirism",
+    "flavor": "I vant to sock your blahhhd.",
+    "effect": "Steal a trait from an opponent's trait pile. Play its action.",
+    "points": 3,
+    "colors": [
+      "purple"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/vampirism.webp"
+  },
+  {
+    "id": "classic/traits/venomous",
+    "type": "trait",
+    "set": "classic",
+    "name": "Venomous",
+    "flavor": "My bite is worse than my bark.",
+    "effect": "Play another trait. Then move Venomous to an opponent's trait pile.",
+    "points": -2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/venomous.webp"
+  },
+  {
+    "id": "classic/traits/viral",
+    "type": "trait",
+    "set": "classic",
+    "name": "Viral",
+    "flavor": "Like, share, comment, and be sure to smash that subscribe button!",
+    "effect": "At World's End: Choose a color. Opponents receive -1 for each trait of that color in their trait pile.",
+    "points": 2,
+    "colors": [
+      "purple"
+    ],
+    "dominant": true,
+    "subspecies": [],
+    "icons": [
+      "drop-of-life",
+      "worlds-end"
+    ],
+    "image": "classic/traits/viral.webp"
+  },
+  {
+    "id": "classic/traits/voracious",
+    "type": "trait",
+    "set": "classic",
+    "name": "Voracious",
+    "flavor": "Don't look at me.",
+    "effect": "Play another trait. Then discard 1 trait from your trait pile.",
+    "points": 2,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [
+      "action"
+    ],
+    "image": "classic/traits/voracious.webp"
+  },
+  {
+    "id": "classic/traits/warm-blood",
+    "type": "trait",
+    "set": "classic",
+    "name": "Warm Blood",
+    "flavor": "Are you trying to boil my blood?",
+    "effect": "+2 Gene Pool",
+    "points": -1,
+    "colors": [
+      "red"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/warm-blood.webp"
+  },
+  {
+    "id": "classic/traits/woody-stems",
+    "type": "trait",
+    "set": "classic",
+    "name": "Woody Stems",
+    "flavor": "These here is how I transfer fluid from my roots to my shoots.",
+    "effect": null,
+    "points": 1,
+    "colors": [
+      "green"
+    ],
+    "dominant": false,
+    "subspecies": [],
+    "icons": [],
+    "image": "classic/traits/woody-stems.webp"
+  }
+]

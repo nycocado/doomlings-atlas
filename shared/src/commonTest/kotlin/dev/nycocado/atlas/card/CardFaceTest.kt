@@ -4,7 +4,7 @@ import dev.nycocado.atlas.compendium.CardKind
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-// Cards verbatim from assets/doomlings/cards.json.
+// Cards verbatim from the card data in assets/doomlings/<set>/cards.json.
 class CardFaceTest {
     private val confusion =
         Trait(

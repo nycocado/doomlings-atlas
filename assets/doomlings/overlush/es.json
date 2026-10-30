@@ -1,0 +1,897 @@
+{
+  "overlush/ages/age-of-adventure": {
+    "name": "Era de la Aventura",
+    "effect": "Descarta hasta 4 cartas de tu mano.\n\nRoba 1 carta. Si es de un color que acabas de descartar, puedes jugarla ahora.\n(Excepto dominantes.)\nIgnora las acciones."
+  },
+  "overlush/ages/age-of-certainty": {
+    "name": "Era de la Certeza",
+    "effect": "Durante esta age, pon el mazo al revés y roba las cartas boca arriba."
+  },
+  "overlush/ages/age-of-discovery": {
+    "name": "Era del Descubrimiento",
+    "effect": "Roba 3 cartas."
+  },
+  "overlush/ages/age-of-doubt": {
+    "name": "Era de la Duda",
+    "effect": "Los jugadores no pueden jugar traits con un valor nominal negativo."
+  },
+  "overlush/ages/age-of-envy": {
+    "name": "Era de la Envidia",
+    "effect": "Al final de tu turno, estabiliza hasta el tamaño del Gene Pool que está a tu derecha."
+  },
+  "overlush/ages/backwoods-melodies": {
+    "name": "Melodías del Campo",
+    "effect": "Juega de tu mano todos los traits con un valor nominal negativo.\n(Excepto dominantes.)\nIgnora las acciones."
+  },
+  "overlush/ages/cleansing-rains": {
+    "name": "Lluvias Purificadoras",
+    "effect": "Puedes descartar cualquier cantidad de cartas de tu mano."
+  },
+  "overlush/ages/crackletown": {
+    "name": "Villa Crepitante",
+    "effect": "Elige un color.\nEl jugador a tu izquierda te pasa 1 carta de ese color de su mano."
+  },
+  "overlush/ages/dueling-moons": {
+    "name": "Lunas en Duelo",
+    "effect": "Coloca 1 carta de tu mano en la parte superior del mazo de traits, O\nroba 1 carta del fondo del mazo de traits."
+  },
+  "overlush/ages/glimmering-gardens": {
+    "name": "Jardines Resplandecientes",
+    "effect": "Puedes descartar 1 trait de tu pila de traits."
+  },
+  "overlush/ages/harlequin-falls": {
+    "name": "Cascadas Arlequín",
+    "effect": "Elige un color y luego roba 3 cartas. Quédate con todas las del color elegido y descarta el resto."
+  },
+  "overlush/ages/king-of-the-jungle": {
+    "name": "Rey de la Selva",
+    "effect": "Todos los jugadores revelan 1 carta de su mano. Si muestras el mayor valor nominal, quédate con tus cartas. De lo contrario, descarta tu mano y roba 3 cartas.\n(¡Sin empates!)"
+  },
+  "overlush/ages/lingering-shadows": {
+    "name": "Sombras Persistentes",
+    "effect": "Los jugadores no pueden jugar traits multicolores."
+  },
+  "overlush/ages/lunar-advance": {
+    "name": "Avance Lunar",
+    "effect": "Puedes descartar todas las cartas moradas de tu mano."
+  },
+  "overlush/ages/misty-groves": {
+    "name": "Bosques Neblinosos",
+    "effect": "Puedes descartar todas las cartas verdes de tu mano."
+  },
+  "overlush/ages/nostalgia": {
+    "name": "Nostalgia",
+    "effect": "Puedes devolver un trait de tu pila de traits a tu mano."
+  },
+  "overlush/ages/rainstorms": {
+    "name": "Tormentas",
+    "effect": "Puedes descartar todas las cartas azules de tu mano."
+  },
+  "overlush/ages/ramblin-river-markets": {
+    "name": "Mercados del Río Errante",
+    "effect": "En orden de turno, elige un color.\nNi tú ni el jugador a tu izquierda pueden jugar ese color en esta age."
+  },
+  "overlush/ages/rustling-meadows": {
+    "name": "Prados Susurrantes",
+    "effect": "Puedes descartar 1 carta de tu mano. Si lo haces, roba 1 carta para reemplazarla."
+  },
+  "overlush/ages/slumberwood": {
+    "name": "Bosque Durmiente",
+    "effect": "Los jugadores no pueden jugar traits dominantes."
+  },
+  "overlush/ages/star-tails": {
+    "name": "Colas Estelares",
+    "effect": "Roba 3 cartas.\nNo puedes robar más cartas en este turno."
+  },
+  "overlush/ages/summer-solstice": {
+    "name": "Solsticio de Verano",
+    "effect": "Puedes descartar todas las cartas rojas de tu mano."
+  },
+  "overlush/ages/swamplands": {
+    "name": "Pantanos",
+    "effect": "Si juegas traits con acciones, descártalos después de estabilizar, dondequiera que estén."
+  },
+  "overlush/ages/tangled-canopies": {
+    "name": "Copas Enredadas",
+    "effect": "Baraja la pila de descarte en el mazo de traits."
+  },
+  "overlush/ages/the-legend-of-mokoko-village": {
+    "name": "La Leyenda de la Aldea Mokoko",
+    "effect": "Roba 1 carta.\nSi Heroic está en tu pila de traits, puedes jugar 2 traits en tu turno si ignoras sus acciones."
+  },
+  "overlush/ages/the-living-library": {
+    "name": "La Biblioteca Viviente",
+    "effect": "Antes de estabilizar, puedes volver a jugar una acción de tu pila de traits."
+  },
+  "overlush/ages/the-painted-valley": {
+    "name": "El Valle Pintado",
+    "effect": "Elige un color y luego roba 1 carta. Si es del color elegido, todos los oponentes también roban 1 carta."
+  },
+  "overlush/ages/the-stranger": {
+    "name": "El Forastero",
+    "effect": "Roba 1 carta.\nPuedes jugarla inmediatamente.\n(Excepto dominantes.)\nIgnora las acciones."
+  },
+  "overlush/catastrophes/algal-superbloom": {
+    "name": "Superfloración de Algas",
+    "effect": "+0 Gene Pool\n\nRoba 1 carta por cada valor nominal negativo en tu pila de traits.",
+    "worldsEnd": "+1 por cada trait azul en la pila de traits a tu izquierda."
+  },
+  "overlush/catastrophes/ancient-corruption": {
+    "name": "Corrupción Ancestral",
+    "effect": "-1 Gene Pool\n\nDescarta todas las acciones de tu mano.",
+    "worldsEnd": "-1 por todas las acciones en tu pila de traits."
+  },
+  "overlush/catastrophes/ashlands": {
+    "name": "Tierras de Ceniza",
+    "effect": "-1 Gene Pool\n\nDescarta todas las cartas moradas y azules de tu mano y estabiliza.",
+    "worldsEnd": "-4 si tienes 2 o menos traits morados en tu pila de traits."
+  },
+  "overlush/catastrophes/choking-vines": {
+    "name": "Enredaderas Asfixiantes",
+    "effect": "-1 Gene Pool\n\nIgnora las acciones azules y verdes.",
+    "worldsEnd": "+1 por cada trait verde en la pila de traits a tu izquierda."
+  },
+  "overlush/catastrophes/ecological-collapse": {
+    "name": "Colapso Ecológico",
+    "effect": "-1 Gene Pool\n\nDescarta 1 carta de tu mano por cada color en tu pila de traits.",
+    "worldsEnd": "+2 por cada valor nominal negativo en tu pila de traits."
+  },
+  "overlush/catastrophes/endless-monsoon": {
+    "name": "Monzón Interminable",
+    "effect": "-1 Gene Pool\n\nPasa todas las cartas moradas de tu mano a la derecha.",
+    "worldsEnd": "-1 por cada carta en tu mano."
+  },
+  "overlush/catastrophes/great-deluge": {
+    "name": "Gran Diluvio",
+    "effect": "-1 Gene Pool\n\nPasa todas las cartas azules de tu mano a la derecha.",
+    "worldsEnd": "-4 si tienes 2 o menos traits azules en tu pila de traits."
+  },
+  "overlush/catastrophes/invasive-species": {
+    "name": "Especie Invasora",
+    "effect": "-1 Gene Pool\n\nPasa todas las cartas verdes de tu mano a la derecha.",
+    "worldsEnd": "Descarta 1 carta de tu mano con un valor nominal de 7 o menos y añádela a tu puntuación final."
+  },
+  "overlush/catastrophes/jungle-rot": {
+    "name": "Podredumbre de la Selva",
+    "effect": "-1 Gene Pool\n\nIgnora las acciones rojas y moradas.",
+    "worldsEnd": "-4 si tienes 2 o menos traits verdes en tu pila de traits."
+  },
+  "overlush/catastrophes/planetary-deforestation": {
+    "name": "Deforestación Planetaria",
+    "effect": "-1 Gene Pool\n\nDescarta todas las cartas verdes y rojas de tu mano y estabiliza.",
+    "worldsEnd": "Resta tu Gene Pool de tu puntuación final."
+  },
+  "overlush/catastrophes/sacrifice": {
+    "name": "Sacrificio",
+    "effect": "-1 Gene Pool\n\nDevuelve a tu mano un trait con valor nominal positivo.",
+    "worldsEnd": "-4 si tienes 2 o menos traits rojos en tu pila de traits."
+  },
+  "overlush/catastrophes/strange-matter": {
+    "name": "Materia Extraña",
+    "effect": "-1 Gene Pool\n\nPasa todas las cartas rojas de tu mano a la derecha.",
+    "worldsEnd": "-2 por cada Gota de Vida en tu pila de traits."
+  },
+  "overlush/catastrophes/tragedy-of-the-commons": {
+    "name": "Tragedia de los Comunes",
+    "effect": "-1 Gene Pool\n\nElige un color en tu mano para quedarte con él. Descarta el resto.",
+    "worldsEnd": "Descarta 1 Gota de Vida de tu pila de traits."
+  },
+  "overlush/catastrophes/tropical-superstorm": {
+    "name": "Supertormenta Tropical",
+    "effect": "-1 Gene Pool\n\nPasa todas las cartas incoloras de tu mano a la derecha.",
+    "worldsEnd": "+1 por cada trait morado en la pila de traits a tu izquierda."
+  },
+  "overlush/catastrophes/volcanic-winter": {
+    "name": "Invierno Volcánico",
+    "effect": "-1 Gene Pool\n\nDescarta todas las cartas de tu mano con un valor nominal de 4 o más.",
+    "worldsEnd": "+1 por cada trait rojo en la pila de traits a tu izquierda."
+  },
+  "overlush/traits/adrenalized": {
+    "name": "Adrenalizado",
+    "effect": "Cuando comiences tu turno con 2 o menos cartas en la mano, roba 4 cartas inmediatamente.",
+    "flavor": "Vamos con todo. ¡Vamos a causar algo de ansiedad!"
+  },
+  "overlush/traits/agile": {
+    "name": "Ágil",
+    "effect": "Puedes descartar hasta 3 traits de tu pila de traits. Debes descartar 1 carta de tu mano por cada trait descartado de esta forma.",
+    "flavor": "Ligero de pies, rápido de mente y agudo como pocos."
+  },
+  "overlush/traits/antennae": {
+    "name": "Antenas",
+    "effect": "Juega una acción de un trait rojo de tu pila de traits. Luego, descarta todas las cartas de tu mano.",
+    "flavor": "Estoy esperando para cosechar sus excreciones almibaradas. Esto es normal."
+  },
+  "overlush/traits/apricity": {
+    "name": "Sol de Invierno",
+    "effect": "Si tienes 8 o menos cartas en la mano, puedes elegir no estabilizar.",
+    "flavor": "Cuando el calor del sol hace soportable el frío del invierno."
+  },
+  "overlush/traits/arrested-muscles": {
+    "name": "Músculos Paralizados",
+    "effect": "Roba 1 trait de la pila de descarte con un valor nominal de 2.",
+    "flavor": "Quieta, mi patita amasadora."
+  },
+  "overlush/traits/backbiter": {
+    "name": "Traicionero",
+    "effect": "+3 si tienes un trait negativo en tu pila de traits.",
+    "flavor": "Mmmm, por la espalda sabe mejor..."
+  },
+  "overlush/traits/barbels": {
+    "name": "Barbillones",
+    "flavor": "Bigotes de pez. Pezbigotes."
+  },
+  "overlush/traits/big-feller": {
+    "name": "Gran Castor",
+    "effect": "+6 si tienes 4 o menos traits con un valor nominal de 1 o menos.",
+    "flavor": "¡Ahora SÍ se construye un refugio!"
+  },
+  "overlush/traits/bitter-berries": {
+    "name": "Bayas Amargas",
+    "effect": "+1 por cada trait morado o por cada trait verde en tu pila de traits, del color que tienes en menor cantidad. (Si hay empate, ¡elige 1!)",
+    "flavor": "Listas para cosechar. Y para quejarse."
+  },
+  "overlush/traits/blossom": {
+    "name": "Flor de Cerezo",
+    "effect": "En el Fin del Mundo: Roba 4 cartas. Puedes jugar 1 desde tu mano. Juega las acciones.",
+    "flavor": "La vida es una copa de helado, y los amigos son la cereza encima."
+  },
+  "overlush/traits/booming-call": {
+    "name": "Grito Retumbante",
+    "effect": "Intercambia Booming Call con un trait de la pila de traits de un oponente. Juega su acción. No puedes volver a usar la acción de Booming Call en este turno."
+  },
+  "overlush/traits/booster": {
+    "name": "Revigorante",
+    "effect": "Puedes jugar Booster en cualquier momento. Estabiliza inmediatamente.",
+    "flavor": "Juégame cuando necesites un empujoncito rápido."
+  },
+  "overlush/traits/bottomfeeder": {
+    "name": "Comefondos",
+    "effect": "+2 Gene Pool. Roba 2 cartas del fondo del mazo de traits.",
+    "flavor": "No vas a creer lo que algunas personas tiran. O vomitan."
+  },
+  "overlush/traits/bushwhacker": {
+    "name": "Machetero",
+    "effect": "Todos los jugadores descartan 1 carta de su mano. Puedes robar 1 carta cualquiera de la pila de descarte.",
+    "flavor": "Hoy ando con ganas de cortar y rebanar."
+  },
+  "overlush/traits/caffeinated": {
+    "name": "Cafeinado",
+    "effect": "Todos los jugadores roban 3 cartas y dan 1 al oponente de su derecha.",
+    "flavor": "Dormir es para flojos."
+  },
+  "overlush/traits/cap": {
+    "name": "Sombrero",
+    "effect": "+1 Gene Pool. Si Cap se descarta de tu pila de traits, roba 3 cartas.",
+    "flavor": "Realmente completa el atuendo."
+  },
+  "overlush/traits/cheek-pouches": {
+    "name": "Cachetes",
+    "effect": "Roba 2 cartas. No estabilices en este turno.",
+    "flavor": "Tranquilo, no me los estoy comiendo. Los guardo para comérmelos después."
+  },
+  "overlush/traits/chompers": {
+    "name": "Dentudo",
+    "effect": "En el Fin del Mundo: Todos los oponentes descartan 1 trait aleatorio sin efecto de su pila de traits. Roba 1 carta por cada carta descartada.",
+    "flavor": "Ñam-ñam."
+  },
+  "overlush/traits/citrus": {
+    "name": "Cítrico",
+    "effect": "Para jugar, debes tener 1 trait con valor nominal negativo en tu pila de traits. +2 Gene Pool",
+    "flavor": "Cuando la vida te da a mí, ¡felicidades!"
+  },
+  "overlush/traits/cocoa": {
+    "name": "Cacao",
+    "effect": "Roba 3 cartas. Da 2 cartas de tu mano a tu(s) oponente(s) de tu elección.",
+    "flavor": "Uy, ahí voy otra vez derramando mis granos."
+  },
+  "overlush/traits/collector": {
+    "name": "Coleccionista",
+    "effect": "Cuando juegues Collector desde tu mano, roba 4 cartas. Puedes jugar 1 de cada color entre las cartas robadas. Descarta los dominantes. Ignora las acciones.",
+    "flavor": "¡Esa todavía no la tengo!"
+  },
+  "overlush/traits/compound-eyes": {
+    "name": "Ojos Compuestos",
+    "effect": "Juega una acción de un trait morado de tu pila de traits. Luego, descarta 1 carta aleatoria de tu mano.",
+    "flavor": "Hasta mis ojos tienen ojos."
+  },
+  "overlush/traits/constrictor": {
+    "name": "Constrictor",
+    "effect": "Todos los oponentes reciben: -1 Gene Pool.",
+    "flavor": "Piénsalo como un abrazo largo, fuerte y final."
+  },
+  "overlush/traits/contagious": {
+    "name": "Contagioso",
+    "effect": "Intercambia Contagious con un trait rojo de la pila de traits de un oponente. -1 por cada trait verde en tu pila de traits.",
+    "flavor": "¿Quieres una risita?"
+  },
+  "overlush/traits/dart": {
+    "name": "Dardo",
+    "effect": "¡No se puede jugar en tu turno! Juega Dart cuando un oponente retire un trait de tu pila de traits.",
+    "flavor": "En realidad solo estoy entrando en una relación tóxica."
+  },
+  "overlush/traits/docile": {
+    "name": "Dócil",
+    "flavor": "Viajero manso."
+  },
+  "overlush/traits/down": {
+    "name": "Plumón",
+    "flavor": "¿Te parezco suave?"
+  },
+  "overlush/traits/ear-flaps": {
+    "name": "Orejas de Abanico",
+    "flavor": "¡Hola! Soy el elefante en la habitación. ¡Me encantaría que todos hablaran de mí!"
+  },
+  "overlush/traits/electroreception": {
+    "name": "Electrorrecepción",
+    "effect": "Roba 3 cartas del fondo del mazo de traits. Puedes jugar una acción de 1 de ellas.",
+    "flavor": "Ven, pececito, pececito..."
+  },
+  "overlush/traits/elusive": {
+    "name": "Esquivo",
+    "effect": "¡No se puede jugar en tu turno! Cuando Elusive entre en tu mano durante un efecto de age o en el turno de un oponente, puedes jugarlo inmediatamente.",
+    "flavor": "Juega como el zorro."
+  },
+  "overlush/traits/epic": {
+    "name": "Épico",
+    "effect": "Para jugar, no puedes tener dominantes en tu pila de traits. Epic ocupa tu 1.er y 2.º espacio de dominante.",
+    "flavor": "¡Dame un oponente digno!"
+  },
+  "overlush/traits/euphoric": {
+    "name": "Eufórico",
+    "effect": "+6 si tienes 4 o más traits morados en tu pila de traits.",
+    "flavor": "¡Estoy en el séptimo cielo! Aunque el mundo se esté acabando..."
+  },
+  "overlush/traits/eusocial": {
+    "name": "Eusocial",
+    "effect": "Todos los jugadores dan 1 carta aleatoria de su mano al oponente de su izquierda.",
+    "flavor": "El trabajo en equipo hace realidad el sueño. Ahora, equipo, trabajen que yo voy a soñar."
+  },
+  "overlush/traits/eyestalks": {
+    "name": "Ojos de Caracol",
+    "effect": "Echa un vistazo a la mano de un oponente. Luego, juega otro trait.",
+    "flavor": "Protuberancias comúnmente asociadas a un estado de ojos como platos."
+  },
+  "overlush/traits/fabled": {
+    "name": "Fabuloso",
+    "effect": "Para jugar, debes descartar 4 colores diferentes de tu mano. +1 Gene Pool",
+    "flavor": "La moraleja de la historia es que soy increíble."
+  },
+  "overlush/traits/face-hugger": {
+    "name": "Abrazacaras",
+    "flavor": "Ahora somos amigos."
+  },
+  "overlush/traits/fardingbag": {
+    "name": "Panza",
+    "flavor": "El estómago superior de una vaca. ¿Qué más podría ser?"
+  },
+  "overlush/traits/fearful-symmetry": {
+    "name": "Simetría Temible",
+    "effect": "Puedes jugar otro trait con un valor nominal de 2. Juega su acción.",
+    "flavor": "Cuando ves el patrón, ya es demasiado tarde."
+  },
+  "overlush/traits/fierce": {
+    "name": "Feroz",
+    "effect": "Puedes descartar hasta 2 traits de tu pila de traits. Roba 2 cartas por cada carta descartada.",
+    "flavor": "Vas a necesitar una pila de traits más pequeña."
+  },
+  "overlush/traits/filter-feeder": {
+    "name": "Filtrador",
+    "effect": "+1 Gene Pool",
+    "flavor": "Plancton, algas, latas... échalo todo, luego lo separo yo."
+  },
+  "overlush/traits/firebite": {
+    "name": "Mordida de Fuego",
+    "effect": "Puedes jugar Firebite después de estabilizar para arrebatar 1 carta aleatoria de la mano de cada oponente.",
+    "flavor": "Le di una buena calentada a tu situación."
+  },
+  "overlush/traits/fleece": {
+    "name": "Lana",
+    "flavor": "¡Yo hago mis propios suéteres!"
+  },
+  "overlush/traits/fleshy-scales": {
+    "name": "Escamas Carnosas",
+    "effect": "Si Fleshy Scales es retirado de tu pila de traits, roba 1 carta.",
+    "flavor": "Armadura blandita."
+  },
+  "overlush/traits/floofy": {
+    "name": "Peludito",
+    "flavor": "Más tierno que la mayoría de los botones."
+  },
+  "overlush/traits/freckles": {
+    "name": "Pecas",
+    "flavor": "No hay dos iguales."
+  },
+  "overlush/traits/grooming-claws": {
+    "name": "Garras de Salón",
+    "effect": "Todos los jugadores descartan 1 carta aleatoria de su mano.",
+    "flavor": "Hazte las uñas y luego luce un peinado impecable."
+  },
+  "overlush/traits/gular-pouch": {
+    "name": "Papada",
+    "flavor": "Parece que no tengo más remedio que dar la cara por todos."
+  },
+  "overlush/traits/harmony": {
+    "name": "Armonía",
+    "effect": "+2 por cada conjunto de los 4 colores en tu pila de traits.",
+    "flavor": "Un, dos, un, dos, tres, cuatro..."
+  },
+  "overlush/traits/harrier": {
+    "name": "Aguilucho",
+    "effect": "Hasta el Fin del Mundo: Después de estabilizar, puedes descartar 1 trait sin efecto de tu mano para robar 3 cartas.",
+    "flavor": "Más vale pájaro en mano... varios puntos, ¡así que juégalo!"
+  },
+  "overlush/traits/haustorium": {
+    "name": "Haustorio",
+    "effect": "Baraja la pila de descarte en el mazo de traits, luego descarta tu mano.",
+    "flavor": "Mete la mano hasta el fondo y mira qué encuentras."
+  },
+  "overlush/traits/hive-mind": {
+    "name": "Mente Colmena",
+    "effect": "Intercambia hasta 2 traits con valor nominal positivo de tu pila de traits por cualquier trait de cualquier pila de traits.",
+    "flavor": "Las grandes colmenas piensan igual."
+  },
+  "overlush/traits/hydrofuge": {
+    "name": "Hidrófugo",
+    "effect": "Juega una acción de un trait azul de la pila de traits de un oponente. Devuelve ese trait a la mano de su dueño.",
+    "flavor": "Hola, humedad, mi mayor pesadilla."
+  },
+  "overlush/traits/illusory": {
+    "name": "Ilusorio",
+    "effect": "Hasta el Fin del Mundo: Después de estabilizar, si no jugaste ninguna acción en tu turno, puedes jugar una acción de una carta de tu mano y luego descartarla. (Ignora todas las demás acciones.)",
+    "flavor": "Hágase el truco."
+  },
+  "overlush/traits/indomitable": {
+    "name": "Indomable",
+    "effect": "-2 Gene Pool",
+    "flavor": "O vas a lo grande, o vas a lo gorila."
+  },
+  "overlush/traits/infectious": {
+    "name": "Infeccioso",
+    "effect": "-1 Gene Pool. Intercambia Infectious con un trait azul de la pila de traits de un oponente.",
+    "flavor": "¡Achís!"
+  },
+  "overlush/traits/ironwood": {
+    "name": "Palo de Hierro",
+    "effect": "Excepto dominantes, si tienes 5 o menos traits verdes en tu pila de traits, no pueden ser retirados.",
+    "flavor": "En el fondo, bajo esta corteza endurecida, solo soy un árbol."
+  },
+  "overlush/traits/jumpy": {
+    "name": "Brincón",
+    "effect": "Arrebata 1 trait de la pila de traits de un oponente cuyo Gene Pool sea mayor que el tuyo.",
+    "flavor": "Vaya, esta es rara. Solo hicieron un número muy limitado de estas, ¡croac!"
+  },
+  "overlush/traits/kidney": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con una corona de la selva."
+  },
+  "overlush/traits/kidney-2": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con un casco de explorador."
+  },
+  "overlush/traits/kidney-3": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con un sombrero tutti frutti."
+  },
+  "overlush/traits/kidney-4": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con un gato que es sombrero."
+  },
+  "overlush/traits/kidney-5": {
+    "name": "Riñón",
+    "effect": "El valor es igual al número de Kidneys en tu pila de traits. (Incluyendo este.)",
+    "flavor": "...con un ídolo de mono."
+  },
+  "overlush/traits/lily-pad": {
+    "name": "Nenúfar",
+    "effect": "En el Fin del Mundo: Devuelve hasta 3 traits de tu pila de traits a tu mano. +1 por cada trait devuelto de esta forma.",
+    "flavor": "La cama de agua original."
+  },
+  "overlush/traits/lucky": {
+    "name": "Suertudo",
+    "effect": "Puedes jugar Lucky en cualquier momento.",
+    "flavor": "La fortuna favorece al conejito."
+  },
+  "overlush/traits/mammoth": {
+    "name": "Mamut",
+    "flavor": "Peludo, peludo, peludo y enorme."
+  },
+  "overlush/traits/mandibles": {
+    "name": "Mandíbulas",
+    "effect": "Juega una acción de un trait verde de la pila de traits de un oponente. Luego, devuélvelo a la mano de su dueño.",
+    "flavor": "Bueno, usar hilo dental es fácil."
+  },
+  "overlush/traits/mane": {
+    "name": "Melena",
+    "flavor": "Vas a ganar por un pelo. Por uno de mis pelos gruesos y sedosos."
+  },
+  "overlush/traits/meek": {
+    "name": "Manso",
+    "effect": "Si hay 3 o menos traits rojos en tu pila de traits, no pueden ser retirados.",
+    "flavor": "¡¿Voy a heredar QUÉ?!"
+  },
+  "overlush/traits/metamorphosis": {
+    "name": "Metamorfosis",
+    "effect": "Para jugar, debes descartar 3 traits de tu pila de traits con un valor nominal de 1 o más.",
+    "flavor": "¡Soy la polilla más linda del baile!"
+  },
+  "overlush/traits/mimicry": {
+    "name": "Mimetismo",
+    "effect": "Si solo juegas 1 trait en tus turnos, puedes jugar 1 trait con un valor nominal de 1 después de estabilizar. Ignora su acción.",
+    "flavor": "¡Uno y NO terminé! ¡Uno y NO terminé!"
+  },
+  "overlush/traits/motion-dazzle": {
+    "name": "Rayas Deslumbrantes",
+    "effect": "+1 Gene Pool. Puedes jugar Motion Dazzle desde tu mano cuando un trait salga de tu pila de traits.",
+    "flavor": "Deslumbrado por la raya."
+  },
+  "overlush/traits/muse": {
+    "name": "Musa",
+    "effect": "¡No se puede jugar en tu turno! Si Muse es descartado de tu mano, puedes, en lugar de eso, jugarlo en tu pila de traits.",
+    "flavor": "Solo esperando la inspiración."
+  },
+  "overlush/traits/mutualism": {
+    "name": "Mutualismo",
+    "effect": "Todos los oponentes reciben: +1 Gene Pool. Añade el valor del mayor Gene Pool a tu puntuación final.",
+    "flavor": "¡Eres mi nuevo mejor amigo! ¿Cómo te llamabas?"
+  },
+  "overlush/traits/mycelium": {
+    "name": "Micelio",
+    "effect": "Si Mycelium es retirado de tu pila de traits en tu turno, puedes jugar primero la carta de la parte superior de la pila de descarte. Juega las acciones.",
+    "flavor": "Claro que puedes unirte a mi red. Siempre hay lugar para un hongo más."
+  },
+  "overlush/traits/mycotoxins": {
+    "name": "Micotoxinas",
+    "effect": "Si Mycotoxins es descartado de tu pila de traits, todos los jugadores descartan 2 cartas aleatorias de su mano y estabilizan inmediatamente.",
+    "flavor": "Siempre es bueno ponerse al día con los amigos mohosos."
+  },
+  "overlush/traits/nectar": {
+    "name": "Néctar",
+    "effect": "En el Fin del Mundo: Elige un color. Todos los oponentes pueden jugar 1 del color elegido. (Excepto dominantes.) Ignora las acciones.",
+    "flavor": "Un poquito para ti, un poquito para mí."
+  },
+  "overlush/traits/nimble": {
+    "name": "Ligero",
+    "effect": "Puedes descartar Nimble de tu mano durante tu turno para descartar un trait de tu pila de traits.",
+    "flavor": "Listo para sacrificarse por el equipo."
+  },
+  "overlush/traits/noxious": {
+    "name": "Nocivo",
+    "effect": "Intercambia Noxious con un trait morado de la pila de traits de un oponente. -1 por cada trait rojo en tu pila de traits.",
+    "flavor": "No digas tonterías, mi padre era el Insoportable. A mí llámame desagradable."
+  },
+  "overlush/traits/nuptial-plumage": {
+    "name": "Plumaje Nupcial",
+    "effect": "+2 por cada color del que tengas 3 o más en tu pila de traits.",
+    "flavor": "Juro que nunca, NUNCA dejaré de hablar de mis plumas."
+  },
+  "overlush/traits/nutty": {
+    "name": "Loquillo",
+    "effect": "Elige un oponente. Ese oponente roba 3 cartas y te da 1.",
+    "flavor": "Yo seguro no puedo. ¿Tal vez tú sí?"
+  },
+  "overlush/traits/opposable-thumbs": {
+    "name": "Pulgares Oponibles",
+    "effect": "Para jugar, debes tener un trait dominante en tu pila de traits. Juega este como una copia exacta de tu otro dominante, ahora y por el resto del juego.",
+    "flavor": "Mono ve, mono hace."
+  },
+  "overlush/traits/patches": {
+    "name": "Manchas",
+    "effect": "Puedes jugar Patches después de que un trait sea retirado de tu pila de traits. Devuelve ese trait a tu pila de traits. (¡A menos que haya sido retirado por un dominante!)",
+    "flavor": "Me gusta garabatear en la arena con mi bastón de sabiduría."
+  },
+  "overlush/traits/pinchy": {
+    "name": "Pinzas",
+    "effect": "Puedes jugar Pinchy cuando un oponente juegue un trait. Interrumpe su acción y añádelo a tu mano. Ese oponente puede jugar otro trait.",
+    "flavor": "Nadie está por encima de la pinza."
+  },
+  "overlush/traits/playful": {
+    "name": "Juguetón",
+    "effect": "Todos los jugadores te dan 1 carta aleatoria de su mano. Luego, da 1 carta de tu mano a cada jugador a cambio.",
+    "flavor": "Combinando el placer con el placer."
+  },
+  "overlush/traits/procrastination": {
+    "name": "Procrastinación",
+    "effect": "Puedes jugar Procrastination después de que termine el turno del último jugador. Si lo haces, haz otro turno en esta age.",
+    "flavor": "Iba a ir al gimnasio, pero no me cuadró con mi horario."
+  },
+  "overlush/traits/prolific": {
+    "name": "Prolífico",
+    "effect": "+6 si tienes 4 o más traits verdes en tu pila de traits.",
+    "flavor": "¡He producido muchas obras! Aunque muchas de ellas no funcionan..."
+  },
+  "overlush/traits/prowler": {
+    "name": "Merodeador",
+    "effect": "Todos los oponentes reciben: -2 por cada color en el que tengan menos traits en su pila de traits que tú.",
+    "flavor": "Merodeando de noche, acechando en las sombras, un curioso espeluznante."
+  },
+  "overlush/traits/psychedelic": {
+    "name": "Psicodélico",
+    "effect": "Reinicia la age. Ahora eres el primer jugador. Haz tu turno. (No puedes reiniciar catastrophes.)",
+    "flavor": "Wow...creo que ya había visto esto antes."
+  },
+  "overlush/traits/pyrophyte": {
+    "name": "Pirófita",
+    "effect": "En el Fin del Mundo: Roba 4 cartas. Puedes jugar cualquiera con un valor nominal de 2 o menos. Ignora las acciones.",
+    "flavor": "¿Arder en gloria? Suena a una buena forma de despedirme."
+  },
+  "overlush/traits/quills": {
+    "name": "Púas",
+    "effect": "Puedes jugar Quills en la pila de traits de un oponente cuando este retire un trait de tu pila de traits.",
+    "flavor": "Tengo unas...puntas... ...ideas...afiladas...unos...consejos... si me permites pincharte...jeje..."
+  },
+  "overlush/traits/ravenous": {
+    "name": "Hambriento",
+    "effect": "Cuando juegues un trait rojo en tu turno, roba 3 cartas antes de jugar su efecto.",
+    "flavor": "Siempre quiere otro bocado."
+  },
+  "overlush/traits/rover": {
+    "name": "Trotamundos",
+    "effect": "Elige un color. Mira las 5 cartas del fondo del mazo de traits. Puedes jugar 1 del color elegido.",
+    "flavor": "No estoy ni aquí ni allá."
+  },
+  "overlush/traits/ruffled": {
+    "name": "Erizado",
+    "flavor": "No es que yo sea de mal humor, es que todo es molesto."
+  },
+  "overlush/traits/sapient": {
+    "name": "Sapiente",
+    "effect": "Echa un vistazo a las últimas 2 ages de la pila de ages, O echa un vistazo a la siguiente age.",
+    "flavor": "Saber que estamos condenados es fácil. El truco es saber cuándo."
+  },
+  "overlush/traits/scavenger": {
+    "name": "Carroñero",
+    "effect": "Al estabilizar, puedes, en lugar de eso, robar de la parte superior de la pila de descarte.",
+    "flavor": "Que lo hayan tirado no significa que no sirva."
+  },
+  "overlush/traits/scruffy": {
+    "name": "Desaliñado",
+    "flavor": "Me baño cuando todos dejen de abrazarme."
+  },
+  "overlush/traits/seedwing": {
+    "name": "Semilla Alada",
+    "effect": "En tu turno, puedes descartar Seedwing de tu pila de traits y jugar un trait adicional. Ignora su acción.",
+    "flavor": "¡Ah, qué bien! Digo, esto no me ayudará a volar, ¡pero me voy a ver genial al caer!"
+  },
+  "overlush/traits/seeker": {
+    "name": "Cazatesoros",
+    "effect": "Elige un valor nominal. Roba 5 cartas. Juega 1 del valor nominal elegido. Descarta el resto.",
+    "flavor": "Según este mapa, el tesoro está en...¡¿los amigos que hicimos en el camino?!"
+  },
+  "overlush/traits/self-pruning": {
+    "name": "Autopoda",
+    "effect": "Descarta 1 trait de tu pila de traits O 1 carta de tu mano.",
+    "flavor": "¡¿Por qué me hago esto a mí mismo?!"
+  },
+  "overlush/traits/shady": {
+    "name": "Sombreado",
+    "effect": "Roba 3 cartas. Juega 1 carta de tu mano en la pila de traits de un oponente. Sin dominantes. Ignora su acción.",
+    "flavor": "Un lugar fresco y sin costo de entrada."
+  },
+  "overlush/traits/shy": {
+    "name": "Tímido",
+    "effect": "+5 si tienes al menos 2 de cada color en tu pila de traits.",
+    "flavor": "¡Me encanta cuando todos están cerca! Así puedo esconderme al fondo..."
+  },
+  "overlush/traits/silk": {
+    "name": "Seda",
+    "effect": "Para jugar, debes tener un Gene Pool de 4 o menos. +2 Gene Pool.",
+    "flavor": "¡Lo hice yo mismo! Con...yo mismo..."
+  },
+  "overlush/traits/skimmer": {
+    "name": "Libélula",
+    "effect": "Una vez por turno, después de jugar un trait sin efecto, puedes volver a jugar 1 acción de tu pila de traits.",
+    "flavor": "¡Vuela, mi maravilloso dragón, vuela!"
+  },
+  "overlush/traits/sleek": {
+    "name": "Liso",
+    "effect": "Devuelve un trait con acción de tu pila de traits a tu mano.",
+    "flavor": "Bajo suavecito. Pregúntale a cualquier serpiente."
+  },
+  "overlush/traits/sleepy": {
+    "name": "Somnoliento",
+    "effect": "Puedes jugar Sleepy después de que se revele una catastrophe para ignorar el efecto de Gene Pool.",
+    "flavor": "Despiértame cuando nada esté en llamas."
+  },
+  "overlush/traits/slender-gams": {
+    "name": "Piernas Delgadas",
+    "flavor": "Depilarlas es un problema."
+  },
+  "overlush/traits/snap-trap": {
+    "name": "Planta Carnívora",
+    "effect": "Puedes jugar Snap-Trap cuando un oponente juegue 2 o más traits en su turno. Arrebata 1 de esos traits.",
+    "flavor": "Se abre, se cierra y ya es mío."
+  },
+  "overlush/traits/snuffler": {
+    "name": "Husmeador",
+    "effect": "Descarta todas las cartas con efecto de tu mano.",
+    "flavor": "Tengo olfato para las trufas."
+  },
+  "overlush/traits/sour-grapes": {
+    "name": "Uvas Agrias",
+    "effect": "+1 por cada trait azul o por cada trait rojo en tu pila de traits, del color que tienes en menor cantidad. (Si hay empate, ¡elige 1!)",
+    "flavor": "Una fuente de mal vino y de muchas quejas."
+  },
+  "overlush/traits/sparkles": {
+    "name": "Destellos",
+    "effect": "Los traits en tu mano cuentan para tus bonificaciones de Gota de Vida en tu pila de traits.",
+    "flavor": "La brillantina combina con todo."
+  },
+  "overlush/traits/spearfisher": {
+    "name": "Martín Pescador",
+    "flavor": "Eso es quedarse con la cuenta... en el pico."
+  },
+  "overlush/traits/spectacled": {
+    "name": "Con Lentes",
+    "flavor": "Estos ojos me ayudan a ver quién es quién."
+  },
+  "overlush/traits/spicy": {
+    "name": "Picante",
+    "effect": "+1 por cada trait rojo o por cada trait verde en tu pila de traits, del color que tienes en menor cantidad. (Si hay empate, ¡elige 1!)",
+    "flavor": "Personas prudentes prefieren preparar pimientos particularmente picantes en vinagre."
+  },
+  "overlush/traits/spores": {
+    "name": "Esporas",
+    "effect": "Si Spores se descarta de tu pila de traits, gana: +1 Gene Pool.",
+    "flavor": "Un grupo de hongos muy buena onda."
+  },
+  "overlush/traits/spots": {
+    "name": "Pintas",
+    "effect": "En el Fin del Mundo: Elige un color. Todos los oponentes revelan todas las cartas de ese color de su mano. Juega 1 inmediatamente. Ignora las acciones.",
+    "flavor": "Te hacen difícil de encontrar."
+  },
+  "overlush/traits/sprightly": {
+    "name": "Vivaracho",
+    "effect": "Juega una acción de tu pila de traits. Luego, descarta ese trait.",
+    "flavor": "Listo para saltar a la acción."
+  },
+  "overlush/traits/stasher": {
+    "name": "Acaparador",
+    "effect": "Puedes colocar hasta 3 cartas de tu mano en el fondo del mazo de traits.",
+    "flavor": "¿Crees que me quedaré con eso? Estás loco."
+  },
+  "overlush/traits/sticky-stalks": {
+    "name": "Tallos Pegajosos",
+    "flavor": "Te guardo para después."
+  },
+  "overlush/traits/stinging-tendrils": {
+    "name": "Zarcillos Urticantes",
+    "effect": "Intercambia 1 trait de tu pila de traits por 1 trait de la pila de traits de un oponente de color diferente. (Excepto este.)",
+    "flavor": "Esto se vería mejor allá."
+  },
+  "overlush/traits/strange": {
+    "name": "Extraño",
+    "effect": "Hasta el Fin del Mundo: Cuando juegues un trait sin efecto, puedes activar un efecto catastrófico de cualquier catastrophe jugada anteriormente.",
+    "flavor": "Whimmy zap bam woppa tummy tam wapple!"
+  },
+  "overlush/traits/super-sneaky": {
+    "name": "Supersigiloso",
+    "effect": "¡No se puede jugar en tu turno! En el Fin del Mundo: Puedes jugar Super Sneaky desde tu mano.",
+    "flavor": "Cariño, ¿el sofá siempre estuvo inclinado a 45 grados?"
+  },
+  "overlush/traits/swampy": {
+    "name": "Pantanoso",
+    "effect": "Roba 3 cartas del fondo del mazo de traits.",
+    "flavor": "Genial, toqué fondo."
+  },
+  "overlush/traits/swarm": {
+    "name": "Enjambre",
+    "effect": "El valor es igual al número de traits Swarm en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Venimos por el celular nuevo."
+  },
+  "overlush/traits/swarm-2": {
+    "name": "Enjambre",
+    "effect": "El valor es igual al número de traits Swarm en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Venimos por el celular nuevo."
+  },
+  "overlush/traits/swarm-3": {
+    "name": "Enjambre",
+    "effect": "El valor es igual al número de traits Swarm en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Venimos por el celular nuevo."
+  },
+  "overlush/traits/swarm-4": {
+    "name": "Enjambre",
+    "effect": "El valor es igual al número de traits Swarm en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Venimos por el celular nuevo."
+  },
+  "overlush/traits/swarm-5": {
+    "name": "Enjambre",
+    "effect": "El valor es igual al número de traits Swarm en todas las pilas de traits. (Incluyendo este.)",
+    "flavor": "Venimos por el celular nuevo."
+  },
+  "overlush/traits/sweet": {
+    "name": "Dulce",
+    "effect": "+1 por cada trait verde o por cada trait azul en tu pila de traits, del color que tienes en menor cantidad. (Si hay empate, ¡elige 1!)",
+    "flavor": "Te quiero con ternura, te quiero con dulzura, eres mi media naranja."
+  },
+  "overlush/traits/sycophant": {
+    "name": "Adulador",
+    "effect": "+5 si algún oponente tiene 5 o más traits rojos en su pila de traits.",
+    "flavor": "¿Me firmas este mechón de pelo? Es tuyo, obviamente."
+  },
+  "overlush/traits/tenacious": {
+    "name": "Tenaz",
+    "effect": "+6 si tienes 4 o más traits rojos en tu pila de traits.",
+    "flavor": "Desentierra tu potencial."
+  },
+  "overlush/traits/tiny-teeth": {
+    "name": "Dientecitos",
+    "flavor": "Para masticar, triturar y desmenuzar."
+  },
+  "overlush/traits/toe-beans": {
+    "name": "Almohadillas",
+    "effect": "Arrebata un trait con valor nominal negativo de la pila de traits de un oponente.",
+    "flavor": "Me vuelven sigiloso y da gusto apretarlas."
+  },
+  "overlush/traits/torpor": {
+    "name": "Letargo",
+    "effect": "Roba 2 cartas del fondo del mazo de traits O coloca 1 carta de tu mano en el fondo del mazo de traits.",
+    "flavor": "Debo descansar para que mi mente y mi cuerpo estén listos para el regreso de mi sándwich de temporada favorito."
+  },
+  "overlush/traits/toxic": {
+    "name": "Tóxico",
+    "effect": "Intercambia Toxic con un trait verde de la pila de traits de un oponente. Si Toxic es descartado de tu pila de traits, roba 2 cartas.",
+    "flavor": "Cada vez que ella habla, te enfermas."
+  },
+  "overlush/traits/trapper": {
+    "name": "Trampero",
+    "effect": "Coloca hasta 5 traits dominantes de la pila de descarte en la parte superior del mazo de traits, en cualquier orden.",
+    "flavor": "Hace bastante frío afuera. Quizás atrape algo."
+  },
+  "overlush/traits/tricky-vines": {
+    "name": "Enredaderas Tramposas",
+    "effect": "Todos los jugadores pasan su mano a la derecha. Luego, puedes jugar otro trait.",
+    "flavor": "¡Te distraigo con este mientras te golpeo con este!"
+  },
+  "overlush/traits/trippy": {
+    "name": "Alucinado",
+    "effect": "Puedes jugar Trippy en cualquier momento y robar 3 cartas.",
+    "flavor": "Wow."
+  },
+  "overlush/traits/ursine": {
+    "name": "Ursino",
+    "flavor": "Los abrazos de oso de verdad suelen ser fatales."
+  },
+  "overlush/traits/vagabond": {
+    "name": "Vagabundo",
+    "effect": "Todos los oponentes juegan 1 trait. (Sin dominantes.) Ignora las acciones. Arrebata 1 de esos traits O juega un trait adicional.",
+    "flavor": "¡No sigo las reglas de nadie! Ni siquiera las mías."
+  },
+  "overlush/traits/vivacious": {
+    "name": "Vivaz",
+    "effect": "+6 si tienes 4 o más traits azules en tu pila de traits.",
+    "flavor": "Ama tu vida."
+  },
+  "overlush/traits/wanderlust": {
+    "name": "Sed de Aventura",
+    "effect": "Roba 1 carta. Puedes jugarla ahora O robar 1 carta del fondo del mazo de traits. En lugar de eso, puedes jugar esa carta ahora.",
+    "flavor": "¡No estoy perdido! Solo no sé dónde estoy."
+  },
+  "overlush/traits/webber": {
+    "name": "Tejedor",
+    "flavor": "Un poco de cinta adhesiva probablemente lo arreglaría."
+  },
+  "overlush/traits/whistler": {
+    "name": "Silbador",
+    "effect": "Hasta el Fin del Mundo: Puedes descartar hasta 2 cartas de tu mano antes de estabilizar.",
+    "flavor": "¡IiIi! ¡Ii! ¡IiIiIiIi!"
+  },
+  "overlush/traits/willow": {
+    "name": "Sauce",
+    "effect": "Roba 3 cartas. Descarta 3 cartas de tu mano en el fondo del mazo de traits.",
+    "flavor": "Da sombra, pero de la buena."
+  },
+  "overlush/traits/woolly": {
+    "name": "Lanudo",
+    "effect": "Descarta la carta de la parte superior del mazo de traits. Todos los jugadores deben descartar de su mano todas las cartas de ese color y estabilizar inmediatamente.",
+    "flavor": "¡Ya tuve suficiente de este estómago de gato! ¡Es hora de salir de aquí!"
+  },
+  "overlush/traits/xylophage": {
+    "name": "Xilófago",
+    "effect": "Para jugar, debes descartar 1 trait verde de tu pila de traits. +1 Gene Pool",
+    "flavor": "Vaya, ahora necesito un palillo de dientes."
+  }
+}
