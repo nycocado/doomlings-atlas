@@ -68,8 +68,9 @@ class CardPane internal constructor(
         backStack.add(CardKey(id, backStack.count { it is CardKey }))
     }
 
+    // A card fading out keeps its back button, which can fire again once the card is gone.
     fun close() {
-        backStack.removeLastOrNull()
+        if (backStack.lastOrNull() is CardKey) backStack.removeLastOrNull()
     }
 
     // Movable, so it keeps its tilt and scroll. One per depth, as a cited card and its citer are on screen together.

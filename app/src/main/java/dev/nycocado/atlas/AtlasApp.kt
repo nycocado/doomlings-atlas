@@ -78,7 +78,7 @@ fun AtlasApp() {
         backStack = backStack,
         // Shows wherever the panes leave room, like around the fold.
         modifier = Modifier.background(AtlasTheme.colors.surface),
-        onBack = { backStack.removeLastOrNull() },
+        onBack = { if (backStack.size > 1) backStack.removeLastOrNull() },
         sceneStrategies = listOf(listDetail),
         entryProvider =
             entryProvider {
@@ -112,7 +112,7 @@ fun AtlasApp() {
                 ) { key ->
                     cardPane.Detail(key, layout) { backStack.add(AboutKey) }
                 }
-                entry<AboutKey> { AboutScreen { backStack.removeLastOrNull() } }
+                entry<AboutKey> { AboutScreen { if (backStack.lastOrNull() == AboutKey) backStack.removeLastOrNull() } }
             },
     )
 }
