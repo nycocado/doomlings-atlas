@@ -8,6 +8,7 @@ composeBom = "2026.09.00"
 spotless = "8.10.4"
 ktlint = "1.8.0"
 kotlinxSerialization = "1.11.0"
+ktStringSimilarity = "0.1.0"
 hilt = "2.60.1"
 androidxHilt = "1.4.0"
 ksp = "2.3.12"
@@ -43,6 +44,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+kt-string-similarity = { group = "ca.solo-studios", name = "kt-string-similarity", version.ref = "ktStringSimilarity" }
 # Not a dependency: Spotless runs ktlint by version. Listed so Dependabot keeps "ktlint" updated.
 ktlint-cli = { group = "com.pinterest.ktlint", name = "ktlint-cli", version.ref = "ktlint" }
 

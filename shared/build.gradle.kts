@@ -21,6 +21,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kt.string.similarity)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
