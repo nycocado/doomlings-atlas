@@ -27,8 +27,8 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 Their rules are in the rulesheet of each set, in [`assets/doomlings/rules`](assets/doomlings/rules); [docs/rules.md](docs/rules.md) covers only Classic until scoring (phase 4).
 
 - **Meaning of Life**: a hidden objective card of Upgrade (`MoL` on the card): each player keeps one secretly, and its bonus counts at the end of the game if they met it. [Rulesheet](assets/doomlings/rules/upgrade.pdf).
-- **Treasure**: a hidden one-use card of Legends of Enderas, held apart from the hand. Its glyphs say when it can be used. [Rulesheet](assets/doomlings/rules/legends-of-enderas.pdf).
-- **Merchant**: one of the four cards of Imaginary Ends that work like ages and interact with trinkets. [Rulesheet](assets/doomlings/rules/imaginary-ends.pdf).
+- **Treasure**: a hidden one-use card of Legends of Enderas, held apart from the hand. Each effect says when it can be used. [Rulesheet](assets/doomlings/rules/legends-of-enderas.pdf).
+- **Merchant**: one of the four merchants of Imaginary Ends (several copies each), which work like ages and interact with trinkets. [Rulesheet](assets/doomlings/rules/imaginary-ends.pdf).
 - **Trinket**: a card of Imaginary Ends with an objective and a power that works while it is face up; meeting the objective keeps its points for World's End. [Rulesheet](assets/doomlings/rules/imaginary-ends.pdf).
 
 ## Card Data
