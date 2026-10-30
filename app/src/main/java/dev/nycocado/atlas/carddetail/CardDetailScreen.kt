@@ -90,10 +90,13 @@ import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.text
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.intl.LocaleList
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
@@ -103,16 +106,20 @@ import androidx.compose.ui.unit.round
 import androidx.compose.ui.util.lerp
 import coil3.compose.AsyncImage
 import dev.nycocado.atlas.R
+import dev.nycocado.atlas.card.Age
 import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardFace
 import dev.nycocado.atlas.card.CardFact
 import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardLibrary
+import dev.nycocado.atlas.card.CardLookup
 import dev.nycocado.atlas.card.CardSection
 import dev.nycocado.atlas.card.CardText
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
+import dev.nycocado.atlas.card.Citation
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
@@ -129,6 +136,7 @@ import dev.nycocado.atlas.ui.component.UnofficialFooter
 import dev.nycocado.atlas.ui.component.colorName
 import dev.nycocado.atlas.ui.component.pointsText
 import dev.nycocado.atlas.ui.component.signed
+import dev.nycocado.atlas.ui.theme.AtlasColors
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Radius
@@ -148,8 +156,10 @@ fun CardDetailScreen(
     chosen: CardLanguage,
     onLanguageChange: (CardLanguage) -> Unit,
     layout: ListDetailLayout,
+    library: CardLibrary,
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
+    onCardClick: (String) -> Unit,
 ) {
     // A new angle each time the card opens, kept while it stays open, rotation included. Never within 1.5° of
     // straight, where the card stops looking like it lies on the table.
@@ -161,7 +171,19 @@ fun CardDetailScreen(
     val languages = (card as? NamedCard)?.let { translations.languages(it) }.orEmpty()
     val language = chosen.takeIf { it in languages } ?: CardLanguage.English
     val text = (card as? NamedCard)?.let { translations.text(it, language) }
-    CardDetailContent(card, tilt, onBack, onAboutClick, layout, text, languages, language, onLanguageChange)
+    CardDetailContent(
+        card = card,
+        tilt = tilt,
+        onBack = onBack,
+        onAboutClick = onAboutClick,
+        layout = layout,
+        text = text,
+        languages = languages,
+        language = language,
+        onLanguageChange = onLanguageChange,
+        library = library,
+        onCardClick = onCardClick,
+    )
 }
 
 @Composable
@@ -175,6 +197,8 @@ fun CardDetailContent(
     languages: List<CardLanguage> = listOf(CardLanguage.English),
     language: CardLanguage = CardLanguage.English,
     onLanguageChange: (CardLanguage) -> Unit = {},
+    library: CardLibrary = CardLibrary.loading,
+    onCardClick: (String) -> Unit = {},
 ) {
     val theme = AtlasTheme.colors
     if (card !is NamedCard || text == null) return
@@ -245,12 +269,15 @@ fun CardDetailContent(
                     if (face.sections.isEmpty()) {
                         selector?.let { Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd) { it() } }
                     }
-                    if (hasBubble) Bubble(effect, flavor, language, selector = selector)
+                    if (hasBubble) Bubble(effect, flavor, language, card, library, onCardClick, selector = selector)
                     worldsEnd?.let {
                         Bubble(
                             it,
                             null,
                             language,
+                            card,
+                            library,
+                            onCardClick,
                             label = cardString(TraitIcon.WorldsEnd.label, language),
                             selector = selector.takeUnless { hasBubble },
                         )
@@ -543,6 +570,9 @@ private fun Bubble(
     text: String?,
     flavor: String?,
     language: CardLanguage,
+    card: Card,
+    library: CardLibrary,
+    onCardClick: (String) -> Unit,
     label: String? = null,
     selector: (@Composable () -> Unit)? = null,
 ) {
@@ -570,7 +600,9 @@ private fun Bubble(
                     }
                     shown.text?.let {
                         BasicText(
-                            tagged(it, shown.language),
+                            tagged(it, shown.language, library.citations(card, it), onCardClick) { cardId ->
+                                citedStyle(library.lookup(cardId), theme)
+                            },
                             style = AtlasTypography.bodyLg.copy(color = theme.onSurface),
                         )
                     }
@@ -632,11 +664,36 @@ private fun cardString(
     }
 }
 
+// A cited trait's name in its first color, like a highlighter. Trait colors only mean a card's color, so an age or a
+// catastrophe gets the dots of its own top panel instead.
+private fun citedStyle(
+    cited: CardLookup,
+    theme: AtlasColors,
+): SpanStyle {
+    val trait = (cited as? CardLookup.Found)?.card as? Trait
+    return trait
+        ?.let {
+            theme.trait(
+                it.colors.firstOrNull(),
+            )
+        }?.let { SpanStyle(background = it.fill, color = it.onFill) }
+        ?: SpanStyle(background = theme.outlineSoft, color = theme.onSurface)
+}
+
 // Text tagged with its language, so TalkBack reads a translation in its own language, not the interface's.
 private fun tagged(
     text: String,
     language: CardLanguage,
-) = buildAnnotatedString { withStyle(SpanStyle(localeList = LocaleList(language.code))) { append(text) } }
+    citations: List<Citation> = emptyList(),
+    onCardClick: (String) -> Unit = {},
+    citedStyle: (String) -> SpanStyle = { SpanStyle() },
+) = buildAnnotatedString {
+    withStyle(SpanStyle(localeList = LocaleList(language.code))) { append(text) }
+    for ((range, cardId) in citations) {
+        val link = TextLinkStyles(citedStyle(cardId).copy(textDecoration = TextDecoration.Underline))
+        addLink(LinkAnnotation.Clickable(cardId, link) { onCardClick(cardId) }, range.first, range.last + 1)
+    }
+}
 
 @Composable
 private fun LanguageSelector(
@@ -831,6 +888,34 @@ internal fun CatastropheDetailPreview() =
                 tilt = -3f,
                 onBack = {},
                 onAboutClick = {},
+            )
+        }
+    }
+
+// Age of Dracula and Vampirism as in assets/doomlings/classic/cards.json, so Age of Dracula cites Vampirism.
+@PreviewLightDark
+@Composable
+internal fun CitedCardDetailPreview() =
+    AtlasTheme {
+        BlankCardImages {
+            CardDetailContent(
+                Age(
+                    "classic/ages/age-of-dracula",
+                    "classic",
+                    "",
+                    "Age of Dracula",
+                    "Discard 1 random card from your hand.\n\n" +
+                        "If Vampirism is in your trait pile, steal 1 random card from an opponent's hand.",
+                ),
+                tilt = -3f,
+                onBack = {},
+                onAboutClick = {},
+                library =
+                    CardLibrary.decode(
+                        """[{"id": "classic/traits/vampirism", "type": "trait", "set": "classic", "name": "Vampirism",
+                        "flavor": null, "effect": null, "points": 3, "colors": ["purple"], "dominant": true,
+                        "subspecies": [], "icons": [], "image": ""}]""",
+                    ),
             )
         }
     }

@@ -24,6 +24,11 @@ val testPortuguese =
         "classic/traits/antlers" to CardText("Chifres", flavor = "Fico bem na sua parede."),
         "classic/traits/eloquence" to
             CardText("Eloquência", effect = "No Fim do Mundo: jogue outra.", flavor = "Fique quieto."),
+        "classic/ages/age-of-dracula" to
+            CardText(
+                "Era de Drácula",
+                effect = "Se Vampirism estiver na sua pilha de traits, roube 1 carta aleatória.",
+            ),
         "classic/catastrophes/ice-age" to
             CardText("Era Glacial", effect = "Descarte cartas da mão.", worldsEnd = "Menos pontos vermelhos."),
     )

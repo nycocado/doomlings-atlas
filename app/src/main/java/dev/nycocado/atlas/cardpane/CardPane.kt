@@ -25,6 +25,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class CardKey(
     val id: String,
+    // How many cards sit under this one, each opened from a name cited in the one below.
+    val depth: Int = 0,
 ) : NavKey
 
 // The back stack is the only record of the open card, so it is restored with it.
@@ -37,7 +39,7 @@ fun rememberCardPane(
     onLanguageChange: (CardLanguage) -> Unit,
 ): CardPane {
     val pane = remember(backStack) { CardPane(backStack, library, translations, language, onLanguageChange) }
-    backStack.lastOrNull { it is CardKey }?.let { open -> SideEffect { pane.lastCard = (open as CardKey).id } }
+    backStack.lastOrNull { it is CardKey }?.let { open -> SideEffect { pane.lastCard = open as CardKey } }
     return pane
 }
 
@@ -52,7 +54,7 @@ class CardPane internal constructor(
     // The card's pane takes the card with it as it fades out: the card leaves the back stack before the pane hides,
     // so the list's detail placeholder shows the last card meanwhile (#48). Never cleared: the placeholder only shows
     // beside the list, and clearing it at the wrong frame would empty the pane mid-fade.
-    internal var lastCard by mutableStateOf<String?>(null)
+    internal var lastCard by mutableStateOf<CardKey?>(null)
 
     val isOpen: Boolean get() = backStack.any { it is CardKey }
 
@@ -61,41 +63,52 @@ class CardPane internal constructor(
         backStack.add(CardKey(id))
     }
 
+    // On top of the open card, which back returns to.
+    fun openCited(id: String) {
+        backStack.add(CardKey(id, backStack.count { it is CardKey }))
+    }
+
     fun close() {
         backStack.removeLastOrNull()
     }
 
-    // Movable, so it keeps its tilt and scroll.
-    private val content =
-        movableContentOf { id: String, layout: ListDetailLayout, onBack: () -> Unit, onAboutClick: () -> Unit ->
-            val lookup = library.value.lookup(id)
-            if (lookup == CardLookup.Missing) LaunchedEffect(id) { onBack() }
-            // The sheet shows beside the list even while the cards load.
-            Box(if (layout.sideBySide) Modifier.sheet() else Modifier) {
-                if (lookup is CardLookup.Found) {
-                    CardDetailScreen(
-                        lookup.card,
-                        translations.value,
-                        language.value,
-                        onLanguageChange,
-                        layout,
-                        onBack,
-                        onAboutClick,
-                    )
+    // Movable, so it keeps its tilt and scroll. One per depth, as a cited card and its citer are on screen together.
+    private val contents = mutableMapOf<Int, @Composable (String, ListDetailLayout, Boolean, () -> Unit) -> Unit>()
+
+    private fun contentAt(depth: Int) =
+        contents.getOrPut(depth) {
+            movableContentOf { id: String, layout: ListDetailLayout, interactive: Boolean, onAboutClick: () -> Unit ->
+                val lookup = library.value.lookup(id)
+                if (lookup == CardLookup.Missing && interactive) LaunchedEffect(id) { close() }
+                // The sheet shows beside the list even while the cards load.
+                Box(if (layout.sideBySide) Modifier.sheet() else Modifier) {
+                    if (lookup is CardLookup.Found) {
+                        CardDetailScreen(
+                            lookup.card,
+                            translations.value,
+                            language.value,
+                            onLanguageChange,
+                            layout,
+                            library.value,
+                            onBack = if (interactive) ::close else ({}),
+                            onAboutClick = onAboutClick,
+                            onCardClick = if (interactive) ::openCited else ({}),
+                        )
+                    }
                 }
             }
         }
 
     @Composable
     fun Detail(
-        id: String,
+        key: CardKey,
         layout: ListDetailLayout,
         onAboutClick: () -> Unit,
-    ) = content(id, layout, ::close, onAboutClick)
+    ) = contentAt(key.depth)(key.id, layout, true, onAboutClick)
 
     @Composable
     fun DetailPlaceholder(layout: ListDetailLayout) {
-        lastCard?.let { content(it, layout, {}, {}) }
+        lastCard?.let { contentAt(it.depth)(it.id, layout, false, {}) }
     }
 }
 
