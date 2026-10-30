@@ -90,9 +90,9 @@ class CardPane internal constructor(
                             onLanguageChange,
                             layout,
                             library.value,
-                            if (interactive) ::close else ({}),
-                            onAboutClick,
-                            if (interactive) ::openCited else ({}),
+                            onBack = if (interactive) ::close else ({}),
+                            onAboutClick = onAboutClick,
+                            onCardClick = if (interactive) ::openCited else ({}),
                         )
                     }
                 }

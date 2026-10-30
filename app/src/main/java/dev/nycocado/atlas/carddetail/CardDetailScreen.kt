@@ -601,7 +601,7 @@ private fun Bubble(
                     shown.text?.let {
                         BasicText(
                             tagged(it, shown.language, library.citations(card, it), onCardClick) { cardId ->
-                                highlight(library.lookup(cardId), theme)
+                                citedStyle(library.lookup(cardId), theme)
                             },
                             style = AtlasTypography.bodyLg.copy(color = theme.onSurface),
                         )
@@ -664,14 +664,15 @@ private fun cardString(
     }
 }
 
-// A cited card's name in its first color, like a highlighter; a card without color in the neutral tone.
-private fun highlight(
+// A cited trait's name in its first color, like a highlighter. Trait colors only mean a card's color, so an age or a
+// catastrophe gets the dots of its own top panel instead.
+private fun citedStyle(
     cited: CardLookup,
     theme: AtlasColors,
 ): SpanStyle {
-    val color = ((cited as? CardLookup.Found)?.card as? Trait)?.colors?.firstOrNull()
-    return color?.let { theme.trait(it) }?.let { SpanStyle(background = it.fill, color = it.onFill) }
-        ?: SpanStyle(background = theme.surfaceSunk, color = theme.onSurface)
+    val trait = (cited as? CardLookup.Found)?.card as? Trait
+    return trait?.let { theme.trait(it.colors.firstOrNull()) }?.let { SpanStyle(background = it.fill, color = it.onFill) }
+        ?: SpanStyle(background = theme.outlineSoft, color = theme.onSurface)
 }
 
 // Text tagged with its language, so TalkBack reads a translation in its own language, not the interface's.
@@ -886,7 +887,7 @@ internal fun CatastropheDetailPreview() =
         }
     }
 
-// Age of Dracula and Vampirism as in assets/doomlings/classic/cards.json, so the name Vampirism is underlined.
+// Age of Dracula and Vampirism as in assets/doomlings/classic/cards.json, so Age of Dracula cites Vampirism.
 @PreviewLightDark
 @Composable
 internal fun CitedCardDetailPreview() =
