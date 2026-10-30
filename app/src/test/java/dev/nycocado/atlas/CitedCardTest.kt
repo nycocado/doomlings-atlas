@@ -19,7 +19,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.robolectric.annotation.Config
 
-// Age of Dracula cites Vampirism (assets/doomlings/cards.json), in Português as well (testPortuguese).
+// Age of Dracula cites Vampirism (assets/doomlings/classic/cards.json), in Português as well (testPortuguese).
 @OptIn(ExperimentalTestApi::class)
 @HiltAndroidTest
 class CitedCardTest : AtlasBehaviorTest() {

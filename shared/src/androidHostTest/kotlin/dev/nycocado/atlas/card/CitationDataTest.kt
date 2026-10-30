@@ -1,12 +1,11 @@
 package dev.nycocado.atlas.card
 
-import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-// Every citation found in the real assets/doomlings/cards.json, written out so a pull request shows what it opens.
+// Every citation found in the real card data of every set, written out so a pull request shows what it opens.
 class CitationDataTest {
-    private val library = CardLibrary.decode(File(System.getProperty("cards.dir")!!).resolve("cards.json").readText())
+    private val library = CardLibrary.decode(CardAssets.cardsJson)
 
     @Test
     fun citationsOfTheCardTextsAreTheReviewedOnes() {

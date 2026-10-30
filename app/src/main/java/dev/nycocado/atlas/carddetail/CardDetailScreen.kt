@@ -871,7 +871,7 @@ internal fun CatastropheDetailPreview() =
         }
     }
 
-// Age of Dracula and Vampirism as in assets/doomlings/cards.json, so the name Vampirism is underlined.
+// Age of Dracula and Vampirism as in assets/doomlings/classic/cards.json, so the name Vampirism is underlined.
 @PreviewLightDark
 @Composable
 internal fun CitedCardDetailPreview() =
