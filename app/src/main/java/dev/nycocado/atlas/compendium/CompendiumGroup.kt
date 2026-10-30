@@ -137,7 +137,7 @@ internal fun CardGroupOpenPreview() = GroupSample(open = true)
 @Composable
 internal fun CardGroupOpenWidePreview() = GroupSample(open = true, variants = 9, before = 2)
 
-// Two open groups one after the other, to see that their bands keep apart.
+// Two open groups one after the other.
 @PreviewLightDark
 @Composable
 internal fun CardGroupAdjacentPreview() = GroupSample(open = true, variants = 2, adjacent = true)

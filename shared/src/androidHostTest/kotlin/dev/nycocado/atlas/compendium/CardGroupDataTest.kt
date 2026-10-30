@@ -1,18 +1,18 @@
 package dev.nycocado.atlas.compendium
 
 import dev.nycocado.atlas.card.Card
+import dev.nycocado.atlas.card.CardAssets
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.decodeCards
-import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
 
-// Grouping on the real assets/doomlings/cards.json: Classic has 6 Kidneys and 5 Swarms (all red and all green), and
+// Grouping on the real card data of assets/doomlings: Classic has 6 Kidneys and 5 Swarms (all red and all green), and
 // the other sets repeat both names.
 class CardGroupDataTest {
-    private val all = decodeCards(File(System.getProperty("cards.dir")!!).resolve("cards.json").readText())
+    private val all = decodeCards(CardAssets.cardsJson)
     private val classic = all.filter { it.set == "classic" }
 
     private fun entries(

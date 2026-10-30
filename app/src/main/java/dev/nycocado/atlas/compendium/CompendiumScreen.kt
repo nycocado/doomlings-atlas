@@ -33,7 +33,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshotFlow
@@ -127,15 +126,6 @@ fun CompendiumContent(
             )
         }
     val grid = rememberLazyGridState()
-    val cellBounds = remember { CellBounds() }
-    val bands =
-        remember(results, openGroups) {
-            results
-                .orEmpty()
-                .filterIsInstance<CompendiumEntry.Group>()
-                .filter { it.name in openGroups }
-                .map { it.band() }
-        }
     val scope = rememberCoroutineScope()
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
     // outside it, scrolling the list or opening a card.
@@ -192,10 +182,7 @@ fun CompendiumContent(
                         state = grid,
                         columns = GridCells.Adaptive(CellMinWidth),
                         // The grid's own clip leaves out the items fading out after a filter.
-                        modifier =
-                            Modifier
-                                .clipScrollableContainer(Orientation.Vertical)
-                                .groupBands(grid, bands, cellBounds, theme.outlineSoft, theme.outline),
+                        modifier = Modifier.clipScrollableContainer(Orientation.Vertical),
                         contentPadding =
                             PaddingValues(
                                 start = GridSidePadding,
@@ -244,10 +231,7 @@ fun CompendiumContent(
                                             GroupCollapse(
                                                 entry,
                                                 { toggleGroup(entry.name) },
-                                                Modifier
-                                                    .animateItem(placementSpec = MoveSpec)
-                                                    .reportBounds(entry.gridKey, cellBounds)
-                                                    .padding(CardMargin),
+                                                Modifier.animateItem(placementSpec = MoveSpec).padding(CardMargin),
                                             )
                                         }
                                         itemsIndexed(entry.variants, key = VariantKey) { number, variant ->
@@ -255,9 +239,7 @@ fun CompendiumContent(
                                                 variant,
                                                 tiltAt(number),
                                                 { openCard(variant.id) },
-                                                Modifier
-                                                    .animateItem(placementSpec = MoveSpec)
-                                                    .reportBounds(variant.id, cellBounds),
+                                                Modifier.animateItem(placementSpec = MoveSpec),
                                                 VariantPosition(number + 1, entry.variants.size),
                                             )
                                         }
