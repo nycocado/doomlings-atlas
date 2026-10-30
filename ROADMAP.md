@@ -27,6 +27,7 @@ Everything here comes before assets and code.
 - Translated card text shown in the compendium, chosen apart from the interface language: card text starts in the language Android gives the app when it is Portuguese or Spanish, and as printed otherwise ([ADR 0008](docs/adr/0008-card-language-defaults-to-the-device.md)), with a language selector in the card detail.
 - App interface also in Spanish.
 - Card groups: cards that share a name (the Kidneys, the Swarms) stack into one thumb in the compendium and open in place to show their variants.
+- Links between cited cards: a card name cited in a card's effect or World's End, printed or translated, opens that card in the card detail, and back returns to the card that cited it.
 - Unit and data tests: card counts against the rulesheet, text hygiene in every set's data, signed points and cards that share a name, and search edge cases.
 - UI tests with Compose and Robolectric, in CI: navigation on phone and tablet sizes (opening, switching and closing cards, About) and state surviving activity recreation, with Compose's accessibility checks enabled so a touch target, contrast or label problem fails the build.
 - A screenshot test of the compendium with its header half collapsed, since the collapse relies on how `animateBounds` sizes an idle node.
