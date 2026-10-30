@@ -14,7 +14,6 @@ import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardRepository
 import dev.nycocado.atlas.card.CardTranslations
-import dev.nycocado.atlas.card.NamedCard
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -56,6 +55,11 @@ class CompendiumViewModel
 
         val filter: StateFlow<CompendiumFilter> = mutableFilter.asStateFlow()
 
+        // The names of the card groups that are open, saved with the filter; a fresh start has them all collapsed.
+        private var savedOpenGroups by savedState.saved { emptySet<String>() }
+        private val mutableOpenGroups = MutableStateFlow(savedOpenGroups)
+        val openGroups: StateFlow<Set<String>> = mutableOpenGroups.asStateFlow()
+
         // Every card, for the detail screen.
         val library: StateFlow<CardLibrary> = mutableLibrary.asStateFlow()
 
@@ -63,14 +67,20 @@ class CompendiumViewModel
         val cardLanguage: StateFlow<CardLanguage> = mutableCardLanguage.asStateFlow()
 
         // null while the cards are loading.
-        val results: StateFlow<List<NamedCard>?> =
+        val results: StateFlow<List<CompendiumEntry>?> =
             combine(
                 mutableLibrary.mapNotNull { it.cards },
                 mutableFilter,
                 mutableTranslations,
                 mutableCardLanguage,
-            ) { cards, filter, translations, language -> cards.filterCompendium(filter, translations, language) }
-                .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+            ) { cards, filter, translations, language ->
+                cards
+                    .filterCompendium(
+                        filter,
+                        translations,
+                        language,
+                    ).groupByName()
+            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
         init {
             viewModelScope.launch { mutableLibrary.value = repository.library() }
@@ -80,6 +90,12 @@ class CompendiumViewModel
         fun chooseCardLanguage(language: CardLanguage) {
             mutableCardLanguage.value = language
             prefs.edit { putString(CARD_LANGUAGE, language.code) }
+        }
+
+        fun toggleGroup(name: String) {
+            val open = mutableOpenGroups.value.let { if (name in it) it - name else it + name }
+            mutableOpenGroups.value = open
+            savedOpenGroups = open
         }
 
         fun updateFilter(filter: CompendiumFilter) {

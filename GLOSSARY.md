@@ -48,6 +48,8 @@ Each is explained by the rulesheet of its set, in [`assets/doomlings/rules`](ass
 - **Card language**: the language card text is shown and searched in: the printed text or one translation. Chosen apart from the interface language, and the device's language until the player picks one ([ADR 0008](docs/adr/0008-card-language-defaults-to-the-device.md); [ADR 0007](docs/adr/0007-card-language-apart-from-interface.md)).
 - **Language selector**: the control in the card detail that switches the card language among the languages the card has.
 - **Card detail**: the screen of one card. On a wide window it opens **beside the list**, in the **card pane**.
+- **Card group**: the cards of a kind that share a name, from any set; the compendium shows it as a **stack** that opens in place into a collapse cell followed by its variants. A name no other card shares stays a single card. Grouping comes after the filter, so a group holds only what the filter leaves.
+- **Variant**: a card of a card group. Variants of a name differ in art and flavor, not in the game: a Kidney counts as a Kidney from any set.
 - **Header**: the dark top of the compendium, with the title, sunset band and search. It **collapses** and **expands** as the list scrolls. _Avoid_: fold, for this.
 - **Fold**: only the hinge of a foldable device.
 - **Dock**: the app's floating bar; in the rail layout it becomes the **rail**. _Avoid_: navigation bar, tab bar.

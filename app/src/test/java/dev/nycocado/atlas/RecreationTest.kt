@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.os.Parcel
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.performClick
 import androidx.savedstate.read
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -63,16 +64,38 @@ class RecreationTest : AtlasBehaviorTest() {
         card("Adorable").assertIsDisplayed()
     }
 
-    // The state the system keeps when it kills the app in the background.
+    @Test
+    fun processDeathBringsBackTheOpenGroups() {
+        val stack =
+            hasContentDescription(context.resources.getQuantityString(R.plurals.card_group_collapsed, 6, "Kidney", 6))
+        val saved =
+            saveAfter {
+                scrollListTo(stack)
+                compose.onNode(stack).performClick()
+            }
+
+        restoreInNewActivity(saved)
+
+        scrollListTo(
+            hasContentDescription(context.resources.getQuantityString(R.plurals.card_group_open, 6, "Kidney", 6)),
+        )
+    }
+
     private fun saveAfterOpening(
         name: String,
         filterGreen: Boolean,
-    ): Bundle {
+    ): Bundle =
+        saveAfter {
+            if (filterGreen) compose.onNode(green).performClick()
+            card(name).performClick()
+        }
+
+    // The state the system keeps when it kills the app in the background.
+    private fun saveAfter(interaction: () -> Unit): Bundle {
         launchPastNotice().close()
         val saved = Bundle()
         val activity = Robolectric.buildActivity(MainActivity::class.java).setup()
-        if (filterGreen) compose.onNode(green).performClick()
-        card(name).performClick()
+        interaction()
         activity
             .pause()
             .saveInstanceState(saved)

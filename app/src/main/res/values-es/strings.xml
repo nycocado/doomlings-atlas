@@ -22,6 +22,21 @@
     <string name="all_catastrophes">Todas las catastrophes</string>
     <string name="color_hint">toca un color para filtrar</string>
 
+    <plurals name="card_group_collapsed">
+        <item quantity="one">%1$s, %2$d variante, contraído</item>
+        <item quantity="many">%1$s, %2$d de variantes, contraído</item>
+        <item quantity="other">%1$s, %2$d variantes, contraído</item>
+    </plurals>
+    <plurals name="card_group_open">
+        <item quantity="one">%1$s, %2$d variante, abierto</item>
+        <item quantity="many">%1$s, %2$d de variantes, abierto</item>
+        <item quantity="other">%1$s, %2$d variantes, abierto</item>
+    </plurals>
+    <string name="card_group_title">%1$s ×%2$d</string>
+    <string name="card_variant_position">%1$s, variante %2$d de %3$d</string>
+    <string name="card_group_expand">Abrir</string>
+    <string name="card_group_collapse">Contraer</string>
+
     <string name="color_blue">Azul</string>
     <string name="color_green">Verde</string>
     <string name="color_purple">Morado</string>
