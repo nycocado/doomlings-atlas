@@ -43,6 +43,23 @@ class CardDataIntegrityTest {
         assertEquals(emptyList(), cards.map { it.image }.filterNot { dir.resolve(it).isFile })
     }
 
+    // The app packages card images as WebP (assets/doomlings/NOTICE.md). The JVM has no WebP reader, so this checks
+    // the file header.
+    @Test
+    fun everyCardImageIsWebP() {
+        assertEquals(
+            emptyList(),
+            cards
+                .map { it.image }
+                .filterNot { image ->
+                    val header = dir.resolve(image).inputStream().use { it.readNBytes(12) }
+                    header.size == 12 &&
+                        header.copyOfRange(0, 4).decodeToString() == "RIFF" &&
+                        header.copyOfRange(8, 12).decodeToString() == "WEBP"
+                },
+        )
+    }
+
     // Counts from the official rulesheet (docs/rules.md), an independent source for the data.
     @Test
     fun classicHasTheRulesheetAgesAndCatastrophes() {

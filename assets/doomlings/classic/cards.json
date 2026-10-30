@@ -346,37 +346,37 @@
     "id": "classic/gene-pools/blue",
     "type": "gene-pool",
     "set": "classic",
-    "image": "classic/gene-pools/blue.jpg"
+    "image": "classic/gene-pools/blue.webp"
   },
   {
     "id": "classic/gene-pools/black",
     "type": "gene-pool",
     "set": "classic",
-    "image": "classic/gene-pools/black.jpg"
+    "image": "classic/gene-pools/black.webp"
   },
   {
     "id": "classic/gene-pools/rainbow",
     "type": "gene-pool",
     "set": "classic",
-    "image": "classic/gene-pools/rainbow.jpg"
+    "image": "classic/gene-pools/rainbow.webp"
   },
   {
     "id": "classic/gene-pools/pink",
     "type": "gene-pool",
     "set": "classic",
-    "image": "classic/gene-pools/pink.jpg"
+    "image": "classic/gene-pools/pink.webp"
   },
   {
     "id": "classic/gene-pools/green",
     "type": "gene-pool",
     "set": "classic",
-    "image": "classic/gene-pools/green.jpg"
+    "image": "classic/gene-pools/green.webp"
   },
   {
     "id": "classic/gene-pools/orange",
     "type": "gene-pool",
     "set": "classic",
-    "image": "classic/gene-pools/orange.jpg"
+    "image": "classic/gene-pools/orange.webp"
   },
   {
     "id": "classic/traits/adorable",
