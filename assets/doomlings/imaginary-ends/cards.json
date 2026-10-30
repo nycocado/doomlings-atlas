@@ -36,7 +36,7 @@
     "type": "age",
     "set": "imaginary-ends",
     "name": "Glitterstorm",
-    "effect": "Discard 1, 2 or 3 cards from your hand at random. Then stabilize.",
+    "effect": "Discard 1, 2, or 3 cards from your hand at random. Then stabilize.",
     "image": "imaginary-ends/ages/glitterstorm.webp"
   },
   {
@@ -60,7 +60,7 @@
     "type": "age",
     "set": "imaginary-ends",
     "name": "Unusual Friends",
-    "effect": "If you play a Deepling, Moonling or Glitterling, draw 2.",
+    "effect": "If you play a Deepling, Moonling, or Glitterling, draw 2.",
     "image": "imaginary-ends/ages/unusual-friends.webp"
   },
   {
@@ -1370,7 +1370,7 @@
     "set": "imaginary-ends",
     "name": "Whimsy",
     "flavor": "Let's see what maybe might happen I guess probably.",
-    "effect": "To play, you must draw 1 and reveal it. If it no action, play it now. If it is dominant, discard the card along with Whimsy.",
+    "effect": "To play, you must draw 1 and reveal it. If it has no action, play it now. If it is dominant, discard the card along with Whimsy.",
     "points": 3,
     "colors": [],
     "dominant": false,

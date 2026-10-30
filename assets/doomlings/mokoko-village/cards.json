@@ -195,7 +195,7 @@
     "set": "mokoko-village",
     "name": "Dryadic",
     "flavor": "Good things come in trees.",
-    "effect": "-2 for each purple trait in your trait pile. +1 for each green. +1 for each red.",
+    "effect": "-2 for each purple in your trait pile. +1 for each green. +1 for each red.",
     "points": -1,
     "colors": [
       "green"

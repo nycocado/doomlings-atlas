@@ -1047,7 +1047,9 @@
     "colors": [],
     "dominant": false,
     "subspecies": [],
-    "icons": [],
+    "icons": [
+      "drop-of-life"
+    ],
     "image": "classic/traits/gratitude.webp"
   },
   {
@@ -1432,7 +1434,7 @@
     "set": "classic",
     "name": "Morality",
     "flavor": "I'll let him keep his lunch money. It's the right thing to do.",
-    "effect": "To play, you must give 1 positive trait from your trait pile to an opponent.",
+    "effect": "To play, you must give 1 positive value trait from your trait pile to an opponent.",
     "points": 5,
     "colors": [],
     "dominant": false,

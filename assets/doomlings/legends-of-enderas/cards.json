@@ -95,8 +95,8 @@
     "type": "catastrophe",
     "set": "legends-of-enderas",
     "name": "Titan's Call",
-    "effect": "-1 Gene Pool\n\nIf you have any dominants in your trait pile, discard all but 1 from your hand.",
-    "worldsEnd": "+3 if you have a dominant Mythling, Dinoling or Techling in your trait pile.\n\n+6 if you have 2.",
+    "effect": "-1 Gene Pool\n\nIf you have any dominants in your trait pile, discard all but 1 from hand.",
+    "worldsEnd": "+3 if you have a dominant Mythling, Dinoling, or Techling in your trait pile.\n\n+6 if you have 2.",
     "image": "legends-of-enderas/catastrophes/titan-s-call.webp"
   },
   {
@@ -691,7 +691,7 @@
     "set": "legends-of-enderas",
     "name": "Gizmo",
     "flavor": "It does whatever you want it to do! Or whatever it wants to do! Or whatever!",
-    "effect": "Attach. Choose 1.\nIf host is:\nGreen: Preview the next age.\nPurple: Stabilize to 6.\nBlue: Draw 2.\nRed: +2.\nThen play another trait.",
+    "effect": "Attach. Choose 1.\nIf host is:\nGreen: Preview the next age.\nPurple: Stabilize to 6.\nBlue: Draw 2.\nRed: +2\nThen play another trait.",
     "points": 0,
     "colors": [],
     "dominant": false,
@@ -1100,7 +1100,7 @@
     "set": "legends-of-enderas",
     "name": "Plastron",
     "flavor": "Turtle recall.",
-    "effect": "At World's End: You may discard 1 from your trait pile. OR play the top card from the discard pile. Ignore its action.",
+    "effect": "At World's End: You may discard 1 from your trait pile, OR play the top card from the discard pile. Ignore its action.",
     "points": 1,
     "colors": [
       "blue"
@@ -1244,7 +1244,7 @@
     "set": "legends-of-enderas",
     "name": "Solar-Powered",
     "flavor": "Backed by a billion-year/36,000-mile limited warranty.",
-    "effect": "Attach. Value is equal to the host's face value.",
+    "effect": "Attach. Value is equal to host's face value.",
     "points": null,
     "colors": [
       "blue"

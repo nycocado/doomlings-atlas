@@ -448,7 +448,7 @@
     "set": "overlush",
     "name": "Backbiter",
     "flavor": "Mmmm, cold shoulder...",
-    "effect": "+3 if you have negative trait in your trait pile.",
+    "effect": "+3 if you have a negative trait in your trait pile.",
     "points": 1,
     "colors": [
       "red"
@@ -993,7 +993,7 @@
     "set": "overlush",
     "name": "Fearful Symmetry",
     "flavor": "Once you see the pattern, it's too late.",
-    "effect": "You may play another trait with a face value of 2. Play its action.",
+    "effect": "You may play another trait with a face value of 2. Play its action",
     "points": 2,
     "colors": [
       "red"

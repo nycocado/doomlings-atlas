@@ -221,7 +221,7 @@
     "set": "shadow-puppets",
     "name": "Immutable",
     "flavor": "I don't know why you won't change your mind to the way I see it.",
-    "effect": "Excluding dominants, if you have 6 or fewer traits in your traits in your trait pile, they cannot be swapped or stolen. Start of your turns: You may suppress 1 trait in your trait pile.",
+    "effect": "Excluding dominants, if you have 6 or fewer traits in your trait pile, they cannot be swapped or stolen. Start of your turns: You may suppress 1 trait in your trait pile.",
     "points": 3,
     "colors": [
       "red"
