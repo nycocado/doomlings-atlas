@@ -6,6 +6,7 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
+import java.io.File
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -57,6 +58,22 @@ class CardDataIntegrityTest {
                         header.copyOfRange(0, 4).decodeToString() == "RIFF" &&
                         header.copyOfRange(8, 12).decodeToString() == "WEBP"
                 },
+        )
+    }
+
+    // Card images share one size (about 541×757, assets/doomlings/NOTICE.md), so the cards line up in the app. Reads
+    // the width from the WebP header: the JVM has no WebP reader and no dependency is worth adding for one number.
+    // Every card image is extended WebP (VP8X), whose canvas width is 24 bits at byte 24, stored minus one.
+    @Test
+    fun everyCardImageHasTheStandardWidth() {
+        fun widthOf(file: File): Int {
+            val b = file.inputStream().use { it.readNBytes(30) }.map { it.toInt() and 0xFF }
+            check(b.subList(12, 16).map { it.toChar() }.joinToString("") == "VP8X") { "$file is not extended WebP" }
+            return (b[24] or (b[25] shl 8) or (b[26] shl 16)) + 1
+        }
+        assertEquals(
+            emptyList(),
+            cards.map { it.image to widthOf(dir.resolve(it.image)) }.filter { (_, width) -> width !in 540..541 },
         )
     }
 
