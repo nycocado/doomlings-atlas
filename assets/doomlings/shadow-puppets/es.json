@@ -39,7 +39,7 @@
   "shadow-puppets/traits/cracked": {
     "name": "Agrietado",
     "effects": [
-      "Revela la carta de la parte superior del mazo de traits. Morado: Intercambia Cracked con un trait de la pila de traits de un amigo. Azul: Devuélvelo a su mano. Rojo: Arrebata 1 de su pila de traits."
+      "[rainbow]Revela[/rainbow] la carta de la parte superior del mazo de traits. [purple]Morado[/purple]: Intercambia Cracked con un trait de la pila de traits de un amigo. [blue]Azul[/blue]: Devuélvelo a su mano. [red]Rojo[/red]: Arrebata 1 de su pila de traits."
     ],
     "flavor": "¡Tuve una gran caída! ¡Gracias por preguntar!"
   },
@@ -89,7 +89,7 @@
   "shadow-puppets/traits/imperfect": {
     "name": "Imperfecto",
     "effects": [
-      "Revela la carta de la parte superior del mazo de traits. Cualquier color: Intercambia Imperfect con un trait de la pila de traits de un amigo. Incoloro: Mueve Imperfect a la pila de traits de un amigo."
+      "[rainbow]Revela[/rainbow] la carta de la parte superior del mazo de traits. [rainbow]Cualquier color[/rainbow]: Intercambia Imperfect con un trait de la pila de traits de un amigo. [colorless]Incoloro[/colorless]: Mueve Imperfect a la pila de traits de un amigo."
     ],
     "flavor": "Nunca dije que fuera perfecto."
   },
@@ -150,7 +150,7 @@
   "shadow-puppets/traits/soft": {
     "name": "Suave",
     "effects": [
-      "Revela la carta de la parte superior del mazo de traits. Azul: Aumenta el Gene Pool en 1. Rojo: Disminuye el Gene Pool en 1 y juega 1. Incoloro: Haz cualquiera de los dos."
+      "[rainbow]Revela[/rainbow] la carta de la parte superior del mazo de traits. [blue]Azul[/blue]: Aumenta el Gene Pool en 1. [red]Rojo[/red]: Disminuye el Gene Pool en 1 y juega 1. [colorless]Incoloro[/colorless]: Haz cualquiera de los dos."
     ],
     "flavor": "Dispuesto a lo que sea."
   },
@@ -210,7 +210,7 @@
   "shadow-puppets/traits/velvet": {
     "name": "Terciopelo",
     "effects": [
-      "Revela la carta de la parte superior del mazo de traits. Luego, arrebata de la pila de traits de un oponente 1 trait del mismo color que el trait revelado."
+      "[rainbow]Revela[/rainbow] la carta de la parte superior del mazo de traits. Luego, arrebata de la pila de traits de un oponente 1 trait del mismo [rainbow]color[/rainbow] que el trait revelado."
     ],
     "flavor": "Te amo y quiero convertirte en un trait de verdad en mi pila de traits."
   },

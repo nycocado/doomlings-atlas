@@ -28,21 +28,21 @@
   "mokoko-village/traits/abandoned": {
     "name": "Abandonado",
     "effects": [
-      "Se Abandoned for descartado da sua pilha de traits, roube 1 vermelho."
+      "Se Abandoned for descartado da sua pilha de traits, roube 1 [red]vermelho[/red]."
     ],
     "flavor": "Eu tinha uma banda... até ela me abandonar."
   },
   "mokoko-village/traits/alert": {
     "name": "Alerta",
     "effects": [
-      "Revele 2 vermelhos para jogar a qualquer momento."
+      "Revele 2 [red]vermelhos[/red] para jogar a qualquer momento."
     ],
     "flavor": "Talvez um pouquinho preparado demais."
   },
   "mokoko-village/traits/ancestral": {
     "name": "Ancestral",
     "effects": [
-      "Você pode descartar 1 da sua pilha de traits. +3 para cada cor na sua pilha de traits com exatamente 2 traits."
+      "Você pode descartar 1 da sua pilha de traits. +3 para cada [rainbow]cor[/rainbow] na sua pilha de traits com exatamente 2 traits."
     ],
     "flavor": "O melhor do além é julgar a parentada."
   },
@@ -56,7 +56,7 @@
   "mokoko-village/traits/cairnwalker": {
     "name": "Andarilho das Pedras",
     "effects": [
-      "Escolha uma cor. Conte o valor de face dos traits dessa cor como 2."
+      "[rainbow]Escolha uma cor[/rainbow]. Conte o valor de face dos traits dessa [rainbow]cor[/rainbow] como 2."
     ],
     "flavor": "Meu recorde é 2.000 pedras."
   },
@@ -88,7 +88,7 @@
   "mokoko-village/traits/dryadic": {
     "name": "Driádico",
     "effects": [
-      "-2 para cada trait roxo na sua pilha de traits. +1 para cada verde. +1 para cada vermelho."
+      "-2 para cada trait [purple]roxo[/purple] na sua pilha de traits. +1 para cada [green]verde[/green]. +1 para cada [red]vermelho[/red]."
     ],
     "flavor": "Coisa boa dá em árvore."
   },
@@ -131,7 +131,7 @@
   "mokoko-village/traits/gravetender": {
     "name": "Coveiro",
     "effects": [
-      "Compre 1 carta para cada cor que faltar na sua pilha de traits. +2 para cada carta comprada dessa forma."
+      "Compre 1 carta para cada [rainbow]cor[/rainbow] que faltar na sua pilha de traits. +2 para cada carta comprada dessa forma."
     ],
     "flavor": "Esse trabalho está abaixo de mim."
   },
@@ -145,28 +145,28 @@
   "mokoko-village/traits/jacked": {
     "name": "Sarado",
     "effects": [
-      "Para jogar, você deve ter 3 verdes na sua pilha de traits. Descarte 1 vermelho da mão para reduzir a exigência para 2 verdes."
+      "Para jogar, você deve ter 3 [green]verdes[/green] na sua pilha de traits. Descarte 1 [red]vermelho[/red] da mão para reduzir a exigência para 2 [green]verdes[/green]."
     ],
     "flavor": "Nunca pule o dia de rachar lenha."
   },
   "mokoko-village/traits/jejune": {
     "name": "Frívolo",
     "effects": [
-      "Mude até 4 traits da sua pilha de traits para incolores."
+      "Mude até 4 traits da sua pilha de traits para [colorless]incolores[/colorless]."
     ],
     "flavor": "Por que você é tão profundo e sério? Divirta-se de uma vez!"
   },
   "mokoko-village/traits/lode": {
     "name": "Veio",
     "effects": [
-      "Escolha uma cor. Compre 5 cartas. Descarte as cartas compradas da cor escolhida."
+      "[rainbow]Escolha uma cor[/rainbow]. Compre 5 cartas. Descarte as cartas compradas da [rainbow]cor[/rainbow] escolhida."
     ],
     "flavor": "Não confunda esta gema com uma pedra qualquer."
   },
   "mokoko-village/traits/low-mane": {
     "name": "Cabelo de Lámen",
     "effects": [
-      "Todos os jogadores podem estabilizar até 5. Depois, você pode revelar 2 da mesma cor para jogar outro trait."
+      "Todos os jogadores podem estabilizar até 5. Depois, você pode revelar 2 da mesma [rainbow]cor[/rainbow] para jogar outro trait."
     ],
     "flavor": "Falta tempero."
   },
@@ -221,8 +221,8 @@
   "mokoko-village/traits/shunned": {
     "name": "Marginalizado",
     "effects": [
-      "+5 se este for o seu único roxo.",
-      "Se Shunned for descartado da sua pilha de traits, você pode jogar até 2 roxos. Ignore ações ({action})."
+      "+5 se este for o seu único [purple]roxo[/purple].",
+      "Se Shunned for descartado da sua pilha de traits, você pode jogar até 2 [purple]roxos[/purple]. Ignore ações ({action})."
     ],
     "flavor": "Você grita \"Olha o lobo!\" três vezes e de repente ninguém mais ajuda."
   },
@@ -235,7 +235,7 @@
   "mokoko-village/traits/smithy": {
     "name": "Ferreiro",
     "effects": [
-      "Revele: 2 verdes: Jogue 1 verde. 2 vermelhos: Descarte 1 da sua pilha de traits."
+      "Revele: 2 [green]verdes[/green]: Jogue 1 [green]verde[/green]. 2 [red]vermelhos[/red]: Descarte 1 da sua pilha de traits."
     ],
     "flavor": "Respeite os mais velhos. E os soldadores."
   },
@@ -254,7 +254,7 @@
   "mokoko-village/traits/steady": {
     "name": "Firme",
     "effects": [
-      "Compre 2 cartas. Depois, revele 4 cores diferentes para comprar 2 cartas."
+      "Compre 2 cartas. Depois, revele 4 [rainbow]cores[/rainbow] diferentes para comprar 2 cartas."
     ],
     "flavor": "Sempre quero mais um vaso."
   },
@@ -269,7 +269,7 @@
   "mokoko-village/traits/sundering": {
     "name": "Ruptura",
     "effects": [
-      "Início dos seus turnos: Escolha uma cor. Se você tiver traits dessa cor na sua pilha de traits, descarte-os."
+      "Início dos seus turnos: [rainbow]Escolha uma cor[/rainbow]. Se você tiver traits dessa [rainbow]cor[/rainbow] na sua pilha de traits, descarte-os."
     ],
     "flavor": "Diga seu nome e ele deixará de existir."
   },

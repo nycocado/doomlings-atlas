@@ -39,7 +39,7 @@
   "castle-glass/traits/biochromatic": {
     "name": "Biocromático",
     "effects": [
-      "Todos los oponentes descartan todas las cartas incoloras de su mano y estabilizan."
+      "Todos los oponentes descartan todas las cartas [colorless]incoloras[/colorless] de su mano y estabilizan."
     ],
     "flavor": "Llevo una vida muy colorida."
   },
@@ -50,7 +50,7 @@
   "castle-glass/traits/brainy": {
     "name": "Cerebral",
     "effects": [
-      "Los oponentes no pueden jugar morado en su siguiente turno. Pero debes recordárselo."
+      "Los oponentes no pueden jugar [purple]morado[/purple] en su siguiente turno. Pero debes recordárselo."
     ],
     "flavor": "No olvides recordarle a la gente que no puede jugar morado en su turno."
   },
@@ -160,7 +160,7 @@
   "castle-glass/traits/pearl": {
     "name": "Perla",
     "effects": [
-      "Puedes jugar 1 trait de cada color.",
+      "Puedes jugar 1 trait de cada [rainbow]color[/rainbow].",
       "Ignora las acciones ({action})."
     ],
     "flavor": "La sorpresa de la naturaleza en una cajita."
@@ -187,7 +187,7 @@
   "castle-glass/traits/radial-symmetry": {
     "name": "Simetría Radial",
     "effects": [
-      "Inicio de tus turnos: Puedes descartar todas las cartas de 1 color de tu mano."
+      "Inicio de tus turnos: Puedes descartar todas las cartas de 1 [rainbow]color[/rainbow] de tu mano."
     ],
     "flavor": "Mantén a tus amigos cerca y a tus anémonas aún más cerca."
   },
@@ -260,14 +260,14 @@
   "castle-glass/traits/thermal-tolerance": {
     "name": "Tolerancia Térmica",
     "effects": [
-      "Elige un oponente. +1 por cada trait rojo en su pila de traits."
+      "Elige un oponente. +1 por cada trait [red]rojo[/red] en su pila de traits."
     ],
     "flavor": "Quien aguanta el calor se queda en la cocina."
   },
   "castle-glass/traits/tidal-tolerance": {
     "name": "Tolerancia a la Marea",
     "effects": [
-      "Elige un oponente. +1 por cada trait azul en su pila de traits."
+      "Elige un oponente. +1 por cada trait [blue]azul[/blue] en su pila de traits."
     ],
     "flavor": "Dejándose llevar por la marea."
   }

@@ -174,7 +174,7 @@
   "imaginary-ends/traits/bubbly": {
     "name": "Borbulhante",
     "effects": [
-      "Compre 1 carta e revele-a. Se for azul ou incolor, descarte 1 trait da sua pilha de traits."
+      "Compre 1 carta e revele-a. Se for [blue]azul[/blue] ou [colorless]incolor[/colorless], descarte 1 trait da sua pilha de traits."
     ],
     "flavor": "Vocês são meus melhores bolhamigos."
   },
@@ -231,7 +231,7 @@
   "imaginary-ends/traits/ephemeral": {
     "name": "Efêmero",
     "effects": [
-      "Compre 1 carta e revele-a. Se for roxa ou incolor, devolva Ephemeral à sua mão."
+      "Compre 1 carta e revele-a. Se for [purple]roxa[/purple] ou [colorless]incolor[/colorless], devolva Ephemeral à sua mão."
     ],
     "flavor": "Só um instante."
   },
@@ -252,7 +252,7 @@
   "imaginary-ends/traits/feisty": {
     "name": "Atrevido",
     "effects": [
-      "Para jogar, compre 1 carta e revele-a. Se for verde, todos os seus amigos aumentam o Gene Pool em 1."
+      "Para jogar, compre 1 carta e revele-a. Se for [green]verde[/green], todos os seus amigos aumentam o Gene Pool em 1."
     ],
     "flavor": "É meu primeiro dia de pirata. Ainda estou pegando o jeito."
   },
@@ -331,7 +331,7 @@
   "imaginary-ends/traits/imaginative": {
     "name": "Imaginativo",
     "effects": [
-      "Escolha uma cor e descarte a carta do topo do baralho de traits. Se for da cor escolhida, você e todos os seus amigos compram 2 cartas. Oba!"
+      "[rainbow]Escolha uma cor[/rainbow] e descarte a carta do topo do baralho de traits. Se for da [rainbow]cor escolhida[/rainbow], você e todos os seus amigos compram 2 cartas. Oba!"
     ],
     "flavor": "Mundos dentro das palavras."
   },
@@ -345,7 +345,7 @@
   "imaginary-ends/traits/lure": {
     "name": "Isca",
     "effects": [
-      "O oponente à sua direita escolhe uma cor. Suprima todas as cartas da cor escolhida da sua mão."
+      "O oponente à sua direita [rainbow]escolhe uma cor[/rainbow]. Suprima todas as cartas da [rainbow]cor escolhida[/rainbow] da sua mão."
     ],
     "flavor": "Sou tão indefeso... Espero que nada grande e nutritivo tente me pegar..."
   },
@@ -411,7 +411,7 @@
   "imaginary-ends/traits/rainbow-magic": {
     "name": "Magia do Arco-Íris",
     "effects": [
-      "Você pode devolver Rainbow Magic à sua mão (sério!) depois de estabilizar. Depois, jogue 1 carta aleatória da sua mão. Ignore restrições e requisitos."
+      "Você pode devolver [rainbow]Rainbow Magic[/rainbow] à sua mão (sério!) depois de estabilizar. Depois, jogue 1 carta aleatória da sua mão. Ignore restrições e requisitos."
     ],
     "flavor": "Tenho refletido muito. E refratado também."
   },
@@ -458,7 +458,7 @@
   "imaginary-ends/traits/sprinkles": {
     "name": "Granulado",
     "effects": [
-      "Compre 1 carta e revele-a. Se for vermelha ou incolor, dê 1 carta da sua mão a cada amigo."
+      "Compre 1 carta e revele-a. Se for [red]vermelha[/red] ou [colorless]incolor[/colorless], dê 1 carta da sua mão a cada amigo."
     ],
     "flavor": "Açúcar sobre açúcar sobre açúcar."
   },

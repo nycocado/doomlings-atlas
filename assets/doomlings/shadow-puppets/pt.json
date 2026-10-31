@@ -39,7 +39,7 @@
   "shadow-puppets/traits/cracked": {
     "name": "Rachado",
     "effects": [
-      "Revele a carta do topo do baralho de traits. Roxo: Troque Cracked por um trait da pilha de traits de um amigo. Azul: Devolva-o à mão dele. Vermelho: Roube 1 da pilha de traits dele."
+      "[rainbow]Revele[/rainbow] a carta do topo do baralho de traits. [purple]Roxo[/purple]: Troque Cracked por um trait da pilha de traits de um amigo. [blue]Azul[/blue]: Devolva-o à mão dele. [red]Vermelho[/red]: Roube 1 da pilha de traits dele."
     ],
     "flavor": "Tive uma queda e tanto! Obrigado por perguntar!"
   },
@@ -89,7 +89,7 @@
   "shadow-puppets/traits/imperfect": {
     "name": "Imperfeito",
     "effects": [
-      "Revele a carta do topo do baralho de traits. Qualquer cor: Troque Imperfect por um trait da pilha de traits de um amigo. Incolor: Mova Imperfect para a pilha de traits de um amigo."
+      "[rainbow]Revele[/rainbow] a carta do topo do baralho de traits. [rainbow]Qualquer cor[/rainbow]: Troque Imperfect por um trait da pilha de traits de um amigo. [colorless]Incolor[/colorless]: Mova Imperfect para a pilha de traits de um amigo."
     ],
     "flavor": "Eu nunca disse que sou perfeito."
   },
@@ -150,7 +150,7 @@
   "shadow-puppets/traits/soft": {
     "name": "Macio",
     "effects": [
-      "Revele a carta do topo do baralho de traits. Azul: Aumente seu Gene Pool em 1. Vermelho: Diminua seu Gene Pool em 1 e jogue 1. Incolor: Faça qualquer um dos dois."
+      "[rainbow]Revele[/rainbow] a carta do topo do baralho de traits. [blue]Azul[/blue]: Aumente seu Gene Pool em 1. [red]Vermelho[/red]: Diminua seu Gene Pool em 1 e jogue 1. [colorless]Incolor[/colorless]: Faça qualquer um dos dois."
     ],
     "flavor": "Topo qualquer parada."
   },
@@ -210,7 +210,7 @@
   "shadow-puppets/traits/velvet": {
     "name": "Veludo",
     "effects": [
-      "Revele a carta do topo do baralho de traits. Depois, roube da pilha de traits de um oponente 1 trait da mesma cor do trait revelado."
+      "[rainbow]Revele[/rainbow] a carta do topo do baralho de traits. Depois, roube da pilha de traits de um oponente 1 trait da mesma [rainbow]cor[/rainbow] do trait revelado."
     ],
     "flavor": "Eu te amo e quero fazer de você um trait de verdade na minha pilha de traits."
   },

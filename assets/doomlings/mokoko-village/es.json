@@ -28,21 +28,21 @@
   "mokoko-village/traits/abandoned": {
     "name": "Abandonado",
     "effects": [
-      "Si Abandoned es descartado de tu pila de traits, arrebata 1 rojo."
+      "Si Abandoned es descartado de tu pila de traits, arrebata 1 [red]rojo[/red]."
     ],
     "flavor": "Yo tenía una banda... hasta que me abandonó."
   },
   "mokoko-village/traits/alert": {
     "name": "Alerta",
     "effects": [
-      "Revela 2 rojos para jugar en cualquier momento."
+      "Revela 2 [red]rojos[/red] para jugar en cualquier momento."
     ],
     "flavor": "Quizás un poquito demasiado preparado."
   },
   "mokoko-village/traits/ancestral": {
     "name": "Ancestral",
     "effects": [
-      "Puedes descartar 1 de tu pila de traits. +3 por cada color en tu pila de traits con exactamente 2 traits."
+      "Puedes descartar 1 de tu pila de traits. +3 por cada [rainbow]color[/rainbow] en tu pila de traits con exactamente 2 traits."
     ],
     "flavor": "Lo mejor del más allá es juzgar a la parentela."
   },
@@ -56,7 +56,7 @@
   "mokoko-village/traits/cairnwalker": {
     "name": "Caminante de las Piedras",
     "effects": [
-      "Elige un color. Cuenta el valor nominal de los traits de ese color como 2."
+      "[rainbow]Elige un color[/rainbow]. Cuenta el valor nominal de los traits de ese [rainbow]color[/rainbow] como 2."
     ],
     "flavor": "Mi récord es 2000 piedras."
   },
@@ -88,7 +88,7 @@
   "mokoko-village/traits/dryadic": {
     "name": "Driádico",
     "effects": [
-      "-2 por cada trait morado en tu pila de traits. +1 por cada verde. +1 por cada rojo."
+      "-2 por cada trait [purple]morado[/purple] en tu pila de traits. +1 por cada [green]verde[/green]. +1 por cada [red]rojo[/red]."
     ],
     "flavor": "Lo bueno crece en los árboles."
   },
@@ -131,7 +131,7 @@
   "mokoko-village/traits/gravetender": {
     "name": "Sepulturero",
     "effects": [
-      "Roba 1 carta por cada color que falte en tu pila de traits. +2 por cada carta robada de esta forma."
+      "Roba 1 carta por cada [rainbow]color[/rainbow] que falte en tu pila de traits. +2 por cada carta robada de esta forma."
     ],
     "flavor": "Este trabajo está por debajo de mí."
   },
@@ -145,28 +145,28 @@
   "mokoko-village/traits/jacked": {
     "name": "Musculoso",
     "effects": [
-      "Para jugar, debes tener 3 verdes en tu pila de traits. Descarta 1 rojo de tu mano para reducir el requisito a 2 verdes."
+      "Para jugar, debes tener 3 [green]verdes[/green] en tu pila de traits. Descarta 1 [red]rojo[/red] de tu mano para reducir el requisito a 2 [green]verdes[/green]."
     ],
     "flavor": "Nunca te saltes el día de cortar leña."
   },
   "mokoko-village/traits/jejune": {
     "name": "Frívolo",
     "effects": [
-      "Cambia hasta 4 traits de tu pila de traits a incoloros."
+      "Cambia hasta 4 traits de tu pila de traits a [colorless]incoloros[/colorless]."
     ],
     "flavor": "¿Por qué eres tan profundo y serio? ¡Ya diviértete un poco!"
   },
   "mokoko-village/traits/lode": {
     "name": "Veta",
     "effects": [
-      "Elige un color. Roba 5 cartas. Descarta las cartas robadas del color elegido."
+      "[rainbow]Elige un color[/rainbow]. Roba 5 cartas. Descarta las cartas robadas del [rainbow]color[/rainbow] elegido."
     ],
     "flavor": "No tomes esta gema por una piedra cualquiera."
   },
   "mokoko-village/traits/low-mane": {
     "name": "Melena de Fideos",
     "effects": [
-      "Todos los jugadores pueden estabilizar hasta 5. Luego, puedes revelar 2 del mismo color para jugar otro trait."
+      "Todos los jugadores pueden estabilizar hasta 5. Luego, puedes revelar 2 del mismo [rainbow]color[/rainbow] para jugar otro trait."
     ],
     "flavor": "Le falta sabor."
   },
@@ -221,8 +221,8 @@
   "mokoko-village/traits/shunned": {
     "name": "Marginado",
     "effects": [
-      "+5 si este es tu único morado.",
-      "Si Shunned es descartado de tu pila de traits, puedes jugar hasta 2 morados. Ignora las acciones ({action})."
+      "+5 si este es tu único [purple]morado[/purple].",
+      "Si Shunned es descartado de tu pila de traits, puedes jugar hasta 2 [purple]morados[/purple]. Ignora las acciones ({action})."
     ],
     "flavor": "Gritas «¡Ahí viene el lobo!» tres veces y de repente nadie te ayuda."
   },
@@ -235,7 +235,7 @@
   "mokoko-village/traits/smithy": {
     "name": "Herrero",
     "effects": [
-      "Revela: 2 verdes: Juega 1 verde. 2 rojos: Descarta 1 de tu pila de traits."
+      "Revela: 2 [green]verdes[/green]: Juega 1 [green]verde[/green]. 2 [red]rojos[/red]: Descarta 1 de tu pila de traits."
     ],
     "flavor": "Respeta a tus mayores. Y a tus soldadores."
   },
@@ -254,7 +254,7 @@
   "mokoko-village/traits/steady": {
     "name": "Firme",
     "effects": [
-      "Roba 2 cartas. Luego, revela 4 colores diferentes para robar 2 cartas."
+      "Roba 2 cartas. Luego, revela 4 [rainbow]colores[/rainbow] diferentes para robar 2 cartas."
     ],
     "flavor": "Siempre quiero otra vasija."
   },
@@ -269,7 +269,7 @@
   "mokoko-village/traits/sundering": {
     "name": "Ruptura",
     "effects": [
-      "Inicio de tus turnos: Elige un color. Si tienes traits de ese color en tu pila de traits, descártalos."
+      "Inicio de tus turnos: [rainbow]Elige un color[/rainbow]. Si tienes traits de ese [rainbow]color[/rainbow] en tu pila de traits, descártalos."
     ],
     "flavor": "Di su nombre y dejará de existir."
   },
