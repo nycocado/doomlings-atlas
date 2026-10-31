@@ -37,3 +37,11 @@ object MaxWidth {
     val content = 640.dp
     val compact = 480.dp
 }
+
+// Sizes the design repeats: the touch target is Compose's own 48dp minimum, written out.
+object Sizes {
+    val touchTarget = 48.dp
+    val icon = 22.dp
+    val pointsBadge = 68.dp
+    val dock = 64.dp
+}

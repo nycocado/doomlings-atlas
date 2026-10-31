@@ -67,12 +67,13 @@ import dev.nycocado.atlas.ui.component.pointsText
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
+import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
 // Starts at the header's side margin, so the rail lines up with the logo above it.
-private val RailWidth = Space.s5 + 64.dp + Space.s4
+private val RailWidth = Space.s5 + Sizes.dock + Space.s4
 
 private val RailMinWidth = 600.dp
 

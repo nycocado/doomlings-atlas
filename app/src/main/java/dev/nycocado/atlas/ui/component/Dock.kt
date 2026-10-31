@@ -34,6 +34,7 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
+import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 
 private enum class Destination(
@@ -58,9 +59,9 @@ fun Dock(
         modifier
             .then(
                 if (vertical) {
-                    Modifier.width(64.dp)
+                    Modifier.width(Sizes.dock)
                 } else {
-                    Modifier.widthIn(max = MaxWidth.compact).fillMaxWidth().height(64.dp)
+                    Modifier.widthIn(max = MaxWidth.compact).fillMaxWidth().height(Sizes.dock)
                 },
             ).background(theme.inverseSurface, CircleShape),
         contentAlignment = Alignment.Center,
@@ -92,7 +93,7 @@ private fun DockItem(
     if (destination == Destination.Cards) {
         Row(
             Modifier
-                .height(48.dp)
+                .height(Sizes.touchTarget)
                 .background(theme.highlight, CircleShape)
                 .clickable(onClick = onCardsClick)
                 .padding(horizontal = if (vertical) 12.dp else Space.s4)
@@ -107,7 +108,7 @@ private fun DockItem(
             Image(
                 painterResource(destination.icon),
                 null,
-                Modifier.size(22.dp),
+                Modifier.size(Sizes.icon),
                 colorFilter = ColorFilter.tint(theme.onHighlight),
             )
             if (!vertical) {
@@ -117,7 +118,7 @@ private fun DockItem(
     } else {
         val comingSoon = stringResource(R.string.coming_soon, label)
         Box(
-            Modifier.size(48.dp).clearAndSetSemantics {
+            Modifier.size(Sizes.touchTarget).clearAndSetSemantics {
                 contentDescription = comingSoon
                 disabled()
             },

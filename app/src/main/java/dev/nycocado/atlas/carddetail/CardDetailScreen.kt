@@ -2,7 +2,6 @@ package dev.nycocado.atlas.carddetail
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
-import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedContentTransitionScope
@@ -12,13 +11,11 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.VectorConverter
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -28,9 +25,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
@@ -44,10 +38,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.selection.selectable
-import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -62,16 +53,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.luminance
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.VectorPath
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalConfiguration
@@ -79,17 +64,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
-import androidx.compose.ui.semantics.onClick
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.text
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLinkStyles
@@ -100,7 +79,6 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.round
 import androidx.compose.ui.util.lerp
@@ -110,8 +88,6 @@ import dev.nycocado.atlas.card.Age
 import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
-import dev.nycocado.atlas.card.CardFace
-import dev.nycocado.atlas.card.CardFact
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardText
@@ -128,12 +104,9 @@ import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.cardpane.CardStatusBarIcons
 import dev.nycocado.atlas.cardpane.ListDetailLayout
-import dev.nycocado.atlas.compendium.CardKind
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.RoundButton
-import dev.nycocado.atlas.ui.component.TraitGlyph
 import dev.nycocado.atlas.ui.component.UnofficialFooter
-import dev.nycocado.atlas.ui.component.colorName
 import dev.nycocado.atlas.ui.component.pointsText
 import dev.nycocado.atlas.ui.component.signed
 import dev.nycocado.atlas.ui.theme.AtlasColors
@@ -141,6 +114,7 @@ import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
+import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
@@ -420,7 +394,7 @@ private fun PointsBadge(
                     }
                 }
             }.graphicsLayer { rotationZ = 8f + spin.value }
-            .size(68.dp)
+            .size(Sizes.pointsBadge)
             .sticker(CircleShape, theme.highlight, theme.outline, Stroke.strong, Shadow.sticker)
             .clearAndSetSemantics { contentDescription = description },
         contentAlignment = Alignment.Center,
@@ -450,137 +424,6 @@ private val EffectKind.label: Int?
 
 // The printed line is "+N Gene Pool", and "+0" when it only restates the pool.
 private fun signedPlus(n: Int) = if (n < 0) signed(n) else "+$n"
-
-@Composable
-private fun Pills(
-    face: CardFace,
-    language: CardLanguage,
-) {
-    val color = face.colors.firstOrNull()
-    val theme = AtlasTheme.colors
-    FlowRow(
-        horizontalArrangement = Arrangement.spacedBy(Space.s2),
-        verticalArrangement = Arrangement.spacedBy(Space.s2),
-    ) {
-        face.facts.forEach { fact ->
-            when (fact) {
-                is CardFact.Color -> {
-                    val palette = theme.trait(fact.color)
-                    Pill(
-                        stringResource(colorName(fact.color)),
-                        palette.fill,
-                        palette.onFill,
-                    ) { TraitGlyph(fact.color, palette.onFill, 18.dp) }
-                }
-
-                is CardFact.Type -> {
-                    Pill(stringResource(fact.kind.label), theme.surfaceSticker, theme.onSurface)
-                }
-
-                CardFact.Dominant -> {
-                    Pill(
-                        cardString(R.string.dominant, language),
-                        theme.highlight,
-                        theme.onHighlight,
-                        language = language,
-                    ) {
-                        Symbol(R.drawable.ic_symbol_dominant)
-                    }
-                }
-
-                is CardFact.Icon -> {
-                    Pill(
-                        cardString(fact.icon.label, language),
-                        theme.surfaceSticker,
-                        theme.onSurface,
-                        language = language,
-                        glyph =
-                            fact.icon.symbol?.let {
-                                { Symbol(it, actionColor = theme.trait(color).fill) }
-                            },
-                    )
-                }
-
-                // The coined -ling names stay English whatever the card language.
-                is CardFact.Subspecies -> {
-                    Pill(fact.name, theme.surfaceSticker, theme.onSurface, language = CardLanguage.English)
-                }
-            }
-        }
-    }
-}
-
-private val CardKind.label: Int
-    @StringRes get() =
-        when (this) {
-            CardKind.Trait -> R.string.type_trait
-            CardKind.Age -> R.string.type_age
-            CardKind.Catastrophe -> R.string.type_catastrophe
-        }
-
-@Composable
-private fun Pill(
-    text: String,
-    fill: Color,
-    content: Color,
-    language: CardLanguage? = null,
-    glyph: @Composable (() -> Unit)? = null,
-) {
-    Row(
-        Modifier
-            .heightIn(min = 32.dp)
-            .sticker(CircleShape, fill, AtlasTheme.colors.outline, Stroke.thin)
-            .padding(horizontal = Space.s3),
-        horizontalArrangement = Arrangement.spacedBy(6.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        glyph?.invoke()
-        BasicText(
-            language?.let { tagged(text, it) } ?: AnnotatedString(text),
-            style = AtlasTypography.labelLg.copy(color = content),
-        )
-    }
-}
-
-// Decorative: the pill's text names it.
-@Composable
-private fun Symbol(
-    @DrawableRes id: Int,
-    actionColor: Color = Color.Unspecified,
-) {
-    val vector = ImageVector.vectorResource(id)
-    // The action symbol is printed in the card's color; its drawable names those paths card_color.
-    val painter =
-        if (id == R.drawable.ic_symbol_action) {
-            rememberVectorPainter(remember(vector, actionColor) { vector.withCardColor(actionColor) })
-        } else {
-            rememberVectorPainter(vector)
-        }
-    Image(painter, null, Modifier.height(18.dp))
-}
-
-// ImageVector has no way to change a path's fill, so the paths are copied with the card_color ones refilled. Converted
-// symbols are flat lists of paths, without groups.
-private fun ImageVector.withCardColor(color: Color): ImageVector =
-    ImageVector
-        .Builder(name, defaultWidth, defaultHeight, viewportWidth, viewportHeight)
-        .apply {
-            root.filterIsInstance<VectorPath>().forEach {
-                addPath(
-                    it.pathData,
-                    it.pathFillType,
-                    it.name,
-                    if (it.name == "card_color") SolidColor(color) else it.fill,
-                    it.fillAlpha,
-                    it.stroke,
-                    it.strokeAlpha,
-                    it.strokeLineWidth,
-                    it.strokeLineCap,
-                    it.strokeLineJoin,
-                    it.strokeLineMiter,
-                )
-            }
-        }.build()
 
 // What a bubble shows, as one value so a language change crossfades all of it.
 private data class BubbleText(
@@ -659,7 +502,7 @@ private fun Bubble(
 
 // Switching the card language is the player's own action, so it animates, with the duration and easing of the cards
 // moving in the compendium list. Compose scales it to zero when Android's animations are removed.
-private const val LANGUAGE_CHANGE_MILLIS = 350
+internal const val LANGUAGE_CHANGE_MILLIS = 350
 
 private val LanguageChange: AnimatedContentTransitionScope<*>.() -> ContentTransform = {
     fadeIn(tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing)) togetherWith
@@ -667,21 +510,12 @@ private val LanguageChange: AnimatedContentTransitionScope<*>.() -> ContentTrans
         SizeTransform(clip = false) { _, _ -> tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing) }
 }
 
-// Each option names its language in itself, so it needs no string resource.
-private val CardLanguage.endonym: String
-    get() =
-        when (this) {
-            CardLanguage.English -> "English"
-            CardLanguage.Portuguese -> "Português"
-            CardLanguage.Spanish -> "Español"
-        }
-
 // A string in the card language, not the interface's: the labels follow the card they sit beside. AppCompatDelegate and
 // LocaleManager would change the whole app's locale, which the card language must not. It only reads a resource, so the
 // lint rule is for bundles with language splits, and the app ships as an APK.
 @SuppressLint("AppBundleLocaleChanges")
 @Composable
-private fun cardString(
+internal fun cardString(
     @StringRes id: Int,
     language: CardLanguage,
     vararg args: Any,
@@ -710,7 +544,7 @@ private fun citedStyle(
         ?: SpanStyle(background = theme.outlineSoft, color = theme.onSurface)
 
 // Text tagged with its language, so TalkBack reads a translation in its own language, not the interface's.
-private fun tagged(
+internal fun tagged(
     text: String,
     language: CardLanguage,
     citations: List<Citation> = emptyList(),
@@ -723,99 +557,6 @@ private fun tagged(
         addLink(LinkAnnotation.Clickable(cited.id, link) { onCardClick(cited.id) }, range.first, range.last + 1)
     }
 }
-
-@Composable
-private fun LanguageSelector(
-    languages: List<CardLanguage>,
-    selected: CardLanguage,
-    onSelect: (CardLanguage) -> Unit,
-) {
-    val theme = AtlasTheme.colors
-    val label = stringResource(R.string.card_language)
-    // The highlight is drawn behind the options and slides between them. The index starts at the selected option, so
-    // nothing slides when the card opens.
-    val position by animateFloatAsState(
-        languages.indexOf(selected).toFloat(),
-        tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing),
-        label = "language highlight",
-    )
-    val gap = 4.dp
-    // Compose widens the touch target of a 30dp option to the 48dp minimum without changing its layout.
-    Row(
-        Modifier
-            .background(theme.inverseSurface, CircleShape)
-            .padding(3.dp)
-            .width(IntrinsicSize.Max)
-            .drawBehind {
-                val option = (size.width - gap.toPx() * (languages.size - 1)) / languages.size
-                val start = position * (option + gap.toPx())
-                val x = if (layoutDirection == LayoutDirection.Ltr) start else size.width - option - start
-                drawRoundRect(theme.highlight, Offset(x, 0f), Size(option, size.height), CornerRadius(size.height / 2))
-            }.selectableGroup()
-            .semantics { contentDescription = label },
-        horizontalArrangement = Arrangement.spacedBy(gap),
-    ) {
-        languages.forEach { language ->
-            val active = language == selected
-            Box(
-                Modifier
-                    .weight(1f)
-                    .height(30.dp)
-                    .widthIn(min = 44.dp)
-                    .clip(CircleShape)
-                    .selectable(active, role = Role.RadioButton) { onSelect(language) }
-                    .clearAndSetSemantics {
-                        text = tagged(language.endonym, language)
-                        this.selected = active
-                        role = Role.RadioButton
-                        onClick {
-                            onSelect(language)
-                            true
-                        }
-                    }.padding(horizontal = Space.s3),
-                contentAlignment = Alignment.Center,
-            ) {
-                // TalkBack reads the endonym above, tagged with its language; the code is only for the eye.
-                BasicText(
-                    language.code.uppercase(),
-                    style =
-                        AtlasTypography.labelSm.copy(
-                            color = if (active) theme.onHighlight else theme.onInverseSurface,
-                        ),
-                )
-            }
-        }
-    }
-}
-
-private val TraitIcon.label: Int
-    @StringRes get() =
-        when (this) {
-            TraitIcon.Action -> R.string.icon_action
-            TraitIcon.Attachment -> R.string.icon_attachment
-            TraitIcon.Coral -> R.string.icon_coral
-            TraitIcon.Curious -> R.string.icon_curious
-            TraitIcon.Dragon -> R.string.icon_dragon
-            TraitIcon.DropOfLife -> R.string.icon_drop_of_life
-            TraitIcon.Exotic -> R.string.icon_exotic
-            TraitIcon.Fish -> R.string.icon_fish
-            TraitIcon.PlayWhen -> R.string.icon_play_when
-            TraitIcon.Shell -> R.string.icon_shell
-            TraitIcon.Spell -> R.string.icon_spell
-            TraitIcon.Suppress -> R.string.icon_suppress
-            TraitIcon.WorldsEnd -> R.string.worlds_end
-        }
-
-// Only the symbols the enabled sets use are converted; the rest have none yet.
-private val TraitIcon.symbol: Int?
-    @DrawableRes get() =
-        when (this) {
-            TraitIcon.Action -> R.drawable.ic_symbol_action
-            TraitIcon.DropOfLife -> R.drawable.ic_symbol_drop_of_life
-            TraitIcon.PlayWhen -> R.drawable.ic_symbol_play_when
-            TraitIcon.WorldsEnd -> R.drawable.ic_symbol_worlds_end
-            else -> null
-        }
 
 @PreviewLightDark
 @Composable
