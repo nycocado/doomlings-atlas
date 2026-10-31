@@ -649,7 +649,7 @@ private val Carnivore =
 @Composable
 internal fun UndrawnTokenDetailPreview() = AtlasTheme { CardDetailSample(card = Carnivore) }
 
-// Eloquence as in assets/doomlings/classic/cards.json: a trait prints its World's End in the normal ink.
+// Eloquence as in assets/doomlings/classic/cards.json: a trait prints its World's End in the normal text color.
 private val Eloquence =
     Trait(
         "classic/traits/eloquence",

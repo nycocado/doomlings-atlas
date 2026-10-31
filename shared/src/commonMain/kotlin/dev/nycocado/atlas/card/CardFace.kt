@@ -204,6 +204,6 @@ internal fun NamedCard.blocks(
     }
 }
 
-// A trait prints its World's End in the normal ink.
+// A trait prints its World's End in the normal text color.
 private fun NamedCard.printsInYellow(kind: EffectKind?) =
     kind == EffectKind.PocketObjective || (this is Catastrophe && kind == EffectKind.WorldsEnd)
