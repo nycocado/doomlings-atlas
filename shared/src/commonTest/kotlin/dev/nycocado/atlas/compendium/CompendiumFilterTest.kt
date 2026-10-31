@@ -6,6 +6,7 @@ import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardColor.Blue
 import dev.nycocado.atlas.card.CardColor.Green
 import dev.nycocado.atlas.card.CardColor.Red
+import dev.nycocado.atlas.card.CardKind
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
@@ -13,6 +14,7 @@ import dev.nycocado.atlas.card.Effect
 import dev.nycocado.atlas.card.EffectKind
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.decodeTranslations
+import dev.nycocado.atlas.card.kind
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals

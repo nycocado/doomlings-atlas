@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.CardKind
 import dev.nycocado.atlas.ui.component.TraitColorOptions
 import dev.nycocado.atlas.ui.component.TraitGlyph
 import dev.nycocado.atlas.ui.component.colorName

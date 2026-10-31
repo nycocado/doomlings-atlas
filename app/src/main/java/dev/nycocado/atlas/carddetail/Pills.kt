@@ -30,9 +30,9 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardFace
 import dev.nycocado.atlas.card.CardFact
+import dev.nycocado.atlas.card.CardKind
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.TraitIcon
-import dev.nycocado.atlas.compendium.CardKind
 import dev.nycocado.atlas.ui.component.TraitGlyph
 import dev.nycocado.atlas.ui.component.colorName
 import dev.nycocado.atlas.ui.theme.AtlasTheme

@@ -1,21 +1,17 @@
 package dev.nycocado.atlas.compendium
 
 import ca.solostudios.stringsimilarity.DamerauLevenshtein
-import dev.nycocado.atlas.card.Age
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.CardKind
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardTranslations
-import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.face
+import dev.nycocado.atlas.card.kind
 import kotlinx.serialization.Serializable
 import kotlin.math.abs
-
-// The compendium's segments. Other card types (Gene Pool, Birth of Life) are not listed.
-@Serializable
-enum class CardKind { Trait, Age, Catastrophe }
 
 @Serializable
 data class CompendiumFilter(
@@ -24,15 +20,6 @@ data class CompendiumFilter(
     // Traits only. null stands for colorless; empty shows every color.
     val colors: Set<CardColor?> = emptySet(),
 )
-
-val Card.kind: CardKind?
-    get() =
-        when (this) {
-            is Trait -> CardKind.Trait
-            is Age -> CardKind.Age
-            is Catastrophe -> CardKind.Catastrophe
-            else -> null
-        }
 
 // Every query word must match somewhere in the card (name, effect, World's End), all in the printed text or all in the
 // translation in the card language. The list runs from exact to prefix to typo matches, then by printed name.
@@ -54,7 +41,14 @@ fun List<Card>.filterCompendium(
                 if (query.isEmpty()) {
                     MatchRank.Exact
                 } else {
-                    listOf(card.face(), translations.face(card, language))
+                    // With English as the card language the translation is the printed face: build it once.
+                    val faces =
+                        if (language == CardLanguage.English) {
+                            listOf(translations.face(card, language))
+                        } else {
+                            listOf(card.face(), translations.face(card, language))
+                        }
+                    faces
                         .mapNotNull { face -> face?.searchable?.let { matchRank(query, it) } }
                         .minOrNull()
                 }

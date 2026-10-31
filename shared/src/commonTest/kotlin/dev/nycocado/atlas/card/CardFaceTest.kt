@@ -1,6 +1,6 @@
 package dev.nycocado.atlas.card
 
-import dev.nycocado.atlas.compendium.CardKind
+import dev.nycocado.atlas.card.CardKind
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
