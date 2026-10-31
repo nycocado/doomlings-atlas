@@ -12,6 +12,7 @@ import androidx.compose.ui.test.performTextInput
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Assert.assertFalse
 import org.junit.Test
+import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 
 private const val ADORABLE_FLAVOR =
@@ -102,6 +103,36 @@ class CardLanguageDefaultFrenchTest : AtlasBehaviorTest() {
 
         compose.onNode(isSelectable() and hasText("English")).assertIsSelected()
         detailOf("Value is equal to the size of your Gene Pool.").assertIsDisplayed()
+    }
+}
+
+// The device language can change while the app is open: the activity is recreated and keeps its ViewModel.
+@HiltAndroidTest
+class CardLanguageDeviceChangeTest : AtlasBehaviorTest() {
+    @Test
+    fun theDefaultFollowsTheDeviceLanguageChangedWhileTheAppIsOpen() {
+        val scenario = launchPastNotice()
+
+        RuntimeEnvironment.setQualifiers("+pt")
+        scenario.recreate()
+        card("Adorable").performClick()
+
+        compose.onNode(isSelectable() and hasText("Português")).assertIsSelected()
+        detailOf("Adorável").assertIsDisplayed()
+    }
+
+    @Test
+    fun aStoredPickWinsOverTheDeviceLanguageChange() {
+        val scenario = launchPastNotice()
+        card("Adorable").performClick()
+        compose.onNode(isSelectable() and hasText("English")).performClick()
+        button(R.string.back).performClick()
+
+        RuntimeEnvironment.setQualifiers("+pt")
+        scenario.recreate()
+        card("Adorable").performClick()
+
+        compose.onNode(isSelectable() and hasText("English")).assertIsSelected()
     }
 }
 

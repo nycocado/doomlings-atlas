@@ -32,6 +32,7 @@ import dev.nycocado.atlas.cardpane.rememberListDetailLayout
 import dev.nycocado.atlas.compendium.CompendiumScreen
 import dev.nycocado.atlas.compendium.CompendiumViewModel
 import dev.nycocado.atlas.ui.theme.AtlasTheme
+import dev.nycocado.atlas.ui.theme.StatusBarIcons
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -44,6 +45,11 @@ data object AboutKey : NavKey
 // below with it.
 fun NavBackStack<NavKey>.leave(key: NavKey) {
     if (lastOrNull() == key) removeLastOrNull()
+}
+
+// A double tap during the enter fade finds the button still there: the screen goes on the stack once.
+fun NavBackStack<NavKey>.open(key: NavKey) {
+    if (lastOrNull() != key) add(key)
 }
 
 // The one preferences file: the notice flag and the card language. The name is kept so installs keep their flag.
@@ -99,10 +105,11 @@ fun AtlasApp() {
                             ListDetailSceneStrategy.preferredPaneSize(width = 0.5f) +
                             ListDetailSceneStrategy.paneAnimation(boundsAnimationSpec = snap()),
                 ) {
+                    StatusBarIcons(dark = false)
                     CompendiumScreen(
                         viewModel,
                         onCardClick = cardPane::open,
-                        onAboutClick = { backStack.add(AboutKey) },
+                        onAboutClick = { backStack.open(AboutKey) },
                         layout = layout,
                     )
                 }
@@ -119,9 +126,12 @@ fun AtlasApp() {
                                 boundsAnimationSpec = snap(),
                             ),
                 ) { key ->
-                    cardPane.Detail(key, layout) { backStack.add(AboutKey) }
+                    cardPane.Detail(key, layout) { backStack.open(AboutKey) }
                 }
-                entry<AboutKey> { AboutScreen { backStack.leave(AboutKey) } }
+                entry<AboutKey> {
+                    StatusBarIcons(dark = false)
+                    AboutScreen { backStack.leave(AboutKey) }
+                }
             },
     )
 }

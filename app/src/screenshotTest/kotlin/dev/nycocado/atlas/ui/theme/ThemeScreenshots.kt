@@ -21,10 +21,20 @@ import dev.nycocado.atlas.cardpane.CardBesideListPreview
 import dev.nycocado.atlas.compendium.CardGroupCollapsedPreview
 import dev.nycocado.atlas.compendium.CardGroupOpenPreview
 import dev.nycocado.atlas.compendium.CardGroupOpenWidePreview
+import dev.nycocado.atlas.compendium.ColorDiscPreview
 import dev.nycocado.atlas.compendium.CompendiumBesideCardPreview
 import dev.nycocado.atlas.compendium.CompendiumHalfCollapsedPreview
 import dev.nycocado.atlas.compendium.CompendiumLongNamePreview
 import dev.nycocado.atlas.compendium.CompendiumPreview
+import dev.nycocado.atlas.compendium.FiltersAgesPreview
+import dev.nycocado.atlas.compendium.FiltersGreenPreview
+import dev.nycocado.atlas.compendium.FiltersPreview
+import dev.nycocado.atlas.compendium.HeaderHalfCollapsedPreview
+import dev.nycocado.atlas.compendium.HeaderPreview
+import dev.nycocado.atlas.compendium.HeaderRailPreview
+import dev.nycocado.atlas.compendium.KindSegmentsPreview
+import dev.nycocado.atlas.compendium.SearchFieldPreview
+import dev.nycocado.atlas.compendium.SearchFieldTypedPreview
 import dev.nycocado.atlas.ui.component.CardStackPreview
 import dev.nycocado.atlas.ui.component.CardThumbPreview
 import dev.nycocado.atlas.ui.component.DockPreview
@@ -303,3 +313,53 @@ fun PillsScreenshot() = PillsPreview()
 @PreviewLightDark
 @Composable
 fun LanguageSelectorScreenshot() = LanguageSelectorPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun HeaderScreenshot() = HeaderPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun HeaderHalfCollapsedScreenshot() = HeaderHalfCollapsedPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun HeaderRailScreenshot() = HeaderRailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun SearchFieldScreenshot() = SearchFieldPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun SearchFieldTypedScreenshot() = SearchFieldTypedPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun FiltersScreenshot() = FiltersPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun FiltersGreenScreenshot() = FiltersGreenPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun FiltersAgesScreenshot() = FiltersAgesPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun ColorDiscScreenshot() = ColorDiscPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun KindSegmentsScreenshot() = KindSegmentsPreview()

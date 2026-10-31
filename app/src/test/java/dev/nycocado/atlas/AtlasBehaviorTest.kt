@@ -10,6 +10,7 @@ import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasScrollAction
+import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isSelectable
 import androidx.compose.ui.test.junit4.v2.createEmptyComposeRule
@@ -94,8 +95,11 @@ abstract class AtlasBehaviorTest {
             }
         }
 
+    // The single-line search field scrolls its text, so it has a scroll action too.
+    protected val scrollingList: SemanticsMatcher get() = hasScrollAction() and !hasSetTextAction()
+
     protected fun scrollListTo(matcher: SemanticsMatcher) {
-        compose.onNode(hasScrollAction()).performScrollToNode(matcher)
+        compose.onNode(scrollingList).performScrollToNode(matcher)
     }
 
     // The leaving screen keeps its back button until the fade ends, so a second tap lands on it.

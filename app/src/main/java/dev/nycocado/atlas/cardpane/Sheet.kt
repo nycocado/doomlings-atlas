@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -17,16 +17,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.offset
 import dev.nycocado.atlas.carddetail.CardDetailSample
 import dev.nycocado.atlas.ui.theme.AtlasTheme
+import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
 
-private val SheetShape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp)
+private val SheetShape = Radius.lg.copy(topStart = ZeroCornerSize, topEnd = ZeroCornerSize)
 
 // Beside the list, the card detail is a sticker hanging from the top of the screen; its top edge sits just above
 // the screen. The status bar icons stay light there, so a soft shade behind the bar keeps them readable over light
