@@ -53,6 +53,7 @@ import dev.nycocado.atlas.ui.component.colorName
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
+import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
 import dev.nycocado.atlas.ui.theme.sticker
@@ -221,7 +222,7 @@ private fun KindSegments(
                     Modifier
                         .weight(1f)
                         // Taller than the selected segment's 40dp, up to the minimum touch target.
-                        .heightIn(min = 48.dp)
+                        .heightIn(min = Sizes.touchTarget)
                         .selectable(active, role = Role.RadioButton) { onSelect(kind) },
                     contentAlignment = Alignment.Center,
                 ) {

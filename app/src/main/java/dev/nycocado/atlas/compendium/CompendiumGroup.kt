@@ -1,6 +1,5 @@
 package dev.nycocado.atlas.compendium
 
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.pluralStringResource
@@ -28,9 +26,7 @@ import dev.nycocado.atlas.ui.component.CardStack
 import dev.nycocado.atlas.ui.component.RoundButton
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
-import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
-import dev.nycocado.atlas.ui.theme.pressSink
 
 // The first cell of an open card group, where its stack was: a round button that collapses it, with the group's name
 // and count under it, centered in a cell the size of a card's art, so the variants after it keep the grid's columns.
@@ -42,8 +38,6 @@ internal fun GroupCollapse(
 ) {
     val theme = AtlasTheme.colors
     val count = cell.count
-    val interactions = remember { MutableInteractionSource() }
-    val sink = pressSink(interactions, Shadow.sticker)
     Column(
         modifier.fillMaxWidth().aspectRatio(CARD_RATIO),
         verticalArrangement = Arrangement.spacedBy(Space.s2, Alignment.CenterVertically),
