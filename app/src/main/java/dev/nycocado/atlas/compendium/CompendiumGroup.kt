@@ -40,22 +40,16 @@ import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.pressSink
 import dev.nycocado.atlas.ui.theme.sinkingSticker
 
-// A variant's place in its card group, 1-based.
-internal data class VariantPosition(
-    val number: Int,
-    val count: Int,
-)
-
 // The first cell of an open card group, where its stack was: a round button that collapses it, with the group's name
 // and count under it, centered in a cell the size of a card's art, so the variants after it keep the grid's columns.
 @Composable
 internal fun GroupCollapse(
-    group: CompendiumEntry.Group,
+    cell: GridCell.Collapse,
     onCollapse: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val theme = AtlasTheme.colors
-    val count = group.variants.size
+    val count = cell.count
     val interactions = remember { MutableInteractionSource() }
     val sink = pressSink(interactions, Shadow.sticker)
     Column(
@@ -67,7 +61,7 @@ internal fun GroupCollapse(
             Modifier
                 .size(48.dp)
                 .describedButton(
-                    pluralStringResource(R.plurals.card_group_open, count, group.name, count),
+                    pluralStringResource(R.plurals.card_group_open, count, cell.name, count),
                     interactions,
                     stringResource(R.string.card_group_collapse),
                     CircleShape,
@@ -91,7 +85,7 @@ internal fun GroupCollapse(
         }
         // The button already says all of this.
         BasicText(
-            groupTitle(group),
+            groupTitle(cell.name, count),
             Modifier.clearAndSetSemantics {},
             style = AtlasTypography.titleMd.copy(color = theme.onSurface, textAlign = TextAlign.Center),
         )
@@ -101,18 +95,18 @@ internal fun GroupCollapse(
 // The first variant's art and colors stand for the group.
 @Composable
 internal fun GroupStack(
-    group: CompendiumEntry.Group,
+    cell: GridCell.Stack,
     tilt: Float,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val first = group.variants.first()
+    val first = cell.variants.first()
     val colors = first.face()?.colors.orEmpty()
     CardStack(
         first.image,
-        groupTitle(group),
+        groupTitle(cell.name, cell.variants.size),
         colors,
-        pluralStringResource(R.plurals.card_group_collapsed, group.variants.size, group.name, group.variants.size),
+        pluralStringResource(R.plurals.card_group_collapsed, cell.variants.size, cell.name, cell.variants.size),
         tilt,
         onClick,
         stringResource(R.string.card_group_expand),
@@ -121,8 +115,10 @@ internal fun GroupStack(
 }
 
 @Composable
-internal fun groupTitle(group: CompendiumEntry.Group) =
-    stringResource(R.string.card_group_title, group.name, group.variants.size)
+private fun groupTitle(
+    name: String,
+    count: Int,
+) = stringResource(R.string.card_group_title, name, count)
 
 @PreviewLightDark
 @Composable
@@ -165,8 +161,7 @@ private fun GroupSample(
                 CompendiumEntry.Group("Kidney", (1..variants).map { trait("kidney-$it", "Kidney") }),
                 CompendiumEntry.Single(trait("impatience", "Impatience")),
                 CompendiumEntry.Single(trait("late", "Late")),
-            ),
-            if (open) setOf("Kidney") else emptySet(),
+            ).toGridCells(if (open) setOf("Kidney") else emptySet()),
             {},
             {},
             {},

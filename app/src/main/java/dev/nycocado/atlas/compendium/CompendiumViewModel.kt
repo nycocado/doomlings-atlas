@@ -14,6 +14,7 @@ import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardRepository
 import dev.nycocado.atlas.card.CardTranslations
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -57,7 +58,6 @@ class CompendiumViewModel
         // The names of the card groups that are open, saved with the filter; a fresh start has them all collapsed.
         private var savedOpenGroups by savedState.saved { emptySet<String>() }
         private val mutableOpenGroups = MutableStateFlow(savedOpenGroups)
-        val openGroups: StateFlow<Set<String>> = mutableOpenGroups.asStateFlow()
 
         // Every card, for the detail screen.
         val library: StateFlow<CardLibrary> = mutableLibrary.asStateFlow()
@@ -66,7 +66,7 @@ class CompendiumViewModel
         val cardLanguage: StateFlow<CardLanguage> = mutableCardLanguage.asStateFlow()
 
         // null while the cards are loading.
-        val results: StateFlow<List<CompendiumEntry>?> =
+        private val entries: Flow<List<CompendiumEntry>?> =
             combine(
                 mutableLibrary,
                 mutableFilter,
@@ -74,7 +74,12 @@ class CompendiumViewModel
                 mutableCardLanguage,
             ) { library, filter, translations, language ->
                 library.cards?.filterCompendium(filter, translations, language)?.let(library::groupByName)
-            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
+            }
+
+        // Toggling a group only redoes the cells, not the filter.
+        val cells: StateFlow<List<GridCell>?> =
+            combine(entries, mutableOpenGroups) { entries, open -> entries?.toGridCells(open) }
+                .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
         init {
             viewModelScope.launch { mutableLibrary.value = repository.library() }
