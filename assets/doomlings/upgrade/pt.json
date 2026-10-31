@@ -333,7 +333,7 @@
   "upgrade/traits/ancient": {
     "name": "Milenar",
     "effects": [
-      "Escolha uma cor. Compre 10 cartas. Fique com 1 da cor escolhida. Coloque o resto no fundo do baralho."
+      "[rainbow]Escolha uma cor.[/rainbow] Compre 10 cartas. Fique com 1 da [rainbow]cor[/rainbow] escolhida. Coloque o resto no fundo do baralho."
     ],
     "flavor": "Se quiser atravessar a minha floresta, diga do que você mais gosta em mim."
   },
@@ -376,7 +376,7 @@
   "upgrade/traits/carnosaur-jaw": {
     "name": "Mandíbula de Carnossauro",
     "effects": [
-      "Para jogar, você deve descartar 2 traits vermelhos da sua pilha de traits."
+      "Para jogar, você deve descartar 2 traits [red]vermelhos[/red] da sua pilha de traits."
     ],
     "flavor": "Pare de se mexer! Eu não consigo te ver!"
   },
@@ -398,7 +398,7 @@
   "upgrade/traits/cybernetic": {
     "name": "Cibernético",
     "effects": [
-      "Anexe a um trait não azul. O trait hospedeiro agora é azul."
+      "Anexe a um trait não azul. O trait hospedeiro agora é [blue]azul[/blue]."
     ],
     "flavor": "Eu faço várias tarefas ao mesmo tempo. Tipo esfregar a barriga e dar tapinhas na cabeça."
   },
@@ -420,7 +420,7 @@
   "upgrade/traits/dragon-heart": {
     "name": "Coração de Dragão",
     "effects": [
-      "+4 se você tiver as 4 cores na sua pilha de traits."
+      "+4 se você tiver as 4 [rainbow]cores[/rainbow] na sua pilha de traits."
     ],
     "flavor": "Tudo derrete na minha boca."
   },
@@ -469,7 +469,7 @@
   "upgrade/traits/free-will": {
     "name": "Livre-Arbítrio",
     "effects": [
-      "Esta carta passa a ser da cor da sua escolha."
+      "Esta carta passa a ser da [rainbow]cor[/rainbow] da sua escolha."
     ],
     "flavor": "A capacidade de escolher entre o número 1 e o número 2."
   },
@@ -491,7 +491,7 @@
   "upgrade/traits/gmo": {
     "name": "Transgênico",
     "effects": [
-      "Anexe a um trait. +1 para cada trait da sua pilha de traits da mesma cor que o trait hospedeiro."
+      "Anexe a um trait. +1 para cada trait da sua pilha de traits da mesma [rainbow]cor[/rainbow] que o trait hospedeiro."
     ],
     "flavor": "Eu sou o milho perfeito. Bip bop."
   },
@@ -608,7 +608,7 @@
   "upgrade/traits/rainbow-horn": {
     "name": "Chifre Arco-Íris",
     "effects": [
-      "Você pode jogar Rainbow Horn da sua mão a qualquer momento se tiver as 4 cores na sua pilha de traits."
+      "Você pode jogar Rainbow Horn da sua mão a qualquer momento se tiver as 4 [rainbow]cores[/rainbow] na sua pilha de traits."
     ],
     "flavor": "Chifre arco-íris, eeeba!"
   },
@@ -647,14 +647,14 @@
   "upgrade/traits/terror-beak": {
     "name": "Bico do Terror",
     "effects": [
-      "Para jogar, você deve descartar 1 trait verde da sua mão ou da sua pilha de traits."
+      "Para jogar, você deve descartar 1 trait [green]verde[/green] da sua mão ou da sua pilha de traits."
     ],
     "flavor": "O bico vai... direto na carne da minha presa!"
   },
   "upgrade/traits/tetrachromatic": {
     "name": "Tetracromático",
     "effects": [
-      "-1 para cada trait incolor na sua pilha de traits."
+      "-1 para cada trait [colorless]incolor[/colorless] na sua pilha de traits."
     ],
     "flavor": "Tô ligadão nas cores."
   },
@@ -675,7 +675,7 @@
   "upgrade/traits/transgenic-modification": {
     "name": "Modificação Transgênica",
     "effects": [
-      "Anexe a um trait não verde. O trait hospedeiro agora é verde."
+      "Anexe a um trait não verde. O trait hospedeiro agora é [green]verde[/green]."
     ],
     "flavor": "Meio lutador, meio tomate. Dá um soco de vitamina C!"
   },

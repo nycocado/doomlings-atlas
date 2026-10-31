@@ -94,7 +94,7 @@
   "legends-of-enderas/traits/animatronic": {
     "name": "Animatrônico",
     "effects": [
-      "Anexe. Se o hospedeiro for:\nAzul: +1 para cada Dinoling ({dinoling}) na sua pilha de traits.\nVerde: +1 para cada Techling ({techling}) na sua pilha de traits."
+      "Anexe. Se o hospedeiro for:\n[blue]Azul[/blue]: +1 para cada Dinoling ({dinoling}) na sua pilha de traits.\n[green]Verde[/green]: +1 para cada Techling ({techling}) na sua pilha de traits."
     ],
     "flavor": "DINOSSAUROS ROBÔS! E também PIZZA!"
   },
@@ -235,7 +235,7 @@
   "legends-of-enderas/traits/filament": {
     "name": "Filamento",
     "effects": [
-      "Anexe. +3 para cada dominante na sua pilha de traits da mesma cor do hospedeiro."
+      "Anexe. +3 para cada dominante na sua pilha de traits da mesma [rainbow]cor[/rainbow] do hospedeiro."
     ],
     "flavor": "Acabei de ter uma ideia. Vai ser brilhante."
   },
@@ -275,21 +275,21 @@
   "legends-of-enderas/traits/gizmo": {
     "name": "Geringonça",
     "effects": [
-      "Anexe. Escolha 1.\nSe o hospedeiro for:\nVerde: Preveja a próxima age.\nRoxo: Estabilize até 6.\nAzul: Compre 2 cartas.\nVermelho: +2.\nDepois, jogue outro trait."
+      "Anexe. Escolha 1.\nSe o hospedeiro for:\n[green]Verde[/green]: Preveja a próxima age.\n[purple]Roxo[/purple]: Estabilize até 6.\n[blue]Azul[/blue]: Compre 2 cartas.\n[red]Vermelho[/red]: +2.\nDepois, jogue outro trait."
     ],
     "flavor": "Ela faz o que você quiser! Ou o que ela quiser! Ou o que for!"
   },
   "legends-of-enderas/traits/herbivore": {
     "name": "Herbívoro",
     "effects": [
-      "Você pode jogar Herbivore depois de estabilizar se o topo da pilha de descarte for verde. Depois, compre 1 carta."
+      "Você pode jogar Herbivore depois de estabilizar se o topo da pilha de descarte for [green]verde[/green]. Depois, compre 1 carta."
     ],
     "flavor": "Você devia tentar comer coisas que não fogem. É bem mais fácil."
   },
   "legends-of-enderas/traits/hollow-bones": {
     "name": "Ossos Ocos",
     "effects": [
-      "Para jogar, você deve descartar 1 trait positivo da sua pilha de traits. No Fim do Mundo: Escolha uma cor. Os oponentes descartam 2 traits dessa cor da pilha de traits deles."
+      "Para jogar, você deve descartar 1 trait positivo da sua pilha de traits. No Fim do Mundo: [rainbow]Escolha uma cor[/rainbow]. Os oponentes descartam 2 traits dessa [rainbow]cor[/rainbow] da pilha de traits deles."
     ],
     "flavor": "Não sou gordo. Só tenho ossos ocos."
   },
@@ -425,7 +425,7 @@
   "legends-of-enderas/traits/refurbished": {
     "name": "Recondicionado",
     "effects": [
-      "Anexe. Se o hospedeiro for: Roxo: +2. Vermelho: +3. Se o hospedeiro for um Techling ({techling}): +1 para cada carta na mão."
+      "Anexe. Se o hospedeiro for: [purple]Roxo[/purple]: +2. [red]Vermelho[/red]: +3. Se o hospedeiro for um Techling ({techling}): +1 para cada carta na mão."
     ],
     "flavor": "Um ~~novo~~ brinquedo reluzente."
   },
@@ -460,7 +460,7 @@
   "legends-of-enderas/traits/slumbering": {
     "name": "Dorminhoco",
     "effects": [
-      "Descarte 1 carta da mão.\nSe a carta for:\nRoxa: Descarte até 2 da sua pilha de traits.\nVermelha: Adicione o valor de face dela.\n\nVerde: Jogue 1 trait.\nAzul: +5."
+      "Descarte 1 carta da mão.\nSe a carta for:\n[purple]Roxa[/purple]: Descarte até 2 da sua pilha de traits.\n[red]Vermelha[/red]: Adicione o valor de face dela.\n\n[green]Verde[/green]: Jogue 1 trait.\n[blue]Azul[/blue]: +5."
     ],
     "flavor": "Desculpa ter dormido demais. Já é o fim do mundo?"
   },
@@ -481,7 +481,7 @@
   "legends-of-enderas/traits/speech-recognition": {
     "name": "Reconhecimento de Voz",
     "effects": [
-      "Anexe. Adicione o valor de face de 1 carta na mão que compartilhe uma cor com o hospedeiro.\n\n(Exceto dominantes.)"
+      "Anexe. Adicione o valor de face de 1 carta na mão que compartilhe uma [rainbow]cor[/rainbow] com o hospedeiro.\n\n(Exceto dominantes.)"
     ],
     "flavor": "O melhor conversor de voz para texto do mercado."
   },
@@ -503,7 +503,7 @@
   "legends-of-enderas/traits/steam-powered": {
     "name": "Movido a Vapor",
     "effects": [
-      "Anexe. Se o hospedeiro for:\nAzul: +1 Gene Pool.\nVerde: Jogue outro trait.\nRoxo: Jogue uma ação ({action}) na sua pilha de traits.\nVermelho: +2."
+      "Anexe. Se o hospedeiro for:\n[blue]Azul[/blue]: +1 Gene Pool.\n[green]Verde[/green]: Jogue outro trait.\n[purple]Roxo[/purple]: Jogue uma ação ({action}) na sua pilha de traits.\n[red]Vermelho[/red]: +2."
     ],
     "flavor": "Desabafando e depois estourando a sua cara."
   },
@@ -589,14 +589,14 @@
   "legends-of-enderas/traits/transistor": {
     "name": "Transistor",
     "effects": [
-      "Anexe. Todos os oponentes descartam da mão todas as cartas que compartilhem uma cor com o trait hospedeiro."
+      "Anexe. Todos os oponentes descartam da mão todas as cartas que compartilhem uma [rainbow]cor[/rainbow] com o trait hospedeiro."
     ],
     "flavor": "Um mau contato."
   },
   "legends-of-enderas/traits/treads": {
     "name": "Esteiras",
     "effects": [
-      "Anexe. Você pode jogar outro trait que compartilhe uma cor com o hospedeiro."
+      "Anexe. Você pode jogar outro trait que compartilhe uma [rainbow]cor[/rainbow] com o hospedeiro."
     ],
     "flavor": "Pise pesado."
   },
@@ -617,7 +617,7 @@
   "legends-of-enderas/traits/warlocky": {
     "name": "Bruxesco",
     "effects": [
-      "No seu turno: Você pode descartar Warlocky da mão quando jogar um trait. Se fizer isso, jogue outro trait da mesma cor."
+      "No seu turno: Você pode descartar Warlocky da mão quando jogar um trait. Se fizer isso, jogue outro trait da mesma [rainbow]cor[/rainbow]."
     ],
     "flavor": "Fiz um pacto de sangue com um demônio numa noite sem lua. Foi bem legal e não teve nenhuma consequência."
   },
@@ -635,7 +635,7 @@
   "legends-of-enderas/treasures/black-silk": {
     "name": "Seda Negra",
     "effects": [
-      "Azul\nou\nVermelho",
+      "[blue]Azul[/blue]\nou\n[red]Vermelho[/red]",
       "Descarte 1 carta da mão."
     ]
   },
@@ -649,14 +649,14 @@
   "legends-of-enderas/treasures/broken-promises": {
     "name": "Promessas Quebradas",
     "effects": [
-      "Azul para Azul\nou\nRoxo para Roxo",
+      "[blue]Azul[/blue] para [blue]Azul[/blue]\nou\n[purple]Roxo[/purple] para [purple]Roxo[/purple]",
       "Compre 2 cartas."
     ]
   },
   "legends-of-enderas/treasures/cataclyte": {
     "name": "Cataclyte",
     "effects": [
-      "Roxo para Roxo\nou\nVermelho para Vermelho",
+      "[purple]Roxo[/purple] para [purple]Roxo[/purple]\nou\n[red]Vermelho[/red] para [red]Vermelho[/red]",
       "Compre 2 cartas."
     ]
   },
@@ -677,7 +677,7 @@
   "legends-of-enderas/treasures/dragon-scales": {
     "name": "Escamas de Dragão",
     "effects": [
-      "Vermelho\nou\nRoxo",
+      "[red]Vermelho[/red]\nou\n[purple]Roxo[/purple]",
       "Descarte 1 carta da mão."
     ]
   },
@@ -697,14 +697,14 @@
   "legends-of-enderas/treasures/ghostly-boots": {
     "name": "Botas Fantasmagóricas",
     "effects": [
-      "Ações roxas\nou\nAções vermelhas ({action})",
+      "Ações [purple]roxas[/purple]\nou\nAções [red]vermelhas[/red] ({action})",
       "Estabilize até 5."
     ]
   },
   "legends-of-enderas/treasures/heart-of-the-woods": {
     "name": "Coração da Floresta",
     "effects": [
-      "Qualquer Cor",
+      "[rainbow]Qualquer Cor[/rainbow]",
       "Descarte 1 carta da mão."
     ]
   },
@@ -745,21 +745,21 @@
   "legends-of-enderas/treasures/the-maliforms": {
     "name": "Os Maliformes",
     "effects": [
-      "Ações de\nqualquer cor",
+      "Ações de\n[rainbow]qualquer cor[/rainbow]",
       "Estabilize até 5."
     ]
   },
   "legends-of-enderas/treasures/tiny-shells": {
     "name": "Conchinhas",
     "effects": [
-      "Verde\nou\nAzul",
+      "[green]Verde[/green]\nou\n[blue]Azul[/blue]",
       "Descarte 1 carta da mão."
     ]
   },
   "legends-of-enderas/treasures/translator": {
     "name": "Tradutor",
     "effects": [
-      "Verde para Verde\nou\nAzul para Azul",
+      "[green]Verde[/green] para [green]Verde[/green]\nou\n[blue]Azul[/blue] para [blue]Azul[/blue]",
       "Compre 2 cartas."
     ]
   },
@@ -787,7 +787,7 @@
   "legends-of-enderas/treasures/wandering-root": {
     "name": "Raiz Errante",
     "effects": [
-      "Roxo\nou\nVerde",
+      "[purple]Roxo[/purple]\nou\n[green]Verde[/green]",
       "Descarte 1 carta da mão."
     ]
   },
@@ -801,7 +801,7 @@
   "legends-of-enderas/treasures/zero-point-module": {
     "name": "Módulo de Ponto Zero",
     "effects": [
-      "Vermelho para Vermelho\nou\nVerde para Verde",
+      "[red]Vermelho[/red] para [red]Vermelho[/red]\nou\n[green]Verde[/green] para [green]Verde[/green]",
       "Compre 2 cartas."
     ]
   }

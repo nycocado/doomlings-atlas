@@ -333,7 +333,7 @@
   "upgrade/traits/ancient": {
     "name": "Milenario",
     "effects": [
-      "Elige un color. Roba 10 cartas. Quédate con 1 del color elegido. Coloca el resto en el fondo del mazo."
+      "[rainbow]Elige un color.[/rainbow] Roba 10 cartas. Quédate con 1 del [rainbow]color[/rainbow] elegido. Coloca el resto en el fondo del mazo."
     ],
     "flavor": "Si quieres pasar por mi bosque, debes decir qué es lo que más te gusta de mí."
   },
@@ -376,7 +376,7 @@
   "upgrade/traits/carnosaur-jaw": {
     "name": "Mandíbula de Carnosaurio",
     "effects": [
-      "Para jugar, debes descartar 2 traits rojos de tu pila de traits."
+      "Para jugar, debes descartar 2 traits [red]rojos[/red] de tu pila de traits."
     ],
     "flavor": "¡Deja de moverte! ¡No puedo verte!"
   },
@@ -398,7 +398,7 @@
   "upgrade/traits/cybernetic": {
     "name": "Cibernético",
     "effects": [
-      "Adjunta a un trait que no sea azul. El trait huésped ahora es azul."
+      "Adjunta a un trait que no sea azul. El trait huésped ahora es [blue]azul[/blue]."
     ],
     "flavor": "Puedo hacer varias tareas a la vez. Como frotarme la panza y darme palmaditas en la cabeza."
   },
@@ -420,7 +420,7 @@
   "upgrade/traits/dragon-heart": {
     "name": "Corazón de Dragón",
     "effects": [
-      "+4 si tienes los 4 colores en tu pila de traits."
+      "+4 si tienes los 4 [rainbow]colores[/rainbow] en tu pila de traits."
     ],
     "flavor": "Todo se derrite en mi boca."
   },
@@ -469,7 +469,7 @@
   "upgrade/traits/free-will": {
     "name": "Libre Albedrío",
     "effects": [
-      "Esta carta pasa a ser del color que elijas."
+      "Esta carta pasa a ser del [rainbow]color[/rainbow] que elijas."
     ],
     "flavor": "La capacidad de elegir entre el número 1 o el número 2."
   },
@@ -491,7 +491,7 @@
   "upgrade/traits/gmo": {
     "name": "Transgénico",
     "effects": [
-      "Adjunta a un trait. +1 por cada trait de tu pila de traits del mismo color que el trait huésped."
+      "Adjunta a un trait. +1 por cada trait de tu pila de traits del mismo [rainbow]color[/rainbow] que el trait huésped."
     ],
     "flavor": "Soy maíz perfecto. Bip bop."
   },
@@ -608,7 +608,7 @@
   "upgrade/traits/rainbow-horn": {
     "name": "Cuerno Arcoíris",
     "effects": [
-      "Puedes jugar Rainbow Horn desde tu mano en cualquier momento si tienes los 4 colores en tu pila de traits."
+      "Puedes jugar Rainbow Horn desde tu mano en cualquier momento si tienes los 4 [rainbow]colores[/rainbow] en tu pila de traits."
     ],
     "flavor": "¡Cuerno arcoíris, yupiii!"
   },
@@ -647,14 +647,14 @@
   "upgrade/traits/terror-beak": {
     "name": "Pico del Terror",
     "effects": [
-      "Para jugar, debes descartar 1 trait verde de tu mano o de tu pila de traits."
+      "Para jugar, debes descartar 1 trait [green]verde[/green] de tu mano o de tu pila de traits."
     ],
     "flavor": "El pico va... ¡directo a la carne de mi presa!"
   },
   "upgrade/traits/tetrachromatic": {
     "name": "Tetracromático",
     "effects": [
-      "-1 por cada trait incoloro en tu pila de traits."
+      "-1 por cada trait [colorless]incoloro[/colorless] en tu pila de traits."
     ],
     "flavor": "Tengo conciencia cromática."
   },
@@ -675,7 +675,7 @@
   "upgrade/traits/transgenic-modification": {
     "name": "Modificación Transgénica",
     "effects": [
-      "Adjunta a un trait que no sea verde. El trait huésped ahora es verde."
+      "Adjunta a un trait que no sea verde. El trait huésped ahora es [green]verde[/green]."
     ],
     "flavor": "Mitad luchador, mitad tomate. ¡Pega un golpe de vitamina C!"
   },

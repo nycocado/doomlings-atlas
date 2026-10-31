@@ -63,7 +63,7 @@
     "flavor": "I used to be in a band...",
     "effects": [
       {
-        "text": "If Abandoned is discarded from your trait pile, steal 1 red."
+        "text": "If Abandoned is discarded from your trait pile, steal 1 [red]red[/red]."
       }
     ],
     "genePool": 1,
@@ -85,7 +85,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Reveal 2 reds to play at any time."
+        "text": "Reveal 2 [red]reds[/red] to play at any time."
       }
     ],
     "genePool": null,
@@ -109,7 +109,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "You may discard 1 from your trait pile. +3 for each color in your trait pile with exactly 2 traits."
+        "text": "You may discard 1 from your trait pile. +3 for each [rainbow]color[/rainbow] in your trait pile with exactly 2 traits."
       }
     ],
     "genePool": null,
@@ -156,7 +156,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Choose a color. Score the face value of traits of that color as 2."
+        "text": "[rainbow]Choose a color[/rainbow]. Score the face value of traits of that [rainbow]color[/rainbow] as 2."
       }
     ],
     "genePool": null,
@@ -267,7 +267,7 @@
     "flavor": "Good things come in trees.",
     "effects": [
       {
-        "text": "-2 for each purple in your trait pile. +1 for each green. +1 for each red."
+        "text": "-2 for each [purple]purple[/purple] in your trait pile. +1 for each [green]green[/green]. +1 for each [red]red[/red]."
       }
     ],
     "genePool": null,
@@ -411,7 +411,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Draw 1 for each color missing from your trait pile. +2 for each card drawn this way."
+        "text": "Draw 1 for each [rainbow]color[/rainbow] missing from your trait pile. +2 for each card drawn this way."
       }
     ],
     "genePool": null,
@@ -459,7 +459,7 @@
     "flavor": "Never skip chop day.",
     "effects": [
       {
-        "text": "To play, you must have 3 greens in your trait pile. Discard 1 red in hand to reduce the requirement to 2 greens."
+        "text": "To play, you must have 3 [green]greens[/green] in your trait pile. Discard 1 [red]red[/red] in hand to reduce the requirement to 2 [green]greens[/green]."
       }
     ],
     "genePool": null,
@@ -481,7 +481,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Change up to 4 traits in your trait pile to colorless."
+        "text": "Change up to 4 traits in your trait pile to [colorless]colorless[/colorless]."
       }
     ],
     "genePool": null,
@@ -504,7 +504,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Choose a color. Draw 5. Discard the chosen color from the drawn cards."
+        "text": "[rainbow]Choose a color[/rainbow]. Draw 5. Discard the chosen [rainbow]color[/rainbow] from the drawn cards."
       }
     ],
     "genePool": null,
@@ -528,7 +528,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "All players may stabilize to 5. Then you may reveal 2 of the same color to play another trait."
+        "text": "All players may stabilize to 5. Then you may reveal 2 of the same [rainbow]color[/rainbow] to play another trait."
       }
     ],
     "genePool": null,
@@ -721,10 +721,10 @@
     "flavor": "You cry wolf three times, and suddenly no one will help you.",
     "effects": [
       {
-        "text": "+5 if this is your only purple."
+        "text": "+5 if this is your only [purple]purple[/purple]."
       },
       {
-        "text": "If Shunned is discarded from your trait pile, you may play up to 2 purples. Ignore actions ({action})."
+        "text": "If Shunned is discarded from your trait pile, you may play up to 2 [purple]purples[/purple]. Ignore actions ({action})."
       }
     ],
     "genePool": null,
@@ -772,7 +772,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Reveal: 2 greens: Play 1 green. 2 reds: Discard 1 from your trait pile."
+        "text": "Reveal: 2 [green]greens[/green]: Play 1 [green]green[/green]. 2 [red]reds[/red]: Discard 1 from your trait pile."
       }
     ],
     "genePool": null,
@@ -842,7 +842,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 2. Then reveal 4 different colors to draw 2."
+        "text": "Draw 2. Then reveal 4 different [rainbow]colors[/rainbow] to draw 2."
       }
     ],
     "genePool": null,
@@ -892,7 +892,7 @@
     "flavor": "Speak its name and it shall be no more.",
     "effects": [
       {
-        "text": "Start of your turns: Choose a color. If you have traits of that color in your trait pile, discard them."
+        "text": "Start of your turns: [rainbow]Choose a color[/rainbow]. If you have traits of that [rainbow]color[/rainbow] in your trait pile, discard them."
       }
     ],
     "genePool": null,

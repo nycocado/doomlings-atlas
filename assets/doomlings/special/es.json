@@ -36,7 +36,7 @@
   "special/traits/conjured": {
     "name": "Conjurado",
     "effects": [
-      "¡No puede jugarse desde tu mano! Puedes jugar Conjured desde la pila de descarte si juegas 2 o más colores en tu turno."
+      "¡No puede jugarse desde tu mano! Puedes jugar Conjured desde la pila de descarte si juegas 2 o más [rainbow]colores[/rainbow] en tu turno."
     ],
     "flavor": "Perdón por aparecer así, pero de verdad no deberías leer libros antiguos en voz alta."
   },
@@ -89,7 +89,7 @@
   "special/traits/magic-fingers": {
     "name": "Dedos Mágicos",
     "effects": [
-      "Hasta el Fin del Mundo: Siempre que un trait salga de tu pila de traits, puedes jugar 1 del mismo color para reemplazarlo. Ignora las acciones ({action}).\n\n(Sin dominantes.)"
+      "Hasta el Fin del Mundo: Siempre que un trait salga de tu pila de traits, puedes jugar 1 del mismo [rainbow]color[/rainbow] para reemplazarlo. Ignora las acciones ({action}).\n\n(Sin dominantes.)"
     ],
     "flavor": "¡Abra-ca-doomling!"
   },
@@ -111,21 +111,21 @@
   "special/traits/rainbow-keratin": {
     "name": "Queratina Arcoíris",
     "effects": [
-      "-2 por cada Gota de Vida ({drop-of-life}) en tu pila de traits. (Excepto este.) Si tienes los 4 colores en tu pila de traits: +2 por cada trait del color que tienes en mayor cantidad.\n\n(Si hay empate, ¡elige 1!)"
+      "-2 por cada Gota de Vida ({drop-of-life}) en tu pila de traits. (Excepto este.) Si tienes los 4 [rainbow]colores[/rainbow] en tu pila de traits: +2 por cada trait del [rainbow]color que tienes en mayor cantidad.[/rainbow]\n\n(Si hay empate, ¡elige 1!)"
     ],
     "flavor": "Mi visión de la vida es bastante sombría."
   },
   "special/traits/rainbow-scutes": {
     "name": "Placas Arcoíris",
     "effects": [
-      "Elige un color. Los oponentes deben mover 1 trait de valor positivo de ese color de su pila de traits a la tuya."
+      "[rainbow]Elige un color.[/rainbow] Los oponentes deben mover 1 trait de valor positivo de ese [rainbow]color[/rainbow] de su pila de traits a la tuya."
     ],
     "flavor": "¡Tortugamente genial!"
   },
   "special/traits/shiny": {
     "name": "Brillante",
     "effects": [
-      "Cada jugador recibe -1 por cada trait incoloro en su pila de traits.",
+      "Cada jugador recibe -1 por cada trait [colorless]incoloro[/colorless] en su pila de traits.",
       "(¡Incluyéndote!)"
     ],
     "flavor": "Si lo tocas, ¿qué es lo peor que podría pasar?"

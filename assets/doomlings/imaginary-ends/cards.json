@@ -428,7 +428,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Draw 1 and reveal it. If it is blue or colorless, discard 1 trait from your trait pile."
+        "text": "Draw 1 and reveal it. If it is [blue]blue[/blue] or [colorless]colorless[/colorless], discard 1 trait from your trait pile."
       }
     ],
     "genePool": null,
@@ -647,7 +647,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Draw 1 and reveal it. If it is purple or colorless, return Ephemeral to your hand."
+        "text": "Draw 1 and reveal it. If it is [purple]purple[/purple] or [colorless]colorless[/colorless], return Ephemeral to your hand."
       }
     ],
     "genePool": null,
@@ -724,7 +724,7 @@
     "flavor": "It's my first day pirating. I'm still getting into the swing of things.",
     "effects": [
       {
-        "text": "To play, draw 1 and reveal it. If it is green, all your friends increase their Gene Pool by 1."
+        "text": "To play, draw 1 and reveal it. If it is [green]green[/green], all your friends increase their Gene Pool by 1."
       }
     ],
     "genePool": 1,
@@ -1028,7 +1028,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Choose a color and discard the top card of the trait deck. If it is the chosen color, you and all your friends draw 2. Yay!"
+        "text": "[rainbow]Choose a color[/rainbow] and discard the top card of the trait deck. If it is the [rainbow]chosen color[/rainbow], you and all your friends draw 2. Yay!"
       }
     ],
     "genePool": null,
@@ -1076,7 +1076,7 @@
     "flavor": "I'm so helpless... I hope nothing big and nutritious tries to get me...",
     "effects": [
       {
-        "text": "The opponent on your right chooses a color. Suppress all cards of the chosen color from your hand."
+        "text": "The opponent on your right [rainbow]chooses a color[/rainbow]. Suppress all cards of the [rainbow]chosen color[/rainbow] from your hand."
       }
     ],
     "genePool": null,
@@ -1321,7 +1321,7 @@
     "flavor": "I've been doing a lot of reflecting. And refracting.",
     "effects": [
       {
-        "text": "You may return Rainbow Magic to your hand (seriously!) after you stabilize. Then play 1 random card from your hand. Ignore restrictions and requirements."
+        "text": "You may return [rainbow]Rainbow Magic[/rainbow] to your hand (seriously!) after you stabilize. Then play 1 random card from your hand. Ignore restrictions and requirements."
       }
     ],
     "genePool": null,
@@ -1505,7 +1505,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 1 and reveal it. If it is red or colorless, give each friend 1 card from your hand."
+        "text": "Draw 1 and reveal it. If it is [red]red[/red] or [colorless]colorless[/colorless], give each friend 1 card from your hand."
       }
     ],
     "genePool": null,

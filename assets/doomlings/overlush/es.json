@@ -289,7 +289,7 @@
   "overlush/traits/antennae": {
     "name": "Antenas",
     "effects": [
-      "Juega una acción ({action}) de un trait rojo de tu pila de traits. Luego, descarta todas las cartas de tu mano."
+      "Juega una acción ({action}) de un trait [red]rojo[/red] de tu pila de traits. Luego, descarta todas las cartas de tu mano."
     ],
     "flavor": "Estoy esperando para cosechar sus excreciones almibaradas. Esto es normal."
   },
@@ -328,7 +328,7 @@
   "overlush/traits/bitter-berries": {
     "name": "Bayas Amargas",
     "effects": [
-      "+1 por cada trait morado o por cada trait verde en tu pila de traits, del color que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
+      "+1 por cada trait [purple]morado[/purple] o por cada trait [green]verde[/green] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
     ],
     "flavor": "Listas para cosechar. Y para quejarse."
   },
@@ -411,14 +411,14 @@
   "overlush/traits/collector": {
     "name": "Coleccionista",
     "effects": [
-      "Cuando juegues Collector desde tu mano, roba 4 cartas. Puedes jugar 1 de cada color entre las cartas robadas. Descarta los dominantes. Ignora las acciones."
+      "Cuando juegues Collector desde tu mano, roba 4 cartas. Puedes jugar 1 de cada [rainbow]color[/rainbow] entre las cartas robadas. Descarta los dominantes. Ignora las acciones."
     ],
     "flavor": "¡Esa todavía no la tengo!"
   },
   "overlush/traits/compound-eyes": {
     "name": "Ojos Compuestos",
     "effects": [
-      "Juega una acción ({action}) de un trait morado de tu pila de traits. Luego, descarta 1 carta aleatoria de tu mano."
+      "Juega una acción ({action}) de un trait [purple]morado[/purple] de tu pila de traits. Luego, descarta 1 carta aleatoria de tu mano."
     ],
     "flavor": "Hasta mis ojos tienen ojos."
   },
@@ -432,8 +432,8 @@
   "overlush/traits/contagious": {
     "name": "Contagioso",
     "effects": [
-      "Intercambia Contagious con un trait rojo de la pila de traits de un oponente.",
-      "-1 por cada trait verde en tu pila de traits."
+      "Intercambia Contagious con un trait [red]rojo[/red] de la pila de traits de un oponente.",
+      "-1 por cada trait [green]verde[/green] en tu pila de traits."
     ],
     "flavor": "¿Quieres una risita?"
   },
@@ -480,7 +480,7 @@
   "overlush/traits/euphoric": {
     "name": "Eufórico",
     "effects": [
-      "+6 si tienes 4 o más traits morados en tu pila de traits."
+      "+6 si tienes 4 o más traits [purple]morados[/purple] en tu pila de traits."
     ],
     "flavor": "¡Estoy en el séptimo cielo! Aunque el mundo se esté acabando..."
   },
@@ -501,7 +501,7 @@
   "overlush/traits/fabled": {
     "name": "Fabuloso",
     "effects": [
-      "Para jugar, debes descartar 4 colores diferentes de tu mano."
+      "Para jugar, debes descartar 4 [rainbow]colores[/rainbow] diferentes de tu mano."
     ],
     "flavor": "La moraleja de la historia es que soy increíble."
   },
@@ -571,7 +571,7 @@
   "overlush/traits/harmony": {
     "name": "Armonía",
     "effects": [
-      "+2 por cada conjunto de los 4 colores en tu pila de traits."
+      "+2 por cada conjunto de los 4 [rainbow]colores[/rainbow] en tu pila de traits."
     ],
     "flavor": "Un, dos, un, dos, tres, cuatro..."
   },
@@ -599,7 +599,7 @@
   "overlush/traits/hydrofuge": {
     "name": "Hidrófugo",
     "effects": [
-      "Juega una acción ({action}) de un trait azul de la pila de traits de un oponente. Devuelve ese trait a la mano de su dueño."
+      "Juega una acción ({action}) de un trait [blue]azul[/blue] de la pila de traits de un oponente. Devuelve ese trait a la mano de su dueño."
     ],
     "flavor": "Hola, humedad, mi mayor pesadilla."
   },
@@ -617,14 +617,14 @@
   "overlush/traits/infectious": {
     "name": "Infeccioso",
     "effects": [
-      "Intercambia Infectious con un trait azul de la pila de traits de un oponente."
+      "Intercambia Infectious con un trait [blue]azul[/blue] de la pila de traits de un oponente."
     ],
     "flavor": "¡Achís!"
   },
   "overlush/traits/ironwood": {
     "name": "Palo de Hierro",
     "effects": [
-      "Excepto dominantes, si tienes 5 o menos traits verdes en tu pila de traits, no pueden ser retirados."
+      "Excepto dominantes, si tienes 5 o menos traits [green]verdes[/green] en tu pila de traits, no pueden ser retirados."
     ],
     "flavor": "En el fondo, bajo esta corteza endurecida, solo soy un árbol."
   },
@@ -692,7 +692,7 @@
   "overlush/traits/mandibles": {
     "name": "Mandíbulas",
     "effects": [
-      "Juega una acción ({action}) de un trait verde de la pila de traits de un oponente. Luego, devuélvelo a la mano de su dueño."
+      "Juega una acción ({action}) de un trait [green]verde[/green] de la pila de traits de un oponente. Luego, devuélvelo a la mano de su dueño."
     ],
     "flavor": "Bueno, usar hilo dental es fácil."
   },
@@ -703,7 +703,7 @@
   "overlush/traits/meek": {
     "name": "Manso",
     "effects": [
-      "Si hay 3 o menos traits rojos en tu pila de traits, no pueden ser retirados."
+      "Si hay 3 o menos traits [red]rojos[/red] en tu pila de traits, no pueden ser retirados."
     ],
     "flavor": "¡¿Voy a heredar QUÉ?!"
   },
@@ -760,7 +760,7 @@
   "overlush/traits/nectar": {
     "name": "Néctar",
     "effects": [
-      "Elige un color. Todos los oponentes pueden jugar 1 del color elegido.\n\n(Excepto dominantes.) Ignora las acciones ({action})."
+      "[rainbow]Elige un color.[/rainbow] Todos los oponentes pueden jugar 1 del [rainbow]color[/rainbow] elegido.\n\n(Excepto dominantes.) Ignora las acciones ({action})."
     ],
     "flavor": "Un poquito para ti, un poquito para mí."
   },
@@ -774,15 +774,15 @@
   "overlush/traits/noxious": {
     "name": "Nocivo",
     "effects": [
-      "Intercambia Noxious con un trait morado de la pila de traits de un oponente.",
-      "-1 por cada trait rojo en tu pila de traits."
+      "Intercambia Noxious con un trait [purple]morado[/purple] de la pila de traits de un oponente.",
+      "-1 por cada trait [red]rojo[/red] en tu pila de traits."
     ],
     "flavor": "No digas tonterías, mi padre era el Insoportable. A mí llámame desagradable."
   },
   "overlush/traits/nuptial-plumage": {
     "name": "Plumaje Nupcial",
     "effects": [
-      "+2 por cada color del que tengas 3 o más en tu pila de traits."
+      "+2 por cada [rainbow]color[/rainbow] del que tengas 3 o más en tu pila de traits."
     ],
     "flavor": "Juro que nunca, NUNCA dejaré de hablar de mis plumas."
   },
@@ -832,14 +832,14 @@
   "overlush/traits/prolific": {
     "name": "Prolífico",
     "effects": [
-      "+6 si tienes 4 o más traits verdes en tu pila de traits."
+      "+6 si tienes 4 o más traits [green]verdes[/green] en tu pila de traits."
     ],
     "flavor": "¡He producido muchas obras! Aunque muchas de ellas no funcionan..."
   },
   "overlush/traits/prowler": {
     "name": "Merodeador",
     "effects": [
-      "Todos los oponentes reciben: -2 por cada color en el que tengan menos traits en su pila de traits que tú."
+      "Todos los oponentes reciben: -2 por cada [rainbow]color[/rainbow] en el que tengan menos traits en su pila de traits que tú."
     ],
     "flavor": "Merodeando de noche, acechando en las sombras, un curioso espeluznante."
   },
@@ -867,14 +867,14 @@
   "overlush/traits/ravenous": {
     "name": "Hambriento",
     "effects": [
-      "Cuando juegues un trait rojo en tu turno, roba 3 cartas antes de jugar su efecto."
+      "Cuando juegues un trait [red]rojo[/red] en tu turno, roba 3 cartas antes de jugar su efecto."
     ],
     "flavor": "Siempre quiere otro bocado."
   },
   "overlush/traits/rover": {
     "name": "Trotamundos",
     "effects": [
-      "Elige un color. Mira las 5 cartas del fondo del mazo de traits. Puedes jugar 1 del color elegido."
+      "Elige un [rainbow]color[/rainbow]. Mira las 5 cartas del fondo del mazo de traits. Puedes jugar 1 del [rainbow]color[/rainbow] elegido."
     ],
     "flavor": "No estoy ni aquí ni allá."
   },
@@ -932,7 +932,7 @@
   "overlush/traits/shy": {
     "name": "Tímido",
     "effects": [
-      "+5 si tienes al menos 2 de cada color en tu pila de traits."
+      "+5 si tienes al menos 2 de cada [rainbow]color[/rainbow] en tu pila de traits."
     ],
     "flavor": "¡Me encanta cuando todos están cerca! Así puedo esconderme al fondo..."
   },
@@ -985,7 +985,7 @@
   "overlush/traits/sour-grapes": {
     "name": "Uvas Agrias",
     "effects": [
-      "+1 por cada trait azul o por cada trait rojo en tu pila de traits, del color que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
+      "+1 por cada trait [blue]azul[/blue] o por cada trait [red]rojo[/red] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
     ],
     "flavor": "Una fuente de mal vino y de muchas quejas."
   },
@@ -1007,7 +1007,7 @@
   "overlush/traits/spicy": {
     "name": "Picante",
     "effects": [
-      "+1 por cada trait rojo o por cada trait verde en tu pila de traits, del color que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
+      "+1 por cada trait [red]rojo[/red] o por cada trait [green]verde[/green] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
     ],
     "flavor": "Personas prudentes prefieren preparar pimientos particularmente picantes en vinagre."
   },
@@ -1021,7 +1021,7 @@
   "overlush/traits/spots": {
     "name": "Pintas",
     "effects": [
-      "Elige un color. Todos los oponentes revelan todas las cartas de ese color de su mano. Juega 1 inmediatamente. Ignora las acciones ({action})."
+      "[rainbow]Elige un color.[/rainbow] Todos los oponentes revelan todas las cartas de ese [rainbow]color[/rainbow] de su mano. Juega 1 inmediatamente. Ignora las acciones ({action})."
     ],
     "flavor": "Te hacen difícil de encontrar."
   },
@@ -1046,7 +1046,7 @@
   "overlush/traits/stinging-tendrils": {
     "name": "Zarcillos Urticantes",
     "effects": [
-      "Intercambia 1 trait de tu pila de traits por 1 trait de la pila de traits de un oponente de color diferente.\n\n(Excepto este.)"
+      "Intercambia 1 trait de tu pila de traits por 1 trait de la pila de traits de un oponente de [rainbow]color[/rainbow] diferente.\n\n(Excepto este.)"
     ],
     "flavor": "Esto se vería mejor allá."
   },
@@ -1109,21 +1109,21 @@
   "overlush/traits/sweet": {
     "name": "Dulce",
     "effects": [
-      "+1 por cada trait verde o por cada trait azul en tu pila de traits, del color que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
+      "+1 por cada trait [green]verde[/green] o por cada trait [blue]azul[/blue] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
     ],
     "flavor": "Te quiero con ternura, te quiero con dulzura, eres mi media naranja."
   },
   "overlush/traits/sycophant": {
     "name": "Adulador",
     "effects": [
-      "+5 si algún oponente tiene 5 o más traits rojos en su pila de traits."
+      "+5 si algún oponente tiene 5 o más traits [red]rojos[/red] en su pila de traits."
     ],
     "flavor": "¿Me firmas este mechón de pelo? Es tuyo, obviamente."
   },
   "overlush/traits/tenacious": {
     "name": "Tenaz",
     "effects": [
-      "+6 si tienes 4 o más traits rojos en tu pila de traits."
+      "+6 si tienes 4 o más traits [red]rojos[/red] en tu pila de traits."
     ],
     "flavor": "Desentierra tu potencial."
   },
@@ -1148,7 +1148,7 @@
   "overlush/traits/toxic": {
     "name": "Tóxico",
     "effects": [
-      "Intercambia Toxic con un trait verde de la pila de traits de un oponente.",
+      "Intercambia Toxic con un trait [green]verde[/green] de la pila de traits de un oponente.",
       "Si Toxic es descartado de tu pila de traits, roba 2 cartas."
     ],
     "flavor": "Cada vez que ella habla, te enfermas."
@@ -1188,7 +1188,7 @@
   "overlush/traits/vivacious": {
     "name": "Vivaz",
     "effects": [
-      "+6 si tienes 4 o más traits azules en tu pila de traits."
+      "+6 si tienes 4 o más traits [blue]azules[/blue] en tu pila de traits."
     ],
     "flavor": "Ama tu vida."
   },
@@ -1220,14 +1220,14 @@
   "overlush/traits/woolly": {
     "name": "Lanudo",
     "effects": [
-      "Descarta la carta de la parte superior del mazo de traits. Todos los jugadores deben descartar de su mano todas las cartas de ese color y estabilizar inmediatamente."
+      "Descarta la carta de la parte superior del mazo de traits. Todos los jugadores deben descartar de su mano todas las cartas de ese [rainbow]color[/rainbow] y estabilizar inmediatamente."
     ],
     "flavor": "¡Ya tuve suficiente de este estómago de gato! ¡Es hora de salir de aquí!"
   },
   "overlush/traits/xylophage": {
     "name": "Xilófago",
     "effects": [
-      "Para jugar, debes descartar 1 trait verde de tu pila de traits."
+      "Para jugar, debes descartar 1 trait [green]verde[/green] de tu pila de traits."
     ],
     "flavor": "Vaya, ahora necesito un palillo de dientes."
   }

@@ -738,7 +738,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Choose a color. Draw 10 cards. Keep 1 of the chosen color. Put the rest at the bottom of the deck."
+        "text": "[rainbow]Choose a color.[/rainbow] Draw 10 cards. Keep 1 of the chosen [rainbow]color[/rainbow]. Put the rest at the bottom of the deck."
       }
     ],
     "genePool": null,
@@ -899,7 +899,7 @@
     "flavor": "Stop moving! I can't see you!",
     "effects": [
       {
-        "text": "To play, you must discard 2 red traits from your trait pile."
+        "text": "To play, you must discard 2 [red]red[/red] traits from your trait pile."
       }
     ],
     "genePool": null,
@@ -982,7 +982,7 @@
     "flavor": "I can perform tasks simultaneously. Like rubbing my belly and patting my head.",
     "effects": [
       {
-        "text": "Attach to a non-blue trait. Host trait is now blue."
+        "text": "Attach to a non-blue trait. Host trait is now [blue]blue[/blue]."
       }
     ],
     "genePool": null,
@@ -1067,7 +1067,7 @@
     "flavor": "Everything melts in my mouth.",
     "effects": [
       {
-        "text": "+4 if you have all 4 colors in your trait pile."
+        "text": "+4 if you have all 4 [rainbow]colors[/rainbow] in your trait pile."
       }
     ],
     "genePool": null,
@@ -1245,7 +1245,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "This card becomes the color of your choice."
+        "text": "This card becomes the [rainbow]color[/rainbow] of your choice."
       }
     ],
     "genePool": null,
@@ -1319,7 +1319,7 @@
     "flavor": "I am perfect corn. Bee boop.",
     "effects": [
       {
-        "text": "Attach to a trait. +1 for every trait in your trait pile of the same color as the host trait."
+        "text": "Attach to a trait. +1 for every trait in your trait pile of the same [rainbow]color[/rainbow] as the host trait."
       }
     ],
     "genePool": null,
@@ -1754,7 +1754,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "You may play Rainbow Horn from your hand at any time if you have all 4 colors in your trait pile."
+        "text": "You may play Rainbow Horn from your hand at any time if you have all 4 [rainbow]colors[/rainbow] in your trait pile."
       }
     ],
     "genePool": null,
@@ -1897,7 +1897,7 @@
     "flavor": "Nose goes...into the flesh of my prey!",
     "effects": [
       {
-        "text": "To play, you must discard 1 green trait from your hand or trait pile."
+        "text": "To play, you must discard 1 [green]green[/green] trait from your hand or trait pile."
       }
     ],
     "genePool": null,
@@ -1920,7 +1920,7 @@
     "flavor": "I'm color woke.",
     "effects": [
       {
-        "text": "-1 for each colorless trait in your trait pile."
+        "text": "-1 for each [colorless]colorless[/colorless] trait in your trait pile."
       }
     ],
     "genePool": null,
@@ -1994,7 +1994,7 @@
     "flavor": "Part fighter, part tomato. Packs an awesome punch of vitamin C!",
     "effects": [
       {
-        "text": "Attach to a non-green trait. Host trait is now green."
+        "text": "Attach to a non-green trait. Host trait is now [green]green[/green]."
       }
     ],
     "genePool": null,

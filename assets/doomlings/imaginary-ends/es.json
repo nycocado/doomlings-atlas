@@ -174,7 +174,7 @@
   "imaginary-ends/traits/bubbly": {
     "name": "Burbujeante",
     "effects": [
-      "Roba 1 carta y revélala. Si es azul o incolora, descarta 1 trait de tu pila de traits."
+      "Roba 1 carta y revélala. Si es [blue]azul[/blue] o [colorless]incolora[/colorless], descarta 1 trait de tu pila de traits."
     ],
     "flavor": "Ustedes son mis mejores amiburbujas."
   },
@@ -231,7 +231,7 @@
   "imaginary-ends/traits/ephemeral": {
     "name": "Efímero",
     "effects": [
-      "Roba 1 carta y revélala. Si es morada o incolora, devuelve Ephemeral a tu mano."
+      "Roba 1 carta y revélala. Si es [purple]morada[/purple] o [colorless]incolora[/colorless], devuelve Ephemeral a tu mano."
     ],
     "flavor": "Solo un instante."
   },
@@ -252,7 +252,7 @@
   "imaginary-ends/traits/feisty": {
     "name": "Peleón",
     "effects": [
-      "Para jugar, roba 1 carta y revélala. Si es verde, todos tus amigos aumentan su Gene Pool en 1."
+      "Para jugar, roba 1 carta y revélala. Si es [green]verde[/green], todos tus amigos aumentan su Gene Pool en 1."
     ],
     "flavor": "Es mi primer día de pirata. Todavía le estoy agarrando el truco."
   },
@@ -331,7 +331,7 @@
   "imaginary-ends/traits/imaginative": {
     "name": "Imaginativo",
     "effects": [
-      "Elige un color y descarta la carta de la parte superior del mazo de traits. Si es del color elegido, tú y todos tus amigos roban 2 cartas. ¡Yupi!"
+      "[rainbow]Elige un color[/rainbow] y descarta la carta de la parte superior del mazo de traits. Si es del [rainbow]color elegido[/rainbow], tú y todos tus amigos roban 2 cartas. ¡Yupi!"
     ],
     "flavor": "Mundos dentro de las palabras."
   },
@@ -345,7 +345,7 @@
   "imaginary-ends/traits/lure": {
     "name": "Señuelo",
     "effects": [
-      "El oponente a tu derecha elige un color. Suprime todas las cartas del color elegido de tu mano."
+      "El oponente a tu derecha [rainbow]elige un color[/rainbow]. Suprime todas las cartas del [rainbow]color elegido[/rainbow] de tu mano."
     ],
     "flavor": "Soy tan indefenso... Espero que nada grande y nutritivo intente atraparme..."
   },
@@ -411,7 +411,7 @@
   "imaginary-ends/traits/rainbow-magic": {
     "name": "Magia Arcoíris",
     "effects": [
-      "Puedes devolver Rainbow Magic a tu mano (¡en serio!) después de estabilizar. Luego, juega 1 carta aleatoria de tu mano. Ignora restricciones y requisitos."
+      "Puedes devolver [rainbow]Rainbow Magic[/rainbow] a tu mano (¡en serio!) después de estabilizar. Luego, juega 1 carta aleatoria de tu mano. Ignora restricciones y requisitos."
     ],
     "flavor": "He reflexionado mucho. Y refractado también."
   },
@@ -458,7 +458,7 @@
   "imaginary-ends/traits/sprinkles": {
     "name": "Chispas",
     "effects": [
-      "Roba 1 carta y revélala. Si es roja o incolora, da 1 carta de tu mano a cada amigo."
+      "Roba 1 carta y revélala. Si es [red]roja[/red] o [colorless]incolora[/colorless], da 1 carta de tu mano a cada amigo."
     ],
     "flavor": "Azúcar sobre azúcar sobre azúcar."
   },

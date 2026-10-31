@@ -230,7 +230,7 @@
     "flavor": "ROBOT DINOSAURS! Also, PIZZA!",
     "effects": [
       {
-        "text": "Attach. If host is:\nBlue: +1 for each Dinoling ({dinoling}) in your trait pile.\nGreen: +1 for each Techling ({techling}) in your trait pile."
+        "text": "Attach. If host is:\n[blue]Blue[/blue]: +1 for each Dinoling ({dinoling}) in your trait pile.\n[green]Green[/green]: +1 for each Techling ({techling}) in your trait pile."
       }
     ],
     "genePool": null,
@@ -775,7 +775,7 @@
     "flavor": "I just got an idea. It's going to be lit.",
     "effects": [
       {
-        "text": "Attach. +3 for each dominant in your trait pile of the same color as the host."
+        "text": "Attach. +3 for each dominant in your trait pile of the same [rainbow]color[/rainbow] as the host."
       }
     ],
     "genePool": null,
@@ -915,7 +915,7 @@
     "flavor": "It does whatever you want it to do! Or whatever it wants to do! Or whatever!",
     "effects": [
       {
-        "text": "Attach. Choose 1.\nIf host is:\nGreen: Preview the next age.\nPurple: Stabilize to 6.\nBlue: Draw 2.\nRed: +2\nThen play another trait."
+        "text": "Attach. Choose 1.\nIf host is:\n[green]Green[/green]: Preview the next age.\n[purple]Purple[/purple]: Stabilize to 6.\n[blue]Blue[/blue]: Draw 2.\n[red]Red[/red]: +2\nThen play another trait."
       }
     ],
     "genePool": null,
@@ -941,7 +941,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "You may play Herbivore after you stabilize if the top of the discard pile is green. Then draw 1."
+        "text": "You may play Herbivore after you stabilize if the top of the discard pile is [green]green[/green]. Then draw 1."
       }
     ],
     "genePool": null,
@@ -964,7 +964,7 @@
     "flavor": "I'm not fat. I'm just hollow-boned.",
     "effects": [
       {
-        "text": "To play, you must discard 1 positive trait from your trait pile. At World's End: Choose a color. Opponents discard 2 from their trait pile of that color."
+        "text": "To play, you must discard 1 positive trait from your trait pile. At World's End: [rainbow]Choose a color[/rainbow]. Opponents discard 2 from their trait pile of that [rainbow]color[/rainbow]."
       }
     ],
     "genePool": null,
@@ -1463,7 +1463,7 @@
     "flavor": "A shiny ~~new~~ toy.",
     "effects": [
       {
-        "text": "Attach. If host is: Purple: +2. Red: +3. If host is a Techling ({techling}): +1 for each card in hand."
+        "text": "Attach. If host is: [purple]Purple[/purple]: +2. [red]Red[/red]: +3. If host is a Techling ({techling}): +1 for each card in hand."
       }
     ],
     "genePool": null,
@@ -1594,7 +1594,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Discard 1 from hand.\nIf the card is:\nPurple: Discard up to 2 from your trait pile.\nRed: Add its face value.\n\nGreen: Play 1 trait.\nBlue: +5."
+        "text": "Discard 1 from hand.\nIf the card is:\n[purple]Purple[/purple]: Discard up to 2 from your trait pile.\n[red]Red[/red]: Add its face value.\n\n[green]Green[/green]: Play 1 trait.\n[blue]Blue[/blue]: +5."
       }
     ],
     "genePool": null,
@@ -1672,7 +1672,7 @@
     "flavor": "The best peach-to-text translator on the barket.",
     "effects": [
       {
-        "text": "Attach. Add the face value of 1 card in hand that shares a color with the host.\n\n(Excluding dominants.)"
+        "text": "Attach. Add the face value of 1 card in hand that shares a [rainbow]color[/rainbow] with the host.\n\n(Excluding dominants.)"
       }
     ],
     "genePool": null,
@@ -1751,7 +1751,7 @@
     "flavor": "Blowing off steam and then your face.",
     "effects": [
       {
-        "text": "Attach. If host is:\nBlue: +1 Gene Pool.\nGreen: Play another trait.\nPurple: Play an action ({action}) in your trait pile.\nRed: +2."
+        "text": "Attach. If host is:\n[blue]Blue[/blue]: +1 Gene Pool.\n[green]Green[/green]: Play another trait.\n[purple]Purple[/purple]: Play an action ({action}) in your trait pile.\n[red]Red[/red]: +2."
       }
     ],
     "genePool": null,
@@ -2056,7 +2056,7 @@
     "flavor": "One bad switch.",
     "effects": [
       {
-        "text": "Attach. All opponents discard all cards from their hand that share a color with the host trait."
+        "text": "Attach. All opponents discard all cards from their hand that share a [rainbow]color[/rainbow] with the host trait."
       }
     ],
     "genePool": null,
@@ -2081,7 +2081,7 @@
     "flavor": "Tread heavily.",
     "effects": [
       {
-        "text": "Attach. You may play another trait that shares a color with the host."
+        "text": "Attach. You may play another trait that shares a [rainbow]color[/rainbow] with the host."
       }
     ],
     "genePool": null,
@@ -2158,7 +2158,7 @@
     "flavor": "Made a blood pact with a demon under a moonless night. It was pretty cool and there were no consequences.",
     "effects": [
       {
-        "text": "On your turn: You may discard Warlocky from hand when you play a trait. If you do, play another trait of the same color."
+        "text": "On your turn: You may discard Warlocky from hand when you play a trait. If you do, play another trait of the same [rainbow]color[/rainbow]."
       }
     ],
     "genePool": null,
@@ -2217,7 +2217,7 @@
     "effects": [
       {
         "kind": "mutate",
-        "text": "Blue\nor\nRed"
+        "text": "[blue]Blue[/blue]\nor\n[red]Red[/red]"
       },
       {
         "kind": "rush",
@@ -2251,7 +2251,7 @@
     "effects": [
       {
         "kind": "echo",
-        "text": "Blue to Blue\nor\nPurple to Purple"
+        "text": "[blue]Blue[/blue] to [blue]Blue[/blue]\nor\n[purple]Purple[/purple] to [purple]Purple[/purple]"
       },
       {
         "kind": "rush",
@@ -2268,7 +2268,7 @@
     "effects": [
       {
         "kind": "echo",
-        "text": "Purple to Purple\nor\nRed to Red"
+        "text": "[purple]Purple[/purple] to [purple]Purple[/purple]\nor\n[red]Red[/red] to [red]Red[/red]"
       },
       {
         "kind": "rush",
@@ -2319,7 +2319,7 @@
     "effects": [
       {
         "kind": "mutate",
-        "text": "Red\nor\nPurple"
+        "text": "[red]Red[/red]\nor\n[purple]Purple[/purple]"
       },
       {
         "kind": "rush",
@@ -2366,7 +2366,7 @@
     "effects": [
       {
         "kind": "adapt",
-        "text": "Purple actions\nor\nRed actions ({action})"
+        "text": "[purple]Purple[/purple] actions\nor\n[red]Red[/red] actions ({action})"
       },
       {
         "kind": "rush",
@@ -2383,7 +2383,7 @@
     "effects": [
       {
         "kind": "mutate",
-        "text": "Any Color"
+        "text": "[rainbow]Any Color[/rainbow]"
       },
       {
         "kind": "rush",
@@ -2481,7 +2481,7 @@
     "effects": [
       {
         "kind": "adapt",
-        "text": "Any Color\nactions"
+        "text": "[rainbow]Any Color[/rainbow]\nactions"
       },
       {
         "kind": "rush",
@@ -2498,7 +2498,7 @@
     "effects": [
       {
         "kind": "mutate",
-        "text": "Green\nor\nBlue"
+        "text": "[green]Green[/green]\nor\n[blue]Blue[/blue]"
       },
       {
         "kind": "rush",
@@ -2515,7 +2515,7 @@
     "effects": [
       {
         "kind": "echo",
-        "text": "Green to Green\nor\nBlue to Blue"
+        "text": "[green]Green[/green] to [green]Green[/green]\nor\n[blue]Blue[/blue] to [blue]Blue[/blue]"
       },
       {
         "kind": "rush",
@@ -2583,7 +2583,7 @@
     "effects": [
       {
         "kind": "mutate",
-        "text": "Purple\nor\nGreen"
+        "text": "[purple]Purple[/purple]\nor\n[green]Green[/green]"
       },
       {
         "kind": "rush",
@@ -2617,7 +2617,7 @@
     "effects": [
       {
         "kind": "echo",
-        "text": "Red to Red\nor\nGreen to Green"
+        "text": "[red]Red[/red] to [red]Red[/red]\nor\n[green]Green[/green] to [green]Green[/green]"
       },
       {
         "kind": "rush",

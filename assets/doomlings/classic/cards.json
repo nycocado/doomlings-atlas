@@ -828,7 +828,7 @@
     "flavor": "Tree arms.",
     "effects": [
       {
-        "text": "+1 for every pair of green traits in each opponent's trait pile."
+        "text": "+1 for every pair of [green]green[/green] traits in each opponent's trait pile."
       }
     ],
     "genePool": null,
@@ -1042,7 +1042,7 @@
     "flavor": "To save a species from extinction, figure out how to eat it.",
     "effects": [
       {
-        "text": "To play, you must have at least 1 colorless trait in your trait pile."
+        "text": "To play, you must have at least 1 [colorless]colorless[/colorless] trait in your trait pile."
       }
     ],
     "genePool": null,
@@ -1164,7 +1164,7 @@
     "flavor": "Buy one, get one hundred.",
     "effects": [
       {
-        "text": "+1 for each blue trait in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for each [blue]blue[/blue] trait in your trait pile.\n\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1231,7 +1231,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "You may change all of your traits of 1 color to 1 alternative color."
+        "text": "You may change all of your traits of 1 [rainbow]color[/rainbow] to 1 alternative [rainbow]color[/rainbow]."
       }
     ],
     "genePool": null,
@@ -1414,7 +1414,7 @@
     "flavor": "Gee, I really appreciate this. Thanks. Thank you.",
     "effects": [
       {
-        "text": "Value is equal to the number of different colors in your trait pile."
+        "text": "Value is equal to the number of different [rainbow]colors[/rainbow] in your trait pile."
       }
     ],
     "genePool": null,
@@ -1435,7 +1435,7 @@
     "flavor": "I'd like to make a toast.",
     "effects": [
       {
-        "text": "+1 for each red trait in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for each [red]red[/red] trait in your trait pile.\n\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1458,7 +1458,7 @@
     "flavor": "Deep down, under all this muscle, I'm just super honorable and courageous.",
     "effects": [
       {
-        "text": "To play, you must have 3 or more green traits in your trait pile."
+        "text": "To play, you must have 3 or more [green]green[/green] traits in your trait pile."
       }
     ],
     "genePool": null,
@@ -1504,7 +1504,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Choose a color. Opponents discard 1 trait of that color from their trait pile at random."
+        "text": "[rainbow]Choose a color.[/rainbow] Opponents discard 1 trait of that color from their trait pile at random."
       }
     ],
     "genePool": null,
@@ -1877,7 +1877,7 @@
     "flavor": "As you walk and eat and travel, be where you are. Otherwise you will miss out on most of your life.",
     "effects": [
       {
-        "text": "+1 for each colorless trait in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for each [colorless]colorless[/colorless] trait in your trait pile.\n\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1992,7 +1992,7 @@
     "flavor": "Mommy, why did you pull me out of kindergarten?",
     "effects": [
       {
-        "text": "+1 for each green trait in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for each [green]green[/green] trait in your trait pile.\n\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2015,7 +2015,7 @@
     "flavor": "We would ALL like to go outside.",
     "effects": [
       {
-        "text": "+1 for every color pair in your trait pile."
+        "text": "+1 for every [rainbow]color pair[/rainbow] in your trait pile."
       }
     ],
     "genePool": null,
@@ -2087,7 +2087,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Choose a color. All players discard all cards of that color from their hand.\n\n(Including yourself!)"
+        "text": "[rainbow]Choose a color.[/rainbow] All players discard all cards of that color from their hand.\n\n(Including yourself!)"
       }
     ],
     "genePool": null,
@@ -2111,7 +2111,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 2 cards. If either are green, play 1 immediately.\n\n(Unless restricted.)"
+        "text": "Draw 2 cards. If either are [green]green[/green], play 1 immediately.\n\n(Unless restricted.)"
       }
     ],
     "genePool": null,
@@ -2312,7 +2312,7 @@
     "flavor": "Hurts every time.",
     "effects": [
       {
-        "text": "To play, you must discard 1 red trait from your trait pile."
+        "text": "To play, you must discard 1 [red]red[/red] trait from your trait pile."
       }
     ],
     "genePool": null,
@@ -2350,7 +2350,7 @@
     "flavor": "I saw it, Dad. Now let's go!",
     "effects": [
       {
-        "text": "+1 for each different color in your hand."
+        "text": "+1 for each different [rainbow]color[/rainbow] in your hand."
       }
     ],
     "genePool": null,
@@ -2445,7 +2445,7 @@
         "text": "Play 1 card from the discard pile. Ignore its action ({action})."
       },
       {
-        "text": "When you play another green trait from your hand, you may return this to your hand."
+        "text": "When you play another [green]green[/green] trait from your hand, you may return this to your hand."
       }
     ],
     "genePool": null,
@@ -2469,7 +2469,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Steal a red trait from an opponent's trait pile."
+        "text": "Steal a [red]red[/red] trait from an opponent's trait pile."
       }
     ],
     "genePool": null,
@@ -2493,7 +2493,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Choose a color. +1 for all traits of that color in your trait pile."
+        "text": "[rainbow]Choose a color.[/rainbow] +1 for all traits of that color in your trait pile."
       }
     ],
     "genePool": null,
@@ -2559,7 +2559,7 @@
     "flavor": "Give me a hug.",
     "effects": [
       {
-        "text": "+1 for each purple trait in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for each [purple]purple[/purple] trait in your trait pile.\n\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2759,7 +2759,7 @@
     "flavor": "Yes...yes! Feast, my parasitic friends!",
     "effects": [
       {
-        "text": "+2 for every trait in your lowest color count.\n\n(Must have 2 or more colors. If there's a tie, pick 1!)"
+        "text": "+2 for every trait in your lowest [rainbow]color[/rainbow] count.\n\n(Must have 2 or more [rainbow]colors[/rainbow]. If there's a tie, pick 1!)"
       }
     ],
     "genePool": null,
@@ -2800,7 +2800,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Swap 1 trait from your trait pile with an opponent's trait of a different color."
+        "text": "Swap 1 trait from your trait pile with an opponent's trait of a different [rainbow]color[/rainbow]."
       }
     ],
     "genePool": null,
@@ -2824,7 +2824,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Swap 1 trait from your trait pile with an opponent's trait of the same color."
+        "text": "Swap 1 trait from your trait pile with an opponent's trait of the same [rainbow]color[/rainbow]."
       }
     ],
     "genePool": null,
@@ -2848,7 +2848,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "All opponents discard 1 red trait from their trait pile."
+        "text": "All opponents discard 1 [red]red[/red] trait from their trait pile."
       }
     ],
     "genePool": null,
@@ -2917,7 +2917,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Steal 1 green trait from an opponent's trait pile."
+        "text": "Steal 1 [green]green[/green] trait from an opponent's trait pile."
       }
     ],
     "genePool": null,
@@ -3010,7 +3010,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Choose a color. Opponents receive -1 for each trait of that color in their trait pile."
+        "text": "[rainbow]Choose a color.[/rainbow] Opponents receive -1 for each trait of that color in their trait pile."
       }
     ],
     "genePool": null,

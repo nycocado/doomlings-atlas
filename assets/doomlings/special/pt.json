@@ -36,7 +36,7 @@
   "special/traits/conjured": {
     "name": "Conjurado",
     "effects": [
-      "Não pode ser jogado da sua mão! Você pode jogar Conjured da pilha de descarte se jogar 2 ou mais cores no seu turno."
+      "Não pode ser jogado da sua mão! Você pode jogar Conjured da pilha de descarte se jogar 2 ou mais [rainbow]cores[/rainbow] no seu turno."
     ],
     "flavor": "Foi mal aparecer assim, mas você não devia mesmo ler livros antigos em voz alta."
   },
@@ -89,7 +89,7 @@
   "special/traits/magic-fingers": {
     "name": "Dedos Mágicos",
     "effects": [
-      "Até o Fim do Mundo: Sempre que um trait sair da sua pilha de traits, você pode jogar 1 da mesma cor para substituí-lo. Ignore ações ({action}).\n\n(Sem dominantes.)"
+      "Até o Fim do Mundo: Sempre que um trait sair da sua pilha de traits, você pode jogar 1 da mesma [rainbow]cor[/rainbow] para substituí-lo. Ignore ações ({action}).\n\n(Sem dominantes.)"
     ],
     "flavor": "Abra-ca-doomling!"
   },
@@ -111,21 +111,21 @@
   "special/traits/rainbow-keratin": {
     "name": "Queratina Arco-Íris",
     "effects": [
-      "-2 para cada Gota de Vida ({drop-of-life}) na sua pilha de traits. (Exceto este.) Se você tiver as 4 cores na sua pilha de traits: +2 para cada trait da cor que você tem em maior quantidade.\n\n(Em caso de empate, escolha 1!)"
+      "-2 para cada Gota de Vida ({drop-of-life}) na sua pilha de traits. (Exceto este.) Se você tiver as 4 [rainbow]cores[/rainbow] na sua pilha de traits: +2 para cada trait da [rainbow]cor que você tem em maior quantidade.[/rainbow]\n\n(Em caso de empate, escolha 1!)"
     ],
     "flavor": "Pra vida, eu só torço o bico."
   },
   "special/traits/rainbow-scutes": {
     "name": "Placas Arco-Íris",
     "effects": [
-      "Escolha uma cor. Os oponentes devem mover 1 trait de valor positivo dessa cor da pilha de traits deles para a sua."
+      "[rainbow]Escolha uma cor.[/rainbow] Os oponentes devem mover 1 trait de valor positivo dessa [rainbow]cor[/rainbow] da pilha de traits deles para a sua."
     ],
     "flavor": "Tartarugamente incrível!"
   },
   "special/traits/shiny": {
     "name": "Brilhante",
     "effects": [
-      "Cada jogador recebe -1 para cada trait incolor na pilha de traits dele.",
+      "Cada jogador recebe -1 para cada trait [colorless]incolor[/colorless] na pilha de traits dele.",
       "(Incluindo você!)"
     ],
     "flavor": "Se você tocar, o que de pior pode acontecer?"

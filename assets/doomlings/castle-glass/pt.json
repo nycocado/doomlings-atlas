@@ -39,7 +39,7 @@
   "castle-glass/traits/biochromatic": {
     "name": "Biocromático",
     "effects": [
-      "Todos os oponentes descartam todas as cartas incolores da mão e estabilizam."
+      "Todos os oponentes descartam todas as cartas [colorless]incolores[/colorless] da mão e estabilizam."
     ],
     "flavor": "Eu levo uma vida colorida."
   },
@@ -50,7 +50,7 @@
   "castle-glass/traits/brainy": {
     "name": "Cerebral",
     "effects": [
-      "Os oponentes não podem jogar roxo no próximo turno deles. Mas você deve lembrá-los."
+      "Os oponentes não podem jogar [purple]roxo[/purple] no próximo turno deles. Mas você deve lembrá-los."
     ],
     "flavor": "Não se esqueça de lembrar às pessoas que elas não podem jogar roxo no turno delas."
   },
@@ -160,7 +160,7 @@
   "castle-glass/traits/pearl": {
     "name": "Pérola",
     "effects": [
-      "Você pode jogar 1 trait de cada cor.",
+      "Você pode jogar 1 trait de cada [rainbow]cor[/rainbow].",
       "Ignore ações ({action})."
     ],
     "flavor": "O brinde da natureza dentro da caixa."
@@ -187,7 +187,7 @@
   "castle-glass/traits/radial-symmetry": {
     "name": "Simetria Radial",
     "effects": [
-      "Início dos seus turnos: Você pode descartar todas as cartas de 1 cor da sua mão."
+      "Início dos seus turnos: Você pode descartar todas as cartas de 1 [rainbow]cor[/rainbow] da sua mão."
     ],
     "flavor": "Mantenha seus amigos por perto e suas anêmonas mais perto ainda."
   },
@@ -260,14 +260,14 @@
   "castle-glass/traits/thermal-tolerance": {
     "name": "Tolerância Térmica",
     "effects": [
-      "Escolha um oponente. +1 para cada trait vermelho na pilha de traits dele."
+      "Escolha um oponente. +1 para cada trait [red]vermelho[/red] na pilha de traits dele."
     ],
     "flavor": "Quem aguenta o calor fica na cozinha."
   },
   "castle-glass/traits/tidal-tolerance": {
     "name": "Tolerância à Maré",
     "effects": [
-      "Escolha um oponente. +1 para cada trait azul na pilha de traits dele."
+      "Escolha um oponente. +1 para cada trait [blue]azul[/blue] na pilha de traits dele."
     ],
     "flavor": "Só indo na onda."
   }

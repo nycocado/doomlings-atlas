@@ -8,7 +8,7 @@
   "nightflower-island/ages/fall-nightflower-island": {
     "name": "Outono de Nightflower Island",
     "effects": [
-      "Você pode descartar as cartas que quiser da sua mão. Se alguma delas for vermelha, compre 1 carta."
+      "Você pode descartar as cartas que quiser da sua mão. Se alguma delas for [red]vermelha[/red], compre 1 carta."
     ]
   },
   "nightflower-island/ages/shade-trees": {
@@ -26,19 +26,19 @@
   "nightflower-island/ages/spring-nightflower-island": {
     "name": "Primavera de Nightflower Island",
     "effects": [
-      "Compre 2 cartas. Passe 1 verde da sua mão para a esquerda."
+      "Compre 2 cartas. Passe 1 [green]verde[/green] da sua mão para a esquerda."
     ]
   },
   "nightflower-island/ages/summer-nightflower-island": {
     "name": "Verão de Nightflower Island",
     "effects": [
-      "Compre 1 carta. Se for roxa, repita."
+      "Compre 1 carta. Se for [purple]roxa[/purple], repita."
     ]
   },
   "nightflower-island/ages/winter-nightflower-island": {
     "name": "Inverno de Nightflower Island",
     "effects": [
-      "Você pode descartar 1 azul da sua mão para comprar 2 cartas."
+      "Você pode descartar 1 [blue]azul[/blue] da sua mão para comprar 2 cartas."
     ]
   },
   "nightflower-island/traits/arbiter": {
@@ -48,7 +48,7 @@
   "nightflower-island/traits/bangs": {
     "name": "Franja",
     "effects": [
-      "Para jogar, você deve descartar: 2 azuis da sua mão OU 1 azul da sua pilha de traits."
+      "Para jogar, você deve descartar: 2 [blue]azuis[/blue] da sua mão OU 1 [blue]azul[/blue] da sua pilha de traits."
     ],
     "flavor": "Um penteado de arrasar."
   },
@@ -90,7 +90,7 @@
   "nightflower-island/traits/decrepit": {
     "name": "Decrépito",
     "effects": [
-      "Jogue a qualquer momento: Escolha uma cor e, depois, revele a carta do topo do baralho de traits. Se for dessa cor, compre-a."
+      "Jogue a qualquer momento: [rainbow]Escolha uma cor[/rainbow] e, depois, revele a carta do topo do baralho de traits. Se for dessa cor, compre-a."
     ],
     "flavor": "Aproveite a juventude. Um dia seus olhos também vão cair."
   },
@@ -117,7 +117,7 @@
   "nightflower-island/traits/grim": {
     "name": "Sombrio",
     "effects": [
-      "Início dos seus turnos: Revele 2 da mesma cor. Suprima 1 delas."
+      "Início dos seus turnos: Revele 2 da mesma [rainbow]cor[/rainbow]. Suprima 1 delas."
     ],
     "flavor": "Esta cidade é grande o bastante pra nós dois, mas vou me livrar de você mesmo assim."
   },
@@ -207,7 +207,7 @@
   "nightflower-island/traits/skybound": {
     "name": "Rumo ao Céu",
     "effects": [
-      "A qualquer momento: Revele 2 azuis para mandar Skybound voando da sua mão para a pilha de traits de um oponente."
+      "A qualquer momento: Revele 2 [blue]azuis[/blue] para mandar Skybound voando da sua mão para a pilha de traits de um oponente."
     ],
     "flavor": "O céu é o melhor atalho que eu conheço."
   },
@@ -246,7 +246,7 @@
   "nightflower-island/traits/unboxed": {
     "name": "Desembrulhado",
     "effects": [
-      "Revele 1 da sua mão. Os amigos suprimem 1 da mão deles da cor revelada.",
+      "[rainbow]Revele[/rainbow] 1 da sua mão. Os amigos suprimem 1 da mão deles da [rainbow]cor revelada[/rainbow].",
       "(Para a pilha de traits deles.)"
     ],
     "flavor": "Não precisava!"
@@ -254,7 +254,7 @@
   "nightflower-island/traits/ungrounded": {
     "name": "Sem Castigo",
     "effects": [
-      "Revele 3 cores diferentes para jogar a qualquer momento."
+      "Revele 3 [rainbow]cores[/rainbow] diferentes para jogar a qualquer momento."
     ],
     "flavor": "Acho que minhas ações e o motivo de eu estar de castigo têm a ver de alguma forma..."
   },

@@ -323,7 +323,7 @@
   "classic/traits/branches": {
     "name": "Galhos",
     "effects": [
-      "+1 para cada par de traits verdes na pilha de traits de cada oponente."
+      "+1 para cada par de traits [green]verdes[/green] na pilha de traits de cada oponente."
     ],
     "flavor": "Braços de árvore."
   },
@@ -384,7 +384,7 @@
   "classic/traits/delicious": {
     "name": "Delicioso",
     "effects": [
-      "Para jogar, você deve ter pelo menos 1 trait incolor na sua pilha de traits."
+      "Para jogar, você deve ter pelo menos 1 trait [colorless]incolor[/colorless] na sua pilha de traits."
     ],
     "flavor": "Para salvar uma espécie da extinção, descubra como comê-la."
   },
@@ -423,7 +423,7 @@
   "classic/traits/egg-clusters": {
     "name": "Cachos de Ovos",
     "effects": [
-      "+1 para cada trait azul na sua pilha de traits.\n\n(Incluindo este.)"
+      "+1 para cada trait [blue]azul[/blue] na sua pilha de traits.\n\n(Incluindo este.)"
     ],
     "flavor": "Compre um, leve cem."
   },
@@ -444,7 +444,7 @@
   "classic/traits/faith": {
     "name": "Fé",
     "effects": [
-      "Você pode mudar todos os seus traits de 1 cor para outra cor."
+      "Você pode mudar todos os seus traits de 1 [rainbow]cor[/rainbow] para outra [rainbow]cor[/rainbow]."
     ],
     "flavor": "A razão é, de fato, o caminho para a fé, e a fé assume quando a razão não tem mais o que dizer."
   },
@@ -493,21 +493,21 @@
   "classic/traits/gratitude": {
     "name": "Gratidão",
     "effects": [
-      "O valor é igual ao número de cores diferentes na sua pilha de traits."
+      "O valor é igual ao número de [rainbow]cores[/rainbow] diferentes na sua pilha de traits."
     ],
     "flavor": "Nossa, fico muito agradecido. Valeu. Obrigado."
   },
   "classic/traits/heat-vision": {
     "name": "Visão de Calor",
     "effects": [
-      "+1 para cada trait vermelho na sua pilha de traits.\n\n(Incluindo este.)"
+      "+1 para cada trait [red]vermelho[/red] na sua pilha de traits.\n\n(Incluindo este.)"
     ],
     "flavor": "Gostaria de propor um brinde."
   },
   "classic/traits/heroic": {
     "name": "Heroico",
     "effects": [
-      "Para jogar, você deve ter 3 ou mais traits verdes na sua pilha de traits."
+      "Para jogar, você deve ter 3 ou mais traits [green]verdes[/green] na sua pilha de traits."
     ],
     "flavor": "Lá no fundo, debaixo de todos esses músculos, sou só um cara super-honrado e corajoso."
   },
@@ -521,7 +521,7 @@
   "classic/traits/hyper-intelligence": {
     "name": "Hiperinteligência",
     "effects": [
-      "Escolha uma cor. Os oponentes descartam 1 trait aleatório dessa cor da pilha de traits deles."
+      "[rainbow]Escolha uma cor.[/rainbow] Os oponentes descartam 1 trait aleatório dessa cor da pilha de traits deles."
     ],
     "flavor": "E=mc, pare de encarar minha cabeça."
   },
@@ -631,7 +631,7 @@
   "classic/traits/mindful": {
     "name": "Atento",
     "effects": [
-      "+1 para cada trait incolor na sua pilha de traits.\n\n(Incluindo este.)"
+      "+1 para cada trait [colorless]incolor[/colorless] na sua pilha de traits.\n\n(Incluindo este.)"
     ],
     "flavor": "Enquanto você anda, come e viaja, esteja onde você está. Caso contrário, perderá a maior parte da sua vida."
   },
@@ -667,14 +667,14 @@
   "classic/traits/overgrowth": {
     "name": "Crescimento Excessivo",
     "effects": [
-      "+1 para cada trait verde na sua pilha de traits.\n\n(Incluindo este.)"
+      "+1 para cada trait [green]verde[/green] na sua pilha de traits.\n\n(Incluindo este.)"
     ],
     "flavor": "Mamãe, por que você me arrancou do jardim de infância?"
   },
   "classic/traits/pack-behavior": {
     "name": "Comportamento de Matilha",
     "effects": [
-      "+1 para cada par de cores na sua pilha de traits."
+      "+1 para cada [rainbow]par de cores[/rainbow] na sua pilha de traits."
     ],
     "flavor": "TODO MUNDO aqui quer passear."
   },
@@ -695,14 +695,14 @@
   "classic/traits/persuasive": {
     "name": "Persuasivo",
     "effects": [
-      "Escolha uma cor. Todos os jogadores descartam da mão todas as cartas dessa cor.\n\n(Incluindo você!)"
+      "[rainbow]Escolha uma cor.[/rainbow] Todos os jogadores descartam da mão todas as cartas dessa cor.\n\n(Incluindo você!)"
     ],
     "flavor": "Mude de ideia ou eu grito ainda mais!"
   },
   "classic/traits/photosynthesis": {
     "name": "Fotossíntese",
     "effects": [
-      "Compre 2 cartas. Se alguma for verde, jogue 1 imediatamente.\n\n(A menos que haja restrição.)"
+      "Compre 2 cartas. Se alguma for [green]verde[/green], jogue 1 imediatamente.\n\n(A menos que haja restrição.)"
     ],
     "flavor": "Mastigando uns fótons, nham nham nham."
   },
@@ -762,7 +762,7 @@
   "classic/traits/retractable-claws": {
     "name": "Garras Retráteis",
     "effects": [
-      "Para jogar, você deve descartar 1 trait vermelho da sua pilha de traits."
+      "Para jogar, você deve descartar 1 trait [red]vermelho[/red] da sua pilha de traits."
     ],
     "flavor": "Dói toda vez."
   },
@@ -773,7 +773,7 @@
   "classic/traits/saudade": {
     "name": "Saudade",
     "effects": [
-      "+1 para cada cor diferente na sua mão."
+      "+1 para cada [rainbow]cor[/rainbow] diferente na sua mão."
     ],
     "flavor": "Já vi, pai. Agora vamos embora!"
   },
@@ -802,21 +802,21 @@
     "name": "Autorreplicante",
     "effects": [
       "Jogue 1 carta da pilha de descarte. Ignore a ação dela ({action}).",
-      "Quando você jogar outro trait verde da sua mão, pode devolver este à sua mão."
+      "Quando você jogar outro trait [green]verde[/green] da sua mão, pode devolver este à sua mão."
     ],
     "flavor": "Mais de mim? Copiado."
   },
   "classic/traits/selfish": {
     "name": "Egoísta",
     "effects": [
-      "Roube um trait vermelho da pilha de traits de um oponente."
+      "Roube um trait [red]vermelho[/red] da pilha de traits de um oponente."
     ],
     "flavor": "Meu!"
   },
   "classic/traits/sentience": {
     "name": "Senciência",
     "effects": [
-      "Escolha uma cor. +1 para cada trait dessa cor na sua pilha de traits."
+      "[rainbow]Escolha uma cor.[/rainbow] +1 para cada trait dessa cor na sua pilha de traits."
     ],
     "flavor": "Estou sentindo tanta coisa agora."
   },
@@ -834,7 +834,7 @@
   "classic/traits/sticky-secretions": {
     "name": "Secreções Pegajosas",
     "effects": [
-      "+1 para cada trait roxo na sua pilha de traits.\n\n(Incluindo este.)"
+      "+1 para cada trait [purple]roxo[/purple] na sua pilha de traits.\n\n(Incluindo este.)"
     ],
     "flavor": "Me dê um abraço."
   },
@@ -894,7 +894,7 @@
   "classic/traits/symbiosis": {
     "name": "Simbiose",
     "effects": [
-      "+2 para cada trait da cor que você tem em menor quantidade.\n\n(Você deve ter 2 ou mais cores. Em caso de empate, escolha 1!)"
+      "+2 para cada trait da [rainbow]cor[/rainbow] que você tem em menor quantidade.\n\n(Você deve ter 2 ou mais [rainbow]cores[/rainbow]. Em caso de empate, escolha 1!)"
     ],
     "flavor": "Isso...isso! Comam à vontade, meus amigos parasitas!"
   },
@@ -905,21 +905,21 @@
   "classic/traits/telekinetic": {
     "name": "Telecinético",
     "effects": [
-      "Troque 1 trait da sua pilha de traits por um trait de um oponente que seja de cor diferente."
+      "Troque 1 trait da sua pilha de traits por um trait de um oponente que seja de [rainbow]cor[/rainbow] diferente."
     ],
     "flavor": "A capacidade de ligar a TV quando você não acha o controle remoto."
   },
   "classic/traits/tentacles": {
     "name": "Tentáculos",
     "effects": [
-      "Troque 1 trait da sua pilha de traits por um trait de um oponente que seja da mesma cor."
+      "Troque 1 trait da sua pilha de traits por um trait de um oponente que seja da mesma [rainbow]cor[/rainbow]."
     ],
     "flavor": "Cuidado, pessoal! Lá vem o polvo do troca-troca!"
   },
   "classic/traits/territorial": {
     "name": "Territorial",
     "effects": [
-      "Todos os oponentes descartam 1 trait vermelho da pilha de traits deles."
+      "Todos os oponentes descartam 1 trait [red]vermelho[/red] da pilha de traits deles."
     ],
     "flavor": "Tudo que cheira a xixi é meu."
   },
@@ -940,7 +940,7 @@
   "classic/traits/tiny-little-melons": {
     "name": "Melõezinhos Minúsculos",
     "effects": [
-      "Roube 1 trait verde da pilha de traits de um oponente."
+      "Roube 1 trait [green]verde[/green] da pilha de traits de um oponente."
     ],
     "flavor": "Não só pequenos, mas também minúsculos."
   },
@@ -968,7 +968,7 @@
   "classic/traits/viral": {
     "name": "Viral",
     "effects": [
-      "Escolha uma cor. Os oponentes recebem -1 para cada trait dessa cor na pilha de traits deles."
+      "[rainbow]Escolha uma cor.[/rainbow] Os oponentes recebem -1 para cada trait dessa cor na pilha de traits deles."
     ],
     "flavor": "Deixe seu like, compartilhe, comente e não esqueça de se inscrever no canal!"
   },
