@@ -40,7 +40,7 @@ class CardTranslationTest {
             "classic",
             "c.webp",
             "AI Takeover",
-            listOf(Effect(EffectKind.WorldsEnd, "Colorless worth 2.")),
+            listOf(Effect(text = "Discard."), Effect(EffectKind.WorldsEnd, "Colorless worth 2.")),
             -1,
         )
 
@@ -51,8 +51,8 @@ class CardTranslationTest {
                     decodeTranslations(
                         """
                         {
-                          "t": {"name": "Venenoso", "flavor": "Ai.", "effect": "Roube 1 carta."},
-                          "c": {"name": "Tomada pela IA", "effect": "-1 Reserva", "worldsEnd": "Incolores valem 2."}
+                          "t": {"name": "Venenoso", "flavor": "Ai.", "effects": ["Roube 1 carta."]},
+                          "c": {"name": "Tomada pela IA", "effects": ["Descarte.", "Incolores valem 2."]}
                         }
                         """,
                     ),
@@ -71,10 +71,10 @@ class CardTranslationTest {
     }
 
     @Test
-    fun aCatastrophesWorldsEndIsItsOwnBlock() {
+    fun aTranslatedEffectKeepsTheKindOfItsCardsEffectAndTheCardsGenePool() {
         assertEquals(
             listOf(
-                CardBlock(null, KindDisplay.None, "-1 Reserva", selector = true),
+                CardBlock(null, KindDisplay.None, "Descarte.", genePool = -1, selector = true),
                 CardBlock(EffectKind.WorldsEnd, KindDisplay.Heading, "Incolores valem 2."),
             ),
             translations.face(catastrophe, CardLanguage.Portuguese)?.blocks,
@@ -96,13 +96,8 @@ class CardTranslationTest {
         assertEquals("AI Takeover", face?.name)
         assertEquals(
             listOf(
-                CardBlock(
-                    EffectKind.WorldsEnd,
-                    KindDisplay.Heading,
-                    "Colorless worth 2.",
-                    genePool = -1,
-                    selector = true,
-                ),
+                CardBlock(null, KindDisplay.None, "Discard.", genePool = -1, selector = true),
+                CardBlock(EffectKind.WorldsEnd, KindDisplay.Heading, "Colorless worth 2."),
             ),
             face?.blocks,
         )

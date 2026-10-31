@@ -45,7 +45,7 @@ data class CardBlock(
     val display: KindDisplay,
     // Without tokens. Null for the empty block.
     val text: String?,
-    // The first block's "+N Gene Pool" line. A translation has it in its effect text.
+    // The first block's "+N Gene Pool" line.
     val genePool: Int? = null,
     // The last block's Trinket Value.
     val value: Int? = null,
@@ -72,16 +72,14 @@ fun withoutTokens(text: String) = text.replace(token, "")
 // null for a card type without a card kind, which the app doesn't show.
 fun NamedCard.face(): CardFace? = face(name, effects, flavor, genePool)
 
-// A translation's flat text is one plain effect, and a Catastrophe's World's End another. Its Gene Pool is in its text.
+// Each translated text takes the kind of the card's effect at its place. zip drops effects past the shorter list: the
+// translation data test keeps the counts equal.
 internal fun NamedCard.face(text: CardText): CardFace? =
     face(
         text.name,
-        listOfNotNull(
-            text.effect?.let { Effect(text = it) },
-            text.worldsEnd?.let { Effect(EffectKind.WorldsEnd, it) },
-        ),
+        effects.zip(text.effects) { effect, translated -> effect.copy(text = translated) },
         text.flavor,
-        null,
+        genePool,
     )
 
 private fun NamedCard.face(

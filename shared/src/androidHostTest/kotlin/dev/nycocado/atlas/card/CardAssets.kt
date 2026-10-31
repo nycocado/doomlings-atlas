@@ -35,17 +35,20 @@ object CardAssets {
             folder.listFiles { file -> file.extension == "json" && file.name != "cards.json" }.orEmpty().sorted()
         }
 
-    // Card id to field name to text, of one translation file.
-    fun translationsOf(file: File): Map<String, Map<String, String>> =
+    // Card id to field name to its texts, of one translation file: one text for `name` and `flavor`, one per effect for
+    // `effects`.
+    fun translationsOf(file: File): Map<String, Map<String, List<String>>> =
         Json.parseToJsonElement(file.readText()).jsonObject.mapValues { (_, translation) ->
-            translation.jsonObject.mapValues { (_, value) -> value.jsonPrimitive.content }
+            translation.jsonObject.mapValues { (_, value) ->
+                (value as? JsonArray ?: listOf(value)).map { it.jsonPrimitive.content }
+            }
         }
 
     // Every translated text, as "file card-id" to text.
     val translatedTexts: List<Pair<String, String>> =
         translationFiles.flatMap { file ->
             translationsOf(file).flatMap { (id, fields) ->
-                fields.values.map { "${file.relativeTo(dir).path} $id" to it }
+                fields.values.flatten().map { "${file.relativeTo(dir).path} $id" to it }
             }
         }
 

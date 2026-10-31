@@ -216,8 +216,8 @@ class CompendiumFilterTest {
             mapOf(
                 CardLanguage.Portuguese to
                     decodeTranslations(
-                        """{"Venomous": {"name": "Venenoso", "effect": "Roube 1 carta."},
-                           "ai-takeover": {"name": "IA", "effect": "-1 Reserva", "worldsEnd": "Incolores valem 2."}}""",
+                        """{"Venomous": {"name": "Venenoso", "effects": ["Roube 1 carta."]},
+                           "ai-takeover": {"name": "IA", "effects": ["Incolores valem 2."]}}""",
                     ),
             ),
         )

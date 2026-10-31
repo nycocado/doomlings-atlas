@@ -19,22 +19,22 @@ val testPortuguese =
     mapOf(
         "classic/traits/adorable" to CardText("Adorável", flavor = "Esfregue minha barriga."),
         "classic/traits/altruistic" to
-            CardText("Altruísta", effect = "Zumbido do tamanho da Pool.", flavor = "Doei tudo."),
-        "classic/traits/apex-predator" to CardText("Predador Alfa", effect = "Roube uma carta."),
+            CardText("Altruísta", listOf("Zumbido do tamanho da Pool."), flavor = "Doei tudo."),
+        "classic/traits/apex-predator" to CardText("Predador Alfa", listOf("Roube uma carta.")),
         "classic/traits/antlers" to CardText("Chifres", flavor = "Fico bem na sua parede."),
         "classic/traits/eloquence" to
-            CardText("Eloquência", effect = "No Fim do Mundo: jogue outra.", flavor = "Fique quieto."),
+            CardText("Eloquência", listOf("Jogue outra."), flavor = "Fique quieto."),
         "classic/ages/age-of-dracula" to
             CardText(
                 "Era de Drácula",
-                effect = "Se Vampirism estiver na sua pilha de traits, roube 1 carta aleatória.",
+                listOf("Descarte 1 carta.", "Se Vampirism estiver na sua pilha de traits, roube 1 carta aleatória."),
             ),
         "classic/catastrophes/ice-age" to
-            CardText("Era Glacial", effect = "Descarte cartas da mão.", worldsEnd = "Menos pontos vermelhos."),
+            CardText("Era Glacial", listOf("Descarte cartas da mão.", "Menos pontos vermelhos.")),
     )
 
 // Made-up Spanish, for the card language a Spanish device starts in.
-val testSpanish = mapOf("classic/traits/altruistic" to CardText("Altruista", effect = "Zumbido del tamaño de la Pool."))
+val testSpanish = mapOf("classic/traits/altruistic" to CardText("Altruista", listOf("Zumbido del tamaño de la Pool.")))
 
 @Module
 @TestInstallIn(components = [SingletonComponent::class], replaces = [CardRepositoryModule::class])

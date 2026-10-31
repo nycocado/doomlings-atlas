@@ -625,9 +625,8 @@ internal fun TranslatedTraitSample() =
                                 LongNameTrait.id to
                                     CardText(
                                         "Fertilização Aleatória",
-                                        "O valor é igual ao tamanho do seu Gene Pool.",
+                                        listOf("O valor é igual ao tamanho do seu Gene Pool."),
                                         "Escolha um número entre 1 e 64 trilhões.",
-                                        null,
                                     ),
                             ),
                     ),
@@ -661,7 +660,10 @@ internal fun TranslatedCatastropheDetailPreview() =
                             CardLanguage.Portuguese to
                                 mapOf(
                                     catastrophe.id to
-                                        CardText("Uma catástrofe", "Texto do efeito.", null, "Texto do Fim do Mundo."),
+                                        CardText(
+                                            "Uma catástrofe",
+                                            listOf("Texto do efeito.", "Texto do Fim do Mundo."),
+                                        ),
                                 ),
                         ),
                     ),
