@@ -297,6 +297,56 @@ class CardFaceTest {
         )
     }
 
+    private fun Age.textParts() = (face()?.blocks?.single()?.content as BlockContent.Effect).text
+
+    private fun age(text: String) = Age("a", "classic", "a.webp", "Age", listOf(Effect(text = text)))
+
+    @Test
+    fun aMarkedSpanIsWordsWithItsInk() {
+        assertEquals(
+            listOf(
+                TextPart.Words("Play a "),
+                TextPart.Words("red", Ink.Red),
+                TextPart.Words(" or "),
+                TextPart.Words("rainbow", Ink.Rainbow),
+                TextPart.Words(" trait."),
+            ),
+            age("Play a [red]red[/red] or [rainbow]rainbow[/rainbow] trait.").textParts(),
+        )
+    }
+
+    @Test
+    fun everyInkOfTheCardDataHasItsName() {
+        val inks = listOf("red", "blue", "green", "purple", "colorless", "rainbow")
+
+        assertEquals(
+            Ink.entries.map { TextPart.Words("x", it) },
+            age(inks.joinToString("") { "[$it]x[/$it]" }).textParts(),
+        )
+    }
+
+    @Test
+    fun tokensStillParseInAnEffectWithInks() {
+        assertEquals(
+            listOf(
+                TextPart.Words("Discard 1 "),
+                TextPart.Words("blue", Ink.Blue),
+                TextPart.Words(" trait ("),
+                TextPart.Icon(Token.Action),
+                TextPart.Words(")."),
+            ),
+            age("Discard 1 [blue]blue[/blue] trait ({action}).").textParts(),
+        )
+    }
+
+    @Test
+    fun searchLeavesOutInkMarks() {
+        assertEquals(
+            listOf("Age", "Discard 1 blue trait."),
+            age("Discard 1 [blue]blue[/blue] trait ({action}).").face()?.searchable,
+        )
+    }
+
     @Test
     fun searchIsByNameAndEveryEffectButNotFlavor() {
         assertEquals(

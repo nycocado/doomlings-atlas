@@ -23,6 +23,7 @@ class CitationTest {
                     trait("Blood", null),
                     trait("Blood Drive", null),
                     trait("Eater", null),
+                    trait("Hunter", "Discard a [red]Kidney[/red]."),
                 ).joinToString() +
                 "]",
         )
@@ -91,6 +92,30 @@ class CitationTest {
     @Test
     fun citesInAnyText() {
         assertEquals(listOf("Kidney" to "classic/traits/kidney"), citations("Eater", "Descarte Kidney."))
+    }
+
+    // The card detail cites in the words of the card face, which have no ink marks.
+    @Test
+    fun citesANameInAnInkedSpan() {
+        val hunter = card("Hunter") as NamedCard
+        val words =
+            hunter
+                .face()
+                ?.blocks
+                ?.mapNotNull { it.content as? BlockContent.Effect }
+                ?.flatMap { it.text }
+                ?.filterIsInstance<TextPart.Words>()
+                .orEmpty()
+
+        assertEquals(
+            listOf("Kidney" to "classic/traits/kidney"),
+            words.flatMap { part ->
+                library.citations(hunter, part.text).map {
+                    part.text.substring(it.range) to
+                        it.card.id
+                }
+            },
+        )
     }
 
     @Test

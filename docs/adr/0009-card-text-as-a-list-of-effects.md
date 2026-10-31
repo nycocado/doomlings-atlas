@@ -1,6 +1,6 @@
 # 9. Card Text as a List of Effects
 
-- Status: accepted
+- Status: accepted; markup inside the text amended by [0010](0010-ink-marks-in-effect-text.md)
 - Date: 2026-10-30
 
 ## Context

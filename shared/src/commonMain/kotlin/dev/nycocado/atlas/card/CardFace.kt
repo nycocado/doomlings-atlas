@@ -8,7 +8,7 @@ data class CardFace(
     val faceValue: Int?,
     // The card detail's blocks in order; none when the card has no text, flavor or Gene Pool.
     val blocks: List<CardBlock>,
-    // What the compendium search matches: the name and the text of every effect, without tokens.
+    // What the compendium search matches: the name and the text of every effect, without tokens or ink marks.
     val searchable: List<String>,
 ) {
     // Empty for cards without color; null stands for colorless.
@@ -65,8 +65,10 @@ sealed interface BlockContent {
 }
 
 sealed interface TextPart {
+    // null for words without an ink.
     data class Words(
         val text: String,
+        val ink: Ink? = null,
     ) : TextPart
 
     data class Icon(
@@ -94,26 +96,59 @@ enum class Token(
     Glitterling("glitterling"),
 }
 
+// The inks a span of an effect is printed in, by the name in brackets: `[red]red[/red]`.
+enum class Ink(
+    val code: String,
+) {
+    Red("red"),
+    Blue("blue"),
+    Green("green"),
+    Purple("purple"),
+    Colorless("colorless"),
+    Rainbow("rainbow"),
+}
+
 // The closing brace is escaped too: Android's ICU regex rejects a lone "}", which the JVM's accepts.
 private val braces = Regex("""\{([^}]*)\}""")
 
-// An unknown token stays as written; the card data test rules them out.
+// A span runs to the closing mark of its own ink; the card data test rules out nested and unclosed spans.
+private val inkedSpan = Regex("""\[([^\]/]*)\]([\s\S]*?)\[/\1\]""")
+
+// An unknown ink or token stays as written; the card data test rules them out.
 private fun parts(text: String): List<TextPart> =
+    buildList {
+        var at = 0
+        for (match in inkedSpan.findAll(text)) {
+            val ink = Ink.entries.find { it.code == match.groupValues[1] } ?: continue
+            addAll(parts(text.substring(at, match.range.first), null))
+            addAll(parts(match.groupValues[2], ink))
+            at = match.range.last + 1
+        }
+        addAll(parts(text.substring(at), null))
+    }
+
+private fun parts(
+    text: String,
+    ink: Ink?,
+): List<TextPart> =
     buildList {
         var at = 0
         for (match in braces.findAll(text)) {
             val token = Token.entries.find { it.code == match.groupValues[1] } ?: continue
-            if (match.range.first > at) add(TextPart.Words(text.substring(at, match.range.first)))
+            if (match.range.first > at) add(TextPart.Words(text.substring(at, match.range.first), ink))
             add(TextPart.Icon(token))
             at = match.range.last + 1
         }
-        if (at < text.length) add(TextPart.Words(text.substring(at)))
+        if (at < text.length) add(TextPart.Words(text.substring(at), ink))
     }
 
 private val token = Regex("""\s*\(\{[^}]*\}\)|\{[^}]*\}""")
 
-// A token is an icon, not a word to search for. A parenthesized one goes with its parentheses and the space before them.
-fun withoutTokens(text: String) = text.replace(token, "")
+private val inkMark = Regex("""\[/?[^\]/]*\]""")
+
+// The words of an effect: a token is an icon, not a word to search for, and an ink mark only colors its words. A
+// parenthesized token goes with its parentheses and the space before them.
+fun plainText(text: String) = text.replace(token, "").replace(inkMark, "")
 
 // null for a card type without a card kind, which the app doesn't show.
 fun NamedCard.face(): CardFace? = face(name, effects, flavor, genePool)
@@ -148,7 +183,7 @@ private fun NamedCard.face(
         },
         trait?.points,
         blocks,
-        listOf(name) + effects.map { withoutTokens(it.text) },
+        listOf(name) + effects.map { plainText(it.text) },
     )
 }
 

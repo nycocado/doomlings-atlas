@@ -12,8 +12,9 @@ class CitationDataTest {
         val found =
             library.cards!!.filterIsInstance<NamedCard>().flatMap { card ->
                 card.effects.flatMapIndexed { index, effect ->
-                    library.citations(card, effect.text).map {
-                        "${card.id}.effects[$index]: ${effect.text.substring(it.range)} -> ${it.card.id}"
+                    val text = plainText(effect.text)
+                    library.citations(card, text).map {
+                        "${card.id}.effects[$index]: ${text.substring(it.range)} -> ${it.card.id}"
                     }
                 }
             }

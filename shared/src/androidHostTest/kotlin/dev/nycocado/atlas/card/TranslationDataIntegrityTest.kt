@@ -156,6 +156,18 @@ class TranslationDataIntegrityTest {
         }
     }
 
+    // An ink repeats what the words say, so each translated effect has the inks of its English effect, in their order.
+    @Test
+    fun everyTranslatedEffectHasTheInksOfItsEnglishEffect() {
+        files.forEach { file ->
+            val wrong =
+                effectPairs(file)
+                    .filter { (_, pair) -> inks(pair.first) != inks(pair.second) }
+                    .map { (where, _) -> where }
+            assertEquals(emptyList<String>(), wrong, file.label)
+        }
+    }
+
     // Paragraphs follow the printed card, notes included.
     @Test
     fun everyTranslatedEffectHasTheParagraphsOfItsEnglishEffect() {
