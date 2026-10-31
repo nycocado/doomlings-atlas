@@ -126,20 +126,14 @@ class CardFaceTest {
         )
 
     @Test
-    fun aCatastropheHasABlockPerEffectAndItsWorldsEndAsAHeading() {
+    fun aCatastropheHasItsGenePoolThenABlockPerEffectWithItsKind() {
         val face = aiTakeover.face()
         assertEquals(
             listOf(
-                CardBlock(
-                    null,
-                    KindDisplay.None,
-                    "Discard all but 1 card from your hand.",
-                    genePool = -1,
-                    selector = true,
-                ),
-                CardBlock(
+                CardBlock(BlockContent.GenePool(-1), selector = true),
+                effectBlock(null, "Discard all but 1 card from your hand."),
+                effectBlock(
                     EffectKind.WorldsEnd,
-                    KindDisplay.Heading,
                     "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
                 ),
             ),
@@ -165,14 +159,11 @@ class CardFaceTest {
         )
 
     @Test
-    fun aTraitWithAGenePoolAndNoEffectHasOneBlockWithNoText() {
+    fun aTraitWithAGenePoolAndNoEffectHasOnlyItsGenePoolBlockWithTheFlavor() {
         assertEquals(
             listOf(
                 CardBlock(
-                    null,
-                    KindDisplay.None,
-                    null,
-                    genePool = -1,
+                    BlockContent.GenePool(-1),
                     flavor = "Wreck yourself before you check yourself bro!",
                     selector = true,
                 ),
@@ -186,8 +177,6 @@ class CardFaceTest {
         assertEquals(
             listOf(
                 CardBlock(
-                    null,
-                    KindDisplay.None,
                     null,
                     flavor = "And you might ask yourself, \"Why does this trait exist?",
                     selector = true,
@@ -219,22 +208,12 @@ class CardFaceTest {
         )
 
     @Test
-    fun aTrinketsLabelsAreInlineAndItsFlavorAndValueEndTheLastBlock() {
+    fun aTrinketsLabelsAreKindsAndItsValueIsTheLastBlockWithTheFlavor() {
         assertEquals(
             listOf(
-                CardBlock(
-                    EffectKind.AwesomePower,
-                    KindDisplay.Label,
-                    "Start of Turn: Discard dominants from hand.",
-                    selector = true,
-                ),
-                CardBlock(
-                    EffectKind.PocketObjective,
-                    KindDisplay.Label,
-                    "Reveal: 2 reds in hand.",
-                    value = 2,
-                    flavor = "This causes stress. Can't stress that enough.",
-                ),
+                effectBlock(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand.", selector = true),
+                effectBlock(EffectKind.PocketObjective, "Reveal: 2 reds in hand."),
+                CardBlock(BlockContent.Value(2), flavor = "This causes stress. Can't stress that enough."),
             ),
             anxietyElixir.blocks(anxietyElixir.effects, anxietyElixir.flavor, null),
         )
@@ -260,23 +239,61 @@ class CardFaceTest {
         )
 
     @Test
-    fun aCardWithSeveralEffectsEndsItsLastBlockWithItsFlavorAndShowsNoActionLabel() {
+    fun aCardWithSeveralEffectsEndsItsLastBlockWithItsFlavorAndKeepsItsTokensInTheText() {
         assertEquals(
             listOf(
                 CardBlock(
-                    EffectKind.Action,
-                    KindDisplay.None,
-                    "Play 1 card from the discard pile. Ignore its action.",
+                    BlockContent.Effect(
+                        EffectKind.Action,
+                        listOf(
+                            TextPart.Words("Play 1 card from the discard pile. Ignore its action ("),
+                            TextPart.Icon(Token.Action),
+                            TextPart.Words(")."),
+                        ),
+                    ),
                     selector = true,
                 ),
-                CardBlock(
+                effectBlock(
                     null,
-                    KindDisplay.None,
                     "When you play another green trait from your hand, you may return this to your hand.",
                     flavor = "More me? Copy that.",
                 ),
             ),
             selfReplicating.face()?.blocks,
+        )
+    }
+
+    @Test
+    fun everyTokenOfTheCardDataIsAnIconAndAnUnknownOneStaysAsWritten() {
+        val tokens =
+            listOf(
+                "action",
+                "attachment",
+                "drop-of-life",
+                "worlds-end",
+                "compass",
+                "coral",
+                "fish",
+                "shell",
+                "mythling",
+                "dinoling",
+                "techling",
+                "deepling",
+                "moonling",
+                "glitterling",
+            )
+        val age =
+            Age("a", "classic", "a.webp", "Age", listOf(Effect(text = tokens.joinToString("") { "{$it}" } + "{x}")))
+
+        assertEquals(
+            Token.entries.map { TextPart.Icon(it) } + TextPart.Words("{x}"),
+            (
+                age
+                    .face()
+                    ?.blocks
+                    ?.single()
+                    ?.content as BlockContent.Effect
+            ).text,
         )
     }
 
@@ -305,18 +322,10 @@ class CardFaceTest {
             )
 
         assertEquals(listOf("Age", "Ignore actions and Shells."), pearl.face()?.searchable)
-        assertEquals(
-            "Ignore actions and Shells.",
-            pearl
-                .face()
-                ?.blocks
-                ?.single()
-                ?.text,
-        )
     }
 
     @Test
-    fun aTranslationsEffectsTakeTheKindsOfTheCardsEffectsInOrderAndTheirTextHidesTokens() {
+    fun aTranslationsEffectsTakeTheKindsOfTheCardsEffectsInOrderAndItsSearchLeavesOutTokens() {
         val face =
             CardTranslations(
                 mapOf(
@@ -333,8 +342,18 @@ class CardFaceTest {
 
         assertEquals(
             listOf(
-                CardBlock(null, KindDisplay.None, "Descarte.", genePool = aiTakeover.genePool, selector = true),
-                CardBlock(EffectKind.WorldsEnd, KindDisplay.Heading, "Incolores valem 2. Ignore ações."),
+                CardBlock(BlockContent.GenePool(-1), selector = true),
+                effectBlock(null, "Descarte."),
+                CardBlock(
+                    BlockContent.Effect(
+                        EffectKind.WorldsEnd,
+                        listOf(
+                            TextPart.Words("Incolores valem 2. Ignore ações ("),
+                            TextPart.Icon(Token.Action),
+                            TextPart.Words(")."),
+                        ),
+                    ),
+                ),
             ),
             face?.blocks,
         )
@@ -370,8 +389,6 @@ class CardFaceTest {
             listOf(
                 CardBlock(
                     null,
-                    KindDisplay.None,
-                    null,
                     flavor = "E você pode se perguntar: \"Por que este trait existe?",
                     selector = true,
                 ),
@@ -382,22 +399,6 @@ class CardFaceTest {
     }
 
     @Test
-    fun onlyATrinketHasAValue() {
-        assertEquals(
-            null,
-            confusion
-                .face()
-                ?.blocks
-                ?.single()
-                ?.value,
-        )
-        assertEquals(
-            2,
-            anxietyElixir.blocks(anxietyElixir.effects, anxietyElixir.flavor, null).last().value,
-        )
-    }
-
-    @Test
     fun aColorlessTraitHasOneColorlessFact() {
         assertEquals(
             listOf(CardFact.Color(null), CardFact.Kind(CardKind.Trait)),
@@ -405,3 +406,11 @@ class CardFaceTest {
         )
     }
 }
+
+// A block of one effect whose text has no token.
+internal fun effectBlock(
+    kind: EffectKind?,
+    text: String,
+    flavor: String? = null,
+    selector: Boolean = false,
+) = CardBlock(BlockContent.Effect(kind, listOf(TextPart.Words(text))), flavor, selector)

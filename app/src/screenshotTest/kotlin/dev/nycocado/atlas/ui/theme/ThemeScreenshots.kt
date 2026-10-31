@@ -8,6 +8,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.android.tools.screenshot.PreviewTest
 import dev.nycocado.atlas.about.AboutPreview
 import dev.nycocado.atlas.about.NoticePreview
+import dev.nycocado.atlas.carddetail.ActionNoteTokenDetailPreview
 import dev.nycocado.atlas.carddetail.CardDetailLongNamePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
@@ -17,6 +18,7 @@ import dev.nycocado.atlas.carddetail.PillsPreview
 import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitSample
+import dev.nycocado.atlas.carddetail.TrinketBlocksPreview
 import dev.nycocado.atlas.cardpane.CardBesideListPreview
 import dev.nycocado.atlas.compendium.CardGroupCollapsedPreview
 import dev.nycocado.atlas.compendium.CardGroupOpenPreview
@@ -107,6 +109,22 @@ fun CardDetailScreenshot() = CardDetailPreview()
 @PreviewLightDark
 @Composable
 fun CatastropheDetailScreenshot() = CatastropheDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun ActionNoteTokenDetailScreenshot() = ActionNoteTokenDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun TrinketBlocksScreenshot() = TrinketBlocksPreview()
+
+// The token's name and the kind's name come from the card language.
+@PreviewTest
+@Preview(locale = "pt")
+@Composable
+fun ActionNoteTokenDetailPortugueseScreenshot() = ActionNoteTokenDetailPreview()
 
 @PreviewTest
 @Preview(name = "Light", locale = "pt")

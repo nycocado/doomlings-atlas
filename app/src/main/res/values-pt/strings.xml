@@ -84,4 +84,5 @@
     <string name="icon_exotic">Exótico</string>
     <string name="icon_fish">Peixe</string>
     <string name="icon_shell">Concha</string>
+    <string name="icon_compass">Bússola</string>
 </resources>
