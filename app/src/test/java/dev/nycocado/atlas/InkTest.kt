@@ -1,6 +1,6 @@
 package dev.nycocado.atlas
 
-import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.ShaderBrush
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.assertIsDisplayed
@@ -9,6 +9,7 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.text.AnnotatedString
 import dagger.hilt.android.testing.HiltAndroidTest
 import dev.nycocado.atlas.ui.theme.DayColors
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -40,6 +41,7 @@ class InkTest : AtlasBehaviorTest() {
         open("Heat Vision")
 
         val text = effect("+1 for each red trait in your trait pile.")
+        assertFalse(text.text.contains('['))
         assertTrue(text.stylesOver("red").any { it.color == DayColors.traitRed.ink })
         assertTrue(text.stylesOver("trait pile").none { it.color == DayColors.traitRed.ink })
         assertAccessible()
@@ -51,7 +53,8 @@ class InkTest : AtlasBehaviorTest() {
         open("Hyper-Intelligence")
 
         val text = effect("Choose a color. Opponents discard 1 trait of that color")
-        assertTrue(text.stylesOver("Choose a color.").any { it.brush is Brush })
+        assertFalse(text.text.contains('['))
+        assertTrue(text.stylesOver("Choose a color.").any { it.brush is ShaderBrush })
         assertTrue(text.stylesOver("Opponents").none { it.brush != null })
         assertAccessible()
     }

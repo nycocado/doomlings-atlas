@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.LinearGradientShader
 import androidx.compose.ui.graphics.Shader
@@ -285,32 +286,21 @@ private fun EffectText(
     val tokens = parts.filterIsInstance<TextPart.Icon>().map { it.token }.distinct()
     val titles = tokens.associateWith { it.title(language) }
     // Kept across recompositions, so an unchanged text stays equal and isn't laid out again.
-    val rainbowBrushes =
-        remember(parts, theme) {
-            List(parts.count { (it as? TextPart.Words)?.ink == Ink.Rainbow }) { RainbowBrush(theme.rainbowInks) }
-        }
-    val rainbows = mutableListOf<IntRange>()
+    val brushes = remember(parts, theme) { parts.map { (it as? TextPart.Words)?.ink?.let(theme::brush) } }
+    val rainbows = mutableListOf<Pair<IntRange, RainbowBrush>>()
     val text =
         buildAnnotatedString {
             withStyle(SpanStyle(localeList = LocaleList(language.code))) {
-                parts.forEach { part ->
+                parts.forEachIndexed { i, part ->
                     when (part) {
                         is TextPart.Words -> {
                             val start = length
                             append(part.text)
                             val citations = library.citations(card, part.text)
-                            part.ink?.let { ink ->
+                            brushes[i]?.let { brush ->
                                 val span = start until length
-                                val brush =
-                                    if (ink ==
-                                        Ink.Rainbow
-                                    ) {
-                                        rainbowBrushes[rainbows.size]
-                                    } else {
-                                        SolidColor(theme.ink(ink))
-                                    }
                                 val style = SpanStyle(brush = brush)
-                                if (ink == Ink.Rainbow) rainbows += span
+                                if (brush is RainbowBrush) rainbows += span to brush
                                 // A cited name keeps its citation style, which an ink drawn over it would hide.
                                 val cited = citations.map { (range, _) -> start + range.first..start + range.last }
                                 span.without(cited).forEach { addStyle(style, it.first, it.last + 1) }
@@ -352,8 +342,8 @@ private fun EffectText(
         text,
         style = (if (note) AtlasTypography.bodyMd else AtlasTypography.bodyLg).copy(color = theme.onSurface),
         onTextLayout = { layout ->
-            rainbows.forEachIndexed { i, span ->
-                rainbowBrushes[i].extent =
+            rainbows.forEach { (span, brush) ->
+                brush.extent =
                     span.minOf { layout.getBoundingBox(it).left }..span.maxOf { layout.getBoundingBox(it).right }
             }
         },
@@ -361,14 +351,14 @@ private fun EffectText(
     )
 }
 
-private fun AtlasColors.ink(ink: Ink): Color =
+private fun AtlasColors.brush(ink: Ink): Brush =
     when (ink) {
-        Ink.Red -> traitRed.ink
-        Ink.Green -> traitGreen.ink
-        Ink.Blue -> traitBlue.ink
-        Ink.Purple -> traitPurple.ink
-        Ink.Colorless -> traitColorless.ink
-        Ink.Rainbow -> error("A rainbow is a gradient of inks, drawn by RainbowBrush")
+        Ink.Red -> SolidColor(traitRed.ink)
+        Ink.Green -> SolidColor(traitGreen.ink)
+        Ink.Blue -> SolidColor(traitBlue.ink)
+        Ink.Purple -> SolidColor(traitPurple.ink)
+        Ink.Colorless -> SolidColor(traitColorless.ink)
+        Ink.Rainbow -> RainbowBrush(rainbowInks)
     }
 
 // A brush in a span spreads over the whole text, so this one draws its gradient across the extent of its span, from

@@ -19,15 +19,13 @@ fun cardImage(image: String) = "file:///android_asset/cards/$image"
 open class CardRepository(
     private val context: Context,
 ) {
-    open suspend fun library(): CardLibrary =
-        withContext(Dispatchers.IO) {
-            CardLibrary.decode(
-                context.assets
-                    .open("cards/cards.json")
-                    .bufferedReader()
-                    .use { it.readText() },
-            )
-        }
+    suspend fun library(): CardLibrary = withContext(Dispatchers.IO) { CardLibrary.decode(cardsJson()) }
+
+    protected open fun cardsJson(): String =
+        context.assets
+            .open("cards/cards.json")
+            .bufferedReader()
+            .use { it.readText() }
 
     // The translation files packaged beside cards.json; a language with no file has no translations yet.
     open suspend fun translations(): CardTranslations =

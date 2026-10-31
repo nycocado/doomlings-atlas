@@ -10,7 +10,7 @@ import org.junit.Test
 
 // docs/design.md asks for 4.5:1 for text; the bubble is surface-sticker in both themes.
 class InkContrastTest {
-    // The WCAG contrast ratio, which Compose has no function for.
+    // The WCAG contrast ratio: ColorUtils.calculateContrast takes android.graphics colors, which a plain JVM test lacks.
     private fun contrast(
         a: Color,
         b: Color,
