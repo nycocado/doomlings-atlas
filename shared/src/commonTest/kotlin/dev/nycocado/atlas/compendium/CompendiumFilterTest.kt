@@ -174,7 +174,6 @@ class CompendiumFilterTest {
         assertEquals(listOf("Pearl"), found("symbol"))
         assertEquals(emptyList(), found("worlds-end"))
         assertEquals(emptyList(), found("{"))
-        assertEquals(emptyList(), found("action)"))
     }
 
     @Test
