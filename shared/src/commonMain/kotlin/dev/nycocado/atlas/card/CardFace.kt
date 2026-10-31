@@ -1,8 +1,5 @@
 package dev.nycocado.atlas.card
 
-import dev.nycocado.atlas.compendium.CardKind
-import dev.nycocado.atlas.compendium.kind
-
 // What a card shows, decided once for the card detail, the compendium's card thumb and its search.
 data class CardFace(
     val name: String,

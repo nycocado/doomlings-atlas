@@ -1,6 +1,5 @@
 package dev.nycocado.atlas.card
 
-import dev.nycocado.atlas.compendium.CardKind
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -336,6 +335,18 @@ class CardFaceTest {
             ),
             face?.blocks,
         )
+    }
+
+    @Test
+    fun translatedFaceHasNoPrintedFallback() {
+        val translations =
+            CardTranslations(
+                mapOf(CardLanguage.Portuguese to mapOf(aiTakeover.id to CardText("Tomada pela IA"))),
+            )
+
+        assertEquals("Tomada pela IA", translations.translatedFace(aiTakeover, CardLanguage.Portuguese)?.name)
+        assertEquals(null, translations.translatedFace(confusion, CardLanguage.Portuguese))
+        assertEquals(null, translations.translatedFace(aiTakeover, CardLanguage.Spanish))
     }
 
     @Test

@@ -39,5 +39,11 @@ class CardTranslations(
     fun face(
         card: NamedCard,
         language: CardLanguage,
-    ): CardFace? = byLanguage[language]?.get(card.id)?.let(card::face) ?: card.face()
+    ): CardFace? = translatedFace(card, language) ?: card.face()
+
+    // null when the card has no translation in that language, without the printed fallback.
+    fun translatedFace(
+        card: NamedCard,
+        language: CardLanguage,
+    ): CardFace? = byLanguage[language]?.get(card.id)?.let(card::face)
 }
