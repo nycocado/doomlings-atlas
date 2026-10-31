@@ -77,6 +77,16 @@ class CardDataIntegrityTest {
         )
     }
 
+    // Each case is proved on a broken sample in InkMarksTest.
+    @Test
+    fun everyInkMarkIsWellFormed() {
+        val texts = effects.map { (card, effect) -> card.id to effect.text } + CardAssets.translatedTexts
+        assertEquals(
+            emptyList(),
+            texts.flatMap { (where, text) -> inkMarkProblems(text).map { "$where: $it" } },
+        )
+    }
+
     @Test
     fun noEffectTextHasAGenePoolLineOrALabelItShouldHaveAsAKind() {
         // A line of its own: "All players receive: -1 Gene Pool." is rules text.
