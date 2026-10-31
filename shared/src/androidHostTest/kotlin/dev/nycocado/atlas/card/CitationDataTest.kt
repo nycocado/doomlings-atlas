@@ -3,7 +3,8 @@ package dev.nycocado.atlas.card
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-// Every citation found in the real card data of every set, written out so a pull request shows what it opens.
+// Every citation found in the real card data of every set, written out so a pull request shows what it opens. Cited
+// as the card detail cites, in each run of words of the card face: a name across an ink mark's edge is not found.
 class CitationDataTest {
     private val library = CardLibrary.decode(CardAssets.cardsJson)
 
@@ -11,10 +12,17 @@ class CitationDataTest {
     fun citationsOfTheCardTextsAreTheReviewedOnes() {
         val found =
             library.cards!!.filterIsInstance<NamedCard>().flatMap { card ->
-                card.effects.flatMapIndexed { index, effect ->
-                    val text = plainText(effect.text)
-                    library.citations(card, text).map {
-                        "${card.id}.effects[$index]: ${text.substring(it.range)} -> ${it.card.id}"
+                val effects =
+                    card
+                        .face()
+                        ?.blocks
+                        .orEmpty()
+                        .mapNotNull { it.content as? BlockContent.Effect }
+                effects.flatMapIndexed { index, effect ->
+                    effect.text.filterIsInstance<TextPart.Words>().flatMap { words ->
+                        library.citations(card, words.text).map {
+                            "${card.id}.effects[$index]: ${words.text.substring(it.range)} -> ${it.card.id}"
+                        }
                     }
                 }
             }

@@ -120,14 +120,14 @@ private fun parts(text: String): List<TextPart> =
         var at = 0
         for (match in inkedSpan.findAll(text)) {
             val ink = Ink.entries.find { it.code == match.groupValues[1] } ?: continue
-            addAll(parts(text.substring(at, match.range.first), null))
-            addAll(parts(match.groupValues[2], ink))
+            addAll(tokenParts(text.substring(at, match.range.first), null))
+            addAll(tokenParts(match.groupValues[2], ink))
             at = match.range.last + 1
         }
-        addAll(parts(text.substring(at), null))
+        addAll(tokenParts(text.substring(at), null))
     }
 
-private fun parts(
+private fun tokenParts(
     text: String,
     ink: Ink?,
 ): List<TextPart> =
