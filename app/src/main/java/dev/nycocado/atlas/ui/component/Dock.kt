@@ -96,7 +96,7 @@ private fun DockItem(
                 .height(Sizes.touchTarget)
                 .background(theme.highlight, CircleShape)
                 .clickable(onClick = onCardsClick)
-                .padding(horizontal = if (vertical) 12.dp else Space.s4)
+                .padding(horizontal = if (vertical) Space.s3 else Space.s4)
                 .clearAndSetSemantics {
                     contentDescription = label
                     selected = true

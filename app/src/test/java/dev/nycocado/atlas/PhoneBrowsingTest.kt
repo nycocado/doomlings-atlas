@@ -1,10 +1,14 @@
 package dev.nycocado.atlas
 
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasContentDescription
+import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.text.AnnotatedString
 import dagger.hilt.android.testing.HiltAndroidTest
 import dev.nycocado.atlas.ui.component.pointsText
 import org.junit.Test
@@ -44,6 +48,35 @@ class PhoneBrowsingTest : AtlasBehaviorTest() {
         tapBackAgainMidFade()
 
         text(R.string.search_placeholder).assertIsDisplayed()
+    }
+
+    @Test
+    fun tappingAboutTwiceWhileItFadesInOpensItOnce() {
+        val scenario = launchPastNotice()
+        compose.waitForIdle()
+        compose.mainClock.autoAdvance = false
+        button(R.string.about).performClick()
+        button(R.string.about).performClick()
+        compose.mainClock.autoAdvance = true
+        compose.waitForIdle()
+
+        pressBack(scenario)
+
+        text(R.string.search_placeholder).assertIsDisplayed()
+    }
+
+    @Test
+    fun theSearchFieldKeepsEveryCharacterTypedBeforeTheListCatchesUp() {
+        launchPastNotice()
+        val field = compose.onNode(hasSetTextAction())
+        val insert = field.fetchSemanticsNode().config[SemanticsActions.InsertTextAtCursor].action!!
+
+        // All in one frame, as a fast keyboard does: nothing reaches the ViewModel in between.
+        compose.runOnUiThread { "adorable".forEach { insert(AnnotatedString(it.toString())) } }
+        compose.waitForIdle()
+
+        field.assertTextEquals("adorable")
+        card("Adorable").assertIsDisplayed()
     }
 
     @Test

@@ -13,6 +13,8 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performFirstLinkClick
 import androidx.compose.ui.test.performTouchInput
 import androidx.compose.ui.test.swipeUp
+import androidx.core.view.WindowCompat
+import androidx.test.core.app.ActivityScenario
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
@@ -89,6 +91,46 @@ class CitedCardTest : AtlasBehaviorTest() {
         detailOf("Age of Dracula").assertIsDisplayed()
         pressBack(scenario)
         text(R.string.search_placeholder).assertIsDisplayed()
+    }
+
+    // Light icons are the dark header's; a card with a light panel asks for dark ones while it is open.
+    private fun ActivityScenario<MainActivity>.darkIcons(): Boolean {
+        var dark = false
+        onActivity {
+            dark =
+                WindowCompat
+                    .getInsetsController(
+                        it.window,
+                        it.window.decorView,
+                    ).isAppearanceLightStatusBars
+        }
+        return dark
+    }
+
+    @Test
+    fun theCiterKeepsItsStatusBarIconsAfterBackFromTheCitedCard() {
+        val scenario = launchPastNotice()
+        openAgeOfDracula()
+        compose.waitForIdle()
+        val citer = scenario.darkIcons()
+        assertTrue("Age of Dracula's cream panel asks for dark icons", citer)
+
+        tapVampirism()
+        pressBack(scenario)
+        compose.waitUntilDoesNotExist(hasText("Vampirism"))
+
+        detailOf("Age of Dracula").assertIsDisplayed()
+        assertEquals(citer, scenario.darkIcons())
+    }
+
+    @Test
+    fun theListHasLightStatusBarIconsAfterBackFromACard() {
+        val scenario = launchPastNotice()
+        openAgeOfDracula()
+        pressBack(scenario)
+
+        text(R.string.search_placeholder).assertIsDisplayed()
+        assertEquals(false, scenario.darkIcons())
     }
 
     @Test

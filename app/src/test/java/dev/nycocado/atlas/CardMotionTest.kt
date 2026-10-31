@@ -5,7 +5,6 @@ import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.SemanticsMatcher
-import androidx.compose.ui.test.hasScrollAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTouchInput
@@ -48,7 +47,7 @@ class CardMotionTest : AtlasBehaviorTest() {
 
     // A finger dragging the list up a few rows and lifting still, so it doesn't fling.
     private fun dragListUp() {
-        compose.onNode(hasScrollAction()).performTouchInput {
+        compose.onNode(scrollingList).performTouchInput {
             swipeWithVelocity(center, center.copy(y = center.y - height * 0.4f), endVelocity = 0f, durationMillis = 300)
         }
         compose.mainClock.advanceTimeByFrame()

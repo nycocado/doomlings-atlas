@@ -67,7 +67,7 @@ internal fun LanguageSelector(
         tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing),
         label = "language highlight",
     )
-    val gap = 4.dp
+    val gap = Space.s1
     // Compose widens the touch target of a 30dp option to the 48dp minimum without changing its layout.
     Row(
         Modifier

@@ -29,11 +29,13 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
@@ -120,6 +122,16 @@ fun CompendiumContent(
                 collapsedAtStart * distance,
             )
         }
+    // The text lives here, in Compose state, so no character typed waits for the ViewModel's round trip; the ViewModel
+    // only receives it.
+    val search = rememberTextFieldState(filter.query)
+    val latestFilter by rememberUpdatedState(filter)
+    val latestOnFilterChange by rememberUpdatedState(onFilterChange)
+    LaunchedEffect(search) {
+        snapshotFlow { search.text.toString() }.collect {
+            if (it != latestFilter.query) latestOnFilterChange(latestFilter.copy(query = it))
+        }
+    }
     val grid = rememberLazyGridState()
     val scope = rememberCoroutineScope()
     // A text field keeps focus until something takes it, so the search lets go when the user moves on: tapping
@@ -161,13 +173,7 @@ fun CompendiumContent(
                 .nestedScroll(collapse)
                 .pointerInput(Unit) { detectTapGestures { focusManager.clearFocus() } },
         ) {
-            Header(
-                filter.query,
-                collapse,
-                rail,
-                onAboutClick,
-                showAbout = layout.showAbout,
-            ) { onFilterChange(filter.copy(query = it)) }
+            Header(search, collapse, rail, onAboutClick, showAbout = layout.showAbout)
             ListAndDock(
                 rail,
                 centered = rail && layout.centersOnRail,

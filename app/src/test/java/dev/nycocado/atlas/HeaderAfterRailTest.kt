@@ -3,7 +3,6 @@ package dev.nycocado.atlas
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotDisplayed
-import androidx.compose.ui.test.hasScrollAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isDisplayed
 import androidx.compose.ui.test.isHeading
@@ -66,7 +65,7 @@ class HeaderAfterRailTest : AtlasBehaviorTest() {
         title.assertIsNotDisplayed()
     }
 
-    private val list get() = compose.onNode(hasScrollAction())
+    private val list get() = compose.onNode(scrollingList)
 
     // The header's title row, the part that collapses.
     private val title: SemanticsNodeInteraction get() =

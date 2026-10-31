@@ -11,6 +11,7 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -42,6 +43,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -149,7 +151,7 @@ private fun ColorDisc(
                         scaleX = 0.8f + 0.2f * ring
                         scaleY = 0.8f + 0.2f * ring
                         alpha = ring.coerceIn(0f, 1f)
-                    }.border(3.dp, theme.outline, CircleShape),
+                    }.border(Stroke.strong, theme.outline, CircleShape),
             )
             Box(
                 Modifier.size(48.dp).sticker(CircleShape, theme.trait(color).fill, theme.outline),
@@ -196,7 +198,7 @@ private fun KindSegments(
         Modifier
             .fillMaxWidth()
             .sticker(CircleShape, theme.surfaceSticker, theme.outline, stroke = Stroke.sticker)
-            .padding(horizontal = 4.dp),
+            .padding(horizontal = Space.s1),
     ) {
         val count = CardKind.entries.size
         val width = (maxWidth - gap * (count - 1)) / count
@@ -207,7 +209,7 @@ private fun KindSegments(
                 .drawBehind {
                     val start = offset.toPx()
                     val x = if (layoutDirection == LayoutDirection.Ltr) start else size.width - width.toPx() - start
-                    val inset = 4.dp.toPx()
+                    val inset = Space.s1.toPx()
                     val height = size.height - inset * 2
                     drawRoundRect(theme.primary, Offset(x, inset), Size(width.toPx(), height), CornerRadius(height / 2))
                 }.selectableGroup(),
@@ -243,3 +245,46 @@ private fun KindSegments(
         }
     }
 }
+
+@PreviewLightDark
+@Composable
+internal fun FiltersPreview() = FiltersSample(CompendiumFilter())
+
+@PreviewLightDark
+@Composable
+internal fun FiltersGreenPreview() = FiltersSample(CompendiumFilter(colors = setOf(CardColor.Green)))
+
+@PreviewLightDark
+@Composable
+internal fun FiltersAgesPreview() = FiltersSample(CompendiumFilter(kind = CardKind.Age))
+
+@PreviewLightDark
+@Composable
+internal fun ColorDiscPreview() =
+    AtlasTheme {
+        Row(
+            Modifier.background(AtlasTheme.colors.surface).padding(Space.s4),
+            horizontalArrangement = Arrangement.spacedBy(Space.s4),
+        ) {
+            ColorDisc(CardColor.Blue, selected = false, Modifier) {}
+            ColorDisc(CardColor.Green, selected = true, Modifier) {}
+        }
+    }
+
+@PreviewLightDark
+@Composable
+internal fun KindSegmentsPreview() =
+    AtlasTheme {
+        Column(
+            Modifier.background(AtlasTheme.colors.surface).padding(Space.s4),
+            verticalArrangement = Arrangement.spacedBy(Space.s4),
+        ) {
+            CardKind.entries.forEach { KindSegments(it) {} }
+        }
+    }
+
+@Composable
+private fun FiltersSample(filter: CompendiumFilter) =
+    AtlasTheme {
+        Box(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) { Filters(filter) {} }
+    }

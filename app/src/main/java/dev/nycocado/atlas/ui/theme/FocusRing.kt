@@ -55,7 +55,7 @@ private class FocusRingNode(
     override fun ContentDrawScope.draw() {
         drawContent()
         if (!focused) return
-        val stroke = 3.dp.toPx()
+        val stroke = Stroke.strong.toPx()
         // 3dp gap around the element, then the 3dp ring (docs/design.md).
         val inset = 3.dp.toPx() + stroke / 2
         translate(-inset, -inset) {

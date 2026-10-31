@@ -22,13 +22,17 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.TextFieldLineLimits
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.clearText
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -42,6 +46,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -51,6 +56,7 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
@@ -60,6 +66,7 @@ import dev.nycocado.atlas.ui.component.SunsetBand
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
+import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
@@ -160,13 +167,12 @@ private fun Modifier.collapsing(
 
 @Composable
 internal fun Header(
-    query: String,
+    search: TextFieldState,
     collapse: HeaderCollapse,
     rail: Boolean,
     onAboutClick: () -> Unit,
     // When hidden, the search takes the button's place.
     showAbout: Boolean,
-    onQueryChange: (String) -> Unit,
 ) {
     val theme = AtlasTheme.colors
     val fraction = collapse::fraction
@@ -174,7 +180,7 @@ internal fun Header(
         Modifier
             .fillMaxWidth()
             .graphicsLayer {
-                val radius = 32.dp.toPx() * (1 - fraction())
+                val radius = Radius.lg.bottomStart.toPx(size, this) * (1 - fraction())
                 shape = RoundedCornerShape(0f, 0f, radius, radius)
                 clip = true
             }.background(theme.inverseSurface)
@@ -186,7 +192,7 @@ internal fun Header(
                 collapse::measuredTitle,
                 Modifier.fillMaxWidth(),
                 title = { HeaderTitle() },
-                search = { SearchField(query, onQueryChange) },
+                search = { SearchField(search) },
                 about = { InfoButton(showAbout, onAboutClick) },
             )
         }
@@ -285,8 +291,7 @@ private fun InfoButton(
 
 @Composable
 private fun SearchField(
-    query: String,
-    onQueryChange: (String) -> Unit,
+    search: TextFieldState,
     modifier: Modifier = Modifier,
 ) {
     val theme = AtlasTheme.colors
@@ -308,17 +313,16 @@ private fun SearchField(
             colorFilter = ColorFilter.tint(theme.onSurface),
         )
         BasicTextField(
-            value = query,
-            onValueChange = onQueryChange,
+            state = search,
             modifier = Modifier.weight(1f).semantics { contentDescription = label },
-            singleLine = true,
+            lineLimits = TextFieldLineLimits.SingleLine,
             // Results already update while typing: the search key only closes the keyboard.
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-            keyboardActions = KeyboardActions(onSearch = { focusManager.clearFocus() }),
+            onKeyboardAction = { focusManager.clearFocus() },
             textStyle = AtlasTypography.bodyMd.copy(color = theme.onSurface),
             cursorBrush = SolidColor(theme.onSurface),
-            decorationBox = { field ->
-                if (query.isEmpty()) {
+            decorator = { field ->
+                if (search.text.isEmpty()) {
                     BasicText(
                         stringResource(R.string.search_placeholder),
                         style = AtlasTypography.bodyMd.copy(color = theme.onSurfaceVariant),
@@ -330,11 +334,11 @@ private fun SearchField(
             },
         )
         val clear = stringResource(R.string.clear_search)
-        AnimatedVisibility(query.isNotEmpty(), enter = fadeIn(), exit = fadeOut()) {
+        AnimatedVisibility(search.text.isNotEmpty(), enter = fadeIn(), exit = fadeOut()) {
             Box(
                 Modifier
                     .size(Sizes.touchTarget)
-                    .clickable(role = Role.Button) { onQueryChange("") }
+                    .clickable(role = Role.Button) { search.clearText() }
                     .semantics { contentDescription = clear },
                 contentAlignment = Alignment.Center,
             ) {
@@ -346,5 +350,42 @@ private fun SearchField(
                 )
             }
         }
+    }
+}
+
+@PreviewLightDark
+@Composable
+internal fun HeaderPreview() = HeaderSample("", rail = false)
+
+@PreviewLightDark
+@Composable
+internal fun HeaderHalfCollapsedPreview() = HeaderSample("", rail = false, collapsed = 0.5f)
+
+@PreviewLightDark
+@Composable
+internal fun HeaderRailPreview() = HeaderSample("Adorable", rail = true)
+
+@PreviewLightDark
+@Composable
+internal fun SearchFieldPreview() = AtlasTheme { Frame { SearchField(rememberTextFieldState()) } }
+
+@PreviewLightDark
+@Composable
+internal fun SearchFieldTypedPreview() = AtlasTheme { Frame { SearchField(rememberTextFieldState("Adorable")) } }
+
+@Composable
+private fun Frame(content: @Composable () -> Unit) =
+    Box(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) { content() }
+
+@Composable
+private fun HeaderSample(
+    query: String,
+    rail: Boolean,
+    collapsed: Float = 0f,
+) = AtlasTheme {
+    val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
+    val collapse = remember { HeaderCollapse(distance, collapsed * distance, rail) }
+    Box(Modifier.background(AtlasTheme.colors.surface)) {
+        Header(rememberTextFieldState(query), collapse, rail, {}, showAbout = true)
     }
 }
