@@ -45,6 +45,8 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import dev.nycocado.atlas.R
+import dev.nycocado.atlas.card.Age
+import dev.nycocado.atlas.card.BirthOfLife
 import dev.nycocado.atlas.card.BlockContent
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardBlock
@@ -283,7 +285,7 @@ private fun EffectText(
     val titles = tokens.associateWith { it.title(language) }
     // Kept across recompositions, so an unchanged text stays equal and isn't laid out again.
     val brushes = remember(parts, theme) { parts.map { (it as? TextPart.Words)?.ink?.let(theme::brush) } }
-    val rainbows = mutableListOf<Pair<IntRange, RainbowBrush>>()
+    val gradients = mutableListOf<Pair<IntRange, GradientBrush>>()
     val text =
         buildAnnotatedString {
             withStyle(SpanStyle(localeList = LocaleList(language.code))) {
@@ -296,7 +298,7 @@ private fun EffectText(
                             brushes[i]?.let { brush ->
                                 val span = start until length
                                 val style = SpanStyle(brush = brush)
-                                if (brush is RainbowBrush) rainbows += span to brush
+                                if (brush is GradientBrush) gradients += span to brush
                                 // A cited name keeps its citation style, which an ink drawn over it would hide.
                                 val cited = citations.map { (range, _) -> start + range.first..start + range.last }
                                 span.without(cited).forEach { addStyle(style, it.first, it.last + 1) }
@@ -338,7 +340,7 @@ private fun EffectText(
         text,
         style = (if (note) AtlasTypography.bodyMd else AtlasTypography.bodyLg).copy(color = theme.onSurface),
         onTextLayout = { layout ->
-            rainbows.forEach { (span, brush) ->
+            gradients.forEach { (span, brush) ->
                 brush.extent =
                     span.minOf { layout.getBoundingBox(it).left }..span.maxOf { layout.getBoundingBox(it).right }
             }
@@ -357,15 +359,16 @@ internal fun AtlasColors.inkColors(ink: Ink): List<Color> =
         Ink.Colorless -> listOf(traitColorless.ink)
         Ink.Rainbow -> listOf(traitRed.ink, traitGreen.ink, traitBlue.ink, traitPurple.ink)
         Ink.Yellow -> listOf(yellowInk)
+        Ink.Wonder -> wonderInk
     }
 
 private fun AtlasColors.brush(ink: Ink): Brush =
-    inkColors(ink).let { if (it.size > 1) RainbowBrush(it) else SolidColor(it.single()) }
+    inkColors(ink).let { if (it.size > 1) GradientBrush(it) else SolidColor(it.single()) }
 
 // A brush in a span spreads over the whole text, so this one draws its gradient across the extent of its span, from
 // its leftmost to its rightmost letter, which the text's layout gives it before the text is drawn. Until then, across
 // the whole text.
-private class RainbowBrush(
+private class GradientBrush(
     private val colors: List<Color>,
 ) : ShaderBrush() {
     // A state, so the shader the span keeps is made again once the layout sets it.
@@ -502,3 +505,54 @@ internal fun InkBlocksSample() =
 @PreviewLightDark
 @Composable
 internal fun InkBlocksPreview() = AtlasTheme { InkBlocksSample() }
+
+// Age of Wonder and The Birth of Life (assets/doomlings/classic/cards.json), verbatim, ink marks included: the wonder
+// gradient over the whole text, and a yellow first sentence. The app doesn't show The Birth of Life yet, which has no
+// card kind and so no face, so its block is written out here, as the Trinket's above.
+private val AgeOfWonder =
+    Age(
+        "classic/ages/age-of-wonder",
+        "classic",
+        "",
+        "Age of Wonder",
+        listOf(Effect(text = "[wonder]You must end your turn with 4 cards in your hand.[/wonder]")),
+    )
+
+private val TheBirthOfLife =
+    BirthOfLife(
+        "classic/birth-of-life/the-birth-of-life",
+        "classic",
+        "",
+        "The Birth of Life",
+        listOf(
+            Effect(
+                text =
+                    "[yellow]Set your Gene Pool to 5.[/yellow]\n\nPlay 1 trait each turn.\nStabilize to end your turn.",
+            ),
+        ),
+    )
+
+private val TheBirthOfLifeBlock =
+    CardBlock(
+        BlockContent.Effect(
+            null,
+            listOf(
+                TextPart.Words("Set your Gene Pool to 5.", Ink.Yellow),
+                TextPart.Words("\n\nPlay 1 trait each turn.\nStabilize to end your turn."),
+            ),
+        ),
+    )
+
+@Composable
+internal fun DecorInkBlocksSample() =
+    Column(
+        Modifier.background(AtlasTheme.colors.surface).padding(Space.s5),
+        verticalArrangement = Arrangement.spacedBy(14.dp),
+    ) {
+        AgeOfWonder.face()?.blocks?.forEach { BlockBubble(it, CardLanguage.English, AgeOfWonder, color = null) }
+        BlockBubble(TheBirthOfLifeBlock, CardLanguage.English, TheBirthOfLife, color = null)
+    }
+
+@PreviewLightDark
+@Composable
+internal fun DecorInkBlocksPreview() = AtlasTheme { DecorInkBlocksSample() }
