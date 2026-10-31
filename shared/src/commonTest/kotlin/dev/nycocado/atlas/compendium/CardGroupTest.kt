@@ -105,4 +105,40 @@ class CardGroupTest {
 
         assertEquals((1..6).map { "classic/traits/kidney-$it" }, group.variants.map { it.id })
     }
+
+    @Test
+    fun aGroupKeepsOnlyTheVariantsOfTheFilteredList() {
+        val filtered = cards.filter { it.id in setOf("classic/traits/kidney-2", "classic/traits/kidney-5") }
+
+        val group = CardLibrary.of(cards).groupByName(filtered).single()
+
+        assertEquals(
+            listOf(
+                "classic/traits/kidney-2",
+                "classic/traits/kidney-5",
+            ),
+            assertIs<CompendiumEntry.Group>(group).variants.map {
+                it.id
+            },
+        )
+    }
+
+    @Test
+    fun groupsAndVariantsKeepTheOrderOfTheFilteredList() {
+        val entries = CardLibrary.of(cards).groupByName(cards.reversed())
+
+        assertEquals(
+            listOf("Adorable", "Swarm", "Kidney"),
+            entries.map {
+                (it as? CompendiumEntry.Group)?.name
+                    ?: (it as CompendiumEntry.Single).card.name
+            },
+        )
+        assertEquals(
+            (6 downTo 1).map {
+                "classic/traits/kidney-$it"
+            },
+            (entries.last() as CompendiumEntry.Group).variants.map { it.id },
+        )
+    }
 }

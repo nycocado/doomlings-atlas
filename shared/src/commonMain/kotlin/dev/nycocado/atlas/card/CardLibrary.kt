@@ -15,7 +15,7 @@ class CardLibrary private constructor(
         cards?.filterIsInstance<NamedCard>()?.groupBy { it.name }.orEmpty()
     }
 
-    fun variants(name: String): List<NamedCard> = variantsByName[name].orEmpty()
+    internal fun variants(name: String): List<NamedCard> = variantsByName[name].orEmpty()
 
     // One alternation, longest names first so a name wins over a shorter one inside it. A name is a whole word, with its
     // exact capitals, alone or with a plural "s".
@@ -37,7 +37,7 @@ class CardLibrary private constructor(
             ?.findAll(text)
             ?.mapNotNull { match ->
                 val variants = variantsByName[match.value] ?: variantsByName.getValue(match.value.dropLast(1))
-                variants.takeIf { card !in it }?.let { Citation(match.range, it.first()) }
+                variants.first().takeIf { it.name != (card as? NamedCard)?.name }?.let { Citation(match.range, it) }
             }?.toList()
             .orEmpty()
 
@@ -46,7 +46,7 @@ class CardLibrary private constructor(
 
         fun decode(json: String) = CardLibrary(decodeCards(json))
 
-        fun of(cards: List<Card>) = CardLibrary(cards)
+        internal fun of(cards: List<Card>) = CardLibrary(cards)
     }
 }
 

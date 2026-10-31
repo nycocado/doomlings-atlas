@@ -1,7 +1,5 @@
 package dev.nycocado.atlas.card
 
-import dev.nycocado.atlas.compendium.CompendiumEntry
-import dev.nycocado.atlas.compendium.groupByName
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -76,30 +74,5 @@ class CardLibraryTest {
         )
         assertEquals(emptyList(), names.citations(named("overlush/traits/kidney"), "A Kidney."))
         assertEquals(emptyList(), names.citations(named("classic/traits/swarm-of-kidneys"), "Swarm of Kidneys"))
-    }
-
-    @Test
-    fun groupingAfterAFilterKeepsOnlyTheFilteredVariants() {
-        val entries =
-            names.groupByName(
-                listOf(named("overlush/traits/kidney"), named("classic/traits/swarm-of-kidneys")),
-            )
-
-        assertEquals(
-            listOf("overlush/traits/kidney", "classic/traits/swarm-of-kidneys"),
-            entries.map {
-                (it as CompendiumEntry.Single).card.id
-            },
-        )
-    }
-
-    @Test
-    fun groupingKeepsTheFilterOrderOfGroupsAndVariants() {
-        val entries = names.groupByName(names.cards!!.filterIsInstance<NamedCard>().reversed())
-
-        assertEquals(
-            listOf("overlush/traits/kidney", "classic/traits/kidney"),
-            (entries.first() as CompendiumEntry.Group).variants.map { it.id },
-        )
     }
 }

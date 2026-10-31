@@ -19,7 +19,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -69,18 +68,12 @@ class CompendiumViewModel
         // null while the cards are loading.
         val results: StateFlow<List<CompendiumEntry>?> =
             combine(
-                mutableLibrary.filter { it.cards != null },
+                mutableLibrary,
                 mutableFilter,
                 mutableTranslations,
                 mutableCardLanguage,
             ) { library, filter, translations, language ->
-                library.groupByName(
-                    library.cards!!.filterCompendium(
-                        filter,
-                        translations,
-                        language,
-                    ),
-                )
+                library.cards?.filterCompendium(filter, translations, language)?.let(library::groupByName)
             }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
         init {
