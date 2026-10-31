@@ -3,3 +3,8 @@
 # Added by androidx.core: a signature-level permission the app declares for itself to protect
 # its own non-exported broadcast receivers. Grants no access to anything.
 dev.nycocado.atlas.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+
+# The update check (ADR 0012): asks GitHub's Releases API for the latest Release, then downloads
+# its APK and hands it to the system installer. Nothing else uses the network.
+android.permission.INTERNET
+android.permission.REQUEST_INSTALL_PACKAGES

@@ -27,7 +27,7 @@ A map of the code at the level of modules and data flow. The decisions behind it
 
 ## Invariants
 
-- The app works offline and asks for no permissions ([ADR 0002](adr/0002-offline-without-backend.md)), only the ones libraries add, listed in `app/permissions-allowlist.txt`.
+- The app works offline ([ADR 0002](adr/0002-offline-without-backend.md)); its only network access is the update check ([ADR 0012](adr/0012-update-check-from-github-releases.md)). Its permissions, the update check's and the ones libraries add, are listed in `app/permissions-allowlist.txt`.
 - Card data is never guessed: everything in `cards.json` comes from a source ([CONTRIBUTING.md](../CONTRIBUTING.md#doomlings-assets)).
 - Scoring rules will live in card data, as calls to named Kotlin functions ([ADR 0005](adr/0005-scoring-rules-in-card-data.md)).
 - Card text language is chosen apart from the interface language ([ADR 0007](adr/0007-card-language-apart-from-interface.md)).
