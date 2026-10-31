@@ -4,7 +4,7 @@ name: Release PR
 # release.yml on the tag (docs/development.md#releases).
 on:
   push:
-    branches: [main, ci/release-pr] # TEMP: test on the PR branch
+    branches: [main]
 
 permissions: {}
 
