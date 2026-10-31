@@ -59,7 +59,6 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.findByName("release")
-            proguardFiles("broken-r8-rules.pro")
             optimization {
                 enable = true
             }
