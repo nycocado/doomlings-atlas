@@ -29,6 +29,7 @@ fun List<Card>.filterCompendium(
     language: CardLanguage = CardLanguage.English,
 ): List<NamedCard> {
     val query = normalize(filter.query.trim())
+    val substring by lazy { substringRegex(query) }
     return filterIsInstance<NamedCard>()
         .filter { card ->
             card.kind == filter.kind &&
@@ -42,7 +43,7 @@ fun List<Card>.filterCompendium(
                     MatchRank.Exact
                 } else {
                     listOf(card.face(), translations.translatedFace(card, language))
-                        .mapNotNull { face -> face?.searchable?.let { matchRank(query, it) } }
+                        .mapNotNull { face -> face?.searchable?.let { matchRank(query, substring, it) } }
                         .minOrNull()
                 }
             rank?.let { it to card }
@@ -61,10 +62,11 @@ private fun words(text: String) = wordRegex.findAll(text).map { it.value }.toLis
 // searchable[0] is the name.
 private fun matchRank(
     query: String,
+    substring: Regex,
     searchable: List<String>,
 ): MatchRank? {
     val texts = searchable.map(::normalize)
-    if (texts.any { it.containsQuery(query) }) return MatchRank.Exact
+    if (texts.any { substring.containsMatchIn(it) }) return MatchRank.Exact
     val queryWords = words(query).ifEmpty { return null }
     val cardWords = texts.flatMapIndexed { index, text -> words(text).map { it to (index == 0) } }
     return when {
@@ -78,19 +80,12 @@ private fun matchRank(
     }
 }
 
-// A substring, but a number at either end of the query doesn't match inside a longer number.
-private fun String.containsQuery(query: String): Boolean {
-    var from = indexOf(query)
-    while (from >= 0) {
-        val end = from + query.length
-        val splitsNumber =
-            (query.first().isDigit() && getOrNull(from - 1)?.isDigit() == true) ||
-                (query.last().isDigit() && getOrNull(end)?.isDigit() == true)
-        if (!splitsNumber) return true
-        from = indexOf(query, from + 1)
-    }
-    return false
-}
+// A number at either end of the query doesn't match inside a longer number.
+private fun substringRegex(query: String) =
+    Regex(
+        (if (query.first().isDigit()) "(?<!\\d)" else "") + Regex.escape(query) +
+            (if (query.last().isDigit()) "(?!\\d)" else ""),
+    )
 
 private fun String.hasDigit() = any(Char::isDigit)
 

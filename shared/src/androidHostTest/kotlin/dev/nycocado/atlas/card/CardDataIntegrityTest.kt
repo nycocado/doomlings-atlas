@@ -61,15 +61,13 @@ class CardDataIntegrityTest {
                 "glitterling",
             )
         val token = Regex("""\{([^}]*)}""")
-        val translated =
-            CardAssets.translationFiles.flatMap { file ->
-                CardAssets.translationsOf(file).flatMap { (id, fields) ->
-                    fields.values.map { "${file.relativeTo(dir).path} $id" to it }
-                }
-            }
         assertEquals(
             emptyList(),
-            (effects.map { (card, effect) -> card.id to effect.text } + translated).flatMap { (where, text) ->
+            (
+                effects.map { (card, effect) ->
+                    card.id to effect.text
+                } + CardAssets.translatedTexts
+            ).flatMap { (where, text) ->
                 token
                     .findAll(text)
                     .map { it.groupValues[1] }
@@ -224,15 +222,9 @@ class CardDataIntegrityTest {
 
     @Test
     fun noTextOpensMoreParenthesesThanItCloses() {
-        val translated =
-            CardAssets.translationFiles.flatMap { file ->
-                CardAssets.translationsOf(file).flatMap { (id, fields) ->
-                    fields.values.map { "${file.relativeTo(dir).path} $id" to it }
-                }
-            }
         assertEquals(
             emptyList(),
-            (texts + translated)
+            (texts + CardAssets.translatedTexts)
                 .filter { (_, text) -> text.count { it == '(' } > text.count { it == ')' } }
                 .map { (where, text) -> "$where: $text" },
         )

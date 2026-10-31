@@ -314,6 +314,12 @@ class CompendiumFilterTest {
     }
 
     @Test
+    fun aNumberStillMatchesAfterALongerOne() {
+        val cards = listOf(trait("Aaa", effect = "Draw 12 cards, then 2 cards."))
+        assertEquals(listOf("Aaa"), found(cards, "2 cards"))
+    }
+
+    @Test
     fun aPieceInsideAWordOnlyCountsForTheWholeQuery() {
         assertEquals(listOf("Camouflage"), names(CompendiumFilter(query = "oufla")))
         assertEquals(emptyList(), names(CompendiumFilter(query = "oufla steal")))
