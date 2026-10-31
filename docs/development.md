@@ -33,11 +33,12 @@ How to build the app and how the code is kept consistent. Most of it runs in CI,
 
 ## Releases
 
-There is no release workflow yet. `v0.1.0` is a tag with release notes and no APK; the first APK and the workflow below come with "Going Public", at the end of phase 2 ([ROADMAP.md](../ROADMAP.md#going-public)), and until then `versionCode` and `versionName` stay fixed.
+`v0.1.0` is a tag with release notes and no APK; the first APK comes with "Going Public", at the end of phase 2 ([ROADMAP.md](../ROADMAP.md#going-public)). A release, in order:
 
-The planned flow:
+1. `git cliff --tag vX.Y.Z -o CHANGELOG.md` updates `CHANGELOG.md` in a `[docs]` PR, so the tag includes it (`uvx git-cliff` runs it without installing).
+2. The maintainer pushes the `vX.Y.Z` tag ([SemVer](https://semver.org)) on `main`, which starts `release.yml`. It runs in the `release` environment, which holds the signing key's secrets and accepts only `v*` tags; the maintainer's approval of each run (required reviewers) comes with the public repository, since GitHub Free doesn't offer it in a private one.
+3. The workflow builds the signed APK with the version name from the tag and the version code from its numbers (`1.2.3` → `10203`, so the minor and patch stay below 100), checks its signature, and creates a draft GitHub Release with the APK as `doomlings-atlas-vX.Y.Z.apk`, the name the update check looks for ([ADR 0012](adr/0012-update-check-from-github-releases.md)), and the merged PRs since the previous tag grouped by type, as notes from [git-cliff](https://git-cliff.org) (`cliff.toml`).
+4. The maintainer installs the draft's APK on a real device, writes a short summary for players on top of the notes and publishes it.
 
-- A `vX.Y.Z` tag ([SemVer](https://semver.org)) starts it: the version name comes from the tag and the version code from its numbers (`1.2.3` → `10203`).
-- The release workflow runs in the `release` environment, after the maintainer approves it, and creates a draft GitHub Release with the signed APK and the merged PRs grouped by type, as notes from [git-cliff](https://git-cliff.org) (`cliff.toml`). The maintainer writes a short summary for players on top and publishes it.
-- Before tagging, `git cliff --tag vX.Y.Z -o CHANGELOG.md` updates `CHANGELOG.md` in a `[docs]` PR, so the tag includes it (`uvx git-cliff` runs it without installing).
-- The signing key lives only in GitHub Secrets and the maintainer's backup, never in the repo. The build signs the release APK only when the Gradle properties `atlas.release.storeFile`, `atlas.release.storePassword` and `atlas.release.keyAlias` are set (in the maintainer's `~/.gradle/gradle.properties` or by the workflow); otherwise it is built unsigned.
+- Other builds are version `0.0.0`, code `1`; the workflow passes the version as the Gradle property `atlas.versionName`.
+- The signing key lives only in the `release` environment's secrets (`RELEASE_KEYSTORE_BASE64`, the PKCS12 file in base64, `RELEASE_STORE_PASSWORD` and `RELEASE_KEY_ALIAS`) and the maintainer's backup, never in the repo. The build signs the release APK only when the Gradle properties `atlas.release.storeFile`, `atlas.release.storePassword` and `atlas.release.keyAlias` are set (in the maintainer's `~/.gradle/gradle.properties` or by the workflow); otherwise it is built unsigned.
