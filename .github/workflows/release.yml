@@ -1,10 +1,12 @@
 name: Release
 
 # A vX.Y.Z tag builds the signed APK and opens a draft Release; the maintainer installs its APK on a real device
-# before publishing it (docs/development.md#releases).
+# before publishing it (docs/development.md#releases). Merging the release PR dispatches it on the new tag
+# (release-pr.yml); a run on any other ref fails at the release environment, which accepts only v* tags.
 on:
   push:
     tags: ["v[0-9]+.[0-9]+.[0-9]+"]
+  workflow_dispatch:
 
 permissions: {}
 
