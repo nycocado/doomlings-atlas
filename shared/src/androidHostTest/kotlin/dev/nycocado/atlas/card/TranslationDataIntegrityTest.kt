@@ -16,35 +16,35 @@ import kotlin.test.assertEquals
 class TranslationDataIntegrityTest {
     private val cardsJson = CardAssets.cardsJson
 
-    // Card id to the text fields a translation has, with the names of the translation files: a translation still writes
-    // the effects of a card as one flat `effect` (Gene Pool line included), and a Catastrophe's World's End as `worldsEnd`.
+    // Card id to the text fields a translation has. Kinds, Gene Pool and Value are not text: they stay in cards.json.
     private val fieldsById =
         Json.parseToJsonElement(cardsJson).jsonArray.associate { card ->
             val fields = card.jsonObject
             fields.getValue("id").jsonPrimitive.content to
                 buildSet {
                     if (fields["name"] != null) add("name")
-                    if (effectsOf(fields).isNotEmpty() || fields["genePool"].let { it != null && it !is JsonNull }) {
-                        add("effect")
-                    }
+                    if (effectsOf(fields).isNotEmpty()) add("effects")
                     if (fields["flavor"].let { it != null && it !is JsonNull }) add("flavor")
-                    if (fields.getValue("type").jsonPrimitive.content == "catastrophe") add("worldsEnd")
                 }
+        }
+
+    private val englishEffectsById =
+        Json.parseToJsonElement(cardsJson).jsonArray.associate { card ->
+            card.jsonObject
+                .getValue("id")
+                .jsonPrimitive.content to
+                effectsOf(card.jsonObject).map { it.getValue("text").jsonPrimitive.content }
         }
 
     private fun effectsOf(card: JsonObject) = card["effects"]?.jsonArray.orEmpty().map { it.jsonObject }
 
-    // The English text a translation field stands for.
-    private fun englishText(
-        card: JsonObject,
-        field: String,
-    ): String {
-        val isWorldsEnd = { effect: JsonObject -> effect["kind"]?.jsonPrimitive?.content == "worlds-end" }
-        val catastrophe = card.getValue("type").jsonPrimitive.content == "catastrophe"
-        return effectsOf(card)
-            .filter { !catastrophe || isWorldsEnd(it) == (field == "worldsEnd") }
-            .joinToString("\n\n") { it.getValue("text").jsonPrimitive.content }
-    }
+    // Each translated effect beside the English effect it translates, as "card-id.effects[i]" to the pair.
+    private fun effectPairs(file: File) =
+        CardAssets.translationsOf(file).flatMap { (id, fields) ->
+            fields["effects"].orEmpty().zip(englishEffectsById[id].orEmpty()).mapIndexed { index, (text, english) ->
+                "$id.effects[$index]" to (text to english)
+            }
+        }
 
     private val files = CardAssets.translationFiles
 
@@ -119,13 +119,53 @@ class TranslationDataIntegrityTest {
             val bad =
                 CardAssets.translationsOf(file).flatMap { (id, fields) ->
                     fields
-                        .filter { (_, text) ->
-                            text.isEmpty() ||
-                                text != text.trim()
-                        }.keys
+                        .filter { (_, texts) -> texts.any { it.isEmpty() || it != it.trim() } }
+                        .keys
                         .map { "$id.$it" }
                 }
             assertEquals(emptyList<String>(), bad, file.label)
+        }
+    }
+
+    // A translation is a list of texts in the order of its card's effects, so it has as many as the card.
+    @Test
+    fun everyTranslationHasAsManyEffectsAsItsCard() {
+        files.forEach { file ->
+            val wrong =
+                CardAssets
+                    .translationsOf(file)
+                    .filter { (id, fields) ->
+                        fields["effects"].orEmpty().size != englishEffectsById[id].orEmpty().size
+                    }.keys
+            assertEquals(emptyList<String>(), wrong.toList(), file.label)
+        }
+    }
+
+    // A token is an icon, the same in every language: each translated effect has the tokens of its English effect, in
+    // their order. A paragraph moved to the wrong effect shows up here or in the count.
+    @Test
+    fun everyTranslatedEffectHasTheTokensOfItsEnglishEffect() {
+        val token = Regex("""\{[^}]*}""")
+
+        fun tokens(text: String) = token.findAll(text).map { it.value }.toList()
+        files.forEach { file ->
+            val wrong =
+                effectPairs(file)
+                    .filter { (_, pair) -> tokens(pair.first) != tokens(pair.second) }
+                    .map { (where, _) -> where }
+            assertEquals(emptyList<String>(), wrong, file.label)
+        }
+    }
+
+    // Paragraphs follow the printed card, notes included.
+    @Test
+    fun everyTranslatedEffectHasTheParagraphsOfItsEnglishEffect() {
+        files.forEach { file ->
+            val wrong =
+                effectPairs(file)
+                    .filter { (_, pair) -> pair.first.split("\n\n").size != pair.second.split("\n\n").size }
+                    .map { (where, _) -> where }
+            assertEquals(emptyList<String>(), wrong, file.label)
         }
     }
 
@@ -155,21 +195,18 @@ class TranslationDataIntegrityTest {
     // A card name cited in the text stays as printed, so the player finds the physical card.
     @Test
     fun everyCardNameCitedInTheEnglishTextStaysInEnglishInTheTranslation() {
-        val englishById =
+        val names =
             Json
                 .parseToJsonElement(cardsJson)
                 .jsonArray
-                .map { it.jsonObject }
-                .associateBy { it.getValue("id").jsonPrimitive.content }
-        val names = englishById.values.mapNotNull { it["name"]?.jsonPrimitive?.contentOrNull }.toSet()
+                .mapNotNull { it.jsonObject["name"]?.jsonPrimitive?.contentOrNull }
+                .toSet()
 
         files.forEach { file ->
             val missing =
-                CardAssets.translationsOf(file).flatMap { (id, fields) ->
-                    fields.filterKeys { it == "effect" || it == "worldsEnd" }.flatMap { (field, text) ->
-                        val english = englishText(englishById.getValue(id), field)
-                        names.filter { english.cites(it) && !text.cites(it) }.map { "$id.$field: $it" }
-                    }
+                effectPairs(file).flatMap { (where, pair) ->
+                    val (text, english) = pair
+                    names.filter { english.cites(it) && !text.cites(it) }.map { "$where: $it" }
                 }
             assertEquals(emptyList<String>(), missing, file.label)
         }

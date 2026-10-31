@@ -14,14 +14,13 @@ enum class CardLanguage(
 }
 
 // The shape of a card's entry in a translation file: its name and the text fields it has in one language, complete or
-// absent (every text field its card has and no other). The effects are one flat `effect` (and `worldsEnd` for a
-// Catastrophe), Gene Pool line included.
+// absent (every text field its card has and no other). `effects` holds one text per effect of the card, in its order:
+// kinds, Gene Pool and Value stay on the card (ADR 0009).
 @Serializable
 data class CardText(
     val name: String,
-    val effect: String? = null,
+    val effects: List<String> = emptyList(),
     val flavor: String? = null,
-    val worldsEnd: String? = null,
 )
 
 // Strict like decodeCards: an unknown key fails. The JSON maps card id to its translation.

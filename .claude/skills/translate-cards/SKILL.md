@@ -1,6 +1,6 @@
 ---
 name: translate-cards
-description: Translate card text (name, effect, flavor, World's End) into a language of docs/glossary, in its regional variant and in idiomatic style. Use when translating a set, adding a language, or rewording a card translation.
+description: Translate card text (name, effects, flavor) into a language of docs/glossary, in its regional variant and in idiomatic style. Use when translating a set, adding a language, or rewording a card translation.
 ---
 
 # Translate Cards
@@ -20,15 +20,15 @@ The rules shared by every language are in [CONTRIBUTING.md#translations](../../.
 
 ## 2. Translate
 
-Write into `assets/doomlings/<set>/<lang>.json`, keyed by card id, with exactly the text fields the card has in the set's `cards.json` (`name`, `effect`, `flavor`, `worldsEnd`). Until #164 a translation keeps `effect` as one flat text of all the effects of the card (its Gene Pool line included), and `worldsEnd` for a Catastrophe, though `cards.json` now has `effects` and `genePool` ([ADR 0009](../../../docs/adr/0009-card-text-as-a-list-of-effects.md)). Check each card against its image in the same folder: the art often explains a pun or a name.
+Write into `assets/doomlings/<set>/<lang>.json`, keyed by card id, with exactly the text fields the card has in the set's `cards.json` (`name`, `effects`, `flavor`). `effects` is a list of texts, one per effect of the card in the same order ([ADR 0009](../../../docs/adr/0009-card-text-as-a-list-of-effects.md)): each is the text of that effect only, without its kind's label ("At World's End:", "Awesome Power:", "Rush:"...), the Gene Pool line or the Value, which the app writes in the card language. Check each card against its image in the same folder: the art often explains a pun or a name.
 
-- **Effects** say the printed rule with the glossary's words, keeping the card's line breaks and sign formats (`+2`, `-1 Gene Pool`).
+- **Effects** say the printed rule with the glossary's words, keeping the card's paragraphs and line breaks and sign formats (`+2`, `-1 Gene Pool`). Tokens (`{action}`, `{compass}`) stay as in the English text, after the word they follow there: "Ignore actions ({action})." is "Ignore ações ({action})."
 - **Names** are what a speaker of the variant would call that trait: an everyday word over a technical one, matched to the art.
 - **Flavor** carries the joke, not the words. A pun becomes a local pun or idiom that fits the art; a reference becomes one the variant's players know, or stays in English when the local release kept it. When nothing works, a plain line beats a forced pun.
 - A term missing from the glossary goes into the glossary first.
 - A gap or a mismatch between `cards.json` and the image is a data doubt for the PR, never filled in.
 
-Done when every card in scope has every field it has in `cards.json` and `./gradlew checkGlossary` passes.
+Done when every card in scope has every field it has in `cards.json`, and `./gradlew checkGlossary` and the translation data tests (`./gradlew :shared:testAndroidHostTest --tests '*TranslationDataIntegrityTest'`) pass.
 
 ## 3. Review
 

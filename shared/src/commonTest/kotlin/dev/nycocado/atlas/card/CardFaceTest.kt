@@ -316,25 +316,29 @@ class CardFaceTest {
     }
 
     @Test
-    fun aTranslationsFlatTextIsOnePlainBlockAndItsWorldsEndAnother() {
+    fun aTranslationsEffectsTakeTheKindsOfTheCardsEffectsInOrderAndTheirTextHidesTokens() {
         val face =
             CardTranslations(
                 mapOf(
                     CardLanguage.Portuguese to
                         mapOf(
                             aiTakeover.id to
-                                CardText("Tomada pela IA", "-1 Reserva\n\nDescarte.", worldsEnd = "Incolores valem 2."),
+                                CardText(
+                                    "Tomada pela IA",
+                                    listOf("Descarte.", "Incolores valem 2. Ignore ações ({action})."),
+                                ),
                         ),
                 ),
             ).face(aiTakeover, CardLanguage.Portuguese)
 
         assertEquals(
             listOf(
-                CardBlock(null, KindDisplay.None, "-1 Reserva\n\nDescarte.", selector = true),
-                CardBlock(EffectKind.WorldsEnd, KindDisplay.Heading, "Incolores valem 2."),
+                CardBlock(null, KindDisplay.None, "Descarte.", genePool = aiTakeover.genePool, selector = true),
+                CardBlock(EffectKind.WorldsEnd, KindDisplay.Heading, "Incolores valem 2. Ignore ações."),
             ),
             face?.blocks,
         )
+        assertEquals(listOf("Tomada pela IA", "Descarte.", "Incolores valem 2. Ignore ações."), face?.searchable)
     }
 
     @Test

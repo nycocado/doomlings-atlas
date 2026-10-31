@@ -156,7 +156,7 @@ abstract class CheckPermissions : DefaultTask() {
 
 // Keeps each translation to one word per concept (CONTRIBUTING.md#translations): fail if a word that
 // docs/glossary/<language>.json rules out shows up in that language's interface strings or in its card
-// translations (assets/doomlings/<set>/<language>.json: card id to name, effect, flavor, worldsEnd).
+// translations (assets/doomlings/<set>/<language>.json: card id to name, effects, flavor).
 abstract class CheckGlossary : DefaultTask() {
     @get:InputDirectory
     @get:PathSensitive(PathSensitivity.RELATIVE)
@@ -195,8 +195,9 @@ abstract class CheckGlossary : DefaultTask() {
                 @Suppress("UNCHECKED_CAST")
                 val cardText =
                     cards
-                        .flatMap { (JsonSlurper().parse(it) as Map<String, Map<String, String>>).values }
+                        .flatMap { (JsonSlurper().parse(it) as Map<String, Map<String, Any>>).values }
                         .flatMap { it.values }
+                        .flatMap { it as? List<*> ?: listOf(it) }
                         .joinToString("\n")
                 val text = interfaceText + "\n" + cardText
 
