@@ -18,7 +18,7 @@
     "name": "Fall Nightflower Island",
     "effects": [
       {
-        "text": "You may discard any cards from hand. If any were red, draw 1."
+        "text": "You may discard any cards from hand. If any were [red]red[/red], draw 1."
       }
     ],
     "image": "nightflower-island/ages/fall-nightflower-island.webp"
@@ -54,7 +54,7 @@
     "name": "Spring Nightflower Island",
     "effects": [
       {
-        "text": "Draw 2. Pass 1 green from hand left."
+        "text": "Draw 2. Pass 1 [green]green[/green] from hand left."
       }
     ],
     "image": "nightflower-island/ages/spring-nightflower-island.webp"
@@ -66,7 +66,7 @@
     "name": "Summer Nightflower Island",
     "effects": [
       {
-        "text": "Draw 1. If purple, repeat."
+        "text": "Draw 1. If [purple]purple[/purple], repeat."
       }
     ],
     "image": "nightflower-island/ages/summer-nightflower-island.webp"
@@ -78,7 +78,7 @@
     "name": "Winter Nightflower Island",
     "effects": [
       {
-        "text": "You may discard 1 blue from hand to draw 2."
+        "text": "You may discard 1 [blue]blue[/blue] from hand to draw 2."
       }
     ],
     "image": "nightflower-island/ages/winter-nightflower-island.webp"
@@ -110,7 +110,7 @@
     "flavor": "Banging hair style",
     "effects": [
       {
-        "text": "To play, you must discard: 2 blues from hand OR 1 blue from your trait pile."
+        "text": "To play, you must discard: 2 [blue]blues[/blue] from hand OR 1 [blue]blue[/blue] from your trait pile."
       }
     ],
     "genePool": null,
@@ -260,7 +260,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Play at any time: Choose a color, then reveal the top of the trait deck. If it matches, draw it."
+        "text": "Play at any time: [rainbow]Choose a color[/rainbow], then reveal the top of the trait deck. If it matches, draw it."
       }
     ],
     "genePool": null,
@@ -365,7 +365,7 @@
     "flavor": "This town is big enough for the two of us, but I'm gettin' rid of you all the same.",
     "effects": [
       {
-        "text": "Start of your turns: Reveal 2 of the same color. Suppress 1 of them."
+        "text": "Start of your turns: Reveal 2 of the same [rainbow]color[/rainbow]. Suppress 1 of them."
       }
     ],
     "genePool": null,
@@ -682,7 +682,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "At any time: Reveal 2 blues to send Skybound flying from hand to an opponent's trait pile."
+        "text": "At any time: Reveal 2 [blue]blues[/blue] to send Skybound flying from hand to an opponent's trait pile."
       }
     ],
     "genePool": null,
@@ -814,7 +814,7 @@
     "flavor": "You shouldn't have!",
     "effects": [
       {
-        "text": "Reveal 1 from hand. Friends suppress 1 from hand of the revealed color."
+        "text": "[rainbow]Reveal[/rainbow] 1 from hand. Friends suppress 1 from hand of the [rainbow]revealed color[/rainbow]."
       },
       {
         "kind": "note",
@@ -847,7 +847,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Reveal 3 different colors to play at any time."
+        "text": "Reveal 3 different [rainbow]colors[/rainbow] to play at any time."
       }
     ],
     "genePool": null,

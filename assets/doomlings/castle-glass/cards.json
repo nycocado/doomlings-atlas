@@ -117,7 +117,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "All opponents discard all colorless from hand and stabilize."
+        "text": "All opponents discard all [colorless]colorless[/colorless] from hand and stabilize."
       }
     ],
     "genePool": null,
@@ -163,7 +163,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Opponents cannot play purple on their next turn. But you must remind them."
+        "text": "Opponents cannot play [purple]purple[/purple] on their next turn. But you must remind them."
       }
     ],
     "genePool": null,
@@ -570,7 +570,7 @@
     "flavor": "Nature's prize in a box.",
     "effects": [
       {
-        "text": "You may play 1 trait of each color."
+        "text": "You may play 1 trait of each [rainbow]color[/rainbow]."
       },
       {
         "kind": "note",
@@ -668,7 +668,7 @@
     "flavor": "Keep your friends close and your anemones closer.",
     "effects": [
       {
-        "text": "Start of your turns: You may discard all of 1 color from your hand."
+        "text": "Start of your turns: You may discard all of 1 [rainbow]color[/rainbow] from your hand."
       }
     ],
     "genePool": null,
@@ -938,7 +938,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Choose an opponent. +1 for each red in their trait pile."
+        "text": "Choose an opponent. +1 for each [red]red[/red] in their trait pile."
       }
     ],
     "genePool": null,
@@ -964,7 +964,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Choose an opponent. +1 for each blue in their trait pile."
+        "text": "Choose an opponent. +1 for each [blue]blue[/blue] in their trait pile."
       }
     ],
     "genePool": null,

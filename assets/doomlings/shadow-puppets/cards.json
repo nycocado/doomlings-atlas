@@ -115,7 +115,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Reveal the top of the trait deck. Purple: Swap Cracked with a trait in a friend's trait pile. Blue: Return it to their hand. Red: Steal 1 from their trait pile."
+        "text": "[rainbow]Reveal[/rainbow] the top of the trait deck. [purple]Purple[/purple]: Swap Cracked with a trait in a friend's trait pile. [blue]Blue[/blue]: Return it to their hand. [red]Red[/red]: Steal 1 from their trait pile."
       }
     ],
     "genePool": null,
@@ -306,7 +306,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Reveal the top of the trait deck. Any color: Swap Imperfect with a trait in a friend's trait pile. Colorless: Move Imperfect to a friend's trait pile."
+        "text": "[rainbow]Reveal[/rainbow] the top of the trait deck. [rainbow]Any color[/rainbow]: Swap Imperfect with a trait in a friend's trait pile. [colorless]Colorless[/colorless]: Move Imperfect to a friend's trait pile."
       }
     ],
     "genePool": null,
@@ -538,7 +538,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Reveal the top of the trait deck. Blue: Increase Gene Pool by 1. Red: Decrease Gene Pool by 1 and play 1. Colorless: Do either."
+        "text": "[rainbow]Reveal[/rainbow] the top of the trait deck. [blue]Blue[/blue]: Increase Gene Pool by 1. [red]Red[/red]: Decrease Gene Pool by 1 and play 1. [colorless]Colorless[/colorless]: Do either."
       }
     ],
     "genePool": null,
@@ -754,7 +754,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Reveal the top of the trait deck. Then steal 1 from an opponent's trait pile that matches the color of the revealed trait."
+        "text": "[rainbow]Reveal[/rainbow] the top of the trait deck. Then steal 1 from an opponent's trait pile that matches the [rainbow]color[/rainbow] of the revealed trait."
       }
     ],
     "genePool": null,

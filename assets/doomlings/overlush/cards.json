@@ -642,7 +642,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Play an action ({action}) from a red trait in your trait pile. Then discard all cards from your hand."
+        "text": "Play an action ({action}) from a [red]red[/red] trait in your trait pile. Then discard all cards from your hand."
       }
     ],
     "genePool": null,
@@ -773,7 +773,7 @@
     "flavor": "Gripe for the picking.",
     "effects": [
       {
-        "text": "+1 for each purple or each green trait in your trait pile, whichever is the lower color count.\n\n(If there's a tie, pick 1!)"
+        "text": "+1 for each [purple]purple[/purple] or each [green]green[/green] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n\n(If there's a tie, pick 1!)"
       }
     ],
     "genePool": null,
@@ -1053,7 +1053,7 @@
     "flavor": "I don't have that one yet!",
     "effects": [
       {
-        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each color drawn. Discard dominants. Ignore actions."
+        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each [rainbow]color[/rainbow] drawn. Discard dominants. Ignore actions."
       }
     ],
     "genePool": null,
@@ -1073,7 +1073,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Play an action ({action}) from a purple trait in your trait pile. Then discard a random card from your hand."
+        "text": "Play an action ({action}) from a [purple]purple[/purple] trait in your trait pile. Then discard a random card from your hand."
       }
     ],
     "genePool": null,
@@ -1118,10 +1118,10 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Swap Contagious with a red trait in an opponent's trait pile."
+        "text": "Swap Contagious with a [red]red[/red] trait in an opponent's trait pile."
       },
       {
-        "text": "-1 for every green trait in your trait pile."
+        "text": "-1 for every [green]green[/green] trait in your trait pile."
       }
     ],
     "genePool": null,
@@ -1285,7 +1285,7 @@
     "flavor": "I'm on top of the world! Even though it's ending...",
     "effects": [
       {
-        "text": "+6 if you have 4 or more purple traits in your trait pile."
+        "text": "+6 if you have 4 or more [purple]purple[/purple] traits in your trait pile."
       }
     ],
     "genePool": null,
@@ -1356,7 +1356,7 @@
     "flavor": "The moral of the story is I'm amazing.",
     "effects": [
       {
-        "text": "To play, you must discard 4 different colors from your hand."
+        "text": "To play, you must discard 4 different [rainbow]colors[/rainbow] from your hand."
       }
     ],
     "genePool": 1,
@@ -1609,7 +1609,7 @@
     "flavor": "A one, two, a one, two, three, four...",
     "effects": [
       {
-        "text": "+2 for each set of all 4 colors in your trait pile."
+        "text": "+2 for each set of all 4 [rainbow]colors[/rainbow] in your trait pile."
       }
     ],
     "genePool": null,
@@ -1698,7 +1698,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Play an action ({action}) from a blue trait in an opponent's trait pile. Return that trait to its owner's hand."
+        "text": "Play an action ({action}) from a [blue]blue[/blue] trait in an opponent's trait pile. Return that trait to its owner's hand."
       }
     ],
     "genePool": null,
@@ -1758,7 +1758,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Swap Infectious with a blue trait in an opponent's trait pile."
+        "text": "Swap Infectious with a [blue]blue[/blue] trait in an opponent's trait pile."
       }
     ],
     "genePool": -1,
@@ -1782,7 +1782,7 @@
     "flavor": "Deep down, under this hardened bark exterior, I'm actually just a tree.",
     "effects": [
       {
-        "text": "Excluding dominants, if you have 5 or fewer green traits in your trait pile, they cannot be removed."
+        "text": "Excluding dominants, if you have 5 or fewer [green]green[/green] traits in your trait pile, they cannot be removed."
       }
     ],
     "genePool": null,
@@ -2011,7 +2011,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Play an action ({action}) from a green trait in an opponent's trait pile. Then return it to its owner's hand."
+        "text": "Play an action ({action}) from a [green]green[/green] trait in an opponent's trait pile. Then return it to its owner's hand."
       }
     ],
     "genePool": null,
@@ -2051,7 +2051,7 @@
     "flavor": "I'm inheriting WHAT!?",
     "effects": [
       {
-        "text": "If there are 3 or fewer red traits in your trait pile, they cannot be removed."
+        "text": "If there are 3 or fewer [red]red[/red] traits in your trait pile, they cannot be removed."
       }
     ],
     "genePool": null,
@@ -2224,7 +2224,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Choose a color. All opponents may play 1 of the chosen color.\n\n(Excluding dominants.) Ignore actions ({action})."
+        "text": "[rainbow]Choose a color.[/rainbow] All opponents may play 1 of the chosen [rainbow]color[/rainbow].\n\n(Excluding dominants.) Ignore actions ({action})."
       }
     ],
     "genePool": null,
@@ -2270,10 +2270,10 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Swap Noxious with a purple trait in an opponent's trait pile."
+        "text": "Swap Noxious with a [purple]purple[/purple] trait in an opponent's trait pile."
       },
       {
-        "text": "-1 for every red trait in your trait pile."
+        "text": "-1 for every [red]red[/red] trait in your trait pile."
       }
     ],
     "genePool": null,
@@ -2297,7 +2297,7 @@
     "flavor": "I vow to never, EVER stop talking about my feathers.",
     "effects": [
       {
-        "text": "+2 for every color you have 3 or more of in your trait pile."
+        "text": "+2 for every [rainbow]color[/rainbow] you have 3 or more of in your trait pile."
       }
     ],
     "genePool": null,
@@ -2469,7 +2469,7 @@
     "flavor": "I have produced many works! Though many of them don't work...",
     "effects": [
       {
-        "text": "+6 if you have 4 or more green traits in your trait pile."
+        "text": "+6 if you have 4 or more [green]green[/green] traits in your trait pile."
       }
     ],
     "genePool": null,
@@ -2492,7 +2492,7 @@
     "flavor": "Night-skulking, shadow-lurking, spooky looky-loo.",
     "effects": [
       {
-        "text": "All opponents receive: -2 for each color they have less of in their trait pile than yours."
+        "text": "All opponents receive: -2 for each [rainbow]color[/rainbow] they have less of in their trait pile than yours."
       }
     ],
     "genePool": null,
@@ -2587,7 +2587,7 @@
     "flavor": "Always wants another bite.",
     "effects": [
       {
-        "text": "When you play a red trait on your turn, draw 3 cards before playing its effect."
+        "text": "When you play a [red]red[/red] trait on your turn, draw 3 cards before playing its effect."
       }
     ],
     "genePool": null,
@@ -2609,7 +2609,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Choose a color. Look at the bottom 5 cards in the trait deck. You may play 1 of the chosen color."
+        "text": "Choose a [rainbow]color[/rainbow]. Look at the bottom 5 cards in the trait deck. You may play 1 of the chosen [rainbow]color[/rainbow]."
       }
     ],
     "genePool": null,
@@ -2804,7 +2804,7 @@
     "flavor": "I love when everyone is around! Then I can hide in the background...",
     "effects": [
       {
-        "text": "+5 if you have at least 2 of each color in your trait pile."
+        "text": "+5 if you have at least 2 of each [rainbow]color[/rainbow] in your trait pile."
       }
     ],
     "genePool": null,
@@ -2979,7 +2979,7 @@
     "flavor": "A source of bad whine.",
     "effects": [
       {
-        "text": "+1 for each blue or each red trait in your trait pile, whichever is the lower color count.\n\n(If there's a tie, pick 1!)"
+        "text": "+1 for each [blue]blue[/blue] or each [red]red[/red] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n\n(If there's a tie, pick 1!)"
       }
     ],
     "genePool": null,
@@ -3061,7 +3061,7 @@
     "flavor": "Prudent people prefer pickling particularly piquant peppers.",
     "effects": [
       {
-        "text": "+1 for each red or each green trait in your trait pile, whichever is the lower color count.\n\n(If there's a tie, pick 1!)"
+        "text": "+1 for each [red]red[/red] or each [green]green[/green] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n\n(If there's a tie, pick 1!)"
       }
     ],
     "genePool": null,
@@ -3107,7 +3107,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Choose a color. All opponents reveal all cards of that color from their hand. Play 1 immediately. Ignore actions ({action})."
+        "text": "[rainbow]Choose a color.[/rainbow] All opponents reveal all cards of that [rainbow]color[/rainbow] from their hand. Play 1 immediately. Ignore actions ({action})."
       }
     ],
     "genePool": null,
@@ -3196,7 +3196,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Swap 1 trait from your trait pile with 1 from an opponent's trait pile of a different color.\n\n(Excluding this one.)"
+        "text": "Swap 1 trait from your trait pile with 1 from an opponent's trait pile of a different [rainbow]color[/rainbow].\n\n(Excluding this one.)"
       }
     ],
     "genePool": null,
@@ -3401,7 +3401,7 @@
     "flavor": "I love deeply, I love sweetly, oh how I carabao you.",
     "effects": [
       {
-        "text": "+1 for each green or each blue trait in your trait pile, whichever is the lower color count.\n\n(If there's a tie, pick 1!)"
+        "text": "+1 for each [green]green[/green] or each [blue]blue[/blue] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n\n(If there's a tie, pick 1!)"
       }
     ],
     "genePool": null,
@@ -3425,7 +3425,7 @@
     "flavor": "Will you sign this lock of hair? It's yours, obviously.",
     "effects": [
       {
-        "text": "+5 if any opponent has 5 or more red traits in their trait pile."
+        "text": "+5 if any opponent has 5 or more [red]red[/red] traits in their trait pile."
       }
     ],
     "genePool": null,
@@ -3446,7 +3446,7 @@
     "flavor": "Unearth your potential.",
     "effects": [
       {
-        "text": "+6 if you have 4 or more red traits in your trait pile."
+        "text": "+6 if you have 4 or more [red]red[/red] traits in your trait pile."
       }
     ],
     "genePool": null,
@@ -3533,7 +3533,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Swap Toxic with a green trait in an opponent's trait pile."
+        "text": "Swap Toxic with a [green]green[/green] trait in an opponent's trait pile."
       },
       {
         "text": "If Toxic is discarded from your trait pile, draw 2."
@@ -3669,7 +3669,7 @@
     "flavor": "Love your life.",
     "effects": [
       {
-        "text": "+6 if you have 4 or more blue traits in your trait pile."
+        "text": "+6 if you have 4 or more [blue]blue[/blue] traits in your trait pile."
       }
     ],
     "genePool": null,
@@ -3777,7 +3777,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Discard the top card of the trait deck. All players must discard all cards of that color from their hand and stabilize immediately."
+        "text": "Discard the top card of the trait deck. All players must discard all cards of that [rainbow]color[/rainbow] from their hand and stabilize immediately."
       }
     ],
     "genePool": null,
@@ -3800,7 +3800,7 @@
     "flavor": "Shucks; now I need a toothpick.",
     "effects": [
       {
-        "text": "To play, you must discard 1 green trait from your trait pile."
+        "text": "To play, you must discard 1 [green]green[/green] trait from your trait pile."
       }
     ],
     "genePool": 1,
