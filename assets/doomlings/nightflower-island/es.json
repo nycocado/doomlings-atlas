@@ -1,7 +1,7 @@
 {
   "nightflower-island/ages/encore": {
     "name": "Otra más",
-    "effect": "Después de estabilizar para terminar tu turno, puedes jugar 1 si tiene este símbolo: {World's End}."
+    "effect": "Después de estabilizar para terminar tu turno, puedes jugar 1 si tiene este símbolo: {worlds-end}."
   },
   "nightflower-island/ages/fall-nightflower-island": {
     "name": "Otoño de Nightflower Island",

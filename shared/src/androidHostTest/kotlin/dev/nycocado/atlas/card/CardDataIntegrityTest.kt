@@ -60,12 +60,19 @@ class CardDataIntegrityTest {
                 "moonling",
                 "glitterling",
             )
+        val token = Regex("""\{([^}]*)}""")
         assertEquals(
             emptyList(),
-            effects.flatMap { (card, effect) ->
-                Regex("""\{([^}]*)}""").findAll(effect.text).map { it.groupValues[1] }.filter { it !in known }.map {
-                    "${card.id}: {$it}"
-                }
+            (
+                effects.map { (card, effect) ->
+                    card.id to effect.text
+                } + CardAssets.translatedTexts
+            ).flatMap { (where, text) ->
+                token
+                    .findAll(text)
+                    .map { it.groupValues[1] }
+                    .filter { it !in known }
+                    .map { "$where: {$it}" }
             },
         )
     }
@@ -159,6 +166,19 @@ class CardDataIntegrityTest {
         assertEquals(1, classic.filterIsInstance<BirthOfLife>().size, "Birth of Life")
     }
 
+    // Counts from the official rulesheet's transcription (assets/doomlings/rules/imaginary-ends.md): per subspecies,
+    // "16X TRAITS // 2X DOMINANTS" (Deeplings, Glitterlings, Moonlings) and "9X TRAITS // 1X DOMINANT" (Fuzelings),
+    // each with "2X AGES // 1X CATASTROPHE". The dominants come on top of the traits.
+    @Test
+    fun imaginaryEndsHasTheRulesheetTraitsAgesAndCatastrophes() {
+        val ends = cards.filter { it.set == "imaginary-ends" }
+        val traits = ends.filterIsInstance<Trait>()
+        assertEquals(3 * 16 + 9, traits.count { !it.dominant }, "traits")
+        assertEquals(3 * 2 + 1, traits.count { it.dominant }, "dominants")
+        assertEquals(4 * 2, ends.filterIsInstance<Age>().size, "ages")
+        assertEquals(4, ends.filterIsInstance<Catastrophe>().size, "catastrophes")
+    }
+
     // A card type without a face would open as an empty card detail.
     @Test
     fun everyEnabledCardHasAFace() {
@@ -202,15 +222,9 @@ class CardDataIntegrityTest {
 
     @Test
     fun noTextOpensMoreParenthesesThanItCloses() {
-        val translated =
-            CardAssets.translationFiles.flatMap { file ->
-                CardAssets.translationsOf(file).flatMap { (id, fields) ->
-                    fields.values.map { "${file.relativeTo(dir).path} $id" to it }
-                }
-            }
         assertEquals(
             emptyList(),
-            (texts + translated)
+            (texts + CardAssets.translatedTexts)
                 .filter { (_, text) -> text.count { it == '(' } > text.count { it == ')' } }
                 .map { (where, text) -> "$where: $text" },
         )

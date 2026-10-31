@@ -43,6 +43,9 @@ data class Trait(
     val icons: List<TraitIcon>,
 ) : NamedCard {
     val effectless: Boolean get() = effects.isEmpty() && genePool == null
+
+    // A colorless trait is a null color.
+    val colorsOrColorless: List<CardColor?> get() = colors.ifEmpty { listOf(null) }
 }
 
 @Serializable

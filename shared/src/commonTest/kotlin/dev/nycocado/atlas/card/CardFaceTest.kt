@@ -43,7 +43,7 @@ class CardFaceTest {
             listOf(
                 CardFact.Color(CardColor.Blue),
                 CardFact.Color(CardColor.Green),
-                CardFact.Type(CardKind.Trait),
+                CardFact.Kind(CardKind.Trait),
                 CardFact.Icon(TraitIcon.Curious),
                 CardFact.Icon(TraitIcon.Fish),
             ),
@@ -77,7 +77,7 @@ class CardFaceTest {
                 CardFact.Color(CardColor.Green),
                 CardFact.Color(CardColor.Purple),
                 CardFact.Color(CardColor.Red),
-                CardFact.Type(CardKind.Trait),
+                CardFact.Kind(CardKind.Trait),
                 CardFact.Dominant,
                 CardFact.Icon(TraitIcon.DropOfLife),
                 CardFact.Icon(TraitIcon.WorldsEnd),
@@ -145,7 +145,7 @@ class CardFaceTest {
             ),
             face?.blocks,
         )
-        assertEquals(listOf(CardFact.Type(CardKind.Catastrophe)), face?.facts)
+        assertEquals(listOf(CardFact.Kind(CardKind.Catastrophe)), face?.facts)
     }
 
     private val bruteStrength =
@@ -396,7 +396,7 @@ class CardFaceTest {
     @Test
     fun aColorlessTraitHasOneColorlessFact() {
         assertEquals(
-            listOf(CardFact.Color(null), CardFact.Type(CardKind.Trait)),
+            listOf(CardFact.Color(null), CardFact.Kind(CardKind.Trait)),
             confusion.face()?.facts,
         )
     }

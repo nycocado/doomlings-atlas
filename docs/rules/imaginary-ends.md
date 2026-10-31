@@ -6,11 +6,13 @@ Source: [rulesheet](../../assets/doomlings/rules/imaginary-ends.pdf) and its [tr
 
 ## Components
 
-- Deeplings: 16 traits (2 dominants), 2 ages, 1 catastrophe. They introduce suppress.
+- Deeplings: 16 traits plus 2 dominants, 2 ages, 1 catastrophe. They introduce suppress.
 - Magical Merchants: 11 merchants and 40 trinkets.
-- Glitterlings: 16 traits (2 dominants), 2 ages, 1 catastrophe. Cards about chance.
-- Moonlings: 16 traits (2 dominants), 2 ages, 1 catastrophe. They give a lot away and do well with low Gene Pools.
-- Fuzelings: 9 traits (1 dominant), 2 ages, 1 catastrophe. Combinations of Deeplings, Moonlings and Glitterlings, for bigger Drop of Life bonuses and new combos.
+- Glitterlings: 16 traits plus 2 dominants, 2 ages, 1 catastrophe. Cards about chance.
+- Moonlings: 16 traits plus 2 dominants, 2 ages, 1 catastrophe. They give a lot away and do well with low Gene Pools.
+- Fuzelings: 9 traits plus 1 dominant, 2 ages, 1 catastrophe. Combinations of Deeplings, Moonlings and Glitterlings, for bigger Drop of Life bonuses and new combos.
+
+In all, the expansion has 64 traits (7 of them dominant), 8 ages and 4 catastrophes besides the merchants and trinkets.
 
 The rulesheet recommends knowing Classic well first. Glitterlings and Moonlings come with no rules of their own beyond their cards.
 

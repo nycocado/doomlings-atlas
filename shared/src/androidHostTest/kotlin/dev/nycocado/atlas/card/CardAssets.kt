@@ -41,6 +41,14 @@ object CardAssets {
             translation.jsonObject.mapValues { (_, value) -> value.jsonPrimitive.content }
         }
 
+    // Every translated text, as "file card-id" to text.
+    val translatedTexts: List<Pair<String, String>> =
+        translationFiles.flatMap { file ->
+            translationsOf(file).flatMap { (id, fields) ->
+                fields.values.map { "${file.relativeTo(dir).path} $id" to it }
+            }
+        }
+
     // A JSON object's keys in file order, repeats included: parsing keeps only the last of two equal keys, and
     // kotlinx-serialization, the project's JSON library, has no option to reject them.
     fun keysOf(file: File): List<String> = Json.decodeFromString(KeysInOrder, file.readText())
