@@ -61,6 +61,7 @@ import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
 import dev.nycocado.atlas.ui.theme.Shadow
+import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
 import kotlin.math.roundToInt
@@ -303,7 +304,7 @@ private fun SearchField(
         Image(
             painterResource(R.drawable.ic_search),
             null,
-            Modifier.size(22.dp),
+            Modifier.size(Sizes.icon),
             colorFilter = ColorFilter.tint(theme.onSurface),
         )
         BasicTextField(
@@ -332,7 +333,7 @@ private fun SearchField(
         AnimatedVisibility(query.isNotEmpty(), enter = fadeIn(), exit = fadeOut()) {
             Box(
                 Modifier
-                    .size(48.dp)
+                    .size(Sizes.touchTarget)
                     .clickable(role = Role.Button) { onQueryChange("") }
                     .semantics { contentDescription = clear },
                 contentAlignment = Alignment.Center,

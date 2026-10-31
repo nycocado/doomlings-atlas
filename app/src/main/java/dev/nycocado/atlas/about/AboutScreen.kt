@@ -50,6 +50,7 @@ import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
 import dev.nycocado.atlas.ui.theme.Radius
+import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
 import kotlinx.coroutines.Dispatchers
@@ -172,7 +173,7 @@ private fun LicenseRow(
                 enabled = entry.text != null,
                 onClickLabel = stringResource(if (expanded) R.string.hide_license else R.string.show_license),
                 onClick = onClick,
-            ).heightIn(min = 48.dp)
+            ).heightIn(min = Sizes.touchTarget)
             .padding(horizontal = Space.s4, vertical = Space.s3),
         verticalArrangement = Arrangement.Center,
     ) {

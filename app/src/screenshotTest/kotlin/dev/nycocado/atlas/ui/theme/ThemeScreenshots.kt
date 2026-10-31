@@ -12,6 +12,8 @@ import dev.nycocado.atlas.carddetail.CardDetailLongNamePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.CitedCardDetailPreview
+import dev.nycocado.atlas.carddetail.LanguageSelectorPreview
+import dev.nycocado.atlas.carddetail.PillsPreview
 import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitSample
@@ -291,3 +293,13 @@ fun TranslatedTraitDetailFontScale200SpanishScreenshot() = AtlasTheme { Translat
 @PreviewLightDark
 @Composable
 fun CitedCardDetailScreenshot() = CitedCardDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun PillsScreenshot() = PillsPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun LanguageSelectorScreenshot() = LanguageSelectorPreview()

@@ -1,29 +1,20 @@
 package dev.nycocado.atlas.compendium
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.CardColor
@@ -32,13 +23,10 @@ import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.CardStack
-import dev.nycocado.atlas.ui.component.describedButton
+import dev.nycocado.atlas.ui.component.RoundButton
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
-import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Space
-import dev.nycocado.atlas.ui.theme.pressSink
-import dev.nycocado.atlas.ui.theme.sinkingSticker
 
 // The first cell of an open card group, where its stack was: a round button that collapses it, with the group's name
 // and count under it, centered in a cell the size of a card's art, so the variants after it keep the grid's columns.
@@ -50,39 +38,20 @@ internal fun GroupCollapse(
 ) {
     val theme = AtlasTheme.colors
     val count = cell.count
-    val interactions = remember { MutableInteractionSource() }
-    val sink = pressSink(interactions, Shadow.sticker)
     Column(
         modifier.fillMaxWidth().aspectRatio(CARD_RATIO),
         verticalArrangement = Arrangement.spacedBy(Space.s2, Alignment.CenterVertically),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Box(
-            Modifier
-                .size(48.dp)
-                .describedButton(
-                    pluralStringResource(R.plurals.card_group_open, count, cell.name, count),
-                    interactions,
-                    stringResource(R.string.card_group_collapse),
-                    CircleShape,
-                    onCollapse,
-                ),
-        ) {
-            Box(
-                Modifier
-                    .matchParentSize()
-                    .sinkingSticker(sink, CircleShape, theme.surfaceSticker, theme.outline, Shadow.sticker),
-                contentAlignment = Alignment.Center,
-            ) {
-                // The back chevron turned to point up.
-                Image(
-                    painterResource(R.drawable.ic_back),
-                    null,
-                    Modifier.size(22.dp).rotate(90f),
-                    colorFilter = ColorFilter.tint(theme.onSurface),
-                )
-            }
-        }
+        RoundButton(
+            R.drawable.ic_back,
+            R.string.card_group_collapse,
+            onCollapse,
+            description = pluralStringResource(R.plurals.card_group_open, count, cell.name, count),
+            onClickLabel = stringResource(R.string.card_group_collapse),
+            // The back chevron turned to point up.
+            iconRotation = 90f,
+        )
         // The button already says all of this.
         BasicText(
             groupTitle(cell.name, count),

@@ -22,6 +22,7 @@ import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
+import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
 
@@ -35,7 +36,7 @@ fun UnofficialFooter(
         stringResource(R.string.unofficial_notice),
         modifier
             .clickable(onClickLabel = stringResource(R.string.about), onClick = onClick)
-            .heightIn(min = 48.dp)
+            .heightIn(min = Sizes.touchTarget)
             .wrapContentHeight()
             .padding(horizontal = Space.s4, vertical = Space.s2),
         style =
