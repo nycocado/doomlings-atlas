@@ -68,9 +68,7 @@ class CardLibraryTest {
 
         assertEquals(
             listOf("Swarm of Kidneys"),
-            names.citations(named("classic/traits/kidney"), text).map {
-                text.substring(it.range)
-            },
+            names.citations(named("classic/traits/kidney"), text).map { text.substring(it.range) },
         )
         assertEquals(emptyList(), names.citations(named("overlush/traits/kidney"), "A Kidney."))
         assertEquals(emptyList(), names.citations(named("classic/traits/swarm-of-kidneys"), "Swarm of Kidneys"))

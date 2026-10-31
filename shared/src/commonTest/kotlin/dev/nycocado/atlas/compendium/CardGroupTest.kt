@@ -113,13 +113,8 @@ class CardGroupTest {
         val group = CardLibrary.of(cards).groupByName(filtered).single()
 
         assertEquals(
-            listOf(
-                "classic/traits/kidney-2",
-                "classic/traits/kidney-5",
-            ),
-            assertIs<CompendiumEntry.Group>(group).variants.map {
-                it.id
-            },
+            listOf("classic/traits/kidney-2", "classic/traits/kidney-5"),
+            assertIs<CompendiumEntry.Group>(group).variants.map { it.id },
         )
     }
 
@@ -135,9 +130,7 @@ class CardGroupTest {
             },
         )
         assertEquals(
-            (6 downTo 1).map {
-                "classic/traits/kidney-$it"
-            },
+            (6 downTo 1).map { "classic/traits/kidney-$it" },
             (entries.last() as CompendiumEntry.Group).variants.map { it.id },
         )
     }

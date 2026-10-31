@@ -17,7 +17,7 @@ sealed interface CompendiumEntry {
 }
 
 // A step after the filter, so a group holds only the variants the filter left; groups and variants keep the filter's
-// order.
+// order. `filtered` must come from this library's cards: a name missing from its index would make a group of no variants.
 fun CardLibrary.groupByName(filtered: List<NamedCard>): List<CompendiumEntry> {
     val position = filtered.withIndex().associate { (index, card) -> card.id to index }
     return filtered.map { it.name }.distinct().map { name ->
