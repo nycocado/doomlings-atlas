@@ -57,6 +57,8 @@ sealed interface BlockContent {
     data class Effect(
         val kind: EffectKind?,
         val text: List<TextPart>,
+        // Printed in yellow, label and text: a Catastrophe's World's End and a Trinket's Pocket Objective.
+        val yellow: Boolean = false,
     ) : BlockContent
 
     data class Value(
@@ -195,10 +197,14 @@ internal fun NamedCard.blocks(
 ): List<CardBlock> {
     val contents =
         listOfNotNull(genePool?.let(BlockContent::GenePool)) +
-            effects.map { BlockContent.Effect(it.kind, parts(it.text)) } +
+            effects.map { BlockContent.Effect(it.kind, parts(it.text), yellow(it.kind)) } +
             listOfNotNull((this as? Trinket)?.value?.let(BlockContent::Value))
     val shown: List<BlockContent?> = contents.ifEmpty { if (flavor != null) listOf(null) else emptyList() }
     return shown.mapIndexed { index, content ->
         CardBlock(content, flavor.takeIf { index == shown.lastIndex }, selector = index == 0)
     }
 }
+
+// A trait prints its World's End in the normal ink.
+private fun NamedCard.yellow(kind: EffectKind?) =
+    kind == EffectKind.PocketObjective || (this is Catastrophe && kind == EffectKind.WorldsEnd)

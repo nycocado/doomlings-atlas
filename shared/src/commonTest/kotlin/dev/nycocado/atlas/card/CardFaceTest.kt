@@ -135,11 +135,27 @@ class CardFaceTest {
                 effectBlock(
                     EffectKind.WorldsEnd,
                     "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
+                    yellow = true,
                 ),
             ),
             face?.blocks,
         )
         assertEquals(listOf(CardFact.Kind(CardKind.Catastrophe)), face?.facts)
+    }
+
+    private fun NamedCard.yellowKinds() =
+        blocks(effects, flavor, genePool)
+            .mapNotNull { it.content as? BlockContent.Effect }
+            .map { it.kind to it.yellow }
+
+    @Test
+    fun aCatastrophesWorldsEndIsYellowAndItsOtherEffectsAreNot() {
+        assertEquals(listOf(null to false, EffectKind.WorldsEnd to true), aiTakeover.yellowKinds())
+    }
+
+    @Test
+    fun aTraitsWorldsEndIsNotYellow() {
+        assertEquals(listOf(EffectKind.WorldsEnd to false), awesome.yellowKinds())
     }
 
     private val bruteStrength =
@@ -212,10 +228,18 @@ class CardFaceTest {
         assertEquals(
             listOf(
                 effectBlock(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand.", selector = true),
-                effectBlock(EffectKind.PocketObjective, "Reveal: 2 reds in hand."),
+                effectBlock(EffectKind.PocketObjective, "Reveal: 2 reds in hand.", yellow = true),
                 CardBlock(BlockContent.Value(2), flavor = "This causes stress. Can't stress that enough."),
             ),
             anxietyElixir.blocks(anxietyElixir.effects, anxietyElixir.flavor, null),
+        )
+    }
+
+    @Test
+    fun aTrinketsPocketObjectiveIsYellowAndItsAwesomePowerIsNot() {
+        assertEquals(
+            listOf(EffectKind.AwesomePower to false, EffectKind.PocketObjective to true),
+            anxietyElixir.yellowKinds(),
         )
     }
 
@@ -402,6 +426,7 @@ class CardFaceTest {
                             TextPart.Icon(Token.Action),
                             TextPart.Words(")."),
                         ),
+                        yellow = true,
                     ),
                 ),
             ),
@@ -463,4 +488,5 @@ internal fun effectBlock(
     text: String,
     flavor: String? = null,
     selector: Boolean = false,
-) = CardBlock(BlockContent.Effect(kind, listOf(TextPart.Words(text))), flavor, selector)
+    yellow: Boolean = false,
+) = CardBlock(BlockContent.Effect(kind, listOf(TextPart.Words(text)), yellow), flavor, selector)

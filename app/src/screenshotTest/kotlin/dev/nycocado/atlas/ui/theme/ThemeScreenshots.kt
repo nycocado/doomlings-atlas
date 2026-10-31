@@ -17,6 +17,7 @@ import dev.nycocado.atlas.carddetail.InkBlocksPreview
 import dev.nycocado.atlas.carddetail.InkBlocksSample
 import dev.nycocado.atlas.carddetail.LanguageSelectorPreview
 import dev.nycocado.atlas.carddetail.PillsPreview
+import dev.nycocado.atlas.carddetail.TraitWorldsEndDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitSample
@@ -132,6 +133,11 @@ fun InkBlocksScreenshot() = InkBlocksPreview()
 @Preview(fontScale = 2f)
 @Composable
 fun InkBlocksFontScale200Screenshot() = AtlasTheme { InkBlocksSample() }
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun TraitWorldsEndDetailScreenshot() = TraitWorldsEndDetailPreview()
 
 @PreviewTest
 @PreviewLightDark

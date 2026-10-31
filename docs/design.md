@@ -38,6 +38,7 @@ Two themes: `light` ("Day", default) and `dark` ("Game night"). No Android dynam
 - `sunset-*` with `on-sunset`: player colors and forward buttons in flows.
 - Trait: `trait-<color>` (exact card color, same in both themes) with `on-trait-<color>` on top; `trait-<color>-ink` for glyphs, names and inked words of card text on surfaces; `trait-<color>-container` for soft backgrounds.
 - Borders and shadows use `outline`: ink by day, light lilac at night. That keeps stickers readable in the dark.
+- `yellow-ink`: the heading and text of the blocks a card prints in yellow, a Catastrophe's World's End and a Trinket's Pocket Objective (a darker gold by day, yellow at night, ≥5.5:1 on `surface-sticker`). A trait's World's End stays in `on-surface`.
 
 ## Typography
 

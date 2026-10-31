@@ -119,12 +119,14 @@ internal fun BlockBubble(
                         }
 
                         is BlockContent.Effect -> {
+                            val yellow = theme.yellowInk.takeIf { content.yellow }
                             content.kind?.title?.let {
                                 KindHeading(
                                     it,
                                     content.kind?.symbol,
                                     shownLanguage,
                                     actionColor,
+                                    yellow ?: theme.onSurfaceVariant,
                                 )
                             }
                             EffectText(
@@ -135,6 +137,7 @@ internal fun BlockBubble(
                                 library = library,
                                 onCardClick = onCardClick,
                                 actionColor = actionColor,
+                                ink = yellow ?: theme.onSurface,
                             )
                         }
 
@@ -173,13 +176,13 @@ private fun KindHeading(
     @DrawableRes symbol: Int?,
     language: CardLanguage,
     actionColor: Color,
+    ink: Color,
 ) {
-    val theme = AtlasTheme.colors
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
         symbol?.let { Symbol(it, Modifier.height(16.dp), actionColor) }
         BasicText(
             tagged(cardString(title, language).uppercase(), language),
-            style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
+            style = AtlasTypography.labelSm.copy(color = ink),
         )
     }
 }
@@ -281,6 +284,7 @@ private fun EffectText(
     library: CardLibrary,
     onCardClick: (String) -> Unit,
     actionColor: Color,
+    ink: Color,
 ) {
     val theme = AtlasTheme.colors
     val tokens = parts.filterIsInstance<TextPart.Icon>().map { it.token }.distinct()
@@ -340,7 +344,7 @@ private fun EffectText(
             }.toMap()
     BasicText(
         text,
-        style = (if (note) AtlasTypography.bodyMd else AtlasTypography.bodyLg).copy(color = theme.onSurface),
+        style = (if (note) AtlasTypography.bodyMd else AtlasTypography.bodyLg).copy(color = ink),
         onTextLayout = { layout ->
             rainbows.forEach { (span, brush) ->
                 brush.extent =
@@ -424,7 +428,13 @@ private val AnxietyElixirBlocks =
                 listOf(TextPart.Words("Start of Turn: Discard dominants from hand.")),
             ),
         ),
-        CardBlock(BlockContent.Effect(EffectKind.PocketObjective, listOf(TextPart.Words("Reveal: 2 reds in hand.")))),
+        CardBlock(
+            BlockContent.Effect(
+                EffectKind.PocketObjective,
+                listOf(TextPart.Words("Reveal: 2 reds in hand.")),
+                yellow = true,
+            ),
+        ),
         CardBlock(BlockContent.Value(2), flavor = "This causes stress. Can't stress that enough."),
     )
 
