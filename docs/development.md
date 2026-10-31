@@ -28,8 +28,8 @@ How to build the app and how the code is kept consistent. Most of it runs in CI,
 
 - Every PR and push to `main` runs the CI workflow: Gradle wrapper validation, `spotlessCheck`, `lint`, unit tests, the permission and glossary checks, the screenshot tests, a debug build and, in its own job, the unsigned release build, the only one that runs R8 and resource shrinking.
 - On PRs, it also checks that the title follows the [commit format](../CONTRIBUTING.md#commits), since it becomes the squash commit message, and that neither the PR body nor its commits carry AI attribution ([CONTRIBUTING.md](../CONTRIBUTING.md#opening-a-pull-request)).
-- On PRs, a dependency review fails on a dependency with a known vulnerability and lists the ones the PR adds. It needs a public repository on the free plan, so it skips until the repository is public.
-- Actions are pinned by commit SHA, and [zizmor](https://docs.zizmor.sh) finds nothing in the workflows at its default level. Dependabot opens weekly grouped updates for Gradle and Actions, for versions at least 7 days old.
+- On PRs, a dependency review fails on a dependency with a known vulnerability and lists the ones the PR adds. It needs a public repository on the free plan, so it skips until the repository is public. Submitting the PR's Gradle graph needs write permission, which PRs from forks and from Dependabot don't get, so on those it fails until #205 splits it in two workflows.
+- Actions are pinned by commit SHA, and the workflows were checked with [zizmor](https://docs.zizmor.sh) at its default level (`uvx zizmor .github/`). Dependabot opens weekly grouped updates for Gradle and Actions, for versions at least 7 days old.
 
 ## Releases
 
