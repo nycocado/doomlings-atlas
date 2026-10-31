@@ -5,6 +5,6 @@
 dev.nycocado.atlas.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 
 # The update check (ADR 0012): asks GitHub's Releases API for the latest Release, then downloads
-# its APK and hands it to the system installer. Nothing else uses the network.
+# its APK and hands it to the system installer.
 android.permission.INTERNET
 android.permission.REQUEST_INSTALL_PACKAGES
