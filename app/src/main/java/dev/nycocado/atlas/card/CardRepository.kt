@@ -15,11 +15,11 @@ const val CARD_RATIO = 541f / 756f
 // Cards packaged by the PackageCards task (app/build.gradle.kts) into assets/cards/.
 fun cardImage(image: String) = "file:///android_asset/cards/$image"
 
-// Open and provided by a module, so UI tests can replace the translations with their own.
+// Open and provided by a module, so UI tests can replace the cards and translations with their own.
 open class CardRepository(
     private val context: Context,
 ) {
-    suspend fun library(): CardLibrary =
+    open suspend fun library(): CardLibrary =
         withContext(Dispatchers.IO) {
             CardLibrary.decode(
                 context.assets

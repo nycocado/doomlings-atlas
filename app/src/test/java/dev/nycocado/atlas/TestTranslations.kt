@@ -7,10 +7,13 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardRepository
 import dev.nycocado.atlas.card.CardRepositoryModule
 import dev.nycocado.atlas.card.CardText
 import dev.nycocado.atlas.card.CardTranslations
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Singleton
 
 // Made-up Portuguese for a few Classic cards (ids from assets/doomlings/classic/cards.json), so UI tests don't depend
@@ -35,6 +38,15 @@ val testPortuguese =
             CardText("Era Glacial", listOf("Descarte cartas da mão.", "Menos pontos vermelhos.")),
     )
 
+// Ink marks on two Classic effects, as the map of #192 has them, so UI tests don't wait for the marked card data:
+// Heat Vision's "red" and Hyper-Intelligence's "Choose a color.". The text as cards.json writes it, escapes included.
+val testInks =
+    mapOf(
+        "+1 for each red trait in your trait pile." to "+1 for each [red]red[/red] trait in your trait pile.",
+        "Choose a color. Opponents discard 1 trait of that color" to
+            "[rainbow]Choose a color.[/rainbow] Opponents discard 1 trait of that color",
+    )
+
 // Made-up Spanish, for the card language a Spanish device starts in.
 val testSpanish = mapOf("classic/traits/altruistic" to CardText("Altruista", listOf("Zumbido del tamaño de la Pool.")))
 
@@ -47,6 +59,18 @@ object TestCardRepositoryModule {
         @ApplicationContext context: Context,
     ): CardRepository =
         object : CardRepository(context) {
+            override suspend fun library() =
+                withContext(Dispatchers.IO) {
+                    CardLibrary.decode(
+                        testInks.entries.fold(
+                            context.assets
+                                .open("cards/cards.json")
+                                .bufferedReader()
+                                .use { it.readText() },
+                        ) { json, (plain, inked) -> json.replace(plain, inked) },
+                    )
+                }
+
             override suspend fun translations() =
                 CardTranslations(
                     mapOf(CardLanguage.Portuguese to testPortuguese, CardLanguage.Spanish to testSpanish),
