@@ -191,7 +191,7 @@
   "overlush/catastrophes/choking-vines": {
     "name": "Enredaderas Asfixiantes",
     "effects": [
-      "Ignora las acciones ({action}) azules y verdes.",
+      "Ignora las acciones azules y verdes ({action}).",
       "+1 por cada trait verde en la pila de traits a tu izquierda."
     ]
   },
@@ -226,7 +226,7 @@
   "overlush/catastrophes/jungle-rot": {
     "name": "Podredumbre de la Selva",
     "effects": [
-      "Ignora las acciones ({action}) rojas y moradas.",
+      "Ignora las acciones rojas y moradas ({action}).",
       "-4 si tienes 2 o menos traits verdes en tu pila de traits."
     ]
   },

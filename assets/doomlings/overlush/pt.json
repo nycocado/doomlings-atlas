@@ -191,7 +191,7 @@
   "overlush/catastrophes/choking-vines": {
     "name": "Vinhas Sufocantes",
     "effects": [
-      "Ignore ações ({action}) azuis e verdes.",
+      "Ignore ações azuis e verdes ({action}).",
       "+1 para cada trait verde na pilha de traits à sua esquerda."
     ]
   },
@@ -226,7 +226,7 @@
   "overlush/catastrophes/jungle-rot": {
     "name": "Podridão da Selva",
     "effects": [
-      "Ignore ações ({action}) vermelhas e roxas.",
+      "Ignore ações vermelhas e roxas ({action}).",
       "-4 se você tiver 2 ou menos traits verdes na sua pilha de traits."
     ]
   },

@@ -15,7 +15,7 @@
   "classic/ages/age-of-peace": {
     "name": "Era de la Paz",
     "effects": [
-      "Ignora todas las acciones ({action}) de los traits."
+      "Ignora todas las acciones de los traits ({action})."
     ]
   },
   "classic/ages/age-of-wonder": {
