@@ -469,8 +469,8 @@
   "imaginary-ends/traits/stygian": {
     "name": "Estígio",
     "effects": [
-      "Escolha uma cor. Suprima todos os traits dessa cor na sua pilha de traits.",
-      "-2 para cada cor na sua pilha de traits."
+      "[yellow]Escolha uma cor.[/yellow] Suprima todos os traits dessa cor na sua pilha de traits.",
+      "-2 para cada [yellow]cor[/yellow] na sua pilha de traits."
     ],
     "flavor": "Deixa que eu cuido das luzes."
   },

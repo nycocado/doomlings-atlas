@@ -120,12 +120,7 @@ internal fun BlockBubble(
 
                         is BlockContent.Effect -> {
                             content.kind?.title?.let {
-                                KindHeading(
-                                    it,
-                                    content.kind?.symbol,
-                                    shownLanguage,
-                                    actionColor,
-                                )
+                                KindHeading(it, content.kind?.symbol, shownLanguage, actionColor, content.ink)
                             }
                             EffectText(
                                 content.text,
@@ -173,13 +168,16 @@ private fun KindHeading(
     @DrawableRes symbol: Int?,
     language: CardLanguage,
     actionColor: Color,
+    ink: Ink?,
 ) {
     val theme = AtlasTheme.colors
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
         symbol?.let { Symbol(it, Modifier.height(16.dp), actionColor) }
         BasicText(
             tagged(cardString(title, language).uppercase(), language),
-            style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
+            style =
+                ink?.let { AtlasTypography.labelSm.copy(brush = theme.brush(it)) }
+                    ?: AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
         )
     }
 }
@@ -361,6 +359,7 @@ internal fun AtlasColors.inkColors(ink: Ink): List<Color> =
         Ink.Purple -> listOf(traitPurple.ink)
         Ink.Colorless -> listOf(traitColorless.ink)
         Ink.Rainbow -> listOf(traitRed.ink, traitGreen.ink, traitBlue.ink, traitPurple.ink)
+        Ink.Yellow -> listOf(yellowInk)
     }
 
 private fun AtlasColors.brush(ink: Ink): Brush =
@@ -424,7 +423,13 @@ private val AnxietyElixirBlocks =
                 listOf(TextPart.Words("Start of Turn: Discard dominants from hand.")),
             ),
         ),
-        CardBlock(BlockContent.Effect(EffectKind.PocketObjective, listOf(TextPart.Words("Reveal: 2 reds in hand.")))),
+        CardBlock(
+            BlockContent.Effect(
+                EffectKind.PocketObjective,
+                listOf(TextPart.Words("Reveal: 2 reds in hand.", Ink.Yellow)),
+                Ink.Yellow,
+            ),
+        ),
         CardBlock(BlockContent.Value(2), flavor = "This causes stress. Can't stress that enough."),
     )
 

@@ -76,7 +76,7 @@ class CardTranslationTest {
             listOf(
                 CardBlock(BlockContent.GenePool(-1), selector = true),
                 effectBlock(null, "Descarte."),
-                effectBlock(EffectKind.WorldsEnd, "Incolores valem 2."),
+                effectBlock(EffectKind.WorldsEnd, "Incolores valem 2.", ink = Ink.Yellow),
             ),
             translations.face(catastrophe, CardLanguage.Portuguese)?.blocks,
         )
@@ -99,7 +99,7 @@ class CardTranslationTest {
             listOf(
                 CardBlock(BlockContent.GenePool(-1), selector = true),
                 effectBlock(null, "Discard."),
-                effectBlock(EffectKind.WorldsEnd, "Colorless worth 2."),
+                effectBlock(EffectKind.WorldsEnd, "Colorless worth 2.", ink = Ink.Yellow),
             ),
             face?.blocks,
         )

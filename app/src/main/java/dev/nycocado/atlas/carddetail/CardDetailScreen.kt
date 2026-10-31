@@ -648,3 +648,24 @@ private val Carnivore =
 @PreviewLightDark
 @Composable
 internal fun UndrawnTokenDetailPreview() = AtlasTheme { CardDetailSample(card = Carnivore) }
+
+// Eloquence as in assets/doomlings/classic/cards.json: a trait prints its World's End in the normal text color.
+private val Eloquence =
+    Trait(
+        "classic/traits/eloquence",
+        "classic",
+        "",
+        "Eloquence",
+        "Say the right thing, then stop talking.",
+        listOf(Effect(EffectKind.WorldsEnd, "Play another trait. Ignore its action ({action}).")),
+        null,
+        1,
+        emptyList(),
+        false,
+        emptyList(),
+        listOf(TraitIcon.WorldsEnd),
+    )
+
+@PreviewLightDark
+@Composable
+internal fun TraitWorldsEndDetailPreview() = AtlasTheme { CardDetailSample(card = Eloquence) }
