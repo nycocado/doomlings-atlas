@@ -72,7 +72,8 @@ fun withoutTokens(text: String) = text.replace(token, "")
 // null for a card type without a card kind, which the app doesn't show.
 fun NamedCard.face(): CardFace? = face(name, effects, flavor, genePool)
 
-// Each translated text takes the kind of the card's effect at its place.
+// Each translated text takes the kind of the card's effect at its place. zip drops effects past the shorter list: the
+// translation data test keeps the counts equal.
 internal fun NamedCard.face(text: CardText): CardFace? =
     face(
         text.name,

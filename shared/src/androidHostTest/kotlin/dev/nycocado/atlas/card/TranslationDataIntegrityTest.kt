@@ -16,10 +16,11 @@ import kotlin.test.assertEquals
 class TranslationDataIntegrityTest {
     private val cardsJson = CardAssets.cardsJson
 
+    private val englishCards = Json.parseToJsonElement(cardsJson).jsonArray.map { it.jsonObject }
+
     // Card id to the text fields a translation has. Kinds, Gene Pool and Value are not text: they stay in cards.json.
     private val fieldsById =
-        Json.parseToJsonElement(cardsJson).jsonArray.associate { card ->
-            val fields = card.jsonObject
+        englishCards.associate { fields ->
             fields.getValue("id").jsonPrimitive.content to
                 buildSet {
                     if (fields["name"] != null) add("name")
@@ -29,11 +30,9 @@ class TranslationDataIntegrityTest {
         }
 
     private val englishEffectsById =
-        Json.parseToJsonElement(cardsJson).jsonArray.associate { card ->
-            card.jsonObject
-                .getValue("id")
-                .jsonPrimitive.content to
-                effectsOf(card.jsonObject).map { it.getValue("text").jsonPrimitive.content }
+        englishCards.associate { card ->
+            card.getValue("id").jsonPrimitive.content to
+                effectsOf(card).map { it.getValue("text").jsonPrimitive.content }
         }
 
     private fun effectsOf(card: JsonObject) = card["effects"]?.jsonArray.orEmpty().map { it.jsonObject }
@@ -195,12 +194,7 @@ class TranslationDataIntegrityTest {
     // A card name cited in the text stays as printed, so the player finds the physical card.
     @Test
     fun everyCardNameCitedInTheEnglishTextStaysInEnglishInTheTranslation() {
-        val names =
-            Json
-                .parseToJsonElement(cardsJson)
-                .jsonArray
-                .mapNotNull { it.jsonObject["name"]?.jsonPrimitive?.contentOrNull }
-                .toSet()
+        val names = englishCards.mapNotNull { it["name"]?.jsonPrimitive?.contentOrNull }.toSet()
 
         files.forEach { file ->
             val missing =
