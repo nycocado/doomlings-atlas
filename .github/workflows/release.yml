@@ -20,11 +20,18 @@ jobs:
     environment: release
     permissions:
       contents: write # the draft Release and its APK
+    env:
+      # The name the update check looks for (docs/adr/0012-update-check-from-github-releases.md).
+      APK: doomlings-atlas-${{ github.ref_name }}.apk
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0 # git-cliff reads the commits since the previous tag
           persist-credentials: false
+      # Before the build, so a third-party action never runs next to the signed APK.
+      - uses: orhun/git-cliff-action@a9a95522b26fe6403f7bb24031f21fb573d0f5ff # v4.9.1
+        with:
+          args: --latest --strip header --output release-notes.md
       - uses: gradle/actions/wrapper-validation@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
       - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
         with:
@@ -40,24 +47,22 @@ jobs:
           STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
         run: |
+          trap 'rm -f "$RUNNER_TEMP/release.p12"' EXIT
           printf '%s' "$KEYSTORE" | base64 -d > "$RUNNER_TEMP/release.p12"
           ./gradlew assembleRelease -Patlas.versionName="${GITHUB_REF_NAME#v}" \
             -Patlas.release.storeFile="$RUNNER_TEMP/release.p12" \
             -Patlas.release.storePassword="$STORE_PASSWORD" -Patlas.release.keyAlias="$KEY_ALIAS"
-          rm "$RUNNER_TEMP/release.p12"
+      # Without the key's properties Gradle builds an unsigned APK, which this step rejects.
       - name: Check the signature and name the APK
         run: |
           apksigner=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)/apksigner
-          "$apksigner" verify --print-certs app/build/outputs/apk/release/app-release.apk
-          mv app/build/outputs/apk/release/app-release.apk "doomlings-atlas-$GITHUB_REF_NAME.apk"
-      - uses: orhun/git-cliff-action@a9a95522b26fe6403f7bb24031f21fb573d0f5ff # v4.9.1
-        with:
-          args: --latest --strip header --output release-notes.md
+          mv app/build/outputs/apk/release/app-release.apk "$APK"
+          "$apksigner" verify --print-certs "$APK"
       - name: Create the draft Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" "doomlings-atlas-$GITHUB_REF_NAME.apk" \
+          gh release create "$GITHUB_REF_NAME" "$APK" \
             --draft --verify-tag --title "${GITHUB_REF_NAME#v}" --notes-file release-notes.md
       - if: failure()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
