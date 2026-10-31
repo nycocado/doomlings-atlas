@@ -5,6 +5,7 @@ import dev.nycocado.atlas.compendium.kind
 
 // What a card shows, decided once for the card detail, the compendium's card thumb and its search.
 data class CardFace(
+    val name: String,
     val facts: List<CardFact>,
     // null for a compass star and for cards without one.
     val faceValue: Int?,
@@ -61,22 +62,34 @@ private val token = Regex("""\s*\(\{[^}]*\}\)|\{[^}]*\}""")
 // A token is an icon, not a word to search for. A parenthesized one goes with its parentheses and the space before them.
 fun withoutTokens(text: String) = text.replace(token, "")
 
-// The text is the printed text or a translation of this card. null for a card type without a card kind, which the app
-// doesn't show.
-fun NamedCard.face(text: CardText = printedText()): CardFace? {
+// null for a card type without a card kind, which the app doesn't show.
+fun NamedCard.face(): CardFace? = face(name, effects, flavor, genePool)
+
+// A translation's flat text is one plain effect, and a Catastrophe's World's End another. Its Gene Pool is in its text.
+internal fun NamedCard.face(text: CardText): CardFace? =
+    face(
+        text.name,
+        listOfNotNull(
+            text.effect?.let { Effect(text = it) },
+            text.worldsEnd?.let { Effect(EffectKind.WorldsEnd, it) },
+        ),
+        text.flavor,
+        null,
+    )
+
+private fun NamedCard.face(
+    name: String,
+    effects: List<Effect>,
+    flavor: String?,
+    genePool: Int?,
+): CardFace? {
     val kind = kind ?: return null
     val trait = this as? Trait
     val trinket = this as? Trinket
-    // A translation's flat text is one plain effect, and a Catastrophe's World's End another.
-    val effects =
-        text.effects
-            ?: listOfNotNull(
-                text.effect?.let { Effect(text = it) },
-                text.worldsEnd?.let { Effect(EffectKind.WorldsEnd, it) },
-            )
     val sections =
-        effects.map { CardSection.Effect(it.text, it.kind) } + listOfNotNull(text.flavor?.let(CardSection::Flavor))
+        effects.map { CardSection.Effect(it.text, it.kind) } + listOfNotNull(flavor?.let(CardSection::Flavor))
     return CardFace(
+        name,
         buildList {
             trait?.colors?.ifEmpty { listOf(null) }?.forEach { add(CardFact.Color(it)) }
             add(CardFact.Type(kind))
@@ -86,8 +99,8 @@ fun NamedCard.face(text: CardText = printedText()): CardFace? {
         },
         trait?.points,
         sections,
-        text.genePool,
+        genePool,
         trinket?.value,
-        listOf(text.name) + sections.filterIsInstance<CardSection.Effect>().map { withoutTokens(it.text) },
+        listOf(name) + sections.filterIsInstance<CardSection.Effect>().map { withoutTokens(it.text) },
     )
 }

@@ -60,30 +60,41 @@ class CardTranslationTest {
         )
 
     @Test
-    fun aTranslatedCardGivesItsTranslatedText() {
+    fun aCardWithATranslationShowsItInThatLanguage() {
+        val face = translations.face(trait, CardLanguage.Portuguese)
+
+        assertEquals("Venenoso", face?.name)
         assertEquals(
-            CardText("Venenoso", "Roube 1 carta.", "Ai.", null),
-            translations.text(trait, CardLanguage.Portuguese),
+            listOf(CardSection.Effect("Roube 1 carta."), CardSection.Flavor("Ai.")),
+            face?.sections,
         )
     }
 
     @Test
-    fun aCatastrophesWorldsEndIsTranslated() {
-        assertEquals("Incolores valem 2.", translations.text(catastrophe, CardLanguage.Portuguese).worldsEnd)
+    fun aCatastrophesWorldsEndIsItsOwnSection() {
+        assertEquals(
+            listOf(
+                CardSection.Effect("-1 Reserva"),
+                CardSection.Effect("Incolores valem 2.", EffectKind.WorldsEnd),
+            ),
+            translations.face(catastrophe, CardLanguage.Portuguese)?.sections,
+        )
     }
 
     @Test
-    fun aCardWithoutThatLanguageGivesItsPrintedTextAndDoesNotListTheLanguage() {
-        assertEquals(plain.printedText(), translations.text(plain, CardLanguage.Portuguese))
-        assertEquals(trait.printedText(), translations.text(trait, CardLanguage.Spanish))
+    fun aCardWithoutThatLanguageShowsItsPrintedTextAndDoesNotListTheLanguage() {
+        assertEquals(plain.face(), translations.face(plain, CardLanguage.Portuguese))
+        assertEquals(trait.face(), translations.face(trait, CardLanguage.Spanish))
         assertEquals(listOf(CardLanguage.English), translations.languages(plain))
         assertEquals(listOf(CardLanguage.English, CardLanguage.Portuguese), translations.languages(trait))
     }
 
     @Test
-    fun englishGivesThePrintedTextEvenWhenATranslationExists() {
-        assertEquals("AI Takeover", translations.text(catastrophe, CardLanguage.English).name)
-        assertEquals(catastrophe.effects, translations.text(catastrophe, CardLanguage.English).effects)
-        assertEquals(-1, translations.text(catastrophe, CardLanguage.English).genePool)
+    fun englishShowsThePrintedTextEvenWhenATranslationExists() {
+        val face = translations.face(catastrophe, CardLanguage.English)
+
+        assertEquals("AI Takeover", face?.name)
+        assertEquals(listOf(CardSection.Effect("Colorless worth 2.", EffectKind.WorldsEnd)), face?.sections)
+        assertEquals(-1, face?.genePool)
     }
 }

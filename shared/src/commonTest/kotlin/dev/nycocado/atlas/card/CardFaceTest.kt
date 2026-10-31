@@ -185,7 +185,15 @@ class CardFaceTest {
     @Test
     fun aTranslationsFlatTextIsOnePlainSectionAndItsWorldsEndAnother() {
         val face =
-            aiTakeover.face(CardText("Tomada pela IA", "-1 Reserva\n\nDescarte.", worldsEnd = "Incolores valem 2."))
+            CardTranslations(
+                mapOf(
+                    CardLanguage.Portuguese to
+                        mapOf(
+                            aiTakeover.id to
+                                CardText("Tomada pela IA", "-1 Reserva\n\nDescarte.", worldsEnd = "Incolores valem 2."),
+                        ),
+                ),
+            ).face(aiTakeover, CardLanguage.Portuguese)
 
         assertEquals(
             listOf(
@@ -200,9 +208,16 @@ class CardFaceTest {
     @Test
     fun aTranslationFillsTheSectionsAndSearch() {
         val face =
-            confusion.face(
-                CardText("Confusão", flavor = "E você pode se perguntar: \"Por que este trait existe?"),
-            )
+            CardTranslations(
+                mapOf(
+                    CardLanguage.Portuguese to
+                        mapOf(
+                            confusion.id to
+                                CardText("Confusão", flavor = "E você pode se perguntar: \"Por que este trait existe?"),
+                        ),
+                ),
+            ).face(confusion, CardLanguage.Portuguese)
+        assertEquals("Confusão", face?.name)
         assertEquals(
             listOf(CardSection.Flavor("E você pode se perguntar: \"Por que este trait existe?")),
             face?.sections,
