@@ -37,32 +37,78 @@ sealed interface CardFact {
     ) : CardFact
 }
 
-// One block of the card detail's text, with the lines the card hangs on it. The app writes the numbers and the kind's
-// label in the card language.
+// One block of the card detail's text: the Gene Pool, an effect or a Trinket's Value, in that order. The app writes the
+// numbers and the kind's name in the card language.
 data class CardBlock(
-    // null for the empty block of a card with only a Gene Pool or a flavor, and for a plain effect.
-    val kind: EffectKind?,
-    val display: KindDisplay,
-    // Without tokens. Null for the empty block.
-    val text: String?,
-    // The first block's "+N Gene Pool" line.
-    val genePool: Int? = null,
-    // The last block's Trinket Value.
-    val value: Int? = null,
+    // null for the block of a card with only a flavor.
+    val content: BlockContent?,
     // The last block's flavor.
     val flavor: String? = null,
     // The block the card detail hangs the card language selector on.
     val selector: Boolean = false,
 )
 
-enum class KindDisplay {
-    // Above the text, as World's End.
-    Heading,
+sealed interface BlockContent {
+    data class GenePool(
+        val genePool: Int,
+    ) : BlockContent
 
-    // Written into the text as "Label:" before it.
-    Label,
-    None,
+    // No kind is a plain effect.
+    data class Effect(
+        val kind: EffectKind?,
+        val text: List<TextPart>,
+    ) : BlockContent
+
+    data class Value(
+        val value: Int,
+    ) : BlockContent
 }
+
+sealed interface TextPart {
+    data class Words(
+        val text: String,
+    ) : TextPart
+
+    data class Icon(
+        val token: Token,
+    ) : TextPart
+}
+
+// The tokens of the card data, by the name in braces.
+enum class Token(
+    val code: String,
+) {
+    Action("action"),
+    Attachment("attachment"),
+    DropOfLife("drop-of-life"),
+    WorldsEnd("worlds-end"),
+    Compass("compass"),
+    Coral("coral"),
+    Fish("fish"),
+    Shell("shell"),
+    Mythling("mythling"),
+    Dinoling("dinoling"),
+    Techling("techling"),
+    Deepling("deepling"),
+    Moonling("moonling"),
+    Glitterling("glitterling"),
+}
+
+// The closing brace is escaped too: Android's ICU regex rejects a lone "}", which the JVM's accepts.
+private val braces = Regex("""\{([^}]*)\}""")
+
+// An unknown token stays as written; the card data test rules them out.
+private fun parts(text: String): List<TextPart> =
+    buildList {
+        var at = 0
+        for (match in braces.findAll(text)) {
+            val token = Token.entries.find { it.code == match.groupValues[1] } ?: continue
+            if (match.range.first > at) add(TextPart.Words(text.substring(at, match.range.first)))
+            add(TextPart.Icon(token))
+            at = match.range.last + 1
+        }
+        if (at < text.length) add(TextPart.Words(text.substring(at)))
+    }
 
 private val token = Regex("""\s*\(\{[^}]*\}\)|\{[^}]*\}""")
 
@@ -112,21 +158,12 @@ internal fun NamedCard.blocks(
     flavor: String?,
     genePool: Int?,
 ): List<CardBlock> {
-    val shown = effects.ifEmpty { if (flavor != null || genePool != null) listOf(null) else emptyList() }
-    return shown.mapIndexed { index, effect ->
-        val last = index == shown.lastIndex
-        CardBlock(
-            effect?.kind,
-            when {
-                effect?.kind == EffectKind.WorldsEnd -> KindDisplay.Heading
-                effect?.kind?.labelOf != null -> KindDisplay.Label
-                else -> KindDisplay.None
-            },
-            effect?.let { withoutTokens(it.text) },
-            genePool = genePool.takeIf { index == 0 },
-            value = (this as? Trinket)?.value.takeIf { last },
-            flavor = flavor.takeIf { last },
-            selector = index == 0,
-        )
+    val contents =
+        listOfNotNull(genePool?.let(BlockContent::GenePool)) +
+            effects.map { BlockContent.Effect(it.kind, parts(it.text)) } +
+            listOfNotNull((this as? Trinket)?.value?.let(BlockContent::Value))
+    val shown: List<BlockContent?> = contents.ifEmpty { if (flavor != null) listOf(null) else emptyList() }
+    return shown.mapIndexed { index, content ->
+        CardBlock(content, flavor.takeIf { index == shown.lastIndex }, selector = index == 0)
     }
 }

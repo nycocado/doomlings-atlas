@@ -65,7 +65,7 @@ class CardTranslationTest {
 
         assertEquals("Venenoso", face?.name)
         assertEquals(
-            listOf(CardBlock(null, KindDisplay.None, "Roube 1 carta.", flavor = "Ai.", selector = true)),
+            listOf(effectBlock(null, "Roube 1 carta.", flavor = "Ai.", selector = true)),
             face?.blocks,
         )
     }
@@ -74,8 +74,9 @@ class CardTranslationTest {
     fun aTranslatedEffectKeepsTheKindOfItsCardsEffectAndTheCardsGenePool() {
         assertEquals(
             listOf(
-                CardBlock(null, KindDisplay.None, "Descarte.", genePool = -1, selector = true),
-                CardBlock(EffectKind.WorldsEnd, KindDisplay.Heading, "Incolores valem 2."),
+                CardBlock(BlockContent.GenePool(-1), selector = true),
+                effectBlock(null, "Descarte."),
+                effectBlock(EffectKind.WorldsEnd, "Incolores valem 2."),
             ),
             translations.face(catastrophe, CardLanguage.Portuguese)?.blocks,
         )
@@ -96,8 +97,9 @@ class CardTranslationTest {
         assertEquals("AI Takeover", face?.name)
         assertEquals(
             listOf(
-                CardBlock(null, KindDisplay.None, "Discard.", genePool = -1, selector = true),
-                CardBlock(EffectKind.WorldsEnd, KindDisplay.Heading, "Colorless worth 2."),
+                CardBlock(BlockContent.GenePool(-1), selector = true),
+                effectBlock(null, "Discard."),
+                effectBlock(EffectKind.WorldsEnd, "Colorless worth 2."),
             ),
             face?.blocks,
         )

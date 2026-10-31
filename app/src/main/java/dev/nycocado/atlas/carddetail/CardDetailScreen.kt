@@ -69,13 +69,9 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.text
-import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.intl.LocaleList
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
@@ -93,10 +89,8 @@ import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardText
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
-import dev.nycocado.atlas.card.Citation
 import dev.nycocado.atlas.card.Effect
 import dev.nycocado.atlas.card.EffectKind
-import dev.nycocado.atlas.card.KindDisplay
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
@@ -109,7 +103,6 @@ import dev.nycocado.atlas.ui.component.RoundButton
 import dev.nycocado.atlas.ui.component.UnofficialFooter
 import dev.nycocado.atlas.ui.component.pointsText
 import dev.nycocado.atlas.ui.component.signed
-import dev.nycocado.atlas.ui.theme.AtlasColors
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Radius
@@ -239,27 +232,14 @@ fun CardDetailContent(
                         selector?.let { Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd) { it() } }
                     }
                     face.blocks.forEach { block ->
-                        val kindLabel = block.kind?.label?.let { cardString(it, language) }
-                        val value = block.value?.let { cardString(R.string.value_line, language, signed(it)) }
-                        val inlineLabel =
-                            kindLabel.takeIf { block.display == KindDisplay.Label }?.let { "$it:\n" }.orEmpty()
-                        Bubble(
-                            block.text?.let { inlineLabel + it + value?.let { v -> "\n\n$v" }.orEmpty() },
-                            block.flavor,
+                        BlockBubble(
+                            block,
                             language,
                             card,
+                            face.colors.firstOrNull(),
                             library,
                             onCardClick,
-                            label = kindLabel.takeIf { block.display == KindDisplay.Heading },
-                            genePool =
-                                block.genePool?.let {
-                                    cardString(
-                                        R.string.gene_pool_line,
-                                        language,
-                                        signedPlus(it),
-                                    )
-                                },
-                            selector = selector.takeIf { block.selector },
+                            selector.takeIf { block.selector },
                         )
                     }
                 }
@@ -403,108 +383,11 @@ private fun PointsBadge(
     }
 }
 
-// The label a kind has, other than the plain timings.
-private val EffectKind.label: Int?
-    @StringRes get() =
-        when (this) {
-            EffectKind.WorldsEnd -> R.string.worlds_end
-            EffectKind.AwesomePower -> R.string.effect_awesome_power
-            EffectKind.PocketObjective -> R.string.effect_pocket_objective
-            EffectKind.Rush -> R.string.effect_rush
-            EffectKind.Mutate -> R.string.effect_mutate
-            EffectKind.Echo -> R.string.effect_echo
-            EffectKind.Cloak -> R.string.effect_cloak
-            EffectKind.Adapt -> R.string.effect_adapt
-            EffectKind.Exchange -> R.string.effect_exchange
-            EffectKind.Buy -> R.string.effect_buy
-            EffectKind.Collect -> R.string.effect_collect
-            EffectKind.Bargain -> R.string.effect_bargain
-            EffectKind.Action, EffectKind.PlayWhen, EffectKind.Note -> null
-        }
-
-// The printed line is "+N Gene Pool", and "+0" when it only restates the pool.
-private fun signedPlus(n: Int) = if (n < 0) signed(n) else "+$n"
-
-// What a bubble shows, as one value so a language change crossfades all of it.
-private data class BubbleText(
-    val label: String?,
-    val text: String?,
-    val flavor: String?,
-    val genePool: String?,
-    val language: CardLanguage,
-)
-
-@Composable
-private fun Bubble(
-    text: String?,
-    flavor: String?,
-    language: CardLanguage,
-    card: Card,
-    library: CardLibrary,
-    onCardClick: (String) -> Unit,
-    label: String? = null,
-    genePool: String? = null,
-    selector: (@Composable () -> Unit)? = null,
-) {
-    val theme = AtlasTheme.colors
-    // The selector hangs above the bubble, so the bubble keeps it as far from the pills as the pills are from each other.
-    Box(Modifier.padding(top = 6.dp + if (selector != null) Space.s2 else 0.dp)) {
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .sticker(Radius.md, theme.surfaceSticker, theme.outline, shadow = Shadow.stickerLg)
-                .padding(start = 18.dp, end = 18.dp, top = 18.dp, bottom = Space.s4),
-        ) {
-            // The bubble wraps this, so it resizes with the crossfade.
-            AnimatedContent(
-                BubbleText(label, text, flavor, genePool, language),
-                transitionSpec = LanguageChange,
-                label = "bubble text",
-            ) { shown ->
-                Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(Space.s3)) {
-                    shown.label?.let {
-                        BasicText(
-                            tagged(it.uppercase(), shown.language),
-                            style = AtlasTypography.labelSm.copy(color = theme.onSurfaceVariant),
-                        )
-                    }
-                    shown.genePool?.let {
-                        BasicText(
-                            tagged(it, shown.language),
-                            style = AtlasTypography.bodyLg.copy(color = theme.onSurface),
-                        )
-                    }
-                    shown.text?.let {
-                        BasicText(
-                            tagged(it, shown.language, library.citations(card, it), onCardClick) { cited ->
-                                citedStyle(cited, theme)
-                            },
-                            style = AtlasTypography.bodyLg.copy(color = theme.onSurface),
-                        )
-                    }
-                    shown.flavor?.let {
-                        BasicText(
-                            tagged(it, shown.language),
-                            style =
-                                AtlasTypography.bodyMd.copy(
-                                    color = theme.onSurfaceVariant,
-                                    fontStyle = FontStyle.Italic,
-                                ),
-                        )
-                    }
-                }
-            }
-        }
-        // Hangs on the bubble's top-right edge, 18dp above it and 14dp in, as the design sketch has it.
-        selector?.let { Box(Modifier.align(Alignment.TopEnd).offset(x = (-14).dp, y = (-18).dp)) { it() } }
-    }
-}
-
 // Switching the card language is the player's own action, so it animates, with the duration and easing of the cards
 // moving in the compendium list. Compose scales it to zero when Android's animations are removed.
 internal const val LANGUAGE_CHANGE_MILLIS = 350
 
-private val LanguageChange: AnimatedContentTransitionScope<*>.() -> ContentTransform = {
+internal val LanguageChange: AnimatedContentTransitionScope<*>.() -> ContentTransform = {
     fadeIn(tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing)) togetherWith
         fadeOut(tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing)) using
         SizeTransform(clip = false) { _, _ -> tween(LANGUAGE_CHANGE_MILLIS, easing = FastOutSlowInEasing) }
@@ -532,31 +415,11 @@ internal fun cardString(
     }
 }
 
-// A cited trait's name in its first color, like a highlighter. Trait colors only mean a card's color, so an age or a
-// catastrophe gets the dots of its own top panel instead.
-private fun citedStyle(
-    cited: NamedCard,
-    theme: AtlasColors,
-): SpanStyle =
-    (cited as? Trait)
-        ?.let { theme.trait(it.colors.firstOrNull()) }
-        ?.let { SpanStyle(background = it.fill, color = it.onFill) }
-        ?: SpanStyle(background = theme.outlineSoft, color = theme.onSurface)
-
 // Text tagged with its language, so TalkBack reads a translation in its own language, not the interface's.
 internal fun tagged(
     text: String,
     language: CardLanguage,
-    citations: List<Citation> = emptyList(),
-    onCardClick: (String) -> Unit = {},
-    citedStyle: (NamedCard) -> SpanStyle = { SpanStyle() },
-) = buildAnnotatedString {
-    withStyle(SpanStyle(localeList = LocaleList(language.code))) { append(text) }
-    for ((range, cited) in citations) {
-        val link = TextLinkStyles(citedStyle(cited).copy(textDecoration = TextDecoration.Underline))
-        addLink(LinkAnnotation.Clickable(cited.id, link) { onCardClick(cited.id) }, range.first, range.last + 1)
-    }
-}
+) = buildAnnotatedString { withStyle(SpanStyle(localeList = LocaleList(language.code))) { append(text) } }
 
 @PreviewLightDark
 @Composable
@@ -640,14 +503,28 @@ internal fun TranslatedTraitSample() =
 @Composable
 internal fun TranslatedTraitDetailPreview() = AtlasTheme { TranslatedTraitSample() }
 
-private val CatastropheEffects =
-    listOf(Effect(text = "Effect text."), Effect(EffectKind.WorldsEnd, "World's End text."))
+// AI Takeover as in assets/doomlings/classic/cards.json, with its Gene Pool and World's End.
+private val AiTakeover =
+    Catastrophe(
+        "classic/catastrophes/ai-takeover",
+        "classic",
+        "",
+        "AI Takeover",
+        listOf(
+            Effect(text = "Discard all but 1 card from your hand."),
+            Effect(
+                EffectKind.WorldsEnd,
+                "Each colorless trait is now worth 2. Ignore all colorless trait effects.\n\n(Excluding dominants.)",
+            ),
+        ),
+        -1,
+    )
 
 @PreviewLightDark
 @Composable
 internal fun TranslatedCatastropheDetailPreview() =
     AtlasTheme {
-        val catastrophe = Catastrophe("c", "classic", "", "A catastrophe", CatastropheEffects, null)
+        val catastrophe = AiTakeover
         BlankCardImages {
             CardDetailContent(
                 catastrophe,
@@ -661,8 +538,12 @@ internal fun TranslatedCatastropheDetailPreview() =
                                 mapOf(
                                     catastrophe.id to
                                         CardText(
-                                            "Uma catástrofe",
-                                            listOf("Texto do efeito.", "Texto do Fim do Mundo."),
+                                            "Domínio da IA",
+                                            listOf(
+                                                "Descarte todas as cartas da sua mão, menos 1.",
+                                                "Cada trait incolor agora vale 2. " +
+                                                    "Ignore todos os efeitos de traits incolores.\n\n(Exceto dominantes.)",
+                                            ),
                                         ),
                                 ),
                         ),
@@ -679,7 +560,7 @@ internal fun CatastropheDetailPreview() =
     AtlasTheme {
         BlankCardImages {
             CardDetailContent(
-                Catastrophe("c", "classic", "", "A catastrophe", CatastropheEffects, null),
+                AiTakeover,
                 tilt = -3f,
                 onBack = {},
                 onAboutClick = {},
@@ -718,3 +599,52 @@ internal fun CitedCardDetailPreview() =
             )
         }
     }
+
+// Magic Beans as in assets/doomlings/imaginary-ends/cards.json: an Action, then a note with a token.
+private val MagicBeans =
+    Trait(
+        "imaginary-ends/traits/magic-beans",
+        "imaginary-ends",
+        "",
+        "Magic Beans",
+        "Who knows what these could grow into?",
+        listOf(
+            Effect(EffectKind.Action, "Draw 1. If its face value is 1, play it and repeat."),
+            Effect(EffectKind.Note, "Ignore actions ({action})."),
+        ),
+        null,
+        1,
+        listOf(CardColor.Green),
+        false,
+        listOf("Glitterling"),
+        listOf(TraitIcon.Action),
+    )
+
+@PreviewLightDark
+@Composable
+internal fun ActionNoteTokenDetailPreview() = AtlasTheme { CardDetailSample(card = MagicBeans) }
+
+// Carnivore as in assets/doomlings/legends-of-enderas/cards.json: its Dinoling token has no symbol in the app yet (#148),
+// so it shows its name.
+private val Carnivore =
+    Trait(
+        "legends-of-enderas/traits/carnivore",
+        "legends-of-enderas",
+        "",
+        "Carnivore",
+        "A healthy, balanced meal includes meat with two sides of meat.",
+        listOf(
+            Effect(EffectKind.Action, "Discard all Dinolings ({dinoling}) from your trait pile."),
+            Effect(EffectKind.Note, "(Excluding this one.)"),
+        ),
+        null,
+        6,
+        listOf(CardColor.Green),
+        false,
+        listOf("Dinoling"),
+        listOf(TraitIcon.Action),
+    )
+
+@PreviewLightDark
+@Composable
+internal fun UndrawnTokenDetailPreview() = AtlasTheme { CardDetailSample(card = Carnivore) }

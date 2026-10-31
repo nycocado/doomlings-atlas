@@ -29,6 +29,8 @@ val testPortuguese =
                 "Era de Drácula",
                 listOf("Descarte 1 carta.", "Se Vampirism estiver na sua pilha de traits, roube 1 carta aleatória."),
             ),
+        "classic/traits/self-replicating" to
+            CardText("Autocópia", listOf("Jogue 1 carta. Ignore a ação dela ({action}).", "Volte para a mão.")),
         "classic/catastrophes/ice-age" to
             CardText("Era Glacial", listOf("Descarte cartas da mão.", "Menos pontos vermelhos.")),
     )
