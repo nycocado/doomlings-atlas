@@ -37,8 +37,10 @@ android {
             libs.versions.compileSdk
                 .get()
                 .toInt()
-        versionCode = 1
-        versionName = "0.0.0"
+        // The release workflow passes the tag's version (docs/development.md#releases).
+        val version = providers.gradleProperty("atlas.versionName").orNull
+        versionName = version ?: "0.0.0"
+        versionCode = version?.let(::versionCodeOf) ?: 1
     }
 
     // The release key never enters the repo: the maintainer's ~/.gradle/gradle.properties (or the release workflow)
@@ -289,6 +291,21 @@ abstract class PackageCards : DefaultTask() {
             into(output.dir("cards"))
         }
     }
+}
+
+// 1.2.3 → 10203: the minor and patch take two digits each, so every version gets a higher code. A version code must
+// be positive, which rules out 0.0.0.
+fun versionCodeOf(version: String): Int {
+    val parts =
+        Regex("""(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)""")
+            .matchEntire(version)
+            ?.groupValues
+            ?.drop(1)
+            ?.map(String::toInt)
+    require(parts != null && parts[1] < 100 && parts[2] < 100 && parts.any { it > 0 }) {
+        "atlas.versionName must be X.Y.Z without leading zeros, above 0.0.0, with the minor and patch below 100: $version"
+    }
+    return parts[0] * 10000 + parts[1] * 100 + parts[2]
 }
 
 androidComponents.onVariants { variant ->
