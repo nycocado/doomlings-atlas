@@ -37,12 +37,13 @@ jobs:
       - name: Build the signed APK
         env:
           KEYSTORE: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
-          ORG_GRADLE_PROJECT_atlas.release.storeFile: ${{ runner.temp }}/release.p12
-          ORG_GRADLE_PROJECT_atlas.release.storePassword: ${{ secrets.RELEASE_STORE_PASSWORD }}
-          ORG_GRADLE_PROJECT_atlas.release.keyAlias: ${{ secrets.RELEASE_KEY_ALIAS }}
+          STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
         run: |
           printf '%s' "$KEYSTORE" | base64 -d > "$RUNNER_TEMP/release.p12"
-          ./gradlew assembleRelease -Patlas.versionName="${GITHUB_REF_NAME#v}"
+          ./gradlew assembleRelease -Patlas.versionName="${GITHUB_REF_NAME#v}" \
+            -Patlas.release.storeFile="$RUNNER_TEMP/release.p12" \
+            -Patlas.release.storePassword="$STORE_PASSWORD" -Patlas.release.keyAlias="$KEY_ALIAS"
           rm "$RUNNER_TEMP/release.p12"
       - name: Check the signature and name the APK
         run: |
