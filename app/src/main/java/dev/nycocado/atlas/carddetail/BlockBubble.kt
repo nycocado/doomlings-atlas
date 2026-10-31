@@ -119,9 +119,7 @@ internal fun BlockBubble(
                         }
 
                         is BlockContent.Effect -> {
-                            content.kind?.title?.let {
-                                KindHeading(it, content.kind?.symbol, shownLanguage, actionColor, content.ink)
-                            }
+                            KindHeading(content, shownLanguage, actionColor)
                             EffectText(
                                 content.text,
                                 note = content.kind == EffectKind.Note,
@@ -164,15 +162,15 @@ private fun signedPlus(n: Int) = if (n < 0) signed(n) else "+$n"
 
 @Composable
 private fun KindHeading(
-    @StringRes title: Int,
-    @DrawableRes symbol: Int?,
+    effect: BlockContent.Effect,
     language: CardLanguage,
     actionColor: Color,
-    ink: Ink?,
 ) {
+    val title = effect.kind?.title ?: return
+    val ink = effect.ink
     val theme = AtlasTheme.colors
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-        symbol?.let { Symbol(it, Modifier.height(16.dp), actionColor) }
+        effect.kind?.symbol?.let { Symbol(it, Modifier.height(16.dp), actionColor) }
         BasicText(
             tagged(cardString(title, language).uppercase(), language),
             style =
@@ -349,8 +347,7 @@ private fun EffectText(
     )
 }
 
-// The colors an ink is drawn with: the rainbow's are the four trait inks in the order of the card, red, green, blue,
-// purple.
+// The colors an ink is drawn with, the rainbow's in the order of the card.
 internal fun AtlasColors.inkColors(ink: Ink): List<Color> =
     when (ink) {
         Ink.Red -> listOf(traitRed.ink)
@@ -363,7 +360,7 @@ internal fun AtlasColors.inkColors(ink: Ink): List<Color> =
     }
 
 private fun AtlasColors.brush(ink: Ink): Brush =
-    inkColors(ink).let { if (ink == Ink.Rainbow) RainbowBrush(it) else SolidColor(it.single()) }
+    inkColors(ink).let { if (it.size > 1) RainbowBrush(it) else SolidColor(it.single()) }
 
 // A brush in a span spreads over the whole text, so this one draws its gradient across the extent of its span, from
 // its leftmost to its rightmost letter, which the text's layout gives it before the text is drawn. Until then, across

@@ -214,7 +214,6 @@ internal fun NamedCard.blocks(
     }
 }
 
-// A Catastrophe prints its World's End in yellow and a Trinket its Pocket Objective; a trait's World's End is in the
-// normal text color.
+// Unlike a Catastrophe's, a trait's World's End is printed in the normal text color.
 private fun NamedCard.effectInk(kind: EffectKind?): Ink? =
     Ink.Yellow.takeIf { kind == EffectKind.PocketObjective || (this is Catastrophe && kind == EffectKind.WorldsEnd) }

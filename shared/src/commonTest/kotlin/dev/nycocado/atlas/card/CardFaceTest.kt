@@ -354,6 +354,7 @@ class CardFaceTest {
 
     @Test
     fun everyInkOfTheCardDataHasItsName() {
+        // Written out apart from Ink, like knownInks in the data tests, so renaming an ink in the code fails here.
         val inks = listOf("red", "blue", "green", "purple", "colorless", "rainbow", "yellow")
 
         assertEquals(
