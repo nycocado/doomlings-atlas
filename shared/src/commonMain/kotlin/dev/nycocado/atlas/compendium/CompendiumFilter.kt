@@ -34,7 +34,7 @@ fun List<Card>.filterCompendium(
             card.kind == filter.kind &&
                 (
                     filter.colors.isEmpty() || card !is Trait ||
-                        card.colors.ifEmpty { listOf(null) }.any { it in filter.colors }
+                        card.colorsOrColorless.any { it in filter.colors }
                 )
         }.mapNotNull { card ->
             val rank =
@@ -64,7 +64,7 @@ private fun matchRank(
     searchable: List<String>,
 ): MatchRank? {
     val texts = searchable.map(::normalize)
-    if (texts.any { query in it }) return MatchRank.Exact
+    if (texts.any { it.containsQuery(query) }) return MatchRank.Exact
     val queryWords = words(query).ifEmpty { return null }
     val cardWords = texts.flatMapIndexed { index, text -> words(text).map { it to (index == 0) } }
     return when {
@@ -76,6 +76,20 @@ private fun matchRank(
 
         else -> null
     }
+}
+
+// A substring, but a number at either end of the query doesn't match inside a longer number.
+private fun String.containsQuery(query: String): Boolean {
+    var from = indexOf(query)
+    while (from >= 0) {
+        val end = from + query.length
+        val splitsNumber =
+            (query.first().isDigit() && getOrNull(from - 1)?.isDigit() == true) ||
+                (query.last().isDigit() && getOrNull(end)?.isDigit() == true)
+        if (!splitsNumber) return true
+        from = indexOf(query, from + 1)
+    }
+    return false
 }
 
 private fun String.hasDigit() = any(Char::isDigit)

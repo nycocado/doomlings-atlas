@@ -307,7 +307,9 @@ class CompendiumFilterTest {
     fun numbersMatchExactly() {
         val cards = listOf(trait("Aaa", effect = "Draw 12 cards."))
         assertEquals(listOf("Aaa"), found(cards, "12 cards"))
+        assertEquals(emptyList(), found(cards, "1"))
         assertEquals(emptyList(), found(cards, "1 cards"))
+        assertEquals(emptyList(), found(cards, "2 cards"))
         assertEquals(emptyList(), found(cards, "13 cards"))
     }
 

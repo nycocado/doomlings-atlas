@@ -64,7 +64,7 @@ internal fun Pills(
                     ) { TraitGlyph(fact.color, palette.onFill, 18.dp) }
                 }
 
-                is CardFact.Type -> {
+                is CardFact.Kind -> {
                     Pill(stringResource(fact.kind.label), theme.surfaceSticker, theme.onSurface)
                 }
 
@@ -212,7 +212,7 @@ internal fun PillsPreview() =
                     "Pills",
                     listOf(
                         CardFact.Color(CardColor.Blue),
-                        CardFact.Type(CardKind.Trait),
+                        CardFact.Kind(CardKind.Trait),
                         CardFact.Dominant,
                         CardFact.Icon(TraitIcon.Action),
                         CardFact.Icon(TraitIcon.WorldsEnd),

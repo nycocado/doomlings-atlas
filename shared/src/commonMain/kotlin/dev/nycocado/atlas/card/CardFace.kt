@@ -22,7 +22,7 @@ sealed interface CardFact {
         val color: CardColor?,
     ) : CardFact
 
-    data class Type(
+    data class Kind(
         val kind: CardKind,
     ) : CardFact
 
@@ -51,6 +51,7 @@ data class CardBlock(
     val value: Int? = null,
     // The last block's flavor.
     val flavor: String? = null,
+    // The block the card detail hangs the card language selector on.
     val selector: Boolean = false,
 )
 
@@ -95,8 +96,8 @@ private fun NamedCard.face(
     return CardFace(
         name,
         buildList {
-            trait?.colors?.ifEmpty { listOf(null) }?.forEach { add(CardFact.Color(it)) }
-            add(CardFact.Type(kind))
+            trait?.colorsOrColorless?.forEach { add(CardFact.Color(it)) }
+            add(CardFact.Kind(kind))
             if (trait?.dominant == true) add(CardFact.Dominant)
             trait?.icons?.forEach { add(CardFact.Icon(it)) }
             trait?.subspecies?.forEach { add(CardFact.Subspecies(it)) }

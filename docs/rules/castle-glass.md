@@ -6,7 +6,7 @@ Source: [rulesheet](../../assets/doomlings/rules/castle-glass.pdf) and its [tran
 
 ## Components
 
-30 traits (7 dominants), 2 ages and 1 catastrophe. The expansion adds trait classes, with three new ones: Shells, Coral and Fish. A trait's class is at the bottom of the card. Some class cards are labelled Curious (e.g. Curious Shell) or Exotic (e.g. Exotic Fish), and are worth more.
+30 traits plus 7 dominants, 2 ages and 1 catastrophe. The expansion adds trait classes, with three new ones: Shells, Coral and Fish. A trait's class is at the bottom of the card. Some class cards are labelled Curious (e.g. Curious Shell) or Exotic (e.g. Exotic Fish), and are worth more.
 
 ## Scoring
 
