@@ -4,7 +4,7 @@ A map of the code at the level of modules and data flow. The decisions behind it
 
 ## Modules
 
-- **`shared/`** (Kotlin Multiplatform, Android its only target for now, [ADR 0001](adr/0001-kotlin-multiplatform-android-first.md)): the card model (`card/Card.kt`), decoding (`card/CardDecoding.kt`), the card face (`card/CardFace.kt`: what a card shows, its pills in order, its text sections and its searchable text) and the compendium filter (`compendium/CompendiumFilter.kt`) and the card groups that follow it (`compendium/CardGroup.kt`: cards that share a name). Game rules and scoring go here too. No Android or Compose code; platform bits are `expect`/`actual` (accent stripping).
+- **`shared/`** (Kotlin Multiplatform, Android its only target for now, [ADR 0001](adr/0001-kotlin-multiplatform-android-first.md)): the card model (`card/Card.kt`), decoding (`card/CardDecoding.kt`), the card face (`card/CardFace.kt`: what a card shows, its pills in order, its text blocks and its searchable text) and the compendium filter (`compendium/CompendiumFilter.kt`) and the card groups that follow it (`compendium/CardGroup.kt`: cards that share a name). Game rules and scoring go here too. No Android or Compose code; platform bits are `expect`/`actual` (accent stripping).
 - **`app/`** (Android, Jetpack Compose, Hilt): screens, navigation, the theme and the build tasks that package card data.
 - **`assets/doomlings/`**: card data and images, © Doomlings LLC ([NOTICE](../assets/doomlings/NOTICE.md)). Outside both modules on purpose.
 - **`design/`**: design tokens, brand assets and prototype screens ([docs/design.md](design.md)).

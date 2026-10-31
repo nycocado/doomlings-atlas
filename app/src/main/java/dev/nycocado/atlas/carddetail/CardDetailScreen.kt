@@ -114,19 +114,18 @@ import dev.nycocado.atlas.card.CardFace
 import dev.nycocado.atlas.card.CardFact
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardLibrary
-import dev.nycocado.atlas.card.CardSection
 import dev.nycocado.atlas.card.CardText
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.Citation
 import dev.nycocado.atlas.card.Effect
 import dev.nycocado.atlas.card.EffectKind
+import dev.nycocado.atlas.card.KindDisplay
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.card.face
-import dev.nycocado.atlas.card.withoutTokens
 import dev.nycocado.atlas.cardpane.CardStatusBarIcons
 import dev.nycocado.atlas.cardpane.ListDetailLayout
 import dev.nycocado.atlas.compendium.CardKind
@@ -261,40 +260,32 @@ fun CardDetailContent(
                         } else {
                             null
                         }
-                    val effects = face.sections.filterIsInstance<CardSection.Effect>()
-                    val flavor = face.section<CardSection.Flavor>()
-                    val genePool = face.genePool?.let { cardString(R.string.gene_pool_line, language, signedPlus(it)) }
-                    val value = face.value?.let { cardString(R.string.value_line, language, signed(it)) }
-                    val hasBubble = effects.isNotEmpty() || flavor != null || genePool != null
-                    // A card with only a Gene Pool line or a flavor still has its one bubble, with no effect.
-                    val blocks: List<CardSection.Effect?> =
-                        if (hasBubble) {
-                            effects.ifEmpty {
-                                listOf(
-                                    null,
-                                )
-                            }
-                        } else {
-                            emptyList()
-                        }
                     // Without a text bubble to hang on, the selector takes its own row where the bubble would be.
-                    if (blocks.isEmpty()) {
+                    if (face.blocks.isEmpty()) {
                         selector?.let { Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.CenterEnd) { it() } }
                     }
-                    blocks.forEachIndexed { index, effect ->
-                        val kindLabel = effect?.kind?.label?.let { cardString(it, language) }
+                    face.blocks.forEach { block ->
+                        val kindLabel = block.kind?.label?.let { cardString(it, language) }
+                        val value = block.value?.let { cardString(R.string.value_line, language, signed(it)) }
+                        val inlineLabel =
+                            kindLabel.takeIf { block.display == KindDisplay.Label }?.let { "$it:\n" }.orEmpty()
                         Bubble(
-                            effect?.let {
-                                shownEffectText(it, kindLabel, value.takeIf { index == blocks.lastIndex })
-                            },
-                            flavor.takeIf { index == blocks.lastIndex },
+                            block.text?.let { inlineLabel + it + value?.let { v -> "\n\n$v" }.orEmpty() },
+                            block.flavor,
                             language,
                             card,
                             library,
                             onCardClick,
-                            label = kindLabel.takeIf { effect?.kind == EffectKind.WorldsEnd },
-                            genePool = genePool.takeIf { index == 0 },
-                            selector = selector.takeIf { index == 0 },
+                            label = kindLabel.takeIf { block.display == KindDisplay.Heading },
+                            genePool =
+                                block.genePool?.let {
+                                    cardString(
+                                        R.string.gene_pool_line,
+                                        language,
+                                        signedPlus(it),
+                                    )
+                                },
+                            selector = selector.takeIf { block.selector },
                         )
                     }
                 }
@@ -438,17 +429,6 @@ private fun PointsBadge(
     }
 }
 
-// What a block shows of an effect, as the card prints it: a label kind heads its text, the Value ends the last block,
-// and the tokens, which are for search and for the symbols of a later change, are left out.
-internal fun shownEffectText(
-    effect: CardSection.Effect,
-    kindLabel: String?,
-    value: String?,
-): String {
-    val labelled = if (effect.kind?.labelOf != null && kindLabel != null) "$kindLabel:\n" else ""
-    return labelled + withoutTokens(effect.text) + value?.let { "\n\n$it" }.orEmpty()
-}
-
 // The label a kind has, other than the plain timings.
 private val EffectKind.label: Int?
     @StringRes get() =
@@ -470,9 +450,6 @@ private val EffectKind.label: Int?
 
 // The printed line is "+N Gene Pool", and "+0" when it only restates the pool.
 private fun signedPlus(n: Int) = if (n < 0) signed(n) else "+$n"
-
-private inline fun <reified T : CardSection> CardFace.section(): String? =
-    sections.filterIsInstance<T>().firstOrNull()?.text
 
 @Composable
 private fun Pills(
