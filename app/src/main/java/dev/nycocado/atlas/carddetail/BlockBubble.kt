@@ -17,9 +17,20 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.LinearGradientShader
+import androidx.compose.ui.graphics.Shader
+import androidx.compose.ui.graphics.ShaderBrush
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
@@ -40,12 +51,16 @@ import dev.nycocado.atlas.card.CardBlock
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardLibrary
+import dev.nycocado.atlas.card.Effect
 import dev.nycocado.atlas.card.EffectKind
+import dev.nycocado.atlas.card.Ink
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.TextPart
 import dev.nycocado.atlas.card.Token
 import dev.nycocado.atlas.card.Trait
+import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.card.Trinket
+import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.ui.component.signed
 import dev.nycocado.atlas.ui.theme.AtlasColors
 import dev.nycocado.atlas.ui.theme.AtlasTheme
@@ -270,15 +285,27 @@ private fun EffectText(
     val theme = AtlasTheme.colors
     val tokens = parts.filterIsInstance<TextPart.Icon>().map { it.token }.distinct()
     val titles = tokens.associateWith { it.title(language) }
+    // Kept across recompositions, so an unchanged text stays equal and isn't laid out again.
+    val brushes = remember(parts, theme) { parts.map { (it as? TextPart.Words)?.ink?.let(theme::brush) } }
+    val rainbows = mutableListOf<Pair<IntRange, RainbowBrush>>()
     val text =
         buildAnnotatedString {
             withStyle(SpanStyle(localeList = LocaleList(language.code))) {
-                parts.forEach { part ->
+                parts.forEachIndexed { i, part ->
                     when (part) {
                         is TextPart.Words -> {
                             val start = length
                             append(part.text)
-                            for ((range, cited) in library.citations(card, part.text)) {
+                            val citations = library.citations(card, part.text)
+                            brushes[i]?.let { brush ->
+                                val span = start until length
+                                val style = SpanStyle(brush = brush)
+                                if (brush is RainbowBrush) rainbows += span to brush
+                                // A cited name keeps its citation style, which an ink drawn over it would hide.
+                                val cited = citations.map { (range, _) -> start + range.first..start + range.last }
+                                span.without(cited).forEach { addStyle(style, it.first, it.last + 1) }
+                            }
+                            for ((range, cited) in citations) {
                                 val link =
                                     TextLinkStyles(
                                         citedStyle(cited, theme).copy(textDecoration = TextDecoration.Underline),
@@ -314,9 +341,56 @@ private fun EffectText(
     BasicText(
         text,
         style = (if (note) AtlasTypography.bodyMd else AtlasTypography.bodyLg).copy(color = theme.onSurface),
+        onTextLayout = { layout ->
+            rainbows.forEach { (span, brush) ->
+                brush.extent =
+                    span.minOf { layout.getBoundingBox(it).left }..span.maxOf { layout.getBoundingBox(it).right }
+            }
+        },
         inlineContent = inline,
     )
 }
+
+// The colors an ink is drawn with: the rainbow's are the four trait inks in the order of the card, red, green, blue,
+// purple.
+internal fun AtlasColors.inkColors(ink: Ink): List<Color> =
+    when (ink) {
+        Ink.Red -> listOf(traitRed.ink)
+        Ink.Green -> listOf(traitGreen.ink)
+        Ink.Blue -> listOf(traitBlue.ink)
+        Ink.Purple -> listOf(traitPurple.ink)
+        Ink.Colorless -> listOf(traitColorless.ink)
+        Ink.Rainbow -> listOf(traitRed.ink, traitGreen.ink, traitBlue.ink, traitPurple.ink)
+    }
+
+private fun AtlasColors.brush(ink: Ink): Brush =
+    inkColors(ink).let { if (ink == Ink.Rainbow) RainbowBrush(it) else SolidColor(it.single()) }
+
+// A brush in a span spreads over the whole text, so this one draws its gradient across the extent of its span, from
+// its leftmost to its rightmost letter, which the text's layout gives it before the text is drawn. Until then, across
+// the whole text.
+private class RainbowBrush(
+    private val colors: List<Color>,
+) : ShaderBrush() {
+    // A state, so the shader the span keeps is made again once the layout sets it.
+    var extent: ClosedFloatingPointRange<Float>? by mutableStateOf(null)
+
+    override fun createShader(size: Size): Shader {
+        val (start, end) = extent?.let { it.start to it.endInclusive } ?: (0f to size.width)
+        return LinearGradientShader(Offset(start, 0f), Offset(end, 0f), colors)
+    }
+}
+
+// The parts of a range outside the given ones, which don't overlap: the standard library has no range subtraction.
+private fun IntRange.without(holes: List<IntRange>): List<IntRange> =
+    buildList {
+        var at = first
+        for (hole in holes.sortedBy { it.first }) {
+            if (hole.first > at) add(at until hole.first)
+            at = maxOf(at, hole.last + 1)
+        }
+        if (at <= last) add(at..last)
+    }
 
 // A cited trait's name in its first color, like a highlighter. Trait colors only mean a card's color, so an age or a
 // catastrophe gets the dots of its own top panel instead.
@@ -365,3 +439,64 @@ internal fun TrinketBlocksPreview() =
             AnxietyElixirBlocks.forEach { BlockBubble(it, CardLanguage.English, AnxietyElixir, color = null) }
         }
     }
+
+// Hyper-Intelligence (assets/doomlings/classic/cards.json) and Sour Grapes (overlush), verbatim, ink marks included: a
+// rainbow "Choose a color.", and blue and red words with a rainbow "color".
+private val HyperIntelligence =
+    Trait(
+        "classic/traits/hyper-intelligence",
+        "classic",
+        "",
+        "Hyper-Intelligence",
+        "E=mc stop staring at my head.",
+        listOf(
+            Effect(
+                EffectKind.WorldsEnd,
+                "[rainbow]Choose a color.[/rainbow] Opponents discard 1 trait of that color from their trait pile at " +
+                    "random.",
+            ),
+        ),
+        null,
+        4,
+        listOf(CardColor.Red),
+        true,
+        emptyList(),
+        listOf(TraitIcon.WorldsEnd),
+    )
+
+private val SourGrapes =
+    Trait(
+        "overlush/traits/sour-grapes",
+        "overlush",
+        "",
+        "Sour Grapes",
+        "A source of bad whine.",
+        listOf(
+            Effect(
+                text =
+                    "+1 for each [blue]blue[/blue] or each [red]red[/red] trait in your trait pile, whichever is the " +
+                        "lower [rainbow]color[/rainbow] count.\n\n(If there's a tie, pick 1!)",
+            ),
+        ),
+        null,
+        1,
+        listOf(CardColor.Blue, CardColor.Red),
+        false,
+        emptyList(),
+        listOf(TraitIcon.DropOfLife),
+    )
+
+@Composable
+internal fun InkBlocksSample() =
+    Column(
+        Modifier.background(AtlasTheme.colors.surface).padding(Space.s5),
+        verticalArrangement = Arrangement.spacedBy(14.dp),
+    ) {
+        listOf(HyperIntelligence, SourGrapes).forEach { trait ->
+            trait.face()?.blocks?.forEach { BlockBubble(it, CardLanguage.English, trait, trait.colors.firstOrNull()) }
+        }
+    }
+
+@PreviewLightDark
+@Composable
+internal fun InkBlocksPreview() = AtlasTheme { InkBlocksSample() }
