@@ -9,12 +9,8 @@ data class CardFace(
     val facts: List<CardFact>,
     // null for a compass star and for cards without one.
     val faceValue: Int?,
-    // Only the sections the card has, in the order it shows them: the effects, then the flavor.
-    val sections: List<CardSection>,
-    // The "+N Gene Pool" line, for the app to write in the card language. A translation has it in its effect text.
-    val genePool: Int?,
-    // A Trinket's Value, for the app to write in the card language.
-    val value: Int?,
+    // The card detail's blocks in order; none when the card has no text, flavor or Gene Pool.
+    val blocks: List<CardBlock>,
     // What the compendium search matches: the name and the text of every effect, without tokens.
     val searchable: List<String>,
 ) {
@@ -44,17 +40,30 @@ sealed interface CardFact {
     ) : CardFact
 }
 
-sealed interface CardSection {
-    val text: String
+// One block of the card detail's text, with the lines the card hangs on it. The app writes the numbers and the kind's
+// label in the card language.
+data class CardBlock(
+    // null for the empty block of a card with only a Gene Pool or a flavor, and for a plain effect.
+    val kind: EffectKind?,
+    val display: KindDisplay,
+    // Without tokens. Null for the empty block.
+    val text: String?,
+    // The first block's "+N Gene Pool" line. A translation has it in its effect text.
+    val genePool: Int? = null,
+    // The last block's Trinket Value.
+    val value: Int? = null,
+    // The last block's flavor.
+    val flavor: String? = null,
+    val selector: Boolean = false,
+)
 
-    data class Effect(
-        override val text: String,
-        val kind: EffectKind? = null,
-    ) : CardSection
+enum class KindDisplay {
+    // Above the text, as World's End.
+    Heading,
 
-    data class Flavor(
-        override val text: String,
-    ) : CardSection
+    // Written into the text as "Label:" before it.
+    Label,
+    None,
 }
 
 private val token = Regex("""\s*\(\{[^}]*\}\)|\{[^}]*\}""")
@@ -85,9 +94,7 @@ private fun NamedCard.face(
 ): CardFace? {
     val kind = kind ?: return null
     val trait = this as? Trait
-    val trinket = this as? Trinket
-    val sections =
-        effects.map { CardSection.Effect(it.text, it.kind) } + listOfNotNull(flavor?.let(CardSection::Flavor))
+    val blocks = blocks(effects, flavor, genePool)
     return CardFace(
         name,
         buildList {
@@ -98,9 +105,32 @@ private fun NamedCard.face(
             trait?.subspecies?.forEach { add(CardFact.Subspecies(it)) }
         },
         trait?.points,
-        sections,
-        genePool,
-        trinket?.value,
-        listOf(name) + sections.filterIsInstance<CardSection.Effect>().map { withoutTokens(it.text) },
+        blocks,
+        listOf(name) + effects.map { withoutTokens(it.text) },
     )
+}
+
+// Apart from face() because the app doesn't show Trinkets yet, but their labels and Value are decided here already.
+internal fun NamedCard.blocks(
+    effects: List<Effect>,
+    flavor: String?,
+    genePool: Int?,
+): List<CardBlock> {
+    val shown = effects.ifEmpty { if (flavor != null || genePool != null) listOf(null) else emptyList() }
+    return shown.mapIndexed { index, effect ->
+        val last = index == shown.lastIndex
+        CardBlock(
+            effect?.kind,
+            when {
+                effect?.kind == EffectKind.WorldsEnd -> KindDisplay.Heading
+                effect?.kind?.labelOf != null -> KindDisplay.Label
+                else -> KindDisplay.None
+            },
+            effect?.let { withoutTokens(it.text) },
+            genePool = genePool.takeIf { index == 0 },
+            value = (this as? Trinket)?.value.takeIf { last },
+            flavor = flavor.takeIf { last },
+            selector = index == 0,
+        )
+    }
 }

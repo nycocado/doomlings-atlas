@@ -65,19 +65,19 @@ class CardTranslationTest {
 
         assertEquals("Venenoso", face?.name)
         assertEquals(
-            listOf(CardSection.Effect("Roube 1 carta."), CardSection.Flavor("Ai.")),
-            face?.sections,
+            listOf(CardBlock(null, KindDisplay.None, "Roube 1 carta.", flavor = "Ai.", selector = true)),
+            face?.blocks,
         )
     }
 
     @Test
-    fun aCatastrophesWorldsEndIsItsOwnSection() {
+    fun aCatastrophesWorldsEndIsItsOwnBlock() {
         assertEquals(
             listOf(
-                CardSection.Effect("-1 Reserva"),
-                CardSection.Effect("Incolores valem 2.", EffectKind.WorldsEnd),
+                CardBlock(null, KindDisplay.None, "-1 Reserva", selector = true),
+                CardBlock(EffectKind.WorldsEnd, KindDisplay.Heading, "Incolores valem 2."),
             ),
-            translations.face(catastrophe, CardLanguage.Portuguese)?.sections,
+            translations.face(catastrophe, CardLanguage.Portuguese)?.blocks,
         )
     }
 
@@ -94,7 +94,17 @@ class CardTranslationTest {
         val face = translations.face(catastrophe, CardLanguage.English)
 
         assertEquals("AI Takeover", face?.name)
-        assertEquals(listOf(CardSection.Effect("Colorless worth 2.", EffectKind.WorldsEnd)), face?.sections)
-        assertEquals(-1, face?.genePool)
+        assertEquals(
+            listOf(
+                CardBlock(
+                    EffectKind.WorldsEnd,
+                    KindDisplay.Heading,
+                    "Colorless worth 2.",
+                    genePool = -1,
+                    selector = true,
+                ),
+            ),
+            face?.blocks,
+        )
     }
 }

@@ -127,27 +127,157 @@ class CardFaceTest {
         )
 
     @Test
-    fun aCatastropheHasOneSectionPerEffectAndItsGenePool() {
+    fun aCatastropheHasABlockPerEffectAndItsWorldsEndAsAHeading() {
         val face = aiTakeover.face()
         assertEquals(
             listOf(
-                CardSection.Effect("Discard all but 1 card from your hand."),
-                CardSection.Effect(
-                    "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
+                CardBlock(
+                    null,
+                    KindDisplay.None,
+                    "Discard all but 1 card from your hand.",
+                    genePool = -1,
+                    selector = true,
+                ),
+                CardBlock(
                     EffectKind.WorldsEnd,
+                    KindDisplay.Heading,
+                    "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
                 ),
             ),
-            face?.sections,
+            face?.blocks,
         )
-        assertEquals(-1, face?.genePool)
         assertEquals(listOf(CardFact.Type(CardKind.Catastrophe)), face?.facts)
     }
 
+    private val bruteStrength =
+        Trait(
+            "classic/traits/brute-strength",
+            "classic",
+            "classic/traits/brute-strength.webp",
+            "Brute Strength",
+            "Wreck yourself before you check yourself bro!",
+            emptyList(),
+            -1,
+            4,
+            listOf(CardColor.Red),
+            false,
+            emptyList(),
+            emptyList(),
+        )
+
     @Test
-    fun anEffectlessTraitHasNoEffectSection() {
+    fun aTraitWithAGenePoolAndNoEffectHasOneBlockWithNoText() {
         assertEquals(
-            listOf(CardSection.Flavor("And you might ask yourself, \"Why does this trait exist?")),
-            confusion.face()?.sections,
+            listOf(
+                CardBlock(
+                    null,
+                    KindDisplay.None,
+                    null,
+                    genePool = -1,
+                    flavor = "Wreck yourself before you check yourself bro!",
+                    selector = true,
+                ),
+            ),
+            bruteStrength.face()?.blocks,
+        )
+    }
+
+    @Test
+    fun anEffectlessTraitHasOneBlockWithOnlyItsFlavor() {
+        assertEquals(
+            listOf(
+                CardBlock(
+                    null,
+                    KindDisplay.None,
+                    null,
+                    flavor = "And you might ask yourself, \"Why does this trait exist?",
+                    selector = true,
+                ),
+            ),
+            confusion.face()?.blocks,
+        )
+    }
+
+    @Test
+    fun aCardWithNeitherEffectNorFlavorNorGenePoolHasNoBlocks() {
+        val bare = confusion.copy(flavor = null)
+
+        assertEquals(emptyList(), bare.face()?.blocks)
+    }
+
+    private val anxietyElixir =
+        Trinket(
+            "imaginary-ends/trinkets/anxiety-elixir",
+            "imaginary-ends",
+            "imaginary-ends/trinkets/anxiety-elixir.webp",
+            "Anxiety Elixir",
+            listOf(
+                Effect(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand."),
+                Effect(EffectKind.PocketObjective, "Reveal: 2 reds in hand."),
+            ),
+            2,
+            "This causes stress. Can't stress that enough.",
+        )
+
+    @Test
+    fun aTrinketsLabelsAreInlineAndItsFlavorAndValueEndTheLastBlock() {
+        assertEquals(
+            listOf(
+                CardBlock(
+                    EffectKind.AwesomePower,
+                    KindDisplay.Label,
+                    "Start of Turn: Discard dominants from hand.",
+                    selector = true,
+                ),
+                CardBlock(
+                    EffectKind.PocketObjective,
+                    KindDisplay.Label,
+                    "Reveal: 2 reds in hand.",
+                    value = 2,
+                    flavor = "This causes stress. Can't stress that enough.",
+                ),
+            ),
+            anxietyElixir.blocks(anxietyElixir.effects, anxietyElixir.flavor, null),
+        )
+    }
+
+    private val selfReplicating =
+        Trait(
+            "classic/traits/self-replicating",
+            "classic",
+            "classic/traits/self-replicating.webp",
+            "Self-Replicating",
+            "More me? Copy that.",
+            listOf(
+                Effect(EffectKind.Action, "Play 1 card from the discard pile. Ignore its action ({action})."),
+                Effect(text = "When you play another green trait from your hand, you may return this to your hand."),
+            ),
+            null,
+            0,
+            listOf(CardColor.Green),
+            false,
+            emptyList(),
+            listOf(TraitIcon.Action),
+        )
+
+    @Test
+    fun aCardWithSeveralEffectsEndsItsLastBlockWithItsFlavorAndShowsNoActionLabel() {
+        assertEquals(
+            listOf(
+                CardBlock(
+                    EffectKind.Action,
+                    KindDisplay.None,
+                    "Play 1 card from the discard pile. Ignore its action.",
+                    selector = true,
+                ),
+                CardBlock(
+                    null,
+                    KindDisplay.None,
+                    "When you play another green trait from your hand, you may return this to your hand.",
+                    flavor = "More me? Copy that.",
+                ),
+            ),
+            selfReplicating.face()?.blocks,
         )
     }
 
@@ -177,13 +307,17 @@ class CardFaceTest {
 
         assertEquals(listOf("Age", "Ignore actions and Shells."), pearl.face()?.searchable)
         assertEquals(
-            listOf(CardSection.Effect("Ignore actions ({action}) and Shells ({shell}).")),
-            pearl.face()?.sections,
+            "Ignore actions and Shells.",
+            pearl
+                .face()
+                ?.blocks
+                ?.single()
+                ?.text,
         )
     }
 
     @Test
-    fun aTranslationsFlatTextIsOnePlainSectionAndItsWorldsEndAnother() {
+    fun aTranslationsFlatTextIsOnePlainBlockAndItsWorldsEndAnother() {
         val face =
             CardTranslations(
                 mapOf(
@@ -197,16 +331,15 @@ class CardFaceTest {
 
         assertEquals(
             listOf(
-                CardSection.Effect("-1 Reserva\n\nDescarte."),
-                CardSection.Effect("Incolores valem 2.", EffectKind.WorldsEnd),
+                CardBlock(null, KindDisplay.None, "-1 Reserva\n\nDescarte.", selector = true),
+                CardBlock(EffectKind.WorldsEnd, KindDisplay.Heading, "Incolores valem 2."),
             ),
-            face?.sections,
+            face?.blocks,
         )
-        assertEquals(null, face?.genePool)
     }
 
     @Test
-    fun aTranslationFillsTheSectionsAndSearch() {
+    fun aTranslationFillsTheBlocksAndSearch() {
         val face =
             CardTranslations(
                 mapOf(
@@ -219,15 +352,34 @@ class CardFaceTest {
             ).face(confusion, CardLanguage.Portuguese)
         assertEquals("Confusão", face?.name)
         assertEquals(
-            listOf(CardSection.Flavor("E você pode se perguntar: \"Por que este trait existe?")),
-            face?.sections,
+            listOf(
+                CardBlock(
+                    null,
+                    KindDisplay.None,
+                    null,
+                    flavor = "E você pode se perguntar: \"Por que este trait existe?",
+                    selector = true,
+                ),
+            ),
+            face?.blocks,
         )
         assertEquals(listOf("Confusão"), face?.searchable)
     }
 
     @Test
     fun onlyATrinketHasAValue() {
-        assertEquals(null, confusion.face()?.value)
+        assertEquals(
+            null,
+            confusion
+                .face()
+                ?.blocks
+                ?.single()
+                ?.value,
+        )
+        assertEquals(
+            2,
+            anxietyElixir.blocks(anxietyElixir.effects, anxietyElixir.flavor, null).last().value,
+        )
     }
 
     @Test
