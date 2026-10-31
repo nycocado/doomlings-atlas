@@ -127,7 +127,6 @@ import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.card.face
-import dev.nycocado.atlas.card.printedText
 import dev.nycocado.atlas.card.withoutTokens
 import dev.nycocado.atlas.cardpane.CardStatusBarIcons
 import dev.nycocado.atlas.cardpane.ListDetailLayout
@@ -173,14 +172,13 @@ fun CardDetailScreen(
     // A card without the chosen language shows its printed text; the choice itself stays.
     val languages = (card as? NamedCard)?.let { translations.languages(it) }.orEmpty()
     val language = chosen.takeIf { it in languages } ?: CardLanguage.English
-    val text = (card as? NamedCard)?.let { translations.text(it, language) }
     CardDetailContent(
         card = card,
         tilt = tilt,
         onBack = onBack,
         onAboutClick = onAboutClick,
         layout = layout,
-        text = text,
+        translations = translations,
         languages = languages,
         language = language,
         onLanguageChange = onLanguageChange,
@@ -196,7 +194,7 @@ fun CardDetailContent(
     onBack: () -> Unit,
     onAboutClick: () -> Unit,
     layout: ListDetailLayout = ListDetailLayout.Single,
-    text: CardText? = (card as? NamedCard)?.printedText(),
+    translations: CardTranslations = CardTranslations(),
     languages: List<CardLanguage> = listOf(CardLanguage.English),
     language: CardLanguage = CardLanguage.English,
     onLanguageChange: (CardLanguage) -> Unit = {},
@@ -204,8 +202,8 @@ fun CardDetailContent(
     onCardClick: (String) -> Unit = {},
 ) {
     val theme = AtlasTheme.colors
-    if (card !is NamedCard || text == null) return
-    val face = card.face(text) ?: return
+    if (card !is NamedCard) return
+    val face = translations.face(card, language) ?: return
     // Ages and catastrophes have no color: their panel stays neutral, so it can't be read as a trait color.
     val colored = face.colors.isNotEmpty()
     val (panel, dots) =
@@ -245,7 +243,7 @@ fun CardDetailContent(
                             style = AtlasTypography.display.copy(color = theme.onSurface),
                         )
                         AnimatedContent(
-                            text.name.takeIf { language != CardLanguage.English }?.let { it to language },
+                            face.name.takeIf { language != CardLanguage.English }?.let { it to language },
                             transitionSpec = LanguageChange,
                             label = "translated name",
                         ) { shown ->
@@ -907,12 +905,20 @@ internal fun TranslatedTraitSample() =
             tilt = -3f,
             onBack = {},
             onAboutClick = {},
-            text =
-                CardText(
-                    "Fertilização Aleatória",
-                    "O valor é igual ao tamanho do seu Gene Pool.",
-                    "Escolha um número entre 1 e 64 trilhões.",
-                    null,
+            translations =
+                CardTranslations(
+                    mapOf(
+                        CardLanguage.Portuguese to
+                            mapOf(
+                                LongNameTrait.id to
+                                    CardText(
+                                        "Fertilização Aleatória",
+                                        "O valor é igual ao tamanho do seu Gene Pool.",
+                                        "Escolha um número entre 1 e 64 trilhões.",
+                                        null,
+                                    ),
+                            ),
+                    ),
                 ),
             languages = Both,
             language = CardLanguage.Portuguese,
@@ -930,13 +936,23 @@ private val CatastropheEffects =
 @Composable
 internal fun TranslatedCatastropheDetailPreview() =
     AtlasTheme {
+        val catastrophe = Catastrophe("c", "classic", "", "A catastrophe", CatastropheEffects, null)
         BlankCardImages {
             CardDetailContent(
-                Catastrophe("c", "classic", "", "A catastrophe", CatastropheEffects, null),
+                catastrophe,
                 tilt = -3f,
                 onBack = {},
                 onAboutClick = {},
-                text = CardText("Uma catástrofe", "Texto do efeito.", null, "Texto do Fim do Mundo."),
+                translations =
+                    CardTranslations(
+                        mapOf(
+                            CardLanguage.Portuguese to
+                                mapOf(
+                                    catastrophe.id to
+                                        CardText("Uma catástrofe", "Texto do efeito.", null, "Texto do Fim do Mundo."),
+                                ),
+                        ),
+                    ),
                 languages = Both,
                 language = CardLanguage.Portuguese,
             )

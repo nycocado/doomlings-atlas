@@ -17,6 +17,10 @@ sealed interface Card {
 sealed interface NamedCard : Card {
     val name: String
     val effects: List<Effect>
+
+    // null on the card types that don't print one.
+    val flavor: String? get() = null
+    val genePool: Int? get() = null
 }
 
 @Serializable
@@ -26,10 +30,10 @@ data class Trait(
     override val set: String,
     override val image: String,
     override val name: String,
-    val flavor: String?,
+    override val flavor: String?,
     override val effects: List<Effect>,
     // The "+N Gene Pool" line, as a number.
-    val genePool: Int?,
+    override val genePool: Int?,
     // null when the value depends on the game ("Value is equal to...").
     val points: Int?,
     // Empty for colorless traits.
@@ -59,7 +63,7 @@ data class Catastrophe(
     override val image: String,
     override val name: String,
     override val effects: List<Effect>,
-    val genePool: Int?,
+    override val genePool: Int?,
 ) : NamedCard
 
 @Serializable
@@ -89,7 +93,7 @@ data class MeaningOfLife(
     override val image: String,
     override val name: String,
     override val effects: List<Effect>,
-    val flavor: String?,
+    override val flavor: String?,
 ) : NamedCard
 
 @Serializable
@@ -101,7 +105,7 @@ data class Trinket(
     override val name: String,
     override val effects: List<Effect>,
     val value: Int,
-    val flavor: String,
+    override val flavor: String,
 ) : NamedCard
 
 @Serializable

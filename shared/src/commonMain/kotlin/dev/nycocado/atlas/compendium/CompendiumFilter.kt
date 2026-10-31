@@ -10,7 +10,6 @@ import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.face
-import dev.nycocado.atlas.card.printedText
 import kotlinx.serialization.Serializable
 import kotlin.math.abs
 
@@ -55,8 +54,8 @@ fun List<Card>.filterCompendium(
                 if (query.isEmpty()) {
                     MatchRank.Exact
                 } else {
-                    listOf(card.printedText(), translations.text(card, language))
-                        .mapNotNull { text -> card.face(text)?.searchable?.let { matchRank(query, it) } }
+                    listOf(card.face(), translations.face(card, language))
+                        .mapNotNull { face -> face?.searchable?.let { matchRank(query, it) } }
                         .minOrNull()
                 }
             rank?.let { it to card }
