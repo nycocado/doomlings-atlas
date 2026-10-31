@@ -135,7 +135,7 @@ class CardFaceTest {
                 effectBlock(
                     EffectKind.WorldsEnd,
                     "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
-                    yellow = true,
+                    ink = Ink.Yellow,
                 ),
             ),
             face?.blocks,
@@ -152,7 +152,31 @@ class CardFaceTest {
                 ?.single()
                 ?.content as BlockContent.Effect
 
-        assertEquals(false, worldsEnd.yellow)
+        assertEquals(null, worldsEnd.ink)
+    }
+
+    @Test
+    fun aMarkedSpanKeepsItsInkInsideAYellowEffect() {
+        val catastrophe =
+            Catastrophe(
+                "test/catastrophes/marked",
+                "test",
+                "",
+                "Marked",
+                listOf(Effect(EffectKind.WorldsEnd, "[red]Red[/red] traits are worth 2.")),
+                -1,
+            )
+
+        assertEquals(
+            listOf(TextPart.Words("Red", Ink.Red), TextPart.Words(" traits are worth 2.", Ink.Yellow)),
+            (
+                catastrophe
+                    .face()
+                    ?.blocks
+                    ?.last()
+                    ?.content as BlockContent.Effect
+            ).text,
+        )
     }
 
     private val bruteStrength =
@@ -225,7 +249,7 @@ class CardFaceTest {
         assertEquals(
             listOf(
                 effectBlock(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand.", selector = true),
-                effectBlock(EffectKind.PocketObjective, "Reveal: 2 reds in hand.", yellow = true),
+                effectBlock(EffectKind.PocketObjective, "Reveal: 2 reds in hand.", ink = Ink.Yellow),
                 CardBlock(BlockContent.Value(2), flavor = "This causes stress. Can't stress that enough."),
             ),
             anxietyElixir.blocks(anxietyElixir.effects, anxietyElixir.flavor, null),
@@ -330,7 +354,7 @@ class CardFaceTest {
 
     @Test
     fun everyInkOfTheCardDataHasItsName() {
-        val inks = listOf("red", "blue", "green", "purple", "colorless", "rainbow")
+        val inks = listOf("red", "blue", "green", "purple", "colorless", "rainbow", "yellow")
 
         assertEquals(
             Ink.entries.map { TextPart.Words("x", it) },
@@ -411,11 +435,11 @@ class CardFaceTest {
                     BlockContent.Effect(
                         EffectKind.WorldsEnd,
                         listOf(
-                            TextPart.Words("Incolores valem 2. Ignore ações ("),
+                            TextPart.Words("Incolores valem 2. Ignore ações (", Ink.Yellow),
                             TextPart.Icon(Token.Action),
-                            TextPart.Words(")."),
+                            TextPart.Words(").", Ink.Yellow),
                         ),
-                        yellow = true,
+                        ink = Ink.Yellow,
                     ),
                 ),
             ),
@@ -477,5 +501,5 @@ internal fun effectBlock(
     text: String,
     flavor: String? = null,
     selector: Boolean = false,
-    yellow: Boolean = false,
-) = CardBlock(BlockContent.Effect(kind, listOf(TextPart.Words(text)), yellow), flavor, selector)
+    ink: Ink? = null,
+) = CardBlock(BlockContent.Effect(kind, listOf(TextPart.Words(text, ink)), ink), flavor, selector)

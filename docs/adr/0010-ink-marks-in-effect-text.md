@@ -1,6 +1,6 @@
 # 10. Ink Marks in Effect Text
 
-- Status: accepted
+- Status: accepted; the inks and their source amended by [0011](0011-yellow-ink-and-effect-ink.md)
 - Date: 2026-10-31
 
 ## Context

@@ -44,4 +44,5 @@ Not an ADR:
 | [0007](0007-card-language-apart-from-interface.md) | Card Language Apart from Interface Language  | amended    |
 | [0008](0008-card-language-defaults-to-the-device.md) | Card Language Defaults to the Device Language | accepted |
 | [0009](0009-card-text-as-a-list-of-effects.md)     | Card Text as a List of Effects               | amended    |
-| [0010](0010-ink-marks-in-effect-text.md)           | Ink Marks in Effect Text                     | accepted   |
+| [0010](0010-ink-marks-in-effect-text.md)           | Ink Marks in Effect Text                     | amended    |
+| [0011](0011-yellow-ink-and-effect-ink.md)          | Yellow Ink and an Effect's Ink               | accepted   |

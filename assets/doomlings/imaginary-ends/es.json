@@ -469,8 +469,8 @@
   "imaginary-ends/traits/stygian": {
     "name": "Estigio",
     "effects": [
-      "Elige un color. Suprime todos los traits de ese color en tu pila de traits.",
-      "-2 por cada color en tu pila de traits."
+      "[yellow]Elige un color.[/yellow] Suprime todos los traits de ese color en tu pila de traits.",
+      "-2 por cada [yellow]color[/yellow] en tu pila de traits."
     ],
     "flavor": "Yo me encargo de las luces."
   },

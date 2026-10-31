@@ -57,7 +57,8 @@ sealed interface BlockContent {
     data class Effect(
         val kind: EffectKind?,
         val text: List<TextPart>,
-        val yellow: Boolean = false,
+        // The ink the whole effect is printed in, its heading too; null for the normal text color.
+        val ink: Ink? = null,
     ) : BlockContent
 
     data class Value(
@@ -97,7 +98,8 @@ enum class Token(
     Glitterling("glitterling"),
 }
 
-// The inks a span of an effect is printed in, by the name in brackets: `[red]red[/red]`.
+// The inks an effect's text is printed in: a span's, by the name in brackets (`[red]red[/red]`), or a whole effect's,
+// from its kind.
 enum class Ink(
     val code: String,
 ) {
@@ -107,6 +109,7 @@ enum class Ink(
     Purple("purple"),
     Colorless("colorless"),
     Rainbow("rainbow"),
+    Yellow("yellow"),
 }
 
 // The closing brace is escaped too: Android's ICU regex rejects a lone "}", which the JVM's accepts.
@@ -115,17 +118,21 @@ private val braces = Regex("""\{([^}]*)\}""")
 // A span runs to the closing mark of its own ink; the card data test rules out nested and unclosed spans.
 private val inkedSpan = Regex("""\[([^\]/]*)\]([\s\S]*?)\[/\1\]""")
 
-// An unknown ink or token stays as written; the card data test rules them out.
-private fun parts(text: String): List<TextPart> =
+// An unknown ink or token stays as written; the card data test rules them out. Unmarked words are in the effect's ink,
+// and a span's own ink wins over it.
+private fun parts(
+    text: String,
+    effectInk: Ink?,
+): List<TextPart> =
     buildList {
         var at = 0
         for (match in inkedSpan.findAll(text)) {
             val ink = Ink.entries.find { it.code == match.groupValues[1] } ?: continue
-            addAll(tokenParts(text.substring(at, match.range.first), null))
+            addAll(tokenParts(text.substring(at, match.range.first), effectInk))
             addAll(tokenParts(match.groupValues[2], ink))
             at = match.range.last + 1
         }
-        addAll(tokenParts(text.substring(at), null))
+        addAll(tokenParts(text.substring(at), effectInk))
     }
 
 private fun tokenParts(
@@ -196,7 +203,10 @@ internal fun NamedCard.blocks(
 ): List<CardBlock> {
     val contents =
         listOfNotNull(genePool?.let(BlockContent::GenePool)) +
-            effects.map { BlockContent.Effect(it.kind, parts(it.text), printsInYellow(it.kind)) } +
+            effects.map { effect ->
+                val ink = effectInk(effect.kind)
+                BlockContent.Effect(effect.kind, parts(effect.text, ink), ink)
+            } +
             listOfNotNull((this as? Trinket)?.value?.let(BlockContent::Value))
     val shown: List<BlockContent?> = contents.ifEmpty { if (flavor != null) listOf(null) else emptyList() }
     return shown.mapIndexed { index, content ->
@@ -204,6 +214,7 @@ internal fun NamedCard.blocks(
     }
 }
 
-// A trait prints its World's End in the normal text color.
-private fun NamedCard.printsInYellow(kind: EffectKind?) =
-    kind == EffectKind.PocketObjective || (this is Catastrophe && kind == EffectKind.WorldsEnd)
+// A Catastrophe prints its World's End in yellow and a Trinket its Pocket Objective; a trait's World's End is in the
+// normal text color.
+private fun NamedCard.effectInk(kind: EffectKind?): Ink? =
+    Ink.Yellow.takeIf { kind == EffectKind.PocketObjective || (this is Catastrophe && kind == EffectKind.WorldsEnd) }

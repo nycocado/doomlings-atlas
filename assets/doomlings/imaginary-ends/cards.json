@@ -1550,10 +1550,10 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Choose a color. Suppress all traits of that color in your trait pile."
+        "text": "[yellow]Choose a color.[/yellow] Suppress all traits of that color in your trait pile."
       },
       {
-        "text": "-2 for each color in your trait pile."
+        "text": "-2 for each [yellow]color[/yellow] in your trait pile."
       }
     ],
     "genePool": null,
