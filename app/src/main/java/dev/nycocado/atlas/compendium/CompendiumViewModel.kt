@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -39,8 +40,7 @@ class CompendiumViewModel
         // The language every card is read in. Until the player picks one, nothing is stored and it is the language
         // Android gives the app now (ADR 0008); the pick is stored and wins from then on. A card without it shows its
         // printed text.
-        private var pick = cardLanguageOf(prefs.getString(CARD_LANGUAGE, null))
-        private val mutableCardLanguage = MutableStateFlow(pick ?: deviceCardLanguage())
+        private val mutableCardLanguage = MutableStateFlow(currentCardLanguage())
 
         // The list's scroll position is restored too, and only matches the same filter.
         private var savedFilter by savedState.saved { CompendiumFilter() }
@@ -72,11 +72,13 @@ class CompendiumViewModel
             combine(entries, mutableOpenGroups) { entries, open -> entries?.toGridCells(open) }
                 .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
 
-        private fun deviceCardLanguage() =
-            cardLanguageOf(
-                context.resources.configuration.locales[0]
-                    .language,
-            ) ?: CardLanguage.English
+        private fun currentCardLanguage() =
+            cardLanguageOf(prefs.getString(CARD_LANGUAGE, null))
+                ?: cardLanguageOf(
+                    context.resources.configuration.locales[0]
+                        .language,
+                )
+                ?: CardLanguage.English
 
         init {
             viewModelScope.launch { mutableLibrary.value = repository.library() }
@@ -85,11 +87,10 @@ class CompendiumViewModel
 
         // A language change recreates the activity but keeps this ViewModel, so the activity says when it starts.
         fun refreshDeviceLanguage() {
-            mutableCardLanguage.value = pick ?: deviceCardLanguage()
+            mutableCardLanguage.value = currentCardLanguage()
         }
 
         fun chooseCardLanguage(language: CardLanguage) {
-            pick = language
             mutableCardLanguage.value = language
             prefs.edit { putString(CARD_LANGUAGE, language.code) }
         }
@@ -100,9 +101,9 @@ class CompendiumViewModel
             savedOpenGroups = open
         }
 
-        fun updateFilter(filter: CompendiumFilter) {
-            mutableFilter.value = filter
-            savedFilter = filter
+        // Atomic, so a change made from a stale composed filter can't overwrite another one.
+        fun updateFilter(transform: (CompendiumFilter) -> CompendiumFilter) {
+            savedFilter = mutableFilter.updateAndGet(transform)
         }
     }
 

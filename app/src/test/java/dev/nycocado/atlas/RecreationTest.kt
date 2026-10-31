@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.os.Parcel
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasContentDescription
+import androidx.compose.ui.test.hasSetTextAction
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performTextInput
 import androidx.savedstate.read
 import dagger.hilt.android.testing.HiltAndroidTest
 import dev.nycocado.atlas.cardpane.CardKey
@@ -24,6 +27,19 @@ class RecreationTest : AtlasBehaviorTest() {
         scenario.recreate()
 
         detailOf("Adorable").assertIsDisplayed()
+    }
+
+    @Test
+    fun recreatingKeepsTheTypedSearch() {
+        val scenario = launchPastNotice()
+        compose.onNode(hasSetTextAction()).performTextInput("Adorable")
+        compose.waitForIdle()
+
+        scenario.recreate()
+
+        compose.onNode(hasSetTextAction()).assertTextEquals("Adorable")
+        card("Adorable").assertIsDisplayed()
+        card("Altruistic").assertDoesNotExist()
     }
 
     @Test

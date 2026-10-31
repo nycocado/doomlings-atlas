@@ -1,5 +1,6 @@
 package dev.nycocado.atlas
 
+import androidx.activity.BackEventCompat
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.ExperimentalTestApi
@@ -121,6 +122,26 @@ class CitedCardTest : AtlasBehaviorTest() {
 
         detailOf("Age of Dracula").assertIsDisplayed()
         assertEquals(citer, scenario.darkIcons())
+    }
+
+    @Test
+    fun aCancelledBackGestureKeepsTheCardsStatusBarIcons() {
+        val scenario = launchPastNotice()
+        openAgeOfDracula()
+        compose.waitForIdle()
+        assertTrue(scenario.darkIcons())
+
+        scenario.onActivity {
+            val back = it.onBackPressedDispatcher
+            back.dispatchOnBackStarted(BackEventCompat(0.1f, 0.5f, 0.2f, BackEventCompat.EDGE_LEFT))
+            back.dispatchOnBackProgressed(BackEventCompat(0.3f, 0.5f, 0.5f, BackEventCompat.EDGE_LEFT))
+        }
+        compose.waitForIdle()
+        scenario.onActivity { it.onBackPressedDispatcher.dispatchOnBackCancelled() }
+        compose.waitForIdle()
+
+        detailOf("Age of Dracula").assertIsDisplayed()
+        assertTrue(scenario.darkIcons())
     }
 
     @Test

@@ -65,7 +65,7 @@ import dev.nycocado.atlas.ui.theme.trait
 @Composable
 internal fun Filters(
     filter: CompendiumFilter,
-    onFilterChange: (CompendiumFilter) -> Unit,
+    onFilterChange: ((CompendiumFilter) -> CompendiumFilter) -> Unit,
 ) {
     val theme = AtlasTheme.colors
     Column(Modifier.fillMaxWidth()) {
@@ -84,12 +84,12 @@ internal fun Filters(
                         val selected = color in filter.colors
                         // Narrower than their 64dp only when the row can't fit them, as beside a card on a foldable.
                         ColorDisc(color, selected, Modifier.weight(1f, fill = false)) {
-                            onFilterChange(filter.copy(colors = if (selected) emptySet() else setOf(color)))
+                            onFilterChange { it.copy(colors = if (color in it.colors) emptySet() else setOf(color)) }
                         }
                     }
                 }
             }
-            KindSegments(filter.kind) { onFilterChange(filter.copy(kind = it)) }
+            KindSegments(filter.kind) { kind -> onFilterChange { it.copy(kind = kind) } }
         }
         Row(
             Modifier.padding(top = Space.s4),

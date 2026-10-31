@@ -105,7 +105,7 @@ fun CompendiumScreen(
 fun CompendiumContent(
     filter: CompendiumFilter,
     cells: List<GridCell>?,
-    onFilterChange: (CompendiumFilter) -> Unit,
+    onFilterChange: ((CompendiumFilter) -> CompendiumFilter) -> Unit,
     onGroupToggle: (String) -> Unit,
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
@@ -125,11 +125,10 @@ fun CompendiumContent(
     // The text lives here, in Compose state, so no character typed waits for the ViewModel's round trip; the ViewModel
     // only receives it.
     val search = rememberTextFieldState(filter.query)
-    val latestFilter by rememberUpdatedState(filter)
     val latestOnFilterChange by rememberUpdatedState(onFilterChange)
     LaunchedEffect(search) {
         snapshotFlow { search.text.toString() }.collect {
-            if (it != latestFilter.query) latestOnFilterChange(latestFilter.copy(query = it))
+            latestOnFilterChange { filter -> if (filter.query == it) filter else filter.copy(query = it) }
         }
     }
     val grid = rememberLazyGridState()
