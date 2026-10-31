@@ -13,7 +13,7 @@ class CitationDataTest {
             library.cards!!.filterIsInstance<NamedCard>().flatMap { card ->
                 card.effects.flatMapIndexed { index, effect ->
                     library.citations(card, effect.text).map {
-                        "${card.id}.effects[$index]: ${effect.text.substring(it.range)} -> ${it.cardId}"
+                        "${card.id}.effects[$index]: ${effect.text.substring(it.range)} -> ${it.card.id}"
                     }
                 }
             }

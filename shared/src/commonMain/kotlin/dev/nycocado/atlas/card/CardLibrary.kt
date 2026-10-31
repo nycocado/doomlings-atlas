@@ -10,27 +10,25 @@ class CardLibrary private constructor(
             else -> cards.find { it.id == id }?.let(CardLookup::Found) ?: CardLookup.Missing
         }
 
-    // Copies of a card share its name, and so do some cards of different sets: the first one in the data is cited.
-    private val idsByName: Map<String, String> by lazy {
-        cards
-            ?.filterIsInstance<NamedCard>()
-            ?.distinctBy { it.name }
-            ?.associate { it.name to it.id }
-            .orEmpty()
+    // Copies of a card share its name, and so do some cards of different sets: the variants of a name, in data order.
+    private val variantsByName: Map<String, List<NamedCard>> by lazy {
+        cards?.filterIsInstance<NamedCard>()?.groupBy { it.name }.orEmpty()
     }
+
+    internal fun variants(name: String): List<NamedCard> = variantsByName[name].orEmpty()
 
     // One alternation, longest names first so a name wins over a shorter one inside it. A name is a whole word, with its
     // exact capitals, alone or with a plural "s".
     private val citedNames: Regex? by lazy {
-        idsByName.keys
+        variantsByName.keys
             .sortedByDescending { it.length }
             .takeIf { it.isNotEmpty() }
             ?.joinToString("|", "(?<!\\p{L})(?:", ")s?(?!\\p{L})") { Regex.escape(it) }
             ?.toRegex()
     }
 
-    // The card names cited in a text of the card, in any language, empty while the cards load. A card does not cite
-    // itself, nor a copy of itself.
+    // The card names cited in a text of the card, in any language, empty while the cards load. A name its variants share
+    // cites the first of them. A card does not cite itself, nor a copy of itself.
     fun citations(
         card: Card,
         text: String,
@@ -38,8 +36,8 @@ class CardLibrary private constructor(
         citedNames
             ?.findAll(text)
             ?.mapNotNull { match ->
-                val name = match.value.takeIf { it in idsByName } ?: match.value.dropLast(1)
-                name.takeIf { it != (card as? NamedCard)?.name }?.let { Citation(match.range, idsByName.getValue(it)) }
+                val variants = variantsByName[match.value] ?: variantsByName.getValue(match.value.dropLast(1))
+                variants.first().takeIf { it.name != (card as? NamedCard)?.name }?.let { Citation(match.range, it) }
             }?.toList()
             .orEmpty()
 
@@ -47,6 +45,8 @@ class CardLibrary private constructor(
         val loading = CardLibrary(null)
 
         fun decode(json: String) = CardLibrary(decodeCards(json))
+
+        internal fun of(cards: List<Card>) = CardLibrary(cards)
     }
 }
 
@@ -63,5 +63,5 @@ sealed interface CardLookup {
 
 data class Citation(
     val range: IntRange,
-    val cardId: String,
+    val card: NamedCard,
 )
