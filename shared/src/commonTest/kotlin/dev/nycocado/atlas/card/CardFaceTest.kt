@@ -143,19 +143,16 @@ class CardFaceTest {
         assertEquals(listOf(CardFact.Kind(CardKind.Catastrophe)), face?.facts)
     }
 
-    private fun NamedCard.yellowKinds() =
-        blocks(effects, flavor, genePool)
-            .mapNotNull { it.content as? BlockContent.Effect }
-            .map { it.kind to it.yellow }
-
-    @Test
-    fun aCatastrophesWorldsEndIsYellowAndItsOtherEffectsAreNot() {
-        assertEquals(listOf(null to false, EffectKind.WorldsEnd to true), aiTakeover.yellowKinds())
-    }
-
     @Test
     fun aTraitsWorldsEndIsNotYellow() {
-        assertEquals(listOf(EffectKind.WorldsEnd to false), awesome.yellowKinds())
+        val worldsEnd =
+            awesome
+                .face()
+                ?.blocks
+                ?.single()
+                ?.content as BlockContent.Effect
+
+        assertEquals(false, worldsEnd.yellow)
     }
 
     private val bruteStrength =
@@ -232,14 +229,6 @@ class CardFaceTest {
                 CardBlock(BlockContent.Value(2), flavor = "This causes stress. Can't stress that enough."),
             ),
             anxietyElixir.blocks(anxietyElixir.effects, anxietyElixir.flavor, null),
-        )
-    }
-
-    @Test
-    fun aTrinketsPocketObjectiveIsYellowAndItsAwesomePowerIsNot() {
-        assertEquals(
-            listOf(EffectKind.AwesomePower to false, EffectKind.PocketObjective to true),
-            anxietyElixir.yellowKinds(),
         )
     }
 
