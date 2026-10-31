@@ -15,7 +15,7 @@ How to build the app and how the code is kept consistent. Most of it runs in CI,
 - **Previews in `app`:** every component and screen has a `@PreviewLightDark` preview (light and dark themes). The previews in `app/src/screenshotTest` are screenshot tests: `./gradlew validateDebugScreenshotTest` compares them with the saved images, and after an intended visual change `./gradlew updateDebugScreenshotTest` saves the new ones, which go in the same PR.
 - **Style:** Spotless with ktlint formats the code and Android Lint runs with warnings as errors. `./gradlew spotlessApply check` fixes formatting and runs the same checks as CI.
 - **Dependencies:** versions live in `gradle/libs.versions.toml`. A new dependency needs a reason in the PR.
-- **Permissions:** the app declares no permissions, as it works fully offline ([ADR 0002](adr/0002-offline-without-backend.md)). CI fails if the final manifest has a permission missing from `app/permissions-allowlist.txt`. Adding one needs a reason in the PR.
+- **Permissions:** the app works offline ([ADR 0002](adr/0002-offline-without-backend.md)) except for the update check ([ADR 0012](adr/0012-update-check-from-github-releases.md)), which alone needs `INTERNET` and `REQUEST_INSTALL_PACKAGES`. CI fails if the final manifest has a permission missing from `app/permissions-allowlist.txt`. Adding one needs a reason in the PR.
 - **Minimum Android version:** API 26 (Android 8).
 
 ## Branches and Merging

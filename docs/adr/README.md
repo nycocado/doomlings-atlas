@@ -36,7 +36,7 @@ Not an ADR:
 | ADR                                                | Title                                        | Status     |
 | -------------------------------------------------- | -------------------------------------------- | ---------- |
 | [0001](0001-kotlin-multiplatform-android-first.md) | Kotlin Multiplatform, Android First          | amended    |
-| [0002](0002-offline-without-backend.md)            | Offline, Without Backend                     | accepted   |
+| [0002](0002-offline-without-backend.md)            | Offline, Without Backend                     | amended    |
 | [0003](0003-card-data-json-effects-kotlin.md)      | Card Data in JSON, Scoring Effects in Kotlin | superseded |
 | [0004](0004-compendium-before-scoring.md)          | Compendium Before Scoring                    | accepted   |
 | [0005](0005-scoring-rules-in-card-data.md)         | Scoring Rules in Card Data                   | accepted   |
@@ -46,3 +46,4 @@ Not an ADR:
 | [0009](0009-card-text-as-a-list-of-effects.md)     | Card Text as a List of Effects               | amended    |
 | [0010](0010-ink-marks-in-effect-text.md)           | Ink Marks in Effect Text                     | amended    |
 | [0011](0011-yellow-ink-and-effect-ink.md)          | Yellow Ink and an Effect's Ink               | accepted   |
+| [0012](0012-update-check-from-github-releases.md)  | Update Check from GitHub Releases            | accepted   |

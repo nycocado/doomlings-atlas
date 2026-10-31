@@ -1,6 +1,6 @@
 # 2. Offline, Without Backend
 
-- Status: accepted
+- Status: accepted; network access amended by [0012](0012-update-check-from-github-releases.md)
 - Date: 2026-10-15
 
 ## Context
