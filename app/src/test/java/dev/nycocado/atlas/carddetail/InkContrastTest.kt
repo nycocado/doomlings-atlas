@@ -27,7 +27,7 @@ class InkContrastTest {
         t: Float,
     ) = Color(a.red + (b.red - a.red) * t, a.green + (b.green - a.green) * t, a.blue + (b.blue - a.blue) * t)
 
-    // Every ink's colors, and for the rainbow the colors between them too.
+    // Every ink's colors, and for a gradient the colors between them too.
     private fun AtlasColors.inksOnTheBubble(): List<Pair<Color, Float>> =
         Ink.entries
             .flatMap { ink ->
@@ -37,13 +37,13 @@ class InkContrastTest {
             }.map { it to contrast(it, surfaceSticker) }
 
     @Test
-    fun everyInkAndTheWholeRainbowReach4_5To1OnTheBubbleByDay() {
+    fun everyInkAndEveryGradientReach4_5To1OnTheBubbleByDay() {
         val weak = DayColors.inksOnTheBubble().filter { it.second < 4.5f }
         assertTrue("$weak", weak.isEmpty())
     }
 
     @Test
-    fun everyInkAndTheWholeRainbowReach4_5To1OnTheBubbleAtNight() {
+    fun everyInkAndEveryGradientReach4_5To1OnTheBubbleAtNight() {
         val weak = GameNightColors.inksOnTheBubble().filter { it.second < 4.5f }
         assertTrue("$weak", weak.isEmpty())
     }

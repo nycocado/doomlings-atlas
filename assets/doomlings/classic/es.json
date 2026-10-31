@@ -21,7 +21,7 @@
   "classic/ages/age-of-wonder": {
     "name": "Era de las Maravillas",
     "effects": [
-      "Debes terminar tu turno con 4 cartas en la mano."
+      "[wonder]Debes terminar tu turno con 4 cartas en la mano.[/wonder]"
     ]
   },
   "classic/ages/age-of-reason": {
@@ -153,7 +153,7 @@
   "classic/birth-of-life/the-birth-of-life": {
     "name": "The Birth of Life",
     "effects": [
-      "Establece tu Gene Pool en 5.\n\nJuega 1 trait en cada turno.\nEstabiliza para terminar tu turno."
+      "[yellow]Establece tu Gene Pool en 5.[/yellow]\n\nJuega 1 trait en cada turno.\nEstabiliza para terminar tu turno."
     ]
   },
   "classic/catastrophes/ai-takeover": {

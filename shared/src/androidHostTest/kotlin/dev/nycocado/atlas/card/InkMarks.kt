@@ -1,7 +1,7 @@
 package dev.nycocado.atlas.card
 
 // Written out apart from Ink, like the tokens in CardDataIntegrityTest, so renaming an ink in the code fails the data.
-private val knownInks = setOf("red", "blue", "green", "purple", "colorless", "rainbow", "yellow")
+private val knownInks = setOf("red", "blue", "green", "purple", "colorless", "rainbow", "yellow", "wonder")
 
 private val tokenWithBracket = Regex("""\{[^}]*[\[\]][^}]*}""")
 

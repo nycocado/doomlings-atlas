@@ -110,6 +110,7 @@ enum class Ink(
     Colorless("colorless"),
     Rainbow("rainbow"),
     Yellow("yellow"),
+    Wonder("wonder"),
 }
 
 // The closing brace is escaped too: Android's ICU regex rejects a lone "}", which the JVM's accepts.

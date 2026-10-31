@@ -45,7 +45,7 @@
     "name": "Age of Wonder",
     "effects": [
       {
-        "text": "You must end your turn with 4 cards in your hand."
+        "text": "[wonder]You must end your turn with 4 cards in your hand.[/wonder]"
       }
     ],
     "image": "classic/ages/age-of-wonder.webp"
@@ -309,7 +309,7 @@
     "name": "The Birth of Life",
     "effects": [
       {
-        "text": "Set your Gene Pool to 5.\n\nPlay 1 trait each turn.\nStabilize to end your turn."
+        "text": "[yellow]Set your Gene Pool to 5.[/yellow]\n\nPlay 1 trait each turn.\nStabilize to end your turn."
       }
     ],
     "image": "classic/birth-of-life/the-birth-of-life.webp"
