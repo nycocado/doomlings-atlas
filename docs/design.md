@@ -36,7 +36,7 @@ Two themes: `light` ("Day", default) and `dark` ("Game night"). No Android dynam
 - `primary` / `on-primary`: filled action and active segment (ink by day, yellow at night).
 - `highlight` / `on-highlight`: what is selected now (active dock item, chosen option, current step, points badge, dominant).
 - `sunset-*` with `on-sunset`: player colors and forward buttons in flows.
-- Trait: `trait-<color>` (exact card color, same in both themes) with `on-trait-<color>` on top; `trait-<color>-ink` for glyphs and names on surfaces; `trait-<color>-container` for soft backgrounds.
+- Trait: `trait-<color>` (exact card color, same in both themes) with `on-trait-<color>` on top; `trait-<color>-ink` for glyphs, names and inked words of card text on surfaces; `trait-<color>-container` for soft backgrounds.
 - Borders and shadows use `outline`: ink by day, light lilac at night. That keeps stickers readable in the dark.
 
 ## Typography
