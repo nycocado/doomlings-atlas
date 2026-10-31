@@ -351,15 +351,20 @@ private fun EffectText(
     )
 }
 
-private fun AtlasColors.brush(ink: Ink): Brush =
+// The colors an ink is drawn with: the rainbow's are the four trait inks in the order of the card, red, green, blue,
+// purple.
+internal fun AtlasColors.inkColors(ink: Ink): List<Color> =
     when (ink) {
-        Ink.Red -> SolidColor(traitRed.ink)
-        Ink.Green -> SolidColor(traitGreen.ink)
-        Ink.Blue -> SolidColor(traitBlue.ink)
-        Ink.Purple -> SolidColor(traitPurple.ink)
-        Ink.Colorless -> SolidColor(traitColorless.ink)
-        Ink.Rainbow -> RainbowBrush(rainbowInks)
+        Ink.Red -> listOf(traitRed.ink)
+        Ink.Green -> listOf(traitGreen.ink)
+        Ink.Blue -> listOf(traitBlue.ink)
+        Ink.Purple -> listOf(traitPurple.ink)
+        Ink.Colorless -> listOf(traitColorless.ink)
+        Ink.Rainbow -> listOf(traitRed.ink, traitGreen.ink, traitBlue.ink, traitPurple.ink)
     }
+
+private fun AtlasColors.brush(ink: Ink): Brush =
+    inkColors(ink).let { if (ink == Ink.Rainbow) RainbowBrush(it) else SolidColor(it.single()) }
 
 // A brush in a span spreads over the whole text, so this one draws its gradient across the extent of its span, from
 // its leftmost to its rightmost letter, which the text's layout gives it before the text is drawn. Until then, across
@@ -375,10 +380,6 @@ private class RainbowBrush(
         return LinearGradientShader(Offset(start, 0f), Offset(end, 0f), colors)
     }
 }
-
-// The rainbow's colors, in the order of the card: red, green, blue, purple.
-internal val AtlasColors.rainbowInks: List<Color>
-    get() = listOf(traitRed.ink, traitGreen.ink, traitBlue.ink, traitPurple.ink)
 
 // The parts of a range outside the given ones, which don't overlap: the standard library has no range subtraction.
 private fun IntRange.without(holes: List<IntRange>): List<IntRange> =
@@ -439,8 +440,8 @@ internal fun TrinketBlocksPreview() =
         }
     }
 
-// Hyper-Intelligence (assets/doomlings/classic/cards.json) and Sour Grapes (overlush), verbatim, with the ink marks of
-// the map in #192: a rainbow "Choose a color.", and blue and red words with a rainbow "color count".
+// Hyper-Intelligence (assets/doomlings/classic/cards.json) and Sour Grapes (overlush), verbatim, ink marks included: a
+// rainbow "Choose a color.", and blue and red words with a rainbow "color".
 private val HyperIntelligence =
     Trait(
         "classic/traits/hyper-intelligence",
@@ -474,7 +475,7 @@ private val SourGrapes =
             Effect(
                 text =
                     "+1 for each [blue]blue[/blue] or each [red]red[/red] trait in your trait pile, whichever is the " +
-                        "lower [rainbow]color count[/rainbow].\n\n(If there's a tie, pick 1!)",
+                        "lower [rainbow]color[/rainbow] count.\n\n(If there's a tie, pick 1!)",
             ),
         ),
         null,

@@ -2,6 +2,7 @@ package dev.nycocado.atlas.carddetail
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
+import dev.nycocado.atlas.card.Ink
 import dev.nycocado.atlas.ui.theme.AtlasColors
 import dev.nycocado.atlas.ui.theme.DayColors
 import dev.nycocado.atlas.ui.theme.GameNightColors
@@ -26,12 +27,14 @@ class InkContrastTest {
         t: Float,
     ) = Color(a.red + (b.red - a.red) * t, a.green + (b.green - a.green) * t, a.blue + (b.blue - a.blue) * t)
 
-    private fun AtlasColors.inksOnTheBubble(): List<Pair<Color, Float>> {
-        val inks = listOf(traitRed, traitGreen, traitBlue, traitPurple, traitColorless).map { it.ink }
-        val gradient =
-            rainbowInks.zipWithNext().flatMap { (a, b) -> (0..10).map { blend(a, b, it / 10f) } }
-        return (inks + gradient).map { it to contrast(it, surfaceSticker) }
-    }
+    // Every ink's colors, and for the rainbow the colors between them too.
+    private fun AtlasColors.inksOnTheBubble(): List<Pair<Color, Float>> =
+        Ink.entries
+            .flatMap { ink ->
+                inkColors(ink).let { colors ->
+                    colors + colors.zipWithNext().flatMap { (a, b) -> (1..9).map { blend(a, b, it / 10f) } }
+                }
+            }.map { it to contrast(it, surfaceSticker) }
 
     @Test
     fun everyInkAndTheWholeRainbowReach4_5To1OnTheBubbleByDay() {

@@ -13,7 +13,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-// Heat Vision and Hyper-Intelligence with the ink marks of testInks, in the Day theme Robolectric starts in.
+// Heat Vision and Hyper-Intelligence with their ink marks in cards.json, in the Day theme Robolectric starts in.
 @HiltAndroidTest
 class InkTest : AtlasBehaviorTest() {
     private fun open(name: String) {
