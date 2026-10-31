@@ -26,7 +26,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyGridScope
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
@@ -78,8 +78,6 @@ private val RailMinWidth = 600.dp
 
 private val MoveSpec = tween<IntOffset>(350, easing = FastOutSlowInEasing)
 
-private val VariantKey: (Int, NamedCard) -> Any = { _, variant -> variant.id }
-
 @Composable
 fun CompendiumScreen(
     viewModel: CompendiumViewModel,
@@ -88,12 +86,10 @@ fun CompendiumScreen(
     layout: ListDetailLayout,
 ) {
     val filter by viewModel.filter.collectAsStateWithLifecycle()
-    val results by viewModel.results.collectAsStateWithLifecycle()
-    val openGroups by viewModel.openGroups.collectAsStateWithLifecycle()
+    val cells by viewModel.cells.collectAsStateWithLifecycle()
     CompendiumContent(
         filter,
-        results,
-        openGroups,
+        cells,
         viewModel::updateFilter,
         viewModel::toggleGroup,
         onCardClick,
@@ -105,8 +101,7 @@ fun CompendiumScreen(
 @Composable
 fun CompendiumContent(
     filter: CompendiumFilter,
-    results: List<CompendiumEntry>?,
-    openGroups: Set<String>,
+    cells: List<GridCell>?,
     onFilterChange: (CompendiumFilter) -> Unit,
     onGroupToggle: (String) -> Unit,
     onCardClick: (String) -> Unit,
@@ -193,7 +188,7 @@ fun CompendiumContent(
                         verticalArrangement = Arrangement.spacedBy(CellGapDown),
                     ) {
                         fullWidth("filters") { Filters(filter, onFilterChange) }
-                        if (results?.isEmpty() == true) {
+                        if (cells?.isEmpty() == true) {
                             fullWidth("empty") {
                                 BasicText(
                                     stringResource(R.string.no_results),
@@ -210,48 +205,34 @@ fun CompendiumContent(
                                 )
                             }
                         }
-                        results.orEmpty().forEachIndexed { index, entry ->
-                            val tilt = tiltAt(index)
-                            when (entry) {
-                                is CompendiumEntry.Single -> {
-                                    item(key = entry.card.id) {
-                                        CompendiumCard(
-                                            entry.card,
-                                            tilt,
-                                            { openCard(entry.card.id) },
-                                            Modifier.animateItem(placementSpec = MoveSpec),
-                                        )
-                                    }
+                        items(cells.orEmpty(), key = { it.gridKey }) { cell ->
+                            val modifier = Modifier.animateItem(placementSpec = MoveSpec)
+                            when (cell) {
+                                is GridCell.Single -> {
+                                    CompendiumCard(
+                                        cell.card,
+                                        tiltAt(cell.index),
+                                        { openCard(cell.card.id) },
+                                        modifier,
+                                    )
                                 }
 
-                                is CompendiumEntry.Group -> {
-                                    if (entry.name in openGroups) {
-                                        item(key = entry.gridKey) {
-                                            GroupCollapse(
-                                                entry,
-                                                { toggleGroup(entry.name) },
-                                                Modifier.animateItem(placementSpec = MoveSpec).padding(CardMargin),
-                                            )
-                                        }
-                                        itemsIndexed(entry.variants, key = VariantKey) { number, variant ->
-                                            CompendiumCard(
-                                                variant,
-                                                tiltAt(number),
-                                                { openCard(variant.id) },
-                                                Modifier.animateItem(placementSpec = MoveSpec),
-                                                VariantPosition(number + 1, entry.variants.size),
-                                            )
-                                        }
-                                    } else {
-                                        item(key = entry.gridKey) {
-                                            GroupStack(
-                                                entry,
-                                                tilt,
-                                                { toggleGroup(entry.name) },
-                                                Modifier.animateItem(placementSpec = MoveSpec),
-                                            )
-                                        }
-                                    }
+                                is GridCell.Stack -> {
+                                    GroupStack(cell, tiltAt(cell.index), { toggleGroup(cell.name) }, modifier)
+                                }
+
+                                is GridCell.Collapse -> {
+                                    GroupCollapse(cell, { toggleGroup(cell.name) }, modifier.padding(CardMargin))
+                                }
+
+                                is GridCell.Variant -> {
+                                    CompendiumCard(
+                                        cell.card,
+                                        tiltAt(cell.position - 1),
+                                        { openCard(cell.card.id) },
+                                        modifier,
+                                        cell,
+                                    )
                                 }
                             }
                         }
@@ -332,7 +313,7 @@ private fun CompendiumCard(
     tilt: Float,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    position: VariantPosition? = null,
+    variant: GridCell.Variant? = null,
 ) {
     val face = card.face() ?: return
     val description =
@@ -341,7 +322,7 @@ private fun CompendiumCard(
             face.colors.forEach { add(stringResource(colorName(it))) }
             face.faceValue?.let { add(LocalResources.current.pointsText(it)) }
         }.joinToString(", ").let { described ->
-            position?.let { stringResource(R.string.card_variant_position, described, it.number, it.count) }
+            variant?.let { stringResource(R.string.card_variant_position, described, it.position, it.count) }
                 ?: described
         }
     CardThumb(card.image, card.name, face.colors, description, tilt, onClick, modifier.padding(CardMargin))
@@ -390,8 +371,7 @@ private fun CompendiumSample(
                 }.let { if (longName) listOf(LongNameTrait) + it else it }
         CompendiumContent(
             CompendiumFilter(colors = setOf(CardColor.Green)),
-            cards.map(CompendiumEntry::Single),
-            emptySet(),
+            cards.map(CompendiumEntry::Single).toGridCells(emptySet()),
             {},
             {},
             {},

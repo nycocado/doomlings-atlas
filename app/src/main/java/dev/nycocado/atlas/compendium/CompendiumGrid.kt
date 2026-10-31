@@ -21,4 +21,12 @@ private val Tilts = listOf(-2.5f, 2f, 1.5f, -2f)
 
 internal fun tiltAt(index: Int) = Tilts[index % Tilts.size]
 
-internal val CompendiumEntry.Group.gridKey get() = "group:$name"
+// A group's stack and its collapse cell share a key, so opening it animates the one into the other.
+internal val GridCell.gridKey: Any
+    get() =
+        when (this) {
+            is GridCell.Single -> card.id
+            is GridCell.Stack -> "group:$name"
+            is GridCell.Collapse -> "group:$name"
+            is GridCell.Variant -> card.id
+        }
