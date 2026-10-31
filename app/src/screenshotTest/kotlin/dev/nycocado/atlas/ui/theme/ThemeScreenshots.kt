@@ -19,6 +19,7 @@ import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitSample
 import dev.nycocado.atlas.carddetail.TrinketBlocksPreview
+import dev.nycocado.atlas.carddetail.UndrawnTokenDetailPreview
 import dev.nycocado.atlas.cardpane.CardBesideListPreview
 import dev.nycocado.atlas.compendium.CardGroupCollapsedPreview
 import dev.nycocado.atlas.compendium.CardGroupOpenPreview
@@ -120,11 +121,10 @@ fun ActionNoteTokenDetailScreenshot() = ActionNoteTokenDetailPreview()
 @Composable
 fun TrinketBlocksScreenshot() = TrinketBlocksPreview()
 
-// The token's name and the kind's name come from the card language.
 @PreviewTest
-@Preview(locale = "pt")
+@PreviewLightDark
 @Composable
-fun ActionNoteTokenDetailPortugueseScreenshot() = ActionNoteTokenDetailPreview()
+fun UndrawnTokenDetailScreenshot() = UndrawnTokenDetailPreview()
 
 @PreviewTest
 @Preview(name = "Light", locale = "pt")

@@ -18,7 +18,7 @@ class EffectBlocksTest : AtlasBehaviorTest() {
     }
 
     @Test
-    fun talkBackReadsTheKindsNameAndTheTokensNameInTheText() {
+    fun theTextTalkBackReadsHasTheKindsNameAndTheTokensName() {
         launchPastNotice()
         openSelfReplicating()
 

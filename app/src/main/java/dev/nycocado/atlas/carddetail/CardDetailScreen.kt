@@ -623,3 +623,28 @@ private val MagicBeans =
 @PreviewLightDark
 @Composable
 internal fun ActionNoteTokenDetailPreview() = AtlasTheme { CardDetailSample(card = MagicBeans) }
+
+// Carnivore as in assets/doomlings/legends-of-enderas/cards.json: its Dinoling token has no symbol in the app yet (#148),
+// so it shows its name.
+private val Carnivore =
+    Trait(
+        "legends-of-enderas/traits/carnivore",
+        "legends-of-enderas",
+        "",
+        "Carnivore",
+        "A healthy, balanced meal includes meat with two sides of meat.",
+        listOf(
+            Effect(EffectKind.Action, "Discard all Dinolings ({dinoling}) from your trait pile."),
+            Effect(EffectKind.Note, "(Excluding this one.)"),
+        ),
+        null,
+        6,
+        listOf(CardColor.Green),
+        false,
+        listOf("Dinoling"),
+        listOf(TraitIcon.Action),
+    )
+
+@PreviewLightDark
+@Composable
+internal fun UndrawnTokenDetailPreview() = AtlasTheme { CardDetailSample(card = Carnivore) }

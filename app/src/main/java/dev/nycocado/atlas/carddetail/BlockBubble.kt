@@ -62,7 +62,6 @@ private data class BubbleText(
     val language: CardLanguage,
 )
 
-// One block of the card detail's text, in a bubble.
 @Composable
 internal fun BlockBubble(
     block: CardBlock,
@@ -295,12 +294,9 @@ private fun EffectText(
                         // The name is the inline content's alternate text, which TalkBack reads in its place.
                         is TextPart.Icon -> {
                             val title = titles.getValue(part.token)
-                            if (part.token.symbol !=
-                                null
-                            ) {
-                                appendInlineContent(part.token.code, title)
-                            } else {
-                                append(title)
+                            when (part.token.symbol) {
+                                null -> append(title)
+                                else -> appendInlineContent(part.token.code, title)
                             }
                         }
                     }
