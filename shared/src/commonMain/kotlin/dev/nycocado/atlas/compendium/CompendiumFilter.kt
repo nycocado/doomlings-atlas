@@ -41,14 +41,7 @@ fun List<Card>.filterCompendium(
                 if (query.isEmpty()) {
                     MatchRank.Exact
                 } else {
-                    // With English as the card language the translation is the printed face: build it once.
-                    val faces =
-                        if (language == CardLanguage.English) {
-                            listOf(translations.face(card, language))
-                        } else {
-                            listOf(card.face(), translations.face(card, language))
-                        }
-                    faces
+                    listOf(card.face(), translations.translatedFace(card, language))
                         .mapNotNull { face -> face?.searchable?.let { matchRank(query, it) } }
                         .minOrNull()
                 }
