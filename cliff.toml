@@ -31,6 +31,8 @@ commit_preprocessors = [
 ]
 # The comments only order the groups; the template strips them.
 commit_parsers = [
+  # A release PR only updates this changelog: the ones release-pr.yml opens, and the hand-made one of 0.1.0 (#41).
+  { message = "^docs: ([Rr]elease v[0-9]|[Cc]hangelog for [0-9])", skip = true },
   { message = "^feat", group = "<!-- 0 -->Features" },
   { message = "^fix", group = "<!-- 1 -->Fixes" },
   { message = "^perf", group = "<!-- 2 -->Performance" },

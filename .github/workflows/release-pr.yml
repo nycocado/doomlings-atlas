@@ -1,0 +1,109 @@
+name: Release PR
+
+# Keeps one release PR open with the next version and its CHANGELOG.md; merging it tags that version and starts
+# release.yml on the tag (docs/development.md#releases).
+# Concurrency only on the pull-request job: a newer push must never cancel a pending tag.
+on: # zizmor: ignore[concurrency-limits]
+  push:
+    branches: [main]
+
+permissions: {}
+
+env:
+  RELEASE_BRANCH: release/next
+
+jobs:
+  merged:
+    name: Did this push merge the release PR
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # the pushed commit and its CHANGELOG.md
+      pull-requests: read # the PR it merged
+    outputs:
+      version: ${{ steps.find.outputs.version }}
+    steps:
+      # Only the PR this workflow opens counts, not one from a fork's branch of the same name. The version is the
+      # newest heading of the merged CHANGELOG.md, so editing the PR title changes nothing.
+      - id: find
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          release=$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/pulls" --jq "[.[] | select(
+            .merged_at != null and .head.ref == \"$RELEASE_BRANCH\" and
+            .head.repo.full_name == \"$GITHUB_REPOSITORY\" and .user.login == \"github-actions[bot]\")] | length")
+          if [ "$release" -gt 0 ]; then
+            version=$(gh api "repos/$GITHUB_REPOSITORY/contents/CHANGELOG.md?ref=$GITHUB_SHA" \
+              -H "Accept: application/vnd.github.raw" | sed -n 's/^## \([0-9]*\.[0-9]*\.[0-9]*\) .*/v\1/p' | head -1)
+            echo "version=$version" >> "$GITHUB_OUTPUT"
+          fi
+
+  tag:
+    name: Tag the release and start release.yml
+    needs: merged
+    if: needs.merged.outputs.version != ''
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # the tag
+      actions: write # starts release.yml
+    steps:
+      # A tag pushed with GITHUB_TOKEN starts no workflow, but a dispatch does; on the tag, the release environment's
+      # v* rule still applies. A rerun finds the tag already on this commit.
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.merged.outputs.version }}
+        run: |
+          tagged=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$VERSION" --jq .object.sha 2> /dev/null || true)
+          if [ "$tagged" != "$GITHUB_SHA" ]; then
+            gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$VERSION" -f sha="$GITHUB_SHA"
+          fi
+          gh workflow run release.yml --repo "$GITHUB_REPOSITORY" --ref "$VERSION"
+
+  pull-request:
+    name: Open or update the release PR
+    needs: merged
+    if: needs.merged.outputs.version == ''
+    runs-on: ubuntu-latest
+    concurrency:
+      group: release-pr
+      cancel-in-progress: true
+    permissions:
+      contents: write # the release branch
+      pull-requests: write # the release PR
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # git-cliff reads the commits since the previous tag
+          persist-credentials: false
+      # Without the token: git-cliff comes from PyPI.
+      - id: cliff
+        run: |
+          cliff() { pipx run --spec git-cliff==2.14.2 git-cliff "$@"; }
+          version=$(cliff --bumped-version)
+          if git rev-parse -q --verify "refs/tags/$version" > /dev/null; then
+            echo "Nothing to release since $version"
+          else
+            cliff --bump --output CHANGELOG.md
+            echo "version=$version" >> "$GITHUB_OUTPUT"
+          fi
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.cliff.outputs.version }}
+        run: |
+          number=$(gh pr list --head "$RELEASE_BRANCH" --author app/github-actions --state open \
+            --json number --jq '.[0].number')
+          if [ -z "$VERSION" ]; then
+            if [ -n "$number" ]; then gh pr close "$number" --comment "Nothing left to release."; fi
+            exit 0
+          fi
+          title="[docs] Release $VERSION"
+          body="Merging this tags $VERSION and starts release.yml, which opens its draft Release (docs/development.md#releases). Updated on every push to main."
+          git switch -C "$RELEASE_BRANCH"
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -am "$title"
+          gh auth setup-git
+          git push --force origin "$RELEASE_BRANCH"
+          if [ -n "$number" ]; then
+            gh pr edit "$number" --title "$title" --body "$body"
+          else
+            gh pr create --head "$RELEASE_BRANCH" --base main --title "$title" --body "$body"
+          fi
