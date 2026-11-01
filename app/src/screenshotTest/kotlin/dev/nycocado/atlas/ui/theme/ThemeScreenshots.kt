@@ -347,6 +347,11 @@ fun TranslatedTraitDetailFontScale200SpanishScreenshot() = AtlasTheme { Translat
 fun CitedCardDetailScreenshot() = CitedCardDetailPreview()
 
 @PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun CitedCardDetailFontScale200Screenshot() = CitedCardDetailPreview()
+
+@PreviewTest
 @PreviewLightDark
 @Composable
 fun PillsScreenshot() = PillsPreview()
