@@ -190,7 +190,7 @@ fun CompendiumContent(
                 centered = rail && layout.centersOnRail,
                 Modifier.weight(1f).then(bottom),
                 // Above the grid rather than in it: the grid keeps its first visible item in place, so a banner
-                // arriving after the list showed would land out of sight. It lines up with the grid's cards.
+                // arriving after the list showed would land out of sight.
                 banner = {
                     if (update != null) {
                         UpdateSticker(
@@ -198,8 +198,6 @@ fun CompendiumContent(
                             onInstallUpdate,
                             Modifier.padding(start = Space.s5, end = Space.s5, top = Space.s4),
                             onDismiss = onDismissUpdate,
-                            releaseNotes = true,
-                            oneRow = rail,
                         )
                     }
                 },

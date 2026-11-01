@@ -302,6 +302,12 @@ fun CompendiumBesideCardScreenshot() = CompendiumBesideCardPreview()
 @Composable
 fun CardBesideListScreenshot() = CardBesideListPreview()
 
+// The narrowest rail layout, where the sticker's text and buttons no longer fit on one line.
+@PreviewTest
+@Preview(device = PANE, fontScale = 2f, locale = "pt")
+@Composable
+fun UpdateStickerPaneFontScale200PortugueseScreenshot() = UpdateStickerPreview()
+
 @PreviewTest
 @Preview(device = PANE, locale = "pt")
 @Composable

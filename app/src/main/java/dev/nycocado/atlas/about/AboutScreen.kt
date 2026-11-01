@@ -129,7 +129,7 @@ fun AboutContent(
                     style = AtlasTypography.bodySm.copy(color = theme.onSurfaceVariant),
                 )
                 if (update != null) {
-                    UpdateSticker(update, onInstallUpdate, releaseNotes = true)
+                    UpdateSticker(update, onInstallUpdate)
                 }
             }
         }
