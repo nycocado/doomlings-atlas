@@ -1,25 +1,54 @@
-# Fails a PR that adds a dependency with a known vulnerability, and lists the dependencies it adds in the
-# job summary. The PR's Gradle graph comes from dependency-graph.yml through dependency-graph-submit.yml,
-# since GitHub can't read Gradle builds by itself; the base's comes from dependency-submission.yml.
+# Submits the graph dependency-graph.yml saved for a PR, with the write permission a PR from a fork or from Dependabot
+# doesn't get, then fails if the PR adds a dependency with a known vulnerability. The result reaches the PR as the
+# "Dependency review" commit status, since a workflow_run job reports on the default branch. It never checks out or
+# runs the PR's code, so workflow_run is safe here.
 name: Dependency review
 
-on:
-  pull_request:
+on: # zizmor: ignore[dangerous-triggers]
+  workflow_run:
+    workflows: [Dependency graph]
+    types: [completed]
 
 permissions: {}
 
-concurrency:
-  group: dependency-review-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   review:
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     permissions:
-      contents: read # the dependency graph of both commits
+      actions: read # the graph artifact of the PR's run
+      contents: write # the dependency submission API
+      statuses: write # the result on the PR's head commit
+    env:
+      BASE: ${{ github.event.repository.default_branch }}
+      HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
     steps:
+      - uses: gradle/actions/dependency-submission@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
+        with:
+          dependency-graph: download-and-submit
+      # A compare asked before the snapshot is indexed keeps answering "No snapshots were found" for that same URL
+      # (actions/dependency-review-action#1176), so this waits with a different URL each time and the review asks once.
+      - name: Wait for the PR's graph
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for attempt in $(seq 1 30); do
+            warnings=$(gh api -i "repos/$GITHUB_REPOSITORY/dependency-graph/compare/$BASE...$HEAD_SHA?per_page=$((100 - attempt))" |
+              sed -n 's/^x-github-dependency-graph-snapshot-warnings: *//Ip' | tr -d '\r')
+            if [ -z "$warnings" ]; then exit 0; fi
+            sleep 10
+          done
+          echo "::error::The PR's dependency graph never appeared: $(printf '%s' "$warnings" | base64 -d)"
+          exit 1
       - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
         with:
-          # Waits for the PR's graph, which arrives after a Gradle build and a second workflow.
-          retry-on-snapshot-warnings: true
-          retry-on-snapshot-warnings-timeout: 900
+          base-ref: ${{ env.BASE }}
+          head-ref: ${{ env.HEAD_SHA }}
+      - if: ${{ !cancelled() }}
+        name: Report on the PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATE: ${{ job.status }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$HEAD_SHA" -f context="Dependency review" -f state="$STATE" \
+            -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >/dev/null

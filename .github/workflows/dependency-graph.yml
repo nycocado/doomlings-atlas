@@ -1,5 +1,5 @@
 # Builds the PR's Gradle dependency graph and saves it as an artifact. A PR from a fork or from Dependabot gets
-# no write permission, so dependency-graph-submit.yml submits it, and dependency-review.yml reviews it.
+# no write permission, so dependency-review.yml submits and reviews it once this run completes.
 name: Dependency graph
 
 on:
