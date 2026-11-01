@@ -7,7 +7,7 @@ This file covers the look only. Screen flows, scoring steps and game rules are d
 ## Files
 
 - [`design/tokens.json`](../design/tokens.json): colors for both themes, type, spacing, radii, strokes and shadows. Source of truth for the Compose theme.
-- [`design/brand/`](../design/brand): app logo, interface icons, trait color glyphs and the adaptive app icon layers.
+- [`design/brand/`](../design/brand): app logo, interface icons, trait color glyphs, the adaptive app icon layers and the README banner (light and dark).
 - [`design/screens/`](../design/screens): prototype screens in both themes, with placeholder cards. A visual reference only: their content, steps and rules are suggestions, not decisions.
 - [`assets/doomlings/symbols/`](../assets/doomlings/symbols): card symbols, redrawn from Doomlings originals. Doomlings material, see its [notice](../assets/doomlings/NOTICE.md).
 

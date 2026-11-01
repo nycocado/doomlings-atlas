@@ -12,6 +12,7 @@ Everything in this folder (card images, card text and the Doomlings name) is © 
   - Card images, one file per card, at the path given by each card's `image` field.
 - `playmats/`: playmats (six player mats, the central mat and the trinkets mat), cropped from the same mod's table image. `central.jpg` shows the Doomlings logo: kept for reference only, never shown in the app.
 - `rules/`: the rulesheets of the sets that have one (Classic, Upgrade, Imaginary Ends, Legends of Enderas, Castle Glass and Overlush), one `<set>.pdf` each, named after the set's folder. Each rulesheet has a `<set>.md` beside it: a transcription of its text, © Doomlings LLC like the rulesheet, written by this project so the rules can be read without the PDF. The expansion ones leave out what the mod's guide adds (see Sources).
+- `screenshots/`: screenshots of this app for the README, in the light and dark themes, taken on an emulator. They show card images and card text.
 - `symbols/`: card symbols, redrawn for this app in its sticker style from the symbols printed on the cards. One version each; the app colors them for its theme.
 
 ## Sources
