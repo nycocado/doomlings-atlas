@@ -41,6 +41,8 @@ Doomlings LLC gave permission for this app (2026-10-15) under the fan art terms 
 
 ## Opening an Issue
 
+A security vulnerability never goes in an issue: report it privately as [SECURITY.md](SECURITY.md) explains.
+
 1. Search existing issues first; if one already covers it, comment there instead.
 2. One problem or idea per issue, with a clear title.
 3. Pick the form that fits:

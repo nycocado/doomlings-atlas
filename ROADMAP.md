@@ -37,7 +37,7 @@ Everything here comes before assets and code.
 
 The repository goes public and the first APK comes out on GitHub Releases once every other issue of this phase is done. Before that, in this order:
 
-- A `SECURITY.md` and a `CODE_OF_CONDUCT.md` (Contributor Covenant) with a reporting contact.
+- A `SECURITY.md`.
 - CI also builds the unsigned release APK, so an R8 break fails the pull request, and reviews the dependencies each pull request adds. The workflows are checked once with [zizmor](https://zizmor.sh).
 - Release workflow: a `vX.Y.Z` tag builds the signed APK in the `release` environment and creates a draft GitHub Release with it (see [docs/development.md](docs/development.md#releases)). The maintainer installs the draft's APK on a real device before publishing it.
 - README for players: what the app does, screenshots and where to download it. Repository topics so the project shows up in GitHub search.
