@@ -23,15 +23,12 @@
 
 ## About
 
-Doomlings Atlas is a free and open-source companion app for the Doomlings card game. Look up any card of the Classic base game, read its text in English, Portuguese or Spanish, and jump to the cards it mentions. It works offline, with no ads, no account and no paid features.
-
-Scoring, the other sets and a card scanner come next: see the [roadmap](ROADMAP.md).
-
+Doomlings Atlas is a free and open-source companion app for the Doomlings card game. Look up the Traits, Ages and Catastrophes of the Classic base game, read its text in English, Portuguese or Spanish, and jump to the cards it mentions. It works offline, with no ads, no account and no paid features.
 ## Features
 
 - **Compendium:** every Trait, Age and Catastrophe of the Classic base game, with its card image.
-- **Search and filters:** find a card by name, or filter by color and card type.
-- **Card text in three languages:** as printed in English, or translated into Portuguese and Spanish, switched on each card.
+- **Search and filters:** find a card by name, or filter by color and by Traits, Ages and Catastrophes.
+- **Card text in three languages:** as printed in English, or translated into Portuguese and Spanish, switched from any card.
 - **Linked cards:** a card named in another card's text opens with a tap, and back returns to where you were.
 - **Card groups:** cards that share a name, like the Kidneys, stack into one and open in place.
 - **Day and Game night:** light and dark themes, and a layout for tablets and foldables.
@@ -71,9 +68,13 @@ Scoring, the other sets and a card scanner come next: see the [roadmap](ROADMAP.
 
 Get the APK from the [latest release](https://github.com/nycocado/doomlings-atlas/releases/latest) and open it on your phone (Android 8.0 or newer). Since the app doesn't come from Google Play, Android asks once to allow installs from your browser or file manager.
 
+## Roadmap
+
+Next come every Doomlings set and every kind of card in the compendium, scoring a finished game, a card scanner and a tutorial. The plan and its progress are in [ROADMAP.md](ROADMAP.md).
+
 ## Contributing
 
-You don't need to code to help: card data fixes, translations, bug reports and ideas all count. Start at [CONTRIBUTING.md](CONTRIBUTING.md), and see where the project is going in the [roadmap](ROADMAP.md).
+You don't need to code to help: card data fixes, translations, bug reports and ideas all count. Start at [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Acknowledgements
 
