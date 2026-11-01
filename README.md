@@ -23,7 +23,8 @@
 
 ## About
 
-Doomlings Atlas is a free and open-source companion app for the Doomlings card game. Look up the Traits, Ages and Catastrophes of the Classic base game, read its text in English, Portuguese or Spanish, and jump to the cards it mentions. It works offline, with no ads, no account and no paid features.
+Doomlings Atlas is a free and open-source companion app for the Doomlings card game. Look up the Traits, Ages and Catastrophes of the Classic base game, read their text in English, Portuguese or Spanish, and jump to the cards it mentions. It works offline, with no ads, no account and no paid features.
+
 ## Features
 
 - **Compendium:** every Trait, Age and Catastrophe of the Classic base game, with its card image.
