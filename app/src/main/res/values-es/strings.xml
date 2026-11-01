@@ -10,6 +10,7 @@
     <string name="update_install">Descargar e instalar</string>
     <string name="update_dismiss">Ocultar la actualización</string>
     <string name="release_notes">Novedades</string>
+    <string name="update_corrupt">La descarga llegó dañada y se borró. Vuelve a intentarlo.</string>
     <string name="licenses_app">App</string>
     <string name="licenses_fonts">Fuentes</string>
     <string name="licenses_libraries">Bibliotecas</string>

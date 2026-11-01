@@ -33,6 +33,7 @@ import dev.nycocado.atlas.compendium.CompendiumScreen
 import dev.nycocado.atlas.compendium.CompendiumViewModel
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.StatusBarIcons
+import dev.nycocado.atlas.update.InstallUpdate
 import dev.nycocado.atlas.update.UpdateViewModel
 import kotlinx.serialization.Serializable
 
@@ -68,8 +69,11 @@ fun AtlasApp() {
     val updates: UpdateViewModel = hiltViewModel()
     val update by updates.update.collectAsStateWithLifecycle()
     val banner by updates.banner.collectAsStateWithLifecycle()
-    // The download and install come with #110.
-    val install = {}
+    InstallUpdate(
+        updates.download.collectAsStateWithLifecycle().value,
+        updates::awaitPermission,
+        updates::installHandled,
+    )
     if (!noticeSeen) {
         NoticeDialog {
             prefs.edit { putBoolean(NOTICE_SEEN, true) }
@@ -118,7 +122,7 @@ fun AtlasApp() {
                         onAboutClick = { backStack.open(AboutKey) },
                         layout = layout,
                         update = banner,
-                        onInstallUpdate = install,
+                        onInstallUpdate = updates::install,
                         onDismissUpdate = updates::dismiss,
                     )
                 }
@@ -139,7 +143,7 @@ fun AtlasApp() {
                 }
                 entry<AboutKey> {
                     StatusBarIcons(dark = false)
-                    AboutScreen(update, install) { backStack.leave(AboutKey) }
+                    AboutScreen(update, updates::install) { backStack.leave(AboutKey) }
                 }
             },
     )
