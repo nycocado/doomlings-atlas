@@ -92,6 +92,7 @@ android {
 
 dependencies {
     implementation(project(":shared"))
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.9.8")
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
