@@ -3,6 +3,7 @@ package dev.nycocado.atlas.carddetail
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,10 +28,12 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.LinearGradientShader
 import androidx.compose.ui.graphics.Shader
 import androidx.compose.ui.graphics.ShaderBrush
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
@@ -39,7 +42,6 @@ import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.intl.LocaleList
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
@@ -286,6 +288,7 @@ private fun EffectText(
     // Kept across recompositions, so an unchanged text stays equal and isn't laid out again.
     val brushes = remember(parts, theme) { parts.map { (it as? TextPart.Words)?.ink?.let(theme::brush) } }
     val gradients = mutableListOf<Pair<IntRange, GradientBrush>>()
+    val arrows = mutableMapOf<String, Color>()
     val text =
         buildAnnotatedString {
             withStyle(SpanStyle(localeList = LocaleList(language.code))) {
@@ -293,26 +296,39 @@ private fun EffectText(
                     when (part) {
                         is TextPart.Words -> {
                             val start = length
-                            append(part.text)
-                            val citations = library.citations(card, part.text)
+                            val cited = mutableListOf<IntRange>()
+                            var at = 0
+                            for ((range, citedCard) in library.citations(card, part.text)) {
+                                append(part.text.substring(at, range.first))
+                                val from = length
+                                // No-break spaces keep the name on one line, in the displayed text only.
+                                append(part.text.substring(range).replace(' ', '\u00A0'))
+                                // A word joiner keeps the arrow beside the name: an invisible format character, with
+                                // nothing for TalkBack to say. It must be text of its own, as a line can still break
+                                // before an inline content whose alternate text is the joiner.
+                                append('\u2060')
+                                appendInlineContent(ARROW + citedCard.id, "\u2060")
+                                val nameAndArrow = from until length
+                                cited += nameAndArrow
+                                val ink = citedInk(citedCard, theme)
+                                arrows[ARROW + citedCard.id] = ink
+                                addLink(
+                                    LinkAnnotation.Clickable(
+                                        citedCard.id,
+                                        TextLinkStyles(SpanStyle(color = ink)),
+                                    ) { onCardClick(citedCard.id) },
+                                    nameAndArrow.first,
+                                    nameAndArrow.last + 1,
+                                )
+                                at = range.last + 1
+                            }
+                            append(part.text.substring(at))
                             brushes[i]?.let { brush ->
                                 val span = start until length
                                 val style = SpanStyle(brush = brush)
                                 if (brush is GradientBrush) gradients += span to brush
                                 // A cited name keeps its citation style, which an ink drawn over it would hide.
-                                val cited = citations.map { (range, _) -> start + range.first..start + range.last }
                                 span.without(cited).forEach { addStyle(style, it.first, it.last + 1) }
-                            }
-                            for ((range, cited) in citations) {
-                                val link =
-                                    TextLinkStyles(
-                                        citedStyle(cited, theme).copy(textDecoration = TextDecoration.Underline),
-                                    )
-                                addLink(
-                                    LinkAnnotation.Clickable(cited.id, link) { onCardClick(cited.id) },
-                                    start + range.first,
-                                    start + range.last + 1,
-                                )
                             }
                         }
 
@@ -335,7 +351,17 @@ private fun EffectText(
                     token.code to
                         InlineTextContent(token.placeholder) { Symbol(symbol, Modifier.fillMaxSize(), actionColor) }
                 }
-            }.toMap()
+            }.toMap() +
+            arrows.mapValues { (_, color) ->
+                InlineTextContent(Placeholder(0.8.em, 0.8.em, PlaceholderVerticalAlign.Center)) {
+                    Image(
+                        painterResource(R.drawable.ic_arrow_outward),
+                        null,
+                        Modifier.fillMaxSize(),
+                        colorFilter = ColorFilter.tint(color),
+                    )
+                }
+            }
     BasicText(
         text,
         style = (if (note) AtlasTypography.bodyMd else AtlasTypography.bodyLg).copy(color = theme.onSurface),
@@ -348,6 +374,9 @@ private fun EffectText(
         inlineContent = inline,
     )
 }
+
+// Its own inline content ids, apart from the tokens' codes.
+private const val ARROW = "arrow:"
 
 // The colors an ink is drawn with, the rainbow's in the order of the card.
 internal fun AtlasColors.inkColors(ink: Ink): List<Color> =
@@ -391,16 +420,12 @@ private fun IntRange.without(holes: List<IntRange>): List<IntRange> =
         if (at <= last) add(at..last)
     }
 
-// A cited trait's name in its first color, like a highlighter. Trait colors only mean a card's color, so an age or a
-// catastrophe gets the dots of its own top panel instead.
-private fun citedStyle(
+// A cited trait's name in the ink of its first color. Trait colors only mean a card's color, so an age or a catastrophe
+// keeps the text's own color, and only its arrow says it opens a card.
+private fun citedInk(
     cited: NamedCard,
     theme: AtlasColors,
-): SpanStyle =
-    (cited as? Trait)
-        ?.let { theme.trait(it.colors.firstOrNull()) }
-        ?.let { SpanStyle(background = it.fill, color = it.onFill) }
-        ?: SpanStyle(background = theme.outlineSoft, color = theme.onSurface)
+): Color = (cited as? Trait)?.let { theme.trait(it.colors.firstOrNull()).ink } ?: theme.onSurface
 
 // Anxiety Elixir as in assets/doomlings/imaginary-ends/cards.json. The app doesn't show Trinkets yet, so its blocks are
 // the ones shared decides for it, written out.

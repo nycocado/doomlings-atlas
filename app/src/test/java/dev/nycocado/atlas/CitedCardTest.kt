@@ -45,12 +45,14 @@ class CitedCardTest : AtlasBehaviorTest() {
                     SemanticsMatcher.keyIsDefined(SemanticsProperties.LinkTestMarker),
                 ).fetchSemanticsNode()
 
-        // TalkBack reads the effect around the link, and announces the name in it as a link.
+        // TalkBack reads the effect around the link, and announces the name in it as a link. It doesn't read the word
+        // joiner that keeps the arrow beside the name.
         val effect =
             link.parent!!
                 .config[SemanticsProperties.Text]
                 .single()
                 .text
+                .replace("\u2060", "")
         assertTrue("If Vampirism is in your trait pile" in effect)
         assertTrue(SemanticsActions.OnClick in link.config)
     }
