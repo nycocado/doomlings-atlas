@@ -33,6 +33,7 @@ import dev.nycocado.atlas.compendium.CompendiumScreen
 import dev.nycocado.atlas.compendium.CompendiumViewModel
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.StatusBarIcons
+import dev.nycocado.atlas.update.UpdateViewModel
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -64,6 +65,11 @@ fun AtlasApp() {
     var noticeSeen by remember { mutableStateOf(prefs.getBoolean(NOTICE_SEEN, false)) }
     val backStack = rememberNavBackStack(CompendiumKey)
     val viewModel: CompendiumViewModel = hiltViewModel()
+    val updates: UpdateViewModel = hiltViewModel()
+    val update by updates.update.collectAsStateWithLifecycle()
+    val banner by updates.banner.collectAsStateWithLifecycle()
+    // The download and install come with #110.
+    val install = {}
     if (!noticeSeen) {
         NoticeDialog {
             prefs.edit { putBoolean(NOTICE_SEEN, true) }
@@ -111,6 +117,9 @@ fun AtlasApp() {
                         onCardClick = cardPane::open,
                         onAboutClick = { backStack.open(AboutKey) },
                         layout = layout,
+                        update = banner,
+                        onInstallUpdate = install,
+                        onDismissUpdate = updates::dismiss,
                     )
                 }
                 // One content key for every card at a depth, so picking another card beside the list only changes what
@@ -130,7 +139,7 @@ fun AtlasApp() {
                 }
                 entry<AboutKey> {
                     StatusBarIcons(dark = false)
-                    AboutScreen { backStack.leave(AboutKey) }
+                    AboutScreen(update, install) { backStack.leave(AboutKey) }
                 }
             },
     )

@@ -53,11 +53,18 @@ import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
+import dev.nycocado.atlas.update.AppUpdate
+import dev.nycocado.atlas.update.SampleUpdate
+import dev.nycocado.atlas.update.UpdateSticker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 @Composable
-fun AboutScreen(onBack: () -> Unit) {
+fun AboutScreen(
+    update: AppUpdate?,
+    onInstallUpdate: () -> Unit,
+    onBack: () -> Unit,
+) {
     val context = LocalContext.current
     val licenses by produceState<Licenses?>(null) {
         value = withContext(Dispatchers.IO) { loadLicenses(context) }
@@ -67,7 +74,7 @@ fun AboutScreen(onBack: () -> Unit) {
             .getPackageInfo(context.packageName, 0)
             .versionName
             .orEmpty()
-    AboutContent(version, licenses, onBack)
+    AboutContent(version, licenses, onBack, update, onInstallUpdate)
 }
 
 private fun loadLicenses(context: Context): Licenses {
@@ -98,6 +105,8 @@ fun AboutContent(
     version: String,
     licenses: Licenses?,
     onBack: () -> Unit,
+    update: AppUpdate? = null,
+    onInstallUpdate: () -> Unit = {},
 ) {
     val theme = AtlasTheme.colors
     var open by rememberSaveable { mutableStateOf<String?>(null) }
@@ -119,6 +128,9 @@ fun AboutContent(
                     Modifier.padding(top = Space.s2),
                     style = AtlasTypography.bodySm.copy(color = theme.onSurfaceVariant),
                 )
+                if (update != null) {
+                    UpdateSticker(update, onInstallUpdate, releaseNotes = true)
+                }
             }
         }
         if (licenses != null) {
@@ -234,4 +246,11 @@ internal fun AboutPreview() =
             ),
             onBack = {},
         )
+    }
+
+@PreviewLightDark
+@Composable
+internal fun AboutUpdatePreview() =
+    AtlasTheme {
+        AboutContent("1.0.0", null, onBack = {}, update = SampleUpdate)
     }

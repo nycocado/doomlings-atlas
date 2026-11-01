@@ -7,6 +7,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import com.android.tools.screenshot.PreviewTest
 import dev.nycocado.atlas.about.AboutPreview
+import dev.nycocado.atlas.about.AboutUpdatePreview
 import dev.nycocado.atlas.about.NoticePreview
 import dev.nycocado.atlas.carddetail.ActionNoteTokenDetailPreview
 import dev.nycocado.atlas.carddetail.CardDetailLongNamePreview
@@ -33,6 +34,7 @@ import dev.nycocado.atlas.compendium.CompendiumBesideCardPreview
 import dev.nycocado.atlas.compendium.CompendiumHalfCollapsedPreview
 import dev.nycocado.atlas.compendium.CompendiumLongNamePreview
 import dev.nycocado.atlas.compendium.CompendiumPreview
+import dev.nycocado.atlas.compendium.CompendiumUpdatePreview
 import dev.nycocado.atlas.compendium.FiltersAgesPreview
 import dev.nycocado.atlas.compendium.FiltersGreenPreview
 import dev.nycocado.atlas.compendium.FiltersPreview
@@ -49,6 +51,7 @@ import dev.nycocado.atlas.ui.component.RoundButtonPreview
 import dev.nycocado.atlas.ui.component.SunsetBandPreview
 import dev.nycocado.atlas.ui.component.TraitGlyphPreview
 import dev.nycocado.atlas.ui.component.UnofficialNoticePreview
+import dev.nycocado.atlas.update.UpdateStickerPreview
 
 @PreviewTest
 @PreviewLightDark
@@ -185,6 +188,21 @@ fun AboutScreenshot() = AboutPreview()
 @PreviewTest
 @PreviewLightDark
 @Composable
+fun AboutUpdateScreenshot() = AboutUpdatePreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun UpdateStickerScreenshot() = UpdateStickerPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun CompendiumUpdateScreenshot() = CompendiumUpdatePreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
 fun RoundButtonScreenshot() = RoundButtonPreview()
 
 @PreviewTest
@@ -251,6 +269,21 @@ fun CardGroupOpenTabletScreenshot() = CardGroupOpenWidePreview()
 @Preview(device = "spec:width=1280dp,height=800dp,dpi=240")
 @Composable
 fun CompendiumTabletScreenshot() = CompendiumPreview()
+
+@PreviewTest
+@Preview(name = "Light", device = "spec:width=1280dp,height=800dp,dpi=240")
+@Preview(
+    name = "Dark",
+    device = "spec:width=1280dp,height=800dp,dpi=240",
+    uiMode = UI_MODE_NIGHT_YES or UI_MODE_TYPE_NORMAL,
+)
+@Composable
+fun CompendiumUpdateTabletScreenshot() = CompendiumUpdatePreview()
+
+@PreviewTest
+@Preview(fontScale = 2f, locale = "pt")
+@Composable
+fun UpdateStickerFontScale200PortugueseScreenshot() = UpdateStickerPreview()
 
 // One pane of the tablet above: beside a card, the list-detail scene gives the list and the card half the screen each.
 private const val PANE = "spec:width=640dp,height=800dp,dpi=240"

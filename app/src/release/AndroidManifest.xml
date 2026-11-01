@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- The update check (ADR 0012); debug builds don't ask, so only release builds reach the network. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>
