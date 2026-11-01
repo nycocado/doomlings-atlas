@@ -1,10 +1,11 @@
 package dev.nycocado.atlas
 
+import android.content.Context
 import android.content.Intent
-import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.performClick
+import androidx.test.core.app.ApplicationProvider
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.After
 import org.junit.Assert.assertEquals
@@ -12,6 +13,16 @@ import org.junit.Before
 import org.junit.Test
 import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
+
+// The check runs off the main thread, so the banner shows a moment after launch.
+private fun AtlasBehaviorTest.awaitBanner(version: String) {
+    compose.waitUntil(5_000) { compose.onAllNodes(banner(version)).fetchSemanticsNodes().isNotEmpty() }
+}
+
+private fun AtlasBehaviorTest.bannerText(version: String) = compose.onNode(banner(version))
+
+private fun banner(version: String) =
+    hasText(ApplicationProvider.getApplicationContext<Context>().getString(R.string.update_available, version))
 
 @HiltAndroidTest
 class UpdateTest : AtlasBehaviorTest() {
@@ -91,21 +102,6 @@ class UpdateTest : AtlasBehaviorTest() {
             assertEquals("https://github.com/nycocado/doomlings-atlas/releases/tag/v1.2.0", opened.dataString)
         }
     }
-
-    private fun bannerText(version: String) =
-        compose.onNode(hasText(context.getString(R.string.update_available, version)))
-
-    private fun awaitBanner(version: String) {
-        compose.waitUntil(5_000) { bannerText(version).isDisplayedNow() }
-    }
-
-    private fun SemanticsNodeInteraction.isDisplayedNow() =
-        try {
-            assertIsDisplayed()
-            true
-        } catch (_: AssertionError) {
-            false
-        }
 
     private fun awaitAsked() {
         compose.waitUntil(5_000) { FakeLatestRelease.asked.get() > 0 }

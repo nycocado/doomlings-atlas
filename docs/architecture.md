@@ -21,9 +21,10 @@ A map of the code at the level of modules and data flow. The decisions behind it
 
 ## Screens and UI
 
-- Screens live in feature packages (`compendium/`, `carddetail/`, `about/`), with the card pane and the list-detail layout in `cardpane/`; shared components in `ui/component/`; the theme (`AtlasTheme`, colors, type, dimensions, stickers) in `ui/theme/`, following `design/tokens.json`.
+- Screens live in feature packages (`compendium/`, `carddetail/`, `about/`, `update/`), with the card pane and the list-detail layout in `cardpane/`; shared components in `ui/component/`; the theme (`AtlasTheme`, colors, type, dimensions, stickers) in `ui/theme/`, following `design/tokens.json`.
 - Components are the project's own, on Compose Foundation; Material 3 only for sheets, dialogs, snackbars and ripple ([ADR 0006](adr/0006-own-design-system.md)).
 - The unofficial notice shows once, on first launch; whether it was seen is a `SharedPreferences` flag.
+- The update check (`update/`): `UpdateCheck`, one per process, asks once per cold start for the latest Release through `LatestRelease`, which each build type provides (`app/src/debug` never asks, `app/src/release` uses `HttpURLConnection`), and hands the body to `availableUpdate` in `shared`. Google Play installs never ask. `UpdateViewModel` keeps the banner's dismissal with the activity.
 
 ## Invariants
 

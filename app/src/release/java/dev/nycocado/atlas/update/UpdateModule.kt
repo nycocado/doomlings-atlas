@@ -6,7 +6,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -27,7 +26,8 @@ private suspend fun fetchLatestRelease(): String? =
             } finally {
                 connection.disconnect()
             }
-        } catch (_: IOException) {
+        } catch (_: Exception) {
+            // Whatever goes wrong, a failed check stays silent (#106).
             null
         }
     }
