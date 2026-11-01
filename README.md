@@ -67,7 +67,7 @@ Doomlings Atlas is a free and open-source companion app for the Doomlings card g
 
 ## Download
 
-Get the APK from the [latest release](https://github.com/nycocado/doomlings-atlas/releases/latest) and open it on your phone (Android 8.0 or newer). Since the app doesn't come from Google Play, Android asks once to allow installs from your browser or file manager.
+Get the APK from the [latest release](https://github.com/nycocado/doomlings-atlas/releases/latest) and open it on your phone (Android 8.0 or newer). Since the app doesn't come from Google Play, Android asks once to allow installs from your browser or file manager. To check that an APK was built from this repository: `gh attestation verify doomlings-atlas-vX.Y.Z.apk --repo nycocado/doomlings-atlas` ([how](docs/development.md#releases)).
 
 ## Roadmap
 
