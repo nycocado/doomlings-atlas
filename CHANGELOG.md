@@ -2,6 +2,16 @@
 
 Notable changes in each release of Doomlings Atlas, generated from the commit history by [git-cliff](https://git-cliff.org).
 
+## 0.2.1 (2026-11-01)
+
+### Fixes
+
+- Dependency review only after the PR's graph is indexed ([#224](https://github.com/nycocado/doomlings-atlas/pull/224))
+
+### Tooling
+
+- Release APK attestation, zizmor on every PR, dependency review for forks ([#221](https://github.com/nycocado/doomlings-atlas/pull/221))
+
 ## 0.2.0 (2026-11-01)
 
 ### Features
