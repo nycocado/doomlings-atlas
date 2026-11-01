@@ -15,26 +15,46 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Its own job, so a third-party action never runs next to the signing key or the attestation's OIDC token.
+  notes:
+    name: Release notes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # git-cliff reads the commits since the previous tag
+          persist-credentials: false
+      - uses: orhun/git-cliff-action@a9a95522b26fe6403f7bb24031f21fb573d0f5ff # v4.9.1
+        with:
+          version: v2.14.2 # the one release-pr.yml runs
+          args: --latest --strip header --output release-notes.md
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: release-notes
+          path: release-notes.md
+
   release:
     name: Signed APK and draft Release
+    needs: notes
     runs-on: ubuntu-latest
     # The environment holds the signing key and only accepts v* tags.
     environment: release
     permissions:
       contents: write # the draft Release and its APK
+      id-token: write # the Sigstore certificate of the attestation
+      attestations: write # the attestation
     env:
       # The name the update check looks for (docs/adr/0012-update-check-from-github-releases.md).
       APK: doomlings-atlas-${{ github.ref_name }}.apk
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          fetch-depth: 0 # git-cliff reads the commits since the previous tag
           persist-credentials: false
-      # Before the build, so a third-party action never runs next to the signed APK.
-      - uses: orhun/git-cliff-action@a9a95522b26fe6403f7bb24031f21fb573d0f5ff # v4.9.1
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
-          version: v2.14.2 # the one release-pr.yml runs
-          args: --latest --strip header --output release-notes.md
+          name: release-notes
       - uses: gradle/actions/wrapper-validation@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
       - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
         with:
@@ -61,11 +81,18 @@ jobs:
           apksigner=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)/apksigner
           mv app/build/outputs/apk/release/app-release.apk "$APK"
           "$apksigner" verify --print-certs "$APK"
+      - name: Attest the APK's build provenance
+        id: attest
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: ${{ env.APK }}
       - name: Create the draft Release
         env:
           GH_TOKEN: ${{ github.token }}
+          BUNDLE: ${{ steps.attest.outputs.bundle-path }}
         run: |
-          gh release create "$GITHUB_REF_NAME" "$APK" \
+          cp "$BUNDLE" "$APK.sigstore.json"
+          gh release create "$GITHUB_REF_NAME" "$APK" "$APK.sigstore.json" \
             --draft --verify-tag --title "${GITHUB_REF_NAME#v}" --notes-file release-notes.md
       - if: failure()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
