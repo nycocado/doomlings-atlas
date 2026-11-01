@@ -77,6 +77,10 @@ Next come every Doomlings set and every kind of card in the compendium, scoring 
 
 You don't need to code to help: card data fixes, translations, bug reports and ideas all count. Start at [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## AI Use
+
+Doomlings Atlas is also a study of how software engineering practices (tickets and specs, architecture decision records, code review, CI) fit into a workflow with AI coding agents. Agents write much of the code and draft the card translations; the maintainer decides what gets built, reviews every change and checks every translation before it ships. Card data and card art are never generated: they come from the printed cards and official material. How agents work here is in [AGENTS.md](AGENTS.md).
+
 ## Acknowledgements
 
 - Jess and the Doomlings team, for allowing this project and for the high-resolution card images provided to the community.
