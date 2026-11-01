@@ -72,7 +72,7 @@ fun AtlasApp() {
     InstallUpdate(
         updates.download.collectAsStateWithLifecycle().value,
         updates::awaitPermission,
-        updates::installHandled,
+        updates::resetDownload,
     )
     if (!noticeSeen) {
         NoticeDialog {

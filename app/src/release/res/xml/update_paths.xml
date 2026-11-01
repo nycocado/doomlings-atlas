@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- The downloaded update APK (UpdateDownload), shared with the system installer. -->
+<!-- getExternalFilesDir(DIRECTORY_DOWNLOADS), where UpdateDownload saves the APK for the system installer. -->
 <paths>
     <external-files-path name="updates" path="Download/" />
 </paths>

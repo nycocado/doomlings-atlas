@@ -35,7 +35,7 @@ class UpdateViewModel
 
         fun awaitPermission(apk: File) = downloads.awaitPermission(apk)
 
-        fun installHandled() = downloads.done()
+        fun resetDownload() = downloads.reset()
 
         fun dismiss() {
             dismissed.value = true

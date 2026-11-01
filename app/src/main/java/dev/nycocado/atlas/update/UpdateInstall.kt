@@ -20,23 +20,23 @@ import java.io.File
 fun InstallUpdate(
     download: DownloadState,
     onAwaitPermission: (File) -> Unit,
-    onDone: () -> Unit,
+    onReset: () -> Unit,
 ) {
     val context = LocalContext.current
+    val installIfAllowed = { apk: File ->
+        context.packageManager.canRequestPackageInstalls().also { if (it) openInstaller(context, apk) }
+    }
     // The setting returns no result: whether the player granted it is read again on return.
     val permission =
         rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            (download as? DownloadState.AwaitingPermission)?.let {
-                if (context.packageManager.canRequestPackageInstalls()) openInstaller(context, it.apk)
-            }
-            onDone()
+            (download as? DownloadState.AwaitingPermission)?.let { installIfAllowed(it.apk) }
+            onReset()
         }
     LaunchedEffect(download) {
         when (download) {
             is DownloadState.Ready -> {
-                if (context.packageManager.canRequestPackageInstalls()) {
-                    openInstaller(context, download.apk)
-                    onDone()
+                if (installIfAllowed(download.apk)) {
+                    onReset()
                 } else {
                     onAwaitPermission(download.apk)
                     permission.launch(
@@ -45,9 +45,11 @@ fun InstallUpdate(
                 }
             }
 
+            // A Toast rather than a snackbar (ADR 0006): this rare message can come on any screen, and the app has no
+            // snackbar host. The banner's button stays there to try again.
             DownloadState.Corrupt -> {
                 Toast.makeText(context, R.string.update_corrupt, Toast.LENGTH_LONG).show()
-                onDone()
+                onReset()
             }
 
             DownloadState.Idle, DownloadState.Downloading, is DownloadState.AwaitingPermission -> {
@@ -57,7 +59,9 @@ fun InstallUpdate(
     }
 }
 
-// The system installer, where the player confirms; Android itself refuses an APK signed with another key.
+// The system installer, where the player confirms; Android itself refuses an APK signed with another key. The
+// FileProvider is declared only in release builds (app/src/release/AndroidManifest.xml), the only ones that download an
+// update: a debug build faking a Release needs it declared too.
 private fun openInstaller(
     context: Context,
     apk: File,

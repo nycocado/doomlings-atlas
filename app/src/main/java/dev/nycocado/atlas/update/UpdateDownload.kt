@@ -56,8 +56,10 @@ class UpdateDownload
         fun start(update: AppUpdate) {
             if (mutableState.value != DownloadState.Idle) return
             val folder = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) ?: return
-            // DownloadManager renames rather than overwrites, so a file left by an earlier attempt goes first.
-            val apk = File(folder, "doomlings-atlas-v${update.version}.apk").apply { delete() }
+            // The folder only ever holds the update being downloaded: earlier APKs go, installed or not, and
+            // DownloadManager would rename rather than overwrite a file of the same name.
+            folder.listFiles()?.forEach(File::delete)
+            val apk = File(folder, "doomlings-atlas-v${update.version}.apk")
             mutableState.value = DownloadState.Downloading
             val id =
                 downloads.enqueue(
@@ -75,12 +77,14 @@ class UpdateDownload
                         intent: Intent,
                     ) {
                         if (intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1) != id) return
+                        val status = status(id)
+                        if (status in IN_PROGRESS) return
                         context.unregisterReceiver(this)
-                        scope.launch { mutableState.value = finished(id, apk, update.sha256) }
+                        scope.launch { mutableState.value = finished(status, apk, update.sha256) }
                     }
                 }
             // Exported: the broadcast comes from the download provider, another app. Anyone could send it, but it
-            // only says which download to look at, and its status comes from DownloadManager itself.
+            // only says which download to look at: whether it ended, and how, comes from DownloadManager itself.
             ContextCompat.registerReceiver(
                 context,
                 receiver,
@@ -89,33 +93,39 @@ class UpdateDownload
             )
         }
 
+        // Null when the download is gone, as when the player cancels it from its notification.
+        private fun status(id: Long): Int? =
+            downloads.query(DownloadManager.Query().setFilterById(id)).use { cursor ->
+                if (cursor.moveToFirst()) {
+                    cursor.getInt(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS))
+                } else {
+                    null
+                }
+            }
+
         // A failed download says so in its notification, so the state just goes back to Idle.
         private fun finished(
-            id: Long,
+            status: Int?,
             apk: File,
             sha256: String,
-        ): DownloadState {
-            val successful =
-                downloads.query(DownloadManager.Query().setFilterById(id)).use { cursor ->
-                    cursor.moveToFirst() &&
-                        cursor.getInt(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS)) ==
-                        DownloadManager.STATUS_SUCCESSFUL
-                }
-            return when {
-                !successful || !apk.isFile -> DownloadState.Idle.also { apk.delete() }
+        ): DownloadState =
+            when {
+                status != DownloadManager.STATUS_SUCCESSFUL || !apk.isFile -> DownloadState.Idle.also { apk.delete() }
                 keepIfIntact(apk, sha256) -> DownloadState.Ready(apk)
                 else -> DownloadState.Corrupt
             }
-        }
 
         fun awaitPermission(apk: File) {
             mutableState.value = DownloadState.AwaitingPermission(apk)
         }
 
         // The installer opened, the player declined the permission, or the corrupt download was reported.
-        fun done() {
+        fun reset() {
             mutableState.value = DownloadState.Idle
         }
     }
+
+private val IN_PROGRESS =
+    setOf(DownloadManager.STATUS_PENDING, DownloadManager.STATUS_RUNNING, DownloadManager.STATUS_PAUSED)
 
 internal const val APK_TYPE = "application/vnd.android.package-archive"
