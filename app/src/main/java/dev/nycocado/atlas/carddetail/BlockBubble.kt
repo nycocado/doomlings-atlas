@@ -303,19 +303,22 @@ private fun EffectText(
                                 val from = length
                                 // No-break spaces keep the name on one line, in the displayed text only.
                                 append(part.text.substring(range).replace(' ', '\u00A0'))
-                                // A word joiner keeps the arrow beside the name, and TalkBack doesn't read it.
-                                appendInlineContent(citedCard.id, "\u2060")
-                                val name = from until length
-                                cited += name
+                                // A word joiner keeps the arrow beside the name: an invisible format character, with
+                                // nothing for TalkBack to say. It must be text of its own, as a line can still break
+                                // before an inline content whose alternate text is the joiner.
+                                append('\u2060')
+                                appendInlineContent(ARROW + citedCard.id, "\u2060")
+                                val nameAndArrow = from until length
+                                cited += nameAndArrow
                                 val ink = citedInk(citedCard, theme)
-                                arrows[citedCard.id] = ink
+                                arrows[ARROW + citedCard.id] = ink
                                 addLink(
                                     LinkAnnotation.Clickable(
                                         citedCard.id,
                                         TextLinkStyles(SpanStyle(color = ink)),
                                     ) { onCardClick(citedCard.id) },
-                                    name.first,
-                                    name.last + 1,
+                                    nameAndArrow.first,
+                                    nameAndArrow.last + 1,
                                 )
                                 at = range.last + 1
                             }
@@ -371,6 +374,9 @@ private fun EffectText(
         inlineContent = inline,
     )
 }
+
+// Its own inline content ids, apart from the tokens' codes.
+private const val ARROW = "arrow:"
 
 // The colors an ink is drawn with, the rainbow's in the order of the card.
 internal fun AtlasColors.inkColors(ink: Ink): List<Color> =

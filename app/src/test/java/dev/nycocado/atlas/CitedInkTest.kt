@@ -67,10 +67,11 @@ class CitedInkTest : AtlasBehaviorTest() {
         spanStyles.any { it.start < start + words.length && it.end > start && it.item.color == ink }
     }
 
-    // Across every bubble width some line ends between Heat and Vision unless the name is kept whole.
+    // Across every bubble width some line ends between Heat and Vision, or before the arrow, unless the name is kept whole.
+    // Below 150dp the name and its arrow don't fit on one line at all.
     @Test
     fun aCitedNameWithASpaceIsNeverSplitAcrossLines() {
-        var width by mutableStateOf(100.dp)
+        var width by mutableStateOf(150.dp)
         launchPastNotice().onActivity {
             it.setContent {
                 AtlasTheme {
@@ -89,14 +90,17 @@ class CitedInkTest : AtlasBehaviorTest() {
         val effect = compose.onNode(hasText("and every blue trait", substring = true))
 
         for (step in 0..40) {
-            width = (100 + step * 5).dp
+            width = (150 + step * 5).dp
             compose.waitForIdle()
             val layouts = mutableListOf<TextLayoutResult>()
             effect.fetchSemanticsNode().config[SemanticsActions.GetTextLayoutResult].action!!(layouts)
             val layout = layouts.single()
             val heat = layout.layoutInput.text.indexOf("Heat")
             val vision = layout.layoutInput.text.indexOf("Vision")
+            // After the word joiner.
+            val arrow = vision + "Vision".length + 1
             assertEquals("at $width", layout.getLineForOffset(heat), layout.getLineForOffset(vision))
+            assertEquals("at $width", layout.getLineForOffset(heat), layout.getLineForOffset(arrow))
         }
     }
 
