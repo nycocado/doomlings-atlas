@@ -41,11 +41,11 @@ The repository goes public and the first APK comes out on GitHub Releases once e
 - CI also builds the unsigned release APK, so an R8 break fails the pull request, and reviews the dependencies each pull request adds. The workflows are checked once with [zizmor](https://zizmor.sh).
 - Release workflow: a `vX.Y.Z` tag builds the signed APK in the `release` environment and creates a draft GitHub Release with it (see [docs/development.md](docs/development.md#releases)). The maintainer installs the draft's APK on a real device before publishing it.
 - README for players: what the app does, screenshots and where to download it. Repository topics so the project shows up in GitHub search.
-- Git history rewritten so every commit of the maintainer uses their GitHub noreply address, with the `v0.1.0` tag and Release recreated on the new commits, and the history scanned for secrets with gitleaks. Last, with no pull request open, since the force push invalidates every branch.
+- Git history scanned for secrets with gitleaks, which found none. The history isn't rewritten to replace the maintainer's personal email: it is already public in other repositories, and GitHub keeps every pull request's commits anyway (#115).
 
 Then, right after the repository goes public, since the free plan offers these only to public repositories:
 
-- Rulesets on `main` (pull request, green CI, no force push) and on `v*` tags (only the maintainer creates or moves them), immutable releases, the maintainer's approval of each run in the `release` environment, a build provenance attestation on each Release's APK, CodeQL, secret scanning, push protection and private vulnerability reporting.
+- Rulesets on `main` (pull request, green CI, no force push) and on `v*` tags (only the maintainer moves or deletes them; creating one needs write access, which only the maintainer and the repository's workflows have), immutable releases, the maintainer's approval of each run in the `release` environment, a build provenance attestation on each Release's APK, CodeQL, secret scanning, push protection and private vulnerability reporting.
 - Actions runs for outside contributors wait for the maintainer's approval, and the maintainer's GitHub account uses two-factor authentication.
 - The first APK published, and Doomlings told that the repository is public.
 

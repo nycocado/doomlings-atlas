@@ -14,8 +14,6 @@ concurrency:
 
 jobs:
   submit:
-    # Dependency review needs a public repository on the free plan; until the repo is public, both jobs skip.
-    if: github.event.repository.visibility == 'public'
     runs-on: ubuntu-latest
     permissions:
       contents: write # the dependency submission API
