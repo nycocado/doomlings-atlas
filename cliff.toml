@@ -25,7 +25,7 @@ trim = true
 conventional_commits = true
 filter_unconventional = true
 commit_preprocessors = [
-  # Commits before Conventional Commits (#210) use "[type] subject"; git-cliff reads them as "type: subject".
+  # Commits before Conventional Commits use "[type] subject"; git-cliff reads them as "type: subject".
   { pattern = '^\[(\w+)\] ', replace = '${1}: ' },
   { pattern = '\(#([0-9]+)\)', replace = '([#${1}](https://github.com/nycocado/doomlings-atlas/pull/${1}))' },
 ]

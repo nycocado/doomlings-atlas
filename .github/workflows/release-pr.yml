@@ -95,7 +95,7 @@ jobs:
             if [ -n "$number" ]; then gh pr close "$number" --comment "Nothing left to release."; fi
             exit 0
           fi
-          title="docs: Release $VERSION"
+          title="docs: release $VERSION"
           body="Merging this tags $VERSION and starts release.yml, which opens its draft Release (docs/development.md#releases). Updated on every push to main."
           git switch -C "$RELEASE_BRANCH"
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
