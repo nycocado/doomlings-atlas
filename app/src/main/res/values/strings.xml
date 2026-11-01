@@ -12,6 +12,7 @@
     <string name="update_install">Download and install</string>
     <string name="update_dismiss">Hide the update</string>
     <string name="release_notes">What\'s new</string>
+    <string name="update_corrupt">The download came through damaged and was deleted. Try again.</string>
     <string name="licenses_app">App</string>
     <string name="licenses_fonts">Fonts</string>
     <string name="licenses_libraries">Libraries</string>
