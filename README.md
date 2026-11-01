@@ -7,8 +7,7 @@
   <source media="(prefers-color-scheme: light)" srcset="design/brand/banner/banner-light.png">
   <img alt="Doomlings Atlas" src="design/brand/banner/banner-light.png">
 </picture>
-
-<br>
+<br><br>
 
 **Unofficial, not affiliated with or endorsed by Doomlings LLC.**
 
