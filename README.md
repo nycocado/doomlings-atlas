@@ -1,7 +1,5 @@
 <div align="center">
 
-# Doomlings Atlas
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="design/brand/banner/banner-dark.png">
   <source media="(prefers-color-scheme: light)" srcset="design/brand/banner/banner-light.png">
@@ -11,6 +9,10 @@
 
 **Unofficial, not affiliated with or endorsed by Doomlings LLC.**
 
+<br>
+
+[![Download APK](https://img.shields.io/badge/Download-APK-f7c443?style=for-the-badge&logo=android&logoColor=f7c443&labelColor=23173b)](https://github.com/nycocado/doomlings-atlas/releases/latest)
+
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-3da639.svg)](LICENSE)
 ![Status](https://img.shields.io/badge/status-in%20development-6f42c1)
 [![Release](https://img.shields.io/github/v/release/nycocado/doomlings-atlas?include_prereleases&label=release)](https://github.com/nycocado/doomlings-atlas/releases/latest)
@@ -19,8 +21,6 @@
 [![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4?logo=jetpackcompose&logoColor=white)](https://developer.android.com/compose)
 [![Kotlin Multiplatform](https://img.shields.io/badge/Kotlin%20Multiplatform-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org/docs/multiplatform.html)
 [![Android 8.0+](https://img.shields.io/badge/Android-8.0%2B-34A853?logo=android&logoColor=white)](https://developer.android.com/about/versions/oreo)
-
-[![Download APK](https://img.shields.io/badge/Download-APK-f7c443?style=for-the-badge&logo=android&logoColor=f7c443&labelColor=23173b)](https://github.com/nycocado/doomlings-atlas/releases/latest)
 
 </div>
 
