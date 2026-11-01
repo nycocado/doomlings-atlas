@@ -21,8 +21,8 @@ jobs:
         env:
           TITLE: ${{ github.event.pull_request.title }}
         run: |
-          if ! printf '%s' "$TITLE" | grep -Eq '^\[(feat|fix|perf|refactor|chore|docs|update|media)\]:? [^ ]'; then
-            echo "::error::PR title must look like '[type] subject' (see CONTRIBUTING.md#commits): $TITLE"
+          if ! printf '%s' "$TITLE" | grep -Eq '^(feat|fix|perf|refactor|chore|docs|update|media)!?: [^ ]'; then
+            echo "::error::PR title must look like 'type: subject' or 'type!: subject' (see CONTRIBUTING.md#commits): $TITLE"
             exit 1
           fi
 
