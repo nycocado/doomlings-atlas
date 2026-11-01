@@ -9,8 +9,7 @@
 
 **Unofficial, not affiliated with or endorsed by Doomlings LLC.**
 
-[![Download APK](https://img.shields.io/badge/Download-APK-f7c443?style=for-the-badge&logo=android&logoColor=f7c443&labelColor=23173b)](https://github.com/nycocado/doomlings-atlas/releases/latest)
-
+[![Download APK](https://img.shields.io/badge/Download-APK-f7c443?logo=android&logoColor=white)](https://github.com/nycocado/doomlings-atlas/releases/latest)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-3da639.svg)](LICENSE)
 ![Status](https://img.shields.io/badge/status-in%20development-6f42c1)
 [![Release](https://img.shields.io/github/v/release/nycocado/doomlings-atlas?include_prereleases&label=release)](https://github.com/nycocado/doomlings-atlas/releases/latest)
