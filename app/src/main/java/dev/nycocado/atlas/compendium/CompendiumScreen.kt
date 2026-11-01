@@ -185,24 +185,24 @@ fun CompendiumContent(
                 .pointerInput(Unit) { detectTapGestures { focusManager.clearFocus() } },
         ) {
             Header(search, collapse, rail, onAboutClick, showAbout = layout.showAbout)
-            // Above the list rather than in it: the grid keeps its first visible item in place, so a banner arriving
-            // after the list showed would land out of sight.
-            if (update != null) {
-                Box(Modifier.fillMaxWidth(), Alignment.TopCenter) {
-                    UpdateSticker(
-                        update,
-                        onInstallUpdate,
-                        Modifier
-                            .widthIn(max = MaxWidth.content)
-                            .padding(start = Space.s5, end = Space.s5, top = Space.s4),
-                        onDismiss = onDismissUpdate,
-                    )
-                }
-            }
             ListAndDock(
                 rail,
                 centered = rail && layout.centersOnRail,
                 Modifier.weight(1f).then(bottom),
+                // Above the grid rather than in it: the grid keeps its first visible item in place, so a banner
+                // arriving after the list showed would land out of sight. It lines up with the grid's cards.
+                banner = {
+                    if (update != null) {
+                        UpdateSticker(
+                            update,
+                            onInstallUpdate,
+                            Modifier.padding(start = Space.s5, end = Space.s5, top = Space.s4),
+                            onDismiss = onDismissUpdate,
+                            releaseNotes = true,
+                            oneRow = rail,
+                        )
+                    }
+                },
                 list = {
                     LazyVerticalGrid(
                         state = grid,
@@ -288,7 +288,7 @@ fun CompendiumContent(
     }
 }
 
-// The list with the dock as a rail beside it or a bar below it.
+// The list, with the banner above it, and the dock as a rail beside it or a bar below it.
 @Composable
 private fun ListAndDock(
     rail: Boolean,
@@ -296,12 +296,16 @@ private fun ListAndDock(
     // the search. Beside a card the list needs that room.
     centered: Boolean,
     modifier: Modifier,
+    banner: @Composable () -> Unit,
     list: @Composable () -> Unit,
     dock: @Composable () -> Unit,
 ) {
     val capped: @Composable (Modifier) -> Unit = {
         Box(it, Alignment.TopCenter) {
-            Box(Modifier.widthIn(max = MaxWidth.wide).fillMaxSize(), propagateMinConstraints = true) { list() }
+            Column(Modifier.widthIn(max = MaxWidth.wide).fillMaxSize()) {
+                banner()
+                Box(Modifier.weight(1f), propagateMinConstraints = true) { list() }
+            }
         }
     }
     if (rail) {

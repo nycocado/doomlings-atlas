@@ -40,6 +40,7 @@ class UpdateTest : AtlasBehaviorTest() {
 
         awaitBanner("1.2.0")
         text(R.string.update_install).assertIsDisplayed()
+        text(R.string.release_notes).assertIsDisplayed()
         assertAccessible()
     }
 
@@ -125,14 +126,9 @@ class UpdateWideTest : AtlasBehaviorTest() {
     fun theRailLayoutShowsTheBannerAndDismissingHidesIt() {
         launchPastNotice()
 
-        compose.waitUntil(5_000) {
-            compose
-                .onAllNodes(
-                    hasText(context.getString(R.string.update_available, "1.2.0")),
-                ).fetchSemanticsNodes()
-                .isNotEmpty()
-        }
+        awaitBanner("1.2.0")
         text(R.string.update_install).assertIsDisplayed()
+        text(R.string.release_notes).assertIsDisplayed()
         assertAccessible()
 
         button(R.string.update_dismiss).performClick()

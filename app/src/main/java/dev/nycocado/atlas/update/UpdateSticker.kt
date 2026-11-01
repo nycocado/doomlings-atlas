@@ -31,7 +31,6 @@ import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
 
-// The newer version and its button: the compendium's banner passes onDismiss, About shows the release notes instead.
 @Composable
 fun UpdateSticker(
     update: AppUpdate,
@@ -39,23 +38,21 @@ fun UpdateSticker(
     modifier: Modifier = Modifier,
     onDismiss: (() -> Unit)? = null,
     releaseNotes: Boolean = false,
+    // On a wide window the button fits beside the text; stacked, a wide sticker is mostly empty.
+    oneRow: Boolean = false,
 ) {
     val theme = AtlasTheme.colors
-    Column(
-        modifier
-            .fillMaxWidth()
-            .sticker(Radius.md, theme.surfaceSticker, theme.outline, shadow = Shadow.sticker)
-            .padding(start = Space.s4, end = Space.s2, top = Space.s2, bottom = Space.s4),
-        verticalArrangement = Arrangement.spacedBy(Space.s2),
-    ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            BasicText(
-                stringResource(R.string.update_available, update.version),
-                Modifier.weight(1f).heightIn(min = Sizes.touchTarget).wrapContentHeight(),
-                style = AtlasTypography.titleMd.copy(color = theme.onSurface),
-            )
-            if (onDismiss != null) RoundButton(R.drawable.ic_clear, R.string.update_dismiss, onDismiss)
-        }
+    val title: @Composable (Modifier) -> Unit = {
+        BasicText(
+            stringResource(R.string.update_available, update.version),
+            it.heightIn(min = Sizes.touchTarget).wrapContentHeight(),
+            style = AtlasTypography.titleMd.copy(color = theme.onSurface),
+        )
+    }
+    val dismiss: @Composable () -> Unit = {
+        if (onDismiss != null) RoundButton(R.drawable.ic_clear, R.string.update_dismiss, onDismiss)
+    }
+    val actions: @Composable () -> Unit = {
         FlowRow(
             horizontalArrangement = Arrangement.spacedBy(Space.s4),
             verticalArrangement = Arrangement.spacedBy(Space.s2),
@@ -85,6 +82,32 @@ fun UpdateSticker(
                         ),
                 )
             }
+        }
+    }
+    val sticker =
+        modifier
+            .fillMaxWidth()
+            .sticker(Radius.md, theme.surfaceSticker, theme.outline, shadow = Shadow.sticker)
+    if (oneRow) {
+        Row(
+            sticker.padding(start = Space.s5, end = Space.s3, top = Space.s3, bottom = Space.s3),
+            horizontalArrangement = Arrangement.spacedBy(Space.s4),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            title(Modifier.weight(1f))
+            actions()
+            dismiss()
+        }
+    } else {
+        Column(
+            sticker.padding(start = Space.s4, end = Space.s2, top = Space.s2, bottom = Space.s4),
+            verticalArrangement = Arrangement.spacedBy(Space.s2),
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                title(Modifier.weight(1f))
+                dismiss()
+            }
+            actions()
         }
     }
 }
