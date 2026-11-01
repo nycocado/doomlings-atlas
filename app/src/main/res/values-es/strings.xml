@@ -6,6 +6,10 @@
 
     <string name="about">Acerca de</string>
     <string name="version">Versión %1$s</string>
+    <string name="update_available">Ya salió la versión %1$s</string>
+    <string name="update_install">Descargar e instalar</string>
+    <string name="update_dismiss">Ocultar la actualización</string>
+    <string name="release_notes">Novedades</string>
     <string name="licenses_app">App</string>
     <string name="licenses_fonts">Fuentes</string>
     <string name="licenses_libraries">Bibliotecas</string>

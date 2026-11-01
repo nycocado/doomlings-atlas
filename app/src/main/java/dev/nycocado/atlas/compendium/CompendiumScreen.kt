@@ -71,6 +71,9 @@ import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
 import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
+import dev.nycocado.atlas.update.AppUpdate
+import dev.nycocado.atlas.update.SampleUpdate
+import dev.nycocado.atlas.update.UpdateSticker
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
 
@@ -87,6 +90,9 @@ fun CompendiumScreen(
     onCardClick: (String) -> Unit,
     onAboutClick: () -> Unit,
     layout: ListDetailLayout,
+    update: AppUpdate?,
+    onInstallUpdate: () -> Unit,
+    onDismissUpdate: () -> Unit,
 ) {
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val cells by viewModel.cells.collectAsStateWithLifecycle()
@@ -98,6 +104,9 @@ fun CompendiumScreen(
         onCardClick,
         onAboutClick,
         layout,
+        update = update,
+        onInstallUpdate = onInstallUpdate,
+        onDismissUpdate = onDismissUpdate,
     )
 }
 
@@ -111,6 +120,9 @@ fun CompendiumContent(
     onAboutClick: () -> Unit,
     layout: ListDetailLayout = ListDetailLayout.Single,
     collapsedAtStart: Float = 0f,
+    update: AppUpdate? = null,
+    onInstallUpdate: () -> Unit = {},
+    onDismissUpdate: () -> Unit = {},
 ) {
     val theme = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
@@ -177,6 +189,18 @@ fun CompendiumContent(
                 rail,
                 centered = rail && layout.centersOnRail,
                 Modifier.weight(1f).then(bottom),
+                // Above the grid rather than in it: the grid keeps its first visible item in place, so a banner
+                // arriving after the list showed would land out of sight.
+                banner = {
+                    if (update != null) {
+                        UpdateSticker(
+                            update,
+                            onInstallUpdate,
+                            Modifier.padding(start = Space.s5, end = Space.s5, top = Space.s4),
+                            onDismiss = onDismissUpdate,
+                        )
+                    }
+                },
                 list = {
                     LazyVerticalGrid(
                         state = grid,
@@ -262,7 +286,7 @@ fun CompendiumContent(
     }
 }
 
-// The list with the dock as a rail beside it or a bar below it.
+// The list, with the banner above it, and the dock as a rail beside it or a bar below it.
 @Composable
 private fun ListAndDock(
     rail: Boolean,
@@ -270,12 +294,16 @@ private fun ListAndDock(
     // the search. Beside a card the list needs that room.
     centered: Boolean,
     modifier: Modifier,
+    banner: @Composable () -> Unit,
     list: @Composable () -> Unit,
     dock: @Composable () -> Unit,
 ) {
     val capped: @Composable (Modifier) -> Unit = {
         Box(it, Alignment.TopCenter) {
-            Box(Modifier.widthIn(max = MaxWidth.wide).fillMaxSize(), propagateMinConstraints = true) { list() }
+            Column(Modifier.widthIn(max = MaxWidth.wide).fillMaxSize()) {
+                banner()
+                Box(Modifier.weight(1f), propagateMinConstraints = true) { list() }
+            }
         }
     }
     if (rail) {
@@ -348,6 +376,10 @@ internal fun CompendiumBesideCardPreview() = CompendiumSample(ListDetailLayout.B
 
 @PreviewLightDark
 @Composable
+internal fun CompendiumUpdatePreview() = CompendiumSample(ListDetailLayout.Single, update = SampleUpdate)
+
+@PreviewLightDark
+@Composable
 internal fun CompendiumLongNamePreview() = CompendiumSample(ListDetailLayout.Single, longName = true)
 
 @Composable
@@ -355,6 +387,7 @@ private fun CompendiumSample(
     layout: ListDetailLayout,
     longName: Boolean = false,
     collapsedAtStart: Float = 0f,
+    update: AppUpdate? = null,
 ) = AtlasTheme {
     BlankCardImages {
         val cards =
@@ -384,6 +417,7 @@ private fun CompendiumSample(
             {},
             layout,
             collapsedAtStart,
+            update,
         )
     }
 }

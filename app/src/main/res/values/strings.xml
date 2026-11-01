@@ -8,6 +8,10 @@
 
     <string name="about">About</string>
     <string name="version">Version %1$s</string>
+    <string name="update_available">Version %1$s is out</string>
+    <string name="update_install">Download and install</string>
+    <string name="update_dismiss">Hide the update</string>
+    <string name="release_notes">What\'s new</string>
     <string name="licenses_app">App</string>
     <string name="licenses_fonts">Fonts</string>
     <string name="licenses_libraries">Libraries</string>
