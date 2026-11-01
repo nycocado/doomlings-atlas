@@ -65,13 +65,13 @@ class AppUpdateTest {
         assertNull(availableUpdate("""{"message": "Not Found"}""", installedVersion = "1.2.4"))
         assertNull(availableUpdate(release("v1.3"), installedVersion = "1.2.4"))
         assertNull(availableUpdate(release("nightly"), installedVersion = "1.2.4"))
-    }
-
-    private companion object {
-        const val RELEASES = "https://github.com/nycocado/doomlings-atlas/releases"
-        const val DIGEST = "8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4"
+        assertNull(availableUpdate(release("v300.0.0"), installedVersion = "1.2.4"))
+        assertNull(availableUpdate(release("v99999999999.0.0"), installedVersion = "1.2.4"))
     }
 }
+
+private const val RELEASES = "https://github.com/nycocado/doomlings-atlas/releases"
+private const val DIGEST = "8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4"
 
 // Shaped after GET /repos/{owner}/{repo}/releases/latest in GitHub's REST API docs, trimmed of the fields nothing reads
 // but keeping some it ignores, as the real body has many more.
@@ -82,7 +82,7 @@ private fun release(
     """
     {
       "url": "https://api.github.com/repos/nycocado/doomlings-atlas/releases/1",
-      "html_url": "https://github.com/nycocado/doomlings-atlas/releases/tag/$tag",
+      "html_url": "$RELEASES/tag/$tag",
       "id": 1,
       "tag_name": "$tag",
       "target_commitish": "main",
@@ -100,12 +100,12 @@ private fun release(
 private fun apkAsset(
     tag: String,
     name: String = "doomlings-atlas-$tag.apk",
-    digest: String? = "sha256:8f434346648f6b96df89dda901c5176b10a6d83961dd3c1ac88b59b2dc327aa4",
+    digest: String? = "sha256:$DIGEST",
 ): String =
     """
     {
       "url": "https://api.github.com/repos/nycocado/doomlings-atlas/releases/assets/1",
-      "browser_download_url": "https://github.com/nycocado/doomlings-atlas/releases/download/$tag/$name",
+      "browser_download_url": "$RELEASES/download/$tag/$name",
       "id": 1,
       "name": "$name",
       "label": "",

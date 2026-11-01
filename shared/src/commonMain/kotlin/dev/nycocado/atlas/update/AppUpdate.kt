@@ -32,12 +32,14 @@ fun availableUpdate(
     return AppUpdate(version, apk.browserDownloadUrl, sha256, release.htmlUrl)
 }
 
-// KotlinVersion is the standard library's comparable MAJOR.MINOR.PATCH. Its cap of 255 on each part is no limit here:
-// the version code caps the minor and patch at 99 (app/build.gradle.kts), and a major of 256 is far off.
-private fun versionOf(text: String): KotlinVersion? =
-    Regex("""(\d+)\.(\d+)\.(\d+)""").matchEntire(text)?.destructured?.let { (major, minor, patch) ->
-        KotlinVersion(major.toInt(), minor.toInt(), patch.toInt())
-    }
+// KotlinVersion is the standard library's comparable MAJOR.MINOR.PATCH. It caps each part at 255, which our own tags
+// never reach (the version code caps the minor and patch at 99, app/build.gradle.kts), so a part above it is unreadable.
+private fun versionOf(text: String): KotlinVersion? {
+    val match = Regex("""(\d+)\.(\d+)\.(\d+)""").matchEntire(text) ?: return null
+    val (major, minor, patch) =
+        match.destructured.toList().map { part -> part.toIntOrNull()?.takeIf { it <= 255 } ?: return null }
+    return KotlinVersion(major, minor, patch)
+}
 
 private val json = Json { ignoreUnknownKeys = true }
 
