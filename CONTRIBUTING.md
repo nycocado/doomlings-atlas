@@ -85,7 +85,7 @@ You are responsible for every line you submit, however it was written. Make sure
 
 ## Commits
 
-- Format: `[type] subject`, no scope prefix.
+- Format: [Conventional Commits](https://www.conventionalcommits.org) without a scope: `type: subject`, and `type!: subject` for a breaking change, which bumps the major version ([Releases](docs/development.md#releases)). Older commits on `main` use `[type] subject`.
 - Types: `feat` (new feature), `fix` (bug fix), `perf` (performance), `refactor` (no behavior change), `chore` (tooling, deps), `docs` (documentation), `update` (content/data update), `media` (images and other media).
-- Subject in English, lowercase, ~72 chars max, no action verbs (the type is the action): `[feat] card compendium search`, not `[feat] add card compendium search`.
+- Subject in English, lowercase, ~72 chars max, no action verbs (the type is the action): `feat: card compendium search`, not `feat: add card compendium search`.
 - Body only when the _why_ is not obvious.

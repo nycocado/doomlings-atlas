@@ -25,7 +25,7 @@ trim = true
 conventional_commits = true
 filter_unconventional = true
 commit_preprocessors = [
-  # git-cliff reads types in the Conventional Commits form, "type: subject".
+  # Commits before Conventional Commits (#210) use "[type] subject"; git-cliff reads them as "type: subject".
   { pattern = '^\[(\w+)\] ', replace = '${1}: ' },
   { pattern = '\(#([0-9]+)\)', replace = '([#${1}](https://github.com/nycocado/doomlings-atlas/pull/${1}))' },
 ]
@@ -45,3 +45,7 @@ commit_parsers = [
 filter_commits = true
 tag_pattern = "v[0-9].*"
 sort_commits = "oldest"
+
+[bump]
+# A "type!:" commit bumps the major, also below 1.0.
+breaking_always_bump_major = true
