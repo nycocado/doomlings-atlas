@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -23,6 +24,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -41,10 +43,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
@@ -52,6 +58,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
@@ -109,35 +116,72 @@ internal fun Filters(
                 }
             }
             KindSegments(kinds, filter.kind) { kind -> onFilterChange { it.copy(kind = kind) } }
-            // No set to offer while the cards load.
-            if (sets.isNotEmpty()) {
-                SetsChip(filter.sets.size, Modifier.padding(top = Space.s3).align(Alignment.End)) { showSets = true }
-            }
         }
         Row(
-            Modifier.padding(top = Space.s4),
-            verticalAlignment = Alignment.Bottom,
+            Modifier.fillMaxWidth().padding(top = Space.s4),
+            verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(Space.s2),
         ) {
-            BasicText(
-                stringResource(filter.kind.title),
-                Modifier.semantics { heading() },
-                style = AtlasTypography.titleLg.copy(color = theme.onSurface),
-            )
-            AnimatedVisibility(
-                visible = filter.kind == CardKind.Trait && filter.colors.isEmpty(),
-                enter = fadeIn(),
-                exit = fadeOut(),
+            // The chip is measured first, so the title keeps what is left and the hint drops below it when that runs out.
+            FlowRow(
+                Modifier.weight(1f),
+                horizontalArrangement = Arrangement.spacedBy(Space.s2),
+                itemVerticalAlignment = Alignment.Bottom,
             ) {
                 BasicText(
-                    stringResource(R.string.color_hint),
-                    Modifier.padding(bottom = 3.dp),
-                    style = AtlasTypography.bodySm.copy(color = theme.onSurfaceVariant),
+                    stringResource(filter.kind.title),
+                    Modifier.semantics { heading() },
+                    style = AtlasTypography.titleLg.copy(color = theme.onSurface),
                 )
+                AnimatedVisibility(
+                    visible = filter.kind == CardKind.Trait && filter.colors.isEmpty(),
+                    enter = fadeIn(),
+                    exit = fadeOut(),
+                ) {
+                    BasicText(
+                        stringResource(R.string.color_hint),
+                        Modifier.padding(bottom = 3.dp),
+                        style = AtlasTypography.bodySm.copy(color = theme.onSurfaceVariant),
+                    )
+                }
+            }
+            // No set to offer while the cards load.
+            if (sets.isNotEmpty()) {
+                SetsChip(filter.sets.size) { showSets = true }
             }
         }
     }
 }
+
+private val scrollFadeWidth = 24.dp
+
+// Compose has no fading edge, unlike the View system. Erases the content rather than painting the track's color over
+// it, and reads the state while drawing, where the row's first layout has already settled it.
+private fun Modifier.scrollFade(state: LazyListState): Modifier =
+    graphicsLayer { compositingStrategy = CompositingStrategy.Offscreen }.drawWithContent {
+        drawContent()
+        val width = scrollFadeWidth.toPx()
+        val ltr = layoutDirection == LayoutDirection.Ltr
+        if (if (ltr) state.canScrollBackward else state.canScrollForward) {
+            drawRect(
+                Brush.horizontalGradient(listOf(Color.Black, Color.Transparent), endX = width),
+                size = Size(width, size.height),
+                blendMode = BlendMode.DstOut,
+            )
+        }
+        if (if (ltr) state.canScrollForward else state.canScrollBackward) {
+            drawRect(
+                Brush.horizontalGradient(
+                    listOf(Color.Transparent, Color.Black),
+                    startX = size.width - width,
+                    endX = size.width,
+                ),
+                topLeft = Offset(size.width - width, 0f),
+                size = Size(width, size.height),
+                blendMode = BlendMode.DstOut,
+            )
+        }
+    }
 
 // The smallest a label shrinks to fit, fixed in dp: a 10sp minimum grows with the font scale, and at 200% long names
 // (Colorless, Vermelho, Catastrophes) don't fit even at that minimum.
@@ -245,6 +289,7 @@ private fun KindSegments(
                 .fillMaxWidth()
                 // A segment scrolled halfway out is cut along the track's rounded end.
                 .clip(CircleShape)
+                .scrollFade(row)
                 .selectableGroup(),
             state = row,
             horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
