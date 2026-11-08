@@ -27,7 +27,7 @@ All of them run on the JVM; none needs an emulator or device.
 
 ## UI Tests on Robolectric
 
-Robolectric is set up in `app`. The UI tests in `app/src/test` run the real app: the real `MainActivity` with Hilt (`@HiltAndroidTest`, `HiltTestApplication`) and the enabled sets' card data, packaged into the assets. They drive it like a player with Compose's test APIs and check what shows.
+Robolectric is set up in `app`. The UI tests in `app/src/test` run the real app: the real `MainActivity` with Hilt (`@HiltAndroidTest`, `HiltTestApplication`) and the Classic cards of the packaged data (`TestCardRepositoryModule`), so a new set doesn't move their card names and group sizes. They drive it like a player with Compose's test APIs and check what shows.
 
 - Extend `AtlasBehaviorTest`: it sets the phone-sized window, Hilt and the Compose rule. Put `@HiltAndroidTest` on the test class itself, as Hilt requires.
 - Look text up by its string resource (`text(R.string.about)`, `button(R.string.back)`), never hard-coded (points with `pointsText`); take card names from the set's `cards.json` (`assets/doomlings/classic/cards.json`).

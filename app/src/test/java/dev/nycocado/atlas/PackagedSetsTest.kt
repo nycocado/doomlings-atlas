@@ -14,7 +14,28 @@ class PackagedSetsTest : AtlasBehaviorTest() {
     fun theEnabledSetsDecodeWithAName() {
         val library = runBlocking { CardRepository(context).library() }
 
-        assertEquals(listOf("Classic"), library.setsToChoose.map { it.name })
-        assertTrue(library.cards!!.all { library.setName(it) == "Classic" })
+        assertEquals(
+            listOf(
+                "Classic",
+                "Overlush",
+                "Upgrade",
+                "Imaginary Ends",
+                "Castle Glass",
+                "Legends of Enderas",
+                "Mokoko Village",
+                "Nightflower Island",
+                "Shadow Puppets",
+                "Special Edition",
+            ),
+            library.setsToChoose.map { it.name },
+        )
+        assertTrue(library.cards!!.all { library.setName(it) != null })
+    }
+
+    @Test
+    fun everyCardOfEverySetIsPackaged() {
+        val library = runBlocking { CardRepository(context).library() }
+
+        assertEquals(902, library.cards!!.size)
     }
 }
