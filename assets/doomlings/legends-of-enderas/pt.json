@@ -14,13 +14,13 @@
   "legends-of-enderas/ages/age-of-the-last-dragons": {
     "name": "Era dos Últimos Dragões",
     "effects": [
-      "Compre 3 cartas.\n\nDescarte essas cartas OU todas as outras cartas da sua mão."
+      "Compre 3 cartas.\nDescarte essas cartas OU todas as outras cartas da sua mão."
     ]
   },
   "legends-of-enderas/ages/carbon-boom": {
     "name": "Boom do Carbono",
     "effects": [
-      "Compre 2 cartas do topo da pilha de descarte.\n\n(Se estiver vazia, compre do baralho de traits.)"
+      "Compre 2 cartas do topo da pilha de descarte.\n(Se estiver vazia, compre do baralho de traits.)"
     ]
   },
   "legends-of-enderas/ages/industrial-revolution": {
@@ -32,7 +32,7 @@
   "legends-of-enderas/ages/open-portals": {
     "name": "Portais Abertos",
     "effects": [
-      "Descarte 2 cartas da mão ou 1 aleatória.\n\n(Se esse efeito esvaziar a sua mão, compre 3 cartas.)"
+      "Descarte 2 cartas da mão ou 1 aleatória.\n(Se esse efeito esvaziar a sua mão, compre 3 cartas.)"
     ]
   },
   "legends-of-enderas/ages/return-of-the-ancients": {
@@ -44,7 +44,7 @@
   "legends-of-enderas/ages/thousand-year-slumber": {
     "name": "Sono de Mil Anos",
     "effects": [
-      "Compre 1 carta.\n\nSe você jogar Slumbering nesta age, pode comprar 4 cartas e jogar outro trait."
+      "Compre 1 carta.\nSe você jogar Slumbering nesta age, pode comprar 4 cartas e jogar outro trait."
     ]
   },
   "legends-of-enderas/catastrophes/anoxic-event": {
@@ -72,7 +72,7 @@
     "name": "Chamado do Titã",
     "effects": [
       "Se você tiver algum dominante na sua pilha de traits, descarte todas as cartas da sua mão, menos 1.",
-      "+3 se você tiver um Mythling ({mythling}), Dinoling ({dinoling}) ou Techling ({techling}) dominante na sua pilha de traits.\n\n+6 se tiver 2."
+      "+3 se você tiver um Mythling ({mythling}), Dinoling ({dinoling}) ou Techling ({techling}) dominante na sua pilha de traits.\n+6 se tiver 2."
     ]
   },
   "legends-of-enderas/traits/actuator": {
@@ -86,7 +86,7 @@
   "legends-of-enderas/traits/alchemical": {
     "name": "Alquímico",
     "effects": [
-      "Se Alchemical for descartado da mão, anuncie!\n\nOs jogadores resolvem todos os efeitos.\n\nDepois, os oponentes descartam metade da mão deles, aleatoriamente.",
+      "Se Alchemical for descartado da mão, anuncie!\nOs jogadores resolvem todos os efeitos.\nDepois, os oponentes descartam metade da mão deles, aleatoriamente.",
       "(Arredonde para baixo.)"
     ],
     "flavor": "Senhoras e senhores, o grande Al Químico!"
@@ -166,7 +166,7 @@
   "legends-of-enderas/traits/cryonics": {
     "name": "Criônica",
     "effects": [
-      "Anexe. Quando um trait entrar na sua pilha de traits, você pode anexar Cryonics a ele.\n\nO valor de face do hospedeiro agora é 1."
+      "Anexe. Quando um trait entrar na sua pilha de traits, você pode anexar Cryonics a ele.\nO valor de face do hospedeiro agora é 1."
     ],
     "flavor": "Preservar o que amamos. Congelando."
   },
@@ -195,7 +195,7 @@
   "legends-of-enderas/traits/destructive": {
     "name": "Destrutivo",
     "effects": [
-      "Descarte 2 cartas aleatórias da sua mão.\n\nOs oponentes descartam da mão todas as cartas sem efeito."
+      "Descarte 2 cartas aleatórias da sua mão.\nOs oponentes descartam da mão todas as cartas sem efeito."
     ],
     "flavor": "Ah, não! Essas flores estão presas no chão! É melhor eu ajudar!"
   },
@@ -332,21 +332,21 @@
   "legends-of-enderas/traits/kidney": {
     "name": "Rim",
     "effects": [
-      "O valor é igual ao número de Kidneys na sua pilha de traits.\n\n(Incluindo este.)"
+      "O valor é igual ao número de Kidneys na sua pilha de traits.\n(Incluindo este.)"
     ],
     "flavor": "...com um terópode."
   },
   "legends-of-enderas/traits/kidney-2": {
     "name": "Rim",
     "effects": [
-      "O valor é igual ao número de Kidneys na sua pilha de traits.\n\n(Incluindo este.)"
+      "O valor é igual ao número de Kidneys na sua pilha de traits.\n(Incluindo este.)"
     ],
     "flavor": "...com um chapéu de mago."
   },
   "legends-of-enderas/traits/kidney-3": {
     "name": "Rim",
     "effects": [
-      "O valor é igual ao número de Kidneys na sua pilha de traits.\n\n(Incluindo este.)"
+      "O valor é igual ao número de Kidneys na sua pilha de traits.\n(Incluindo este.)"
     ],
     "flavor": "...com um chapéu de papel-alumínio."
   },
@@ -392,7 +392,7 @@
   "legends-of-enderas/traits/misty": {
     "name": "Nebuloso",
     "effects": [
-      "Para jogar, você deve descartar 1 carta sem efeito da mão.\n\nNão estabilize!"
+      "Para jogar, você deve descartar 1 carta sem efeito da mão.\nNão estabilize!"
     ],
     "flavor": "Uma oportunidade perdida na neblina."
   },
@@ -460,7 +460,7 @@
   "legends-of-enderas/traits/slumbering": {
     "name": "Dorminhoco",
     "effects": [
-      "Descarte 1 carta da mão.\nSe a carta for:\n[purple]Roxa[/purple]: Descarte até 2 da sua pilha de traits.\n[red]Vermelha[/red]: Adicione o valor de face dela.\n\n[green]Verde[/green]: Jogue 1 trait.\n[blue]Azul[/blue]: +5."
+      "Descarte 1 carta da mão.\nSe a carta for:\n[purple]Roxa[/purple]: Descarte até 2 da sua pilha de traits.\n[red]Vermelha[/red]: Adicione o valor de face dela.\n[green]Verde[/green]: Jogue 1 trait.\n[blue]Azul[/blue]: +5."
     ],
     "flavor": "Desculpa ter dormido demais. Já é o fim do mundo?"
   },
@@ -481,7 +481,7 @@
   "legends-of-enderas/traits/speech-recognition": {
     "name": "Reconhecimento de Voz",
     "effects": [
-      "Anexe. Adicione o valor de face de 1 carta na mão que compartilhe uma [rainbow]cor[/rainbow] com o hospedeiro.\n\n(Exceto dominantes.)"
+      "Anexe. Adicione o valor de face de 1 carta na mão que compartilhe uma [rainbow]cor[/rainbow] com o hospedeiro.\n(Exceto dominantes.)"
     ],
     "flavor": "O melhor conversor de voz para texto do mercado."
   },
@@ -525,21 +525,21 @@
   "legends-of-enderas/traits/swarm": {
     "name": "Enxame",
     "effects": [
-      "O valor é igual ao número de traits Swarm em todas as pilhas de traits.\n\n(Incluindo este.)"
+      "O valor é igual ao número de traits Swarm em todas as pilhas de traits.\n(Incluindo este.)"
     ],
     "flavor": "Viemos pelo novo tablet."
   },
   "legends-of-enderas/traits/swarm-2": {
     "name": "Enxame",
     "effects": [
-      "O valor é igual ao número de traits Swarm em todas as pilhas de traits.\n\n(Incluindo este.)"
+      "O valor é igual ao número de traits Swarm em todas as pilhas de traits.\n(Incluindo este.)"
     ],
     "flavor": "Viemos para a sessão espírita."
   },
   "legends-of-enderas/traits/swarm-3": {
     "name": "Enxame",
     "effects": [
-      "O valor é igual ao número de traits Swarm em todas as pilhas de traits.\n\n(Incluindo este.)"
+      "O valor é igual ao número de traits Swarm em todas as pilhas de traits.\n(Incluindo este.)"
     ],
     "flavor": "Somos o novo celular."
   },
@@ -578,7 +578,7 @@
   "legends-of-enderas/traits/titanic": {
     "name": "Titânico",
     "effects": [
-      "Para jogar, você deve descartar um valor de face total de 5 ou mais da sua pilha de traits, usando qualquer número de cartas.\n\n(Titanic não pode regenerar tecido!)"
+      "Para jogar, você deve descartar um valor de face total de 5 ou mais da sua pilha de traits, usando qualquer número de cartas.\n(Titanic não pode regenerar tecido!)"
     ],
     "flavor": "Mmmm, icebúrgueres!"
   },

@@ -280,7 +280,7 @@
     "flavor": "I don't know why you won't change your mind to the way I see it.",
     "effects": [
       {
-        "text": "Excluding dominants, if you have 6 or fewer traits in your trait pile, they cannot be swapped or stolen.\n\nStart of your turns: You may suppress 1 trait in your trait pile."
+        "text": "Excluding dominants, if you have 6 or fewer traits in your trait pile, they cannot be swapped or stolen.\nStart of your turns: You may suppress 1 trait in your trait pile."
       }
     ],
     "genePool": null,
@@ -639,7 +639,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "You may play Toh when a trait is discarded from your trait pile.\n\n(Unless targeted by a dominant!)\n\nReturn that trait to your hand."
+        "text": "You may play Toh when a trait is discarded from your trait pile.\n(Unless targeted by a dominant!)\nReturn that trait to your hand."
       }
     ],
     "genePool": null,
@@ -901,7 +901,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "You may play Yobondo when an opponent targets a single trait in your trait pile.\n\n(Unless targeted by a dominant!) That effect targets Yobondo instead."
+        "text": "You may play Yobondo when an opponent targets a single trait in your trait pile.\n(Unless targeted by a dominant!) That effect targets Yobondo instead."
       }
     ],
     "genePool": null,

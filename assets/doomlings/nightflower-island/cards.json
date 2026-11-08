@@ -455,7 +455,7 @@
     "flavor": "...with a haunting darkness.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -703,7 +703,7 @@
     "flavor": "We're here for the new shell phone.",
     "effects": [
       {
-        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -916,7 +916,7 @@
     "flavor": "If you want to see bolded text, simply look below and view it.",
     "effects": [
       {
-        "text": "Create a new effect.\n\nIf your opponents approve it, use it and subtract 4 from your final score."
+        "text": "Create a new effect.\nIf your opponents approve it, use it and subtract 4 from your final score."
       }
     ],
     "genePool": null,

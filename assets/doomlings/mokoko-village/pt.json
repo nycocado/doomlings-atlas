@@ -15,7 +15,7 @@
   "mokoko-village/ages/river-walk": {
     "name": "Passeio no Rio",
     "effects": [
-      "Se você tiver 6 ou mais cartas na mão, descarte 2 cartas aleatórias da sua mão.\n\nSe tiver 4 ou menos, compre 2 cartas."
+      "Se você tiver 6 ou mais cartas na mão, descarte 2 cartas aleatórias da sua mão.\nSe tiver 4 ou menos, compre 2 cartas."
     ]
   },
   "mokoko-village/catastrophes/fatal-falls": {
@@ -95,7 +95,7 @@
   "mokoko-village/traits/entwined": {
     "name": "Entrelaçado",
     "effects": [
-      "Jogue a qualquer momento: Descarte 1 da sua pilha de traits.\n\n(Exceto dominantes, isso pode impedir que o trait seja trocado/roubado.)"
+      "Jogue a qualquer momento: Descarte 1 da sua pilha de traits.\n(Exceto dominantes, isso pode impedir que o trait seja trocado/roubado.)"
     ],
     "flavor": "Tá tudo certo. Só enroscado."
   },
@@ -276,7 +276,7 @@
   "mokoko-village/traits/swarm-of-kidneys": {
     "name": "Enxame de Rins",
     "effects": [
-      "O valor é igual ao número de traits Kidney em todas as pilhas de traits.\n\n(Incluindo este.)"
+      "O valor é igual ao número de traits Kidney em todas as pilhas de traits.\n(Incluindo este.)"
     ],
     "flavor": "Viemos pelos chapéus novos."
   },

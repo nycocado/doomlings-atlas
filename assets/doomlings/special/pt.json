@@ -8,7 +8,7 @@
   "special/traits/amatoxins": {
     "name": "Amatoxinas",
     "effects": [
-      "Você pode descartar até 3 traits da sua pilha de traits.\n\nOs oponentes recebem: -2 para cada cor diferente descartada dessa forma."
+      "Você pode descartar até 3 traits da sua pilha de traits.\nOs oponentes recebem: -2 para cada cor diferente descartada dessa forma."
     ],
     "flavor": "Sei que parece fofo, mas na verdade é incrivelmente perigoso."
   },
@@ -43,7 +43,7 @@
   "special/traits/exotic": {
     "name": "Exótico",
     "effects": [
-      "Para jogar, você deve descartar 2 da sua pilha de traits, depois comprar 2. Você deve jogá-los imediatamente.\n\n(A menos que haja restrição.) Descarte dominantes. Ignore ações ({action})."
+      "Para jogar, você deve descartar 2 da sua pilha de traits, depois comprar 2. Você deve jogá-los imediatamente.\n(A menos que haja restrição.) Descarte dominantes. Ignore ações ({action})."
     ],
     "flavor": "Oba! Um ambiente novo! Vou deixar tudo de pernas para o ar!"
   },
@@ -89,7 +89,7 @@
   "special/traits/magic-fingers": {
     "name": "Dedos Mágicos",
     "effects": [
-      "Até o Fim do Mundo: Sempre que um trait sair da sua pilha de traits, você pode jogar 1 da mesma [rainbow]cor[/rainbow] para substituí-lo. Ignore ações ({action}).\n\n(Sem dominantes.)"
+      "Até o Fim do Mundo: Sempre que um trait sair da sua pilha de traits, você pode jogar 1 da mesma [rainbow]cor[/rainbow] para substituí-lo. Ignore ações ({action}).\n(Sem dominantes.)"
     ],
     "flavor": "Abra-ca-doomling!"
   },
@@ -111,7 +111,7 @@
   "special/traits/rainbow-keratin": {
     "name": "Queratina Arco-Íris",
     "effects": [
-      "-2 para cada Gota de Vida ({drop-of-life}) na sua pilha de traits. (Exceto este.) Se você tiver as 4 [rainbow]cores[/rainbow] na sua pilha de traits: +2 para cada trait da [rainbow]cor que você tem em maior quantidade.[/rainbow]\n\n(Em caso de empate, escolha 1!)"
+      "-2 para cada Gota de Vida ({drop-of-life}) na sua pilha de traits. (Exceto este.) Se você tiver as 4 [rainbow]cores[/rainbow] na sua pilha de traits: +2 para cada trait da [rainbow]cor que você tem em maior quantidade.[/rainbow]\n(Em caso de empate, escolha 1!)"
     ],
     "flavor": "Pra vida, eu só torço o bico."
   },

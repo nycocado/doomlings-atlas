@@ -2,7 +2,7 @@
   "imaginary-ends/ages/a-quiet-moment": {
     "name": "Un Momento de Calma",
     "effects": [
-      "Descarta hasta 3 cartas de tu mano.\n\nSi tu mano está vacía al inicio de tu turno, roba 4 cartas."
+      "Descarta hasta 3 cartas de tu mano.\nSi tu mano está vacía al inicio de tu turno, roba 4 cartas."
     ]
   },
   "imaginary-ends/ages/age-of-reverie": {
@@ -33,7 +33,7 @@
   "imaginary-ends/ages/moonlight": {
     "name": "Luz de Luna",
     "effects": [
-      "Si tu Gene Pool es 4 o más, descarta 1 carta.\n\nSi tu Gene Pool es 3 o menos, roba 2 cartas."
+      "Si tu Gene Pool es 4 o más, descarta 1 carta.\nSi tu Gene Pool es 3 o menos, roba 2 cartas."
     ]
   },
   "imaginary-ends/ages/sunshine-tea-parties": {
@@ -153,7 +153,7 @@
     "name": "¡Increíble!",
     "effects": [
       "Estabiliza hasta 2.",
-      "Añade 2 valores nominales de tu mano a tu puntuación.\n\n(Máx. +17)"
+      "Añade 2 valores nominales de tu mano a tu puntuación.\n(Máx. +17)"
     ],
     "flavor": "¡Témeme! ¡Jijiji!"
   },
@@ -238,7 +238,7 @@
   "imaginary-ends/traits/ethereal": {
     "name": "Etéreo",
     "effects": [
-      "Hasta el Fin del Mundo: Si tienes 6 o menos cartas en la mano al final de tu turno, puedes suprimir 1 carta de tu mano en lugar de estabilizar.\n\n(Si este efecto vacía tu mano, roba 2 cartas.)"
+      "Hasta el Fin del Mundo: Si tienes 6 o menos cartas en la mano al final de tu turno, puedes suprimir 1 carta de tu mano en lugar de estabilizar.\n(Si este efecto vacía tu mano, roba 2 cartas.)"
     ],
     "flavor": "Demasiado perfecto para este mundo, o para el siguiente."
   },
@@ -428,7 +428,7 @@
   "imaginary-ends/traits/scintillant": {
     "name": "Centelleante",
     "effects": [
-      "+1 por cada Deepling ({deepling}) y Glitterling ({glitterling}) en tu pila de traits.\n\n(Incluyendo este.)"
+      "+1 por cada Deepling ({deepling}) y Glitterling ({glitterling}) en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Nací sirena para brillar."
   },

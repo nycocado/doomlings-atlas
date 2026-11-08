@@ -8,7 +8,7 @@
   "special/traits/amatoxins": {
     "name": "Amatoxinas",
     "effects": [
-      "Puedes descartar hasta 3 traits de tu pila de traits.\n\nLos oponentes reciben: -2 por cada color diferente descartado de esta manera."
+      "Puedes descartar hasta 3 traits de tu pila de traits.\nLos oponentes reciben: -2 por cada color diferente descartado de esta manera."
     ],
     "flavor": "Sé que parece lindo, pero en realidad es increíblemente peligroso."
   },
@@ -43,7 +43,7 @@
   "special/traits/exotic": {
     "name": "Exótico",
     "effects": [
-      "Para jugar, debes descartar 2 de tu pila de traits, luego robar 2. Debes jugarlos inmediatamente.\n\n(A menos que haya restricción.) Descarta los dominantes. Ignora las acciones ({action})."
+      "Para jugar, debes descartar 2 de tu pila de traits, luego robar 2. Debes jugarlos inmediatamente.\n(A menos que haya restricción.) Descarta los dominantes. Ignora las acciones ({action})."
     ],
     "flavor": "¡Yupi! ¡Un ambiente nuevo! ¡Voy a ponerlo todo patas arriba!"
   },
@@ -89,7 +89,7 @@
   "special/traits/magic-fingers": {
     "name": "Dedos Mágicos",
     "effects": [
-      "Hasta el Fin del Mundo: Siempre que un trait salga de tu pila de traits, puedes jugar 1 del mismo [rainbow]color[/rainbow] para reemplazarlo. Ignora las acciones ({action}).\n\n(Sin dominantes.)"
+      "Hasta el Fin del Mundo: Siempre que un trait salga de tu pila de traits, puedes jugar 1 del mismo [rainbow]color[/rainbow] para reemplazarlo. Ignora las acciones ({action}).\n(Sin dominantes.)"
     ],
     "flavor": "¡Abra-ca-doomling!"
   },
@@ -111,7 +111,7 @@
   "special/traits/rainbow-keratin": {
     "name": "Queratina Arcoíris",
     "effects": [
-      "-2 por cada Gota de Vida ({drop-of-life}) en tu pila de traits. (Excepto este.) Si tienes los 4 [rainbow]colores[/rainbow] en tu pila de traits: +2 por cada trait del [rainbow]color que tienes en mayor cantidad.[/rainbow]\n\n(Si hay empate, ¡elige 1!)"
+      "-2 por cada Gota de Vida ({drop-of-life}) en tu pila de traits. (Excepto este.) Si tienes los 4 [rainbow]colores[/rainbow] en tu pila de traits: +2 por cada trait del [rainbow]color que tienes en mayor cantidad.[/rainbow]\n(Si hay empate, ¡elige 1!)"
     ],
     "flavor": "Mi visión de la vida es bastante sombría."
   },

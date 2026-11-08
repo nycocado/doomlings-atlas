@@ -2,7 +2,7 @@
   "castle-glass/ages/castle-glass": {
     "name": "Castillo de Cristal",
     "effects": [
-      "Descarta 2 cartas de tu mano.\nLuego, roba 2 cartas.\n\nLos jugadores no pueden descartar conchas ({shell}), corales ({coral}) ni peces ({fish})."
+      "Descarta 2 cartas de tu mano.\nLuego, roba 2 cartas.\nLos jugadores no pueden descartar conchas ({shell}), corales ({coral}) ni peces ({fish})."
     ]
   },
   "castle-glass/ages/magic-hour": {
@@ -238,7 +238,7 @@
     "name": "Movimiento Espiral",
     "effects": [
       "Juega 1. Luego, devuélvelo a tu mano.",
-      "(No puedes jugar este efecto dos veces en 1 turno.)\n\n(No puedes devolver dominantes.)"
+      "(No puedes jugar este efecto dos veces en 1 turno.)\n(No puedes devolver dominantes.)"
     ],
     "flavor": "En espiral hacia el control."
   },

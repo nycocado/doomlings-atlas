@@ -82,7 +82,7 @@
   "shadow-puppets/traits/immutable": {
     "name": "Inmutable",
     "effects": [
-      "Excepto dominantes, si tienes 6 traits o menos en tu pila de traits, no pueden ser intercambiados ni arrebatados.\n\nInicio de tus turnos: Puedes suprimir 1 trait de tu pila de traits."
+      "Excepto dominantes, si tienes 6 traits o menos en tu pila de traits, no pueden ser intercambiados ni arrebatados.\nInicio de tus turnos: Puedes suprimir 1 trait de tu pila de traits."
     ],
     "flavor": "No sé por qué no cambias de opinión para verlo a mi manera."
   },
@@ -178,7 +178,7 @@
   "shadow-puppets/traits/toh": {
     "name": "Toh",
     "effects": [
-      "Puedes jugar Toh cuando un trait sea descartado de tu pila de traits.\n\n(¡A menos que sea el objetivo de un dominante!)\n\nDevuelve ese trait a tu mano."
+      "Puedes jugar Toh cuando un trait sea descartado de tu pila de traits.\n(¡A menos que sea el objetivo de un dominante!)\nDevuelve ese trait a tu mano."
     ],
     "flavor": "Comb toh pahpah."
   },
@@ -249,7 +249,7 @@
   "shadow-puppets/traits/yobondo": {
     "name": "Yobondo",
     "effects": [
-      "Puedes jugar Yobondo cuando un oponente elija como objetivo un solo trait de tu pila de traits.\n\n(¡A menos que sea el objetivo de un dominante!) En lugar de eso, ese efecto tiene como objetivo a Yobondo."
+      "Puedes jugar Yobondo cuando un oponente elija como objetivo un solo trait de tu pila de traits.\n(¡A menos que sea el objetivo de un dominante!) En lugar de eso, ese efecto tiene como objetivo a Yobondo."
     ],
     "flavor": "Yoh bohn doh."
   }
