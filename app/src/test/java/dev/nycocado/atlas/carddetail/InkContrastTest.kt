@@ -56,7 +56,7 @@ class InkContrastTest {
         assertTrue("$weak", weak.isEmpty())
     }
 
-    // docs/design.md asks for 3:1 for glyphs, which the panel's dots are. Every multi-color combination in the card data.
+    // docs/design.md asks for 3:1 for glyphs, which the panel's dots are. The multi-color combinations the card data has today.
     private val combinations =
         listOf(
             listOf(Blue, Green),
@@ -81,7 +81,7 @@ class InkContrastTest {
         assertTrue("$weak", weak.isEmpty())
     }
 
-    // Contrast worked out by hand: white stays 3.49:1 over blue to purple, where the dark on-color drops to 2.86:1 on purple.
+    // Contrast worked out by hand: over blue to purple white keeps 3.49:1, more than the 3.25:1 of the darkest on-color, Red's.
     @Test
     fun theInkOverBlueToPurpleIsWhite() {
         assertEquals(Color.White, DayColors.inkOver(listOf(Blue, Purple)))
