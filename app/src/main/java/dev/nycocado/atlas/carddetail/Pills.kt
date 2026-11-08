@@ -18,6 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
@@ -26,6 +29,8 @@ import dev.nycocado.atlas.card.CardFace
 import dev.nycocado.atlas.card.CardFact
 import dev.nycocado.atlas.card.CardKind
 import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.TagQualifier
+import dev.nycocado.atlas.card.TagSubject
 import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.ui.component.TraitGlyph
 import dev.nycocado.atlas.ui.component.colorName
@@ -43,7 +48,6 @@ internal fun Pills(
     setName: String? = null,
 ) {
     val theme = AtlasTheme.colors
-    val icons = face.facts.filterIsInstance<CardFact.Icon>().map { it.icon }
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(Space.s2),
         verticalArrangement = Arrangement.spacedBy(Space.s2),
@@ -76,6 +80,23 @@ internal fun Pills(
                     }
                 }
 
+                is CardFact.Tagged -> {
+                    val ink =
+                        when (fact.qualifier) {
+                            TagQualifier.Curious -> theme.tagCurious
+                            TagQualifier.Exotic -> theme.tagExotic
+                        }
+                    Pill(qualifiedLabel(cardString(fact.label, language), ink, language), theme.tag, theme.onTag) {
+                        Symbol(fact.subject.glyph, Modifier.height(18.dp))
+                    }
+                }
+
+                is CardFact.Icon if fact.icon == TraitIcon.Dragon -> {
+                    Pill(tagged(cardString(fact.icon.label, language), language), theme.tag, theme.onTag) {
+                        Symbol(R.drawable.ic_symbol_glyph_dragon, Modifier.height(18.dp))
+                    }
+                }
+
                 is CardFact.Icon -> {
                     Pill(
                         cardString(fact.icon.label, language),
@@ -83,7 +104,7 @@ internal fun Pills(
                         theme.onSurface,
                         language = language,
                         glyph =
-                            fact.icon.symbol(icons)?.let {
+                            fact.icon.symbol()?.let {
                                 {
                                     Symbol(
                                         it,
@@ -124,6 +145,14 @@ private fun Pill(
     content: Color,
     language: CardLanguage? = null,
     glyph: @Composable (() -> Unit)? = null,
+) = Pill(language?.let { tagged(text, it) } ?: AnnotatedString(text), fill, content, glyph)
+
+@Composable
+private fun Pill(
+    text: AnnotatedString,
+    fill: Color,
+    content: Color,
+    glyph: @Composable (() -> Unit)? = null,
 ) {
     Row(
         Modifier
@@ -135,7 +164,7 @@ private fun Pill(
     ) {
         glyph?.invoke()
         BasicText(
-            language?.let { tagged(text, it) } ?: AnnotatedString(text),
+            text,
             style = AtlasTypography.labelLg.copy(color = content),
         )
     }
@@ -159,86 +188,66 @@ private val TraitIcon.label: Int
             TraitIcon.WorldsEnd -> R.string.worlds_end
         }
 
-// Curious and Exotic are printed as one tag with the card's coral, fish or shell, which the card data test guarantees.
+// Curious and Exotic never show alone: CardFact.Tagged carries them, and the card data test keeps them paired.
 @DrawableRes
-private fun TraitIcon.symbol(icons: List<TraitIcon>): Int? =
+private fun TraitIcon.symbol(): Int? =
     when (this) {
-        TraitIcon.Action -> {
-            R.drawable.ic_symbol_action
-        }
-
-        TraitIcon.Attachment -> {
-            R.drawable.ic_symbol_attachment
-        }
-
-        TraitIcon.Coral -> {
-            R.drawable.ic_symbol_coral
-        }
-
-        TraitIcon.Curious -> {
-            tagOf(
-                icons,
-                R.drawable.ic_symbol_tag_curious_coral,
-                R.drawable.ic_symbol_tag_curious_fish,
-                R.drawable.ic_symbol_tag_curious_shell,
-            )
-        }
-
-        TraitIcon.Dragon -> {
-            R.drawable.ic_symbol_tag_dragon
-        }
-
-        TraitIcon.DropOfLife -> {
-            R.drawable.ic_symbol_drop_of_life
-        }
-
-        TraitIcon.Exotic -> {
-            tagOf(
-                icons,
-                R.drawable.ic_symbol_tag_exotic_coral,
-                R.drawable.ic_symbol_tag_exotic_fish,
-                R.drawable.ic_symbol_tag_exotic_shell,
-            )
-        }
-
-        TraitIcon.Fish -> {
-            R.drawable.ic_symbol_fish
-        }
-
-        TraitIcon.PlayWhen -> {
-            R.drawable.ic_symbol_play_when
-        }
-
-        TraitIcon.Shell -> {
-            R.drawable.ic_symbol_shell
-        }
-
-        TraitIcon.Spell -> {
-            R.drawable.ic_symbol_spell
-        }
-
-        TraitIcon.Suppress -> {
-            R.drawable.ic_symbol_suppress
-        }
-
-        TraitIcon.WorldsEnd -> {
-            R.drawable.ic_symbol_worlds_end
-        }
+        TraitIcon.Action -> R.drawable.ic_symbol_action
+        TraitIcon.Attachment -> R.drawable.ic_symbol_attachment
+        TraitIcon.Coral -> R.drawable.ic_symbol_coral
+        TraitIcon.Curious -> null
+        TraitIcon.Dragon -> R.drawable.ic_symbol_glyph_dragon
+        TraitIcon.DropOfLife -> R.drawable.ic_symbol_drop_of_life
+        TraitIcon.Exotic -> null
+        TraitIcon.Fish -> R.drawable.ic_symbol_fish
+        TraitIcon.PlayWhen -> R.drawable.ic_symbol_play_when
+        TraitIcon.Shell -> R.drawable.ic_symbol_shell
+        TraitIcon.Spell -> R.drawable.ic_symbol_spell
+        TraitIcon.Suppress -> R.drawable.ic_symbol_suppress
+        TraitIcon.WorldsEnd -> R.drawable.ic_symbol_worlds_end
     }
 
-@DrawableRes
-private fun tagOf(
-    icons: List<TraitIcon>,
-    @DrawableRes coral: Int,
-    @DrawableRes fish: Int,
-    @DrawableRes shell: Int,
-): Int? =
-    when {
-        TraitIcon.Coral in icons -> coral
-        TraitIcon.Fish in icons -> fish
-        TraitIcon.Shell in icons -> shell
-        else -> null
+private val TagSubject.glyph: Int
+    @DrawableRes get() =
+        when (this) {
+            TagSubject.Coral -> R.drawable.ic_symbol_glyph_coral
+            TagSubject.Fish -> R.drawable.ic_symbol_glyph_fish
+            TagSubject.Shell -> R.drawable.ic_symbol_glyph_shell
+        }
+
+private val CardFact.Tagged.label: Int
+    @StringRes get() =
+        when (qualifier) {
+            TagQualifier.Curious -> {
+                when (subject) {
+                    TagSubject.Coral -> R.string.tag_curious_coral
+                    TagSubject.Fish -> R.string.tag_curious_fish
+                    TagSubject.Shell -> R.string.tag_curious_shell
+                }
+            }
+
+            TagQualifier.Exotic -> {
+                when (subject) {
+                    TagSubject.Coral -> R.string.tag_exotic_coral
+                    TagSubject.Fish -> R.string.tag_exotic_fish
+                    TagSubject.Shell -> R.string.tag_exotic_shell
+                }
+            }
+        }
+
+// The label's <b> marks the qualifier, wherever the language puts it, and it shows in the given color. HTML rather than
+// string annotations, which the preview renderer's resources drop.
+private fun qualifiedLabel(
+    html: String,
+    color: Color,
+    language: CardLanguage,
+): AnnotatedString {
+    val marked = AnnotatedString.fromHtml(html)
+    return buildAnnotatedString {
+        append(tagged(marked.text, language))
+        marked.spanStyles.forEach { addStyle(SpanStyle(color = color), it.start, it.end) }
     }
+}
 
 @PreviewLightDark
 @Composable
@@ -278,7 +287,7 @@ internal fun PillsPreview() =
         }
     }
 
-// Every trait icon, then Curious and Exotic with each coral, fish and shell, whose tag they are printed on.
+// Every icon that shows on its own, then the six tags.
 @PreviewLightDark
 @Composable
 internal fun TraitIconPillsPreview() =
@@ -287,16 +296,8 @@ internal fun TraitIconPillsPreview() =
             Modifier.background(AtlasTheme.colors.surface).padding(Space.s4),
             verticalArrangement = Arrangement.spacedBy(Space.s3),
         ) {
-            val rows =
-                listOf(TraitIcon.entries) +
-                    listOf(TraitIcon.Coral, TraitIcon.Fish, TraitIcon.Shell).map {
-                        listOf(TraitIcon.Curious, TraitIcon.Exotic, it)
-                    }
-            rows.forEach { icons ->
-                Pills(
-                    CardFace("Pills", icons.map(CardFact::Icon), null, emptyList(), emptyList()),
-                    CardLanguage.English,
-                )
-            }
+            val icons = (TraitIcon.entries - TraitIcon.Curious - TraitIcon.Exotic).map(CardFact::Icon)
+            val tags = TagQualifier.entries.flatMap { q -> TagSubject.entries.map { CardFact.Tagged(q, it) } }
+            Pills(CardFace("Pills", icons + tags, null, emptyList(), emptyList()), CardLanguage.English)
         }
     }
