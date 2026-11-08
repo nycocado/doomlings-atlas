@@ -127,6 +127,17 @@
       "note": "Verbo: buscar. \"procurar\" só na frase 'Qual doomling você procura?'."
     },
     {
+      "en": "set (product)",
+      "use": "Coleção",
+      "avoid": [
+        "edição",
+        "edições",
+        "expansão",
+        "expansões"
+      ],
+      "note": "O produto de onde vem a carta (Classic, Overlush...). Plural: Coleções. Os nomes das coleções ficam em inglês."
+    },
+    {
       "en": "show",
       "use": "mostrar",
       "avoid": [

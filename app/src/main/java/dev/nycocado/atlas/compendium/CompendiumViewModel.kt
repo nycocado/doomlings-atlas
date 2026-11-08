@@ -15,7 +15,6 @@ import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardRepository
 import dev.nycocado.atlas.card.CardTranslations
-import dev.nycocado.atlas.card.offeredKinds
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -116,17 +115,8 @@ class CompendiumViewModel
         // Atomic, so a change made from a stale composed filter can't overwrite another one.
         fun updateFilter(transform: (CompendiumFilter) -> CompendiumFilter) {
             savedFilter =
-                mutableFilter.updateAndGet { old ->
-                    transform(old).let { new ->
-                        // A kind can go away with the data or a set filter; Traits are always there.
-                        val offered = mutableLibrary.value.offeredKinds(new)
-                        if (offered == null || new.kind in offered) new else new.copy(kind = CardKind.Trait)
-                    }
-                }
+                mutableFilter.updateAndGet { old -> mutableLibrary.value.withAnOfferedKind(transform(old)) }
         }
     }
-
-// null while the cards load.
-private fun CardLibrary.offeredKinds(filter: CompendiumFilter) = cards?.inSetsOf(filter)?.offeredKinds()
 
 private fun cardLanguageOf(code: String?) = CardLanguage.entries.find { it.code == code }

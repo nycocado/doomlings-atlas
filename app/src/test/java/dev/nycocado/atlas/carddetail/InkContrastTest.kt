@@ -1,7 +1,8 @@
 package dev.nycocado.atlas.carddetail
 
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.graphics.toArgb
+import androidx.core.graphics.ColorUtils
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardColor.Blue
 import dev.nycocado.atlas.card.CardColor.Green
@@ -16,17 +17,17 @@ import dev.nycocado.atlas.ui.theme.trait
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
 // docs/design.md asks for 4.5:1 for text; the bubble is surface-sticker in both themes.
+// Robolectric, as ColorUtils reads android.graphics.Color, which is a stub on the plain JVM.
+@RunWith(RobolectricTestRunner::class)
 class InkContrastTest {
-    // The WCAG contrast ratio: ColorUtils.calculateContrast takes android.graphics colors, which a plain JVM test lacks.
     private fun contrast(
         a: Color,
         b: Color,
-    ): Float {
-        val (light, dark) = listOf(a.luminance(), b.luminance()).sortedDescending()
-        return (light + 0.05f) / (dark + 0.05f)
-    }
+    ): Double = ColorUtils.calculateContrast(a.toArgb(), b.toArgb())
 
     // The gradient's shader blends in sRGB, so its colors between two inks are sampled the same way.
     private fun blend(
@@ -36,7 +37,7 @@ class InkContrastTest {
     ) = Color(a.red + (b.red - a.red) * t, a.green + (b.green - a.green) * t, a.blue + (b.blue - a.blue) * t)
 
     // Every ink's colors, and for a gradient the colors between them too.
-    private fun AtlasColors.inksOnTheBubble(): List<Pair<Color, Float>> =
+    private fun AtlasColors.inksOnTheBubble(): List<Pair<Color, Double>> =
         Ink.entries
             .flatMap { ink ->
                 inkColors(ink).let { colors ->
@@ -68,7 +69,7 @@ class InkContrastTest {
             listOf(Blue, Green, Purple, Red),
         )
 
-    private fun AtlasColors.worstContrast(colors: List<CardColor>): Float =
+    private fun AtlasColors.worstContrast(colors: List<CardColor>): Double =
         colors
             .map { trait(it).fill }
             .zipWithNext()

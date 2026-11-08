@@ -5,10 +5,10 @@ class CardLibrary private constructor(
     val cards: List<Card>?,
     private val sets: List<CardSet> = emptyList(),
 ) {
-    // The sets of the set filter, in release order. A set whose name isn't confirmed yet has no row to show.
+    // The sets of the set filter, in release order.
     val setsToChoose: List<CardSet> by lazy { sets.inReleaseOrder() }
 
-    // null when the set's name isn't confirmed.
+    // null when this library doesn't hold the card's set, as the loading one drawn behind previews.
     fun setName(card: Card): String? = sets.find { it.id == card.set }?.name
 
     fun lookup(id: String): CardLookup =

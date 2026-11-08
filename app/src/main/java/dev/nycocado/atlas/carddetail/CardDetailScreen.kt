@@ -82,7 +82,6 @@ import androidx.compose.ui.util.lerp
 import coil3.compose.AsyncImage
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.Age
-import dev.nycocado.atlas.card.BirthOfLife
 import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
@@ -100,7 +99,6 @@ import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.card.Treasure
-import dev.nycocado.atlas.card.Trinket
 import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.cardpane.CardStatusBarIcons
@@ -178,7 +176,7 @@ fun CardDetailContent(
 ) {
     val theme = AtlasTheme.colors
     val face = translations.face(card, language)
-    // Ages and catastrophes have no color: their panel stays neutral, so it can't be read as a trait color.
+    // Only traits have a color: every other card's panel stays neutral, so it can't be read as a trait color.
     val colored = face.colors.isNotEmpty()
     val fills = if (colored) face.colors.map { theme.trait(it).fill } else listOf(theme.surfaceSunk)
     val dots = if (colored) theme.inkOver(face.colors) else theme.outlineSoft
@@ -748,20 +746,6 @@ private val ArdentGrip =
         listOf(Effect(EffectKind.Rush, "Set your Gene Pool to 5."), Effect(EffectKind.Rush, "Draw 1.")),
     )
 
-private val AnxietyElixir =
-    Trinket(
-        "imaginary-ends/trinkets/anxiety-elixir",
-        "imaginary-ends",
-        "",
-        "Anxiety Elixir",
-        listOf(
-            Effect(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand."),
-            Effect(EffectKind.PocketObjective, "Reveal: 2 reds in hand."),
-        ),
-        2,
-        "This causes stress. Can't stress that enough.",
-    )
-
 private val Bon =
     Merchant(
         "imaginary-ends/merchants/bon",
@@ -769,21 +753,6 @@ private val Bon =
         "",
         "Bon",
         listOf(Effect(EffectKind.Bargain, "Trash 1 trinket, then gain 1 trinket.\nYou may repeat once.")),
-    )
-
-private val TheBirthOfLife =
-    BirthOfLife(
-        "classic/birth-of-life/the-birth-of-life",
-        "classic",
-        "",
-        "The Birth of Life",
-        listOf(
-            Effect(
-                text =
-                    "[yellow]Set your Gene Pool to 5.[/yellow]\n\n" +
-                        "Play 1 trait each turn.\nStabilize to end your turn.",
-            ),
-        ),
     )
 
 @PreviewLightDark

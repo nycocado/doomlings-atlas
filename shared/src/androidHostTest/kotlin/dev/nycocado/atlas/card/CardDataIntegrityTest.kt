@@ -1,6 +1,7 @@
 package dev.nycocado.atlas.card
 
 import dev.nycocado.atlas.compendium.CompendiumFilter
+import dev.nycocado.atlas.compendium.filterCompendium
 import dev.nycocado.atlas.compendium.inSetsOf
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
@@ -199,6 +200,13 @@ class CardDataIntegrityTest {
             listOf(CardKind.Trait, CardKind.Age, CardKind.Catastrophe, CardKind.GenePool),
             cards.inSetsOf(CompendiumFilter(sets = setOf("classic"))).offeredKinds(),
         )
+    }
+
+    @Test
+    fun filteringToOverlushShowsItsAgesInAges() {
+        val ages = cards.filterCompendium(CompendiumFilter(CardKind.Age, sets = setOf("overlush")))
+        assertEquals(28, ages.size)
+        assertEquals(setOf("overlush"), ages.map { it.set }.toSet())
     }
 
     // Counts from the official rulesheet's transcription (assets/doomlings/rules/imaginary-ends.md): per subspecies,

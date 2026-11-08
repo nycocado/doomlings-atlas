@@ -13,9 +13,9 @@ class CardSetTest {
 
     private fun set(
         id: String,
-        name: String?,
+        name: String,
         year: Int?,
-    ) = """{"id": "$id", "name": ${name?.let { "\"$it\"" }}, "year": $year}"""
+    ) = """{"id": "$id", "name": "$name", "year": $year}"""
 
     @Test
     fun setsSortByYearThenNameWithSpecialLast() {
@@ -31,19 +31,23 @@ class CardSetTest {
     }
 
     @Test
-    fun aSetWithoutAConfirmedNameIsNotOffered() {
-        assertEquals(listOf("b"), libraryOf(set("a", null, 2023), set("b", "B", 2023)).setsToChoose.map { it.id })
+    fun aCardGivesItsSetsPrintedName() {
+        assertEquals("Named", libraryOf(set("a", "Named", 2023)).setName(trait))
     }
 
     @Test
-    fun aCardGivesItsSetsPrintedNameWhenItHasOne() {
-        assertEquals("Named", libraryOf(set("a", "Named", 2023)).setName(trait))
-        assertNull(libraryOf(set("a", null, 2023)).setName(trait))
+    fun aCardOfASetTheLibraryDoesNotHoldHasNoSetName() {
         assertNull(libraryOf().setName(trait))
     }
 
     @Test
-    fun aSetMustSayItsNameAndYearEvenIfNull() {
+    fun aSetMustHaveAName() {
         assertFailsWith<Exception> { libraryOf("""{"id": "a", "year": 2023}""") }
+        assertFailsWith<Exception> { libraryOf("""{"id": "a", "name": null, "year": 2023}""") }
+    }
+
+    @Test
+    fun aSetMustSayItsYearEvenIfNull() {
+        assertFailsWith<Exception> { libraryOf("""{"id": "a", "name": "A"}""") }
     }
 }
