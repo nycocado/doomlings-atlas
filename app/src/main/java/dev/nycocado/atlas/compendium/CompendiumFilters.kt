@@ -4,7 +4,6 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.expandVertically
@@ -24,22 +23,28 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
@@ -47,7 +52,6 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
@@ -69,6 +73,7 @@ import dev.nycocado.atlas.ui.theme.trait
 @Composable
 internal fun Filters(
     filter: CompendiumFilter,
+    kinds: List<CardKind>,
     sets: List<CardSet>,
     onFilterChange: ((CompendiumFilter) -> CompendiumFilter) -> Unit,
 ) {
@@ -103,7 +108,7 @@ internal fun Filters(
                     }
                 }
             }
-            KindSegments(filter.kind) { kind -> onFilterChange { it.copy(kind = kind) } }
+            KindSegments(kinds, filter.kind) { kind -> onFilterChange { it.copy(kind = kind) } }
             // No set to offer while the cards load.
             if (sets.isNotEmpty()) {
                 SetsChip(filter.sets.size, Modifier.padding(top = Space.s3).align(Alignment.End)) { showSets = true }
@@ -195,6 +200,11 @@ private val CardKind.label: Int
             CardKind.Trait -> R.string.kind_traits
             CardKind.Age -> R.string.kind_ages
             CardKind.Catastrophe -> R.string.kind_catastrophes
+            CardKind.GenePool -> R.string.kind_gene_pools
+            CardKind.MeaningOfLife -> R.string.kind_meanings_of_life
+            CardKind.Treasure -> R.string.kind_treasures
+            CardKind.Trinket -> R.string.kind_trinkets
+            CardKind.Merchant -> R.string.kind_merchants
         }
 
 private val CardKind.title: Int
@@ -203,60 +213,69 @@ private val CardKind.title: Int
             CardKind.Trait -> R.string.all_traits
             CardKind.Age -> R.string.all_ages
             CardKind.Catastrophe -> R.string.all_catastrophes
+            CardKind.GenePool -> R.string.all_gene_pools
+            CardKind.MeaningOfLife -> R.string.all_meanings_of_life
+            CardKind.Treasure -> R.string.all_treasures
+            CardKind.Trinket -> R.string.all_trinkets
+            CardKind.Merchant -> R.string.all_merchants
         }
 
+// A row that scrolls, with eight kinds that never fit a phone; with room to spare they center.
 @Composable
 private fun KindSegments(
+    kinds: List<CardKind>,
     selected: CardKind,
     onSelect: (CardKind) -> Unit,
 ) {
     val theme = AtlasTheme.colors
-    val gap = 6.dp
+    val row = rememberLazyListState()
     BoxWithConstraints(
         Modifier
             .fillMaxWidth()
             .sticker(CircleShape, theme.surfaceSticker, theme.outline, stroke = Stroke.sticker)
             .padding(horizontal = Space.s1),
     ) {
-        val count = CardKind.entries.size
-        val width = (maxWidth - gap * (count - 1)) / count
-        val offset by animateDpAsState((width + gap) * selected.ordinal, label = "segment")
-        // Drawn, so it follows the segments' height with large text.
-        Row(
+        // The row's own state, not a BringIntoViewRequester: that request goes on to the compendium's grid, which would
+        // jump each time the filters come back into it.
+        LaunchedEffect(selected, kinds, maxWidth) {
+            kinds.indexOf(selected).takeIf { it >= 0 }?.let { row.animateScrollToItem(it) }
+        }
+        LazyRow(
             Modifier
-                .drawBehind {
-                    val start = offset.toPx()
-                    val x = if (layoutDirection == LayoutDirection.Ltr) start else size.width - width.toPx() - start
-                    val inset = Space.s1.toPx()
-                    val height = size.height - inset * 2
-                    drawRoundRect(theme.primary, Offset(x, inset), Size(width.toPx(), height), CornerRadius(height / 2))
-                }.selectableGroup(),
-            horizontalArrangement = Arrangement.spacedBy(gap),
+                .fillMaxWidth()
+                // A segment scrolled halfway out is cut along the track's rounded end.
+                .clip(CircleShape)
+                .selectableGroup(),
+            state = row,
+            horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
         ) {
-            CardKind.entries.forEach { kind ->
+            items(kinds, key = { it }) { kind ->
                 val active = kind == selected
                 val textColor by animateColorAsState(
                     if (active) theme.onPrimary else theme.onSurface,
                     label = "segment text",
                 )
+                val fill by animateColorAsState(
+                    if (active) theme.primary else Color.Transparent,
+                    label = "segment fill",
+                )
                 Box(
                     Modifier
-                        .weight(1f)
                         // Taller than the selected segment's 40dp, up to the minimum touch target.
                         .heightIn(min = Sizes.touchTarget)
-                        .selectable(active, role = Role.RadioButton) { onSelect(kind) },
+                        // Drawn, so it follows the segment's height with large text.
+                        .drawBehind {
+                            val inset = Space.s1.toPx()
+                            val height = size.height - inset * 2
+                            drawRoundRect(fill, Offset(0f, inset), Size(size.width, height), CornerRadius(height / 2))
+                        }.selectable(active, role = Role.RadioButton) { onSelect(kind) }
+                        .padding(horizontal = Space.s4),
                     contentAlignment = Alignment.Center,
                 ) {
                     BasicText(
                         stringResource(kind.label),
-                        Modifier.padding(horizontal = Space.s2),
                         style = AtlasTypography.labelLg.copy(color = textColor),
                         maxLines = 1,
-                        autoSize =
-                            TextAutoSize.StepBased(
-                                minFontSize = minLabelSize,
-                                maxFontSize = AtlasTypography.labelLg.fontSize,
-                            ),
                     )
                 }
             }
@@ -275,6 +294,19 @@ internal fun FiltersGreenPreview() = FiltersSample(CompendiumFilter(colors = set
 @PreviewLightDark
 @Composable
 internal fun FiltersAgesPreview() = FiltersSample(CompendiumFilter(kind = CardKind.Age))
+
+// Only some kinds offered, as with Classic alone.
+@PreviewLightDark
+@Composable
+internal fun KindSegmentsClassicPreview() =
+    AtlasTheme {
+        Box(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) {
+            KindSegments(
+                listOf(CardKind.Trait, CardKind.Age, CardKind.Catastrophe, CardKind.GenePool),
+                CardKind.GenePool,
+            ) {}
+        }
+    }
 
 @PreviewLightDark
 @Composable
@@ -297,7 +329,7 @@ internal fun KindSegmentsPreview() =
             Modifier.background(AtlasTheme.colors.surface).padding(Space.s4),
             verticalArrangement = Arrangement.spacedBy(Space.s4),
         ) {
-            CardKind.entries.forEach { KindSegments(it) {} }
+            CardKind.entries.forEach { KindSegments(CardKind.entries, it) {} }
         }
     }
 
@@ -311,5 +343,5 @@ private fun FiltersSample(
     filter: CompendiumFilter,
     sets: List<CardSet> = emptyList(),
 ) = AtlasTheme {
-    Box(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) { Filters(filter, sets) {} }
+    Box(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) { Filters(filter, CardKind.entries, sets) {} }
 }

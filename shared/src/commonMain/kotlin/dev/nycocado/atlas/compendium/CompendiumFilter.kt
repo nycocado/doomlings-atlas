@@ -24,18 +24,18 @@ data class CompendiumFilter(
 )
 
 // Every query word must match somewhere in the card (name, effect, World's End), all in the printed text or all in the
-// translation in the card language. The list runs from exact to prefix to typo matches, then by printed name.
+// translation in the card language. The list runs from exact to prefix to typo matches, then by printed name; Gene
+// Pools, which print none, stay in data order and leave the list with any query.
 fun List<Card>.filterCompendium(
     filter: CompendiumFilter,
     translations: CardTranslations = CardTranslations(),
     language: CardLanguage = CardLanguage.English,
-): List<NamedCard> {
+): List<Card> {
     val query = normalize(filter.query.trim())
     val substring by lazy { substringRegex(query) }
-    return filterIsInstance<NamedCard>()
+    return inSetsOf(filter)
         .filter { card ->
             card.kind == filter.kind &&
-                (filter.sets.isEmpty() || card.set in filter.sets) &&
                 (
                     filter.colors.isEmpty() || card !is Trait ||
                         card.colorsOrColorless.any { it in filter.colors }
@@ -45,14 +45,19 @@ fun List<Card>.filterCompendium(
                 if (query.isEmpty()) {
                     MatchRank.Exact
                 } else {
-                    listOf(card.face(), translations.translatedFace(card, language))
+                    listOf(card.face(), (card as? NamedCard)?.let { translations.translatedFace(it, language) })
                         .mapNotNull { face -> face?.searchable?.let { matchRank(query, substring, it) } }
                         .minOrNull()
                 }
             rank?.let { it to card }
-        }.sortedWith(compareBy<Pair<MatchRank, NamedCard>>({ it.first }, { normalize(it.second.name) }))
-        .map { it.second }
+        }.sortedWith(
+            compareBy<Pair<MatchRank, Card>>({ it.first }, { (it.second as? NamedCard)?.name?.let(::normalize) }),
+        ).map { it.second }
 }
+
+// The cards of the chosen sets; none chosen is every set.
+fun List<Card>.inSetsOf(filter: CompendiumFilter): List<Card> =
+    if (filter.sets.isEmpty()) this else filter { it.set in filter.sets }
 
 private enum class MatchRank { Exact, Prefix, Typo }
 

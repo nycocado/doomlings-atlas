@@ -78,7 +78,7 @@ class CardTranslationTest {
                 effectBlock(null, "Descarte."),
                 effectBlock(EffectKind.WorldsEnd, "Incolores valem 2.", ink = Ink.Yellow),
             ),
-            translations.face(catastrophe, CardLanguage.Portuguese)?.blocks,
+            translations.face(catastrophe, CardLanguage.Portuguese).blocks,
         )
     }
 

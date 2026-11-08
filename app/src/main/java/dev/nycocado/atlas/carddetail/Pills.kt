@@ -110,6 +110,11 @@ private val CardKind.label: Int
             CardKind.Trait -> R.string.type_trait
             CardKind.Age -> R.string.type_age
             CardKind.Catastrophe -> R.string.type_catastrophe
+            CardKind.GenePool -> R.string.type_gene_pool
+            CardKind.MeaningOfLife -> R.string.type_meaning_of_life
+            CardKind.Treasure -> R.string.type_treasure
+            CardKind.Trinket -> R.string.type_trinket
+            CardKind.Merchant -> R.string.type_merchant
         }
 
 @Composable
