@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- The card symbols are redrawn line by line and shown small; shortening their paths would change the art. -->
+    <issue id="VectorPath">
+        <ignore path="src/main/res/drawable/ic_symbol_*.xml" />
+    </issue>
+</lint>
