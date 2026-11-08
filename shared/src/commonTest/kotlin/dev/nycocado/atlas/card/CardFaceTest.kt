@@ -37,6 +37,31 @@ class CardFaceTest {
             listOf(TraitIcon.Curious, TraitIcon.Fish),
         )
 
+    // Icon lists like the ones in assets/doomlings/castle-glass/cards.json.
+    private fun iconFacts(vararg icons: TraitIcon) =
+        blackAndBlue
+            .copy(icons = icons.toList())
+            .face()
+            ?.facts
+            ?.filter { it is CardFact.Icon || it is CardFact.Tagged }
+
+    @Test
+    fun aQualifierAndItsSubjectAreOneFactAtTheQualifiersPlace() {
+        assertEquals(
+            listOf(CardFact.Tagged(TagQualifier.Curious, TagSubject.Shell), CardFact.Icon(TraitIcon.PlayWhen)),
+            iconFacts(TraitIcon.Curious, TraitIcon.PlayWhen, TraitIcon.Shell),
+        )
+        assertEquals(
+            listOf(CardFact.Icon(TraitIcon.Action), CardFact.Tagged(TagQualifier.Exotic, TagSubject.Coral)),
+            iconFacts(TraitIcon.Action, TraitIcon.Coral, TraitIcon.Exotic),
+        )
+    }
+
+    @Test
+    fun aSubjectWithoutAQualifierStaysItsOwnFact() {
+        assertEquals(listOf(CardFact.Icon(TraitIcon.Coral)), iconFacts(TraitIcon.Coral))
+    }
+
     @Test
     fun aGenePoolHasAFaceWithItsKindAndNothingPrinted() {
         val face = GenePool("classic/gene-pools/1", "classic", "classic/gene-pools/1.webp").face()
@@ -54,8 +79,7 @@ class CardFaceTest {
                 CardFact.Color(CardColor.Blue),
                 CardFact.Color(CardColor.Green),
                 CardFact.Kind(CardKind.Trait),
-                CardFact.Icon(TraitIcon.Curious),
-                CardFact.Icon(TraitIcon.Fish),
+                CardFact.Tagged(TagQualifier.Curious, TagSubject.Fish),
             ),
             blackAndBlue.face().facts,
         )
