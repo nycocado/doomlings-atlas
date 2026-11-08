@@ -61,7 +61,7 @@ class TagPillTest : AtlasBehaviorTest() {
     fun aQualifierAndItsSubjectAreOnePillWithAReadableLabel() {
         show(CardLanguage.English)
 
-        compose.onNode(hasText("Curious fish")).assertExists()
+        compose.onNode(hasText("Curious Fish")).assertExists()
         compose.onNode(hasText(string(R.string.icon_fish))).assertDoesNotExist()
         assertAccessible()
     }
@@ -70,6 +70,6 @@ class TagPillTest : AtlasBehaviorTest() {
     fun theLabelFollowsTheCardLanguage() {
         show(CardLanguage.Portuguese)
 
-        compose.onNode(hasText("Peixe curioso")).assertExists()
+        compose.onNode(hasText("Peixe Curioso")).assertExists()
     }
 }
