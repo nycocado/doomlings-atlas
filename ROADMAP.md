@@ -45,7 +45,7 @@ The repository goes public and the first APK comes out on GitHub Releases once e
 
 Then, right after the repository goes public, since the free plan offers these only to public repositories:
 
-- Rulesets on `main` (pull request, green CI, no force push) and on `v*` tags (only the maintainer moves or deletes them; creating one needs write access, which only the maintainer and the repository's workflows have), immutable releases, the maintainer's approval of each run in the `release` environment, a build provenance attestation on each Release's APK, CodeQL, secret scanning, push protection and private vulnerability reporting.
+- Rulesets on `main` (pull request, green CI, no force push) and on `v*` tags (only the maintainer moves or deletes them; creating one needs write access, which only the maintainer and the repository's workflows have), immutable releases, a `release` environment that accepts only `v*` tags, a build provenance attestation on each Release's APK, CodeQL, secret scanning, push protection and private vulnerability reporting.
 - Actions runs for outside contributors wait for the maintainer's approval, and the maintainer's GitHub account uses two-factor authentication.
 - The first APK published, and Doomlings told that the repository is public.
 
