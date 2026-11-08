@@ -71,7 +71,7 @@ Get the APK from the [latest release](https://github.com/nycocado/doomlings-atla
 
 ## Roadmap
 
-Next come every Doomlings set and every kind of card in the compendium, scoring a finished game, a card scanner and a tutorial. The plan and its progress are in [ROADMAP.md](ROADMAP.md).
+Next come scoring a finished game, a card scanner and a tutorial. The plan and its progress are in [ROADMAP.md](ROADMAP.md).
 
 ## Contributing
 
