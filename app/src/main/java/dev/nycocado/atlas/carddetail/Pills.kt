@@ -87,7 +87,7 @@ internal fun Pills(
                             TagQualifier.Exotic -> theme.tagExotic
                         }
                     Pill(qualifiedLabel(cardString(fact.label, language), ink, language), theme.tag, theme.onTag) {
-                        Symbol(fact.subject.glyph, Modifier.height(18.dp))
+                        Symbol(fact.glyph, Modifier.height(18.dp))
                     }
                 }
 
@@ -207,12 +207,27 @@ private fun TraitIcon.symbol(): Int? =
         TraitIcon.WorldsEnd -> R.drawable.ic_symbol_worlds_end
     }
 
-private val TagSubject.glyph: Int
+// Only the fish is printed differently on the Exotic tag; the coral and the shell are the same on both.
+private val CardFact.Tagged.glyph: Int
     @DrawableRes get() =
-        when (this) {
-            TagSubject.Coral -> R.drawable.ic_symbol_glyph_coral
-            TagSubject.Fish -> R.drawable.ic_symbol_glyph_fish
-            TagSubject.Shell -> R.drawable.ic_symbol_glyph_shell
+        when (subject) {
+            TagSubject.Coral -> {
+                R.drawable.ic_symbol_glyph_coral
+            }
+
+            TagSubject.Fish -> {
+                if (qualifier ==
+                    TagQualifier.Exotic
+                ) {
+                    R.drawable.ic_symbol_glyph_exotic_fish
+                } else {
+                    R.drawable.ic_symbol_glyph_fish
+                }
+            }
+
+            TagSubject.Shell -> {
+                R.drawable.ic_symbol_glyph_shell
+            }
         }
 
 private val CardFact.Tagged.label: Int

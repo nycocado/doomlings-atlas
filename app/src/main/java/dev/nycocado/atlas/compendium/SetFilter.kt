@@ -20,6 +20,7 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -77,6 +78,7 @@ internal fun SetsSheet(
     // AtlasTheme provides no MaterialTheme (ADR 0006), so everything the sheet would take from it is passed here.
     ModalBottomSheet(
         onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
         shape = Radius.lg.copy(bottomStart = ZeroCornerSize, bottomEnd = ZeroCornerSize),
         containerColor = theme.surface,
         contentColor = theme.onSurface,
