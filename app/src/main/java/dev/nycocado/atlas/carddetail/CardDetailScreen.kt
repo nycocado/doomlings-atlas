@@ -220,7 +220,7 @@ fun CardDetailContent(
                             }
                         }
                     }
-                    Pills(face, language)
+                    Pills(face, language, library.setName(card))
                     val selector: (@Composable () -> Unit)? =
                         if (languages.size > 1) {
                             { LanguageSelector(languages, language, onLanguageChange) }

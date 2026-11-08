@@ -15,19 +15,18 @@ const val CARD_RATIO = 541f / 756f
 // Cards packaged by the PackageCards task (app/build.gradle.kts) into assets/cards/.
 fun cardImage(image: String) = "file:///android_asset/cards/$image"
 
-// Open and provided by a module, so UI tests can replace the translations with their own.
+// Open and provided by a module, so UI tests can replace the cards, sets and translations with their own.
 open class CardRepository(
     private val context: Context,
 ) {
-    suspend fun library(): CardLibrary =
-        withContext(Dispatchers.IO) {
-            CardLibrary.decode(
-                context.assets
-                    .open("cards/cards.json")
-                    .bufferedReader()
-                    .use { it.readText() },
-            )
-        }
+    protected fun packaged(file: String): String =
+        context.assets
+            .open("cards/$file")
+            .bufferedReader()
+            .use { it.readText() }
+
+    open suspend fun library(): CardLibrary =
+        withContext(Dispatchers.IO) { CardLibrary.decode(packaged("cards.json"), packaged("sets.json")) }
 
     // The translation files packaged beside cards.json; a language with no file has no translations yet.
     open suspend fun translations(): CardTranslations =
@@ -37,12 +36,7 @@ open class CardRepository(
                 CardLanguage.entries
                     .filter { "${it.code}.json" in packaged }
                     .associateWith { language ->
-                        decodeTranslations(
-                            context.assets
-                                .open("cards/${language.code}.json")
-                                .bufferedReader()
-                                .use { it.readText() },
-                        )
+                        decodeTranslations(packaged("${language.code}.json"))
                     },
             )
         }

@@ -269,4 +269,12 @@ class CardDataIntegrityTest {
             cards.filterNot { dir.resolve(it.image).normalize().startsWith(dir.resolve(it.set)) }.map { it.id },
         )
     }
+
+    @Test
+    fun everySetFolderDescribesItselfInASetJson() {
+        CardAssets.cardsByFolder.keys.forEach { folder ->
+            val set = Json.decodeFromString<CardSet>(dir.resolve(folder).resolve("set.json").readText())
+            assertEquals(folder, set.id)
+        }
+    }
 }

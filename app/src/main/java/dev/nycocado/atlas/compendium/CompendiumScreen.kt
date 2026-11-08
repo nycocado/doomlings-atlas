@@ -56,6 +56,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.CardSet
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.face
@@ -96,6 +97,7 @@ fun CompendiumScreen(
 ) {
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val cells by viewModel.cells.collectAsStateWithLifecycle()
+    val library by viewModel.library.collectAsStateWithLifecycle()
     CompendiumContent(
         filter,
         cells,
@@ -107,6 +109,7 @@ fun CompendiumScreen(
         update = update,
         onInstallUpdate = onInstallUpdate,
         onDismissUpdate = onDismissUpdate,
+        sets = library.setsToChoose,
     )
 }
 
@@ -123,6 +126,7 @@ fun CompendiumContent(
     update: AppUpdate? = null,
     onInstallUpdate: () -> Unit = {},
     onDismissUpdate: () -> Unit = {},
+    sets: List<CardSet> = emptyList(),
 ) {
     val theme = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
@@ -217,7 +221,7 @@ fun CompendiumContent(
                         horizontalArrangement = Arrangement.spacedBy(CellGapAcross),
                         verticalArrangement = Arrangement.spacedBy(CellGapDown),
                     ) {
-                        fullWidth("filters") { Filters(filter, onFilterChange) }
+                        fullWidth("filters") { Filters(filter, sets, onFilterChange) }
                         if (cells?.isEmpty() == true) {
                             fullWidth("empty") {
                                 BasicText(
