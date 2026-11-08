@@ -55,7 +55,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.input.pointer.pointerInput
@@ -111,8 +110,10 @@ import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
+import dev.nycocado.atlas.ui.theme.inkOver
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
+import dev.nycocado.atlas.ui.theme.traitPaint
 import kotlinx.coroutines.launch
 import java.util.Locale
 import kotlin.random.Random
@@ -172,15 +173,10 @@ fun CardDetailContent(
     val face = translations.face(card, language) ?: return
     // Ages and catastrophes have no color: their panel stays neutral, so it can't be read as a trait color.
     val colored = face.colors.isNotEmpty()
-    val panel =
-        if (colored) {
-            face.colors.map { color -> theme.trait(color).let { it.fill to it.onFill } }
-        } else {
-            listOf(theme.surfaceSunk to theme.outlineSoft)
-        }
+    val fills = if (colored) face.colors.map { theme.trait(it).fill } else listOf(theme.surfaceSunk)
+    val dots = if (colored) theme.inkOver(face.colors) else theme.outlineSoft
     // Status bar icons take the color the design puts on the panel, unless the list's header shares the bar.
-    // One appearance for the whole bar, so a card of several colors takes its first.
-    val onPanel = if (colored) panel.first().second else theme.onSurface
+    val onPanel = if (colored) dots else theme.onSurface
     CardStatusBarIcons(layout, onPanel.luminance() < 0.5f)
 
     BoxWithConstraints(Modifier.fillMaxSize().background(theme.surface)) {
@@ -192,7 +188,7 @@ fun CardDetailContent(
                 .heightIn(min = maxHeight),
         ) {
             Box {
-                Panel(card.image, tilt, panel, onBack)
+                Panel(card.image, tilt, fills, dots, onBack)
                 face.faceValue?.let {
                     PointsBadge(it, Modifier.align(Alignment.BottomEnd).offset(x = (-64).dp, y = 30.dp))
                 }
@@ -265,8 +261,8 @@ private val PanelShape = RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 40.
 private fun Panel(
     image: String,
     tilt: Float,
-    // Each color's fill and dots, in equal parts side by side.
-    colors: List<Pair<Color, Color>>,
+    fills: List<Color>,
+    dots: Color,
     onBack: () -> Unit,
 ) {
     val theme = AtlasTheme.colors
@@ -279,20 +275,15 @@ private fun Panel(
             .drawBehind {
                 val step = 18.dp.toPx()
                 val radius = 1.6.dp.toPx()
-                val part = size.width / colors.size
-                colors.forEachIndexed { i, (fill, dots) ->
-                    clipRect(left = i * part, right = (i + 1) * part) {
-                        drawRect(fill)
-                        var y = step / 2
-                        while (y < size.height) {
-                            var x = step / 2
-                            while (x < size.width) {
-                                drawCircle(dots, radius, Offset(x, y))
-                                x += step
-                            }
-                            y += step
-                        }
+                drawRect(traitPaint(fills, Offset(size.width, size.height)))
+                var y = step / 2
+                while (y < size.height) {
+                    var x = step / 2
+                    while (x < size.width) {
+                        drawCircle(dots, radius, Offset(x, y))
+                        x += step
                     }
+                    y += step
                 }
             }.border(Stroke.strong, theme.outline, PanelShape)
             .padding(top = Stroke.strong, start = Stroke.strong, end = Stroke.strong)
@@ -655,7 +646,7 @@ private val Carnivore =
 @Composable
 internal fun SubspeciesTokenDetailPreview() = AtlasTheme { CardDetailSample(card = Carnivore) }
 
-// Fish Collector as in assets/doomlings/castle-glass/cards.json: blue and purple, whose dots and text differ in contrast.
+// Fish Collector as in assets/doomlings/castle-glass/cards.json: blue and purple, whose on-colors differ.
 internal val FishCollector =
     Trait(
         "castle-glass/traits/fish-collector",
@@ -675,6 +666,30 @@ internal val FishCollector =
 @PreviewLightDark
 @Composable
 internal fun DualColorDetailPreview() = AtlasTheme { CardDetailSample(card = FishCollector) }
+
+// Awesome! as in assets/doomlings/imaginary-ends/cards.json, one of the traits of all four colors.
+private val Awesome =
+    Trait(
+        "imaginary-ends/traits/awesome",
+        "imaginary-ends",
+        "",
+        "Awesome!",
+        "Fear me! Tehee!",
+        listOf(
+            Effect(EffectKind.WorldsEnd, "Stabilize to 2."),
+            Effect(text = "Add 2 face values in your hand to your score.\n\n(Max +17)"),
+        ),
+        null,
+        1,
+        listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red),
+        true,
+        listOf("Glitterling"),
+        listOf(TraitIcon.DropOfLife, TraitIcon.WorldsEnd),
+    )
+
+@PreviewLightDark
+@Composable
+internal fun FourColorDetailPreview() = AtlasTheme { CardDetailSample(card = Awesome) }
 
 // Eloquence as in assets/doomlings/classic/cards.json: a trait prints its World's End in the normal text color.
 private val Eloquence =

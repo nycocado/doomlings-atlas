@@ -16,6 +16,7 @@ import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.CitedCardDetailPreview
 import dev.nycocado.atlas.carddetail.DecorInkBlocksPreview
 import dev.nycocado.atlas.carddetail.DualColorDetailPreview
+import dev.nycocado.atlas.carddetail.FourColorDetailPreview
 import dev.nycocado.atlas.carddetail.InkBlocksPreview
 import dev.nycocado.atlas.carddetail.InkBlocksSample
 import dev.nycocado.atlas.carddetail.InlineTokensPreview
@@ -175,6 +176,11 @@ fun DualColorDetailScreenshot() = DualColorDetailPreview()
 @Preview(fontScale = 2f)
 @Composable
 fun DualColorDetailFontScale200Screenshot() = DualColorDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun FourColorDetailScreenshot() = FourColorDetailPreview()
 
 @PreviewTest
 @PreviewLightDark

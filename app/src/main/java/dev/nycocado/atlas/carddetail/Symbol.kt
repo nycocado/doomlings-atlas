@@ -6,9 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.VectorPath
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -17,6 +15,7 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.ui.theme.AtlasColors
 import dev.nycocado.atlas.ui.theme.trait
+import dev.nycocado.atlas.ui.theme.traitPaint
 
 // A card symbol. Decorative: the text beside it, or the inline text it stands in for, names it.
 @Composable
@@ -47,7 +46,7 @@ private fun ImageVector.withCardColors(colors: List<Color>): ImageVector =
                     it.pathData,
                     it.pathFillType,
                     it.name,
-                    if (it.name == "card_color") sideBySide(colors) else it.fill,
+                    if (it.name == "card_color") traitPaint(colors, Offset(viewportWidth, viewportHeight)) else it.fill,
                     it.fillAlpha,
                     it.stroke,
                     it.strokeAlpha,
@@ -58,18 +57,6 @@ private fun ImageVector.withCardColors(colors: List<Color>): ImageVector =
                 )
             }
         }.build()
-
-// Equal parts in the given order, each stop doubled for a hard edge. The ends are in the vector's own coordinates.
-private fun ImageVector.sideBySide(colors: List<Color>): Brush =
-    colors.singleOrNull()?.let(::SolidColor)
-        ?: Brush.linearGradient(
-            *colors
-                .flatMapIndexed { i, color ->
-                    listOf(i.toFloat() / colors.size to color, (i + 1f) / colors.size to color)
-                }.toTypedArray(),
-            start = Offset.Zero,
-            end = Offset(viewportWidth, 0f),
-        )
 
 // A card without a color prints its action symbols in the colorless fill.
 internal fun AtlasColors.actionColors(colors: List<CardColor?>): List<Color> =
