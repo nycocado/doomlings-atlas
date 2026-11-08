@@ -104,7 +104,7 @@ internal fun Filters(
                 }
             }
             KindSegments(filter.kind) { kind -> onFilterChange { it.copy(kind = kind) } }
-            // No set to offer while none has a confirmed name.
+            // No set to offer while the cards load.
             if (sets.isNotEmpty()) {
                 SetsChip(filter.sets.size, Modifier.padding(top = Space.s3).align(Alignment.End)) { showSets = true }
             }

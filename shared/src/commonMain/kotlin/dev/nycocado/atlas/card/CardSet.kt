@@ -3,8 +3,8 @@ package dev.nycocado.atlas.card
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-// One assets/doomlings/<set>/set.json. Name and year are read off the set's cards and never guessed: null where the
-// cards don't print them. Both keys are required, so a null is a decision and not a forgotten field.
+// One assets/doomlings/<set>/set.json. Name and year come from the set's cards or the maintainer and are never guessed:
+// null where neither confirms them. Both keys are required, so a null is a decision and not a forgotten field.
 @Serializable
 data class CardSet(
     val id: String,

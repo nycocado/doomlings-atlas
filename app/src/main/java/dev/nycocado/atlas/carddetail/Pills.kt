@@ -60,7 +60,7 @@ internal fun Pills(
 
                 is CardFact.Kind -> {
                     Pill(stringResource(fact.kind.label), theme.surfaceSticker, theme.onSurface)
-                    // The printed name, never translated.
+                    // The set's name is never translated.
                     setName?.let { Pill(it, theme.surfaceSticker, theme.onSurface, language = CardLanguage.English) }
                 }
 

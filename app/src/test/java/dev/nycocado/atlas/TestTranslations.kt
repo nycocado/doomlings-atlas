@@ -65,8 +65,8 @@ object TestCardRepositoryModule {
         @ApplicationContext context: Context,
     ): CardRepository =
         object : CardRepository(context) {
-            // Classic's real set has no confirmed name yet, so the set filter runs on made-up sets: Adorable alone in
-            // "Test Expansion", every other card in "Test Base".
+            // Only Classic is enabled, one set can't narrow the list, so the set filter runs on made-up sets: Adorable
+            // alone in "Test Expansion", every other card in "Test Base".
             override suspend fun library() =
                 CardLibrary.decode(withAdorableInTheExpansion(packaged("cards.json")), testSets)
 
