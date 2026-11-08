@@ -39,19 +39,19 @@ Doomlings Atlas is a free and open-source companion app for the Doomlings card g
 
 <table>
   <tr>
-    <td align="center">
+    <td align="center" width="33%">
       <picture>
         <source media="(prefers-color-scheme: dark)" srcset="assets/doomlings/screenshots/compendium-dark.webp">
         <img alt="Compendium with color filters and card images" src="assets/doomlings/screenshots/compendium-light.webp" width="260">
       </picture>
     </td>
-    <td align="center">
+    <td align="center" width="33%">
       <picture>
         <source media="(prefers-color-scheme: dark)" srcset="assets/doomlings/screenshots/card-dark.webp">
         <img alt="Card detail of Apex Predator in English" src="assets/doomlings/screenshots/card-light.webp" width="260">
       </picture>
     </td>
-    <td align="center">
+    <td align="center" width="33%">
       <picture>
         <source media="(prefers-color-scheme: dark)" srcset="assets/doomlings/screenshots/translated-dark.webp">
         <img alt="Card detail of Denial in Portuguese, citing The Four Horsemen" src="assets/doomlings/screenshots/translated-light.webp" width="260">
@@ -59,9 +59,9 @@ Doomlings Atlas is a free and open-source companion app for the Doomlings card g
     </td>
   </tr>
   <tr>
-    <td align="center">Compendium</td>
-    <td align="center">Card detail</td>
-    <td align="center">Card text in Portuguese</td>
+    <td align="center" width="33%">Compendium</td>
+    <td align="center" width="33%">Card detail</td>
+    <td align="center" width="33%">Card text in Portuguese</td>
   </tr>
 </table>
 
