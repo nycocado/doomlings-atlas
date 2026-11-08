@@ -153,14 +153,14 @@
   "classic/birth-of-life/the-birth-of-life": {
     "name": "The Birth of Life",
     "effects": [
-      "[yellow]Establece tu Gene Pool en 5.[/yellow]\n\nJuega 1 trait en cada turno.\nEstabiliza para terminar tu turno."
+      "[yellow]Establece tu Gene Pool en 5.[/yellow]\nJuega 1 trait en cada turno.\nEstabiliza para terminar tu turno."
     ]
   },
   "classic/catastrophes/ai-takeover": {
     "name": "Dominio de la IA",
     "effects": [
       "Descarta todas las cartas de tu mano, excepto 1.",
-      "Cada trait incoloro ahora vale 2. Ignora todos los efectos de los traits incoloros.\n\n(Excepto dominantes.)"
+      "Cada trait incoloro ahora vale 2. Ignora todos los efectos de los traits incoloros.\n(Excepto dominantes.)"
     ]
   },
   "classic/catastrophes/deus-ex-machina": {
@@ -279,7 +279,7 @@
   "classic/traits/apex-predator": {
     "name": "Superdepredador",
     "effects": [
-      "+4 si tienes más traits en tu pila de traits que tus oponentes.\n\n(¡Los empates no cuentan!)"
+      "+4 si tienes más traits en tu pila de traits que tus oponentes.\n(¡Los empates no cuentan!)"
     ],
     "flavor": "¿A dónde crees que vas?"
   },
@@ -423,7 +423,7 @@
   "classic/traits/egg-clusters": {
     "name": "Racimos de Huevos",
     "effects": [
-      "+1 por cada trait [blue]azul[/blue] en tu pila de traits.\n\n(Incluyendo este.)"
+      "+1 por cada trait [blue]azul[/blue] en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Compra uno, llévate cien."
   },
@@ -500,7 +500,7 @@
   "classic/traits/heat-vision": {
     "name": "Visión de Calor",
     "effects": [
-      "+1 por cada trait [red]rojo[/red] en tu pila de traits.\n\n(Incluyendo este.)"
+      "+1 por cada trait [red]rojo[/red] en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Quisiera proponer un brindis."
   },
@@ -567,42 +567,42 @@
   "classic/traits/kidney": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...disimulando la calva."
   },
   "classic/traits/kidney-2": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...con una tiara."
   },
   "classic/traits/kidney-3": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...con un gorro de elfo."
   },
   "classic/traits/kidney-4": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...con un gorro de chef."
   },
   "classic/traits/kidney-5": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...con un gorro de fiesta."
   },
   "classic/traits/kidney-6": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...con un sombrero de copa."
   },
@@ -631,7 +631,7 @@
   "classic/traits/mindful": {
     "name": "Atento",
     "effects": [
-      "+1 por cada trait [colorless]incoloro[/colorless] en tu pila de traits.\n\n(Incluyendo este.)"
+      "+1 por cada trait [colorless]incoloro[/colorless] en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Mientras caminas, comes y viajas, mantente presente donde estés. De lo contrario, te perderás la mayor parte de tu vida."
   },
@@ -667,7 +667,7 @@
   "classic/traits/overgrowth": {
     "name": "Crecimiento Excesivo",
     "effects": [
-      "+1 por cada trait [green]verde[/green] en tu pila de traits.\n\n(Incluyendo este.)"
+      "+1 por cada trait [green]verde[/green] en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Mami, ¿por qué me arrancaste del jardín de infantes?"
   },
@@ -695,14 +695,14 @@
   "classic/traits/persuasive": {
     "name": "Persuasivo",
     "effects": [
-      "[rainbow]Elige un color.[/rainbow] Todos los jugadores descartan de su mano todas las cartas de ese color.\n\n(¡Incluyéndote!)"
+      "[rainbow]Elige un color.[/rainbow] Todos los jugadores descartan de su mano todas las cartas de ese color.\n(¡Incluyéndote!)"
     ],
     "flavor": "¡Cambia de opinión o voy a gritar más fuerte!"
   },
   "classic/traits/photosynthesis": {
     "name": "Fotosíntesis",
     "effects": [
-      "Roba 2 cartas. Si alguna es [green]verde[/green], juega 1 inmediatamente.\n\n(A menos que haya restricción.)"
+      "Roba 2 cartas. Si alguna es [green]verde[/green], juega 1 inmediatamente.\n(A menos que haya restricción.)"
     ],
     "flavor": "Masticando unos fotones, ñam ñam ñam."
   },
@@ -716,7 +716,7 @@
   "classic/traits/pollination": {
     "name": "Polinización",
     "effects": [
-      "+1 por cada carta en tu pila de traits con un valor nominal de 1.\n\n(Incluyendo esta.)"
+      "+1 por cada carta en tu pila de traits con un valor nominal de 1.\n(Incluyendo esta.)"
     ],
     "flavor": "Pues verás, Timmy, cuando una abeja y una planta se enamoran..."
   },
@@ -748,14 +748,14 @@
   "classic/traits/reckless": {
     "name": "Temerario",
     "effects": [
-      "Tú y un oponente descartan 1 trait de la pila de traits del otro.\n\n(Excepto este.)"
+      "Tú y un oponente descartan 1 trait de la pila de traits del otro.\n(Excepto este.)"
     ],
     "flavor": "¡Ahí va una opinión polémica, bien calientita!"
   },
   "classic/traits/regenerative-tissue": {
     "name": "Tejido Regenerativo",
     "effects": [
-      "Siempre que descartes un trait de tu pila de traits,\n\n(incluyendo este), roba 1. Juégalo inmediatamente.\n\n(A menos que haya restricción.) Ignora las acciones ({action})."
+      "Siempre que descartes un trait de tu pila de traits,\n(incluyendo este), roba 1. Juégalo inmediatamente.\n(A menos que haya restricción.) Ignora las acciones ({action})."
     ],
     "flavor": "¿Cuántos dedos hay aquí? Espera, espera, todavía me están volviendo a crecer"
   },
@@ -834,7 +834,7 @@
   "classic/traits/sticky-secretions": {
     "name": "Secreciones Pegajosas",
     "effects": [
-      "+1 por cada trait [purple]morado[/purple] en tu pila de traits.\n\n(Incluyendo este.)"
+      "+1 por cada trait [purple]morado[/purple] en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Dame un abrazo."
   },
@@ -845,42 +845,42 @@
   "classic/traits/super-spreader": {
     "name": "Supercontagiador",
     "effects": [
-      "Todos los jugadores reciben: -1 Gene Pool.\n\n(Incluyéndote.)"
+      "Todos los jugadores reciben: -1 Gene Pool.\n(Incluyéndote.)"
     ],
     "flavor": "Ah...AH...AH...falsa alarma, pensé que iba a--¡ACHÍS!"
   },
   "classic/traits/swarm": {
     "name": "Enjambre",
     "effects": [
-      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por el celular nuevo."
   },
   "classic/traits/swarm-2": {
     "name": "Enjambre",
     "effects": [
-      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por el celular nuevo."
   },
   "classic/traits/swarm-3": {
     "name": "Enjambre",
     "effects": [
-      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por el celular nuevo."
   },
   "classic/traits/swarm-4": {
     "name": "Enjambre",
     "effects": [
-      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por el celular nuevo."
   },
   "classic/traits/swarm-5": {
     "name": "Enjambre",
     "effects": [
-      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por el celular nuevo."
   },
@@ -894,7 +894,7 @@
   "classic/traits/symbiosis": {
     "name": "Simbiosis",
     "effects": [
-      "+2 por cada trait del [rainbow]color[/rainbow] que tienes en menor cantidad.\n\n(Debes tener 2 o más [rainbow]colores[/rainbow]. Si hay empate, ¡elige 1!)"
+      "+2 por cada trait del [rainbow]color[/rainbow] que tienes en menor cantidad.\n(Debes tener 2 o más [rainbow]colores[/rainbow]. Si hay empate, ¡elige 1!)"
     ],
     "flavor": "¡Sí...sí! ¡Dense un festín, mis amigos parásitos!"
   },
@@ -933,7 +933,7 @@
   "classic/traits/tiny": {
     "name": "Diminuto",
     "effects": [
-      "-1 por cada trait en tu pila de traits.\n\n(Incluyendo este.)"
+      "-1 por cada trait en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Chiquitito, pequeñito, bien chiquitín."
   },

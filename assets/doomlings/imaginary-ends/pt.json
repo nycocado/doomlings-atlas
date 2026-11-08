@@ -2,7 +2,7 @@
   "imaginary-ends/ages/a-quiet-moment": {
     "name": "Um Momento de Calma",
     "effects": [
-      "Descarte até 3 cartas da sua mão.\n\nSe sua mão estiver vazia no início do seu turno, compre 4 cartas."
+      "Descarte até 3 cartas da sua mão.\nSe sua mão estiver vazia no início do seu turno, compre 4 cartas."
     ]
   },
   "imaginary-ends/ages/age-of-reverie": {
@@ -33,7 +33,7 @@
   "imaginary-ends/ages/moonlight": {
     "name": "Luz da Lua",
     "effects": [
-      "Se seu Gene Pool for 4 ou mais, descarte 1 carta.\n\nSe seu Gene Pool for 3 ou menos, compre 2 cartas."
+      "Se seu Gene Pool for 4 ou mais, descarte 1 carta.\nSe seu Gene Pool for 3 ou menos, compre 2 cartas."
     ]
   },
   "imaginary-ends/ages/sunshine-tea-parties": {
@@ -153,7 +153,7 @@
     "name": "Incrível!",
     "effects": [
       "Estabilize até 2.",
-      "Adicione 2 valores de face da sua mão à sua pontuação.\n\n(Máx. +17)"
+      "Adicione 2 valores de face da sua mão à sua pontuação.\n(Máx. +17)"
     ],
     "flavor": "Me tema! Hihi!"
   },
@@ -238,7 +238,7 @@
   "imaginary-ends/traits/ethereal": {
     "name": "Etéreo",
     "effects": [
-      "Até o Fim do Mundo: Se você tiver 6 ou menos cartas na mão no fim do seu turno, pode suprimir 1 carta da sua mão em vez de estabilizar.\n\n(Se este efeito esvaziar sua mão, compre 2 cartas.)"
+      "Até o Fim do Mundo: Se você tiver 6 ou menos cartas na mão no fim do seu turno, pode suprimir 1 carta da sua mão em vez de estabilizar.\n(Se este efeito esvaziar sua mão, compre 2 cartas.)"
     ],
     "flavor": "Perfeito demais para este mundo, ou para o próximo."
   },
@@ -428,7 +428,7 @@
   "imaginary-ends/traits/scintillant": {
     "name": "Cintilante",
     "effects": [
-      "+1 para cada Deepling ({deepling}) e Glitterling ({glitterling}) na sua pilha de traits.\n\n(Incluindo este.)"
+      "+1 para cada Deepling ({deepling}) e Glitterling ({glitterling}) na sua pilha de traits.\n(Incluindo este.)"
     ],
     "flavor": "Nasci sereia pra brilhar."
   },

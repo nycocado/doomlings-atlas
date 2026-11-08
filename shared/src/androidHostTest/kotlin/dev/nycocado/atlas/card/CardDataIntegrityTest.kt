@@ -284,6 +284,17 @@ class CardDataIntegrityTest {
     }
 
     @Test
+    fun noTextHasABlankLine() {
+        val blankLine = Regex("""\n\s*\n""")
+        assertEquals(
+            emptyList(),
+            (texts + CardAssets.translatedTexts)
+                .filter { (_, text) -> blankLine.containsMatchIn(text) }
+                .map { (where, text) -> "$where: $text" },
+        )
+    }
+
+    @Test
     fun noTraitRepeatsAColor() {
         assertEquals(
             emptyList(),

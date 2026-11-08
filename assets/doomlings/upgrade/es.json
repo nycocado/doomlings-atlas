@@ -8,7 +8,7 @@
   "upgrade/ages/badlands": {
     "name": "Tierras Baldías",
     "effects": [
-      "Descarta 1 carta. Baraja la pila de descarte y reparte 1 carta boca abajo a cada jugador.\n\nDevuelve las cartas restantes a la pila de descarte."
+      "Descarta 1 carta. Baraja la pila de descarte y reparte 1 carta boca abajo a cada jugador.\nDevuelve las cartas restantes a la pila de descarte."
     ]
   },
   "upgrade/ages/ozmorian-winds": {
@@ -21,7 +21,7 @@
     "name": "Peste Bioingenierizada",
     "effects": [
       "Cada jugador elige un color. El jugador a tu izquierda descarta de su mano todas las cartas de ese color.",
-      "Descarta 1 trait aleatorio del color que tienes en mayor cantidad en tu pila de traits.\n\n(Si 2 o más colores empatan, elige 1.)"
+      "Descarta 1 trait aleatorio del color que tienes en mayor cantidad en tu pila de traits.\n(Si 2 o más colores empatan, elige 1.)"
     ]
   },
   "upgrade/catastrophes/impact-event": {
@@ -41,25 +41,25 @@
   "upgrade/meaning-of-life/the-armored-melon": {
     "name": "El Melón Blindado",
     "effects": [
-      "+3 si tienes 3-5 cartas en la mano.\n\n+6 si tienes 6 o más."
+      "+3 si tienes 3-5 cartas en la mano.\n+6 si tienes 6 o más."
     ]
   },
   "upgrade/meaning-of-life/the-bilbies": {
     "name": "Los Bilbies",
     "effects": [
-      "+4 si tienes solo 1 trait dominante en tu pila de traits.\n\n+10 si no tienes ninguno."
+      "+4 si tienes solo 1 trait dominante en tu pila de traits.\n+10 si no tienes ninguno."
     ]
   },
   "upgrade/meaning-of-life/the-blind-dragon": {
     "name": "El Dragón Ciego",
     "effects": [
-      "Para obtener esta bonificación, debes tener 5 o más de un color en tu pila de traits.\n\nAl puntuar el Meaning of Life, roba 2 cartas de Meaning of Life y añade las bonificaciones aplicables a tu puntuación final."
+      "Para obtener esta bonificación, debes tener 5 o más de un color en tu pila de traits.\nAl puntuar el Meaning of Life, roba 2 cartas de Meaning of Life y añade las bonificaciones aplicables a tu puntuación final."
     ]
   },
   "upgrade/meaning-of-life/the-bramble-brawler": {
     "name": "El Peleón de las Zarzas",
     "effects": [
-      "+4 si tienes más traits morados en tu pila de traits que tus oponentes,\nY\n\n+1 por cada oponente con menos traits morados en su pila de traits que tú."
+      "+4 si tienes más traits morados en tu pila de traits que tus oponentes,\nY\n+1 por cada oponente con menos traits morados en su pila de traits que tú."
     ]
   },
   "upgrade/meaning-of-life/the-bush-kid": {
@@ -71,49 +71,49 @@
   "upgrade/meaning-of-life/the-cabochon": {
     "name": "El Cabujón",
     "effects": [
-      "+3 si tienes solo 1 o 2 traits rojos en tu pila de traits.\n\n+6 si no tienes ninguno."
+      "+3 si tienes solo 1 o 2 traits rojos en tu pila de traits.\n+6 si no tienes ninguno."
     ]
   },
   "upgrade/meaning-of-life/the-child-and-the-bear": {
     "name": "El Niño y el Oso",
     "effects": [
-      "+1 por cada par de color en tu pila de traits que comparta un color con un dominante.\n\n(Máx. +5.)\n\n+2 por cada par si tienes 2 dominantes del mismo color.\n\n(Máx. +10.)\n\nLos traits dominantes no cuentan para los pares de color en estas bonificaciones."
+      "+1 por cada par de color en tu pila de traits que comparta un color con un dominante.\n(Máx. +5.)\n+2 por cada par si tienes 2 dominantes del mismo color.\n(Máx. +10.)\nLos traits dominantes no cuentan para los pares de color en estas bonificaciones."
     ]
   },
   "upgrade/meaning-of-life/the-clashing-crabs": {
     "name": "Los Cangrejos en Pugna",
     "effects": [
-      "+4 si tienes más traits con valor nominal negativo en tu pila de traits que traits con un valor nominal de 4 o más.\n\n+8 si tienes la misma cantidad de ambos, o ninguno de los dos."
+      "+4 si tienes más traits con valor nominal negativo en tu pila de traits que traits con un valor nominal de 4 o más.\n+8 si tienes la misma cantidad de ambos, o ninguno de los dos."
     ]
   },
   "upgrade/meaning-of-life/the-cosmic-jinx": {
     "name": "La Mala Suerte Cósmica",
     "effects": [
-      "+4 si tu Gene Pool es 3.\n\n+8 si tu Gene Pool es 1 o 2."
+      "+4 si tu Gene Pool es 3.\n+8 si tu Gene Pool es 1 o 2."
     ]
   },
   "upgrade/meaning-of-life/the-dancer": {
     "name": "El Bailarín",
     "effects": [
-      "+12 si tienes la menor puntuación, antes de las bonificaciones de Meaning of Life.\n\n+8 si estás empatado con la menor."
+      "+12 si tienes la menor puntuación, antes de las bonificaciones de Meaning of Life.\n+8 si estás empatado con la menor."
     ]
   },
   "upgrade/meaning-of-life/the-diamond-butterfly": {
     "name": "La Mariposa de Diamante",
     "effects": [
-      "+2 si tu pila de traits tiene menos traits azules que tus oponentes.\n\n(Incluyendo empates.)\n+2 si tienes menos traits verdes.\n\n(Incluyendo empates.)\n\n+6 si cumples ambos objetivos."
+      "+2 si tu pila de traits tiene menos traits azules que tus oponentes.\n(Incluyendo empates.)\n+2 si tienes menos traits verdes.\n(Incluyendo empates.)\n+6 si cumples ambos objetivos."
     ]
   },
   "upgrade/meaning-of-life/the-emerald-slug": {
     "name": "La Babosa Esmeralda",
     "effects": [
-      "+2 si tu pila de traits tiene menos traits rojos que tus oponentes.\n\n(Incluyendo empates.)\n+2 si tienes menos traits azules.\n\n(Incluyendo empates.)\n\n+6 si cumples ambos objetivos."
+      "+2 si tu pila de traits tiene menos traits rojos que tus oponentes.\n(Incluyendo empates.)\n+2 si tienes menos traits azules.\n(Incluyendo empates.)\n+6 si cumples ambos objetivos."
     ]
   },
   "upgrade/meaning-of-life/the-fellmonger": {
     "name": "El Peletero",
     "effects": [
-      "+3 si tienes solo 1 o 2 traits azules en tu pila de traits.\n\n+6 si no tienes ninguno."
+      "+3 si tienes solo 1 o 2 traits azules en tu pila de traits.\n+6 si no tienes ninguno."
     ]
   },
   "upgrade/meaning-of-life/the-fire-bandit": {
@@ -131,7 +131,7 @@
   "upgrade/meaning-of-life/the-fortunate-alchemist": {
     "name": "El Alquimista Afortunado",
     "effects": [
-      "+2 si tienes 2-4 traits con valor nominal 0 en tu pila de traits, incluyendo las brújulas ({compass}).\n\n+9 si tienes 5.\n-4 si no tienes ninguno."
+      "+2 si tienes 2-4 traits con valor nominal 0 en tu pila de traits, incluyendo las brújulas ({compass}).\n+9 si tienes 5.\n-4 si no tienes ninguno."
     ]
   },
   "upgrade/meaning-of-life/the-genial-outsider": {
@@ -143,19 +143,19 @@
   "upgrade/meaning-of-life/the-golden-shrew": {
     "name": "La Musaraña Dorada",
     "effects": [
-      "+4 si tienes 9-12 traits en tu pila de traits.\n\n+7 si tienes 8 o menos."
+      "+4 si tienes 9-12 traits en tu pila de traits.\n+7 si tienes 8 o menos."
     ]
   },
   "upgrade/meaning-of-life/the-hero": {
     "name": "El Héroe",
     "effects": [
-      "+4 por cada dominante en tu pila de traits que comparta un color/incoloro con SOLO 0-1 otro trait en tu pila de traits.\n\n(Incluyendo tu otro dominante.)\n\n+12 si, contra todo pronóstico, tienes 3 traits dominantes en tu pila de traits."
+      "+4 por cada dominante en tu pila de traits que comparta un color/incoloro con SOLO 0-1 otro trait en tu pila de traits.\n(Incluyendo tu otro dominante.)\n+12 si, contra todo pronóstico, tienes 3 traits dominantes en tu pila de traits."
     ]
   },
   "upgrade/meaning-of-life/the-jellyfish": {
     "name": "La Medusa",
     "effects": [
-      "+3 si tienes 3-5 traits azules en tu pila de traits.\n\n+6 si tienes 6 o más."
+      "+3 si tienes 3-5 traits azules en tu pila de traits.\n+6 si tienes 6 o más."
     ]
   },
   "upgrade/meaning-of-life/the-jungler": {
@@ -167,37 +167,37 @@
   "upgrade/meaning-of-life/the-logician": {
     "name": "El Lógico",
     "effects": [
-      "+3 si tienes 3-5 traits sin efecto en tu pila de traits.\n\n+6 si tienes 6 o más."
+      "+3 si tienes 3-5 traits sin efecto en tu pila de traits.\n+6 si tienes 6 o más."
     ]
   },
   "upgrade/meaning-of-life/the-lumberjack": {
     "name": "El Leñador",
     "effects": [
-      "+3 si tienes solo 1 o 2 traits verdes en tu pila de traits.\n\n+6 si no tienes ninguno."
+      "+3 si tienes solo 1 o 2 traits verdes en tu pila de traits.\n+6 si no tienes ninguno."
     ]
   },
   "upgrade/meaning-of-life/the-lunar-guard": {
     "name": "La Guardia Lunar",
     "effects": [
-      "+4 si a tu pila de traits le falta 1 color o incoloro.\n\n+9 si le faltan al menos 2 colores, o al menos 1 color e incoloro."
+      "+4 si a tu pila de traits le falta 1 color o incoloro.\n+9 si le faltan al menos 2 colores, o al menos 1 color e incoloro."
     ]
   },
   "upgrade/meaning-of-life/the-magician": {
     "name": "El Mago",
     "effects": [
-      "+3 si tienes solo 1 o 2 traits incoloros en tu pila de traits.\n\n+6 si no tienes ninguno."
+      "+3 si tienes solo 1 o 2 traits incoloros en tu pila de traits.\n+6 si no tienes ninguno."
     ]
   },
   "upgrade/meaning-of-life/the-maven": {
     "name": "El Erudito",
     "effects": [
-      "+3 si tienes 10-14 traits en tu pila de traits.\n\n+7 si tienes 15 o más."
+      "+3 si tienes 10-14 traits en tu pila de traits.\n+7 si tienes 15 o más."
     ]
   },
   "upgrade/meaning-of-life/the-medicine-master": {
     "name": "El Maestro de la Medicina",
     "effects": [
-      "+3 si tienes 1-2 traits con valor nominal negativo en tu pila de traits.\n\n+7 si tienes 3 o más."
+      "+3 si tienes 1-2 traits con valor nominal negativo en tu pila de traits.\n+7 si tienes 3 o más."
     ]
   },
   "upgrade/meaning-of-life/the-monkey-thief": {
@@ -209,7 +209,7 @@
   "upgrade/meaning-of-life/the-painter": {
     "name": "El Pintor",
     "effects": [
-      "+3 por cada color con un número par de traits en tu pila de traits.\n\n(¡Los colores con 0 traits no cuentan!)"
+      "+3 por cada color con un número par de traits en tu pila de traits.\n(¡Los colores con 0 traits no cuentan!)"
     ]
   },
   "upgrade/meaning-of-life/the-parrot-s-riddle": {
@@ -227,97 +227,97 @@
   "upgrade/meaning-of-life/the-river-mist": {
     "name": "La Neblina del Río",
     "effects": [
-      "Revela esta carta inmediatamente.\n+2 al conteo total de tu pila de traits.\n\n+4 si tienes la mayor cantidad de traits en tu pila de traits\nY\n+1 por cada oponente con menos traits en su pila de traits que tú."
+      "Revela esta carta inmediatamente.\n+2 al conteo total de tu pila de traits.\n+4 si tienes la mayor cantidad de traits en tu pila de traits\nY\n+1 por cada oponente con menos traits en su pila de traits que tú."
     ]
   },
   "upgrade/meaning-of-life/the-ruby-tortoise": {
     "name": "La Tortuga de Rubí",
     "effects": [
-      "+2 si tu pila de traits tiene menos traits verdes que tus oponentes.\n\n(Incluyendo empates.)\n+2 si tienes menos traits morados.\n\n(Incluyendo empates.)\n\n+6 si cumples ambos objetivos."
+      "+2 si tu pila de traits tiene menos traits verdes que tus oponentes.\n(Incluyendo empates.)\n+2 si tienes menos traits morados.\n(Incluyendo empates.)\n+6 si cumples ambos objetivos."
     ]
   },
   "upgrade/meaning-of-life/the-sapphire-ladybug": {
     "name": "La Mariquita de Zafiro",
     "effects": [
-      "+2 si tu pila de traits tiene menos traits morados que tus oponentes.\n\n(Incluyendo empates.)\n+2 si tienes menos traits rojos.\n\n(Incluyendo empates.)\n\n+6 si cumples ambos objetivos."
+      "+2 si tu pila de traits tiene menos traits morados que tus oponentes.\n(Incluyendo empates.)\n+2 si tienes menos traits rojos.\n(Incluyendo empates.)\n+6 si cumples ambos objetivos."
     ]
   },
   "upgrade/meaning-of-life/the-silent-elder": {
     "name": "El Anciano Silencioso",
     "effects": [
-      "Si tienes 4 o menos de cada color en tu pila de traits, revela 1 carta de la parte superior del mazo de traits. Si tienes 3 o menos de cada color, revela 5.\nAñade todos los valores nominales de 4 o menos a tu puntuación final.\n\n(Retira las cartas reveladas del juego.)"
+      "Si tienes 4 o menos de cada color en tu pila de traits, revela 1 carta de la parte superior del mazo de traits. Si tienes 3 o menos de cada color, revela 5.\nAñade todos los valores nominales de 4 o menos a tu puntuación final.\n(Retira las cartas reveladas del juego.)"
     ]
   },
   "upgrade/meaning-of-life/the-soothsayer": {
     "name": "El Adivino",
     "effects": [
-      "+3 si tienes solo 1 o 2 traits morados en tu pila de traits.\n\n+6 si no tienes ninguno."
+      "+3 si tienes solo 1 o 2 traits morados en tu pila de traits.\n+6 si no tienes ninguno."
     ]
   },
   "upgrade/meaning-of-life/the-spirit-gardener": {
     "name": "El Jardinero Espiritual",
     "effects": [
-      "+3 si tienes 3-5 traits incoloros en tu pila de traits.\n\n+6 si tienes 6 o más."
+      "+3 si tienes 3-5 traits incoloros en tu pila de traits.\n+6 si tienes 6 o más."
     ]
   },
   "upgrade/meaning-of-life/the-stylite": {
     "name": "El Estilita",
     "effects": [
-      "+3 si tu bonificación de Gota de Vida ({drop-of-life}) es 3-6.\n\n+7 si es 2 o menos."
+      "+3 si tu bonificación de Gota de Vida ({drop-of-life}) es 3-6.\n+7 si es 2 o menos."
     ]
   },
   "upgrade/meaning-of-life/the-tigris": {
     "name": "El Tigre",
     "effects": [
-      "+3 si tienes 3-5 traits con acciones ({action}) en tu pila de traits.\n\n+6 si tienes 6 o más."
+      "+3 si tienes 3-5 traits con acciones ({action}) en tu pila de traits.\n+6 si tienes 6 o más."
     ]
   },
   "upgrade/meaning-of-life/the-tracker": {
     "name": "El Rastreador",
     "effects": [
-      "Si tienes los 4 colores en tu pila de traits:\n\n+1 por cada trait incoloro en tu pila de traits."
+      "Si tienes los 4 colores en tu pila de traits:\n+1 por cada trait incoloro en tu pila de traits."
     ]
   },
   "upgrade/meaning-of-life/the-truffle-hunter": {
     "name": "El Cazador de Trufas",
     "effects": [
-      "+2 si tienes 3-5 traits con valor nominal 1 en tu pila de traits.\n\n+6 si tienes 6 o más."
+      "+2 si tienes 3-5 traits con valor nominal 1 en tu pila de traits.\n+6 si tienes 6 o más."
     ]
   },
   "upgrade/meaning-of-life/the-vagrant": {
     "name": "El Vagabundo",
     "effects": [
-      "+8 si tienes menos traits en tu pila de traits que tus oponentes.\n\n+6 si estás empatado con la menor cantidad."
+      "+8 si tienes menos traits en tu pila de traits que tus oponentes.\n+6 si estás empatado con la menor cantidad."
     ]
   },
   "upgrade/meaning-of-life/the-vixen": {
     "name": "El Zorro",
     "effects": [
-      "+3 si tienes 3-5 traits morados en tu pila de traits.\n\n+6 si tienes 6 o más."
+      "+3 si tienes 3-5 traits morados en tu pila de traits.\n+6 si tienes 6 o más."
     ]
   },
   "upgrade/meaning-of-life/the-warbler": {
     "name": "El Ave Cantora",
     "effects": [
-      "+3 si tienes 3-5 traits verdes en tu pila de traits.\n\n+6 si tienes 6 o más."
+      "+3 si tienes 3-5 traits verdes en tu pila de traits.\n+6 si tienes 6 o más."
     ]
   },
   "upgrade/meaning-of-life/the-warrior": {
     "name": "El Guerrero",
     "effects": [
-      "+3 si tienes 3-5 traits rojos en tu pila de traits.\n\n+6 si tienes 6 o más."
+      "+3 si tienes 3-5 traits rojos en tu pila de traits.\n+6 si tienes 6 o más."
     ]
   },
   "upgrade/meaning-of-life/the-weaver": {
     "name": "El Tejedor",
     "effects": [
-      "+3 por cada conjunto de los 4 colores\n\n(rojo, verde, azul, morado) en tu pila de traits."
+      "+3 por cada conjunto de los 4 colores\n(rojo, verde, azul, morado) en tu pila de traits."
     ]
   },
   "upgrade/meaning-of-life/the-wilted-flower": {
     "name": "La Flor Marchita",
     "effects": [
-      "+4 si estás empatado con el menor Gene Pool.\n\n+7 si tienes el menor."
+      "+4 si estás empatado con el menor Gene Pool.\n+7 si tienes el menor."
     ]
   },
   "upgrade/meaning-of-life/thunder-frogs": {
@@ -347,7 +347,7 @@
   "upgrade/traits/bionic-arm": {
     "name": "Brazo Biónico",
     "effects": [
-      "+1 por cada Techling ({techling}) en tu pila de traits.\n\n(Incluyendo este.) +2 por cada Techling si un trait está adjunto a Bionic Arm."
+      "+1 por cada Techling ({techling}) en tu pila de traits.\n(Incluyendo este.) +2 por cada Techling si un trait está adjunto a Bionic Arm."
     ],
     "flavor": "Nunca más pierdas una guerra de pulgares."
   },
@@ -455,7 +455,7 @@
   "upgrade/traits/elven-ears": {
     "name": "Orejas Élficas",
     "effects": [
-      "+1 por cada Mythling ({mythling}) en TODAS las pilas de traits.\n\n(Incluyendo este.)"
+      "+1 por cada Mythling ({mythling}) en TODAS las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "¿Dices que hay oferta en flechas? Soy todo oídos."
   },
@@ -661,7 +661,7 @@
   "upgrade/traits/thagomizer": {
     "name": "Thagomizer",
     "effects": [
-      "Todos los jugadores deben descartar 2 cartas de su mano.\n\n(Incluyéndote.)"
+      "Todos los jugadores deben descartar 2 cartas de su mano.\n(Incluyéndote.)"
     ],
     "flavor": "Nombrado en honor al difunto Thag Simmons. ¡Búscalo!"
   },

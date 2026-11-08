@@ -2,7 +2,7 @@
   "overlush/ages/age-of-adventure": {
     "name": "Era de la Aventura",
     "effects": [
-      "Descarta hasta 4 cartas de tu mano.\n\nRoba 1 carta. Si es de un color que acabas de descartar, puedes jugarla ahora.\n\n(Excepto dominantes.)\nIgnora las acciones ({action})."
+      "Descarta hasta 4 cartas de tu mano.\nRoba 1 carta. Si es de un color que acabas de descartar, puedes jugarla ahora.\n(Excepto dominantes.)\nIgnora las acciones ({action})."
     ]
   },
   "overlush/ages/age-of-certainty": {
@@ -32,7 +32,7 @@
   "overlush/ages/backwoods-melodies": {
     "name": "Melodías del Campo",
     "effects": [
-      "Juega de tu mano todos los traits con un valor nominal negativo.\n\n(Excepto dominantes.)\nIgnora las acciones ({action})."
+      "Juega de tu mano todos los traits con un valor nominal negativo.\n(Excepto dominantes.)\nIgnora las acciones ({action})."
     ]
   },
   "overlush/ages/cleansing-rains": {
@@ -68,7 +68,7 @@
   "overlush/ages/king-of-the-jungle": {
     "name": "Rey de la Selva",
     "effects": [
-      "Todos los jugadores revelan 1 carta de su mano. Si muestras el mayor valor nominal, quédate con tus cartas. De lo contrario, descarta tu mano y roba 3 cartas.\n\n(¡Sin empates!)"
+      "Todos los jugadores revelan 1 carta de su mano. Si muestras el mayor valor nominal, quédate con tus cartas. De lo contrario, descarta tu mano y roba 3 cartas.\n(¡Sin empates!)"
     ]
   },
   "overlush/ages/lingering-shadows": {
@@ -164,7 +164,7 @@
   "overlush/ages/the-stranger": {
     "name": "El Forastero",
     "effects": [
-      "Roba 1 carta.\nPuedes jugarla inmediatamente.\n\n(Excepto dominantes.)\nIgnora las acciones ({action})."
+      "Roba 1 carta.\nPuedes jugarla inmediatamente.\n(Excepto dominantes.)\nIgnora las acciones ({action})."
     ]
   },
   "overlush/catastrophes/algal-superbloom": {
@@ -328,7 +328,7 @@
   "overlush/traits/bitter-berries": {
     "name": "Bayas Amargas",
     "effects": [
-      "+1 por cada trait [purple]morado[/purple] o por cada trait [green]verde[/green] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
+      "+1 por cada trait [purple]morado[/purple] o por cada trait [green]verde[/green] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n(Si hay empate, ¡elige 1!)"
     ],
     "flavor": "Listas para cosechar. Y para quejarse."
   },
@@ -606,7 +606,7 @@
   "overlush/traits/illusory": {
     "name": "Ilusorio",
     "effects": [
-      "Hasta el Fin del Mundo: Después de estabilizar, si no jugaste ninguna acción ({action}) en tu turno, puedes jugar una acción de una carta de tu mano y luego descartarla.\n\n(Ignora todas las demás acciones.)"
+      "Hasta el Fin del Mundo: Después de estabilizar, si no jugaste ninguna acción ({action}) en tu turno, puedes jugar una acción de una carta de tu mano y luego descartarla.\n(Ignora todas las demás acciones.)"
     ],
     "flavor": "Hágase el truco."
   },
@@ -638,35 +638,35 @@
   "overlush/traits/kidney": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...con una corona de la selva."
   },
   "overlush/traits/kidney-2": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...con un casco de explorador."
   },
   "overlush/traits/kidney-3": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...con un sombrero tutti frutti."
   },
   "overlush/traits/kidney-4": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...con un gato que es sombrero."
   },
   "overlush/traits/kidney-5": {
     "name": "Riñón",
     "effects": [
-      "El valor es igual al número de Kidneys en tu pila de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de Kidneys en tu pila de traits.\n(Incluyendo este.)"
     ],
     "flavor": "...con un ídolo de mono."
   },
@@ -760,7 +760,7 @@
   "overlush/traits/nectar": {
     "name": "Néctar",
     "effects": [
-      "[rainbow]Elige un color.[/rainbow] Todos los oponentes pueden jugar 1 del [rainbow]color[/rainbow] elegido.\n\n(Excepto dominantes.) Ignora las acciones ({action})."
+      "[rainbow]Elige un color.[/rainbow] Todos los oponentes pueden jugar 1 del [rainbow]color[/rainbow] elegido.\n(Excepto dominantes.) Ignora las acciones ({action})."
     ],
     "flavor": "Un poquito para ti, un poquito para mí."
   },
@@ -846,7 +846,7 @@
   "overlush/traits/psychedelic": {
     "name": "Psicodélico",
     "effects": [
-      "Reinicia la age. Ahora eres el primer jugador. Haz tu turno.\n\n(No puedes reiniciar catastrophes.)"
+      "Reinicia la age. Ahora eres el primer jugador. Haz tu turno.\n(No puedes reiniciar catastrophes.)"
     ],
     "flavor": "Wow...creo que ya había visto esto antes."
   },
@@ -985,7 +985,7 @@
   "overlush/traits/sour-grapes": {
     "name": "Uvas Agrias",
     "effects": [
-      "+1 por cada trait [blue]azul[/blue] o por cada trait [red]rojo[/red] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
+      "+1 por cada trait [blue]azul[/blue] o por cada trait [red]rojo[/red] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n(Si hay empate, ¡elige 1!)"
     ],
     "flavor": "Una fuente de mal vino y de muchas quejas."
   },
@@ -1007,7 +1007,7 @@
   "overlush/traits/spicy": {
     "name": "Picante",
     "effects": [
-      "+1 por cada trait [red]rojo[/red] o por cada trait [green]verde[/green] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
+      "+1 por cada trait [red]rojo[/red] o por cada trait [green]verde[/green] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n(Si hay empate, ¡elige 1!)"
     ],
     "flavor": "Personas prudentes prefieren preparar pimientos particularmente picantes en vinagre."
   },
@@ -1046,7 +1046,7 @@
   "overlush/traits/stinging-tendrils": {
     "name": "Zarcillos Urticantes",
     "effects": [
-      "Intercambia 1 trait de tu pila de traits por 1 trait de la pila de traits de un oponente de [rainbow]color[/rainbow] diferente.\n\n(Excepto este.)"
+      "Intercambia 1 trait de tu pila de traits por 1 trait de la pila de traits de un oponente de [rainbow]color[/rainbow] diferente.\n(Excepto este.)"
     ],
     "flavor": "Esto se vería mejor allá."
   },
@@ -1074,42 +1074,42 @@
   "overlush/traits/swarm": {
     "name": "Enjambre",
     "effects": [
-      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por el celular nuevo."
   },
   "overlush/traits/swarm-2": {
     "name": "Enjambre",
     "effects": [
-      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por el celular nuevo."
   },
   "overlush/traits/swarm-3": {
     "name": "Enjambre",
     "effects": [
-      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por el celular nuevo."
   },
   "overlush/traits/swarm-4": {
     "name": "Enjambre",
     "effects": [
-      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por el celular nuevo."
   },
   "overlush/traits/swarm-5": {
     "name": "Enjambre",
     "effects": [
-      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Swarm en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por el celular nuevo."
   },
   "overlush/traits/sweet": {
     "name": "Dulce",
     "effects": [
-      "+1 por cada trait [green]verde[/green] o por cada trait [blue]azul[/blue] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n\n(Si hay empate, ¡elige 1!)"
+      "+1 por cada trait [green]verde[/green] o por cada trait [blue]azul[/blue] en tu pila de traits, del [rainbow]color[/rainbow] que tienes en menor cantidad.\n(Si hay empate, ¡elige 1!)"
     ],
     "flavor": "Te quiero con ternura, te quiero con dulzura, eres mi media naranja."
   },

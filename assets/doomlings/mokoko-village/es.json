@@ -15,7 +15,7 @@
   "mokoko-village/ages/river-walk": {
     "name": "Paseo por el Río",
     "effects": [
-      "Si tienes 6 o más cartas en la mano, descarta 2 cartas aleatorias de tu mano.\n\nSi tienes 4 o menos, roba 2 cartas."
+      "Si tienes 6 o más cartas en la mano, descarta 2 cartas aleatorias de tu mano.\nSi tienes 4 o menos, roba 2 cartas."
     ]
   },
   "mokoko-village/catastrophes/fatal-falls": {
@@ -95,7 +95,7 @@
   "mokoko-village/traits/entwined": {
     "name": "Entrelazado",
     "effects": [
-      "Juega en cualquier momento: Descarta 1 de tu pila de traits.\n\n(Excepto dominantes, esto puede impedir que el trait sea intercambiado/arrebatado.)"
+      "Juega en cualquier momento: Descarta 1 de tu pila de traits.\n(Excepto dominantes, esto puede impedir que el trait sea intercambiado/arrebatado.)"
     ],
     "flavor": "Todo está bien. Solo enredado."
   },
@@ -276,7 +276,7 @@
   "mokoko-village/traits/swarm-of-kidneys": {
     "name": "Enjambre de Riñones",
     "effects": [
-      "El valor es igual al número de traits Kidney en todas las pilas de traits.\n\n(Incluyendo este.)"
+      "El valor es igual al número de traits Kidney en todas las pilas de traits.\n(Incluyendo este.)"
     ],
     "flavor": "Venimos por los sombreros nuevos."
   },

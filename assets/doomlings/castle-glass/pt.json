@@ -2,7 +2,7 @@
   "castle-glass/ages/castle-glass": {
     "name": "Castelo de Vidro",
     "effects": [
-      "Descarte 2 cartas da sua mão.\nDepois, compre 2 cartas.\n\nOs jogadores não podem descartar conchas ({shell}), corais ({coral}) nem peixes ({fish})."
+      "Descarte 2 cartas da sua mão.\nDepois, compre 2 cartas.\nOs jogadores não podem descartar conchas ({shell}), corais ({coral}) nem peixes ({fish})."
     ]
   },
   "castle-glass/ages/magic-hour": {
@@ -238,7 +238,7 @@
     "name": "Movimento Espiral",
     "effects": [
       "Jogue 1. Depois, devolva-o à sua mão.",
-      "(Você não pode jogar este efeito duas vezes em 1 turno.)\n\n(Você não pode devolver dominantes.)"
+      "(Você não pode jogar este efeito duas vezes em 1 turno.)\n(Você não pode devolver dominantes.)"
     ],
     "flavor": "Girando rumo ao controle."
   },

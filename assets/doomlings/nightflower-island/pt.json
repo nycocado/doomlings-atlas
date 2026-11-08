@@ -145,7 +145,7 @@
   "nightflower-island/traits/kidney": {
     "name": "Rim",
     "effects": [
-      "O valor é igual ao número de Kidneys na sua pilha de traits.\n\n(Incluindo este.)"
+      "O valor é igual ao número de Kidneys na sua pilha de traits.\n(Incluindo este.)"
     ],
     "flavor": "...com uma escuridão assombrosa."
   },
@@ -214,7 +214,7 @@
   "nightflower-island/traits/swarm": {
     "name": "Enxame",
     "effects": [
-      "O valor é igual ao número de traits Swarm em todas as pilhas de traits.\n\n(Incluindo este.)"
+      "O valor é igual ao número de traits Swarm em todas as pilhas de traits.\n(Incluindo este.)"
     ],
     "flavor": "Estamos aqui pelo novo celular-concha."
   },
@@ -275,7 +275,7 @@
   "nightflower-island/traits/wonky": {
     "name": "Maluquinho",
     "effects": [
-      "Crie um novo efeito.\n\nSe os seus oponentes o aprovarem, use-o e subtraia 4 da sua pontuação final."
+      "Crie um novo efeito.\nSe os seus oponentes o aprovarem, use-o e subtraia 4 da sua pontuação final."
     ],
     "flavor": "Se você quiser ver texto em negrito, é só olhar abaixo e ver."
   }

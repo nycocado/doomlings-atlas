@@ -6,7 +6,7 @@
     "name": "Castle Glass",
     "effects": [
       {
-        "text": "Discard 2 from hand.\nThen draw 2.\n\nCannot discard Shells ({shell}), Corals ({coral}), or Fish ({fish})."
+        "text": "Discard 2 from hand.\nThen draw 2.\nCannot discard Shells ({shell}), Corals ({coral}), or Fish ({fish})."
       }
     ],
     "image": "castle-glass/ages/castle-glass.webp"
@@ -852,7 +852,7 @@
       },
       {
         "kind": "note",
-        "text": "(Cannot play this effect twice in 1 turn.)\n\n(Cannot return dominants.)"
+        "text": "(Cannot play this effect twice in 1 turn.)\n(Cannot return dominants.)"
       }
     ],
     "genePool": null,

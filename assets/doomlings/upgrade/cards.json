@@ -18,7 +18,7 @@
     "name": "Badlands",
     "effects": [
       {
-        "text": "Discard 1 card. Shuffle the discard pile, and deal 1 card face down to each player.\n\nReturn any remaining cards to the discard pile."
+        "text": "Discard 1 card. Shuffle the discard pile, and deal 1 card face down to each player.\nReturn any remaining cards to the discard pile."
       }
     ],
     "image": "upgrade/ages/badlands.webp"
@@ -46,7 +46,7 @@
       },
       {
         "kind": "worlds-end",
-        "text": "Discard 1 random trait from your highest color count from your trait pile.\n\n(If 2 or more colors are tied, pick 1.)"
+        "text": "Discard 1 random trait from your highest color count from your trait pile.\n(If 2 or more colors are tied, pick 1.)"
       }
     ],
     "genePool": -1,
@@ -93,7 +93,7 @@
     "name": "The Armored Melon",
     "effects": [
       {
-        "text": "+3 if you have 3-5 cards in hand.\n\n+6 if you have 6 or more."
+        "text": "+3 if you have 3-5 cards in hand.\n+6 if you have 6 or more."
       }
     ],
     "flavor": null,
@@ -106,7 +106,7 @@
     "name": "The Bilbies",
     "effects": [
       {
-        "text": "+4 if you have only 1 dominant trait in your trait pile.\n\n+10 if you have none."
+        "text": "+4 if you have only 1 dominant trait in your trait pile.\n+10 if you have none."
       }
     ],
     "flavor": null,
@@ -119,7 +119,7 @@
     "name": "The Blind Dragon",
     "effects": [
       {
-        "text": "To achieve this bonus, you must have 5 or more of a color in your trait pile.\n\nWhen scoring Meaning of Life, draw 2 Meaning of Life cards and add applicable bonuses to your final score."
+        "text": "To achieve this bonus, you must have 5 or more of a color in your trait pile.\nWhen scoring Meaning of Life, draw 2 Meaning of Life cards and add applicable bonuses to your final score."
       }
     ],
     "flavor": null,
@@ -132,7 +132,7 @@
     "name": "The Bramble Brawler",
     "effects": [
       {
-        "text": "+4 if you have more purple traits in your trait pile than your opponents,\nAND\n\n+1 for every opponent with fewer purple traits in their trait pile than yours."
+        "text": "+4 if you have more purple traits in your trait pile than your opponents,\nAND\n+1 for every opponent with fewer purple traits in their trait pile than yours."
       }
     ],
     "flavor": null,
@@ -158,7 +158,7 @@
     "name": "The Cabochon",
     "effects": [
       {
-        "text": "+3 if you have only 1 or 2 red traits in your trait pile.\n\n+6 if you have none."
+        "text": "+3 if you have only 1 or 2 red traits in your trait pile.\n+6 if you have none."
       }
     ],
     "flavor": null,
@@ -171,7 +171,7 @@
     "name": "The Child and the Bear",
     "effects": [
       {
-        "text": "+1 for every color pair in your trait pile that shares a color with a dominant.\n\n(Max +5.)\n\n+2 for every pair if you have 2 dominants with the same color.\n\n(Max +10.)\n\nDominant traits do not count toward color pairs for these bonuses."
+        "text": "+1 for every color pair in your trait pile that shares a color with a dominant.\n(Max +5.)\n+2 for every pair if you have 2 dominants with the same color.\n(Max +10.)\nDominant traits do not count toward color pairs for these bonuses."
       }
     ],
     "flavor": null,
@@ -184,7 +184,7 @@
     "name": "The Clashing Crabs",
     "effects": [
       {
-        "text": "+4 if you have more negative face value traits in your trait pile than traits with a face value 4 or higher.\n\n+8 if you have an equal number of both, or none of either."
+        "text": "+4 if you have more negative face value traits in your trait pile than traits with a face value 4 or higher.\n+8 if you have an equal number of both, or none of either."
       }
     ],
     "flavor": null,
@@ -197,7 +197,7 @@
     "name": "The Cosmic Jinx",
     "effects": [
       {
-        "text": "+4 if your Gene Pool is 3.\n\n+8 if your Gene Pool is 1 or 2."
+        "text": "+4 if your Gene Pool is 3.\n+8 if your Gene Pool is 1 or 2."
       }
     ],
     "flavor": null,
@@ -210,7 +210,7 @@
     "name": "The Dancer",
     "effects": [
       {
-        "text": "+12 if you have the lowest score, before Meaning of Life bonuses.\n\n+8 if you are tied for the lowest."
+        "text": "+12 if you have the lowest score, before Meaning of Life bonuses.\n+8 if you are tied for the lowest."
       }
     ],
     "flavor": null,
@@ -223,7 +223,7 @@
     "name": "The Diamond Butterfly",
     "effects": [
       {
-        "text": "+2 if your trait pile has fewer blue traits than your opponents.\n\n(Including ties.)\n+2 for fewer green traits.\n\n(Including ties.)\n\n+6 if you achieve both goals."
+        "text": "+2 if your trait pile has fewer blue traits than your opponents.\n(Including ties.)\n+2 for fewer green traits.\n(Including ties.)\n+6 if you achieve both goals."
       }
     ],
     "flavor": null,
@@ -236,7 +236,7 @@
     "name": "The Emerald Slug",
     "effects": [
       {
-        "text": "+2 if your trait pile has fewer red traits than your opponents.\n\n(Including ties.)\n+2 for fewer blue traits.\n\n(Including ties.)\n\n+6 if you achieve both goals."
+        "text": "+2 if your trait pile has fewer red traits than your opponents.\n(Including ties.)\n+2 for fewer blue traits.\n(Including ties.)\n+6 if you achieve both goals."
       }
     ],
     "flavor": null,
@@ -249,7 +249,7 @@
     "name": "The Fellmonger",
     "effects": [
       {
-        "text": "+3 if you have only 1 or 2 blue traits in your trait pile.\n\n+6 if you have none."
+        "text": "+3 if you have only 1 or 2 blue traits in your trait pile.\n+6 if you have none."
       }
     ],
     "flavor": null,
@@ -288,7 +288,7 @@
     "name": "The Fortunate Alchemist",
     "effects": [
       {
-        "text": "+2 if you have 2-4 traits in your trait pile with a face value of 0, including Compasses ({compass}).\n\n+9 if you have 5.\n-4 if you have none."
+        "text": "+2 if you have 2-4 traits in your trait pile with a face value of 0, including Compasses ({compass}).\n+9 if you have 5.\n-4 if you have none."
       }
     ],
     "flavor": null,
@@ -314,7 +314,7 @@
     "name": "The Golden Shrew",
     "effects": [
       {
-        "text": "+4 if you have 9-12 traits in your trait pile.\n\n+7 if you have 8 or fewer."
+        "text": "+4 if you have 9-12 traits in your trait pile.\n+7 if you have 8 or fewer."
       }
     ],
     "flavor": null,
@@ -327,7 +327,7 @@
     "name": "The Hero",
     "effects": [
       {
-        "text": "+4 for each dominant in your trait pile that shares a color/colorless with ONLY 0-1 other trait in your trait pile.\n\n(Including your other dominant.)\n\n+12 if, against all odds, you have 3 dominant traits in your trait pile."
+        "text": "+4 for each dominant in your trait pile that shares a color/colorless with ONLY 0-1 other trait in your trait pile.\n(Including your other dominant.)\n+12 if, against all odds, you have 3 dominant traits in your trait pile."
       }
     ],
     "flavor": null,
@@ -340,7 +340,7 @@
     "name": "The Jellyfish",
     "effects": [
       {
-        "text": "+3 if you have 3-5 blue traits in your trait pile.\n\n+6 if you have 6 or more."
+        "text": "+3 if you have 3-5 blue traits in your trait pile.\n+6 if you have 6 or more."
       }
     ],
     "flavor": null,
@@ -366,7 +366,7 @@
     "name": "The Logician",
     "effects": [
       {
-        "text": "+3 if you have 3-5 effectless traits in your trait pile.\n\n+6 if you have 6 or more."
+        "text": "+3 if you have 3-5 effectless traits in your trait pile.\n+6 if you have 6 or more."
       }
     ],
     "flavor": null,
@@ -379,7 +379,7 @@
     "name": "The Lumberjack",
     "effects": [
       {
-        "text": "+3 if you have only 1 or 2 green traits in your trait pile.\n\n+6 if you have none."
+        "text": "+3 if you have only 1 or 2 green traits in your trait pile.\n+6 if you have none."
       }
     ],
     "flavor": null,
@@ -392,7 +392,7 @@
     "name": "The Lunar Guard",
     "effects": [
       {
-        "text": "+4 if your trait pile is missing 1 color or colorless.\n\n+9 if it's missing at least 2 colors, or at least 1 color and colorless."
+        "text": "+4 if your trait pile is missing 1 color or colorless.\n+9 if it's missing at least 2 colors, or at least 1 color and colorless."
       }
     ],
     "flavor": null,
@@ -405,7 +405,7 @@
     "name": "The Magician",
     "effects": [
       {
-        "text": "+3 if you have only 1 or 2 colorless traits in your trait pile.\n\n+6 if you have none."
+        "text": "+3 if you have only 1 or 2 colorless traits in your trait pile.\n+6 if you have none."
       }
     ],
     "flavor": null,
@@ -418,7 +418,7 @@
     "name": "The Maven",
     "effects": [
       {
-        "text": "+3 if you have 10-14 traits in your trait pile.\n\n+7 if you have 15 or more."
+        "text": "+3 if you have 10-14 traits in your trait pile.\n+7 if you have 15 or more."
       }
     ],
     "flavor": null,
@@ -431,7 +431,7 @@
     "name": "The Medicine Master",
     "effects": [
       {
-        "text": "+3 if you have 1-2 negative face value traits in your trait pile.\n\n+7 if you have 3 or more."
+        "text": "+3 if you have 1-2 negative face value traits in your trait pile.\n+7 if you have 3 or more."
       }
     ],
     "flavor": null,
@@ -457,7 +457,7 @@
     "name": "The Painter",
     "effects": [
       {
-        "text": "+3 for each color in your trait pile with a color count that equals an even number.\n\n(Colors with 0 traits don't count!)"
+        "text": "+3 for each color in your trait pile with a color count that equals an even number.\n(Colors with 0 traits don't count!)"
       }
     ],
     "flavor": null,
@@ -497,7 +497,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Reveal this card immediately.\n+2 to your total trait pile count.\n\n+4 if you have the most traits in your trait pile\nAND\n+1 for each opponent with fewer traits in their trait pile than yours."
+        "text": "Reveal this card immediately.\n+2 to your total trait pile count.\n+4 if you have the most traits in your trait pile\nAND\n+1 for each opponent with fewer traits in their trait pile than yours."
       }
     ],
     "flavor": null,
@@ -510,7 +510,7 @@
     "name": "The Ruby Tortoise",
     "effects": [
       {
-        "text": "+2 if your trait pile has fewer green traits than your opponents.\n\n(Including ties.)\n+2 for fewer purple traits.\n\n(Including ties.)\n\n+6 if you achieve both goals."
+        "text": "+2 if your trait pile has fewer green traits than your opponents.\n(Including ties.)\n+2 for fewer purple traits.\n(Including ties.)\n+6 if you achieve both goals."
       }
     ],
     "flavor": null,
@@ -523,7 +523,7 @@
     "name": "The Sapphire Ladybug",
     "effects": [
       {
-        "text": "+2 if your trait pile has fewer purple traits than your opponents.\n\n(Including ties.)\n+2 for fewer red traits.\n\n(Including ties.)\n\n+6 if you achieve both goals."
+        "text": "+2 if your trait pile has fewer purple traits than your opponents.\n(Including ties.)\n+2 for fewer red traits.\n(Including ties.)\n+6 if you achieve both goals."
       }
     ],
     "flavor": null,
@@ -536,7 +536,7 @@
     "name": "The Silent Elder",
     "effects": [
       {
-        "text": "If you have 4 or fewer of each color in your trait pile, reveal the top 1 card of the trait deck. If you have 3 or fewer of each color, reveal 5.\nAdd all face values of 4 or lower to your final score.\n\n(Remove the revealed cards from the game.)"
+        "text": "If you have 4 or fewer of each color in your trait pile, reveal the top 1 card of the trait deck. If you have 3 or fewer of each color, reveal 5.\nAdd all face values of 4 or lower to your final score.\n(Remove the revealed cards from the game.)"
       }
     ],
     "flavor": null,
@@ -549,7 +549,7 @@
     "name": "The Soothsayer",
     "effects": [
       {
-        "text": "+3 if you have only 1 or 2 purple traits in your trait pile.\n\n+6 if you have none."
+        "text": "+3 if you have only 1 or 2 purple traits in your trait pile.\n+6 if you have none."
       }
     ],
     "flavor": null,
@@ -562,7 +562,7 @@
     "name": "The Spirit Gardener",
     "effects": [
       {
-        "text": "+3 if you have 3-5 colorless traits in your trait pile.\n\n+6 if you have 6 or more."
+        "text": "+3 if you have 3-5 colorless traits in your trait pile.\n+6 if you have 6 or more."
       }
     ],
     "flavor": null,
@@ -575,7 +575,7 @@
     "name": "The Stylite",
     "effects": [
       {
-        "text": "+3 if your Drop of Life ({drop-of-life}) bonus is 3-6.\n\n+7 if it's 2 or less."
+        "text": "+3 if your Drop of Life ({drop-of-life}) bonus is 3-6.\n+7 if it's 2 or less."
       }
     ],
     "flavor": null,
@@ -588,7 +588,7 @@
     "name": "The Tigris",
     "effects": [
       {
-        "text": "+3 if you have 3-5 traits with actions ({action}) in your trait pile.\n\n+6 if you have 6 or more."
+        "text": "+3 if you have 3-5 traits with actions ({action}) in your trait pile.\n+6 if you have 6 or more."
       }
     ],
     "flavor": null,
@@ -601,7 +601,7 @@
     "name": "The Tracker",
     "effects": [
       {
-        "text": "If you have all 4 colors in your trait pile:\n\n+1 for each colorless trait in your trait pile."
+        "text": "If you have all 4 colors in your trait pile:\n+1 for each colorless trait in your trait pile."
       }
     ],
     "flavor": null,
@@ -614,7 +614,7 @@
     "name": "The Truffle Hunter",
     "effects": [
       {
-        "text": "+2 if you have 3-5 traits in your trait pile with a face value of 1.\n\n+6 if you have 6 or more."
+        "text": "+2 if you have 3-5 traits in your trait pile with a face value of 1.\n+6 if you have 6 or more."
       }
     ],
     "flavor": null,
@@ -627,7 +627,7 @@
     "name": "The Vagrant",
     "effects": [
       {
-        "text": "+8 if you have fewer traits in your trait pile than your opponents.\n\n+6 if you're tied for the fewest."
+        "text": "+8 if you have fewer traits in your trait pile than your opponents.\n+6 if you're tied for the fewest."
       }
     ],
     "flavor": null,
@@ -640,7 +640,7 @@
     "name": "The Vixen",
     "effects": [
       {
-        "text": "+3 if you have 3-5 purple traits in your trait pile.\n\n+6 if you have 6 or more."
+        "text": "+3 if you have 3-5 purple traits in your trait pile.\n+6 if you have 6 or more."
       }
     ],
     "flavor": null,
@@ -653,7 +653,7 @@
     "name": "The Warbler",
     "effects": [
       {
-        "text": "+3 if you have 3-5 green traits in your trait pile.\n\n+6 if you have 6 or more."
+        "text": "+3 if you have 3-5 green traits in your trait pile.\n+6 if you have 6 or more."
       }
     ],
     "flavor": null,
@@ -666,7 +666,7 @@
     "name": "The Warrior",
     "effects": [
       {
-        "text": "+3 if you have 3-5 red traits in your trait pile.\n\n+6 if you have 6 or more."
+        "text": "+3 if you have 3-5 red traits in your trait pile.\n+6 if you have 6 or more."
       }
     ],
     "flavor": null,
@@ -679,7 +679,7 @@
     "name": "The Weaver",
     "effects": [
       {
-        "text": "+3 for each set of all 4 colors\n\n(red, green, blue, purple) in your trait pile."
+        "text": "+3 for each set of all 4 colors\n(red, green, blue, purple) in your trait pile."
       }
     ],
     "flavor": null,
@@ -692,7 +692,7 @@
     "name": "The Wilted Flower",
     "effects": [
       {
-        "text": "+4 if you are tied for the lowest Gene Pool.\n\n+7 if you have the lowest."
+        "text": "+4 if you are tied for the lowest Gene Pool.\n+7 if you have the lowest."
       }
     ],
     "flavor": null,
@@ -787,7 +787,7 @@
     "flavor": "Never lose another thumb war.",
     "effects": [
       {
-        "text": "+1 for each Techling ({techling}) in your trait pile.\n\n(Including this one.) +2 for each Techling if a trait is attached to Bionic Arm."
+        "text": "+1 for each Techling ({techling}) in your trait pile.\n(Including this one.) +2 for each Techling if a trait is attached to Bionic Arm."
       }
     ],
     "genePool": null,
@@ -1193,7 +1193,7 @@
     "flavor": "A sale on arrows, you say? I'm listening.",
     "effects": [
       {
-        "text": "+1 for each Mythling ({mythling}) in ALL trait piles.\n\n(Including this one.)"
+        "text": "+1 for each Mythling ({mythling}) in ALL trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1944,7 +1944,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "All players must discard 2 cards from their hand.\n\n(Including yourself.)"
+        "text": "All players must discard 2 cards from their hand.\n(Including yourself.)"
       }
     ],
     "genePool": null,

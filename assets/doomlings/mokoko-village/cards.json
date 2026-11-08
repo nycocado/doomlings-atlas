@@ -33,7 +33,7 @@
     "name": "River Walk",
     "effects": [
       {
-        "text": "If you hold 6 or more cards, discard 2 from hand at random.\n\nIf you hold 4 or fewer, draw 2."
+        "text": "If you hold 6 or more cards, discard 2 from hand at random.\nIf you hold 4 or fewer, draw 2."
       }
     ],
     "image": "mokoko-village/ages/river-walk.webp"
@@ -291,7 +291,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Play at any time: Discard 1 from your trait pile.\n\n(Excluding dominants, this can stop the trait from being swapped/stolen.)"
+        "text": "Play at any time: Discard 1 from your trait pile.\n(Excluding dominants, this can stop the trait from being swapped/stolen.)"
       }
     ],
     "genePool": null,
@@ -913,7 +913,7 @@
     "flavor": "We're here for the new hats.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidney traits in all trait piles.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidney traits in all trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,

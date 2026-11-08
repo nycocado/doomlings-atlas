@@ -6,7 +6,7 @@
     "name": "A Quiet Moment",
     "effects": [
       {
-        "text": "Discard up to 3 from your hand.\n\nIf you start your turn with an empty hand, draw 4."
+        "text": "Discard up to 3 from your hand.\nIf you start your turn with an empty hand, draw 4."
       }
     ],
     "image": "imaginary-ends/ages/a-quiet-moment.webp"
@@ -70,7 +70,7 @@
     "name": "Moonlight",
     "effects": [
       {
-        "text": "If your Gene Pool is 4 or higher, discard 1.\n\nIf your Gene Pool is 3 or lower, draw 2."
+        "text": "If your Gene Pool is 4 or higher, discard 1.\nIf your Gene Pool is 3 or lower, draw 2."
       }
     ],
     "image": "imaginary-ends/ages/moonlight.webp"
@@ -347,7 +347,7 @@
         "text": "Stabilize to 2."
       },
       {
-        "text": "Add 2 face values in your hand to your score.\n\n(Max +17)"
+        "text": "Add 2 face values in your hand to your score.\n(Max +17)"
       }
     ],
     "genePool": null,
@@ -672,7 +672,7 @@
     "flavor": "Too perfect for this world, or the next.",
     "effects": [
       {
-        "text": "Until World's End: If you hold 6 or fewer cards at the end of your turn, you may suppress 1 from your hand instead of stabilizing.\n\n(If this effect empties your hand, draw 2.)"
+        "text": "Until World's End: If you hold 6 or fewer cards at the end of your turn, you may suppress 1 from your hand instead of stabilizing.\n(If this effect empties your hand, draw 2.)"
       }
     ],
     "genePool": null,
@@ -1393,7 +1393,7 @@
     "flavor": "I was mermaid to shine.",
     "effects": [
       {
-        "text": "+1 for every Deepling ({deepling}) and Glitterling ({glitterling}) in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for every Deepling ({deepling}) and Glitterling ({glitterling}) in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,

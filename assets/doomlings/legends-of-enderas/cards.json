@@ -30,7 +30,7 @@
     "name": "Age of the Last Dragons",
     "effects": [
       {
-        "text": "Draw 3.\n\nDiscard them OR all other cards in your hand."
+        "text": "Draw 3.\nDiscard them OR all other cards in your hand."
       }
     ],
     "image": "legends-of-enderas/ages/age-of-the-last-dragons.webp"
@@ -42,7 +42,7 @@
     "name": "Carbon Boom",
     "effects": [
       {
-        "text": "Draw 2 from the top of the discard pile.\n\n(If empty, draw from the trait deck.)"
+        "text": "Draw 2 from the top of the discard pile.\n(If empty, draw from the trait deck.)"
       }
     ],
     "image": "legends-of-enderas/ages/carbon-boom.webp"
@@ -66,7 +66,7 @@
     "name": "Open Portals",
     "effects": [
       {
-        "text": "Discard 2 from hand, or 1 at random.\n\n(If this effect empties your hand, draw 3.)"
+        "text": "Discard 2 from hand, or 1 at random.\n(If this effect empties your hand, draw 3.)"
       }
     ],
     "image": "legends-of-enderas/ages/open-portals.webp"
@@ -90,7 +90,7 @@
     "name": "Thousand-Year Slumber",
     "effects": [
       {
-        "text": "Draw 1.\n\nIf you play Slumbering this age, you may draw 4 and play another trait."
+        "text": "Draw 1.\nIf you play Slumbering this age, you may draw 4 and play another trait."
       }
     ],
     "image": "legends-of-enderas/ages/thousand-year-slumber.webp"
@@ -157,7 +157,7 @@
       },
       {
         "kind": "worlds-end",
-        "text": "+3 if you have a dominant Mythling ({mythling}), Dinoling ({dinoling}), or Techling ({techling}) in your trait pile.\n\n+6 if you have 2."
+        "text": "+3 if you have a dominant Mythling ({mythling}), Dinoling ({dinoling}), or Techling ({techling}) in your trait pile.\n+6 if you have 2."
       }
     ],
     "genePool": -1,
@@ -201,7 +201,7 @@
     "flavor": "Ladies and gentlemen, Mr. Al Chemical!",
     "effects": [
       {
-        "text": "If Alchemical is discarded from hand, announce it!\n\nPlayers resolve all effects.\n\nThen opponents discard half their hand at random."
+        "text": "If Alchemical is discarded from hand, announce it!\nPlayers resolve all effects.\nThen opponents discard half their hand at random."
       },
       {
         "kind": "note",
@@ -509,7 +509,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Attach. When a trait enters your trait pile, you may attach Cryonics to it.\n\nHost's face value is now 1."
+        "text": "Attach. When a trait enters your trait pile, you may attach Cryonics to it.\nHost's face value is now 1."
       }
     ],
     "genePool": null,
@@ -624,7 +624,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Discard 2 from hand at random.\n\nOpponents discard all effectless from hand."
+        "text": "Discard 2 from hand at random.\nOpponents discard all effectless from hand."
       }
     ],
     "genePool": null,
@@ -1119,7 +1119,7 @@
     "flavor": "...with a theropod.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1144,7 +1144,7 @@
     "flavor": "...with a wizard's hat.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1169,7 +1169,7 @@
     "flavor": "...with a tin foil hat.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1340,7 +1340,7 @@
     "flavor": "A mist opportunity.",
     "effects": [
       {
-        "text": "To play, you must discard 1 effectless from hand.\n\nDo not stabilize!"
+        "text": "To play, you must discard 1 effectless from hand.\nDo not stabilize!"
       }
     ],
     "genePool": null,
@@ -1594,7 +1594,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Discard 1 from hand.\nIf the card is:\n[purple]Purple[/purple]: Discard up to 2 from your trait pile.\n[red]Red[/red]: Add its face value.\n\n[green]Green[/green]: Play 1 trait.\n[blue]Blue[/blue]: +5."
+        "text": "Discard 1 from hand.\nIf the card is:\n[purple]Purple[/purple]: Discard up to 2 from your trait pile.\n[red]Red[/red]: Add its face value.\n[green]Green[/green]: Play 1 trait.\n[blue]Blue[/blue]: +5."
       }
     ],
     "genePool": null,
@@ -1672,7 +1672,7 @@
     "flavor": "The best peach-to-text translator on the barket.",
     "effects": [
       {
-        "text": "Attach. Add the face value of 1 card in hand that shares a [rainbow]color[/rainbow] with the host.\n\n(Excluding dominants.)"
+        "text": "Attach. Add the face value of 1 card in hand that shares a [rainbow]color[/rainbow] with the host.\n(Excluding dominants.)"
       }
     ],
     "genePool": null,
@@ -1823,7 +1823,7 @@
     "flavor": "We're here for the new tablet.",
     "effects": [
       {
-        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1848,7 +1848,7 @@
     "flavor": "We're here for the seance.",
     "effects": [
       {
-        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1873,7 +1873,7 @@
     "flavor": "We are the new phone.",
     "effects": [
       {
-        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2016,7 +2016,7 @@
     "flavor": "Mmmm, icebergers!",
     "effects": [
       {
-        "text": "To play, you must discard a total face value of 5 or higher from your trait pile using any number of cards.\n\n(Titanic cannot regenerate tissue!)"
+        "text": "To play, you must discard a total face value of 5 or higher from your trait pile using any number of cards.\n(Titanic cannot regenerate tissue!)"
       }
     ],
     "genePool": null,

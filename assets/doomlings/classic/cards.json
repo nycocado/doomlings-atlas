@@ -309,7 +309,7 @@
     "name": "The Birth of Life",
     "effects": [
       {
-        "text": "[yellow]Set your Gene Pool to 5.[/yellow]\n\nPlay 1 trait each turn.\nStabilize to end your turn."
+        "text": "[yellow]Set your Gene Pool to 5.[/yellow]\nPlay 1 trait each turn.\nStabilize to end your turn."
       }
     ],
     "image": "classic/birth-of-life/the-birth-of-life.webp"
@@ -325,7 +325,7 @@
       },
       {
         "kind": "worlds-end",
-        "text": "Each colorless trait is now worth 2. Ignore all colorless trait effects.\n\n(Excluding dominants.)"
+        "text": "Each colorless trait is now worth 2. Ignore all colorless trait effects.\n(Excluding dominants.)"
       }
     ],
     "genePool": -1,
@@ -668,7 +668,7 @@
     "flavor": "Where do you think you're goin'?",
     "effects": [
       {
-        "text": "+4 if you have more traits in your trait pile than your opponents.\n\n(Ties don't count!)"
+        "text": "+4 if you have more traits in your trait pile than your opponents.\n(Ties don't count!)"
       }
     ],
     "genePool": null,
@@ -1164,7 +1164,7 @@
     "flavor": "Buy one, get one hundred.",
     "effects": [
       {
-        "text": "+1 for each [blue]blue[/blue] trait in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for each [blue]blue[/blue] trait in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1435,7 +1435,7 @@
     "flavor": "I'd like to make a toast.",
     "effects": [
       {
-        "text": "+1 for each [red]red[/red] trait in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for each [red]red[/red] trait in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1659,7 +1659,7 @@
     "flavor": "...with a combover.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1682,7 +1682,7 @@
     "flavor": "...with a tiara.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1705,7 +1705,7 @@
     "flavor": "...with an elf hat.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1728,7 +1728,7 @@
     "flavor": "...with a chef's toque.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1751,7 +1751,7 @@
     "flavor": "...with a party cap.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1774,7 +1774,7 @@
     "flavor": "...with a topper.",
     "effects": [
       {
-        "text": "Value is equal to the number of Kidneys in your trait pile.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Kidneys in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1877,7 +1877,7 @@
     "flavor": "As you walk and eat and travel, be where you are. Otherwise you will miss out on most of your life.",
     "effects": [
       {
-        "text": "+1 for each [colorless]colorless[/colorless] trait in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for each [colorless]colorless[/colorless] trait in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -1992,7 +1992,7 @@
     "flavor": "Mommy, why did you pull me out of kindergarten?",
     "effects": [
       {
-        "text": "+1 for each [green]green[/green] trait in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for each [green]green[/green] trait in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2087,7 +2087,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "[rainbow]Choose a color.[/rainbow] All players discard all cards of that color from their hand.\n\n(Including yourself!)"
+        "text": "[rainbow]Choose a color.[/rainbow] All players discard all cards of that color from their hand.\n(Including yourself!)"
       }
     ],
     "genePool": null,
@@ -2111,7 +2111,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 2 cards. If either are [green]green[/green], play 1 immediately.\n\n(Unless restricted.)"
+        "text": "Draw 2 cards. If either are [green]green[/green], play 1 immediately.\n(Unless restricted.)"
       }
     ],
     "genePool": null,
@@ -2158,7 +2158,7 @@
     "flavor": "Well, you see, Timmy, when a bee and a plant fall in love...",
     "effects": [
       {
-        "text": "+1 for every card in your trait pile with a face value of 1.\n\n(Including this one.)"
+        "text": "+1 for every card in your trait pile with a face value of 1.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2268,7 +2268,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "You and an opponent discard 1 trait from each other's trait pile.\n\n(Excluding this one.)"
+        "text": "You and an opponent discard 1 trait from each other's trait pile.\n(Excluding this one.)"
       }
     ],
     "genePool": null,
@@ -2291,7 +2291,7 @@
     "flavor": "How many fingers am I holding up? Wait, hold on, they're still growing back",
     "effects": [
       {
-        "text": "Anytime you discard a trait from your trait pile,\n\n(including this one), draw 1. Play it immediately.\n\n(Unless restricted.) Ignore actions ({action})."
+        "text": "Anytime you discard a trait from your trait pile,\n(including this one), draw 1. Play it immediately.\n(Unless restricted.) Ignore actions ({action})."
       }
     ],
     "genePool": null,
@@ -2559,7 +2559,7 @@
     "flavor": "Give me a hug.",
     "effects": [
       {
-        "text": "+1 for each [purple]purple[/purple] trait in your trait pile.\n\n(Including this one.)"
+        "text": "+1 for each [purple]purple[/purple] trait in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2599,7 +2599,7 @@
     "flavor": "Ah...AH...AH...false alarm, I thought I was gon--CHOO!",
     "effects": [
       {
-        "text": "All players receive: -1 Gene Pool.\n\n(Including yourself.)"
+        "text": "All players receive: -1 Gene Pool.\n(Including yourself.)"
       }
     ],
     "genePool": null,
@@ -2620,7 +2620,7 @@
     "flavor": "We're here for the new phone.",
     "effects": [
       {
-        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2643,7 +2643,7 @@
     "flavor": "We're here for the new phone.",
     "effects": [
       {
-        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2666,7 +2666,7 @@
     "flavor": "We're here for the new phone.",
     "effects": [
       {
-        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2689,7 +2689,7 @@
     "flavor": "We're here for the new phone.",
     "effects": [
       {
-        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2712,7 +2712,7 @@
     "flavor": "We're here for the new phone.",
     "effects": [
       {
-        "text": "Value is equal to the number of Swarm traits in all trait piles.\n\n(Including this one.)"
+        "text": "Value is equal to the number of Swarm traits in all trait piles.\n(Including this one.)"
       }
     ],
     "genePool": null,
@@ -2759,7 +2759,7 @@
     "flavor": "Yes...yes! Feast, my parasitic friends!",
     "effects": [
       {
-        "text": "+2 for every trait in your lowest [rainbow]color[/rainbow] count.\n\n(Must have 2 or more [rainbow]colors[/rainbow]. If there's a tie, pick 1!)"
+        "text": "+2 for every trait in your lowest [rainbow]color[/rainbow] count.\n(Must have 2 or more [rainbow]colors[/rainbow]. If there's a tie, pick 1!)"
       }
     ],
     "genePool": null,
@@ -2893,7 +2893,7 @@
     "flavor": "Widdle iddle, teensie weensie.",
     "effects": [
       {
-        "text": "-1 for each trait in your trait pile.\n\n(Including this one.)"
+        "text": "-1 for each trait in your trait pile.\n(Including this one.)"
       }
     ],
     "genePool": null,
