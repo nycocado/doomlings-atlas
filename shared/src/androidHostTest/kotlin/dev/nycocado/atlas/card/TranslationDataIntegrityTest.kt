@@ -168,13 +168,12 @@ class TranslationDataIntegrityTest {
         }
     }
 
-    // Paragraphs follow the printed card, notes included.
     @Test
-    fun everyTranslatedEffectHasTheParagraphsOfItsEnglishEffect() {
+    fun everyTranslatedEffectHasTheLineBreaksOfItsEnglishEffect() {
         files.forEach { file ->
             val wrong =
                 effectPairs(file)
-                    .filter { (_, pair) -> pair.first.split("\n\n").size != pair.second.split("\n\n").size }
+                    .filter { (_, pair) -> pair.first.lines().size != pair.second.lines().size }
                     .map { (where, _) -> where }
             assertEquals(emptyList<String>(), wrong, file.label)
         }
