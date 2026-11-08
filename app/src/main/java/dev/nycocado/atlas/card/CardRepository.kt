@@ -36,7 +36,12 @@ open class CardRepository(
                 CardLanguage.entries
                     .filter { "${it.code}.json" in packaged }
                     .associateWith { language ->
-                        decodeTranslations(packaged("${language.code}.json"))
+                        decodeTranslations(
+                            context.assets
+                                .open("cards/${language.code}.json")
+                                .bufferedReader()
+                                .use { it.readText() },
+                        )
                     },
             )
         }

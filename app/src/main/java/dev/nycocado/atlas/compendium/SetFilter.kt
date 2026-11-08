@@ -15,6 +15,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -26,6 +27,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -34,6 +36,7 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardSet
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
+import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
@@ -70,8 +73,29 @@ internal fun SetsSheet(
     onToggle: (String) -> Unit,
     onDismiss: () -> Unit,
 ) {
-    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = AtlasTheme.colors.surface) {
+    val theme = AtlasTheme.colors
+    // AtlasTheme provides no MaterialTheme (ADR 0006), so everything the sheet would take from it is passed here.
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        shape = Radius.lg.copy(bottomStart = ZeroCornerSize, bottomEnd = ZeroCornerSize),
+        containerColor = theme.surface,
+        contentColor = theme.onSurface,
+        scrimColor = theme.inverseSurface.copy(alpha = 0.5f),
+        dragHandle = { SheetHandle() },
+    ) {
         SetsList(sets, chosen, onToggle)
+    }
+}
+
+@Composable
+private fun SheetHandle() {
+    val label = stringResource(R.string.close_sets)
+    // The sheet makes its handle slot a clickable that dismisses, and takes its label from what the slot holds.
+    Box(
+        Modifier.fillMaxWidth().padding(vertical = Space.s3).semantics { contentDescription = label },
+        contentAlignment = Alignment.Center,
+    ) {
+        Box(Modifier.size(width = 36.dp, height = 4.dp).background(AtlasTheme.colors.outline, CircleShape))
     }
 }
 
@@ -151,7 +175,8 @@ internal val SampleSets =
 @Composable
 internal fun SetsListPreview() =
     AtlasTheme {
-        Box(Modifier.background(AtlasTheme.colors.surface).padding(top = Space.s4)) {
+        Column(Modifier.background(AtlasTheme.colors.surface)) {
+            SheetHandle()
             SetsList(SampleSets, setOf("castle-glass")) {}
         }
     }

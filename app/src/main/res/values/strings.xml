@@ -31,8 +31,9 @@
     <string name="all_ages">All ages</string>
     <string name="all_catastrophes">All catastrophes</string>
     <string name="color_hint">tap a color to filter</string>
-    <string name="sets_filter" translatable="false">Sets</string>
-    <string name="sets_filter_chosen" translatable="false">Sets: %1$d</string>
+    <string name="sets_filter">Sets</string>
+    <string name="sets_filter_chosen">Sets: %1$d</string>
+    <string name="close_sets">Close sets</string>
 
     <plurals name="card_group_collapsed">
         <item quantity="one">%1$s, %2$d variant, collapsed</item>
