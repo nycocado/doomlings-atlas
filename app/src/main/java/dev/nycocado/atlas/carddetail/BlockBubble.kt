@@ -86,14 +86,14 @@ internal fun BlockBubble(
     block: CardBlock,
     language: CardLanguage,
     card: Card,
-    // The card's first color, which its action symbols are printed in; null for a colorless trait or a card without color.
-    color: CardColor?,
+    // The card's colors, which its action symbols are printed in; null stands for colorless, and a card without color has none.
+    colors: List<CardColor?>,
     library: CardLibrary = CardLibrary.loading,
     onCardClick: (String) -> Unit = {},
     selector: (@Composable () -> Unit)? = null,
 ) {
     val theme = AtlasTheme.colors
-    val actionColor = theme.trait(color).fill
+    val actionColors = theme.actionColors(colors)
     // The selector hangs above the bubble, so the bubble keeps it as far from the pills as the pills are from each other.
     Box(Modifier.padding(top = 6.dp + if (selector != null) Space.s2 else 0.dp)) {
         Box(
@@ -123,7 +123,7 @@ internal fun BlockBubble(
                         }
 
                         is BlockContent.Effect -> {
-                            KindHeading(content, shownLanguage, actionColor)
+                            KindHeading(content, shownLanguage, actionColors)
                             EffectText(
                                 content.text,
                                 note = content.kind == EffectKind.Note,
@@ -131,7 +131,7 @@ internal fun BlockBubble(
                                 card = card,
                                 library = library,
                                 onCardClick = onCardClick,
-                                actionColor = actionColor,
+                                actionColors = actionColors,
                             )
                         }
 
@@ -168,13 +168,13 @@ private fun signedPlus(n: Int) = if (n < 0) signed(n) else "+$n"
 private fun KindHeading(
     effect: BlockContent.Effect,
     language: CardLanguage,
-    actionColor: Color,
+    actionColors: List<Color>,
 ) {
     val title = effect.kind?.title ?: return
     val ink = effect.ink
     val theme = AtlasTheme.colors
     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-        effect.kind?.symbol?.let { Symbol(it, Modifier.height(16.dp), actionColor) }
+        effect.kind?.symbol?.let { Symbol(it, Modifier.height(16.dp), actionColors) }
         BasicText(
             tagged(cardString(title, language).uppercase(), language),
             style =
@@ -215,8 +215,7 @@ private val EffectKind.symbol: Int?
             else -> null
         }
 
-// A token's name in the card language: what TalkBack reads for its symbol, and what shows while the app has no symbol
-// for it (#148).
+// A token's name in the card language: what TalkBack reads for its symbol.
 @Composable
 private fun Token.title(language: CardLanguage): String =
     when (this) {
@@ -250,14 +249,23 @@ private fun Token.title(language: CardLanguage): String =
         Token.Glitterling -> "Glitterling"
     }
 
-// Only the symbols the enabled sets use are converted; the rest have none yet.
-private val Token.symbol: Int?
+private val Token.symbol: Int
     @DrawableRes get() =
         when (this) {
             Token.Action -> R.drawable.ic_symbol_action
+            Token.Attachment -> R.drawable.ic_symbol_attachment
             Token.DropOfLife -> R.drawable.ic_symbol_drop_of_life
             Token.WorldsEnd -> R.drawable.ic_symbol_worlds_end
-            else -> null
+            Token.Compass -> R.drawable.ic_symbol_compass_star
+            Token.Coral -> R.drawable.ic_symbol_coral
+            Token.Fish -> R.drawable.ic_symbol_fish
+            Token.Shell -> R.drawable.ic_symbol_shell
+            Token.Mythling -> R.drawable.ic_symbol_sub_mythling
+            Token.Dinoling -> R.drawable.ic_symbol_sub_dinoling
+            Token.Techling -> R.drawable.ic_symbol_sub_techling
+            Token.Deepling -> R.drawable.ic_symbol_sub_deepling
+            Token.Moonling -> R.drawable.ic_symbol_sub_moonling
+            Token.Glitterling -> R.drawable.ic_symbol_sub_glitterling
         }
 
 // 1.3em high and 1.15em for the action, as docs/design.md has it, at the drawable's own width to height: the other
@@ -280,7 +288,7 @@ private fun EffectText(
     card: Card,
     library: CardLibrary,
     onCardClick: (String) -> Unit,
-    actionColor: Color,
+    actionColors: List<Color>,
 ) {
     val theme = AtlasTheme.colors
     val tokens = parts.filterIsInstance<TextPart.Icon>().map { it.token }.distinct()
@@ -334,24 +342,19 @@ private fun EffectText(
 
                         // The name is the inline content's alternate text, which TalkBack reads in its place.
                         is TextPart.Icon -> {
-                            val title = titles.getValue(part.token)
-                            when (part.token.symbol) {
-                                null -> append(title)
-                                else -> appendInlineContent(part.token.code, title)
-                            }
+                            appendInlineContent(part.token.code, titles.getValue(part.token))
                         }
                     }
                 }
             }
         }
     val inline =
-        tokens
-            .mapNotNull { token ->
-                token.symbol?.let { symbol ->
-                    token.code to
-                        InlineTextContent(token.placeholder) { Symbol(symbol, Modifier.fillMaxSize(), actionColor) }
+        tokens.associate { token ->
+            token.code to
+                InlineTextContent(token.placeholder) {
+                    Symbol(token.symbol, Modifier.fillMaxSize(), actionColors)
                 }
-            }.toMap() +
+        } +
             arrows.mapValues { (_, color) ->
                 InlineTextContent(Placeholder(0.8.em, 0.8.em, PlaceholderVerticalAlign.Center)) {
                     Image(
@@ -427,35 +430,19 @@ private fun citedInk(
     theme: AtlasColors,
 ): Color = (cited as? Trait)?.let { theme.trait(it.colors.firstOrNull()).ink } ?: theme.onSurface
 
-// Anxiety Elixir as in assets/doomlings/imaginary-ends/cards.json. The app doesn't show Trinkets yet, so its blocks are
-// the ones shared decides for it, written out.
-private val AnxietyElixir =
+// Anxiety Elixir as in assets/doomlings/imaginary-ends/cards.json.
+internal val AnxietyElixir =
     Trinket(
         "imaginary-ends/trinkets/anxiety-elixir",
         "imaginary-ends",
         "",
         "Anxiety Elixir",
-        emptyList(),
+        listOf(
+            Effect(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand."),
+            Effect(EffectKind.PocketObjective, "Reveal: 2 reds in hand."),
+        ),
         2,
         "This causes stress. Can't stress that enough.",
-    )
-
-private val AnxietyElixirBlocks =
-    listOf(
-        CardBlock(
-            BlockContent.Effect(
-                EffectKind.AwesomePower,
-                listOf(TextPart.Words("Start of Turn: Discard dominants from hand.")),
-            ),
-        ),
-        CardBlock(
-            BlockContent.Effect(
-                EffectKind.PocketObjective,
-                listOf(TextPart.Words("Reveal: 2 reds in hand.", Ink.Yellow)),
-                Ink.Yellow,
-            ),
-        ),
-        CardBlock(BlockContent.Value(2), flavor = "This causes stress. Can't stress that enough."),
     )
 
 @PreviewLightDark
@@ -466,7 +453,7 @@ internal fun TrinketBlocksPreview() =
             Modifier.background(AtlasTheme.colors.surface).padding(Space.s5),
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
-            AnxietyElixirBlocks.forEach { BlockBubble(it, CardLanguage.English, AnxietyElixir, color = null) }
+            AnxietyElixir.face().blocks.forEach { BlockBubble(it, CardLanguage.English, AnxietyElixir, emptyList()) }
         }
     }
 
@@ -523,7 +510,7 @@ internal fun InkBlocksSample() =
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         listOf(HyperIntelligence, SourGrapes).forEach { trait ->
-            trait.face()?.blocks?.forEach { BlockBubble(it, CardLanguage.English, trait, trait.colors.firstOrNull()) }
+            trait.face().blocks.forEach { BlockBubble(it, CardLanguage.English, trait, trait.colorsOrColorless) }
         }
     }
 
@@ -532,8 +519,7 @@ internal fun InkBlocksSample() =
 internal fun InkBlocksPreview() = AtlasTheme { InkBlocksSample() }
 
 // Age of Wonder and The Birth of Life (assets/doomlings/classic/cards.json), verbatim, ink marks included: the wonder
-// gradient over the whole text, and a yellow first sentence. The app doesn't show The Birth of Life yet, which has no
-// card kind and so no face, so its block is written out here, as the Trinket's above.
+// gradient over the whole text, and a yellow first sentence.
 private val AgeOfWonder =
     Age(
         "classic/ages/age-of-wonder",
@@ -543,7 +529,7 @@ private val AgeOfWonder =
         listOf(Effect(text = "[wonder]You must end your turn with 4 cards in your hand.[/wonder]")),
     )
 
-private val TheBirthOfLife =
+internal val TheBirthOfLife =
     BirthOfLife(
         "classic/birth-of-life/the-birth-of-life",
         "classic",
@@ -557,27 +543,37 @@ private val TheBirthOfLife =
         ),
     )
 
-private val TheBirthOfLifeBlock =
-    CardBlock(
-        BlockContent.Effect(
-            null,
-            listOf(
-                TextPart.Words("Set your Gene Pool to 5.", Ink.Yellow),
-                TextPart.Words("\n\nPlay 1 trait each turn.\nStabilize to end your turn."),
-            ),
-        ),
-    )
-
 @Composable
 internal fun DecorInkBlocksSample() =
     Column(
         Modifier.background(AtlasTheme.colors.surface).padding(Space.s5),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-        AgeOfWonder.face()?.blocks?.forEach { BlockBubble(it, CardLanguage.English, AgeOfWonder, color = null) }
-        BlockBubble(TheBirthOfLifeBlock, CardLanguage.English, TheBirthOfLife, color = null)
+        AgeOfWonder.face().blocks.forEach { BlockBubble(it, CardLanguage.English, AgeOfWonder, emptyList()) }
+        TheBirthOfLife.face().blocks.forEach { BlockBubble(it, CardLanguage.English, TheBirthOfLife, emptyList()) }
     }
 
 @PreviewLightDark
 @Composable
 internal fun DecorInkBlocksPreview() = AtlasTheme { DecorInkBlocksSample() }
+
+// Every token in a row. Not a card's text: no card prints them together.
+@Composable
+internal fun InlineTokensSample() =
+    Column(Modifier.background(AtlasTheme.colors.surface).padding(Space.s5)) {
+        BlockBubble(
+            CardBlock(
+                BlockContent.Effect(
+                    null,
+                    Token.entries.flatMap { listOf(TextPart.Icon(it), TextPart.Words(" ")) },
+                ),
+            ),
+            CardLanguage.English,
+            HyperIntelligence,
+            HyperIntelligence.colors,
+        )
+    }
+
+@PreviewLightDark
+@Composable
+internal fun InlineTokensPreview() = AtlasTheme { InlineTokensSample() }

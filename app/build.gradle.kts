@@ -105,6 +105,7 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui.tooling.preview)
     debugImplementation(libs.androidx.compose.ui.tooling)
     testImplementation(libs.junit)
@@ -267,6 +268,10 @@ abstract class PackageCards : DefaultTask() {
         check(empty.isEmpty()) { "Enabled sets with no cards: ${empty.joinToString()}" }
 
         val json = temporaryDir.resolve("cards.json").apply { writeText(JsonOutput.toJson(cards)) }
+        val setData =
+            temporaryDir.resolve("sets.json").apply {
+                writeText(JsonOutput.toJson(folders.map { JsonSlurper().parse(it.resolve("set.json")) }))
+            }
         // Translations keep only the entries of the cards packaged.
         val ids = cards.map { it["id"] }.toSet()
         val translations =
@@ -274,7 +279,7 @@ abstract class PackageCards : DefaultTask() {
                 .flatMap { folder ->
                     folder
                         .listFiles { it: File ->
-                            it.extension == "json" && it.name != "cards.json"
+                            it.extension == "json" && it.name !in setOf("cards.json", "set.json")
                         }.orEmpty()
                         .toList()
                 }.groupBy { it.name }
@@ -286,6 +291,7 @@ abstract class PackageCards : DefaultTask() {
         // Sync also deletes what a previous run left, e.g. images of a set no longer enabled.
         files.sync {
             from(json)
+            from(setData)
             from(translations)
             from(source) { include(cards.map { it["image"] as String }) }
             into(output.dir("cards"))

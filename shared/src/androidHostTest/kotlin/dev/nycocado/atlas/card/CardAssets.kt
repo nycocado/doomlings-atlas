@@ -27,12 +27,20 @@ object CardAssets {
                 Json.parseToJsonElement(folder.resolve("cards.json").readText()).jsonArray.map { it.jsonObject }
         }
 
-    // Every set's cards.json joined into one array, as PackageCards joins them.
+    // Every set's cards.json joined into one array, by folder name.
     val cardsJson = JsonArray(cardsByFolder.values.flatten()).toString()
+
+    // The enabled sets' cards.json in atlas.enabledSets order, as PackageCards joins them: a name shared across sets
+    // cites its first variant in this order.
+    val packagedCardsJson =
+        JsonArray(System.getProperty("enabled.sets")!!.split(",").flatMap(cardsByFolder::getValue)).toString()
 
     val translationFiles =
         setFolders.flatMap { folder ->
-            folder.listFiles { file -> file.extension == "json" && file.name != "cards.json" }.orEmpty().sorted()
+            folder
+                .listFiles { file -> file.extension == "json" && file.name !in setOf("cards.json", "set.json") }
+                .orEmpty()
+                .sorted()
         }
 
     // Card id to field name to its texts, of one translation file: one text for `name` and `flavor`, one per effect for

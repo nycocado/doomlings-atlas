@@ -1,5 +1,8 @@
 package dev.nycocado.atlas.card
 
+import dev.nycocado.atlas.compendium.CompendiumFilter
+import dev.nycocado.atlas.compendium.filterCompendium
+import dev.nycocado.atlas.compendium.inSetsOf
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -30,6 +33,21 @@ class CardDataIntegrityTest {
         }
 
     private val effects = cards.filterIsInstance<NamedCard>().flatMap { card -> card.effects.map { card to it } }
+
+    // CardFact.Tagged pairs Curious or Exotic with the card's one coral, fish or shell.
+    @Test
+    fun everyCuriousOrExoticTraitHasOneCoralFishOrShell() {
+        val aquatic = setOf(TraitIcon.Coral, TraitIcon.Fish, TraitIcon.Shell)
+        assertEquals(
+            emptyList(),
+            cards
+                .filterIsInstance<Trait>()
+                .filter {
+                    (TraitIcon.Curious in it.icons || TraitIcon.Exotic in it.icons) &&
+                        it.icons.count(aquatic::contains) != 1
+                }.map { it.id },
+        )
+    }
 
     @Test
     fun everyEffectKindIsAllowedOnItsCardType() {
@@ -176,6 +194,21 @@ class CardDataIntegrityTest {
         assertEquals(1, classic.filterIsInstance<BirthOfLife>().size, "Birth of Life")
     }
 
+    @Test
+    fun filteringToClassicHidesTheExpansionKinds() {
+        assertEquals(
+            listOf(CardKind.Trait, CardKind.Age, CardKind.Catastrophe, CardKind.GenePool),
+            cards.inSetsOf(CompendiumFilter(sets = setOf("classic"))).offeredKinds(),
+        )
+    }
+
+    @Test
+    fun filteringToOverlushShowsItsAgesInAges() {
+        val ages = cards.filterCompendium(CompendiumFilter(CardKind.Age, sets = setOf("overlush")))
+        assertEquals(28, ages.size)
+        assertEquals(setOf("overlush"), ages.map { it.set }.toSet())
+    }
+
     // Counts from the official rulesheet's transcription (assets/doomlings/rules/imaginary-ends.md): per subspecies,
     // "16X TRAITS // 2X DOMINANTS" (Deeplings, Glitterlings, Moonlings) and "9X TRAITS // 1X DOMINANT" (Fuzelings),
     // each with "2X AGES // 1X CATASTROPHE". The dominants come on top of the traits.
@@ -189,7 +222,8 @@ class CardDataIntegrityTest {
         assertEquals(4, ends.filterIsInstance<Catastrophe>().size, "catastrophes")
     }
 
-    // A card type without a face would open as an empty card detail.
+    // An enabled card must open with something to read: its name, and its text on the types that always print one. A
+    // Gene Pool prints neither.
     @Test
     fun everyEnabledCardHasAFace() {
         val sets = System.getProperty("enabled.sets")!!.split(",")
@@ -206,7 +240,16 @@ class CardDataIntegrityTest {
                 .toSet()
         assertEquals(
             emptyList(),
-            cards.filter { it.id in enabled && (it as? NamedCard)?.face() == null }.map { it.id },
+            cards
+                .filter { it.id in enabled }
+                .filterNot { card ->
+                    val face = card.face()
+                    when (card) {
+                        is GenePool -> face.name == null && face.blocks.isEmpty()
+                        is Trait -> !face.name.isNullOrBlank()
+                        else -> !face.name.isNullOrBlank() && face.blocks.isNotEmpty()
+                    }
+                }.map { it.id },
         )
     }
 
@@ -268,5 +311,13 @@ class CardDataIntegrityTest {
             emptyList(),
             cards.filterNot { dir.resolve(it.image).normalize().startsWith(dir.resolve(it.set)) }.map { it.id },
         )
+    }
+
+    @Test
+    fun everySetFolderDescribesItselfInASetJson() {
+        CardAssets.cardsByFolder.keys.forEach { folder ->
+            val set = Json.decodeFromString<CardSet>(dir.resolve(folder).resolve("set.json").readText())
+            assertEquals(folder, set.id)
+        }
     }
 }

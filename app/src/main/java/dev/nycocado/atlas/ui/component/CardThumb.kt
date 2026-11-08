@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.onClick
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -33,7 +34,10 @@ import coil3.compose.AsyncImagePreviewHandler
 import coil3.compose.LocalAsyncImagePreviewHandler
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CARD_RATIO
+import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.GenePool
+import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
@@ -62,7 +66,15 @@ internal fun Modifier.cardSticker(sink: Dp): Modifier {
     return sinkingSticker(sink, Radius.cardSm, theme.surfaceSticker, theme.outline, Shadow.sticker)
 }
 
-// One glyph per entry of colors, null drawing the colorless one; ages and catastrophes pass none. What goes behind the
+// What the app calls a card: a Gene Pool prints no name, so it goes by its type's.
+@Composable
+fun Card.shownName(): String =
+    when (this) {
+        is NamedCard -> name
+        is GenePool -> stringResource(R.string.type_gene_pool)
+    }
+
+// One glyph per entry of colors, null drawing the colorless one; a card that is not a trait passes none. What goes behind the
 // art is drawn by `behind`, given how far the pressed card sinks.
 @Composable
 fun CardThumb(

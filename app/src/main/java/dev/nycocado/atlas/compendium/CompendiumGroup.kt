@@ -70,7 +70,7 @@ internal fun GroupStack(
     modifier: Modifier = Modifier,
 ) {
     val first = cell.variants.first()
-    val colors = first.face()?.colors.orEmpty()
+    val colors = first.face().colors
     CardStack(
         first.image,
         groupTitle(cell.name, cell.variants.size),

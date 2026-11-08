@@ -25,7 +25,15 @@
     <string name="all_traits">Todos os traits</string>
     <string name="all_ages">Todas as ages</string>
     <string name="all_catastrophes">Todas as catastrophes</string>
+    <string name="all_gene_pools">Todos os Gene Pools</string>
+    <string name="all_meanings_of_life">Todos os Meanings of Life</string>
+    <string name="all_treasures">Todos os treasures</string>
+    <string name="all_trinkets">Todos os trinkets</string>
+    <string name="all_merchants">Todos os merchants</string>
     <string name="color_hint">toque numa cor para filtrar</string>
+    <string name="sets_filter">Coleções</string>
+    <string name="sets_filter_chosen">Coleções: %1$d</string>
+    <string name="close_sets">Fechar coleções</string>
 
     <plurals name="card_group_collapsed">
         <item quantity="one">%1$s, %2$d variante, recolhido</item>
@@ -89,5 +97,11 @@
     <string name="icon_exotic">Exótico</string>
     <string name="icon_fish">Peixe</string>
     <string name="icon_shell">Concha</string>
+    <string name="tag_curious_coral"><![CDATA[Coral <b>Curioso</b>]]></string>
+    <string name="tag_curious_fish"><![CDATA[Peixe <b>Curioso</b>]]></string>
+    <string name="tag_curious_shell"><![CDATA[Concha <b>Curiosa</b>]]></string>
+    <string name="tag_exotic_coral"><![CDATA[Coral <b>Exótico</b>]]></string>
+    <string name="tag_exotic_fish"><![CDATA[Peixe <b>Exótico</b>]]></string>
+    <string name="tag_exotic_shell"><![CDATA[Concha <b>Exótica</b>]]></string>
     <string name="icon_compass">Bússola</string>
 </resources>

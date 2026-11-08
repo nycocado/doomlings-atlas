@@ -10,21 +10,32 @@ import dev.nycocado.atlas.about.AboutPreview
 import dev.nycocado.atlas.about.AboutUpdatePreview
 import dev.nycocado.atlas.about.NoticePreview
 import dev.nycocado.atlas.carddetail.ActionNoteTokenDetailPreview
+import dev.nycocado.atlas.carddetail.BirthOfLifeDetailPreview
 import dev.nycocado.atlas.carddetail.CardDetailLongNamePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.CitedCardDetailPreview
 import dev.nycocado.atlas.carddetail.DecorInkBlocksPreview
+import dev.nycocado.atlas.carddetail.DualColorDetailPreview
+import dev.nycocado.atlas.carddetail.FourColorDetailPreview
+import dev.nycocado.atlas.carddetail.GenePoolDetailPreview
 import dev.nycocado.atlas.carddetail.InkBlocksPreview
 import dev.nycocado.atlas.carddetail.InkBlocksSample
+import dev.nycocado.atlas.carddetail.InlineTokensPreview
 import dev.nycocado.atlas.carddetail.LanguageSelectorPreview
+import dev.nycocado.atlas.carddetail.MeaningOfLifeDetailPreview
+import dev.nycocado.atlas.carddetail.MerchantDetailPreview
 import dev.nycocado.atlas.carddetail.PillsPreview
+import dev.nycocado.atlas.carddetail.SetPillPreview
+import dev.nycocado.atlas.carddetail.SubspeciesTokenDetailPreview
+import dev.nycocado.atlas.carddetail.TraitIconPillsPreview
 import dev.nycocado.atlas.carddetail.TraitWorldsEndDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitSample
+import dev.nycocado.atlas.carddetail.TreasureDetailPreview
 import dev.nycocado.atlas.carddetail.TrinketBlocksPreview
-import dev.nycocado.atlas.carddetail.UndrawnTokenDetailPreview
+import dev.nycocado.atlas.carddetail.TrinketDetailPreview
 import dev.nycocado.atlas.cardpane.CardBesideListPreview
 import dev.nycocado.atlas.compendium.CardGroupCollapsedPreview
 import dev.nycocado.atlas.compendium.CardGroupOpenPreview
@@ -38,12 +49,16 @@ import dev.nycocado.atlas.compendium.CompendiumUpdatePreview
 import dev.nycocado.atlas.compendium.FiltersAgesPreview
 import dev.nycocado.atlas.compendium.FiltersGreenPreview
 import dev.nycocado.atlas.compendium.FiltersPreview
+import dev.nycocado.atlas.compendium.FiltersSetsChosenPreview
 import dev.nycocado.atlas.compendium.HeaderHalfCollapsedPreview
 import dev.nycocado.atlas.compendium.HeaderPreview
 import dev.nycocado.atlas.compendium.HeaderRailPreview
+import dev.nycocado.atlas.compendium.KindSegmentsClassicPreview
 import dev.nycocado.atlas.compendium.KindSegmentsPreview
 import dev.nycocado.atlas.compendium.SearchFieldPreview
 import dev.nycocado.atlas.compendium.SearchFieldTypedPreview
+import dev.nycocado.atlas.compendium.SetsChipPreview
+import dev.nycocado.atlas.compendium.SetsListPreview
 import dev.nycocado.atlas.ui.component.CardStackPreview
 import dev.nycocado.atlas.ui.component.CardThumbPreview
 import dev.nycocado.atlas.ui.component.DockPreview
@@ -151,7 +166,37 @@ fun TraitWorldsEndDetailScreenshot() = TraitWorldsEndDetailPreview()
 @PreviewTest
 @PreviewLightDark
 @Composable
-fun UndrawnTokenDetailScreenshot() = UndrawnTokenDetailPreview()
+fun SubspeciesTokenDetailScreenshot() = SubspeciesTokenDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun TraitIconPillsScreenshot() = TraitIconPillsPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun TraitIconPillsFontScale200Screenshot() = TraitIconPillsPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun DualColorDetailScreenshot() = DualColorDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun DualColorDetailFontScale200Screenshot() = DualColorDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun FourColorDetailScreenshot() = FourColorDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun InlineTokensScreenshot() = InlineTokensPreview()
 
 @PreviewTest
 @Preview(name = "Light", locale = "pt")
@@ -428,6 +473,46 @@ fun SearchFieldTypedScreenshot() = SearchFieldTypedPreview()
 @PreviewTest
 @PreviewLightDark
 @Composable
+fun SetPillScreenshot() = SetPillPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun SetPillFontScale200Screenshot() = SetPillPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun SetsListScreenshot() = SetsListPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun SetsListFontScale200Screenshot() = SetsListPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun SetsChipScreenshot() = SetsChipPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun SetsChipFontScale200Screenshot() = SetsChipPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun FiltersSetsChosenScreenshot() = FiltersSetsChosenPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun FiltersSetsChosenFontScale200Screenshot() = FiltersSetsChosenPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
 fun FiltersScreenshot() = FiltersPreview()
 
 @PreviewTest
@@ -449,3 +534,73 @@ fun ColorDiscScreenshot() = ColorDiscPreview()
 @PreviewLightDark
 @Composable
 fun KindSegmentsScreenshot() = KindSegmentsPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun KindSegmentsFontScale200Screenshot() = KindSegmentsPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun KindSegmentsClassicScreenshot() = KindSegmentsClassicPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun BirthOfLifeDetailScreenshot() = BirthOfLifeDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun BirthOfLifeDetailFontScale200Screenshot() = BirthOfLifeDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun GenePoolDetailScreenshot() = GenePoolDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun GenePoolDetailFontScale200Screenshot() = GenePoolDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun MeaningOfLifeDetailScreenshot() = MeaningOfLifeDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun MeaningOfLifeDetailFontScale200Screenshot() = MeaningOfLifeDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun TreasureDetailScreenshot() = TreasureDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun TreasureDetailFontScale200Screenshot() = TreasureDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun TrinketDetailScreenshot() = TrinketDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun TrinketDetailFontScale200Screenshot() = TrinketDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun MerchantDetailScreenshot() = MerchantDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun MerchantDetailFontScale200Screenshot() = MerchantDetailPreview()

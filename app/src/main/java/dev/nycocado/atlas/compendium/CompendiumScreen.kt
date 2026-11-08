@@ -55,8 +55,10 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.nycocado.atlas.R
+import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
-import dev.nycocado.atlas.card.NamedCard
+import dev.nycocado.atlas.card.CardKind
+import dev.nycocado.atlas.card.CardSet
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.carddetail.LongNameTrait
@@ -66,6 +68,7 @@ import dev.nycocado.atlas.ui.component.CardThumb
 import dev.nycocado.atlas.ui.component.Dock
 import dev.nycocado.atlas.ui.component.colorName
 import dev.nycocado.atlas.ui.component.pointsText
+import dev.nycocado.atlas.ui.component.shownName
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.MaxWidth
@@ -96,6 +99,8 @@ fun CompendiumScreen(
 ) {
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val cells by viewModel.cells.collectAsStateWithLifecycle()
+    val kinds by viewModel.kinds.collectAsStateWithLifecycle()
+    val library by viewModel.library.collectAsStateWithLifecycle()
     CompendiumContent(
         filter,
         cells,
@@ -107,6 +112,8 @@ fun CompendiumScreen(
         update = update,
         onInstallUpdate = onInstallUpdate,
         onDismissUpdate = onDismissUpdate,
+        kinds = kinds,
+        sets = library.setsToChoose,
     )
 }
 
@@ -123,6 +130,8 @@ fun CompendiumContent(
     update: AppUpdate? = null,
     onInstallUpdate: () -> Unit = {},
     onDismissUpdate: () -> Unit = {},
+    kinds: List<CardKind> = CardKind.entries,
+    sets: List<CardSet> = emptyList(),
 ) {
     val theme = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
@@ -217,7 +226,7 @@ fun CompendiumContent(
                         horizontalArrangement = Arrangement.spacedBy(CellGapAcross),
                         verticalArrangement = Arrangement.spacedBy(CellGapDown),
                     ) {
-                        fullWidth("filters") { Filters(filter, onFilterChange) }
+                        fullWidth("filters") { Filters(filter, kinds, sets, onFilterChange) }
                         if (cells?.isEmpty() == true) {
                             fullWidth("empty") {
                                 BasicText(
@@ -343,23 +352,24 @@ private fun LazyGridScope.fullWidth(
 
 @Composable
 private fun CompendiumCard(
-    card: NamedCard,
+    card: Card,
     tilt: Float,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     variant: GridCell.Variant? = null,
 ) {
-    val face = card.face() ?: return
+    val face = card.face()
+    val name = card.shownName()
     val description =
         buildList {
-            add(card.name)
+            add(name)
             face.colors.forEach { add(stringResource(colorName(it))) }
             face.faceValue?.let { add(LocalResources.current.pointsText(it)) }
         }.joinToString(", ").let { described ->
             variant?.let { stringResource(R.string.card_variant_position, described, it.position, it.count) }
                 ?: described
         }
-    CardThumb(card.image, card.name, face.colors, description, tilt, onClick, modifier.padding(CardMargin))
+    CardThumb(card.image, name, face.colors, description, tilt, onClick, modifier.padding(CardMargin))
 }
 
 @PreviewLightDark

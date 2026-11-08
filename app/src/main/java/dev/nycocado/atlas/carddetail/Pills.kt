@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
@@ -17,6 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
@@ -25,6 +29,8 @@ import dev.nycocado.atlas.card.CardFace
 import dev.nycocado.atlas.card.CardFact
 import dev.nycocado.atlas.card.CardKind
 import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.TagQualifier
+import dev.nycocado.atlas.card.TagSubject
 import dev.nycocado.atlas.card.TraitIcon
 import dev.nycocado.atlas.ui.component.TraitGlyph
 import dev.nycocado.atlas.ui.component.colorName
@@ -39,8 +45,8 @@ import dev.nycocado.atlas.ui.theme.trait
 internal fun Pills(
     face: CardFace,
     language: CardLanguage,
+    setName: String? = null,
 ) {
-    val color = face.colors.firstOrNull()
     val theme = AtlasTheme.colors
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(Space.s2),
@@ -59,6 +65,8 @@ internal fun Pills(
 
                 is CardFact.Kind -> {
                     Pill(stringResource(fact.kind.label), theme.surfaceSticker, theme.onSurface)
+                    // The set's name is never translated.
+                    setName?.let { Pill(it, theme.surfaceSticker, theme.onSurface, language = CardLanguage.English) }
                 }
 
                 CardFact.Dominant -> {
@@ -72,6 +80,23 @@ internal fun Pills(
                     }
                 }
 
+                is CardFact.Tagged -> {
+                    val ink =
+                        when (fact.qualifier) {
+                            TagQualifier.Curious -> theme.tagCurious
+                            TagQualifier.Exotic -> theme.tagExotic
+                        }
+                    Pill(qualifiedLabel(cardString(fact.label, language), ink, language), theme.tag, theme.onTag) {
+                        Symbol(fact.glyph, Modifier.height(18.dp))
+                    }
+                }
+
+                is CardFact.Icon if fact.icon == TraitIcon.Dragon -> {
+                    Pill(tagged(cardString(fact.icon.label, language), language), theme.tag, theme.onTag) {
+                        Symbol(R.drawable.ic_symbol_glyph_dragon, Modifier.height(18.dp))
+                    }
+                }
+
                 is CardFact.Icon -> {
                     Pill(
                         cardString(fact.icon.label, language),
@@ -79,8 +104,14 @@ internal fun Pills(
                         theme.onSurface,
                         language = language,
                         glyph =
-                            fact.icon.symbol?.let {
-                                { Symbol(it, Modifier.height(18.dp), actionColor = theme.trait(color).fill) }
+                            fact.icon.symbol()?.let {
+                                {
+                                    Symbol(
+                                        it,
+                                        Modifier.height(18.dp),
+                                        actionColors = theme.actionColors(face.colors),
+                                    )
+                                }
                             },
                     )
                 }
@@ -100,6 +131,11 @@ private val CardKind.label: Int
             CardKind.Trait -> R.string.type_trait
             CardKind.Age -> R.string.type_age
             CardKind.Catastrophe -> R.string.type_catastrophe
+            CardKind.GenePool -> R.string.type_gene_pool
+            CardKind.MeaningOfLife -> R.string.type_meaning_of_life
+            CardKind.Treasure -> R.string.type_treasure
+            CardKind.Trinket -> R.string.type_trinket
+            CardKind.Merchant -> R.string.type_merchant
         }
 
 @Composable
@@ -108,6 +144,14 @@ private fun Pill(
     fill: Color,
     content: Color,
     language: CardLanguage? = null,
+    glyph: @Composable (() -> Unit)? = null,
+) = Pill(language?.let { tagged(text, it) } ?: AnnotatedString(text), fill, content, glyph)
+
+@Composable
+private fun Pill(
+    text: AnnotatedString,
+    fill: Color,
+    content: Color,
     glyph: @Composable (() -> Unit)? = null,
 ) {
     Row(
@@ -120,7 +164,7 @@ private fun Pill(
     ) {
         glyph?.invoke()
         BasicText(
-            language?.let { tagged(text, it) } ?: AnnotatedString(text),
+            text,
             style = AtlasTypography.labelLg.copy(color = content),
         )
     }
@@ -144,16 +188,95 @@ private val TraitIcon.label: Int
             TraitIcon.WorldsEnd -> R.string.worlds_end
         }
 
-// Only the symbols the enabled sets use are converted; the rest have none yet.
-private val TraitIcon.symbol: Int?
+// Curious and Exotic never show alone: CardFact.Tagged carries them, and the card data test keeps them paired. The
+// Dragon has its own pill in Pills.
+@DrawableRes
+private fun TraitIcon.symbol(): Int? =
+    when (this) {
+        TraitIcon.Action -> R.drawable.ic_symbol_action
+        TraitIcon.Attachment -> R.drawable.ic_symbol_attachment
+        TraitIcon.Coral -> R.drawable.ic_symbol_coral
+        TraitIcon.Curious -> null
+        TraitIcon.Dragon -> null
+        TraitIcon.DropOfLife -> R.drawable.ic_symbol_drop_of_life
+        TraitIcon.Exotic -> null
+        TraitIcon.Fish -> R.drawable.ic_symbol_fish
+        TraitIcon.PlayWhen -> R.drawable.ic_symbol_play_when
+        TraitIcon.Shell -> R.drawable.ic_symbol_shell
+        TraitIcon.Spell -> R.drawable.ic_symbol_spell
+        TraitIcon.Suppress -> R.drawable.ic_symbol_suppress
+        TraitIcon.WorldsEnd -> R.drawable.ic_symbol_worlds_end
+    }
+
+// Only the fish is printed differently on the Exotic tag; the coral and the shell are the same on both.
+private val CardFact.Tagged.glyph: Int
     @DrawableRes get() =
-        when (this) {
-            TraitIcon.Action -> R.drawable.ic_symbol_action
-            TraitIcon.DropOfLife -> R.drawable.ic_symbol_drop_of_life
-            TraitIcon.PlayWhen -> R.drawable.ic_symbol_play_when
-            TraitIcon.WorldsEnd -> R.drawable.ic_symbol_worlds_end
-            else -> null
+        when (subject) {
+            TagSubject.Coral -> {
+                R.drawable.ic_symbol_glyph_coral
+            }
+
+            TagSubject.Fish -> {
+                if (qualifier ==
+                    TagQualifier.Exotic
+                ) {
+                    R.drawable.ic_symbol_glyph_exotic_fish
+                } else {
+                    R.drawable.ic_symbol_glyph_fish
+                }
+            }
+
+            TagSubject.Shell -> {
+                R.drawable.ic_symbol_glyph_shell
+            }
         }
+
+private val CardFact.Tagged.label: Int
+    @StringRes get() =
+        when (qualifier) {
+            TagQualifier.Curious -> {
+                when (subject) {
+                    TagSubject.Coral -> R.string.tag_curious_coral
+                    TagSubject.Fish -> R.string.tag_curious_fish
+                    TagSubject.Shell -> R.string.tag_curious_shell
+                }
+            }
+
+            TagQualifier.Exotic -> {
+                when (subject) {
+                    TagSubject.Coral -> R.string.tag_exotic_coral
+                    TagSubject.Fish -> R.string.tag_exotic_fish
+                    TagSubject.Shell -> R.string.tag_exotic_shell
+                }
+            }
+        }
+
+// The label's <b> marks the qualifier, wherever the language puts it, and it shows in the given color. HTML rather than
+// string annotations, which the preview renderer's resources drop.
+private fun qualifiedLabel(
+    html: String,
+    color: Color,
+    language: CardLanguage,
+): AnnotatedString {
+    val marked = AnnotatedString.fromHtml(html)
+    return buildAnnotatedString {
+        append(tagged(marked.text, language))
+        marked.spanStyles.forEach { addStyle(SpanStyle(color = color), it.start, it.end) }
+    }
+}
+
+@PreviewLightDark
+@Composable
+internal fun SetPillPreview() =
+    AtlasTheme {
+        Row(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) {
+            Pills(
+                CardFace("Pills", listOf(CardFact.Kind(CardKind.Trait)), null, emptyList(), emptyList()),
+                CardLanguage.English,
+                setName = "Legends of Enderas",
+            )
+        }
+    }
 
 @PreviewLightDark
 @Composable
@@ -177,5 +300,19 @@ internal fun PillsPreview() =
                 ),
                 CardLanguage.English,
             )
+        }
+    }
+
+@PreviewLightDark
+@Composable
+internal fun TraitIconPillsPreview() =
+    AtlasTheme {
+        Column(
+            Modifier.background(AtlasTheme.colors.surface).padding(Space.s4),
+            verticalArrangement = Arrangement.spacedBy(Space.s3),
+        ) {
+            val icons = (TraitIcon.entries - TraitIcon.Curious - TraitIcon.Exotic).map(CardFact::Icon)
+            val tags = TagQualifier.entries.flatMap { q -> TagSubject.entries.map { CardFact.Tagged(q, it) } }
+            Pills(CardFace("Pills", icons + tags, null, emptyList(), emptyList()), CardLanguage.English)
         }
     }

@@ -4,11 +4,14 @@ import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardAssets
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardLibrary
+import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.decodeCards
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
 import kotlin.test.assertTrue
+
+private val Card.name: String get() = (this as NamedCard).name
 
 // Grouping on the real card data of assets/doomlings: Classic has 6 Kidneys and 5 Swarms (all red and all green), and
 // the other sets repeat both names.

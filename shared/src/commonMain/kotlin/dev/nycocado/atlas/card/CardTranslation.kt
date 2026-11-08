@@ -36,9 +36,9 @@ class CardTranslations(
 
     // The printed text when the card has no translation in that language.
     fun face(
-        card: NamedCard,
+        card: Card,
         language: CardLanguage,
-    ): CardFace? = translatedFace(card, language) ?: card.face()
+    ): CardFace = (card as? NamedCard)?.let { translatedFace(it, language) } ?: card.face()
 
     // null when the card has no translation in that language, without the printed fallback.
     fun translatedFace(

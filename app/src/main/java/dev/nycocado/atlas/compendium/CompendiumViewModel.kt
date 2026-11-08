@@ -10,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.nycocado.atlas.APP_PREFS
 import dev.nycocado.atlas.CARD_LANGUAGE
+import dev.nycocado.atlas.card.CardKind
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardRepository
@@ -48,6 +49,13 @@ class CompendiumViewModel
 
         val filter: StateFlow<CompendiumFilter> = mutableFilter.asStateFlow()
 
+        // Traits until the cards load: every set has them, so the row keeps its height.
+        val kinds: StateFlow<List<CardKind>> =
+            combine(mutableLibrary, mutableFilter) { library, filter ->
+                library.offeredKinds(filter)
+                    ?: listOf(CardKind.Trait)
+            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), listOf(CardKind.Trait))
+
         // The names of the card groups that are open, saved with the filter; a fresh start has them all collapsed.
         private var savedOpenGroups by savedState.saved { emptySet<String>() }
         private val mutableOpenGroups = MutableStateFlow(savedOpenGroups)
@@ -81,7 +89,10 @@ class CompendiumViewModel
                 ?: CardLanguage.English
 
         init {
-            viewModelScope.launch { mutableLibrary.value = repository.library() }
+            viewModelScope.launch {
+                mutableLibrary.value = repository.library()
+                updateFilter { it }
+            }
             viewModelScope.launch { mutableTranslations.value = repository.translations() }
         }
 
@@ -103,7 +114,8 @@ class CompendiumViewModel
 
         // Atomic, so a change made from a stale composed filter can't overwrite another one.
         fun updateFilter(transform: (CompendiumFilter) -> CompendiumFilter) {
-            savedFilter = mutableFilter.updateAndGet(transform)
+            savedFilter =
+                mutableFilter.updateAndGet { old -> mutableLibrary.value.withAnOfferedKind(transform(old)) }
         }
     }
 

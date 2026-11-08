@@ -1,7 +1,12 @@
 package dev.nycocado.atlas.ui.theme
 
 import androidx.compose.runtime.Immutable
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.toArgb
+import androidx.core.graphics.ColorUtils
 import dev.nycocado.atlas.card.CardColor
 
 // The tokens in ui/theme mirror design/tokens.json, where their usage is described. Keep them in sync.
@@ -10,6 +15,10 @@ data class AtlasColors(
     val surface: Color,
     val surfaceSunk: Color,
     val surfaceSticker: Color,
+    val tag: Color,
+    val onTag: Color,
+    val tagCurious: Color,
+    val tagExotic: Color,
     val surfaceStickerHigh: Color,
     val inverseSurface: Color,
     val onSurface: Color,
@@ -62,6 +71,10 @@ internal val DayColors =
         surface = Color(0xFFFFF4E8),
         surfaceSunk = Color(0xFFFBE9D6),
         surfaceSticker = Color(0xFFFFFFFF),
+        tag = Color(0xFF23173B),
+        onTag = Color(0xFFFFF4E8),
+        tagCurious = Color(0xFF7FD4D0),
+        tagExotic = Color(0xFFF08A3C),
         surfaceStickerHigh = Color(0xFFFFFFFF),
         inverseSurface = Color(0xFF23173B),
         onSurface = Color(0xFF23173B),
@@ -86,6 +99,10 @@ internal val GameNightColors =
         surface = Color(0xFF1B1230),
         surfaceSunk = Color(0xFF23173B),
         surfaceSticker = Color(0xFF2C1F48),
+        tag = Color(0xFF23173B),
+        onTag = Color(0xFFFFF4E8),
+        tagCurious = Color(0xFF7FD4D0),
+        tagExotic = Color(0xFFF08A3C),
         surfaceStickerHigh = Color(0xFF382A57),
         inverseSurface = Color(0xFF2C1F48),
         onSurface = Color(0xFFFFF4E8),
@@ -104,3 +121,28 @@ internal val GameNightColors =
         traitRed = TraitColors(Color(0xFFEB4244), Color(0xFF140C24), Color(0xFFFFAAA6), Color(0xFF4A1517)),
         traitColorless = TraitColors(Color(0xFFAFAFAF), Color(0xFF23173B), Color(0xFFC9CCD2), Color(0xFF2C3038)),
     )
+
+// How a card's colors are painted: one color flat, several blended top-left to bottom-right in data order. end is the
+// painted area's bottom-right corner.
+internal fun traitPaint(
+    colors: List<Color>,
+    end: Offset,
+): Brush = colors.singleOrNull()?.let(::SolidColor) ?: Brush.linearGradient(colors, Offset.Zero, end)
+
+// What is drawn over traitPaint. Over several colors, the trait on-color that keeps the most contrast over the whole
+// blend, as no single color's own on-color holds across it.
+internal fun AtlasColors.inkOver(colors: List<CardColor?>): Color {
+    colors.singleOrNull()?.let { return trait(it).onFill }
+    if (colors.size == 1) return traitColorless.onFill
+    // blendARGB mixes in sRGB, as the gradient's shader does; Compose's lerp blends in Oklab, which would give other colors.
+    val blend =
+        colors.map { trait(it).fill.toArgb() }.zipWithNext().flatMap { (a, b) ->
+            (0..BLEND_SAMPLES).map { ColorUtils.blendARGB(a, b, it / BLEND_SAMPLES.toFloat()) }
+        }
+    return listOf(traitBlue, traitGreen, traitPurple, traitRed)
+        .map { it.onFill }
+        .distinct()
+        .maxBy { ink -> blend.minOf { ColorUtils.calculateContrast(ink.toArgb(), it) } }
+}
+
+private const val BLEND_SAMPLES = 20

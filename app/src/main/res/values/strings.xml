@@ -27,10 +27,23 @@
     <string name="kind_traits" translatable="false">Traits</string>
     <string name="kind_ages" translatable="false">Ages</string>
     <string name="kind_catastrophes" translatable="false">Catastrophes</string>
+    <string name="kind_gene_pools" translatable="false">Gene Pools</string>
+    <string name="kind_meanings_of_life" translatable="false">Meanings of Life</string>
+    <string name="kind_treasures" translatable="false">Treasures</string>
+    <string name="kind_trinkets" translatable="false">Trinkets</string>
+    <string name="kind_merchants" translatable="false">Merchants</string>
     <string name="all_traits">All traits</string>
     <string name="all_ages">All ages</string>
     <string name="all_catastrophes">All catastrophes</string>
+    <string name="all_gene_pools">All Gene Pools</string>
+    <string name="all_meanings_of_life">All Meanings of Life</string>
+    <string name="all_treasures">All treasures</string>
+    <string name="all_trinkets">All trinkets</string>
+    <string name="all_merchants">All merchants</string>
     <string name="color_hint">tap a color to filter</string>
+    <string name="sets_filter">Sets</string>
+    <string name="sets_filter_chosen">Sets: %1$d</string>
+    <string name="close_sets">Close sets</string>
 
     <plurals name="card_group_collapsed">
         <item quantity="one">%1$s, %2$d variant, collapsed</item>
@@ -61,6 +74,11 @@
     <string name="type_trait" translatable="false">Trait</string>
     <string name="type_age" translatable="false">Age</string>
     <string name="type_catastrophe" translatable="false">Catastrophe</string>
+    <string name="type_gene_pool" translatable="false">Gene Pool</string>
+    <string name="type_meaning_of_life" translatable="false">Meaning of Life</string>
+    <string name="type_treasure" translatable="false">Treasure</string>
+    <string name="type_trinket" translatable="false">Trinket</string>
+    <string name="type_merchant" translatable="false">Merchant</string>
     <string name="worlds_end">World\'s End</string>
     <string name="gene_pool_line" translatable="false">%1$s Gene Pool</string>
     <string name="effect_awesome_power">Awesome Power</string>
@@ -88,6 +106,12 @@
     <string name="icon_exotic">Exotic</string>
     <string name="icon_fish">Fish</string>
     <string name="icon_shell">Shell</string>
+    <string name="tag_curious_coral"><![CDATA[<b>Curious</b> Coral]]></string>
+    <string name="tag_curious_fish"><![CDATA[<b>Curious</b> Fish]]></string>
+    <string name="tag_curious_shell"><![CDATA[<b>Curious</b> Shell]]></string>
+    <string name="tag_exotic_coral"><![CDATA[<b>Exotic</b> Coral]]></string>
+    <string name="tag_exotic_fish"><![CDATA[<b>Exotic</b> Fish]]></string>
+    <string name="tag_exotic_shell"><![CDATA[<b>Exotic</b> Shell]]></string>
     <string name="icon_compass">Compass</string>
 
     <string name="dock_cards">Cards</string>

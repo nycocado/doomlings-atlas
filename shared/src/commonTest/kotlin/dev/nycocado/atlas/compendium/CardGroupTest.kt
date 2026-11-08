@@ -1,5 +1,6 @@
 package dev.nycocado.atlas.compendium
 
+import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardColor.Blue
 import dev.nycocado.atlas.card.CardColor.Green
@@ -10,6 +11,8 @@ import dev.nycocado.atlas.card.Trait
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertIs
+
+private val Card.name: String get() = (this as NamedCard).name
 
 // Counts from the Classic card list: 6 Kidneys and 5 Swarms.
 class CardGroupTest {

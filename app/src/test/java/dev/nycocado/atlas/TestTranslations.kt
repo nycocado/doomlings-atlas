@@ -7,10 +7,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardRepository
 import dev.nycocado.atlas.card.CardRepositoryModule
 import dev.nycocado.atlas.card.CardText
 import dev.nycocado.atlas.card.CardTranslations
+import org.json.JSONArray
 import javax.inject.Singleton
 
 // Made-up Portuguese for a few Classic cards (ids from assets/doomlings/classic/cards.json), so UI tests don't depend
@@ -38,6 +40,20 @@ val testPortuguese =
 // Made-up Spanish, for the card language a Spanish device starts in.
 val testSpanish = mapOf("classic/traits/altruistic" to CardText("Altruista", listOf("Zumbido del tamaño de la Pool.")))
 
+const val TEST_BASE_SET = "Test Base"
+const val TEST_EXPANSION_SET = "Test Expansion"
+
+private val testSets =
+    """[{"id": "classic", "name": "$TEST_BASE_SET", "year": null},
+        {"id": "test-expansion", "name": "$TEST_EXPANSION_SET", "year": 2023}]"""
+
+private fun classicWithAdorableInTheExpansion(cards: String): String {
+    val all = JSONArray(cards)
+    val classic = (0 until all.length()).map(all::getJSONObject).filter { it.getString("set") == "classic" }
+    classic.first { it.getString("id") == "classic/traits/adorable" }.put("set", "test-expansion")
+    return JSONArray(classic).toString()
+}
+
 @Module
 @TestInstallIn(components = [SingletonComponent::class], replaces = [CardRepositoryModule::class])
 object TestCardRepositoryModule {
@@ -47,6 +63,11 @@ object TestCardRepositoryModule {
         @ApplicationContext context: Context,
     ): CardRepository =
         object : CardRepository(context) {
+            // Classic only, so the UI tests' card names and group sizes don't move when a set is added, and the set
+            // filter runs on made-up sets: Adorable alone in "Test Expansion", every other card in "Test Base".
+            override suspend fun library() =
+                CardLibrary.decode(classicWithAdorableInTheExpansion(packaged("cards.json")), testSets)
+
             override suspend fun translations() =
                 CardTranslations(
                     mapOf(CardLanguage.Portuguese to testPortuguese, CardLanguage.Spanish to testSpanish),

@@ -47,7 +47,7 @@ class GridCellsTest {
 
     private fun GridCell.describe() =
         when (this) {
-            is GridCell.Single -> "card ${card.name} @$index"
+            is GridCell.Single -> "card ${(card as NamedCard).name} @$index"
             is GridCell.Stack -> "stack $name x${variants.size} @$index"
             is GridCell.Collapse -> "collapse $name x$count"
             is GridCell.Variant -> "variant ${card.id} $position/$count"
