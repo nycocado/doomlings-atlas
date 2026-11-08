@@ -144,7 +144,7 @@ internal fun Filters(
 private val minLabelSize: TextUnit
     @Composable get() = with(LocalDensity.current) { 10.dp.toSp() }
 
-// One color at a time for now: Classic has no two-color traits.
+// One color at a time for now.
 @Composable
 private fun ColorDisc(
     color: CardColor?,

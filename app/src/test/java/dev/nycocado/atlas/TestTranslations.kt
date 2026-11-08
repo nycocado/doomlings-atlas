@@ -47,14 +47,12 @@ private val testSets =
     """[{"id": "classic", "name": "$TEST_BASE_SET", "year": null},
         {"id": "test-expansion", "name": "$TEST_EXPANSION_SET", "year": 2023}]"""
 
-private fun withAdorableInTheExpansion(cards: String) =
-    JSONArray(cards)
-        .apply {
-            (0 until length())
-                .map(::getJSONObject)
-                .first { it.getString("id") == "classic/traits/adorable" }
-                .put("set", "test-expansion")
-        }.toString()
+private fun classicWithAdorableInTheExpansion(cards: String): String {
+    val all = JSONArray(cards)
+    val classic = (0 until all.length()).map(all::getJSONObject).filter { it.getString("set") == "classic" }
+    classic.first { it.getString("id") == "classic/traits/adorable" }.put("set", "test-expansion")
+    return JSONArray(classic).toString()
+}
 
 @Module
 @TestInstallIn(components = [SingletonComponent::class], replaces = [CardRepositoryModule::class])
@@ -65,10 +63,10 @@ object TestCardRepositoryModule {
         @ApplicationContext context: Context,
     ): CardRepository =
         object : CardRepository(context) {
-            // Only Classic is enabled, one set can't narrow the list, so the set filter runs on made-up sets: Adorable
-            // alone in "Test Expansion", every other card in "Test Base".
+            // Classic only, so the UI tests' card names and group sizes don't move when a set is added, and the set
+            // filter runs on made-up sets: Adorable alone in "Test Expansion", every other card in "Test Base".
             override suspend fun library() =
-                CardLibrary.decode(withAdorableInTheExpansion(packaged("cards.json")), testSets)
+                CardLibrary.decode(classicWithAdorableInTheExpansion(packaged("cards.json")), testSets)
 
             override suspend fun translations() =
                 CardTranslations(

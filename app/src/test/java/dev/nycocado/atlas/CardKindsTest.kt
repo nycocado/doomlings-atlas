@@ -32,7 +32,7 @@ import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import javax.inject.Inject
 
-// Only Classic is enabled: it has Gene Pools and The Birth of Life, and none of the expansions' kinds.
+// TestCardRepositoryModule keeps only Classic: it has Gene Pools and The Birth of Life, and none of the expansions' kinds.
 @HiltAndroidTest
 class CardKindsTest : AtlasBehaviorTest() {
     @Inject

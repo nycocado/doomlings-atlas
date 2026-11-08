@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 // Every citation found in the real card data of every set, written out so a pull request shows what it opens. Cited
 // as the card detail cites, in each run of words of the card face: a name across an ink mark's edge is not found.
 class CitationDataTest {
-    private val library = CardLibrary.decode(CardAssets.cardsJson)
+    private val library = CardLibrary.decode(CardAssets.packagedCardsJson)
 
     @Test
     fun citationsOfTheCardTextsAreTheReviewedOnes() {
@@ -34,8 +34,8 @@ class CitationDataTest {
             "classic/ages/age-of-dracula.effects[1]: Vampirism -> classic/traits/vampirism",
             "classic/ages/birth-of-a-hero.effects[0]: Heroic -> classic/traits/heroic",
             "classic/traits/denial.effects[0]: The Four Horsemen -> classic/catastrophes/the-four-horsemen",
+            "overlush/ages/the-legend-of-mokoko-village.effects[0]: Heroic -> classic/traits/heroic",
             "legends-of-enderas/ages/thousand-year-slumber.effects[0]: Slumbering -> legends-of-enderas/traits/slumbering",
             "mokoko-village/traits/swarm-of-kidneys.effects[0]: Kidney -> classic/traits/kidney",
-            "overlush/ages/the-legend-of-mokoko-village.effects[0]: Heroic -> classic/traits/heroic",
         )
 }
