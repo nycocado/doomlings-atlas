@@ -80,7 +80,7 @@ class CitedInkTest : AtlasBehaviorTest() {
                             inkedCitation.face()!!.blocks.single(),
                             CardLanguage.English,
                             inkedCitation,
-                            null,
+                            inkedCitation.colors,
                             library,
                         )
                     }
@@ -113,7 +113,7 @@ class CitedInkTest : AtlasBehaviorTest() {
                         inkedCitation.face()!!.blocks.single(),
                         CardLanguage.English,
                         inkedCitation,
-                        null,
+                        inkedCitation.colors,
                         library,
                     )
                 }

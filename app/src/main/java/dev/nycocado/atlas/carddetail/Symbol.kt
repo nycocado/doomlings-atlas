@@ -5,26 +5,30 @@ import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.VectorPath
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.vectorResource
 import dev.nycocado.atlas.R
+import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.ui.theme.AtlasColors
+import dev.nycocado.atlas.ui.theme.trait
+import dev.nycocado.atlas.ui.theme.traitPaint
 
 // A card symbol. Decorative: the text beside it, or the inline text it stands in for, names it.
 @Composable
 internal fun Symbol(
     @DrawableRes id: Int,
     modifier: Modifier = Modifier,
-    actionColor: Color = Color.Unspecified,
+    actionColors: List<Color> = emptyList(),
 ) {
     val vector = ImageVector.vectorResource(id)
-    // The action symbol is printed in the card's color; its drawable names those paths card_color.
+    // The action symbol is printed in the card's colors; its drawable names those paths card_color.
     val painter =
         if (id == R.drawable.ic_symbol_action) {
-            rememberVectorPainter(remember(vector, actionColor) { vector.withCardColor(actionColor) })
+            rememberVectorPainter(remember(vector, actionColors) { vector.withCardColors(actionColors) })
         } else {
             rememberVectorPainter(vector)
         }
@@ -33,7 +37,7 @@ internal fun Symbol(
 
 // ImageVector has no way to change a path's fill, so the paths are copied with the card_color ones refilled. Converted
 // symbols are flat lists of paths, without groups.
-private fun ImageVector.withCardColor(color: Color): ImageVector =
+private fun ImageVector.withCardColors(colors: List<Color>): ImageVector =
     ImageVector
         .Builder(name, defaultWidth, defaultHeight, viewportWidth, viewportHeight)
         .apply {
@@ -42,7 +46,7 @@ private fun ImageVector.withCardColor(color: Color): ImageVector =
                     it.pathData,
                     it.pathFillType,
                     it.name,
-                    if (it.name == "card_color") SolidColor(color) else it.fill,
+                    if (it.name == "card_color") traitPaint(colors, Offset(viewportWidth, viewportHeight)) else it.fill,
                     it.fillAlpha,
                     it.stroke,
                     it.strokeAlpha,
@@ -53,3 +57,7 @@ private fun ImageVector.withCardColor(color: Color): ImageVector =
                 )
             }
         }.build()
+
+// A card without a color prints its action symbols in the colorless fill.
+internal fun AtlasColors.actionColors(colors: List<CardColor?>): List<Color> =
+    colors.ifEmpty { listOf(null) }.map { trait(it).fill }
