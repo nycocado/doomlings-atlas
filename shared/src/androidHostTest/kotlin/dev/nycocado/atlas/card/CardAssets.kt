@@ -32,7 +32,10 @@ object CardAssets {
 
     val translationFiles =
         setFolders.flatMap { folder ->
-            folder.listFiles { file -> file.extension == "json" && file.name != "cards.json" }.orEmpty().sorted()
+            folder
+                .listFiles { file -> file.extension == "json" && file.name !in setOf("cards.json", "set.json") }
+                .orEmpty()
+                .sorted()
         }
 
     // Card id to field name to its texts, of one translation file: one text for `name` and `flavor`, one per effect for

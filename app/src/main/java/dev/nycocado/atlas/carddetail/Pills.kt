@@ -40,6 +40,7 @@ import dev.nycocado.atlas.ui.theme.trait
 internal fun Pills(
     face: CardFace,
     language: CardLanguage,
+    setName: String? = null,
 ) {
     val theme = AtlasTheme.colors
     val icons = face.facts.filterIsInstance<CardFact.Icon>().map { it.icon }
@@ -60,6 +61,8 @@ internal fun Pills(
 
                 is CardFact.Kind -> {
                     Pill(stringResource(fact.kind.label), theme.surfaceSticker, theme.onSurface)
+                    // The set's name is never translated.
+                    setName?.let { Pill(it, theme.surfaceSticker, theme.onSurface, language = CardLanguage.English) }
                 }
 
                 CardFact.Dominant -> {
@@ -230,6 +233,19 @@ private fun tagOf(
         TraitIcon.Fish in icons -> fish
         TraitIcon.Shell in icons -> shell
         else -> null
+    }
+
+@PreviewLightDark
+@Composable
+internal fun SetPillPreview() =
+    AtlasTheme {
+        Row(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) {
+            Pills(
+                CardFace("Pills", listOf(CardFact.Kind(CardKind.Trait)), null, emptyList(), emptyList()),
+                CardLanguage.English,
+                setName = "Legends of Enderas",
+            )
+        }
     }
 
 @PreviewLightDark

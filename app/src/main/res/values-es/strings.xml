@@ -26,6 +26,9 @@
     <string name="all_ages">Todas las ages</string>
     <string name="all_catastrophes">Todas las catastrophes</string>
     <string name="color_hint">toca un color para filtrar</string>
+    <string name="sets_filter">Colecciones</string>
+    <string name="sets_filter_chosen">Colecciones: %1$d</string>
+    <string name="close_sets">Cerrar colecciones</string>
 
     <plurals name="card_group_collapsed">
         <item quantity="one">%1$s, %2$d variante, contraído</item>

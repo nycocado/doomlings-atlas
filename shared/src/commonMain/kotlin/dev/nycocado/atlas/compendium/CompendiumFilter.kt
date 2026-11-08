@@ -19,6 +19,8 @@ data class CompendiumFilter(
     val query: String = "",
     // Traits only. null stands for colorless; empty shows every color.
     val colors: Set<CardColor?> = emptySet(),
+    // Set ids, for every kind; empty shows every set.
+    val sets: Set<String> = emptySet(),
 )
 
 // Every query word must match somewhere in the card (name, effect, World's End), all in the printed text or all in the
@@ -33,6 +35,7 @@ fun List<Card>.filterCompendium(
     return filterIsInstance<NamedCard>()
         .filter { card ->
             card.kind == filter.kind &&
+                (filter.sets.isEmpty() || card.set in filter.sets) &&
                 (
                     filter.colors.isEmpty() || card !is Trait ||
                         card.colorsOrColorless.any { it in filter.colors }
