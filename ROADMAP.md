@@ -21,7 +21,7 @@ Everything here comes before assets and code.
 - Tests for database integrity: unique identifiers, required fields, every card with an image.
 - Screenshot tests from the component previews, once the design system settles.
 
-## 2. Card Text Translation (In Progress)
+## 2. Card Text Translation (Done, v0.2.0)
 
 - Portuguese and Spanish for the cards of every set, drafted by an agent and reviewed by the maintainer; other languages through community contributions.
 - Translated card text shown in the compendium, chosen apart from the interface language: card text starts in the language Android gives the app when it is Portuguese or Spanish, and as printed otherwise ([ADR 0008](docs/adr/0008-card-language-defaults-to-the-device.md)), with a language selector in the card detail.
@@ -49,7 +49,7 @@ Then, right after the repository goes public, since the free plan offers these o
 - Actions runs for outside contributors wait for the maintainer's approval, and the maintainer's GitHub account uses two-factor authentication.
 - The first APK published, and Doomlings told that the repository is public.
 
-## 3. Every Set (Planned)
+## 3. Every Set (Done, v0.3.0)
 
 - Every set and every card type in the compendium, after the per-set card data and its integrity checks.
 - Card kinds in a scrollable row: Traits, Ages (with The Birth of Life), Catastrophes, Gene Pools, Meanings of Life, Treasures, Trinkets and Merchants. A kind with no card in the filtered sets doesn't show.
@@ -82,4 +82,4 @@ Then, right after the repository goes public, since the free plan offers these o
 
 ## Not Planned Yet
 
-Google Play release, F-Droid, game history, collection tracking, favorite cards, iOS app, donations, compendium filters beyond color and type (points, icons, subspecies), swiping between cards in the card detail, an error screen for when the card data fails to load.
+Google Play release, F-Droid, game history, collection tracking, favorite cards, iOS app, donations, compendium filters beyond color, set and type (points, icons, subspecies), swiping between cards in the card detail, an error screen for when the card data fails to load.
