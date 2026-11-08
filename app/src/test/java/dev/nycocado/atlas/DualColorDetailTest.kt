@@ -8,7 +8,8 @@ import dev.nycocado.atlas.carddetail.FishCollector
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import org.junit.Test
 
-// No enabled set has a dual-color trait yet, so its card detail is drawn in place of the app's screen.
+// TestCardRepositoryModule keeps only Classic, which has no dual-color trait, so its card detail is drawn in place of
+// the app's screen.
 @HiltAndroidTest
 class DualColorDetailTest : AtlasBehaviorTest() {
     @Test

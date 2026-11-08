@@ -430,8 +430,8 @@ private fun citedInk(
     theme: AtlasColors,
 ): Color = (cited as? Trait)?.let { theme.trait(it.colors.firstOrNull()).ink } ?: theme.onSurface
 
-// Anxiety Elixir as in assets/doomlings/imaginary-ends/cards.json. The app doesn't show Trinkets yet, so its blocks are
-// the ones shared decides for it, written out.
+// Anxiety Elixir as in assets/doomlings/imaginary-ends/cards.json. Its blocks are the ones shared decides for it,
+// written out.
 private val AnxietyElixir =
     Trinket(
         "imaginary-ends/trinkets/anxiety-elixir",
@@ -535,8 +535,8 @@ internal fun InkBlocksSample() =
 internal fun InkBlocksPreview() = AtlasTheme { InkBlocksSample() }
 
 // Age of Wonder and The Birth of Life (assets/doomlings/classic/cards.json), verbatim, ink marks included: the wonder
-// gradient over the whole text, and a yellow first sentence. The app doesn't show The Birth of Life yet, which has no
-// card kind and so no face, so its block is written out here, as the Trinket's above.
+// gradient over the whole text, and a yellow first sentence. The Birth of Life's block is written out here, as the
+// Trinket's above.
 private val AgeOfWonder =
     Age(
         "classic/ages/age-of-wonder",

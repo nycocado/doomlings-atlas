@@ -13,8 +13,8 @@ import dev.nycocado.atlas.carddetail.CardDetailContent
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import org.junit.Test
 
-// Black and Blue as in assets/doomlings/castle-glass/cards.json, with made-up Português for the card's own text. Its set
-// isn't packaged yet, so its card detail is drawn in place of the app's screen.
+// Black and Blue as in assets/doomlings/castle-glass/cards.json, with made-up Português for the card's own text.
+// TestCardRepositoryModule keeps only Classic, so its card detail is drawn in place of the app's screen.
 @HiltAndroidTest
 class TagPillTest : AtlasBehaviorTest() {
     private val blackAndBlue =
