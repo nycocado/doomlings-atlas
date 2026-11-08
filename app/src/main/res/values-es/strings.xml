@@ -92,5 +92,11 @@
     <string name="icon_exotic">Exótico</string>
     <string name="icon_fish">Pez</string>
     <string name="icon_shell">Concha</string>
+    <string name="tag_curious_coral"><![CDATA[Coral <b>curioso</b>]]></string>
+    <string name="tag_curious_fish"><![CDATA[Pez <b>curioso</b>]]></string>
+    <string name="tag_curious_shell"><![CDATA[Concha <b>curiosa</b>]]></string>
+    <string name="tag_exotic_coral"><![CDATA[Coral <b>exótico</b>]]></string>
+    <string name="tag_exotic_fish"><![CDATA[Pez <b>exótico</b>]]></string>
+    <string name="tag_exotic_shell"><![CDATA[Concha <b>exótica</b>]]></string>
     <string name="icon_compass">Brújula</string>
 </resources>

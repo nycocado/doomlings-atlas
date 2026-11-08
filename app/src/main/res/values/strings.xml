@@ -91,6 +91,12 @@
     <string name="icon_exotic">Exotic</string>
     <string name="icon_fish">Fish</string>
     <string name="icon_shell">Shell</string>
+    <string name="tag_curious_coral"><![CDATA[<b>Curious</b> coral]]></string>
+    <string name="tag_curious_fish"><![CDATA[<b>Curious</b> fish]]></string>
+    <string name="tag_curious_shell"><![CDATA[<b>Curious</b> shell]]></string>
+    <string name="tag_exotic_coral"><![CDATA[<b>Exotic</b> coral]]></string>
+    <string name="tag_exotic_fish"><![CDATA[<b>Exotic</b> fish]]></string>
+    <string name="tag_exotic_shell"><![CDATA[<b>Exotic</b> shell]]></string>
     <string name="icon_compass">Compass</string>
 
     <string name="dock_cards">Cards</string>

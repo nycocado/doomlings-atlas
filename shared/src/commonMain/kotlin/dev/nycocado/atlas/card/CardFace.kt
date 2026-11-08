@@ -32,9 +32,51 @@ sealed interface CardFact {
         val icon: TraitIcon,
     ) : CardFact
 
+    // Curious or Exotic and the coral, fish or shell it qualifies, which the card prints as one tag.
+    data class Tagged(
+        val qualifier: TagQualifier,
+        val subject: TagSubject,
+    ) : CardFact
+
     data class Subspecies(
         val name: String,
     ) : CardFact
+}
+
+enum class TagQualifier { Curious, Exotic }
+
+enum class TagSubject { Coral, Fish, Shell }
+
+private val TraitIcon.qualifier: TagQualifier?
+    get() =
+        when (this) {
+            TraitIcon.Curious -> TagQualifier.Curious
+            TraitIcon.Exotic -> TagQualifier.Exotic
+            else -> null
+        }
+
+private val TraitIcon.subject: TagSubject?
+    get() =
+        when (this) {
+            TraitIcon.Coral -> TagSubject.Coral
+            TraitIcon.Fish -> TagSubject.Fish
+            TraitIcon.Shell -> TagSubject.Shell
+            else -> null
+        }
+
+// The tag takes the qualifier's place, and its subject leaves its own. Without both, the card data test's concern, each
+// icon stays its own fact.
+private fun Trait.iconFacts(): List<CardFact> {
+    val qualifier = icons.firstNotNullOfOrNull { it.qualifier }
+    val subject = icons.firstNotNullOfOrNull { it.subject }
+    if (qualifier == null || subject == null) return icons.map(CardFact::Icon)
+    return icons.mapNotNull {
+        when {
+            it.qualifier != null -> CardFact.Tagged(qualifier, subject)
+            it.subject != null -> null
+            else -> CardFact.Icon(it)
+        }
+    }
 }
 
 // One block of the card detail's text: the Gene Pool, an effect or a Trinket's Value, in that order. The app writes the
@@ -187,7 +229,7 @@ private fun NamedCard.face(
             trait?.colorsOrColorless?.forEach { add(CardFact.Color(it)) }
             add(CardFact.Kind(kind))
             if (trait?.dominant == true) add(CardFact.Dominant)
-            trait?.icons?.forEach { add(CardFact.Icon(it)) }
+            trait?.iconFacts()?.let(::addAll)
             trait?.subspecies?.forEach { add(CardFact.Subspecies(it)) }
         },
         trait?.points,
