@@ -9,6 +9,7 @@ import dev.nycocado.atlas.card.CardColor.Green
 import dev.nycocado.atlas.card.CardColor.Red
 import dev.nycocado.atlas.card.CardKind
 import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.Effect
@@ -21,6 +22,7 @@ import dev.nycocado.atlas.card.kind
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
 private val Card.name: String get() = (this as NamedCard).name
 
@@ -249,6 +251,44 @@ class CompendiumFilterTest {
     fun noSetChosenKeepsEveryCard() {
         assertEquals(listOf("classic-trait", "overlush-trait"), idsOfTwoSets(CompendiumFilter()))
         assertEquals(listOf("classic-age", "overlush-age"), idsOfTwoSets(CompendiumFilter(CardKind.Age)))
+    }
+
+    private val libraryOfTwoSets =
+        CardLibrary.of(
+            cardsOfTwoSets.filterNot { it.set == "classic" && it.kind == CardKind.Catastrophe },
+        )
+
+    @Test
+    fun theKindsOfferedAreThoseOfTheChosenSets() {
+        val everyKind = listOf(CardKind.Trait, CardKind.Age, CardKind.Catastrophe)
+        assertEquals(everyKind, libraryOfTwoSets.offeredKinds(CompendiumFilter()))
+        assertEquals(
+            listOf(CardKind.Trait, CardKind.Age),
+            libraryOfTwoSets.offeredKinds(CompendiumFilter(sets = setOf("classic"))),
+        )
+    }
+
+    @Test
+    fun noKindsAreOfferedWhileTheCardsLoad() {
+        assertNull(CardLibrary.loading.offeredKinds(CompendiumFilter()))
+    }
+
+    @Test
+    fun anOpenKindThatGoesAwayOpensTraits() {
+        val filter = CompendiumFilter(CardKind.Catastrophe, sets = setOf("classic"))
+        assertEquals(filter.copy(kind = CardKind.Trait), libraryOfTwoSets.withAnOfferedKind(filter))
+    }
+
+    @Test
+    fun anOpenKindThatIsOfferedStays() {
+        val filter = CompendiumFilter(CardKind.Catastrophe, sets = setOf("overlush"))
+        assertEquals(filter, libraryOfTwoSets.withAnOfferedKind(filter))
+    }
+
+    @Test
+    fun theOpenKindStaysWhileTheCardsLoad() {
+        val filter = CompendiumFilter(CardKind.Merchant)
+        assertEquals(filter, CardLibrary.loading.withAnOfferedKind(filter))
     }
 
     @Test

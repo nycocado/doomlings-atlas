@@ -1,6 +1,7 @@
 package dev.nycocado.atlas
 
-import dagger.hilt.android.testing.HiltAndroidTest
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardRepository
 import dev.nycocado.atlas.card.NamedCard
@@ -8,10 +9,14 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
 
 // The real repository and the real packaged files, unlike the UI tests' made-up sets.
-@HiltAndroidTest
-class PackagedSetsTest : AtlasBehaviorTest() {
+@RunWith(RobolectricTestRunner::class)
+class PackagedSetsTest {
+    private val context: Context = ApplicationProvider.getApplicationContext()
+
     @Test
     fun theEnabledSetsDecodeWithAName() {
         val library = runBlocking { CardRepository(context).library() }

@@ -430,35 +430,19 @@ private fun citedInk(
     theme: AtlasColors,
 ): Color = (cited as? Trait)?.let { theme.trait(it.colors.firstOrNull()).ink } ?: theme.onSurface
 
-// Anxiety Elixir as in assets/doomlings/imaginary-ends/cards.json. Its blocks are the ones shared decides for it,
-// written out.
-private val AnxietyElixir =
+// Anxiety Elixir as in assets/doomlings/imaginary-ends/cards.json.
+internal val AnxietyElixir =
     Trinket(
         "imaginary-ends/trinkets/anxiety-elixir",
         "imaginary-ends",
         "",
         "Anxiety Elixir",
-        emptyList(),
+        listOf(
+            Effect(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand."),
+            Effect(EffectKind.PocketObjective, "Reveal: 2 reds in hand."),
+        ),
         2,
         "This causes stress. Can't stress that enough.",
-    )
-
-private val AnxietyElixirBlocks =
-    listOf(
-        CardBlock(
-            BlockContent.Effect(
-                EffectKind.AwesomePower,
-                listOf(TextPart.Words("Start of Turn: Discard dominants from hand.")),
-            ),
-        ),
-        CardBlock(
-            BlockContent.Effect(
-                EffectKind.PocketObjective,
-                listOf(TextPart.Words("Reveal: 2 reds in hand.", Ink.Yellow)),
-                Ink.Yellow,
-            ),
-        ),
-        CardBlock(BlockContent.Value(2), flavor = "This causes stress. Can't stress that enough."),
     )
 
 @PreviewLightDark
@@ -469,7 +453,7 @@ internal fun TrinketBlocksPreview() =
             Modifier.background(AtlasTheme.colors.surface).padding(Space.s5),
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
-            AnxietyElixirBlocks.forEach { BlockBubble(it, CardLanguage.English, AnxietyElixir, emptyList()) }
+            AnxietyElixir.face().blocks.forEach { BlockBubble(it, CardLanguage.English, AnxietyElixir, emptyList()) }
         }
     }
 
@@ -535,8 +519,7 @@ internal fun InkBlocksSample() =
 internal fun InkBlocksPreview() = AtlasTheme { InkBlocksSample() }
 
 // Age of Wonder and The Birth of Life (assets/doomlings/classic/cards.json), verbatim, ink marks included: the wonder
-// gradient over the whole text, and a yellow first sentence. The Birth of Life's block is written out here, as the
-// Trinket's above.
+// gradient over the whole text, and a yellow first sentence.
 private val AgeOfWonder =
     Age(
         "classic/ages/age-of-wonder",
@@ -546,7 +529,7 @@ private val AgeOfWonder =
         listOf(Effect(text = "[wonder]You must end your turn with 4 cards in your hand.[/wonder]")),
     )
 
-private val TheBirthOfLife =
+internal val TheBirthOfLife =
     BirthOfLife(
         "classic/birth-of-life/the-birth-of-life",
         "classic",
@@ -560,17 +543,6 @@ private val TheBirthOfLife =
         ),
     )
 
-private val TheBirthOfLifeBlock =
-    CardBlock(
-        BlockContent.Effect(
-            null,
-            listOf(
-                TextPart.Words("Set your Gene Pool to 5.", Ink.Yellow),
-                TextPart.Words("\n\nPlay 1 trait each turn.\nStabilize to end your turn."),
-            ),
-        ),
-    )
-
 @Composable
 internal fun DecorInkBlocksSample() =
     Column(
@@ -578,7 +550,7 @@ internal fun DecorInkBlocksSample() =
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         AgeOfWonder.face().blocks.forEach { BlockBubble(it, CardLanguage.English, AgeOfWonder, emptyList()) }
-        BlockBubble(TheBirthOfLifeBlock, CardLanguage.English, TheBirthOfLife, emptyList())
+        TheBirthOfLife.face().blocks.forEach { BlockBubble(it, CardLanguage.English, TheBirthOfLife, emptyList()) }
     }
 
 @PreviewLightDark

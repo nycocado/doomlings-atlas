@@ -74,7 +74,7 @@ fun Card.shownName(): String =
         is GenePool -> stringResource(R.string.type_gene_pool)
     }
 
-// One glyph per entry of colors, null drawing the colorless one; ages and catastrophes pass none. What goes behind the
+// One glyph per entry of colors, null drawing the colorless one; a card that is not a trait passes none. What goes behind the
 // art is drawn by `behind`, given how far the pressed card sinks.
 @Composable
 fun CardThumb(

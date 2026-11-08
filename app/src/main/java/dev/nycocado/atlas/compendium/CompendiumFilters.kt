@@ -37,6 +37,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -183,12 +184,11 @@ private fun Modifier.scrollFade(state: LazyListState): Modifier =
         }
     }
 
-// The smallest a label shrinks to fit, fixed in dp: a 10sp minimum grows with the font scale, and at 200% long names
-// (Colorless, Vermelho, Catastrophes) don't fit even at that minimum.
+// The smallest a color's name shrinks to fit, fixed in dp: a 10sp minimum grows with the font scale, and at 200% long
+// names (Colorless, Vermelho) don't fit even at that minimum.
 private val minLabelSize: TextUnit
     @Composable get() = with(LocalDensity.current) { 10.dp.toSp() }
 
-// One color at a time for now.
 @Composable
 private fun ColorDisc(
     color: CardColor?,
@@ -280,9 +280,14 @@ private fun KindSegments(
             .padding(horizontal = Space.s1),
     ) {
         // The row's own state, not a BringIntoViewRequester: that request goes on to the compendium's grid, which would
-        // jump each time the filters come back into it.
+        // jump each time the filters come back into it. Only the player's pick animates (docs/design.md, Motion).
+        var shownKind by remember { mutableStateOf(selected) }
         LaunchedEffect(selected, kinds, maxWidth) {
-            kinds.indexOf(selected).takeIf { it >= 0 }?.let { row.animateScrollToItem(it) }
+            val picked = selected != shownKind
+            shownKind = selected
+            kinds.indexOf(selected).takeIf { it >= 0 }?.let {
+                if (picked) row.animateScrollToItem(it) else row.scrollToItem(it)
+            }
         }
         LazyRow(
             Modifier

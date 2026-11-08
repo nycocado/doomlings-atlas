@@ -121,7 +121,7 @@ private fun SetsList(
         )
         sets.forEach { set ->
             // Only sets with a confirmed name reach this list.
-            SetRow(set.name.orEmpty(), set.id in chosen) { onToggle(set.id) }
+            SetRow(set.name, set.id in chosen) { onToggle(set.id) }
         }
     }
 }

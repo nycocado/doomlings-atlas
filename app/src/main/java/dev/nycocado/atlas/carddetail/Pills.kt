@@ -188,7 +188,8 @@ private val TraitIcon.label: Int
             TraitIcon.WorldsEnd -> R.string.worlds_end
         }
 
-// Curious and Exotic never show alone: CardFact.Tagged carries them, and the card data test keeps them paired.
+// Curious and Exotic never show alone: CardFact.Tagged carries them, and the card data test keeps them paired. The
+// Dragon has its own pill in Pills.
 @DrawableRes
 private fun TraitIcon.symbol(): Int? =
     when (this) {
@@ -196,7 +197,7 @@ private fun TraitIcon.symbol(): Int? =
         TraitIcon.Attachment -> R.drawable.ic_symbol_attachment
         TraitIcon.Coral -> R.drawable.ic_symbol_coral
         TraitIcon.Curious -> null
-        TraitIcon.Dragon -> R.drawable.ic_symbol_glyph_dragon
+        TraitIcon.Dragon -> null
         TraitIcon.DropOfLife -> R.drawable.ic_symbol_drop_of_life
         TraitIcon.Exotic -> null
         TraitIcon.Fish -> R.drawable.ic_symbol_fish
@@ -302,7 +303,6 @@ internal fun PillsPreview() =
         }
     }
 
-// Every icon that shows on its own, then the six tags.
 @PreviewLightDark
 @Composable
 internal fun TraitIconPillsPreview() =

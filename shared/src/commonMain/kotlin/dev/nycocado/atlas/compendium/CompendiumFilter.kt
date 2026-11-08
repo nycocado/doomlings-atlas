@@ -5,11 +5,13 @@ import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardKind
 import dev.nycocado.atlas.card.CardLanguage
+import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.card.kind
+import dev.nycocado.atlas.card.offeredKinds
 import kotlinx.serialization.Serializable
 import kotlin.math.abs
 
@@ -55,9 +57,17 @@ fun List<Card>.filterCompendium(
         ).map { it.second }
 }
 
-// The cards of the chosen sets; none chosen is every set.
 fun List<Card>.inSetsOf(filter: CompendiumFilter): List<Card> =
     if (filter.sets.isEmpty()) this else filter { it.set in filter.sets }
+
+// null while the cards load.
+fun CardLibrary.offeredKinds(filter: CompendiumFilter): List<CardKind>? = cards?.inSetsOf(filter)?.offeredKinds()
+
+// A kind can go away with the data or a set filter; Traits are always there.
+fun CardLibrary.withAnOfferedKind(filter: CompendiumFilter): CompendiumFilter {
+    val offered = offeredKinds(filter)
+    return if (offered == null || filter.kind in offered) filter else filter.copy(kind = CardKind.Trait)
+}
 
 private enum class MatchRank { Exact, Prefix, Typo }
 

@@ -5,8 +5,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.luminance
-import androidx.compose.ui.util.lerp
+import androidx.compose.ui.graphics.toArgb
+import androidx.core.graphics.ColorUtils
 import dev.nycocado.atlas.card.CardColor
 
 // The tokens in ui/theme mirror design/tokens.json, where their usage is described. Keep them in sync.
@@ -134,30 +134,15 @@ internal fun traitPaint(
 internal fun AtlasColors.inkOver(colors: List<CardColor?>): Color {
     colors.singleOrNull()?.let { return trait(it).onFill }
     if (colors.size == 1) return traitColorless.onFill
+    // blendARGB mixes in sRGB, as the gradient's shader does; Compose's lerp blends in Oklab, which would give other colors.
     val blend =
-        colors.map { trait(it).fill }.zipWithNext().flatMap { (a, b) ->
-            (0..BLEND_SAMPLES).map { sRgbMix(a, b, it / BLEND_SAMPLES.toFloat()) }
+        colors.map { trait(it).fill.toArgb() }.zipWithNext().flatMap { (a, b) ->
+            (0..BLEND_SAMPLES).map { ColorUtils.blendARGB(a, b, it / BLEND_SAMPLES.toFloat()) }
         }
     return listOf(traitBlue, traitGreen, traitPurple, traitRed)
         .map { it.onFill }
         .distinct()
-        .maxBy { ink -> blend.minOf { contrast(ink, it) } }
+        .maxBy { ink -> blend.minOf { ColorUtils.calculateContrast(ink.toArgb(), it) } }
 }
 
 private const val BLEND_SAMPLES = 20
-
-// As the gradient's shader blends; Compose's lerp blends in Oklab, which would give other colors.
-private fun sRgbMix(
-    a: Color,
-    b: Color,
-    t: Float,
-) = Color(lerp(a.red, b.red, t), lerp(a.green, b.green, t), lerp(a.blue, b.blue, t))
-
-// The WCAG contrast ratio: ColorUtils.calculateContrast takes android.graphics colors, not Compose's.
-private fun contrast(
-    a: Color,
-    b: Color,
-): Float {
-    val (light, dark) = listOf(a.luminance(), b.luminance()).sortedDescending()
-    return (light + 0.05f) / (dark + 0.05f)
-}

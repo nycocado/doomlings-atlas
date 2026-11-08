@@ -117,6 +117,17 @@
       "note": "Verbo: buscar."
     },
     {
+      "en": "set (product)",
+      "use": "Colección",
+      "avoid": [
+        "edición",
+        "ediciones",
+        "expansión",
+        "expansiones"
+      ],
+      "note": "El producto del que viene la carta (Classic, Overlush...). Plural: Colecciones. Los nombres de las colecciones quedan en inglés."
+    },
+    {
       "en": "show",
       "use": "mostrar",
       "avoid": [

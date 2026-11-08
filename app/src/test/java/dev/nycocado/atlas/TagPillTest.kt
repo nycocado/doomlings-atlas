@@ -15,6 +15,7 @@ import org.junit.Test
 
 // Black and Blue as in assets/doomlings/castle-glass/cards.json, with made-up Português for the card's own text.
 // TestCardRepositoryModule keeps only Classic, so its card detail is drawn in place of the app's screen.
+// The labels are written out, against docs/testing.md: the resources hold the <b> this proves the pill strips.
 @HiltAndroidTest
 class TagPillTest : AtlasBehaviorTest() {
     private val blackAndBlue =
