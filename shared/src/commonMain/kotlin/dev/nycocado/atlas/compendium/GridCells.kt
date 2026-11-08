@@ -1,12 +1,13 @@
 package dev.nycocado.atlas.compendium
 
+import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.NamedCard
 
 // What the compendium's grid draws, in order. `index` is the cell's place among the entries, which the app turns into
 // the card's tilt; a variant restarts at its group, so it carries its 1-based `position` instead.
 sealed interface GridCell {
     data class Single(
-        val card: NamedCard,
+        val card: Card,
         val index: Int,
     ) : GridCell
 

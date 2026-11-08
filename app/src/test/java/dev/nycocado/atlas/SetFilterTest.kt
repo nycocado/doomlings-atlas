@@ -36,6 +36,19 @@ class SetFilterTest : AtlasBehaviorTest() {
     }
 
     @Test
+    fun choosingASetWithNoCardOfTheOpenKindOpensTraits() {
+        launchPastNotice()
+        text(R.string.kind_ages).performClick()
+        text(R.string.all_ages).assertExists()
+
+        chooseExpansion()
+
+        text(R.string.all_traits).assertExists()
+        text(R.string.kind_ages).assertDoesNotExist()
+        card("Adorable").assertExists()
+    }
+
+    @Test
     fun theChoiceSurvivesRecreation() {
         val scenario = launchPastNotice()
         chooseExpansion()

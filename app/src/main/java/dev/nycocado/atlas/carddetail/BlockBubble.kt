@@ -526,7 +526,7 @@ internal fun InkBlocksSample() =
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         listOf(HyperIntelligence, SourGrapes).forEach { trait ->
-            trait.face()?.blocks?.forEach { BlockBubble(it, CardLanguage.English, trait, trait.colorsOrColorless) }
+            trait.face().blocks.forEach { BlockBubble(it, CardLanguage.English, trait, trait.colorsOrColorless) }
         }
     }
 
@@ -577,7 +577,7 @@ internal fun DecorInkBlocksSample() =
         Modifier.background(AtlasTheme.colors.surface).padding(Space.s5),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-        AgeOfWonder.face()?.blocks?.forEach { BlockBubble(it, CardLanguage.English, AgeOfWonder, emptyList()) }
+        AgeOfWonder.face().blocks.forEach { BlockBubble(it, CardLanguage.English, AgeOfWonder, emptyList()) }
         BlockBubble(TheBirthOfLifeBlock, CardLanguage.English, TheBirthOfLife, emptyList())
     }
 

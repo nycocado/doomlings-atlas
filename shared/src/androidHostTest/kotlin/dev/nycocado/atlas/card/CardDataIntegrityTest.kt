@@ -1,5 +1,7 @@
 package dev.nycocado.atlas.card
 
+import dev.nycocado.atlas.compendium.CompendiumFilter
+import dev.nycocado.atlas.compendium.inSetsOf
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -191,6 +193,14 @@ class CardDataIntegrityTest {
         assertEquals(1, classic.filterIsInstance<BirthOfLife>().size, "Birth of Life")
     }
 
+    @Test
+    fun filteringToClassicHidesTheExpansionKinds() {
+        assertEquals(
+            listOf(CardKind.Trait, CardKind.Age, CardKind.Catastrophe, CardKind.GenePool),
+            cards.inSetsOf(CompendiumFilter(sets = setOf("classic"))).offeredKinds(),
+        )
+    }
+
     // Counts from the official rulesheet's transcription (assets/doomlings/rules/imaginary-ends.md): per subspecies,
     // "16X TRAITS // 2X DOMINANTS" (Deeplings, Glitterlings, Moonlings) and "9X TRAITS // 1X DOMINANT" (Fuzelings),
     // each with "2X AGES // 1X CATASTROPHE". The dominants come on top of the traits.
@@ -204,7 +214,8 @@ class CardDataIntegrityTest {
         assertEquals(4, ends.filterIsInstance<Catastrophe>().size, "catastrophes")
     }
 
-    // A card type without a face would open as an empty card detail.
+    // An enabled card must open with something to read: its name, and its text on the types that always print one. A
+    // Gene Pool prints neither.
     @Test
     fun everyEnabledCardHasAFace() {
         val sets = System.getProperty("enabled.sets")!!.split(",")
@@ -221,7 +232,16 @@ class CardDataIntegrityTest {
                 .toSet()
         assertEquals(
             emptyList(),
-            cards.filter { it.id in enabled && (it as? NamedCard)?.face() == null }.map { it.id },
+            cards
+                .filter { it.id in enabled }
+                .filterNot { card ->
+                    val face = card.face()
+                    when (card) {
+                        is GenePool -> face.name == null && face.blocks.isEmpty()
+                        is Trait -> !face.name.isNullOrBlank()
+                        else -> !face.name.isNullOrBlank() && face.blocks.isNotEmpty()
+                    }
+                }.map { it.id },
         )
     }
 

@@ -2,6 +2,7 @@ package dev.nycocado.atlas.compendium
 
 import dev.nycocado.atlas.card.Age
 import dev.nycocado.atlas.card.BirthOfLife
+import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardColor.Blue
 import dev.nycocado.atlas.card.CardColor.Green
@@ -12,12 +13,16 @@ import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.Effect
 import dev.nycocado.atlas.card.EffectKind
+import dev.nycocado.atlas.card.GenePool
+import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.decodeTranslations
 import dev.nycocado.atlas.card.kind
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
+
+private val Card.name: String get() = (this as NamedCard).name
 
 class CompendiumFilterTest {
     private fun trait(
@@ -78,7 +83,7 @@ class CompendiumFilterTest {
     @Test
     fun showsOnlyTheSelectedKindSortedByName() {
         assertEquals(listOf("Brave", "Camouflage", "Prickly", "Venomous"), names(CompendiumFilter()))
-        assertEquals(listOf("age-of-dracula"), names(CompendiumFilter(kind = CardKind.Age)))
+        assertEquals(listOf("age-of-dracula", "birth"), names(CompendiumFilter(kind = CardKind.Age)))
         assertEquals(listOf("ai-takeover"), names(CompendiumFilter(kind = CardKind.Catastrophe)))
     }
 
@@ -101,7 +106,16 @@ class CompendiumFilterTest {
     }
 
     @Test
-    fun cardsOutsideTheCompendiumHaveNoKind() {
+    fun aGenePoolHasNoTextSoAnySearchHidesIt() {
+        val genePools = listOf(GenePool("classic/gene-pools/blue", "classic", ""))
+        val kind = CardKind.GenePool
+
+        assertEquals(genePools, genePools.filterCompendium(CompendiumFilter(kind)))
+        assertEquals(emptyList(), genePools.filterCompendium(CompendiumFilter(kind, query = "gene")))
+    }
+
+    @Test
+    fun everyCardHasItsKind() {
         assertEquals(
             listOf(
                 CardKind.Trait,
@@ -110,7 +124,7 @@ class CompendiumFilterTest {
                 CardKind.Trait,
                 CardKind.Age,
                 CardKind.Catastrophe,
-                null,
+                CardKind.Age,
             ),
             cards.map { it.kind },
         )
@@ -201,7 +215,7 @@ class CompendiumFilterTest {
 
     @Test
     fun colorsNeverHideAgesOrCatastrophes() {
-        assertEquals(listOf("age-of-dracula"), names(CompendiumFilter(CardKind.Age, colors = setOf(Red))))
+        assertEquals(listOf("age-of-dracula", "birth"), names(CompendiumFilter(CardKind.Age, colors = setOf(Red))))
         assertEquals(listOf("ai-takeover"), names(CompendiumFilter(CardKind.Catastrophe, colors = setOf(Green, null))))
     }
 
