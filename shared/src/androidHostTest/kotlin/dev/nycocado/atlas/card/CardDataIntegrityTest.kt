@@ -189,7 +189,7 @@ class CardDataIntegrityTest {
         assertEquals(4, ends.filterIsInstance<Catastrophe>().size, "catastrophes")
     }
 
-    // A card type without a face would open as an empty card detail.
+    // A card type without its kind on its face would open as an empty card detail.
     @Test
     fun everyEnabledCardHasAFace() {
         val sets = System.getProperty("enabled.sets")!!.split(",")
@@ -206,7 +206,7 @@ class CardDataIntegrityTest {
                 .toSet()
         assertEquals(
             emptyList(),
-            cards.filter { it.id in enabled && (it as? NamedCard)?.face() == null }.map { it.id },
+            cards.filter { it.id in enabled && it.face().facts.none { fact -> fact is CardFact.Kind } }.map { it.id },
         )
     }
 

@@ -25,6 +25,11 @@
     <string name="all_traits">Todos os traits</string>
     <string name="all_ages">Todas as ages</string>
     <string name="all_catastrophes">Todas as catastrophes</string>
+    <string name="all_gene_pools">Todos os Gene Pools</string>
+    <string name="all_meanings_of_life">Todos os Meanings of Life</string>
+    <string name="all_treasures">Todos os treasures</string>
+    <string name="all_trinkets">Todos os trinkets</string>
+    <string name="all_merchants">Todos os merchants</string>
     <string name="color_hint">toque numa cor para filtrar</string>
 
     <plurals name="card_group_collapsed">

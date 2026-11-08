@@ -2,13 +2,14 @@ package dev.nycocado.atlas.card
 
 // What a card shows, decided once for the card detail, the compendium's card thumb and its search.
 data class CardFace(
-    val name: String,
+    // null for a Gene Pool, which prints no name.
+    val name: String?,
     val facts: List<CardFact>,
     // null for a compass star and for cards without one.
     val faceValue: Int?,
     // The card detail's blocks in order; none when the card has no text, flavor or Gene Pool.
     val blocks: List<CardBlock>,
-    // What the compendium search matches: the name and the text of every effect, without tokens or ink marks.
+    // What the compendium search matches: the name, if any, and the text of every effect, without tokens or ink marks.
     val searchable: List<String>,
 ) {
     // Empty for cards without color; null stands for colorless.
@@ -159,12 +160,15 @@ private val inkMark = Regex("""\[/?[^\]/]*\]""")
 // parenthesized token goes with its parentheses and the space before them.
 fun plainText(text: String) = text.replace(token, "").replace(inkMark, "")
 
-// null for a card type without a card kind, which the app doesn't show.
-fun NamedCard.face(): CardFace? = face(name, effects, flavor, genePool)
+fun Card.face(): CardFace =
+    when (this) {
+        is NamedCard -> face(name, effects, flavor, genePool)
+        is GenePool -> CardFace(null, listOf(CardFact.Kind(kind)), null, emptyList(), emptyList())
+    }
 
 // Each translated text takes the kind of the card's effect at its place. zip drops effects past the shorter list: the
 // translation data test keeps the counts equal.
-internal fun NamedCard.face(text: CardText): CardFace? =
+internal fun NamedCard.face(text: CardText): CardFace =
     face(
         text.name,
         effects.zip(text.effects) { effect, translated -> effect.copy(text = translated) },
@@ -177,8 +181,7 @@ private fun NamedCard.face(
     effects: List<Effect>,
     flavor: String?,
     genePool: Int?,
-): CardFace? {
-    val kind = kind ?: return null
+): CardFace {
     val trait = this as? Trait
     val blocks = blocks(effects, flavor, genePool)
     return CardFace(
@@ -196,7 +199,6 @@ private fun NamedCard.face(
     )
 }
 
-// Apart from face() because the app doesn't show Trinkets yet, but their labels and Value are decided here already.
 internal fun NamedCard.blocks(
     effects: List<Effect>,
     flavor: String?,

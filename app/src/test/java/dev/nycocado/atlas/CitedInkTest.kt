@@ -77,7 +77,7 @@ class CitedInkTest : AtlasBehaviorTest() {
                 AtlasTheme {
                     Box(Modifier.width(width)) {
                         BlockBubble(
-                            inkedCitation.face()!!.blocks.single(),
+                            inkedCitation.face().blocks.single(),
                             CardLanguage.English,
                             inkedCitation,
                             null,
@@ -110,7 +110,7 @@ class CitedInkTest : AtlasBehaviorTest() {
             it.setContent {
                 AtlasTheme {
                     BlockBubble(
-                        inkedCitation.face()!!.blocks.single(),
+                        inkedCitation.face().blocks.single(),
                         CardLanguage.English,
                         inkedCitation,
                         null,

@@ -38,6 +38,16 @@ class CardFaceTest {
         )
 
     @Test
+    fun aGenePoolHasAFaceWithItsKindAndNothingPrinted() {
+        val face = GenePool("classic/gene-pools/1", "classic", "classic/gene-pools/1.webp").face()
+
+        assertEquals(null, face.name)
+        assertEquals(listOf<CardFact>(CardFact.Kind(CardKind.GenePool)), face.facts)
+        assertEquals(emptyList(), face.blocks)
+        assertEquals(emptyList(), face.searchable)
+    }
+
+    @Test
     fun aTwoColorTraitHasBothColors() {
         assertEquals(
             listOf(
@@ -47,7 +57,7 @@ class CardFaceTest {
                 CardFact.Icon(TraitIcon.Curious),
                 CardFact.Icon(TraitIcon.Fish),
             ),
-            blackAndBlue.face()?.facts,
+            blackAndBlue.face().facts,
         )
     }
 
@@ -83,7 +93,7 @@ class CardFaceTest {
                 CardFact.Icon(TraitIcon.WorldsEnd),
                 CardFact.Subspecies("Glitterling"),
             ),
-            awesome.face()?.facts,
+            awesome.face().facts,
         )
     }
 
@@ -105,8 +115,8 @@ class CardFaceTest {
 
     @Test
     fun aCompassStarHasNoFaceValue() {
-        assertEquals(null, altruistic.face()?.faceValue)
-        assertEquals(-2, confusion.face()?.faceValue)
+        assertEquals(null, altruistic.face().faceValue)
+        assertEquals(-2, confusion.face().faceValue)
     }
 
     private val aiTakeover =
@@ -205,7 +215,7 @@ class CardFaceTest {
                     selector = true,
                 ),
             ),
-            bruteStrength.face()?.blocks,
+            bruteStrength.face().blocks,
         )
     }
 
@@ -219,7 +229,7 @@ class CardFaceTest {
                     selector = true,
                 ),
             ),
-            confusion.face()?.blocks,
+            confusion.face().blocks,
         )
     }
 
@@ -227,7 +237,7 @@ class CardFaceTest {
     fun aCardWithNeitherEffectNorFlavorNorGenePoolHasNoBlocks() {
         val bare = confusion.copy(flavor = null)
 
-        assertEquals(emptyList(), bare.face()?.blocks)
+        assertEquals(emptyList(), bare.face().blocks)
     }
 
     private val anxietyElixir =
@@ -296,7 +306,7 @@ class CardFaceTest {
                     flavor = "More me? Copy that.",
                 ),
             ),
-            selfReplicating.face()?.blocks,
+            selfReplicating.face().blocks,
         )
     }
 
@@ -381,7 +391,7 @@ class CardFaceTest {
     fun searchLeavesOutInkMarks() {
         assertEquals(
             listOf("Age", "Discard 1 blue trait."),
-            age("Discard 1 [blue]blue[/blue] trait ({action}).").face()?.searchable,
+            age("Discard 1 [blue]blue[/blue] trait ({action}).").face().searchable,
         )
     }
 
@@ -393,9 +403,9 @@ class CardFaceTest {
                 "Discard all but 1 card from your hand.",
                 "Each colorless trait is now worth 2. Ignore all colorless trait effects. (Excluding dominants.)",
             ),
-            aiTakeover.face()?.searchable,
+            aiTakeover.face().searchable,
         )
-        assertEquals(listOf("Confusion"), confusion.face()?.searchable)
+        assertEquals(listOf("Confusion"), confusion.face().searchable)
     }
 
     @Test
@@ -409,7 +419,7 @@ class CardFaceTest {
                 listOf(Effect(text = "Ignore actions ({action}) and Shells ({shell}).")),
             )
 
-        assertEquals(listOf("Age", "Ignore actions and Shells."), pearl.face()?.searchable)
+        assertEquals(listOf("Age", "Ignore actions and Shells."), pearl.face().searchable)
     }
 
     @Test
@@ -491,7 +501,7 @@ class CardFaceTest {
     fun aColorlessTraitHasOneColorlessFact() {
         assertEquals(
             listOf(CardFact.Color(null), CardFact.Kind(CardKind.Trait)),
-            confusion.face()?.facts,
+            confusion.face().facts,
         )
     }
 }

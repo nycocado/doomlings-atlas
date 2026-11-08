@@ -9,8 +9,7 @@ import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.SemanticsNodeInteraction
 import androidx.compose.ui.test.hasClickAction
 import androidx.compose.ui.test.hasContentDescription
-import androidx.compose.ui.test.hasScrollAction
-import androidx.compose.ui.test.hasSetTextAction
+import androidx.compose.ui.test.hasScrollToIndexAction
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isSelectable
 import androidx.compose.ui.test.junit4.v2.createEmptyComposeRule
@@ -95,8 +94,8 @@ abstract class AtlasBehaviorTest {
             }
         }
 
-    // The single-line search field scrolls its text, so it has a scroll action too.
-    protected val scrollingList: SemanticsMatcher get() = hasScrollAction() and !hasSetTextAction()
+    // Only the list scrolls by index: the search field and the row of kinds scroll too, but not by index.
+    protected val scrollingList: SemanticsMatcher get() = hasScrollToIndexAction()
 
     protected fun scrollListTo(matcher: SemanticsMatcher) {
         compose.onNode(scrollingList).performScrollToNode(matcher)

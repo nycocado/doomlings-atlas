@@ -79,7 +79,7 @@ data class BirthOfLife(
     override val effects: List<Effect>,
 ) : NamedCard
 
-// Only the color and art are printed on it.
+// Only the color and art are printed on it, so it has no name and the app shows "Gene Pool" in its place.
 @Serializable
 @SerialName("gene-pool")
 data class GenePool(

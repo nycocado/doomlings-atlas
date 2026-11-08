@@ -10,16 +10,19 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.nycocado.atlas.APP_PREFS
 import dev.nycocado.atlas.CARD_LANGUAGE
+import dev.nycocado.atlas.card.CardKind
 import dev.nycocado.atlas.card.CardLanguage
 import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardRepository
 import dev.nycocado.atlas.card.CardTranslations
+import dev.nycocado.atlas.card.offeredKinds
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.launch
@@ -47,6 +50,12 @@ class CompendiumViewModel
         private val mutableFilter = MutableStateFlow(savedFilter)
 
         val filter: StateFlow<CompendiumFilter> = mutableFilter.asStateFlow()
+
+        // Traits until the cards load: every set has them, so the row keeps its height.
+        val kinds: StateFlow<List<CardKind>> =
+            mutableLibrary
+                .map { it.cards?.offeredKinds() ?: listOf(CardKind.Trait) }
+                .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), listOf(CardKind.Trait))
 
         // The names of the card groups that are open, saved with the filter; a fresh start has them all collapsed.
         private var savedOpenGroups by savedState.saved { emptySet<String>() }
@@ -81,7 +90,10 @@ class CompendiumViewModel
                 ?: CardLanguage.English
 
         init {
-            viewModelScope.launch { mutableLibrary.value = repository.library() }
+            viewModelScope.launch {
+                mutableLibrary.value = repository.library()
+                updateFilter { it }
+            }
             viewModelScope.launch { mutableTranslations.value = repository.translations() }
         }
 
@@ -103,7 +115,14 @@ class CompendiumViewModel
 
         // Atomic, so a change made from a stale composed filter can't overwrite another one.
         fun updateFilter(transform: (CompendiumFilter) -> CompendiumFilter) {
-            savedFilter = mutableFilter.updateAndGet(transform)
+            savedFilter =
+                mutableFilter.updateAndGet { old ->
+                    transform(old).let { new ->
+                        // A kind can go away with the data or a set filter; Traits are always there.
+                        val offered = mutableLibrary.value.cards?.offeredKinds()
+                        if (offered == null || new.kind in offered) new else new.copy(kind = CardKind.Trait)
+                    }
+                }
         }
     }
 

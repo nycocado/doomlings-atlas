@@ -69,6 +69,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.text
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.intl.LocaleList
@@ -91,9 +92,14 @@ import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.Effect
 import dev.nycocado.atlas.card.EffectKind
+import dev.nycocado.atlas.card.GenePool
+import dev.nycocado.atlas.card.MeaningOfLife
+import dev.nycocado.atlas.card.Merchant
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.TraitIcon
+import dev.nycocado.atlas.card.Treasure
+import dev.nycocado.atlas.card.Trinket
 import dev.nycocado.atlas.card.cardImage
 import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.cardpane.CardStatusBarIcons
@@ -102,6 +108,7 @@ import dev.nycocado.atlas.ui.component.BlankCardImages
 import dev.nycocado.atlas.ui.component.RoundButton
 import dev.nycocado.atlas.ui.component.UnofficialFooter
 import dev.nycocado.atlas.ui.component.pointsText
+import dev.nycocado.atlas.ui.component.shownName
 import dev.nycocado.atlas.ui.component.signed
 import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
@@ -167,8 +174,7 @@ fun CardDetailContent(
     onCardClick: (String) -> Unit = {},
 ) {
     val theme = AtlasTheme.colors
-    if (card !is NamedCard) return
-    val face = translations.face(card, language) ?: return
+    val face = translations.face(card, language)
     // Ages and catastrophes have no color: their panel stays neutral, so it can't be read as a trait color.
     val colored = face.colors.isNotEmpty()
     val (panel, dots) =
@@ -203,7 +209,14 @@ fun CardDetailContent(
                 ) {
                     Column {
                         BasicText(
-                            tagged(card.name, CardLanguage.English),
+                            if (card is NamedCard) {
+                                tagged(
+                                    card.name,
+                                    CardLanguage.English,
+                                )
+                            } else {
+                                AnnotatedString(card.shownName())
+                            },
                             Modifier.semantics { heading() },
                             style = AtlasTypography.display.copy(color = theme.onSurface),
                         )
@@ -669,3 +682,68 @@ private val Eloquence =
 @PreviewLightDark
 @Composable
 internal fun TraitWorldsEndDetailPreview() = AtlasTheme { CardDetailSample(card = Eloquence) }
+
+// The cards below are as in assets/doomlings/<set>/cards.json.
+private val BlueGenePool = GenePool("classic/gene-pools/blue", "classic", "")
+
+private val ArmoredMelon =
+    MeaningOfLife(
+        "upgrade/meaning-of-life/the-armored-melon",
+        "upgrade",
+        "",
+        "The Armored Melon",
+        listOf(Effect(text = "+3 if you have 3-5 cards in hand.\n\n+6 if you have 6 or more.")),
+        null,
+    )
+
+private val ArdentGrip =
+    Treasure(
+        "legends-of-enderas/treasures/ardent-grip",
+        "legends-of-enderas",
+        "",
+        "Ardent Grip",
+        listOf(Effect(EffectKind.Rush, "Set your Gene Pool to 5."), Effect(EffectKind.Rush, "Draw 1.")),
+    )
+
+private val AnxietyElixir =
+    Trinket(
+        "imaginary-ends/trinkets/anxiety-elixir",
+        "imaginary-ends",
+        "",
+        "Anxiety Elixir",
+        listOf(
+            Effect(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand."),
+            Effect(EffectKind.PocketObjective, "Reveal: 2 reds in hand."),
+        ),
+        2,
+        "This causes stress. Can't stress that enough.",
+    )
+
+private val Bon =
+    Merchant(
+        "imaginary-ends/merchants/bon",
+        "imaginary-ends",
+        "",
+        "Bon",
+        listOf(Effect(EffectKind.Bargain, "Trash 1 trinket, then gain 1 trinket.\nYou may repeat once.")),
+    )
+
+@PreviewLightDark
+@Composable
+internal fun GenePoolDetailPreview() = AtlasTheme { CardDetailSample(card = BlueGenePool) }
+
+@PreviewLightDark
+@Composable
+internal fun MeaningOfLifeDetailPreview() = AtlasTheme { CardDetailSample(card = ArmoredMelon) }
+
+@PreviewLightDark
+@Composable
+internal fun TreasureDetailPreview() = AtlasTheme { CardDetailSample(card = ArdentGrip) }
+
+@PreviewLightDark
+@Composable
+internal fun TrinketDetailPreview() = AtlasTheme { CardDetailSample(card = AnxietyElixir) }
+
+@PreviewLightDark
+@Composable
+internal fun MerchantDetailPreview() = AtlasTheme { CardDetailSample(card = Bon) }
