@@ -22,7 +22,6 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.updateAndGet
 import kotlinx.coroutines.launch
@@ -53,9 +52,10 @@ class CompendiumViewModel
 
         // Traits until the cards load: every set has them, so the row keeps its height.
         val kinds: StateFlow<List<CardKind>> =
-            mutableLibrary
-                .map { it.cards?.offeredKinds() ?: listOf(CardKind.Trait) }
-                .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), listOf(CardKind.Trait))
+            combine(mutableLibrary, mutableFilter) { library, filter ->
+                library.offeredKinds(filter)
+                    ?: listOf(CardKind.Trait)
+            }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), listOf(CardKind.Trait))
 
         // The names of the card groups that are open, saved with the filter; a fresh start has them all collapsed.
         private var savedOpenGroups by savedState.saved { emptySet<String>() }
@@ -119,11 +119,14 @@ class CompendiumViewModel
                 mutableFilter.updateAndGet { old ->
                     transform(old).let { new ->
                         // A kind can go away with the data or a set filter; Traits are always there.
-                        val offered = mutableLibrary.value.cards?.offeredKinds()
+                        val offered = mutableLibrary.value.offeredKinds(new)
                         if (offered == null || new.kind in offered) new else new.copy(kind = CardKind.Trait)
                     }
                 }
         }
     }
+
+// null while the cards load.
+private fun CardLibrary.offeredKinds(filter: CompendiumFilter) = cards?.inSetsOf(filter)?.offeredKinds()
 
 private fun cardLanguageOf(code: String?) = CardLanguage.entries.find { it.code == code }

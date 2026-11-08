@@ -19,6 +19,8 @@ data class CompendiumFilter(
     val query: String = "",
     // Traits only. null stands for colorless; empty shows every color.
     val colors: Set<CardColor?> = emptySet(),
+    // Set ids, for every kind; empty shows every set.
+    val sets: Set<String> = emptySet(),
 )
 
 // Every query word must match somewhere in the card (name, effect, World's End), all in the printed text or all in the
@@ -31,26 +33,31 @@ fun List<Card>.filterCompendium(
 ): List<Card> {
     val query = normalize(filter.query.trim())
     val substring by lazy { substringRegex(query) }
-    return filter { card ->
-        card.kind == filter.kind &&
-            (
-                filter.colors.isEmpty() || card !is Trait ||
-                    card.colorsOrColorless.any { it in filter.colors }
-            )
-    }.mapNotNull { card ->
-        val rank =
-            if (query.isEmpty()) {
-                MatchRank.Exact
-            } else {
-                listOf(card.face(), (card as? NamedCard)?.let { translations.translatedFace(it, language) })
-                    .mapNotNull { face -> face?.searchable?.let { matchRank(query, substring, it) } }
-                    .minOrNull()
-            }
-        rank?.let { it to card }
-    }.sortedWith(
-        compareBy<Pair<MatchRank, Card>>({ it.first }, { (it.second as? NamedCard)?.name?.let(::normalize) }),
-    ).map { it.second }
+    return inSetsOf(filter)
+        .filter { card ->
+            card.kind == filter.kind &&
+                (
+                    filter.colors.isEmpty() || card !is Trait ||
+                        card.colorsOrColorless.any { it in filter.colors }
+                )
+        }.mapNotNull { card ->
+            val rank =
+                if (query.isEmpty()) {
+                    MatchRank.Exact
+                } else {
+                    listOf(card.face(), (card as? NamedCard)?.let { translations.translatedFace(it, language) })
+                        .mapNotNull { face -> face?.searchable?.let { matchRank(query, substring, it) } }
+                        .minOrNull()
+                }
+            rank?.let { it to card }
+        }.sortedWith(
+            compareBy<Pair<MatchRank, Card>>({ it.first }, { (it.second as? NamedCard)?.name?.let(::normalize) }),
+        ).map { it.second }
 }
+
+// The cards of the chosen sets; none chosen is every set.
+fun List<Card>.inSetsOf(filter: CompendiumFilter): List<Card> =
+    if (filter.sets.isEmpty()) this else filter { it.set in filter.sets }
 
 private enum class MatchRank { Exact, Prefix, Typo }
 

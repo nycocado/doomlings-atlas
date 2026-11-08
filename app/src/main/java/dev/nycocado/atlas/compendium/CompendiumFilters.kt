@@ -34,6 +34,9 @@ import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -54,6 +57,7 @@ import androidx.compose.ui.unit.dp
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardKind
+import dev.nycocado.atlas.card.CardSet
 import dev.nycocado.atlas.ui.component.TraitColorOptions
 import dev.nycocado.atlas.ui.component.TraitGlyph
 import dev.nycocado.atlas.ui.component.colorName
@@ -70,9 +74,19 @@ import dev.nycocado.atlas.ui.theme.trait
 internal fun Filters(
     filter: CompendiumFilter,
     kinds: List<CardKind>,
+    sets: List<CardSet>,
     onFilterChange: ((CompendiumFilter) -> CompendiumFilter) -> Unit,
 ) {
     val theme = AtlasTheme.colors
+    var showSets by rememberSaveable { mutableStateOf(false) }
+    if (showSets) {
+        SetsSheet(
+            sets,
+            filter.sets,
+            onToggle = { id -> onFilterChange { it.copy(sets = if (id in it.sets) it.sets - id else it.sets + id) } },
+            onDismiss = { showSets = false },
+        )
+    }
     Column(Modifier.fillMaxWidth()) {
         // The controls center on wide screens; the title below stays in line with the first column of cards.
         Column(Modifier.widthIn(max = MaxWidth.content).align(Alignment.CenterHorizontally)) {
@@ -95,6 +109,10 @@ internal fun Filters(
                 }
             }
             KindSegments(kinds, filter.kind) { kind -> onFilterChange { it.copy(kind = kind) } }
+            // No set to offer while the cards load.
+            if (sets.isNotEmpty()) {
+                SetsChip(filter.sets.size, Modifier.padding(top = Space.s3).align(Alignment.End)) { showSets = true }
+            }
         }
         Row(
             Modifier.padding(top = Space.s4),
@@ -315,8 +333,15 @@ internal fun KindSegmentsPreview() =
         }
     }
 
+@PreviewLightDark
 @Composable
-private fun FiltersSample(filter: CompendiumFilter) =
-    AtlasTheme {
-        Box(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) { Filters(filter, CardKind.entries) {} }
-    }
+internal fun FiltersSetsChosenPreview() =
+    FiltersSample(CompendiumFilter(sets = setOf("castle-glass", "mokoko-village")), SampleSets)
+
+@Composable
+private fun FiltersSample(
+    filter: CompendiumFilter,
+    sets: List<CardSet> = emptyList(),
+) = AtlasTheme {
+    Box(Modifier.background(AtlasTheme.colors.surface).padding(Space.s4)) { Filters(filter, CardKind.entries, sets) {} }
+}

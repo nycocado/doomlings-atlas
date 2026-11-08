@@ -225,6 +225,38 @@ class CompendiumFilterTest {
         assertEquals(filter, Json.decodeFromString<CompendiumFilter>(Json.encodeToString(filter)))
     }
 
+    private val cardsOfTwoSets =
+        listOf(
+            trait("Classic Trait").copy(id = "classic-trait"),
+            trait("Overlush Trait").copy(id = "overlush-trait", set = "overlush"),
+            Age("classic-age", "classic", "a.webp", "Classic Age", emptyList()),
+            Age("overlush-age", "overlush", "b.webp", "Overlush Age", emptyList()),
+            Catastrophe("classic-cat", "classic", "c.webp", "Classic Catastrophe", emptyList(), -1),
+            Catastrophe("overlush-cat", "overlush", "d.webp", "Overlush Catastrophe", emptyList(), -1),
+        )
+
+    private fun idsOfTwoSets(filter: CompendiumFilter) = cardsOfTwoSets.filterCompendium(filter).map { it.id }
+
+    @Test
+    fun filteringByOneSetKeepsOnlyItsCardsInEveryKind() {
+        val overlush = setOf("overlush")
+        assertEquals(listOf("overlush-trait"), idsOfTwoSets(CompendiumFilter(sets = overlush)))
+        assertEquals(listOf("overlush-age"), idsOfTwoSets(CompendiumFilter(CardKind.Age, sets = overlush)))
+        assertEquals(listOf("overlush-cat"), idsOfTwoSets(CompendiumFilter(CardKind.Catastrophe, sets = overlush)))
+    }
+
+    @Test
+    fun noSetChosenKeepsEveryCard() {
+        assertEquals(listOf("classic-trait", "overlush-trait"), idsOfTwoSets(CompendiumFilter()))
+        assertEquals(listOf("classic-age", "overlush-age"), idsOfTwoSets(CompendiumFilter(CardKind.Age)))
+    }
+
+    @Test
+    fun survivesSavingWithSetsChosen() {
+        val filter = CompendiumFilter(sets = setOf("overlush", "classic"))
+        assertEquals(filter, Json.decodeFromString<CompendiumFilter>(Json.encodeToString(filter)))
+    }
+
     private val translations =
         CardTranslations(
             mapOf(

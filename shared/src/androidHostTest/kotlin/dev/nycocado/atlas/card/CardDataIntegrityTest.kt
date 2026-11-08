@@ -1,5 +1,7 @@
 package dev.nycocado.atlas.card
 
+import dev.nycocado.atlas.compendium.CompendiumFilter
+import dev.nycocado.atlas.compendium.inSetsOf
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -191,6 +193,14 @@ class CardDataIntegrityTest {
         assertEquals(1, classic.filterIsInstance<BirthOfLife>().size, "Birth of Life")
     }
 
+    @Test
+    fun filteringToClassicHidesTheExpansionKinds() {
+        assertEquals(
+            listOf(CardKind.Trait, CardKind.Age, CardKind.Catastrophe, CardKind.GenePool),
+            cards.inSetsOf(CompendiumFilter(sets = setOf("classic"))).offeredKinds(),
+        )
+    }
+
     // Counts from the official rulesheet's transcription (assets/doomlings/rules/imaginary-ends.md): per subspecies,
     // "16X TRAITS // 2X DOMINANTS" (Deeplings, Glitterlings, Moonlings) and "9X TRAITS // 1X DOMINANT" (Fuzelings),
     // each with "2X AGES // 1X CATASTROPHE". The dominants come on top of the traits.
@@ -293,5 +303,13 @@ class CardDataIntegrityTest {
             emptyList(),
             cards.filterNot { dir.resolve(it.image).normalize().startsWith(dir.resolve(it.set)) }.map { it.id },
         )
+    }
+
+    @Test
+    fun everySetFolderDescribesItselfInASetJson() {
+        CardAssets.cardsByFolder.keys.forEach { folder ->
+            val set = Json.decodeFromString<CardSet>(dir.resolve(folder).resolve("set.json").readText())
+            assertEquals(folder, set.id)
+        }
     }
 }

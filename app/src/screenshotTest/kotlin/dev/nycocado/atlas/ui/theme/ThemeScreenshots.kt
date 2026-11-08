@@ -26,6 +26,7 @@ import dev.nycocado.atlas.carddetail.LanguageSelectorPreview
 import dev.nycocado.atlas.carddetail.MeaningOfLifeDetailPreview
 import dev.nycocado.atlas.carddetail.MerchantDetailPreview
 import dev.nycocado.atlas.carddetail.PillsPreview
+import dev.nycocado.atlas.carddetail.SetPillPreview
 import dev.nycocado.atlas.carddetail.SubspeciesTokenDetailPreview
 import dev.nycocado.atlas.carddetail.TraitIconPillsPreview
 import dev.nycocado.atlas.carddetail.TraitWorldsEndDetailPreview
@@ -48,6 +49,7 @@ import dev.nycocado.atlas.compendium.CompendiumUpdatePreview
 import dev.nycocado.atlas.compendium.FiltersAgesPreview
 import dev.nycocado.atlas.compendium.FiltersGreenPreview
 import dev.nycocado.atlas.compendium.FiltersPreview
+import dev.nycocado.atlas.compendium.FiltersSetsChosenPreview
 import dev.nycocado.atlas.compendium.HeaderHalfCollapsedPreview
 import dev.nycocado.atlas.compendium.HeaderPreview
 import dev.nycocado.atlas.compendium.HeaderRailPreview
@@ -55,6 +57,8 @@ import dev.nycocado.atlas.compendium.KindSegmentsClassicPreview
 import dev.nycocado.atlas.compendium.KindSegmentsPreview
 import dev.nycocado.atlas.compendium.SearchFieldPreview
 import dev.nycocado.atlas.compendium.SearchFieldTypedPreview
+import dev.nycocado.atlas.compendium.SetsChipPreview
+import dev.nycocado.atlas.compendium.SetsListPreview
 import dev.nycocado.atlas.ui.component.CardStackPreview
 import dev.nycocado.atlas.ui.component.CardThumbPreview
 import dev.nycocado.atlas.ui.component.DockPreview
@@ -465,6 +469,46 @@ fun SearchFieldScreenshot() = SearchFieldPreview()
 @PreviewLightDark
 @Composable
 fun SearchFieldTypedScreenshot() = SearchFieldTypedPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun SetPillScreenshot() = SetPillPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun SetPillFontScale200Screenshot() = SetPillPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun SetsListScreenshot() = SetsListPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun SetsListFontScale200Screenshot() = SetsListPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun SetsChipScreenshot() = SetsChipPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun SetsChipFontScale200Screenshot() = SetsChipPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun FiltersSetsChosenScreenshot() = FiltersSetsChosenPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun FiltersSetsChosenFontScale200Screenshot() = FiltersSetsChosenPreview()
 
 @PreviewTest
 @PreviewLightDark

@@ -7,6 +7,9 @@ import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasSetTextAction
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.isToggleable
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.savedstate.read
@@ -95,6 +98,22 @@ class RecreationTest : AtlasBehaviorTest() {
         scrollListTo(
             hasContentDescription(context.resources.getQuantityString(R.plurals.card_group_open, 6, "Kidney", 6)),
         )
+    }
+
+    @Test
+    fun processDeathBringsBackTheSetFilter() {
+        val saved =
+            saveAfter {
+                text(R.string.sets_filter).performClick()
+                compose.onNode(isToggleable() and hasText(TEST_EXPANSION_SET)).performClick()
+                compose.waitForIdle()
+            }
+
+        restoreInNewActivity(saved)
+
+        compose.onNodeWithText(context.getString(R.string.sets_filter_chosen, 1)).assertExists()
+        card("Adorable").assertExists()
+        card("Altruistic").assertDoesNotExist()
     }
 
     private fun saveAfterOpening(

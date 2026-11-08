@@ -3,7 +3,14 @@ package dev.nycocado.atlas.card
 class CardLibrary private constructor(
     // null while the cards load.
     val cards: List<Card>?,
+    private val sets: List<CardSet> = emptyList(),
 ) {
+    // The sets of the set filter, in release order. A set whose name isn't confirmed yet has no row to show.
+    val setsToChoose: List<CardSet> by lazy { sets.inReleaseOrder() }
+
+    // null when the set's name isn't confirmed.
+    fun setName(card: Card): String? = sets.find { it.id == card.set }?.name
+
     fun lookup(id: String): CardLookup =
         when (cards) {
             null -> CardLookup.Loading
@@ -44,7 +51,10 @@ class CardLibrary private constructor(
     companion object {
         val loading = CardLibrary(null)
 
-        fun decode(json: String) = CardLibrary(decodeCards(json))
+        fun decode(
+            json: String,
+            setsJson: String = "[]",
+        ) = CardLibrary(decodeCards(json), decodeSets(setsJson))
 
         internal fun of(cards: List<Card>) = CardLibrary(cards)
     }

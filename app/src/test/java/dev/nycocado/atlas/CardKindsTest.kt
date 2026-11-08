@@ -19,11 +19,13 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.savedstate.serialization.encodeToSavedState
 import dagger.hilt.android.testing.HiltAndroidTest
 import dev.nycocado.atlas.card.CardKind
+import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.CardRepository
 import dev.nycocado.atlas.compendium.CompendiumFilter
 import dev.nycocado.atlas.compendium.CompendiumViewModel
 import dev.nycocado.atlas.compendium.Filters
 import dev.nycocado.atlas.ui.theme.AtlasTheme
+import kotlinx.coroutines.CompletableDeferred
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.robolectric.Shadows.shadowOf
@@ -36,7 +38,10 @@ class CardKindsTest : AtlasBehaviorTest() {
     @Inject
     lateinit var repository: CardRepository
 
-    private fun viewModel(saved: SavedStateHandle) = CompendiumViewModel(repository, context, saved)
+    private fun viewModel(
+        saved: SavedStateHandle,
+        cards: CardRepository = repository,
+    ) = CompendiumViewModel(cards, context, saved)
 
     // Classic has no Merchants, as after an update that took a kind away. The key comes from a ViewModel, not from here.
     @Test
@@ -45,9 +50,20 @@ class CardKindsTest : AtlasBehaviorTest() {
         val key = probe.keys().single { "savedFilter" in it }
         val saved = SavedStateHandle(mapOf(key to encodeToSavedState(CompendiumFilter(kind = CardKind.Merchant))))
 
-        val restored = viewModel(saved)
+        val cardsArrive = CompletableDeferred<Unit>()
+        val restored =
+            viewModel(
+                saved,
+                object : CardRepository(context) {
+                    override suspend fun library(): CardLibrary {
+                        cardsArrive.await()
+                        return repository.library()
+                    }
+                },
+            )
         assertEquals(CardKind.Merchant, restored.filter.value.kind)
 
+        cardsArrive.complete(Unit)
         // No Compose root here to keep the main looper running for the ViewModel's coroutine.
         compose.waitUntil(5_000) {
             shadowOf(Looper.getMainLooper()).idle()
@@ -89,7 +105,7 @@ class CardKindsTest : AtlasBehaviorTest() {
     ) {
         launchPastNotice().onActivity {
             it.setContent {
-                AtlasTheme { Box(Modifier.width(width().dp)) { Filters(filter, kinds()) {} } }
+                AtlasTheme { Box(Modifier.width(width().dp)) { Filters(filter, kinds(), emptyList()) {} } }
             }
         }
         compose.waitForIdle()

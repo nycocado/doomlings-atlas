@@ -58,6 +58,7 @@ import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardKind
+import dev.nycocado.atlas.card.CardSet
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.face
 import dev.nycocado.atlas.carddetail.LongNameTrait
@@ -99,6 +100,7 @@ fun CompendiumScreen(
     val filter by viewModel.filter.collectAsStateWithLifecycle()
     val cells by viewModel.cells.collectAsStateWithLifecycle()
     val kinds by viewModel.kinds.collectAsStateWithLifecycle()
+    val library by viewModel.library.collectAsStateWithLifecycle()
     CompendiumContent(
         filter,
         cells,
@@ -111,6 +113,7 @@ fun CompendiumScreen(
         onInstallUpdate = onInstallUpdate,
         onDismissUpdate = onDismissUpdate,
         kinds = kinds,
+        sets = library.setsToChoose,
     )
 }
 
@@ -128,6 +131,7 @@ fun CompendiumContent(
     onInstallUpdate: () -> Unit = {},
     onDismissUpdate: () -> Unit = {},
     kinds: List<CardKind> = CardKind.entries,
+    sets: List<CardSet> = emptyList(),
 ) {
     val theme = AtlasTheme.colors
     val distance = with(LocalDensity.current) { CollapseDistance.toPx() }
@@ -222,7 +226,7 @@ fun CompendiumContent(
                         horizontalArrangement = Arrangement.spacedBy(CellGapAcross),
                         verticalArrangement = Arrangement.spacedBy(CellGapDown),
                     ) {
-                        fullWidth("filters") { Filters(filter, kinds, onFilterChange) }
+                        fullWidth("filters") { Filters(filter, kinds, sets, onFilterChange) }
                         if (cells?.isEmpty() == true) {
                             fullWidth("empty") {
                                 BasicText(
