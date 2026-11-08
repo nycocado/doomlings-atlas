@@ -82,6 +82,7 @@ import androidx.compose.ui.util.lerp
 import coil3.compose.AsyncImage
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.Age
+import dev.nycocado.atlas.card.BirthOfLife
 import dev.nycocado.atlas.card.CARD_RATIO
 import dev.nycocado.atlas.card.Card
 import dev.nycocado.atlas.card.CardColor
@@ -727,6 +728,25 @@ private val Bon =
         "Bon",
         listOf(Effect(EffectKind.Bargain, "Trash 1 trinket, then gain 1 trinket.\nYou may repeat once.")),
     )
+
+private val TheBirthOfLife =
+    BirthOfLife(
+        "classic/birth-of-life/the-birth-of-life",
+        "classic",
+        "",
+        "The Birth of Life",
+        listOf(
+            Effect(
+                text =
+                    "[yellow]Set your Gene Pool to 5.[/yellow]\n\n" +
+                        "Play 1 trait each turn.\nStabilize to end your turn.",
+            ),
+        ),
+    )
+
+@PreviewLightDark
+@Composable
+internal fun BirthOfLifeDetailPreview() = AtlasTheme { CardDetailSample(card = TheBirthOfLife) }
 
 @PreviewLightDark
 @Composable

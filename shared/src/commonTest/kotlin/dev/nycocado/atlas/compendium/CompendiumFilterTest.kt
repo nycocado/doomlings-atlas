@@ -13,6 +13,7 @@ import dev.nycocado.atlas.card.CardTranslations
 import dev.nycocado.atlas.card.Catastrophe
 import dev.nycocado.atlas.card.Effect
 import dev.nycocado.atlas.card.EffectKind
+import dev.nycocado.atlas.card.GenePool
 import dev.nycocado.atlas.card.NamedCard
 import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.decodeTranslations
@@ -102,6 +103,15 @@ class CompendiumFilterTest {
     @Test
     fun searchesTheWorldsEndOfCatastrophes() {
         assertEquals(listOf("ai-takeover"), names(CompendiumFilter(kind = CardKind.Catastrophe, query = "worth 2")))
+    }
+
+    @Test
+    fun aGenePoolHasNoTextSoAnySearchHidesIt() {
+        val genePools = listOf(GenePool("classic/gene-pools/blue", "classic", ""))
+        val kind = CardKind.GenePool
+
+        assertEquals(genePools, genePools.filterCompendium(CompendiumFilter(kind)))
+        assertEquals(emptyList(), genePools.filterCompendium(CompendiumFilter(kind, query = "gene")))
     }
 
     @Test

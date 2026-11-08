@@ -10,6 +10,7 @@ import dev.nycocado.atlas.about.AboutPreview
 import dev.nycocado.atlas.about.AboutUpdatePreview
 import dev.nycocado.atlas.about.NoticePreview
 import dev.nycocado.atlas.carddetail.ActionNoteTokenDetailPreview
+import dev.nycocado.atlas.carddetail.BirthOfLifeDetailPreview
 import dev.nycocado.atlas.carddetail.CardDetailLongNamePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
@@ -465,6 +466,16 @@ fun KindSegmentsFontScale200Screenshot() = KindSegmentsPreview()
 @PreviewLightDark
 @Composable
 fun KindSegmentsClassicScreenshot() = KindSegmentsClassicPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun BirthOfLifeDetailScreenshot() = BirthOfLifeDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun BirthOfLifeDetailFontScale200Screenshot() = BirthOfLifeDetailPreview()
 
 @PreviewTest
 @PreviewLightDark

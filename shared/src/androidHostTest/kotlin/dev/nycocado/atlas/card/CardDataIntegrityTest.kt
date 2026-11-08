@@ -189,7 +189,8 @@ class CardDataIntegrityTest {
         assertEquals(4, ends.filterIsInstance<Catastrophe>().size, "catastrophes")
     }
 
-    // A card type without its kind on its face would open as an empty card detail.
+    // An enabled card must open with something to read: its name, and its text on the types that always print one. A
+    // Gene Pool prints neither.
     @Test
     fun everyEnabledCardHasAFace() {
         val sets = System.getProperty("enabled.sets")!!.split(",")
@@ -206,7 +207,16 @@ class CardDataIntegrityTest {
                 .toSet()
         assertEquals(
             emptyList(),
-            cards.filter { it.id in enabled && it.face().facts.none { fact -> fact is CardFact.Kind } }.map { it.id },
+            cards
+                .filter { it.id in enabled }
+                .filterNot { card ->
+                    val face = card.face()
+                    when (card) {
+                        is GenePool -> face.name == null && face.blocks.isEmpty()
+                        is Trait -> !face.name.isNullOrBlank()
+                        else -> !face.name.isNullOrBlank() && face.blocks.isNotEmpty()
+                    }
+                }.map { it.id },
         )
     }
 

@@ -12,7 +12,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -24,7 +23,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
@@ -209,25 +210,28 @@ private fun KindSegments(
     onSelect: (CardKind) -> Unit,
 ) {
     val theme = AtlasTheme.colors
-    val scroll = rememberScrollState()
-    // Traits are first, so it shows them when they open after the open kind went away.
-    LaunchedEffect(selected) { if (selected == CardKind.Trait) scroll.animateScrollTo(0) }
+    val row = rememberLazyListState()
     BoxWithConstraints(
         Modifier
             .fillMaxWidth()
             .sticker(CircleShape, theme.surfaceSticker, theme.outline, stroke = Stroke.sticker)
             .padding(horizontal = Space.s1),
     ) {
-        Row(
+        // The row's own state, not a BringIntoViewRequester: that request goes on to the compendium's grid, which would
+        // jump each time the filters come back into it.
+        LaunchedEffect(selected, kinds, maxWidth) {
+            kinds.indexOf(selected).takeIf { it >= 0 }?.let { row.animateScrollToItem(it) }
+        }
+        LazyRow(
             Modifier
+                .fillMaxWidth()
                 // A segment scrolled halfway out is cut along the track's rounded end.
                 .clip(CircleShape)
-                .horizontalScroll(scroll)
-                .widthIn(min = maxWidth)
                 .selectableGroup(),
+            state = row,
             horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
         ) {
-            kinds.forEach { kind ->
+            items(kinds, key = { it }) { kind ->
                 val active = kind == selected
                 val textColor by animateColorAsState(
                     if (active) theme.onPrimary else theme.onSurface,
