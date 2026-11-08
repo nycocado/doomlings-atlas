@@ -15,16 +15,19 @@ import dev.nycocado.atlas.carddetail.CardDetailPreview
 import dev.nycocado.atlas.carddetail.CatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.CitedCardDetailPreview
 import dev.nycocado.atlas.carddetail.DecorInkBlocksPreview
+import dev.nycocado.atlas.carddetail.DualColorDetailPreview
 import dev.nycocado.atlas.carddetail.InkBlocksPreview
 import dev.nycocado.atlas.carddetail.InkBlocksSample
+import dev.nycocado.atlas.carddetail.InlineTokensPreview
 import dev.nycocado.atlas.carddetail.LanguageSelectorPreview
 import dev.nycocado.atlas.carddetail.PillsPreview
+import dev.nycocado.atlas.carddetail.SubspeciesTokenDetailPreview
+import dev.nycocado.atlas.carddetail.TraitIconPillsPreview
 import dev.nycocado.atlas.carddetail.TraitWorldsEndDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitSample
 import dev.nycocado.atlas.carddetail.TrinketBlocksPreview
-import dev.nycocado.atlas.carddetail.UndrawnTokenDetailPreview
 import dev.nycocado.atlas.cardpane.CardBesideListPreview
 import dev.nycocado.atlas.compendium.CardGroupCollapsedPreview
 import dev.nycocado.atlas.compendium.CardGroupOpenPreview
@@ -151,7 +154,32 @@ fun TraitWorldsEndDetailScreenshot() = TraitWorldsEndDetailPreview()
 @PreviewTest
 @PreviewLightDark
 @Composable
-fun UndrawnTokenDetailScreenshot() = UndrawnTokenDetailPreview()
+fun SubspeciesTokenDetailScreenshot() = SubspeciesTokenDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun TraitIconPillsScreenshot() = TraitIconPillsPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun TraitIconPillsFontScale200Screenshot() = TraitIconPillsPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun DualColorDetailScreenshot() = DualColorDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun DualColorDetailFontScale200Screenshot() = DualColorDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun InlineTokensScreenshot() = InlineTokensPreview()
 
 @PreviewTest
 @Preview(name = "Light", locale = "pt")

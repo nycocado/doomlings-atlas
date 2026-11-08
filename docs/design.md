@@ -36,7 +36,7 @@ Two themes: `light` ("Day", default) and `dark` ("Game night"). No Android dynam
 - `primary` / `on-primary`: filled action and active segment (ink by day, yellow at night).
 - `highlight` / `on-highlight`: what is selected now (active dock item, chosen option, current step, points badge, dominant).
 - `sunset-*` with `on-sunset`: player colors and forward buttons in flows.
-- Trait: `trait-<color>` (exact card color, same in both themes) with `on-trait-<color>` on top; `trait-<color>-ink` for glyphs, names and inked words of card text on surfaces; `trait-<color>-container` for soft backgrounds.
+- Trait: `trait-<color>` (exact card color, same in both themes) with `on-trait-<color>` on top; a trait of several colors paints them in equal parts side by side, in the order of its data, each with its own `on-trait-<color>`; `trait-<color>-ink` for glyphs, names and inked words of card text on surfaces; `trait-<color>-container` for soft backgrounds.
 - Borders and shadows use `outline`: ink by day, light lilac at night. That keeps stickers readable in the dark.
 - `yellow-ink`: the yellow ink, for the heading and text of the blocks a card prints in yellow (a Catastrophe's World's End and a Trinket's Pocket Objective) and for yellow spans of card text (a darker gold by day, yellow at night, ≥5.5:1 on `surface-sticker`). A trait's World's End stays in `on-surface`.
 - `wonder-ink-orange`, `wonder-ink-teal`, `wonder-ink-blue`: the stops of the wonder ink, the orange-to-blue gradient of Age of Wonder's text (the card's colors at night, darker by day, ≥5.2:1 on `surface-sticker`). Decoration, not a trait color.
