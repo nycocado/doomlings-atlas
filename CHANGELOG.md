@@ -2,6 +2,29 @@
 
 Notable changes in each release of Doomlings Atlas, generated from the commit history by [git-cliff](https://git-cliff.org).
 
+## 0.3.0 (2026-11-08)
+
+### Features
+
+- Every set in the compendium ([#230](https://github.com/nycocado/doomlings-atlas/pull/230))
+
+### Fixes
+
+- Dependency review only after the PR's graph is indexed ([#224](https://github.com/nycocado/doomlings-atlas/pull/224))
+- One line break where card text has a blank line ([#234](https://github.com/nycocado/doomlings-atlas/pull/234))
+
+### Documentation
+
+- Equal screenshot widths in the README table ([#229](https://github.com/nycocado/doomlings-atlas/pull/229))
+- Release environment without required reviewers ([#236](https://github.com/nycocado/doomlings-atlas/pull/236))
+- README, ROADMAP and notes up to date for v0.3.0 ([#238](https://github.com/nycocado/doomlings-atlas/pull/238))
+
+### Tooling
+
+- Release APK attestation, zizmor on every PR, dependency review for forks ([#221](https://github.com/nycocado/doomlings-atlas/pull/221))
+- Bump the actions group with 3 updates ([#226](https://github.com/nycocado/doomlings-atlas/pull/226))
+- Bump the gradle group with 3 updates ([#227](https://github.com/nycocado/doomlings-atlas/pull/227))
+
 ## 0.2.0 (2026-11-01)
 
 ### Features
