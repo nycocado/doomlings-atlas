@@ -118,8 +118,10 @@ import dev.nycocado.atlas.ui.theme.Shadow
 import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.Stroke
+import dev.nycocado.atlas.ui.theme.inkOver
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
+import dev.nycocado.atlas.ui.theme.traitPaint
 import kotlinx.coroutines.launch
 import java.util.Locale
 import kotlin.random.Random
@@ -178,12 +180,8 @@ fun CardDetailContent(
     val face = translations.face(card, language)
     // Ages and catastrophes have no color: their panel stays neutral, so it can't be read as a trait color.
     val colored = face.colors.isNotEmpty()
-    val (panel, dots) =
-        if (colored) {
-            theme.trait(face.colors.first()).let { it.fill to it.onFill }
-        } else {
-            theme.surfaceSunk to theme.outlineSoft
-        }
+    val fills = if (colored) face.colors.map { theme.trait(it).fill } else listOf(theme.surfaceSunk)
+    val dots = if (colored) theme.inkOver(face.colors) else theme.outlineSoft
     // Status bar icons take the color the design puts on the panel, unless the list's header shares the bar.
     val onPanel = if (colored) dots else theme.onSurface
     CardStatusBarIcons(layout, onPanel.luminance() < 0.5f)
@@ -197,7 +195,7 @@ fun CardDetailContent(
                 .heightIn(min = maxHeight),
         ) {
             Box {
-                Panel(card.image, tilt, panel, dots, onBack)
+                Panel(card.image, tilt, fills, dots, onBack)
                 face.faceValue?.let {
                     PointsBadge(it, Modifier.align(Alignment.BottomEnd).offset(x = (-64).dp, y = 30.dp))
                 }
@@ -250,7 +248,7 @@ fun CardDetailContent(
                             block,
                             language,
                             card,
-                            face.colors.firstOrNull(),
+                            face.colors,
                             library,
                             onCardClick,
                             selector.takeIf { block.selector },
@@ -277,7 +275,7 @@ private val PanelShape = RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 40.
 private fun Panel(
     image: String,
     tilt: Float,
-    fill: Color,
+    fills: List<Color>,
     dots: Color,
     onBack: () -> Unit,
 ) {
@@ -288,10 +286,10 @@ private fun Panel(
             .bleed(Stroke.strong)
             // A dragged card can leave the panel, but only shows inside its frame.
             .clip(PanelShape)
-            .background(fill)
             .drawBehind {
                 val step = 18.dp.toPx()
                 val radius = 1.6.dp.toPx()
+                drawRect(traitPaint(fills, Offset(size.width, size.height)))
                 var y = step / 2
                 while (y < size.height) {
                     var x = step / 2
@@ -638,8 +636,7 @@ private val MagicBeans =
 @Composable
 internal fun ActionNoteTokenDetailPreview() = AtlasTheme { CardDetailSample(card = MagicBeans) }
 
-// Carnivore as in assets/doomlings/legends-of-enderas/cards.json: its Dinoling token has no symbol in the app yet (#148),
-// so it shows its name.
+// Carnivore as in assets/doomlings/legends-of-enderas/cards.json, with its Dinoling token.
 private val Carnivore =
     Trait(
         "legends-of-enderas/traits/carnivore",
@@ -661,7 +658,52 @@ private val Carnivore =
 
 @PreviewLightDark
 @Composable
-internal fun UndrawnTokenDetailPreview() = AtlasTheme { CardDetailSample(card = Carnivore) }
+internal fun SubspeciesTokenDetailPreview() = AtlasTheme { CardDetailSample(card = Carnivore) }
+
+// Fish Collector as in assets/doomlings/castle-glass/cards.json: blue and purple, whose on-colors differ.
+internal val FishCollector =
+    Trait(
+        "castle-glass/traits/fish-collector",
+        "castle-glass",
+        "",
+        "Fish Collector",
+        "I hope I can find the other boot.",
+        listOf(Effect(EffectKind.Action, "Steal a face value 1 from up to two trait piles.")),
+        null,
+        0,
+        listOf(CardColor.Blue, CardColor.Purple),
+        false,
+        emptyList(),
+        listOf(TraitIcon.Action),
+    )
+
+@PreviewLightDark
+@Composable
+internal fun DualColorDetailPreview() = AtlasTheme { CardDetailSample(card = FishCollector) }
+
+// Awesome! as in assets/doomlings/imaginary-ends/cards.json, one of the traits of all four colors.
+private val Awesome =
+    Trait(
+        "imaginary-ends/traits/awesome",
+        "imaginary-ends",
+        "",
+        "Awesome!",
+        "Fear me! Tehee!",
+        listOf(
+            Effect(EffectKind.WorldsEnd, "Stabilize to 2."),
+            Effect(text = "Add 2 face values in your hand to your score.\n\n(Max +17)"),
+        ),
+        null,
+        1,
+        listOf(CardColor.Blue, CardColor.Green, CardColor.Purple, CardColor.Red),
+        true,
+        listOf("Glitterling"),
+        listOf(TraitIcon.DropOfLife, TraitIcon.WorldsEnd),
+    )
+
+@PreviewLightDark
+@Composable
+internal fun FourColorDetailPreview() = AtlasTheme { CardDetailSample(card = Awesome) }
 
 // Eloquence as in assets/doomlings/classic/cards.json: a trait prints its World's End in the normal text color.
 private val Eloquence =

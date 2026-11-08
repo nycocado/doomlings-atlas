@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
@@ -40,8 +41,8 @@ internal fun Pills(
     face: CardFace,
     language: CardLanguage,
 ) {
-    val color = face.colors.firstOrNull()
     val theme = AtlasTheme.colors
+    val icons = face.facts.filterIsInstance<CardFact.Icon>().map { it.icon }
     FlowRow(
         horizontalArrangement = Arrangement.spacedBy(Space.s2),
         verticalArrangement = Arrangement.spacedBy(Space.s2),
@@ -79,8 +80,14 @@ internal fun Pills(
                         theme.onSurface,
                         language = language,
                         glyph =
-                            fact.icon.symbol?.let {
-                                { Symbol(it, Modifier.height(18.dp), actionColor = theme.trait(color).fill) }
+                            fact.icon.symbol(icons)?.let {
+                                {
+                                    Symbol(
+                                        it,
+                                        Modifier.height(18.dp),
+                                        actionColors = theme.actionColors(face.colors),
+                                    )
+                                }
                             },
                     )
                 }
@@ -149,16 +156,86 @@ private val TraitIcon.label: Int
             TraitIcon.WorldsEnd -> R.string.worlds_end
         }
 
-// Only the symbols the enabled sets use are converted; the rest have none yet.
-private val TraitIcon.symbol: Int?
-    @DrawableRes get() =
-        when (this) {
-            TraitIcon.Action -> R.drawable.ic_symbol_action
-            TraitIcon.DropOfLife -> R.drawable.ic_symbol_drop_of_life
-            TraitIcon.PlayWhen -> R.drawable.ic_symbol_play_when
-            TraitIcon.WorldsEnd -> R.drawable.ic_symbol_worlds_end
-            else -> null
+// Curious and Exotic are printed as one tag with the card's coral, fish or shell, which the card data test guarantees.
+@DrawableRes
+private fun TraitIcon.symbol(icons: List<TraitIcon>): Int? =
+    when (this) {
+        TraitIcon.Action -> {
+            R.drawable.ic_symbol_action
         }
+
+        TraitIcon.Attachment -> {
+            R.drawable.ic_symbol_attachment
+        }
+
+        TraitIcon.Coral -> {
+            R.drawable.ic_symbol_coral
+        }
+
+        TraitIcon.Curious -> {
+            tagOf(
+                icons,
+                R.drawable.ic_symbol_tag_curious_coral,
+                R.drawable.ic_symbol_tag_curious_fish,
+                R.drawable.ic_symbol_tag_curious_shell,
+            )
+        }
+
+        TraitIcon.Dragon -> {
+            R.drawable.ic_symbol_tag_dragon
+        }
+
+        TraitIcon.DropOfLife -> {
+            R.drawable.ic_symbol_drop_of_life
+        }
+
+        TraitIcon.Exotic -> {
+            tagOf(
+                icons,
+                R.drawable.ic_symbol_tag_exotic_coral,
+                R.drawable.ic_symbol_tag_exotic_fish,
+                R.drawable.ic_symbol_tag_exotic_shell,
+            )
+        }
+
+        TraitIcon.Fish -> {
+            R.drawable.ic_symbol_fish
+        }
+
+        TraitIcon.PlayWhen -> {
+            R.drawable.ic_symbol_play_when
+        }
+
+        TraitIcon.Shell -> {
+            R.drawable.ic_symbol_shell
+        }
+
+        TraitIcon.Spell -> {
+            R.drawable.ic_symbol_spell
+        }
+
+        TraitIcon.Suppress -> {
+            R.drawable.ic_symbol_suppress
+        }
+
+        TraitIcon.WorldsEnd -> {
+            R.drawable.ic_symbol_worlds_end
+        }
+    }
+
+@DrawableRes
+private fun tagOf(
+    icons: List<TraitIcon>,
+    @DrawableRes coral: Int,
+    @DrawableRes fish: Int,
+    @DrawableRes shell: Int,
+): Int? =
+    when {
+        TraitIcon.Coral in icons -> coral
+        TraitIcon.Fish in icons -> fish
+        TraitIcon.Shell in icons -> shell
+        else -> null
+    }
 
 @PreviewLightDark
 @Composable
@@ -182,5 +259,28 @@ internal fun PillsPreview() =
                 ),
                 CardLanguage.English,
             )
+        }
+    }
+
+// Every trait icon, then Curious and Exotic with each coral, fish and shell, whose tag they are printed on.
+@PreviewLightDark
+@Composable
+internal fun TraitIconPillsPreview() =
+    AtlasTheme {
+        Column(
+            Modifier.background(AtlasTheme.colors.surface).padding(Space.s4),
+            verticalArrangement = Arrangement.spacedBy(Space.s3),
+        ) {
+            val rows =
+                listOf(TraitIcon.entries) +
+                    listOf(TraitIcon.Coral, TraitIcon.Fish, TraitIcon.Shell).map {
+                        listOf(TraitIcon.Curious, TraitIcon.Exotic, it)
+                    }
+            rows.forEach { icons ->
+                Pills(
+                    CardFace("Pills", icons.map(CardFact::Icon), null, emptyList(), emptyList()),
+                    CardLanguage.English,
+                )
+            }
         }
     }

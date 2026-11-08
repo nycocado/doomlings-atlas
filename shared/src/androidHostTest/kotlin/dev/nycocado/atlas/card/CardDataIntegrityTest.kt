@@ -31,6 +31,21 @@ class CardDataIntegrityTest {
 
     private val effects = cards.filterIsInstance<NamedCard>().flatMap { card -> card.effects.map { card to it } }
 
+    // The card detail draws Curious and Exotic as one printed tag with the card's coral, fish or shell.
+    @Test
+    fun everyCuriousOrExoticTraitHasOneCoralFishOrShell() {
+        val aquatic = setOf(TraitIcon.Coral, TraitIcon.Fish, TraitIcon.Shell)
+        assertEquals(
+            emptyList(),
+            cards
+                .filterIsInstance<Trait>()
+                .filter {
+                    (TraitIcon.Curious in it.icons || TraitIcon.Exotic in it.icons) &&
+                        it.icons.count(aquatic::contains) != 1
+                }.map { it.id },
+        )
+    }
+
     @Test
     fun everyEffectKindIsAllowedOnItsCardType() {
         assertEquals(

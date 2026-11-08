@@ -1,7 +1,12 @@
 package dev.nycocado.atlas.ui.theme
 
 import androidx.compose.runtime.Immutable
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.util.lerp
 import dev.nycocado.atlas.card.CardColor
 
 // The tokens in ui/theme mirror design/tokens.json, where their usage is described. Keep them in sync.
@@ -104,3 +109,43 @@ internal val GameNightColors =
         traitRed = TraitColors(Color(0xFFEB4244), Color(0xFF140C24), Color(0xFFFFAAA6), Color(0xFF4A1517)),
         traitColorless = TraitColors(Color(0xFFAFAFAF), Color(0xFF23173B), Color(0xFFC9CCD2), Color(0xFF2C3038)),
     )
+
+// How a card's colors are painted: one color flat, several blended top-left to bottom-right in data order. end is the
+// painted area's bottom-right corner.
+internal fun traitPaint(
+    colors: List<Color>,
+    end: Offset,
+): Brush = colors.singleOrNull()?.let(::SolidColor) ?: Brush.linearGradient(colors, Offset.Zero, end)
+
+// What is drawn over traitPaint. Over several colors, the trait on-color that keeps the most contrast over the whole
+// blend, as no single color's own on-color holds across it.
+internal fun AtlasColors.inkOver(colors: List<CardColor?>): Color {
+    colors.singleOrNull()?.let { return trait(it).onFill }
+    if (colors.size == 1) return traitColorless.onFill
+    val blend =
+        colors.map { trait(it).fill }.zipWithNext().flatMap { (a, b) ->
+            (0..BLEND_SAMPLES).map { sRgbMix(a, b, it / BLEND_SAMPLES.toFloat()) }
+        }
+    return listOf(traitBlue, traitGreen, traitPurple, traitRed)
+        .map { it.onFill }
+        .distinct()
+        .maxBy { ink -> blend.minOf { contrast(ink, it) } }
+}
+
+private const val BLEND_SAMPLES = 20
+
+// As the gradient's shader blends; Compose's lerp blends in Oklab, which would give other colors.
+private fun sRgbMix(
+    a: Color,
+    b: Color,
+    t: Float,
+) = Color(lerp(a.red, b.red, t), lerp(a.green, b.green, t), lerp(a.blue, b.blue, t))
+
+// The WCAG contrast ratio: ColorUtils.calculateContrast takes android.graphics colors, not Compose's.
+private fun contrast(
+    a: Color,
+    b: Color,
+): Float {
+    val (light, dark) = listOf(a.luminance(), b.luminance()).sortedDescending()
+    return (light + 0.05f) / (dark + 0.05f)
+}
