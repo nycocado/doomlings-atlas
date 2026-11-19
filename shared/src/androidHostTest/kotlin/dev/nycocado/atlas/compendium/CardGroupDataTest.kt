@@ -5,6 +5,7 @@ import dev.nycocado.atlas.card.CardAssets
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.NamedCard
+import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.decodeCards
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -48,6 +49,15 @@ class CardGroupDataTest {
         val kidneys = entries(CompendiumFilter(colors = setOf(CardColor.Purple)), all).filter { it.name() == "Kidney" }
 
         assertEquals("legends-of-enderas/traits/kidney-2", assertIs<CompendiumEntry.Single>(kidneys.single()).card.id)
+    }
+
+    @Test
+    fun blueAndGreenShowExactlyTheTraitsWithBoth() {
+        val both = setOf(CardColor.Blue, CardColor.Green)
+        val expected = all.filter { it is Trait && it.colors.containsAll(both) }
+
+        assertTrue(expected.isNotEmpty())
+        assertEquals(expected.toSet(), all.filterCompendium(CompendiumFilter(colors = both)).toSet())
     }
 
     @Test

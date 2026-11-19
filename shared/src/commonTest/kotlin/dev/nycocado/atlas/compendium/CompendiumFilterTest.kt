@@ -97,9 +97,42 @@ class CompendiumFilterTest {
     }
 
     @Test
-    fun selectedColorsMatchAnyColorOfTheTrait() {
+    fun oneColorIncludesMultiColorTraits() {
         assertEquals(listOf("Brave", "Camouflage"), names(CompendiumFilter(colors = setOf(Blue))))
-        assertEquals(listOf("Brave", "Venomous"), names(CompendiumFilter(colors = setOf(Green, Red))))
+    }
+
+    @Test
+    fun twoColorsShowOnlyTraitsWithBoth() {
+        assertEquals(listOf("Brave"), names(CompendiumFilter(colors = setOf(Blue, Green))))
+        assertEquals(emptyList(), names(CompendiumFilter(colors = setOf(Green, Red))))
+    }
+
+    @Test
+    fun aFourColorTraitMatchesAnyPair() {
+        val rainbow = listOf(trait("Rainbow", *CardColor.entries.toTypedArray()))
+        val pairs = CardColor.entries.flatMap { a -> CardColor.entries.filter { it != a }.map { setOf(a, it) } }
+
+        pairs.forEach { assertEquals(rainbow, rainbow.filterCompendium(CompendiumFilter(colors = it)), "$it") }
+    }
+
+    @Test
+    fun noColorShowsEveryTrait() {
+        assertEquals(listOf("Brave", "Camouflage", "Prickly", "Venomous"), names(CompendiumFilter(colors = emptySet())))
+    }
+
+    @Test
+    fun markingColorsAddsAndUnmarkingRemoves() {
+        val blueGreen = CompendiumFilter().toggleColor(Blue).toggleColor(Green)
+
+        assertEquals(setOf(Blue, Green), blueGreen.colors)
+        assertEquals(setOf<CardColor?>(Green), blueGreen.toggleColor(Blue).colors)
+    }
+
+    @Test
+    fun colorlessIsExclusive() {
+        assertEquals(setOf<CardColor?>(null), CompendiumFilter(colors = setOf(Blue, Green)).toggleColor(null).colors)
+        assertEquals(setOf<CardColor?>(Red), CompendiumFilter(colors = setOf(null)).toggleColor(Red).colors)
+        assertEquals(emptySet<CardColor?>(), CompendiumFilter(colors = setOf(null)).toggleColor(null).colors)
     }
 
     @Test
