@@ -1,12 +1,19 @@
 package dev.nycocado.atlas
 
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.semantics.SemanticsProperties
+import androidx.compose.ui.test.SemanticsMatcher
+import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsNotSelected
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasSetTextAction
+import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.isSelectable
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.text.AnnotatedString
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -78,6 +85,31 @@ class PhoneBrowsingTest : AtlasBehaviorTest() {
         field.assertTextEquals("adorable")
         card("Adorable").assertIsDisplayed()
     }
+
+    // Classic has no trait that is both blue and green.
+    @Test
+    fun severalColorsMarkTogetherAndColorlessUnmarksThem() {
+        launchPastNotice()
+        val blue = disc(R.string.color_blue)
+        val colorless = disc(R.string.color_colorless)
+
+        compose.onNode(blue).performClick()
+        compose.onNode(green).performClick()
+
+        listOf(blue, green).forEach {
+            compose.onNode(it).assertIsSelected()
+            compose.onNode(it).assert(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Checkbox))
+        }
+        text(R.string.no_results).assertIsDisplayed()
+
+        compose.onNode(colorless).performClick()
+
+        compose.onNode(blue).assertIsNotSelected()
+        compose.onNode(green).assertIsNotSelected()
+        compose.onNode(colorless).assertIsSelected()
+    }
+
+    private fun disc(name: Int): SemanticsMatcher = isSelectable() and hasText(string(name))
 
     @Test
     fun backFromACardKeepsTheFilterAndTheScroll() {

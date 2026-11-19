@@ -104,14 +104,14 @@ internal fun Filters(
                 exit = fadeOut() + shrinkVertically(),
             ) {
                 Row(
-                    Modifier.fillMaxWidth().padding(bottom = Space.s4).selectableGroup(),
+                    Modifier.fillMaxWidth().padding(bottom = Space.s4),
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     TraitColorOptions.forEach { color ->
                         val selected = color in filter.colors
                         // Narrower than their 64dp only when the row can't fit them, as beside a card on a foldable.
                         ColorDisc(color, selected, Modifier.weight(1f, fill = false)) {
-                            onFilterChange { it.copy(colors = if (color in it.colors) emptySet() else setOf(color)) }
+                            onFilterChange { it.toggleColor(color) }
                         }
                     }
                 }
@@ -201,7 +201,7 @@ private fun ColorDisc(
     Column(
         modifier
             .width(64.dp)
-            .selectable(selected, role = Role.RadioButton, onClick = onClick),
+            .selectable(selected, role = Role.Checkbox, onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {

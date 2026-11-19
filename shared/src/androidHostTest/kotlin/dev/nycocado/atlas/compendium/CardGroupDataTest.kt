@@ -51,6 +51,32 @@ class CardGroupDataTest {
     }
 
     @Test
+    fun blueAndGreenShowExactlyTheTraitsWithBoth() {
+        val both = setOf(CardColor.Blue, CardColor.Green)
+        val expected =
+            setOf(
+                "castle-glass/traits/black-and-blue",
+                "castle-glass/traits/luminous",
+                "castle-glass/traits/resplendent",
+                "imaginary-ends/traits/awesome",
+                "imaginary-ends/traits/rainbow-magic",
+                "imaginary-ends/traits/scintillant",
+                "legends-of-enderas/traits/animatronic",
+                "nightflower-island/traits/disbanded",
+                "overlush/traits/lily-pad",
+                "overlush/traits/swampy",
+                "overlush/traits/sweet",
+                "shadow-puppets/traits/wasahmbo",
+                "special/traits/amatoxins",
+                "upgrade/traits/bloom",
+                "upgrade/traits/wild",
+            )
+
+        assertEquals(15, expected.size)
+        assertEquals(expected, all.filterCompendium(CompendiumFilter(colors = both)).map { it.id }.toSet())
+    }
+
+    @Test
     fun aSearchMatchingNoVariantShowsNoGroup() {
         assertEquals(emptyList(), entries(CompendiumFilter(query = "no card says this")))
     }

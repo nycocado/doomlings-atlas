@@ -19,11 +19,22 @@ import kotlin.math.abs
 data class CompendiumFilter(
     val kind: CardKind = CardKind.Trait,
     val query: String = "",
-    // Traits only. null stands for colorless; empty shows every color.
+    // Traits only. null stands for colorless; a trait must have every color here, and empty shows every color.
     val colors: Set<CardColor?> = emptySet(),
     // Set ids, for every kind; empty shows every set.
     val sets: Set<String> = emptySet(),
 )
+
+// Colorless is exclusive: no trait is colorless and colored, so marking one side unmarks the other.
+fun CompendiumFilter.toggleColor(color: CardColor?): CompendiumFilter =
+    copy(
+        colors =
+            when {
+                color in colors -> colors - color
+                color == null -> setOf(null)
+                else -> colors - null + color
+            },
+    )
 
 // Every query word must match somewhere in the card (name, effect, World's End), all in the printed text or all in the
 // translation in the card language. The list runs from exact to prefix to typo matches, then by printed name; Gene
@@ -40,7 +51,7 @@ fun List<Card>.filterCompendium(
             card.kind == filter.kind &&
                 (
                     filter.colors.isEmpty() || card !is Trait ||
-                        card.colorsOrColorless.any { it in filter.colors }
+                        card.colorsOrColorless.containsAll(filter.colors)
                 )
         }.mapNotNull { card ->
             val rank =
