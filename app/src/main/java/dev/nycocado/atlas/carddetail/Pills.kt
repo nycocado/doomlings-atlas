@@ -118,7 +118,13 @@ internal fun Pills(
 
                 // The coined -ling names stay English whatever the card language.
                 is CardFact.Subspecies -> {
-                    Pill(fact.name, theme.surfaceSticker, theme.onSurface, language = CardLanguage.English)
+                    Pill(
+                        fact.name,
+                        theme.surfaceSticker,
+                        theme.onSurface,
+                        language = CardLanguage.English,
+                        glyph = fact.token?.let { { Symbol(it.symbol, Modifier.height(18.dp)) } },
+                    )
                 }
             }
         }
@@ -293,7 +299,9 @@ internal fun PillsPreview() =
                         CardFact.Icon(TraitIcon.Action),
                         CardFact.Icon(TraitIcon.WorldsEnd),
                         CardFact.Subspecies("Sample-ling"),
-                    ),
+                    ) +
+                        listOf("Dinoling", "Mythling", "Techling", "Deepling", "Moonling", "Glitterling")
+                            .map(CardFact::Subspecies),
                     null,
                     emptyList(),
                     emptyList(),

@@ -246,7 +246,7 @@ private fun Token.title(language: CardLanguage): String =
         Token.Glitterling -> "Glitterling"
     }
 
-private val Token.symbol: Int
+internal val Token.symbol: Int
     @DrawableRes get() =
         when (this) {
             Token.Action -> R.drawable.ic_symbol_action
