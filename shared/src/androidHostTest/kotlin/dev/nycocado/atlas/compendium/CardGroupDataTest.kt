@@ -5,7 +5,6 @@ import dev.nycocado.atlas.card.CardAssets
 import dev.nycocado.atlas.card.CardColor
 import dev.nycocado.atlas.card.CardLibrary
 import dev.nycocado.atlas.card.NamedCard
-import dev.nycocado.atlas.card.Trait
 import dev.nycocado.atlas.card.decodeCards
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -54,10 +53,27 @@ class CardGroupDataTest {
     @Test
     fun blueAndGreenShowExactlyTheTraitsWithBoth() {
         val both = setOf(CardColor.Blue, CardColor.Green)
-        val expected = all.filter { it is Trait && it.colors.containsAll(both) }
+        val expected =
+            setOf(
+                "castle-glass/traits/black-and-blue",
+                "castle-glass/traits/luminous",
+                "castle-glass/traits/resplendent",
+                "imaginary-ends/traits/awesome",
+                "imaginary-ends/traits/rainbow-magic",
+                "imaginary-ends/traits/scintillant",
+                "legends-of-enderas/traits/animatronic",
+                "nightflower-island/traits/disbanded",
+                "overlush/traits/lily-pad",
+                "overlush/traits/swampy",
+                "overlush/traits/sweet",
+                "shadow-puppets/traits/wasahmbo",
+                "special/traits/amatoxins",
+                "upgrade/traits/bloom",
+                "upgrade/traits/wild",
+            )
 
-        assertTrue(expected.isNotEmpty())
-        assertEquals(expected.toSet(), all.filterCompendium(CompendiumFilter(colors = both)).toSet())
+        assertEquals(15, expected.size)
+        assertEquals(expected, all.filterCompendium(CompendiumFilter(colors = both)).map { it.id }.toSet())
     }
 
     @Test

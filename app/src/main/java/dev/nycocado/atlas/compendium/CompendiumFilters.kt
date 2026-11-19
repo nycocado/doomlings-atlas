@@ -104,7 +104,7 @@ internal fun Filters(
                 exit = fadeOut() + shrinkVertically(),
             ) {
                 Row(
-                    Modifier.fillMaxWidth().padding(bottom = Space.s4).selectableGroup(),
+                    Modifier.fillMaxWidth().padding(bottom = Space.s4),
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
                     TraitColorOptions.forEach { color ->
@@ -201,7 +201,7 @@ private fun ColorDisc(
     Column(
         modifier
             .width(64.dp)
-            .selectable(selected, role = Role.RadioButton, onClick = onClick),
+            .selectable(selected, role = Role.Checkbox, onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {
