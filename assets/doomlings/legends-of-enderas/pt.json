@@ -289,7 +289,8 @@
   "legends-of-enderas/traits/hollow-bones": {
     "name": "Ossos Ocos",
     "effects": [
-      "Para jogar, você deve descartar 1 trait positivo da sua pilha de traits. No Fim do Mundo: [rainbow]Escolha uma cor[/rainbow]. Os oponentes descartam 2 traits dessa [rainbow]cor[/rainbow] da pilha de traits deles."
+      "Para jogar, você deve descartar 1 trait positivo da sua pilha de traits.",
+      "[rainbow]Escolha uma cor[/rainbow]. Os oponentes descartam 2 traits dessa [rainbow]cor[/rainbow] da pilha de traits deles."
     ],
     "flavor": "Não sou gordo. Só tenho ossos ocos."
   },

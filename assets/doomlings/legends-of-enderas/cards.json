@@ -964,7 +964,11 @@
     "flavor": "I'm not fat. I'm just hollow-boned.",
     "effects": [
       {
-        "text": "To play, you must discard 1 positive trait from your trait pile. At World's End: [rainbow]Choose a color[/rainbow]. Opponents discard 2 from their trait pile of that [rainbow]color[/rainbow]."
+        "text": "To play, you must discard 1 positive trait from your trait pile."
+      },
+      {
+        "kind": "worlds-end",
+        "text": "[rainbow]Choose a color[/rainbow]. Opponents discard 2 from their trait pile of that [rainbow]color[/rainbow]."
       }
     ],
     "genePool": null,
