@@ -119,6 +119,8 @@ data class Treasure(
     override val image: String,
     override val name: String,
     override val effects: List<Effect>,
+    // The story printed above the effects, one text per paragraph.
+    val story: List<String> = emptyList(),
 ) : NamedCard
 
 @Serializable

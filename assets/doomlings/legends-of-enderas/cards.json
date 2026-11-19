@@ -2169,6 +2169,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Ardent Grip",
+    "story": [
+      "My palm was sweating before the glove was even on. I tested its power, conjuring gems & bricks of gold. With every jewel summoned, the glove got hotter, but I ignored the pain in pursuit of fortune.",
+      "\"I'll be rich and they'll look like fools!\" I thought.",
+      "When I could summon no more, I removed the glove. A mound of black soot poured out from inside. I was mortified to discover there was nothing past my wrist.",
+      "I paused, considered my options, then placed the glove over my other hand."
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2186,6 +2192,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Black Silk",
+    "story": [
+      "The boy stumbled deep into the foggy woods and was ensnared in a black web. Its strands were coated with something like tar. He screamed, but only one thing could hear him.",
+      "From the mist, it crept. The facets of its eyes reflected the boy's terror a hundred times. He could see the creature's spindly limbs were as sharp as razor blades.",
+      "\"Terribly sorry,\" it said, cutting the ropey strands and freeing the boy.",
+      "\"This is an art project of mine. Could you tell me what you think of it?\""
+    ],
     "effects": [
       {
         "kind": "mutate",
@@ -2203,6 +2215,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Box of Rainbows",
+    "story": [
+      "The kids huddled around the box, eyes wide. The bravest and stupidest of them opened it. The box exploded with colors not yet named.",
+      "\"Let's call that smokle,\" Sandy declared, pointing at a fizzing wisp of violet light. \"And that's gleengroll!\" Candy added, pointing at a wobbly shimmer of greenish gold.",
+      "A rosy shade that smelled of grapefruit bounced among the light. \"Oyngo,\" said Mandy, nodding sagely.",
+      "After hours, they ended on an inky blue, which they all agreed was \"blorky\"."
+    ],
     "effects": [
       {
         "kind": "cloak",
@@ -2220,6 +2238,11 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Broken Promises",
+    "story": [
+      "\"The light from this ring shows you where I am,\" Marin explained as she slipped it on her son's finger.",
+      "She rubbed the metal band, and a beam projected a map of the stars.",
+      "\"You'll always know where I am while I'm gone, which won't be long.\""
+    ],
     "effects": [
       {
         "kind": "echo",
@@ -2237,6 +2260,10 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Cataclyte",
+    "story": [
+      "For a moment, a lifeless rock wandered alone, lost in the void. Then that moment passed, and the rock was pulled into the warmth of a star. The star's energy pummeled the rock. It caused catastrophe after catastrophe. But, in the wake of devastation, there was life. Enderas was born.",
+      "Through the chaos, Doomlings emerged, capable of rapidly adapting the traits and strengths of their friends in the face of any disaster. It's rumored that Enderas contains rare elements that absorbed the star's energy and can be used to amplify the Doomlings' power."
+    ],
     "effects": [
       {
         "kind": "echo",
@@ -2254,6 +2281,11 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Chrona",
+    "story": [
+      "Young Mance worked on his staff, convinced that if he carved it just right, he could harness the power of time. And many years later, he did.",
+      "Stroking his now bearded, scraggly chin, he peered deep through the mists of time. He saw a wife, a son, a kiss on the cheek of a man too busy to notice. Comet showers, super blooms. A birth, a wedding, a funeral...",
+      "Mance recoiled, disappointed with what he saw. \"Stupid thing! That was the past... ...show me the future!\""
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2271,6 +2303,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Coda",
+    "story": [
+      "At World's End, a mysterious rider dismounted his horse. He approached me slowly, the blade of his scythe blocking more of the moon the closer he came.",
+      "He stopped one stride in front of me. He raised his bony finger and pointed at the space between my eyes. I clenched them shut.",
+      "\"This is it,\" I thought.",
+      "Moments later, the hacking and slashing began. I screamed and threw open my eyes, only to find the figure had moved past me, and was mowing my lawn."
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2288,6 +2326,15 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Dragon Scales",
+    "story": [
+      "\"DO THE THING!!\"",
+      "\"What thing?!!\"",
+      "\"The thing! The THING!! Quick, grow some wings or something and save us!\"",
+      "\"Oh! THAT thing. I got it!\"",
+      "Kal and Hero plummeted through the clouds. Hero clenched his eyes, scrunched his nose, and pushed REAL hard. Suddenly two chicken wings sprouted from his back.",
+      "\"NOT LIKE THAT!\"",
+      "\"STOP YELLING AT ME!\""
+    ],
     "effects": [
       {
         "kind": "mutate",
@@ -2305,6 +2352,11 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Fortune & Glory",
+    "story": [
+      "\"This is it, kid,\" the adventurer cried out as he dangled by his fingertips, \"grab the treasure and get outta here!\"",
+      "But the kid had already leapt, one end of the rope gripped tightly, the other one trailing behind. He yanked the adventurer off the precipice and they swung to safety.",
+      "The two made it out together, with nothing shiny to show for it. But they loved telling the story every chance they could."
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2318,6 +2370,11 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Fwip",
+    "story": [
+      "\"What do you call your sword?\"",
+      "Hero had never thought about it. He'd pulled it off a chunk of space debris. How does one name a scrap of metal? He decided to name it 'Fwip' for the sound it made when he slashed it around. Kal was unimpressed, but who was he to deflate the little guy?",
+      "Later that evening, Kal watched Hero prance through the woods, 'fwipping' his blade about. \"Onomatopoeia!\" Hero shouted, unsure of what it meant."
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2335,6 +2392,11 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Ghostly Boots",
+    "story": [
+      "Listen. There was a girl who danced on Amaranth Hill. Her dance had a power. Others noticed. They paid her to dance at their cantinas and carnivals, but, over time, the power faded.",
+      "\"Dance like before! Like you did when we found you!\" they demanded. But her dance was now only a performance. The mob had taken her heart and stomped it beneath their feet. She discarded the boots and ran out of town, never to be seen again.",
+      "Rumor has it, you can find the boots at night, still dancing. Catch them, put them on, and you'll have the power to go wherever you desire, unseen and unheard."
+    ],
     "effects": [
       {
         "kind": "adapt",
@@ -2352,6 +2414,11 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Heart of the Woods",
+    "story": [
+      "Marin wandered alone, lost in the cold, dark woods, until she came upon a sealed door of roots and living wood.",
+      "She knocked. There was no answer-except, maybe, a heartbeat. Marin opened the door. A golden light poured out from the room. Inside, she saw an amber heart. Its glow banished every shadow. This was a treasure.",
+      "Marin beheld its beauty, closed the door, and left it alone."
+    ],
     "effects": [
       {
         "kind": "mutate",
@@ -2369,6 +2436,13 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Reflecting Glass",
+    "story": [
+      "Kal heard a voice from the reflecting glass.",
+      "\"Melon! Come back!\"",
+      "He stared into the artifact. A hazy image appeared. An omen? A memory? He saw a clear, moonlit sky. A boy scouring the prairie. A collie running through the long gold grass.",
+      "The boy had snapped at his dog. He didn't mean to. He was tired. Hungry. His patience was thin. Melon was a dependable friend. But collies have feelings, too. Now the boy just wanted to know if she was okay...",
+      "\"Ooo shiny! What do you see?\" Hero whispered, interrupting the vision. Kal looked back at the reflecting glass, but the image was gone."
+    ],
     "effects": [
       {
         "kind": "cloak",
@@ -2386,6 +2460,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Someone's Trash",
+    "story": [
+      "The hooded Doomling dragged his wagon toward the riverbank. The wheels struggled through the silt, weighed down by glass bottles collected from the village dump.",
+      "The Doomling plopped down next to the water, pulled a stack of yellowing paper from the cart, and started writing.",
+      "After finishing each note, he neatly rolled it up, sealed it into one of the discarded bottles, and tossed it into the river.",
+      "Days later, a fisherman reeled in one of the bottles, opened it, and read the note inside. He blushed and touched his mustache. \"Someone noticed!\""
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2403,6 +2483,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Soulweaver",
+    "story": [
+      "Sumner stood before his abomination. The beast, sharp and alien, every edge ninety degrees of unholy geometry. It was... a cube.",
+      "Sumner's spherical ancestors had whispered warnings of conjuring \"The Boxed One.\"",
+      "He gulped. \"This is forbidden.\"",
+      "The Boxed One spoke: \"There are four more like me, Round One. Summon them, and we shall reshape this world.\""
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2420,6 +2506,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Summit",
+    "story": [
+      "The witch's curse on his sword could not be broken. The sword had to be destroyed, so he made a packing list for a journey to the Mourning Tower. \"Water? Check. Food? Check. Caution? I think not.\"",
+      "He braved blizzards, torrential winds, and frog stampedes before scaling this volcano. His body ached, his joints were weary. All this to lose the sword he loved.",
+      "Epic reached the peak and peered down into the lava below. He grabbed for Summit to drop it in, but it wasn't there.",
+      "\"I knew I forgot something.\""
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2437,6 +2529,15 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "The Friends We Made Along the Way",
+    "story": [
+      "The plucky Doomling stood no taller than Kal's knees, but his honest eyes were fixed on Kal's. Clearly, the creature wanted to help.",
+      "\"I tell you what little guy: if you take me to Slumberwood, I'll give you what's left of my sandwich.\"",
+      "Kal knelt and extended his hand. But Hero didn't understand the gesture.",
+      "\"What's that?\"",
+      "\"It's a promise.\"",
+      "Kal grabbed Hero's hand and shook him like a maraca.",
+      "Hero was tickled. \"I like promises.\""
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2450,6 +2551,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "The Maliforms",
+    "story": [
+      "\"Run.",
+      "I will clean your memory. The mistakes you've made, the friends you've lost, and all the catastrophes you've brought to Enderas will be as though they never were.",
+      "Or, you can stay, and we can fight to the end. Likely, you will lose. But even if you survive, you'll live on with the memory that you could not save them.",
+      "But I can save you. Run, and I will release you from your grief, and the pain of Enderas.\""
+    ],
     "effects": [
       {
         "kind": "adapt",
@@ -2467,6 +2574,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Tiny Shells",
+    "story": [
+      "I found these shells in Castle Glass, the City made of Sand.",
+      "Its monumental walls were exquisite tributes to the sea. The roads: meticulously crafted, woven through sparkling dwellings, which were more like sculptures than homes. I could have stayed forever, but I had business to attend to, so I grabbed the shells and left.",
+      "When I returned, the city was gone. The ocean had swallowed it.",
+      "To my surprise, the shells in my pocket shook. Tiny creatures emerged. They crawled toward the beach and began shifting the sands, building something beautiful, as the tides receded to the ocean."
+    ],
     "effects": [
       {
         "kind": "mutate",
@@ -2484,6 +2597,13 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Translator",
+    "story": [
+      "\"Do all Doomlings talk?\"",
+      "The Doomling fluttered his lips as he thought it through. He wanted to be helpful, so he wanted to get it right.",
+      "\"Yes! All of them! Some of them. Pets don't talk. Trees don't talk either. Unless you speak tree. Do you speak tree? You'll wish you didn't. They never stop. It's like they don't hear themselves going on and on and on.\"",
+      "The Doomling reflected for a moment.",
+      "\"It sure is nice to have someone to talk to.\""
+    ],
     "effects": [
       {
         "kind": "echo",
@@ -2501,6 +2621,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Twisters",
+    "story": [
+      "Fable crept into the vault and snatched the nunchucks from their pedestal.",
+      "Strange weapons. She wondered why her client wanted them. But she could not wonder for long. Two guards burst in!",
+      "Cornered, Fable raised the nunchucks overhead, whirling them into a blur. The spinning created a gust that lifted her from the floor, her thin arms straining to hold on. The guards could only watch as Fable hovered up and out through an open window.",
+      "Fable laughed, \"I think I'll keep these.\""
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2518,6 +2644,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Unbreakable",
+    "story": [
+      "Epic scowled at the burning town. The villagers pleaded for aid, but Epic cared only about his favorite tavern.",
+      "With the blaze crackling behind him, he fixed his steely gaze upon the dam above the village. He grinned, and charged. With a primal roar, Epic swung his greataxe, shattering the dam in a single blow.",
+      "The water surged. Down it thundered, smashing through fields and streets, dousing the flames, flattening every house-and tavern-in its path.",
+      "\"Fire's out,\" Epic declared. \"Wish I could get a drink though.\""
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2535,6 +2667,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Vanity",
+    "story": [
+      "The road to Titan's Tower had been cold, rough, and winding. But it was worth the blisters and frostbite. The stories were true, and the adventurer would soon be a legend.",
+      "She swung open the doors to the tower and beheld the relics within: two enchanted swords. One dulled from time and battle. The other, shiny and brilliant. This one spoke to her. Like, literally. It's magical like that.",
+      "It said, \"We're going to make a name for yourself.\"",
+      "And a Legend replied, \"I see no downside.\""
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2552,6 +2690,12 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Wandering Root",
+    "story": [
+      "\"Psst. Help me.\" A furtive voice echoed across the twinkling cave. A reclusive Doomling was imprisoned in a cage made of living roots.",
+      "\"Who captured you?\" Hero tugged at the roots, causing them to tighten their grip. The recluse closed his eyes. \"A tree.\"",
+      "Relieved, Hero announced, \"I speak tree! I'll talk to it for you!\"",
+      "\"No. What? No! This is an ANCIENT, EVIL tree. Its roots wander deep, and its tendrils reach far, bringing strife and catastrophe to Enderas. I can stop it, but I need your help. First, you need to let me out...\""
+    ],
     "effects": [
       {
         "kind": "mutate",
@@ -2569,6 +2713,15 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Wisdom Stick",
+    "story": [
+      "The Spirit Bear doodled in the sand with his wisdom stick.",
+      "An eager Hero peered over his shoulder, taking notes.",
+      "\"Is this a secret to inner peace?\"",
+      "\"In some ways yes. In other ways, it's a recipe for pancakes.\"",
+      "Hero looked disappointed.",
+      "The Spirit Bear said, \"We can seek inner peace after breakfast.\"",
+      "He resumed doodling."
+    ],
     "effects": [
       {
         "kind": "rush",
@@ -2586,6 +2739,13 @@
     "type": "treasure",
     "set": "legends-of-enderas",
     "name": "Zero-Point Module",
+    "story": [
+      "\"So it runs on the past!\" Hero exclaimed.",
+      "Kal struggled to explain the ship part, \"No...that's not-\"",
+      "\"-If I run at the speed of light, I can travel back in time to fix your ship! Here...I....go!\"",
+      "Hero took off at a very normal speed. Kal sighed. After several laps around the ship, Hero stopped, wheezing.",
+      "\"Have you tried kicking it?\""
+    ],
     "effects": [
       {
         "kind": "echo",

@@ -21,6 +21,7 @@ data class CardText(
     val name: String,
     val effects: List<String> = emptyList(),
     val flavor: String? = null,
+    val story: List<String> = emptyList(),
 )
 
 // Strict like decodeCards: an unknown key fails. The JSON maps card id to its translation.

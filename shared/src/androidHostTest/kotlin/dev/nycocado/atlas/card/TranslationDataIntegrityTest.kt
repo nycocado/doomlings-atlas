@@ -26,6 +26,7 @@ class TranslationDataIntegrityTest {
                     if (fields["name"] != null) add("name")
                     if (effectsOf(fields).isNotEmpty()) add("effects")
                     if (fields["flavor"].let { it != null && it !is JsonNull }) add("flavor")
+                    if (fields["story"] != null) add("story")
                 }
         }
 
@@ -178,6 +179,23 @@ class TranslationDataIntegrityTest {
                     .filter { (_, pair) -> smallSpans(pair.first) != smallSpans(pair.second) }
                     .map { (where, _) -> where }
             assertEquals(emptyList<String>(), wrong, file.label)
+        }
+    }
+
+    // A translated story keeps the printed paragraphs, so it has as many as the English one.
+    @Test
+    fun everyTranslatedStoryHasAsManyParagraphsAsItsEnglishStory() {
+        val englishStoryById =
+            englishCards.associate { card ->
+                card.getValue("id").jsonPrimitive.content to card["story"]?.jsonArray.orEmpty().size
+            }
+        files.forEach { file ->
+            val wrong =
+                CardAssets
+                    .translationsOf(file)
+                    .filter { (id, fields) -> fields["story"].orEmpty().size != englishStoryById[id] }
+                    .keys
+            assertEquals(emptyList<String>(), wrong.toList(), file.label)
         }
     }
 

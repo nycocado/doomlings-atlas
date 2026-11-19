@@ -557,6 +557,52 @@ class CardFaceTest {
         assertEquals(listOf("Confusão"), face?.searchable)
     }
 
+    // Ardent Grip as in assets/doomlings/legends-of-enderas/cards.json, its story cut to two paragraphs.
+    private val ardentGrip =
+        Treasure(
+            "legends-of-enderas/treasures/ardent-grip",
+            "legends-of-enderas",
+            "legends-of-enderas/treasures/ardent-grip.webp",
+            "Ardent Grip",
+            listOf(Effect(EffectKind.Rush, "Set your Gene Pool to 5."), Effect(EffectKind.Rush, "Draw 1.")),
+            listOf(
+                "My palm was sweating before the glove was even on.",
+                "\"I'll be rich and they'll look like fools!\" I thought.",
+            ),
+        )
+
+    @Test
+    fun aTreasuresStoryIsItsOwnBlockBeforeTheEffectsAndHoldsTheSelector() {
+        assertEquals(
+            listOf(
+                CardBlock(BlockContent.Story(ardentGrip.story), selector = true),
+                effectBlock(EffectKind.Rush, "Set your Gene Pool to 5."),
+                effectBlock(EffectKind.Rush, "Draw 1."),
+            ),
+            ardentGrip.face().blocks,
+        )
+    }
+
+    @Test
+    fun searchLeavesOutTheStoryLikeTheFlavor() {
+        assertEquals(listOf("Ardent Grip", "Set your Gene Pool to 5.", "Draw 1."), ardentGrip.face().searchable)
+    }
+
+    @Test
+    fun aTranslationFillsTheStory() {
+        val face =
+            CardTranslations(
+                mapOf(
+                    CardLanguage.Portuguese to
+                        mapOf(
+                            ardentGrip.id to
+                                CardText("Luva Ardente", listOf("Defina.", "Compre 1."), story = listOf("Um.", "Dois.")),
+                        ),
+                ),
+            ).face(ardentGrip, CardLanguage.Portuguese)
+        assertEquals(CardBlock(BlockContent.Story(listOf("Um.", "Dois.")), selector = true), face.blocks.first())
+    }
+
     @Test
     fun aColorlessTraitHasOneColorlessFact() {
         assertEquals(
