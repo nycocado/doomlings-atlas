@@ -25,7 +25,7 @@
   "shadow-puppets/traits/bound": {
     "name": "Atado",
     "effects": [
-      "Echa un vistazo a las 4 cartas de la parte superior del mazo de traits. Roba 1 carta. Puedes jugarla. Si alguna de ellas es negativa, puedes jugarlas en la(s) pila(s) de traits que quieras e ignorar las acciones ({action})."
+      "Echa un vistazo a las 4 cartas de la parte superior del mazo de traits. Roba 1 carta. Puedes jugarla.\nSi alguna de ellas es negativa, puedes jugarlas en la(s) pila(s) de traits que quieras e ignorar las acciones ({action})."
     ],
     "flavor": "Una marioneta que nunca olvidarás."
   },
@@ -39,7 +39,7 @@
   "shadow-puppets/traits/cracked": {
     "name": "Agrietado",
     "effects": [
-      "[rainbow]Revela[/rainbow] la carta de la parte superior del mazo de traits. [purple]Morado[/purple]: Intercambia Cracked con un trait de la pila de traits de un amigo. [blue]Azul[/blue]: Devuélvelo a su mano. [red]Rojo[/red]: Arrebata 1 de su pila de traits."
+      "[rainbow]Revela[/rainbow] la carta de la parte superior del mazo de traits.\n[purple]Morado[/purple]: Intercambia Cracked con un trait de la pila de traits de un amigo.\n[blue]Azul[/blue]: Devuélvelo a su mano.\n[red]Rojo[/red]: Arrebata 1 de su pila de traits."
     ],
     "flavor": "¡Tuve una gran caída! ¡Gracias por preguntar!"
   },
@@ -64,7 +64,7 @@
   "shadow-puppets/traits/fumboh": {
     "name": "Fumboh",
     "effects": [
-      "Inicio del turno: Puedes descartar Fumboh de tu pila de traits para jugar otro trait."
+      "Inicio del turno:\nPuedes descartar Fumboh de tu pila de traits para jugar otro trait."
     ],
     "flavor": "Un sabio anciano lunar que, al entrar a una habitación, ya abusó de la hospitalidad."
   },
@@ -82,14 +82,14 @@
   "shadow-puppets/traits/immutable": {
     "name": "Inmutable",
     "effects": [
-      "Excepto dominantes, si tienes 6 traits o menos en tu pila de traits, no pueden ser intercambiados ni arrebatados.\nInicio de tus turnos: Puedes suprimir 1 trait de tu pila de traits."
+      "Excepto dominantes, si tienes 6 traits o menos en tu pila de traits, no pueden ser intercambiados ni arrebatados.\nInicio de tus turnos:\nPuedes suprimir 1 trait de tu pila de traits."
     ],
     "flavor": "No sé por qué no cambias de opinión para verlo a mi manera."
   },
   "shadow-puppets/traits/imperfect": {
     "name": "Imperfecto",
     "effects": [
-      "[rainbow]Revela[/rainbow] la carta de la parte superior del mazo de traits. [rainbow]Cualquier color[/rainbow]: Intercambia Imperfect con un trait de la pila de traits de un amigo. [colorless]Incoloro[/colorless]: Mueve Imperfect a la pila de traits de un amigo."
+      "[rainbow]Revela[/rainbow] la carta de la parte superior del mazo de traits.\n[rainbow]Cualquier color[/rainbow]: Intercambia Imperfect con un trait de la pila de traits de un amigo.\n[colorless]Incoloro[/colorless]: Mueve Imperfect a la pila de traits de un amigo."
     ],
     "flavor": "Nunca dije que fuera perfecto."
   },
@@ -136,28 +136,28 @@
   "shadow-puppets/traits/self-doubt": {
     "name": "Inseguro",
     "effects": [
-      "Duplica el valor nominal de cada trait de tu pila de traits que sea el único trait de ese color. [small]Este efecto excluye por completo a los dominantes.[/small]"
+      "Duplica el valor nominal de cada trait de tu pila de traits que sea el único trait de ese color.\n[small]Este efecto excluye por completo a los dominantes.[/small]"
     ],
     "flavor": "¡Nadie duda de sí mismo como tú!"
   },
   "shadow-puppets/traits/shrouded": {
     "name": "Velado",
     "effects": [
-      "Suprime 1 de tu mano. Inicio de tus turnos: Puedes robar todas las cartas suprimidas que están debajo de Shrouded."
+      "Suprime 1 de tu mano.\nInicio de tus turnos: Puedes robar todas las cartas suprimidas que están debajo de Shrouded."
     ],
     "flavor": "Tu secreto está a salvo conmigo. Hasta que deje de estarlo."
   },
   "shadow-puppets/traits/soft": {
     "name": "Suave",
     "effects": [
-      "[rainbow]Revela[/rainbow] la carta de la parte superior del mazo de traits. [blue]Azul[/blue]: Aumenta el Gene Pool en 1. [red]Rojo[/red]: Disminuye el Gene Pool en 1 y juega 1. [colorless]Incoloro[/colorless]: Haz cualquiera de los dos."
+      "[rainbow]Revela[/rainbow] la carta de la parte superior del mazo de traits.\n[blue]Azul[/blue]: Aumenta el Gene Pool en 1.\n[red]Rojo[/red]: Disminuye el Gene Pool en 1 y juega 1.\n[colorless]Incoloro[/colorless]: Haz cualquiera de los dos."
     ],
     "flavor": "Dispuesto a lo que sea."
   },
   "shadow-puppets/traits/stitched": {
     "name": "Cosido",
     "effects": [
-      "Inicio de tus turnos: Puedes descartar un trait positivo de tu pila de traits para jugar 1. Ignora su acción ({action})."
+      "Inicio de tus turnos: Puedes descartar un trait positivo de tu pila de traits para jugar 1.\nIgnora su acción ({action})."
     ],
     "flavor": "Hay más remiendos de lo que parece."
   },
@@ -171,7 +171,7 @@
   "shadow-puppets/traits/stuffy": {
     "name": "Peluche",
     "effects": [
-      "Todos los amigos te dan 1 carta aleatoria de su mano. Luego, roban 1 carta."
+      "Todos los amigos te dan 1 carta aleatoria de su mano.\nLuego, roban 1 carta."
     ],
     "flavor": "Las cosas son para compartir. Ahora comparte conmigo."
   },
@@ -185,14 +185,14 @@
   "shadow-puppets/traits/too-many-eyes": {
     "name": "Demasiados Ojos",
     "effects": [
-      "En cualquier momento: Juega en cualquier pila de traits. Too Many Eyes no puede ser retirado de tu pila de traits."
+      "En cualquier momento:\nJuega en cualquier pila de traits.\nToo Many Eyes no puede ser retirado de tu pila de traits."
     ],
     "flavor": "Secuaces con opiniones."
   },
   "shadow-puppets/traits/tumpleyo": {
     "name": "Tumpleyo",
     "effects": [
-      "Si tu Gene Pool es: 4: -4, 3: +2, 2: +4, 1: +8"
+      "Si tu Gene Pool es:\n4: -4,\n3: +2,\n2: +4,\n1: +8"
     ],
     "flavor": "Se pronuncia \"Tumpleyo\"."
   },
@@ -235,7 +235,7 @@
   "shadow-puppets/traits/wuhbumbo": {
     "name": "Wuhbumbo",
     "effects": [
-      "Todos los jugadores pasan 1 carta aleatoria a la derecha. Puedes jugar otro trait."
+      "Todos los jugadores pasan 1 carta aleatoria a la derecha.\nPuedes jugar otro trait."
     ],
     "flavor": "Wuhbumbo nunca falla."
   },
@@ -249,7 +249,7 @@
   "shadow-puppets/traits/yobondo": {
     "name": "Yobondo",
     "effects": [
-      "Puedes jugar Yobondo cuando un oponente elija como objetivo un solo trait de tu pila de traits.\n[small](¡A menos que sea el objetivo de un dominante!)[/small] En lugar de eso, ese efecto tiene como objetivo a Yobondo."
+      "Puedes jugar Yobondo cuando un oponente elija como objetivo un solo trait de tu pila de traits.\n[small](¡A menos que sea el objetivo de un dominante!)[/small]\nEn lugar de eso, ese efecto tiene como objetivo a Yobondo."
     ],
     "flavor": "Yoh bohn doh."
   }

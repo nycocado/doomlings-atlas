@@ -21,7 +21,7 @@
   "castle-glass/traits/aposematic": {
     "name": "Aposemático",
     "effects": [
-      "Compre 1 carta. Jogue 1."
+      "Compre 1 carta.\nJogue 1."
     ],
     "flavor": "Nada grita perigo como cores bonitas."
   },
@@ -96,7 +96,7 @@
   "castle-glass/traits/fragmentation": {
     "name": "Fragmentação",
     "effects": [
-      "Estabilize até 4. Jogue 1."
+      "Estabilize até 4.\nJogue 1."
     ],
     "flavor": "Vamos nos separar, para começar algo novo."
   },
@@ -153,7 +153,7 @@
   "castle-glass/traits/opulent": {
     "name": "Opulento",
     "effects": [
-      "Compre 1 carta. Jogue 1."
+      "Compre 1 carta.\nJogue 1."
     ],
     "flavor": "O ouro desbota, a riqueza some, e a fortuna das nossas vidas se mede em lembranças."
   },
@@ -178,14 +178,14 @@
   "castle-glass/traits/pteridines": {
     "name": "Pteridinas",
     "effects": [
-      "Compre 1 carta. Você pode jogá-la agora."
+      "Compre 1 carta.\nVocê pode jogá-la agora."
     ],
     "flavor": "O motivo das cores pterrivelmente lindas."
   },
   "castle-glass/traits/radial-symmetry": {
     "name": "Simetria Radial",
     "effects": [
-      "Início dos seus turnos: Você pode descartar todas as cartas de 1 [rainbow]cor[/rainbow] da sua mão."
+      "Início dos seus turnos:\nVocê pode descartar todas as cartas de 1 [rainbow]cor[/rainbow] da sua mão."
     ],
     "flavor": "Mantenha seus amigos por perto e suas anêmonas mais perto ainda."
   },

@@ -57,7 +57,7 @@
     "name": "Age of Reason",
     "effects": [
       {
-        "text": "Draw 3 cards. Keep 1, discard the other 2."
+        "text": "Draw 3 cards.\nKeep 1,\ndiscard the other 2."
       }
     ],
     "image": "classic/ages/age-of-reason.webp"
@@ -963,7 +963,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 3 cards. You may play 1 now."
+        "text": "Draw 3 cards.\nYou may play 1 now."
       }
     ],
     "genePool": null,
@@ -1143,7 +1143,7 @@
     "flavor": "The all-seeing ear.",
     "effects": [
       {
-        "text": "Until World's End: Draw 1 card at the start of each of your turns."
+        "text": "Until World's End:\nDraw 1 card at the start of each of your turns."
       }
     ],
     "genePool": null,
@@ -2087,7 +2087,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "[rainbow]Choose a color.[/rainbow] All players discard all cards of that color from their hand.\n(Including yourself!)"
+        "text": "[rainbow]Choose a color.[/rainbow]\nAll players discard all cards of that color from their hand.\n(Including yourself!)"
       }
     ],
     "genePool": null,
@@ -2111,7 +2111,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 2 cards. If either are [green]green[/green], play 1 immediately.\n(Unless restricted.)"
+        "text": "Draw 2 cards.\nIf either are [green]green[/green], play 1 immediately.\n(Unless restricted.)"
       }
     ],
     "genePool": null,
@@ -2291,7 +2291,7 @@
     "flavor": "How many fingers am I holding up? Wait, hold on, they're still growing back",
     "effects": [
       {
-        "text": "Anytime you discard a trait from your trait pile,\n[small](including this one),[/small] draw 1. Play it immediately.\n[small](Unless restricted.)[/small] Ignore actions ({action})."
+        "text": "Anytime you discard a trait from your trait pile,\n[small](including this one),[/small]\ndraw 1. Play it immediately.\n[small](Unless restricted.)[/small]\nIgnore actions ({action})."
       }
     ],
     "genePool": null,
@@ -2493,7 +2493,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "[rainbow]Choose a color.[/rainbow] +1 for all traits of that color in your trait pile."
+        "text": "[rainbow]Choose a color.[/rainbow]\n+1 for all traits of that color in your trait pile."
       }
     ],
     "genePool": null,
@@ -2518,7 +2518,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "At World's End: You may play Sneaky from your hand."
+        "text": "At World's End:\nYou may play Sneaky from your hand."
       }
     ],
     "genePool": null,
@@ -2986,7 +2986,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Play another trait. Then move Venomous to an opponent's trait pile."
+        "text": "Play another trait.\nThen move Venomous to an opponent's trait pile."
       }
     ],
     "genePool": null,

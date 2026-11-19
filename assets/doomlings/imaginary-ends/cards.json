@@ -372,7 +372,7 @@
     "flavor": "You look confused. This amuses me.",
     "effects": [
       {
-        "text": "Suppress 1 trait in your trait pile. Then move Baffling to an opponent's trait pile."
+        "text": "Suppress 1 trait in your trait pile.\nThen move Baffling to an opponent's trait pile."
       }
     ],
     "genePool": null,
@@ -398,7 +398,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 1. If it is effectless, play it now. If it is a Glitterling ({glitterling}), repeat this action."
+        "text": "Draw 1.\nIf it is effectless, play it now. If it is a Glitterling ({glitterling}), repeat this action."
       }
     ],
     "genePool": null,
@@ -449,7 +449,7 @@
     "flavor": "Ooh! A tasty sulfuric snack.",
     "effects": [
       {
-        "text": "To play, you must suppress 1 trait in your trait pile. Play another trait."
+        "text": "To play, you must suppress 1 trait in your trait pile.\nPlay another trait."
       }
     ],
     "genePool": null,
@@ -668,7 +668,7 @@
     "flavor": "Too perfect for this world, or the next.",
     "effects": [
       {
-        "text": "Until World's End: If you hold 6 or fewer cards at the end of your turn, you may suppress 1 from your hand instead of stabilizing.\n[small](If this effect empties your hand, draw 2.)[/small]"
+        "text": "Until World's End:\nIf you hold 6 or fewer cards at the end of your turn, you may suppress 1 from your hand instead of stabilizing.\n[small](If this effect empties your hand, draw 2.)[/small]"
       }
     ],
     "genePool": null,
@@ -1262,7 +1262,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Discard the top 5 cards from the trait deck. If any have a face value of 0, play them now. [small]Ignore actions ({action}).[/small]"
+        "text": "Discard the top 5 cards from the trait deck.\nIf any have a face value of 0, play them now.\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -1313,7 +1313,7 @@
     "flavor": "I've been doing a lot of reflecting. And refracting.",
     "effects": [
       {
-        "text": "You may return [rainbow]Rainbow Magic[/rainbow] to your hand (seriously!) after you stabilize. Then play 1 random card from your hand. [small]Ignore restrictions and requirements.[/small]"
+        "text": "You may return [rainbow]Rainbow Magic[/rainbow] to your hand (seriously!) after you stabilize. Then play 1 random card from your hand.\n[small]Ignore restrictions and requirements.[/small]"
       }
     ],
     "genePool": null,
@@ -1339,7 +1339,7 @@
     "flavor": "No comment.",
     "effects": [
       {
-        "text": "To play, you must hold 3 or fewer cards. All your friends pass their hands right (not you!) and stabilize. Then, suppress your hand."
+        "text": "To play, you must hold 3 or fewer cards.\nAll your friends pass their hands right (not you!) and stabilize. Then, suppress your hand."
       }
     ],
     "genePool": null,
@@ -2406,7 +2406,7 @@
     "effects": [
       {
         "kind": "awesome-power",
-        "text": "Your opponents may draw 1 at the start of your turn. [small](If they notice...)[/small]"
+        "text": "Your opponents may draw 1 at the start of your turn.\n[small](If they notice...)[/small]"
       },
       {
         "kind": "pocket-objective",
@@ -2615,7 +2615,7 @@
     "effects": [
       {
         "kind": "awesome-power",
-        "text": "At World's End: Instead of losing this item, pocket it."
+        "text": "At World's End:\nInstead of losing this item, pocket it."
       },
       {
         "kind": "pocket-objective",

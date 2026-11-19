@@ -27,7 +27,7 @@
   "classic/ages/age-of-reason": {
     "name": "Era de la Razón",
     "effects": [
-      "Roba 3 cartas. Quédate con 1, descarta las otras 2."
+      "Roba 3 cartas.\nQuédate con 1,\ndescarta las otras 2."
     ]
   },
   "classic/ages/alien-terraform": {
@@ -362,7 +362,7 @@
   "classic/traits/cold-blood": {
     "name": "Sangre Fría",
     "effects": [
-      "Roba 3 cartas. Puedes jugar 1 ahora."
+      "Roba 3 cartas.\nPuedes jugar 1 ahora."
     ],
     "flavor": "Mataría por poder controlar mi temperatura corporal."
   },
@@ -416,7 +416,7 @@
   "classic/traits/echolocation": {
     "name": "Ecolocalización",
     "effects": [
-      "Hasta el Fin del Mundo: Roba 1 carta al inicio de cada uno de tus turnos."
+      "Hasta el Fin del Mundo:\nRoba 1 carta al inicio de cada uno de tus turnos."
     ],
     "flavor": "El oído que todo lo ve."
   },
@@ -695,14 +695,14 @@
   "classic/traits/persuasive": {
     "name": "Persuasivo",
     "effects": [
-      "[rainbow]Elige un color.[/rainbow] Todos los jugadores descartan de su mano todas las cartas de ese color.\n(¡Incluyéndote!)"
+      "[rainbow]Elige un color.[/rainbow]\nTodos los jugadores descartan de su mano todas las cartas de ese color.\n(¡Incluyéndote!)"
     ],
     "flavor": "¡Cambia de opinión o voy a gritar más fuerte!"
   },
   "classic/traits/photosynthesis": {
     "name": "Fotosíntesis",
     "effects": [
-      "Roba 2 cartas. Si alguna es [green]verde[/green], juega 1 inmediatamente.\n(A menos que haya restricción.)"
+      "Roba 2 cartas.\nSi alguna es [green]verde[/green], juega 1 inmediatamente.\n(A menos que haya restricción.)"
     ],
     "flavor": "Masticando unos fotones, ñam ñam ñam."
   },
@@ -755,7 +755,7 @@
   "classic/traits/regenerative-tissue": {
     "name": "Tejido Regenerativo",
     "effects": [
-      "Siempre que descartes un trait de tu pila de traits,\n[small](incluyendo este),[/small] roba 1. Juégalo inmediatamente.\n[small](A menos que haya restricción.)[/small] Ignora las acciones ({action})."
+      "Siempre que descartes un trait de tu pila de traits,\n[small](incluyendo este),[/small]\nroba 1. Juégalo inmediatamente.\n[small](A menos que haya restricción.)[/small]\nIgnora las acciones ({action})."
     ],
     "flavor": "¿Cuántos dedos hay aquí? Espera, espera, todavía me están volviendo a crecer"
   },
@@ -816,14 +816,14 @@
   "classic/traits/sentience": {
     "name": "Sintiencia",
     "effects": [
-      "[rainbow]Elige un color.[/rainbow] +1 por cada trait de ese color en tu pila de traits."
+      "[rainbow]Elige un color.[/rainbow]\n+1 por cada trait de ese color en tu pila de traits."
     ],
     "flavor": "Estoy sintiendo tantas cosas en este momento."
   },
   "classic/traits/sneaky": {
     "name": "Sigiloso",
     "effects": [
-      "En el Fin del Mundo: Puedes jugar Sneaky desde tu mano."
+      "En el Fin del Mundo:\nPuedes jugar Sneaky desde tu mano."
     ],
     "flavor": "Esa no te la esperabas, ¿eh?"
   },
@@ -961,7 +961,7 @@
   "classic/traits/venomous": {
     "name": "Ponzoñoso",
     "effects": [
-      "Juega otro trait. Luego, mueve Venomous a la pila de traits de un oponente."
+      "Juega otro trait.\nLuego, mueve Venomous a la pila de traits de un oponente."
     ],
     "flavor": "Yo no ladro, pero muerdo."
   },

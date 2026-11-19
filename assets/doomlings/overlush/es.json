@@ -440,7 +440,7 @@
   "overlush/traits/dart": {
     "name": "Dardo",
     "effects": [
-      "[small]¡No se puede jugar en tu turno![/small] Juega Dart cuando un oponente retire un trait de tu pila de traits."
+      "[small]¡No se puede jugar en tu turno![/small]\nJuega Dart cuando un oponente retire un trait de tu pila de traits."
     ],
     "flavor": "En realidad solo estoy entrando en una relación tóxica."
   },
@@ -466,7 +466,7 @@
   "overlush/traits/elusive": {
     "name": "Esquivo",
     "effects": [
-      "[small]¡No se puede jugar en tu turno![/small] Cuando Elusive entre en tu mano durante un efecto de age o en el turno de un oponente, puedes jugarlo inmediatamente."
+      "[small]¡No se puede jugar en tu turno![/small]\nCuando Elusive entre en tu mano durante un efecto de age o en el turno de un oponente, puedes jugarlo inmediatamente."
     ],
     "flavor": "Juega como el zorro."
   },
@@ -578,7 +578,7 @@
   "overlush/traits/harrier": {
     "name": "Aguilucho",
     "effects": [
-      "Hasta el Fin del Mundo: Después de estabilizar, puedes descartar 1 trait sin efecto de tu mano para robar 3 cartas."
+      "Hasta el Fin del Mundo:\nDespués de estabilizar, puedes descartar 1 trait sin efecto de tu mano para robar 3 cartas."
     ],
     "flavor": "Más vale pájaro en mano... varios puntos, ¡así que juégalo!"
   },
@@ -606,7 +606,7 @@
   "overlush/traits/illusory": {
     "name": "Ilusorio",
     "effects": [
-      "Hasta el Fin del Mundo: Después de estabilizar, si no jugaste ninguna acción ({action}) en tu turno, puedes jugar una acción de una carta de tu mano y luego descartarla.\n[small](Ignora todas las demás acciones.)[/small]"
+      "Hasta el Fin del Mundo:\nDespués de estabilizar, si no jugaste ninguna acción ({action}) en tu turno, puedes jugar una acción de una carta de tu mano y luego descartarla.\n[small](Ignora todas las demás acciones.)[/small]"
     ],
     "flavor": "Hágase el truco."
   },
@@ -731,21 +731,21 @@
   "overlush/traits/muse": {
     "name": "Musa",
     "effects": [
-      "[small]¡No se puede jugar en tu turno![/small] Si Muse es descartado de tu mano, puedes, en lugar de eso, jugarlo en tu pila de traits."
+      "[small]¡No se puede jugar en tu turno![/small]\nSi Muse es descartado de tu mano, puedes, en lugar de eso, jugarlo en tu pila de traits."
     ],
     "flavor": "Solo esperando la inspiración."
   },
   "overlush/traits/mutualism": {
     "name": "Mutualismo",
     "effects": [
-      "Todos los oponentes reciben: +1 Gene Pool. Añade el valor del mayor Gene Pool a tu puntuación final."
+      "Todos los oponentes reciben:\n+1 Gene Pool.\nAñade el valor del mayor Gene Pool a tu puntuación final."
     ],
     "flavor": "¡Eres mi nuevo mejor amigo! ¿Cómo te llamabas?"
   },
   "overlush/traits/mycelium": {
     "name": "Micelio",
     "effects": [
-      "Si Mycelium es retirado de tu pila de traits en tu turno, puedes jugar primero la carta de la parte superior de la pila de descarte. [small]Juega las acciones ({action}).[/small]"
+      "Si Mycelium es retirado de tu pila de traits en tu turno, puedes jugar primero la carta de la parte superior de la pila de descarte.\n[small]Juega las acciones ({action}).[/small]"
     ],
     "flavor": "Claro que puedes unirte a mi red. Siempre hay lugar para un hongo más."
   },
@@ -759,7 +759,7 @@
   "overlush/traits/nectar": {
     "name": "Néctar",
     "effects": [
-      "[rainbow]Elige un color.[/rainbow] Todos los oponentes pueden jugar 1 del [rainbow]color[/rainbow] elegido.\n[small](Excepto dominantes.) Ignora las acciones ({action}).[/small]"
+      "[rainbow]Elige un color.[/rainbow]\nTodos los oponentes pueden jugar 1 del [rainbow]color[/rainbow] elegido.\n[small](Excepto dominantes.) Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "Un poquito para ti, un poquito para mí."
   },
@@ -809,7 +809,7 @@
   "overlush/traits/pinchy": {
     "name": "Pinzas",
     "effects": [
-      "Puedes jugar Pinchy cuando un oponente juegue un trait. Interrumpe su acción ({action}) y añádelo a tu mano. Ese oponente puede jugar otro trait."
+      "Puedes jugar Pinchy cuando un oponente juegue un trait.\nInterrumpe su acción ({action}) y añádelo a tu mano.\nEse oponente puede jugar otro trait."
     ],
     "flavor": "Nadie está por encima de la pinza."
   },
@@ -844,14 +844,14 @@
   "overlush/traits/psychedelic": {
     "name": "Psicodélico",
     "effects": [
-      "Reinicia la age. Ahora eres el primer jugador. Haz tu turno.\n(No puedes reiniciar catastrophes.)"
+      "Reinicia la age.\nAhora eres el primer jugador.\nHaz tu turno.\n(No puedes reiniciar catastrophes.)"
     ],
     "flavor": "Wow...creo que ya había visto esto antes."
   },
   "overlush/traits/pyrophyte": {
     "name": "Pirófita",
     "effects": [
-      "Roba 4 cartas. Puedes jugar cualquiera con un valor nominal de 2 o menos. [small]Ignora las acciones ({action}).[/small]"
+      "Roba 4 cartas.\nPuedes jugar cualquiera con un valor nominal de 2 o menos.\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "¿Arder en gloria? Suena a una buena forma de despedirme."
   },
@@ -872,7 +872,7 @@
   "overlush/traits/rover": {
     "name": "Trotamundos",
     "effects": [
-      "Elige un [rainbow]color[/rainbow]. Mira las 5 cartas del fondo del mazo de traits. Puedes jugar 1 del [rainbow]color[/rainbow] elegido."
+      "Elige un [rainbow]color[/rainbow].\nMira las 5 cartas del fondo del mazo de traits. Puedes jugar 1 del [rainbow]color[/rainbow] elegido."
     ],
     "flavor": "No estoy ni aquí ni allá."
   },
@@ -922,7 +922,7 @@
   "overlush/traits/shady": {
     "name": "Sombreado",
     "effects": [
-      "Roba 3 cartas. Juega 1 carta de tu mano en la pila de traits de un oponente. [small]Sin dominantes. Ignora su acción ({action}).[/small]"
+      "Roba 3 cartas.\nJuega 1 carta de tu mano en la pila de traits de un oponente. [small]Sin dominantes.\nIgnora su acción ({action}).[/small]"
     ],
     "flavor": "Un lugar fresco y sin costo de entrada."
   },
@@ -1018,7 +1018,7 @@
   "overlush/traits/spots": {
     "name": "Pintas",
     "effects": [
-      "[rainbow]Elige un color.[/rainbow] Todos los oponentes revelan todas las cartas de ese [rainbow]color[/rainbow] de su mano. Juega 1 inmediatamente. [small]Ignora las acciones ({action}).[/small]"
+      "[rainbow]Elige un color.[/rainbow]\nTodos los oponentes revelan todas las cartas de ese [rainbow]color[/rainbow] de su mano. Juega 1 inmediatamente.\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "Te hacen difícil de encontrar."
   },
@@ -1050,14 +1050,14 @@
   "overlush/traits/strange": {
     "name": "Extraño",
     "effects": [
-      "Hasta el Fin del Mundo: Cuando juegues un trait sin efecto, puedes activar un efecto catastrófico de cualquier catastrophe jugada anteriormente."
+      "Hasta el Fin del Mundo:\nCuando juegues un trait sin efecto, puedes activar un efecto catastrófico de cualquier catastrophe jugada anteriormente."
     ],
     "flavor": "Whimmy zap bam woppa tummy tam wapple!"
   },
   "overlush/traits/super-sneaky": {
     "name": "Supersigiloso",
     "effects": [
-      "¡No se puede jugar en tu turno! En el Fin del Mundo: Puedes jugar Super Sneaky desde tu mano."
+      "¡No se puede jugar en tu turno!\nEn el Fin del Mundo:\nPuedes jugar Super Sneaky desde tu mano."
     ],
     "flavor": "Cariño, ¿el sofá siempre estuvo inclinado a 45 grados?"
   },
@@ -1178,7 +1178,7 @@
   "overlush/traits/vagabond": {
     "name": "Vagabundo",
     "effects": [
-      "Todos los oponentes juegan 1 trait. [small](Sin dominantes.) Ignora las acciones ({action}).[/small] Arrebata 1 de esos traits O juega un trait adicional."
+      "Todos los oponentes juegan 1 trait. [small](Sin dominantes.)\nIgnora las acciones ({action}).[/small]\nArrebata 1 de esos traits O juega un trait adicional."
     ],
     "flavor": "¡No sigo las reglas de nadie! Ni siquiera las mías."
   },
@@ -1192,7 +1192,7 @@
   "overlush/traits/wanderlust": {
     "name": "Sed de Aventura",
     "effects": [
-      "Roba 1 carta. Puedes jugarla ahora O robar 1 carta del fondo del mazo de traits. En lugar de eso, puedes jugar esa carta ahora."
+      "Roba 1 carta.\nPuedes jugarla ahora O robar 1 carta del fondo del mazo de traits. En lugar de eso, puedes jugar esa carta ahora."
     ],
     "flavor": "¡No estoy perdido! Solo no sé dónde estoy."
   },
@@ -1203,14 +1203,14 @@
   "overlush/traits/whistler": {
     "name": "Silbador",
     "effects": [
-      "Hasta el Fin del Mundo: Puedes descartar hasta 2 cartas de tu mano antes de estabilizar."
+      "Hasta el Fin del Mundo:\nPuedes descartar hasta 2 cartas de tu mano antes de estabilizar."
     ],
     "flavor": "¡IiIi! ¡Ii! ¡IiIiIiIi!"
   },
   "overlush/traits/willow": {
     "name": "Sauce",
     "effects": [
-      "Roba 3 cartas. Descarta 3 cartas de tu mano en el fondo del mazo de traits."
+      "Roba 3 cartas.\nDescarta 3 cartas de tu mano en el fondo del mazo de traits."
     ],
     "flavor": "Da sombra, pero de la buena."
   },

@@ -159,14 +159,14 @@
   "imaginary-ends/traits/baffling": {
     "name": "Desconcertante",
     "effects": [
-      "Suprima 1 trait da sua pilha de traits. Depois mova Baffling para a pilha de traits de um oponente."
+      "Suprima 1 trait da sua pilha de traits.\nDepois mova Baffling para a pilha de traits de um oponente."
     ],
     "flavor": "Você parece confuso. Isso me diverte."
   },
   "imaginary-ends/traits/bedazzled": {
     "name": "Deslumbrado",
     "effects": [
-      "Compre 1 carta. Se for uma carta sem efeito, jogue-a agora. Se for um Glitterling ({glitterling}), repita esta ação."
+      "Compre 1 carta.\nSe for uma carta sem efeito, jogue-a agora. Se for um Glitterling ({glitterling}), repita esta ação."
     ],
     "flavor": "Use os signos para alinhar as auras dos cristais ao chakra do coração."
   },
@@ -180,7 +180,7 @@
   "imaginary-ends/traits/chemotroph": {
     "name": "Quimiotrofo",
     "effects": [
-      "Para jogar, você deve suprimir 1 trait da sua pilha de traits. Jogue outro trait."
+      "Para jogar, você deve suprimir 1 trait da sua pilha de traits.\nJogue outro trait."
     ],
     "flavor": "Ooh! Um petisco sulfúrico delicioso."
   },
@@ -237,7 +237,7 @@
   "imaginary-ends/traits/ethereal": {
     "name": "Etéreo",
     "effects": [
-      "Até o Fim do Mundo: Se você tiver 6 ou menos cartas na mão no fim do seu turno, pode suprimir 1 carta da sua mão em vez de estabilizar.\n[small](Se este efeito esvaziar sua mão, compre 2 cartas.)[/small]"
+      "Até o Fim do Mundo:\nSe você tiver 6 ou menos cartas na mão no fim do seu turno, pode suprimir 1 carta da sua mão em vez de estabilizar.\n[small](Se este efeito esvaziar sua mão, compre 2 cartas.)[/small]"
     ],
     "flavor": "Perfeito demais para este mundo, ou para o próximo."
   },
@@ -394,7 +394,7 @@
   "imaginary-ends/traits/polka-dots": {
     "name": "Bolinhas",
     "effects": [
-      "Descarte as 5 cartas do topo do baralho de traits. Se alguma tiver valor de face 0, jogue-a agora. [small]Ignore ações ({action}).[/small]"
+      "Descarte as 5 cartas do topo do baralho de traits.\nSe alguma tiver valor de face 0, jogue-a agora.\n[small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Não estou doente! Eu sou fabuloso!"
   },
@@ -409,14 +409,14 @@
   "imaginary-ends/traits/rainbow-magic": {
     "name": "Magia do Arco-Íris",
     "effects": [
-      "Você pode devolver [rainbow]Rainbow Magic[/rainbow] à sua mão (sério!) depois de estabilizar. Depois, jogue 1 carta aleatória da sua mão. [small]Ignore restrições e requisitos.[/small]"
+      "Você pode devolver [rainbow]Rainbow Magic[/rainbow] à sua mão (sério!) depois de estabilizar. Depois, jogue 1 carta aleatória da sua mão.\n[small]Ignore restrições e requisitos.[/small]"
     ],
     "flavor": "Tenho refletido muito. E refratado também."
   },
   "imaginary-ends/traits/remarkable": {
     "name": "Notável",
     "effects": [
-      "Para jogar, você deve ter 3 ou menos cartas na mão. Todos os seus amigos passam as próprias mãos para a direita (você não!) e estabilizam. Depois, suprima a sua mão."
+      "Para jogar, você deve ter 3 ou menos cartas na mão.\nTodos os seus amigos passam as próprias mãos para a direita (você não!) e estabilizam. Depois, suprima a sua mão."
     ],
     "flavor": "Sem comentários."
   },
@@ -784,7 +784,7 @@
   "imaginary-ends/trinkets/t-o-m-four": {
     "name": "T.O.M. Four",
     "effects": [
-      "Seus oponentes podem comprar 1 carta no início do seu turno. [small](Se perceberem...)[/small]",
+      "Seus oponentes podem comprar 1 carta no início do seu turno.\n[small](Se perceberem...)[/small]",
       "Revelar: 3 cores diferentes na mão."
     ],
     "flavor": "O que é um TOM Four? Serve para contar piadas mais ou menos."
@@ -872,7 +872,7 @@
   "imaginary-ends/trinkets/world-s-end-insurance": {
     "name": "Seguro do Fim do Mundo",
     "effects": [
-      "No Fim do Mundo: Em vez de perder este item, guarde-o no bolso.",
+      "No Fim do Mundo:\nEm vez de perder este item, guarde-o no bolso.",
       "Jogar: 2 traits em 1 turno."
     ],
     "flavor": "Você não pode se dar ao luxo de NÃO ter isto."

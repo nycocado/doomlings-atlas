@@ -49,7 +49,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 1. Play 1."
+        "text": "Draw 1.\nPlay 1."
       }
     ],
     "genePool": null,
@@ -333,7 +333,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Stabilize to 4. Play 1."
+        "text": "Stabilize to 4.\nPlay 1."
       }
     ],
     "genePool": null,
@@ -545,7 +545,7 @@
     "flavor": "Gold fades, riches vanish, and the wealth of our lives is measured in memory.",
     "effects": [
       {
-        "text": "Draw 1. Play 1."
+        "text": "Draw 1.\nPlay 1."
       }
     ],
     "genePool": null,
@@ -636,7 +636,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 1. You may play it now."
+        "text": "Draw 1.\nYou may play it now."
       }
     ],
     "genePool": null,
@@ -660,7 +660,7 @@
     "flavor": "Keep your friends close and your anemones closer.",
     "effects": [
       {
-        "text": "Start of your turns: You may discard all of 1 [rainbow]color[/rainbow] from your hand."
+        "text": "Start of your turns:\nYou may discard all of 1 [rainbow]color[/rainbow] from your hand."
       }
     ],
     "genePool": null,

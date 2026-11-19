@@ -159,14 +159,14 @@
   "imaginary-ends/traits/baffling": {
     "name": "Desconcertante",
     "effects": [
-      "Suprime 1 trait de tu pila de traits. Luego mueve Baffling a la pila de traits de un oponente."
+      "Suprime 1 trait de tu pila de traits.\nLuego mueve Baffling a la pila de traits de un oponente."
     ],
     "flavor": "Te ves confundido. Eso me divierte."
   },
   "imaginary-ends/traits/bedazzled": {
     "name": "Deslumbrado",
     "effects": [
-      "Roba 1 carta. Si es una carta sin efecto, juégala ahora. Si es un Glitterling ({glitterling}), repite esta acción."
+      "Roba 1 carta.\nSi es una carta sin efecto, juégala ahora. Si es un Glitterling ({glitterling}), repite esta acción."
     ],
     "flavor": "Usa los signos zodiacales para alinear las auras de los cristales con el chakra del corazón."
   },
@@ -180,7 +180,7 @@
   "imaginary-ends/traits/chemotroph": {
     "name": "Quimiotrofo",
     "effects": [
-      "Para jugar, debes suprimir 1 trait de tu pila de traits. Juega otro trait."
+      "Para jugar, debes suprimir 1 trait de tu pila de traits.\nJuega otro trait."
     ],
     "flavor": "¡Ooh! Un sabroso bocadito sulfúrico."
   },
@@ -237,7 +237,7 @@
   "imaginary-ends/traits/ethereal": {
     "name": "Etéreo",
     "effects": [
-      "Hasta el Fin del Mundo: Si tienes 6 o menos cartas en la mano al final de tu turno, puedes suprimir 1 carta de tu mano en lugar de estabilizar.\n[small](Si este efecto vacía tu mano, roba 2 cartas.)[/small]"
+      "Hasta el Fin del Mundo:\nSi tienes 6 o menos cartas en la mano al final de tu turno, puedes suprimir 1 carta de tu mano en lugar de estabilizar.\n[small](Si este efecto vacía tu mano, roba 2 cartas.)[/small]"
     ],
     "flavor": "Demasiado perfecto para este mundo, o para el siguiente."
   },
@@ -394,7 +394,7 @@
   "imaginary-ends/traits/polka-dots": {
     "name": "Lunares",
     "effects": [
-      "Descarta las 5 cartas de la parte superior del mazo de traits. Si alguna tiene un valor nominal de 0, juégala ahora. [small]Ignora las acciones ({action}).[/small]"
+      "Descarta las 5 cartas de la parte superior del mazo de traits.\nSi alguna tiene un valor nominal de 0, juégala ahora.\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "¡No estoy enfermo! ¡Solo soy fabuloso!"
   },
@@ -409,14 +409,14 @@
   "imaginary-ends/traits/rainbow-magic": {
     "name": "Magia Arcoíris",
     "effects": [
-      "Puedes devolver [rainbow]Rainbow Magic[/rainbow] a tu mano (¡en serio!) después de estabilizar. Luego, juega 1 carta aleatoria de tu mano. [small]Ignora restricciones y requisitos.[/small]"
+      "Puedes devolver [rainbow]Rainbow Magic[/rainbow] a tu mano (¡en serio!) después de estabilizar. Luego, juega 1 carta aleatoria de tu mano.\n[small]Ignora restricciones y requisitos.[/small]"
     ],
     "flavor": "He reflexionado mucho. Y refractado también."
   },
   "imaginary-ends/traits/remarkable": {
     "name": "Notable",
     "effects": [
-      "Para jugar, debes tener 3 o menos cartas en la mano. Todos tus amigos pasan su mano a la derecha (¡tú no!) y estabilizan. Luego, suprime tu mano."
+      "Para jugar, debes tener 3 o menos cartas en la mano.\nTodos tus amigos pasan su mano a la derecha (¡tú no!) y estabilizan. Luego, suprime tu mano."
     ],
     "flavor": "Sin comentarios."
   },
@@ -784,7 +784,7 @@
   "imaginary-ends/trinkets/t-o-m-four": {
     "name": "T.O.M. Four",
     "effects": [
-      "Tus oponentes pueden robar 1 carta al inicio de tu turno. [small](Si se dan cuenta...)[/small]",
+      "Tus oponentes pueden robar 1 carta al inicio de tu turno.\n[small](Si se dan cuenta...)[/small]",
       "Revelar: 3 colores diferentes en la mano."
     ],
     "flavor": "¿Qué es un TOM Four? Sirve para contar chistes regulares."
@@ -872,7 +872,7 @@
   "imaginary-ends/trinkets/world-s-end-insurance": {
     "name": "Seguro del Fin del Mundo",
     "effects": [
-      "En el Fin del Mundo: En lugar de perder este ítem, guárdalo en el bolsillo.",
+      "En el Fin del Mundo:\nEn lugar de perder este ítem, guárdalo en el bolsillo.",
       "Jugar: 2 traits en 1 turno."
     ],
     "flavor": "No puedes permitirte NO tener esto."

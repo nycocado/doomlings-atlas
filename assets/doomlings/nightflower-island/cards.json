@@ -54,7 +54,7 @@
     "name": "Spring Nightflower Island",
     "effects": [
       {
-        "text": "Draw 2. Pass 1 [green]green[/green] from hand left."
+        "text": "Draw 2.\nPass 1 [green]green[/green] from hand left."
       }
     ],
     "image": "nightflower-island/ages/spring-nightflower-island.webp"
@@ -66,7 +66,7 @@
     "name": "Summer Nightflower Island",
     "effects": [
       {
-        "text": "Draw 1. If [purple]purple[/purple], repeat."
+        "text": "Draw 1.\nIf [purple]purple[/purple], repeat."
       }
     ],
     "image": "nightflower-island/ages/summer-nightflower-island.webp"
@@ -155,7 +155,7 @@
     "flavor": "This might open a can of worms, which would be delicious.",
     "effects": [
       {
-        "text": "Play up to 3 traits. Ignore all but 1 action ({action})."
+        "text": "Play up to 3 traits.\nIgnore all but 1 action ({action})."
       }
     ],
     "genePool": null,
@@ -256,7 +256,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Play at any time: [rainbow]Choose a color[/rainbow], then reveal the top of the trait deck. If it matches, draw it."
+        "text": "Play at any time:\n[rainbow]Choose a color[/rainbow], then reveal the top of the trait deck. If it matches, draw it."
       }
     ],
     "genePool": null,
@@ -311,7 +311,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Return all your effectless traits to hand. +4 for each trait returned this way."
+        "text": "Return all your effectless traits to hand.\n+4 for each trait returned this way."
       }
     ],
     "genePool": null,
@@ -361,7 +361,7 @@
     "flavor": "This town is big enough for the two of us, but I'm gettin' rid of you all the same.",
     "effects": [
       {
-        "text": "Start of your turns: Reveal 2 of the same [rainbow]color[/rainbow]. Suppress 1 of them."
+        "text": "Start of your turns:\nReveal 2 of the same [rainbow]color[/rainbow]. Suppress 1 of them."
       }
     ],
     "genePool": null,
@@ -500,7 +500,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "In any order: Stabilize to 3. Draw 2."
+        "text": "In any order:\nStabilize to 3.\nDraw 2."
       }
     ],
     "genePool": null,
