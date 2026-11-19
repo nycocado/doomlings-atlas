@@ -636,7 +636,7 @@
     "story": [
       "El chico se internó tropezando en el bosque neblinoso y quedó atrapado en una telaraña negra. Sus hilos estaban cubiertos de algo parecido al alquitrán. Gritó, pero solo una cosa pudo oírlo.",
       "De entre la bruma, se arrastró. Las facetas de sus ojos multiplicaban por cien el terror del chico. Pudo ver que las patas delgadas de la criatura eran tan afiladas como navajas.",
-      "\"Lo siento muchísimo\", dijo, cortando las hebras como sogas y liberando al chico.",
+      "\"Lo siento muchísimo\", dijo, cortando las gruesas hebras y liberando al chico.",
       "\"Es un proyecto artístico mío. ¿Podrías decirme qué te parece?\""
     ],
     "effects": [
@@ -650,7 +650,7 @@
       "Los niños se apiñaron alrededor de la caja, con los ojos muy abiertos. El más valiente y más tonto de todos la abrió. La caja estalló en colores que aún no tenían nombre.",
       "\"Vamos a llamar a eso smokle\", declaró Sandy, señalando una voluta burbujeante de luz morada. \"¡Y eso es gleengroll!\", añadió Candy, señalando un destello tembloroso de dorado verdoso.",
       "Un tono rosado que olía a toronja rebotaba entre las luces. \"Oyngo\", dijo Mandy, asintiendo con sabiduría.",
-      "Después de horas, terminaron en un azul tinta, que todos acordaron que era \"blorky\"."
+      "Después de horas, terminaron en un azul tinta, y todos estuvieron de acuerdo en que era \"blorky\"."
     ],
     "effects": [
       "Impide que te arrebaten un trait. (Excepto dominantes.)",
@@ -672,7 +672,7 @@
   "legends-of-enderas/treasures/cataclyte": {
     "name": "Cataclyte",
     "story": [
-      "Por un instante, una roca sin vida vagaba sola, perdida en el vacío. Luego ese instante pasó y la roca fue atraída hacia el calor de una estrella. La energía de la estrella golpeó la roca sin piedad. Provocó una catastrophe tras otra. Pero, tras la devastación, hubo vida. Nació Enderas.",
+      "Por un instante, una roca sin vida vagaba sola, perdida en el vacío. Luego ese instante pasó y la roca fue atraída hacia el calor de una estrella. La energía de la estrella golpeó la roca sin piedad. Provocó una catástrofe tras otra. Pero, tras la devastación, hubo vida. Nació Enderas.",
       "Del caos surgieron los Doomlings, capaces de adaptar rápidamente los traits y las fortalezas de sus amigos ante cualquier desastre. Se dice que Enderas contiene elementos raros que absorbieron la energía de la estrella y que pueden usarse para amplificar el poder de los Doomlings."
     ],
     "effects": [
@@ -695,10 +695,10 @@
   "legends-of-enderas/treasures/coda": {
     "name": "Coda",
     "story": [
-      "En World's End, un misterioso jinete desmontó de su caballo. Se me acercó despacio, y la hoja de su guadaña tapaba más y más la luna a medida que se acercaba.",
+      "En el Fin del Mundo, un misterioso jinete desmontó de su caballo. Se me acercó despacio, y la hoja de su guadaña tapaba más y más la luna a medida que se acercaba.",
       "Se detuvo a una zancada de mí. Levantó su dedo huesudo y apuntó al espacio entre mis ojos. Los apreté con fuerza.",
       "\"Este es el fin\", pensé.",
-      "Instantes después, empezaron los tajos y los hachazos. Grité y abrí los ojos de golpe, solo para descubrir que la figura ya había pasado de largo y estaba cortando mi césped."
+      "Instantes después, empezaron los tajos y los hachazos. Grité y abrí los ojos de golpe, y descubrí que la figura ya había pasado de largo y estaba cortando mi césped."
     ],
     "effects": [
       "Disminuye el Gene Pool en 1.\nJuega 1.",
@@ -724,7 +724,7 @@
   "legends-of-enderas/treasures/fortune-glory": {
     "name": "Fortuna y Gloria",
     "story": [
-      "\"Esta es la nuestra, chico\", gritó el aventurero mientras colgaba de las yemas de los dedos, \"¡toma el tesoro y larguémonos de aquí!\"",
+      "\"Hasta aquí llegué, chico\", gritó el aventurero mientras colgaba de las yemas de los dedos, \"¡toma el tesoro y lárgate de aquí!\"",
       "Pero el chico ya había saltado, con un extremo de la cuerda bien agarrado y el otro colgando detrás. Jaló al aventurero del precipicio y se columpiaron hasta ponerse a salvo.",
       "Los dos salieron juntos, sin nada brillante que mostrar. Pero les encantaba contar la historia cada vez que podían."
     ],
@@ -736,7 +736,7 @@
     "name": "Fwip",
     "story": [
       "\"¿Cómo se llama tu espada?\"",
-      "Hero nunca lo había pensado. La había arrancado de un pedazo de escombro espacial. ¿Cómo se le pone nombre a un trozo de metal? Decidió llamarla 'Fwip' por el sonido que hacía al blandirla. A Kal no le impresionó, pero ¿quién era él para desinflar al pequeñín?",
+      "Hero nunca lo había pensado. La había arrancado de un pedazo de basura espacial. ¿Cómo se le pone nombre a un trozo de metal? Decidió llamarla 'Fwip' por el sonido que hacía al blandirla. A Kal no le impresionó, pero ¿quién era él para desinflar al pequeñín?",
       "Esa misma noche, Kal vio a Hero brincar por el bosque, 'fwipeando' su hoja por todos lados. \"¡Onomatopeya!\", gritó Hero, sin saber qué significaba."
     ],
     "effects": [
@@ -747,7 +747,7 @@
   "legends-of-enderas/treasures/ghostly-boots": {
     "name": "Botas Fantasmales",
     "story": [
-      "Escucha. Había una chica que bailaba en Amaranth Hill. Su baile tenía un poder. Los demás lo notaron. Le pagaban para que bailara en sus cantinas y carnavales, pero, con el tiempo, el poder se desvaneció.",
+      "Escucha. Había una chica que bailaba en Amaranth Hill. Su baile tenía un poder. Los demás lo notaron. Le pagaban para que bailara en sus cantinas y ferias, pero, con el tiempo, el poder se desvaneció.",
       "\"¡Baila como antes! ¡Como cuando te encontramos!\", exigieron. Pero su baile ya era solo una actuación. La multitud le había arrancado el corazón y lo había pisoteado. Se deshizo de las botas y huyó del pueblo, para no volver a ser vista jamás.",
       "Dicen que de noche se pueden encontrar las botas, todavía bailando. Atrápalas, póntelas y tendrás el poder de ir a donde desees, sin ser visto ni oído."
     ],
@@ -760,7 +760,7 @@
     "name": "Corazón del Bosque",
     "story": [
       "Marin vagaba sola, perdida en el bosque frío y oscuro, hasta que dio con una puerta sellada, hecha de raíces y madera viva.",
-      "Tocó. No hubo respuesta-salvo, quizás, un latido. Marin abrió la puerta. Una luz dorada brotó de la habitación. Dentro, vio un corazón de ámbar. Su resplandor ahuyentaba todas las sombras. Eso sí era un tesoro.",
+      "Tocó. No hubo respuesta, salvo, quizás, un latido. Marin abrió la puerta. Una luz dorada brotó de la habitación. Dentro, vio un corazón de ámbar. Su resplandor ahuyentaba todas las sombras. Eso sí era un tesoro.",
       "Marin contempló su belleza, cerró la puerta y lo dejó en paz."
     ],
     "effects": [
@@ -787,7 +787,7 @@
     "story": [
       "El Doomling encapuchado arrastró su carreta hacia la orilla del río. Las ruedas luchaban contra el limo, cargadas de botellas de vidrio recogidas del basurero del pueblo.",
       "El Doomling se dejó caer junto al agua, tomó de la carreta una pila de papeles amarillentos y empezó a escribir.",
-      "Al terminar cada nota, la enrollaba con cuidado, la metía sellada en una de las botellas desechadas y la lanzaba al río.",
+      "Al terminar cada nota, la enrollaba con cuidado, la sellaba dentro de una de las botellas descartadas y la lanzaba al río.",
       "Días después, un pescador recogió una de las botellas, la abrió y leyó la nota que traía dentro. Se sonrojó y se tocó el bigote. \"¡Alguien lo notó!\""
     ],
     "effects": [
@@ -798,7 +798,7 @@
   "legends-of-enderas/treasures/soulweaver": {
     "name": "Tejedor de Almas",
     "story": [
-      "Sumner estaba frente a su abominación. La bestia, afilada y extraña, con cada borde a noventa grados de geometría impía. Era... un cubo.",
+      "Sumner estaba frente a su abominación. La bestia, afilada y alienígena, con cada arista a noventa grados de geometría impía. Era... un cubo.",
       "Los ancestros esféricos de Sumner habían susurrado advertencias contra invocar a \"El Encajonado\".",
       "Tragó saliva. \"Esto está prohibido.\"",
       "El Encajonado habló: \"Hay otros cuatro como yo, Redondo. Invócalos y remodelaremos este mundo.\""
@@ -840,7 +840,7 @@
     "name": "Los Maliformes",
     "story": [
       "\"Corre.",
-      "Borraré tu memoria. Los errores que has cometido, los amigos que has perdido y todas las catastrophes que has traído a Enderas serán como si nunca hubieran existido.",
+      "Borraré tu memoria. Los errores que has cometido, los amigos que has perdido y todas las catástrofes que has traído a Enderas serán como si nunca hubieran existido.",
       "O puedes quedarte y podemos pelear hasta el final. Lo más probable es que pierdas. Pero incluso si sobrevives, vivirás con el recuerdo de que no pudiste salvarlos.",
       "Pero yo puedo salvarte. Corre y te libraré de tu pena y del dolor de Enderas.\""
     ],
@@ -894,7 +894,7 @@
     "story": [
       "Epic frunció el ceño ante el pueblo en llamas. Los aldeanos suplicaban ayuda, pero a Epic solo le importaba su taberna favorita.",
       "Con el fuego crepitando a su espalda, clavó su mirada de acero en la presa sobre el pueblo. Sonrió y cargó. Con un rugido primitivo, Epic blandió su gran hacha y rompió la presa de un solo golpe.",
-      "El agua se desbordó. Bajó atronando, estrellándose contra campos y calles, apagando las llamas y aplastando cada casa-y taberna-a su paso.",
+      "El agua se desbordó. Bajó atronando, arrasando campos y calles, apagando las llamas y aplastando cada casa - y taberna - a su paso.",
       "\"Fuego apagado\", declaró Epic. \"Aunque ojalá pudiera tomarme un trago.\""
     ],
     "effects": [
@@ -908,7 +908,7 @@
       "El camino a Titan's Tower había sido frío, áspero y sinuoso. Pero las ampollas y la congelación valieron la pena. Las historias eran ciertas y la aventurera pronto sería una leyenda.",
       "Abrió de par en par las puertas de la torre y contempló las reliquias de su interior: dos espadas encantadas. Una, opaca por el tiempo y la batalla. La otra, reluciente y brillante. Esta le habló. En serio, literalmente. Es mágica así.",
       "Dijo: \"Vamos a hacernos un nombre para ti misma.\"",
-      "Y una Legend respondió: \"No le veo ningún inconveniente.\""
+      "Y una Leyenda respondió: \"No le veo ningún inconveniente.\""
     ],
     "effects": [
       "Los oponentes devuelven 1 trait sin efecto de su pila de traits a la mano.",
@@ -921,7 +921,7 @@
       "\"Psst. Ayúdame.\" Una voz furtiva resonó por la cueva centelleante. Un Doomling solitario estaba preso en una jaula hecha de raíces vivas.",
       "\"¿Quién te capturó?\" Hero jaló las raíces, haciendo que apretaran más. El solitario cerró los ojos. \"Un árbol.\"",
       "Aliviado, Hero anunció: \"¡Hablo árbol! ¡Yo hablaré con él por ti!\"",
-      "\"No. ¿Qué? ¡No! Este es un árbol ANTIGUO y MALVADO. Sus raíces se hunden hondo y sus zarcillos llegan lejos, trayendo discordia y catastrophe a Enderas. Puedo detenerlo, pero necesito tu ayuda. Primero, tienes que dejarme salir...\""
+      "\"No. ¿Qué? ¡No! Este es un árbol ANTIGUO y MALVADO. Sus raíces vagan en lo hondo y sus zarcillos llegan lejos, trayendo discordia y catástrofe a Enderas. Puedo detenerlo, pero necesito tu ayuda. Primero, tienes que dejarme salir...\""
     ],
     "effects": [
       "[purple]Morado[/purple]\no\n[green]Verde[/green]",
@@ -931,12 +931,12 @@
   "legends-of-enderas/treasures/wisdom-stick": {
     "name": "Bastón de la Sabiduría",
     "story": [
-      "El Spirit Bear garabateaba en la arena con su vara de la sabiduría.",
+      "El Oso Espíritu garabateaba en la arena con su bastón de la sabiduría.",
       "Un Hero entusiasmado miraba por encima de su hombro, tomando notas.",
       "\"¿Es este un secreto para la paz interior?\"",
       "\"En algunos sentidos, sí. En otros, es una receta de panqueques.\"",
       "Hero parecía decepcionado.",
-      "El Spirit Bear dijo: \"Podemos buscar la paz interior después del desayuno.\"",
+      "El Oso Espíritu dijo: \"Podemos buscar la paz interior después del desayuno.\"",
       "Siguió garabateando."
     ],
     "effects": [
