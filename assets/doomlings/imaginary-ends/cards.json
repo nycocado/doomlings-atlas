@@ -174,6 +174,7 @@
         "text": "Trash 1 trinket, then gain 1 trinket.\nYou may repeat once."
       }
     ],
+    "flavor": "Along this desert road you've seen many mounds of dirt. Bon sits with her wares next to a freshly dug hole. Smiling, she says, \"I've got an offer for you.\"",
     "image": "imaginary-ends/merchants/bon.webp"
   },
   {
@@ -187,6 +188,7 @@
         "text": "You may trash 1 trinket, then gain 1."
       }
     ],
+    "flavor": "A single light flickers in the dark, revealing a shady dealer. Grinning, he remarks, \"Congratulations, you are lost in the right place.\"",
     "image": "imaginary-ends/merchants/fowler.webp"
   },
   {
@@ -200,6 +202,7 @@
         "text": "You may trash 1 trinket, then gain 1."
       }
     ],
+    "flavor": "In the mist, Fowler stands alone, his lantern the only light you can see. He mutters to nobody in particular, \"Pick a card, any card.\"",
     "image": "imaginary-ends/merchants/fowler-2.webp"
   },
   {
@@ -213,6 +216,7 @@
         "text": "You may trash 1 trinket, then gain 1."
       }
     ],
+    "flavor": "In this shady forest, an even shadier merchant whispers over and over. \"Everything must go.\" \"Everything. Must. Go.\"",
     "image": "imaginary-ends/merchants/fowler-3.webp"
   },
   {
@@ -226,6 +230,7 @@
         "text": "You may trash 1 trinket, then gain 1."
       }
     ],
+    "flavor": "While a salesman on the main stage showcases a curious contraption, a shady dealer breathes into your ear, \"What I have is more interesting. Also, totally not stolen.\"",
     "image": "imaginary-ends/merchants/fowler-4.webp"
   },
   {
@@ -239,6 +244,7 @@
         "text": "Pocket 1 trinket, then gain 1."
       }
     ],
+    "flavor": "How much do I have to pay you to buy something from me?",
     "image": "imaginary-ends/merchants/huk.webp"
   },
   {
@@ -252,6 +258,7 @@
         "text": "Pocket 1 trinket, then gain 1."
       }
     ],
+    "flavor": "Huk hands you a wrapped parcel. \"This is what you've been searching for.\" Putting a finger to his lips, he melds back into the crowd.",
     "image": "imaginary-ends/merchants/huk-2.webp"
   },
   {
@@ -265,6 +272,7 @@
         "text": "Gain 1 trinket.\nThen trash 1."
       }
     ],
+    "flavor": "The wandering merchant opens an ancient chest. The wind howls as he does. \"A coincidence,\" he reassures. Lightning strikes a nearby tree, setting it ablaze. \"That always happens.\"",
     "image": "imaginary-ends/merchants/toddles.webp"
   },
   {
@@ -278,6 +286,7 @@
         "text": "Gain 1 trinket.\nThen trash 1."
       }
     ],
+    "flavor": "Off the main market of Crackletown, a merchant showcases his newest product: explosive rock candy. Not to be confused with candied rock explosives.",
     "image": "imaginary-ends/merchants/toddles-2.webp"
   },
   {
@@ -291,6 +300,7 @@
         "text": "Gain 1 trinket.\nThen trash 1."
       }
     ],
+    "flavor": "The eager merchant sets up shop in the upper markets. Hot pink socks, hats, scarfs, and parkas, all woven from 100% cotton candy. Dry clean only.",
     "image": "imaginary-ends/merchants/toddles-3.webp"
   },
   {
@@ -304,6 +314,7 @@
         "text": "Gain 1 trinket.\nThen trash 1."
       }
     ],
+    "flavor": "The windblown merchant removes his soggy boots. Mud drips from the outsoles. Stink emits from the insoles. He exclaims, \"New shoes! Never worn!\"",
     "image": "imaginary-ends/merchants/toddles-4.webp"
   },
   {

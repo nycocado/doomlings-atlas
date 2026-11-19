@@ -129,6 +129,7 @@ data class Merchant(
     override val image: String,
     override val name: String,
     override val effects: List<Effect>,
+    override val flavor: String,
 ) : NamedCard
 
 // One section of a card's printed text, in printed order. No kind is a plain effect. The text may hold tokens in braces

@@ -757,6 +757,8 @@ private val Bon =
         "",
         "Bon",
         listOf(Effect(EffectKind.Bargain, "Trash 1 trinket, then gain 1 trinket.\nYou may repeat once.")),
+        "Along this desert road you've seen many mounds of dirt. Bon sits with her wares next to a freshly dug hole. " +
+            "Smiling, she says, \"I've got an offer for you.\"",
     )
 
 @PreviewLightDark
