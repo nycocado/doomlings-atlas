@@ -136,7 +136,7 @@
     "flavor": "Wee! A new environment! I'm gonna throw it into complete disarray!",
     "effects": [
       {
-        "text": "To play, you must discard 2 from your trait pile, then draw 2. You must play them immediately.\n(Unless restricted.) Discard dominants. Ignore actions ({action})."
+        "text": "To play, you must discard 2 from your trait pile, then draw 2. You must play them immediately.\n(Unless restricted.) [small]Discard dominants. Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -283,7 +283,7 @@
     "flavor": "Abra-ca-doomling!",
     "effects": [
       {
-        "text": "Until World's End: Anytime a trait leaves your trait pile, you may play 1 of the same [rainbow]color[/rainbow] to replace it. Ignore actions ({action}).\n(No dominants.)"
+        "text": "Until World's End: Anytime a trait leaves your trait pile, you may play 1 of the same [rainbow]color[/rainbow] to replace it. [small]Ignore actions ({action}).[/small]\n[small](No dominants.)[/small]"
       }
     ],
     "genePool": null,
@@ -354,7 +354,7 @@
     "flavor": "My outlook on life is pretty beak.",
     "effects": [
       {
-        "text": "-2 for every Drop of Life ({drop-of-life}) in your trait pile. (Excluding this one.) If you have all 4 [rainbow]colors[/rainbow] in your trait pile: +2 for each trait in your highest [rainbow]color count.[/rainbow]\n(If there's a tie, pick 1!)"
+        "text": "-2 for every Drop of Life ({drop-of-life}) in your trait pile. [small](Excluding this one.)[/small] If you have all 4 [rainbow]colors[/rainbow] in your trait pile: +2 for each trait in your highest [rainbow]color count.[/rainbow]\n[small](If there's a tie, pick 1!)[/small]"
       }
     ],
     "genePool": null,
@@ -394,11 +394,7 @@
     "flavor": "If you touch it, what's the worst that could happen?",
     "effects": [
       {
-        "text": "Each player receives -1 for each [colorless]colorless[/colorless] trait in their trait pile."
-      },
-      {
-        "kind": "note",
-        "text": "(Including you!)"
+        "text": "Each player receives -1 for each [colorless]colorless[/colorless] trait in their trait pile.\n[small](Including you!)[/small]"
       }
     ],
     "genePool": null,

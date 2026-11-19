@@ -9,7 +9,7 @@ import com.android.tools.screenshot.PreviewTest
 import dev.nycocado.atlas.about.AboutPreview
 import dev.nycocado.atlas.about.AboutUpdatePreview
 import dev.nycocado.atlas.about.NoticePreview
-import dev.nycocado.atlas.carddetail.ActionNoteTokenDetailPreview
+import dev.nycocado.atlas.carddetail.ActionSmallTokenDetailPreview
 import dev.nycocado.atlas.carddetail.BirthOfLifeDetailPreview
 import dev.nycocado.atlas.carddetail.CardDetailLongNamePreview
 import dev.nycocado.atlas.carddetail.CardDetailPreview
@@ -136,7 +136,7 @@ fun CatastropheDetailScreenshot() = CatastropheDetailPreview()
 @PreviewTest
 @PreviewLightDark
 @Composable
-fun ActionNoteTokenDetailScreenshot() = ActionNoteTokenDetailPreview()
+fun ActionSmallTokenDetailScreenshot() = ActionSmallTokenDetailPreview()
 
 @PreviewTest
 @PreviewLightDark

@@ -160,16 +160,14 @@
   "castle-glass/traits/pearl": {
     "name": "Pérola",
     "effects": [
-      "Você pode jogar 1 trait de cada [rainbow]cor[/rainbow].",
-      "Ignore ações ({action})."
+      "Você pode jogar 1 trait de cada [rainbow]cor[/rainbow].\n[small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "O brinde da natureza dentro da caixa."
   },
   "castle-glass/traits/pip": {
     "name": "Pip",
     "effects": [
-      "Jogue todos os traits de um valor de face à sua escolha.",
-      "Ignore ações ({action})."
+      "Jogue todos os traits de um valor de face à sua escolha.\n[small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Pip, pip, miaurra!"
   },
@@ -222,8 +220,7 @@
   "castle-glass/traits/spiny-fins": {
     "name": "Nadadeiras Espinhosas",
     "effects": [
-      "Jogue 1. Depois, descarte-o.",
-      "(Você não pode descartar dominantes.)"
+      "Jogue 1. Depois, descarte-o.\n[small](Você não pode descartar dominantes.)[/small]"
     ],
     "flavor": "As vantagens são três: agilidade, defesa e estilo."
   },
@@ -237,8 +234,7 @@
   "castle-glass/traits/spiral-motion": {
     "name": "Movimento Espiral",
     "effects": [
-      "Jogue 1. Depois, devolva-o à sua mão.",
-      "(Você não pode jogar este efeito duas vezes em 1 turno.)\n(Você não pode devolver dominantes.)"
+      "Jogue 1. Depois, devolva-o à sua mão.\n[small](Você não pode jogar este efeito duas vezes em 1 turno.)[/small]\n[small](Você não pode devolver dominantes.)[/small]"
     ],
     "flavor": "Girando rumo ao controle."
   },

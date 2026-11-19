@@ -78,16 +78,14 @@
   "legends-of-enderas/traits/actuator": {
     "name": "Actuador",
     "effects": [
-      "Puedes retirar 1 adjunto de tu pila de traits y adjuntarlo a un trait de cualquier pila de traits.",
-      "(Excepto dominantes.)"
+      "Puedes retirar 1 adjunto de tu pila de traits y adjuntarlo a un trait de cualquier pila de traits.\n[small](Excepto dominantes.)[/small]"
     ],
     "flavor": "Voy a agarrar la U."
   },
   "legends-of-enderas/traits/alchemical": {
     "name": "Alquímico",
     "effects": [
-      "Si Alchemical es descartado de la mano, ¡anúncialo!\nLos jugadores resuelven todos los efectos.\nLuego, los oponentes descartan aleatoriamente la mitad de su mano.",
-      "(Redondea hacia abajo.)"
+      "Si Alchemical es descartado de la mano, ¡anúncialo!\nLos jugadores resuelven todos los efectos.\nLuego, los oponentes descartan aleatoriamente la mitad de su mano.\n[small](Redondea hacia abajo.)[/small]"
     ],
     "flavor": "¡Damas y caballeros, el señor Al Químico!"
   },
@@ -127,8 +125,7 @@
   "legends-of-enderas/traits/carnivore": {
     "name": "Carnívoro",
     "effects": [
-      "Descarta todos los Dinolings ({dinoling}) de tu pila de traits.",
-      "(Excepto este.)"
+      "Descarta todos los Dinolings ({dinoling}) de tu pila de traits.\n[small](Excepto este.)[/small]"
     ],
     "flavor": "Una comida sana y balanceada incluye carne con dos guarniciones de carne."
   },
@@ -151,8 +148,7 @@
   "legends-of-enderas/traits/colossal": {
     "name": "Colosal",
     "effects": [
-      "Para jugar, debes descartar un trait con valor nominal de 5 o más de tu pila de traits.",
-      "No puede ser retirado de tu pila de traits."
+      "Para jugar, debes descartar un trait con valor nominal de 5 o más de tu pila de traits.\n[small]No puede ser retirado de tu pila de traits.[/small]"
     ],
     "flavor": "Siempre hay un dino más grande. ¡Y ese soy yo!"
   },
@@ -253,8 +249,7 @@
   "legends-of-enderas/traits/fossil-fueled": {
     "name": "Movido por Fósiles",
     "effects": [
-      "Cuando adjuntes una carta a Fossil Fueled, puedes jugar 1 de las 5 cartas de la parte superior de la pila de descarte.",
-      "Ignora su acción ({action})."
+      "Cuando adjuntes una carta a Fossil Fueled, puedes jugar 1 de las 5 cartas de la parte superior de la pila de descarte.\n[small]Ignora su acción ({action}).[/small]"
     ],
     "flavor": "La extinción es solo el inicio."
   },
@@ -318,8 +313,7 @@
   "legends-of-enderas/traits/insatiable": {
     "name": "Insaciable",
     "effects": [
-      "Descarta todos los Dinolings ({dinoling}) de tu pila de traits.",
-      "(Excepto este.)"
+      "Descarta todos los Dinolings ({dinoling}) de tu pila de traits.\n[small](Excepto este.)[/small]"
     ],
     "flavor": "Mi comida favorita es más."
   },
@@ -400,8 +394,7 @@
   "legends-of-enderas/traits/modular": {
     "name": "Modular",
     "effects": [
-      "Puedes retirar 1 adjunto de tu pila de traits y adjuntarlo a un trait en cualquier pila de traits.",
-      "(Excepto dominantes.)"
+      "Puedes retirar 1 adjunto de tu pila de traits y adjuntarlo a un trait en cualquier pila de traits.\n[small](Excepto dominantes.)[/small]"
     ],
     "flavor": "\"¿Cuánto queda de mí cuando se han reemplazado todas mis partes?\" Y con este último pensamiento, le arrancaron al robot sus neuropartes y las tiraron, solo para reemplazarlas por una calculadora."
   },
@@ -419,7 +412,7 @@
   "legends-of-enderas/traits/plastron": {
     "name": "Plastrón",
     "effects": [
-      "Puedes descartar 1 de tu pila de traits O jugar la carta de la parte superior de la pila de descarte. Ignora su acción ({action})."
+      "Puedes descartar 1 de tu pila de traits O jugar la carta de la parte superior de la pila de descarte. [small]Ignora su acción ({action}).[/small]"
     ],
     "flavor": "Memoria de tortuga."
   },
@@ -482,7 +475,7 @@
   "legends-of-enderas/traits/speech-recognition": {
     "name": "Reconocimiento de Voz",
     "effects": [
-      "Adjunta. Añade el valor nominal de 1 carta en la mano que comparta un [rainbow]color[/rainbow] con el huésped.\n(Excepto dominantes.)"
+      "Adjunta. Añade el valor nominal de 1 carta en la mano que comparta un [rainbow]color[/rainbow] con el huésped.\n[small](Excepto dominantes.)[/small]"
     ],
     "flavor": "El mejor traductor de voz a texto del mercado."
   },
@@ -518,8 +511,7 @@
   "legends-of-enderas/traits/summoner": {
     "name": "Invocador",
     "effects": [
-      "Descarta hasta 3 de la mano, luego juega 1 por cada carta descartada.",
-      "Ignora las acciones ({action})."
+      "Descarta hasta 3 de la mano, luego juega 1 por cada carta descartada.\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "Ese alguien que invoca algunas cosas."
   },
@@ -579,7 +571,7 @@
   "legends-of-enderas/traits/titanic": {
     "name": "Titánico",
     "effects": [
-      "Para jugar, debes descartar un valor nominal total de 5 o más de tu pila de traits, usando cualquier número de cartas.\n(¡Titanic no puede regenerar tejido!)"
+      "Para jugar, debes descartar un valor nominal total de 5 o más de tu pila de traits, usando cualquier número de cartas.\n[small](¡Titanic no puede regenerar tejido!)[/small]"
     ],
     "flavor": "¡Mmmm, icebúrgueres!"
   },

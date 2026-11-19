@@ -26,15 +26,14 @@ class CardDecodingTest {
     }
 
     @Test
-    fun decodesEffectsWithKindNoteTokenAndGenePool() {
+    fun decodesEffectsWithKindTokenAndGenePool() {
         val trait =
             decodeCards(
                 """
                 [{"id": "t", "type": "trait", "set": "classic", "name": "T", "flavor": null,
                   "effects": [
                     {"kind": "action", "text": "Ignore actions ({action})."},
-                    {"text": "Draw 1."},
-                    {"kind": "note", "text": "(Unless restricted.)"}],
+                    {"text": "Draw 1. [small](Unless restricted.)[/small]"}],
                   "genePool": -1, "points": 1, "colors": [], "dominant": false, "subspecies": [], "icons": [],
                   "image": "t.webp"}]
                 """,
@@ -43,8 +42,7 @@ class CardDecodingTest {
         assertEquals(
             listOf(
                 Effect(EffectKind.Action, "Ignore actions ({action})."),
-                Effect(null, "Draw 1."),
-                Effect(EffectKind.Note, "(Unless restricted.)"),
+                Effect(null, "Draw 1. [small](Unless restricted.)[/small]"),
             ),
             trait.effects,
         )

@@ -42,11 +42,7 @@
     "name": "Fading Away",
     "effects": [
       {
-        "text": "After playing a trait and resolving its effect, suppress it."
-      },
-      {
-        "kind": "note",
-        "text": "(Excluding dominants.)"
+        "text": "After playing a trait and resolving its effect, suppress it.\n[small](Excluding dominants.)[/small]"
       }
     ],
     "image": "imaginary-ends/ages/fading-away.webp"
@@ -672,7 +668,7 @@
     "flavor": "Too perfect for this world, or the next.",
     "effects": [
       {
-        "text": "Until World's End: If you hold 6 or fewer cards at the end of your turn, you may suppress 1 from your hand instead of stabilizing.\n(If this effect empties your hand, draw 2.)"
+        "text": "Until World's End: If you hold 6 or fewer cards at the end of your turn, you may suppress 1 from your hand instead of stabilizing.\n[small](If this effect empties your hand, draw 2.)[/small]"
       }
     ],
     "genePool": null,
@@ -1102,11 +1098,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 1. If its face value is 1, play it and repeat."
-      },
-      {
-        "kind": "note",
-        "text": "Ignore actions ({action})."
+        "text": "Draw 1. If its face value is 1, play it and repeat.\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -1270,7 +1262,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Discard the top 5 cards from the trait deck. If any have a face value of 0, play them now. Ignore actions ({action})."
+        "text": "Discard the top 5 cards from the trait deck. If any have a face value of 0, play them now. [small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -1321,7 +1313,7 @@
     "flavor": "I've been doing a lot of reflecting. And refracting.",
     "effects": [
       {
-        "text": "You may return [rainbow]Rainbow Magic[/rainbow] to your hand (seriously!) after you stabilize. Then play 1 random card from your hand. Ignore restrictions and requirements."
+        "text": "You may return [rainbow]Rainbow Magic[/rainbow] to your hand (seriously!) after you stabilize. Then play 1 random card from your hand. [small]Ignore restrictions and requirements.[/small]"
       }
     ],
     "genePool": null,
@@ -1393,7 +1385,7 @@
     "flavor": "I was mermaid to shine.",
     "effects": [
       {
-        "text": "+1 for every Deepling ({deepling}) and Glitterling ({glitterling}) in your trait pile.\n(Including this one.)"
+        "text": "+1 for every Deepling ({deepling}) and Glitterling ({glitterling}) in your trait pile.\n[small](Including this one.)[/small]"
       }
     ],
     "genePool": null,
@@ -1421,11 +1413,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 2. You may play neither, or play both and discard Scrappy."
-      },
-      {
-        "kind": "note",
-        "text": "Ignore actions ({action})."
+        "text": "Draw 2. You may play neither, or play both and discard Scrappy.\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2418,7 +2406,7 @@
     "effects": [
       {
         "kind": "awesome-power",
-        "text": "Your opponents may draw 1 at the start of your turn. (If they notice...)"
+        "text": "Your opponents may draw 1 at the start of your turn. [small](If they notice...)[/small]"
       },
       {
         "kind": "pocket-objective",

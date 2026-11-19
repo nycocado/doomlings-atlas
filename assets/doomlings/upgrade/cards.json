@@ -536,7 +536,7 @@
     "name": "The Silent Elder",
     "effects": [
       {
-        "text": "If you have 4 or fewer of each color in your trait pile, reveal the top 1 card of the trait deck. If you have 3 or fewer of each color, reveal 5.\nAdd all face values of 4 or lower to your final score.\n(Remove the revealed cards from the game.)"
+        "text": "If you have 4 or fewer of each color in your trait pile, reveal the top 1 card of the trait deck. If you have 3 or fewer of each color, reveal 5.\nAdd all face values of 4 or lower to your final score.\n[small](Remove the revealed cards from the game.)[/small]"
       }
     ],
     "flavor": null,
@@ -1293,7 +1293,6 @@
         "text": "You may play Gelatinous from your hand when an opponent steals from your hand or trait pile."
       },
       {
-        "kind": "note",
         "text": "(If Gelatinous is stolen, discard it.)"
       }
     ],
@@ -1730,7 +1729,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 1 card. If it is a dominant trait, discard it. If it is not, play it immediately. Ignore its action ({action})."
+        "text": "Draw 1 card. If it is a dominant trait, discard it. If it is not, play it immediately. [small]Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,

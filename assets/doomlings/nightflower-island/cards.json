@@ -180,11 +180,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Play up to 3 traits with a face value of 1 or lower."
-      },
-      {
-        "kind": "note",
-        "text": "Ignore actions ({action})."
+        "text": "Play up to 3 traits with a face value of 1 or lower.\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": 1,
@@ -814,11 +810,7 @@
     "flavor": "You shouldn't have!",
     "effects": [
       {
-        "text": "[rainbow]Reveal[/rainbow] 1 from hand. Friends suppress 1 from hand of the [rainbow]revealed color[/rainbow]."
-      },
-      {
-        "kind": "note",
-        "text": "(Into their trait pile.)"
+        "text": "[rainbow]Reveal[/rainbow] 1 from hand. Friends suppress 1 from hand of the [rainbow]revealed color[/rainbow].\n[small](Into their trait pile.)[/small]"
       }
     ],
     "genePool": null,
@@ -871,7 +863,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Play 1 and discard this. Ignore actions ({action})."
+        "text": "Play 1 and discard this. [small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,

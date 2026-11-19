@@ -291,7 +291,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Play at any time: Discard 1 from your trait pile.\n(Excluding dominants, this can stop the trait from being swapped/stolen.)"
+        "text": "Play at any time: Discard 1 from your trait pile.\n[small](Excluding dominants, this can stop the trait from being swapped/stolen.)[/small]"
       }
     ],
     "genePool": null,
@@ -592,7 +592,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Draw 1. You may discard a face value 1 from your trait pile to play another trait. Ignore its action ({action})."
+        "text": "Draw 1. You may discard a face value 1 from your trait pile to play another trait. [small]Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -724,7 +724,7 @@
         "text": "+5 if this is your only [purple]purple[/purple]."
       },
       {
-        "text": "If Shunned is discarded from your trait pile, you may play up to 2 [purple]purples[/purple]. Ignore actions ({action})."
+        "text": "If Shunned is discarded from your trait pile, you may play up to 2 [purple]purples[/purple]. [small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -987,11 +987,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "In any order, discard 1 from your trait pile, and play the top of the discard pile."
-      },
-      {
-        "kind": "note",
-        "text": "Ignore actions ({action})."
+        "text": "In any order, discard 1 from your trait pile, and play the top of the discard pile.\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,

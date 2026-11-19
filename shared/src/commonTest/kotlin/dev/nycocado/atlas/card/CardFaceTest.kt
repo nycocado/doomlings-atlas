@@ -412,6 +412,42 @@ class CardFaceTest {
     }
 
     @Test
+    fun aSmallSpanIsSmallWordsAndIconsThatKeepTheirInks() {
+        assertEquals(
+            listOf(
+                TextPart.Words("Play 1.\n"),
+                TextPart.Words("Ignore ", small = true),
+                TextPart.Words("red", Ink.Red, small = true),
+                TextPart.Words(" actions (", small = true),
+                TextPart.Icon(Token.Action, small = true),
+                TextPart.Words(").", small = true),
+            ),
+            age("Play 1.\n[small]Ignore [red]red[/red] actions ({action}).[/small]").textParts(),
+        )
+    }
+
+    @Test
+    fun aSmallSpanInAYellowEffectKeepsTheYellowInk() {
+        val trinket =
+            anxietyElixir.copy(
+                effects = listOf(Effect(EffectKind.PocketObjective, "Reveal: 2 reds. [small](x)[/small]")),
+            )
+        val block = trinket.blocks(trinket.effects, null, null).first()
+        assertEquals(
+            listOf(TextPart.Words("Reveal: 2 reds. ", Ink.Yellow), TextPart.Words("(x)", Ink.Yellow, small = true)),
+            (block.content as BlockContent.Effect).text,
+        )
+    }
+
+    @Test
+    fun searchLeavesOutSmallMarks() {
+        assertEquals(
+            listOf("Age", "Play 1. (No dominants.)"),
+            age("Play 1. [small](No dominants.)[/small]").face().searchable,
+        )
+    }
+
+    @Test
     fun searchLeavesOutInkMarks() {
         assertEquals(
             listOf("Age", "Discard 1 blue trait."),

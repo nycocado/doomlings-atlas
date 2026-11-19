@@ -570,11 +570,7 @@
     "flavor": "Nature's prize in a box.",
     "effects": [
       {
-        "text": "You may play 1 trait of each [rainbow]color[/rainbow]."
-      },
-      {
-        "kind": "note",
-        "text": "Ignore actions ({action})."
+        "text": "You may play 1 trait of each [rainbow]color[/rainbow].\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -596,11 +592,7 @@
     "flavor": "Pip, pip, purray!",
     "effects": [
       {
-        "text": "Play all traits of a face value of your choice."
-      },
-      {
-        "kind": "note",
-        "text": "Ignore actions ({action})."
+        "text": "Play all traits of a face value of your choice.\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -794,11 +786,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Play 1. Then discard it."
-      },
-      {
-        "kind": "note",
-        "text": "(Cannot discard dominants.)"
+        "text": "Play 1. Then discard it.\n[small](Cannot discard dominants.)[/small]"
       }
     ],
     "genePool": null,
@@ -848,11 +836,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Play 1. Then return it to your hand."
-      },
-      {
-        "kind": "note",
-        "text": "(Cannot play this effect twice in 1 turn.)\n(Cannot return dominants.)"
+        "text": "Play 1. Then return it to your hand.\n[small](Cannot play this effect twice in 1 turn.)[/small]\n[small](Cannot return dominants.)[/small]"
       }
     ],
     "genePool": null,

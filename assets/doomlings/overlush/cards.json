@@ -773,7 +773,7 @@
     "flavor": "Gripe for the picking.",
     "effects": [
       {
-        "text": "+1 for each [purple]purple[/purple] or each [green]green[/green] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n(If there's a tie, pick 1!)"
+        "text": "+1 for each [purple]purple[/purple] or each [green]green[/green] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n[small](If there's a tie, pick 1!)[/small]"
       }
     ],
     "genePool": null,
@@ -798,7 +798,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Draw 4 cards. You may play 1 from your hand. Play actions ({action})."
+        "text": "Draw 4 cards. You may play 1 from your hand. [small]Play actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -1053,7 +1053,7 @@
     "flavor": "I don't have that one yet!",
     "effects": [
       {
-        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each [rainbow]color[/rainbow] drawn. Discard dominants. Ignore actions."
+        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each [rainbow]color[/rainbow] drawn. [small]Discard dominants. Ignore actions.[/small]"
       }
     ],
     "genePool": null,
@@ -1146,7 +1146,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Cannot be played on your turn! Play Dart when an opponent removes a trait from your trait pile."
+        "text": "[small]Cannot be played on your turn![/small] Play Dart when an opponent removes a trait from your trait pile."
       }
     ],
     "genePool": null,
@@ -1241,7 +1241,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Cannot be played on your turn! When Elusive enters your hand during an age effect or an opponent's turn, you may play it immediately."
+        "text": "[small]Cannot be played on your turn![/small] When Elusive enters your hand during an age effect or an opponent's turn, you may play it immediately."
       }
     ],
     "genePool": null,
@@ -1719,7 +1719,7 @@
     "flavor": "Let there be sleight.",
     "effects": [
       {
-        "text": "Until World's End: After stabilizing, if you played no actions ({action}) on your turn, you may play an action from a card in your hand, then discard it.\n(Ignore all other actions.)"
+        "text": "Until World's End: After stabilizing, if you played no actions ({action}) on your turn, you may play an action from a card in your hand, then discard it.\n[small](Ignore all other actions.)[/small]"
       }
     ],
     "genePool": null,
@@ -2091,11 +2091,7 @@
     "flavor": "One and NOT done! One and NOT done!",
     "effects": [
       {
-        "text": "If you only play 1 trait on your turns, you may play 1 trait with a face value of 1 after you stabilize."
-      },
-      {
-        "kind": "note",
-        "text": "Ignore its action ({action})."
+        "text": "If you only play 1 trait on your turns, you may play 1 trait with a face value of 1 after you stabilize.\n[small]Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2139,7 +2135,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Cannot be played on your turn! If Muse is discarded from your hand, you may instead play it into your trait pile."
+        "text": "[small]Cannot be played on your turn![/small] If Muse is discarded from your hand, you may instead play it into your trait pile."
       }
     ],
     "genePool": null,
@@ -2183,7 +2179,7 @@
     "flavor": "Of course you can join my network. There's so mush room.",
     "effects": [
       {
-        "text": "If Mycelium is removed from your trait pile on your turn, you may first play the top card of the discard pile. Play actions ({action})."
+        "text": "If Mycelium is removed from your trait pile on your turn, you may first play the top card of the discard pile. [small]Play actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2224,7 +2220,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "[rainbow]Choose a color.[/rainbow] All opponents may play 1 of the chosen [rainbow]color[/rainbow].\n(Excluding dominants.) Ignore actions ({action})."
+        "text": "[rainbow]Choose a color.[/rainbow] All opponents may play 1 of the chosen [rainbow]color[/rainbow].\n[small](Excluding dominants.) Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2369,11 +2365,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "You may play Patches after a trait is removed from your trait pile. Return that trait to your trait pile."
-      },
-      {
-        "kind": "note",
-        "text": "(Unless removed by a dominant!)"
+        "text": "You may play Patches after a trait is removed from your trait pile. Return that trait to your trait pile.\n[small](Unless removed by a dominant!)[/small]"
       }
     ],
     "genePool": null,
@@ -2540,7 +2532,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Draw 4 cards. You may play any with a face value of 2 or lower. Ignore actions ({action})."
+        "text": "Draw 4 cards. You may play any with a face value of 2 or lower. [small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2709,11 +2701,7 @@
     "flavor": "Oh, cool! I mean, this won't help me fly, but I'm gonna look so good as I fall!",
     "effects": [
       {
-        "text": "On your turn, you may discard Seedwing from your trait pile and play an additional trait."
-      },
-      {
-        "kind": "note",
-        "text": "Ignore its action ({action})."
+        "text": "On your turn, you may discard Seedwing from your trait pile and play an additional trait.\n[small]Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2781,7 +2769,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 3 cards. Play 1 card from your hand into an opponent's trait pile. No dominants. Ignore its action ({action})."
+        "text": "Draw 3 cards. Play 1 card from your hand into an opponent's trait pile. [small]No dominants. Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2979,7 +2967,7 @@
     "flavor": "A source of bad whine.",
     "effects": [
       {
-        "text": "+1 for each [blue]blue[/blue] or each [red]red[/red] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n(If there's a tie, pick 1!)"
+        "text": "+1 for each [blue]blue[/blue] or each [red]red[/red] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n[small](If there's a tie, pick 1!)[/small]"
       }
     ],
     "genePool": null,
@@ -3061,7 +3049,7 @@
     "flavor": "Prudent people prefer pickling particularly piquant peppers.",
     "effects": [
       {
-        "text": "+1 for each [red]red[/red] or each [green]green[/green] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n(If there's a tie, pick 1!)"
+        "text": "+1 for each [red]red[/red] or each [green]green[/green] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n[small](If there's a tie, pick 1!)[/small]"
       }
     ],
     "genePool": null,
@@ -3107,7 +3095,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "[rainbow]Choose a color.[/rainbow] All opponents reveal all cards of that [rainbow]color[/rainbow] from their hand. Play 1 immediately. Ignore actions ({action})."
+        "text": "[rainbow]Choose a color.[/rainbow] All opponents reveal all cards of that [rainbow]color[/rainbow] from their hand. Play 1 immediately. [small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -3196,7 +3184,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Swap 1 trait from your trait pile with 1 from an opponent's trait pile of a different [rainbow]color[/rainbow].\n(Excluding this one.)"
+        "text": "Swap 1 trait from your trait pile with 1 from an opponent's trait pile of a different [rainbow]color[/rainbow].\n[small](Excluding this one.)[/small]"
       }
     ],
     "genePool": null,
@@ -3401,7 +3389,7 @@
     "flavor": "I love deeply, I love sweetly, oh how I carabao you.",
     "effects": [
       {
-        "text": "+1 for each [green]green[/green] or each [blue]blue[/blue] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n(If there's a tie, pick 1!)"
+        "text": "+1 for each [green]green[/green] or each [blue]blue[/blue] trait in your trait pile, whichever is the lower [rainbow]color[/rainbow] count.\n[small](If there's a tie, pick 1!)[/small]"
       }
     ],
     "genePool": null,
@@ -3646,7 +3634,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "All opponents play 1 trait. (No dominants.) Ignore actions ({action}). Steal 1 of those traits OR play an additional trait."
+        "text": "All opponents play 1 trait. [small](No dominants.) Ignore actions ({action}).[/small] Steal 1 of those traits OR play an additional trait."
       }
     ],
     "genePool": null,

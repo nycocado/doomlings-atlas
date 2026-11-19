@@ -755,7 +755,7 @@
   "classic/traits/regenerative-tissue": {
     "name": "Tejido Regenerativo",
     "effects": [
-      "Siempre que descartes un trait de tu pila de traits,\n(incluyendo este), roba 1. Juégalo inmediatamente.\n(A menos que haya restricción.) Ignora las acciones ({action})."
+      "Siempre que descartes un trait de tu pila de traits,\n[small](incluyendo este),[/small] roba 1. Juégalo inmediatamente.\n[small](A menos que haya restricción.)[/small] Ignora las acciones ({action})."
     ],
     "flavor": "¿Cuántos dedos hay aquí? Espera, espera, todavía me están volviendo a crecer"
   },
@@ -845,7 +845,7 @@
   "classic/traits/super-spreader": {
     "name": "Supercontagiador",
     "effects": [
-      "Todos los jugadores reciben: -1 Gene Pool.\n(Incluyéndote.)"
+      "Todos los jugadores reciben: -1 Gene Pool.\n[small](Incluyéndote.)[/small]"
     ],
     "flavor": "Ah...AH...AH...falsa alarma, pensé que iba a--¡ACHÍS!"
   },

@@ -245,7 +245,7 @@
   "upgrade/meaning-of-life/the-silent-elder": {
     "name": "El Anciano Silencioso",
     "effects": [
-      "Si tienes 4 o menos de cada color en tu pila de traits, revela 1 carta de la parte superior del mazo de traits. Si tienes 3 o menos de cada color, revela 5.\nAñade todos los valores nominales de 4 o menos a tu puntuación final.\n(Retira las cartas reveladas del juego.)"
+      "Si tienes 4 o menos de cada color en tu pila de traits, revela 1 carta de la parte superior del mazo de traits. Si tienes 3 o menos de cada color, revela 5.\nAñade todos los valores nominales de 4 o menos a tu puntuación final.\n[small](Retira las cartas reveladas del juego.)[/small]"
     ]
   },
   "upgrade/meaning-of-life/the-soothsayer": {
@@ -601,7 +601,7 @@
   "upgrade/traits/pycnofibers": {
     "name": "Picnofibras",
     "effects": [
-      "Roba 1 carta. Si es un trait dominante, descártala. Si no, juégala inmediatamente. Ignora su acción ({action})."
+      "Roba 1 carta. Si es un trait dominante, descártala. Si no, juégala inmediatamente. [small]Ignora su acción ({action}).[/small]"
     ],
     "flavor": "Cada nota sobre mí es pura pelusa."
   },

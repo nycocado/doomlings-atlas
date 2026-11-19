@@ -9,7 +9,8 @@ data class CardFace(
     val faceValue: Int?,
     // The card detail's blocks in order; none when the card has no text, flavor or Gene Pool.
     val blocks: List<CardBlock>,
-    // What the compendium search matches: the name, if any, and the text of every effect, without tokens or ink marks.
+    // What the compendium search matches: the name, if any, and the text of every effect, without tokens, ink or small
+    // marks.
     val searchable: List<String>,
 ) {
     // Empty for cards without color; null stands for colorless.
@@ -109,15 +110,20 @@ sealed interface BlockContent {
     ) : BlockContent
 }
 
+// small for the parts of a `[small]` span, printed in small type.
 sealed interface TextPart {
+    val small: Boolean
+
     // null for words without an ink.
     data class Words(
         val text: String,
         val ink: Ink? = null,
+        override val small: Boolean = false,
     ) : TextPart
 
     data class Icon(
         val token: Token,
+        override val small: Boolean = false,
     ) : TextPart
 }
 
@@ -159,47 +165,67 @@ enum class Ink(
 // The closing brace is escaped too: Android's ICU regex rejects a lone "}", which the JVM's accepts.
 private val braces = Regex("""\{([^}]*)\}""")
 
+// A small span is read before the inks: it may hold ink spans, which then keep its small type. The card data test rules
+// out a small span nested in itself or crossing an ink span.
+private val smallSpan = Regex("""\[small\]([\s\S]*?)\[/small\]""")
+
 // A span runs to the closing mark of its own ink; the card data test rules out nested and unclosed spans.
 private val inkedSpan = Regex("""\[([^\]/]*)\]([\s\S]*?)\[/\1\]""")
 
-// An unknown ink or token stays as written; the card data test rules them out. Unmarked words are in the effect's ink,
-// and a span's own ink wins over it.
 private fun parts(
     text: String,
     effectInk: Ink?,
 ): List<TextPart> =
     buildList {
         var at = 0
-        for (match in inkedSpan.findAll(text)) {
-            val ink = Ink.entries.find { it.code == match.groupValues[1] } ?: continue
-            addAll(tokenParts(text.substring(at, match.range.first), effectInk))
-            addAll(tokenParts(match.groupValues[2], ink))
+        for (match in smallSpan.findAll(text)) {
+            addAll(inkParts(text.substring(at, match.range.first), effectInk, small = false))
+            addAll(inkParts(match.groupValues[1], effectInk, small = true))
             at = match.range.last + 1
         }
-        addAll(tokenParts(text.substring(at), effectInk))
+        addAll(inkParts(text.substring(at), effectInk, small = false))
+    }
+
+// An unknown ink or token stays as written; the card data test rules them out. Unmarked words are in the effect's ink,
+// and a span's own ink wins over it.
+private fun inkParts(
+    text: String,
+    effectInk: Ink?,
+    small: Boolean,
+): List<TextPart> =
+    buildList {
+        var at = 0
+        for (match in inkedSpan.findAll(text)) {
+            val ink = Ink.entries.find { it.code == match.groupValues[1] } ?: continue
+            addAll(tokenParts(text.substring(at, match.range.first), effectInk, small))
+            addAll(tokenParts(match.groupValues[2], ink, small))
+            at = match.range.last + 1
+        }
+        addAll(tokenParts(text.substring(at), effectInk, small))
     }
 
 private fun tokenParts(
     text: String,
     ink: Ink?,
+    small: Boolean,
 ): List<TextPart> =
     buildList {
         var at = 0
         for (match in braces.findAll(text)) {
             val token = Token.entries.find { it.code == match.groupValues[1] } ?: continue
-            if (match.range.first > at) add(TextPart.Words(text.substring(at, match.range.first), ink))
-            add(TextPart.Icon(token))
+            if (match.range.first > at) add(TextPart.Words(text.substring(at, match.range.first), ink, small))
+            add(TextPart.Icon(token, small))
             at = match.range.last + 1
         }
-        if (at < text.length) add(TextPart.Words(text.substring(at), ink))
+        if (at < text.length) add(TextPart.Words(text.substring(at), ink, small))
     }
 
 private val token = Regex("""\s*\(\{[^}]*\}\)|\{[^}]*\}""")
 
 private val inkMark = Regex("""\[/?[^\]/]*\]""")
 
-// The words of an effect: a token is an icon, not a word to search for, and an ink mark only colors its words. A
-// parenthesized token goes with its parentheses and the space before them.
+// The words of an effect: a token is an icon, not a word to search for, and an ink or small mark only styles its words.
+// A parenthesized token goes with its parentheses and the space before them.
 fun plainText(text: String) = text.replace(token, "").replace(inkMark, "")
 
 fun Card.face(): CardFace =

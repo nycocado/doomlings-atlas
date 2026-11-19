@@ -43,7 +43,7 @@
   "special/traits/exotic": {
     "name": "Exótico",
     "effects": [
-      "Para jugar, debes descartar 2 de tu pila de traits, luego robar 2. Debes jugarlos inmediatamente.\n(A menos que haya restricción.) Descarta los dominantes. Ignora las acciones ({action})."
+      "Para jugar, debes descartar 2 de tu pila de traits, luego robar 2. Debes jugarlos inmediatamente.\n(A menos que haya restricción.) [small]Descarta los dominantes. Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "¡Yupi! ¡Un ambiente nuevo! ¡Voy a ponerlo todo patas arriba!"
   },
@@ -89,7 +89,7 @@
   "special/traits/magic-fingers": {
     "name": "Dedos Mágicos",
     "effects": [
-      "Hasta el Fin del Mundo: Siempre que un trait salga de tu pila de traits, puedes jugar 1 del mismo [rainbow]color[/rainbow] para reemplazarlo. Ignora las acciones ({action}).\n(Sin dominantes.)"
+      "Hasta el Fin del Mundo: Siempre que un trait salga de tu pila de traits, puedes jugar 1 del mismo [rainbow]color[/rainbow] para reemplazarlo. [small]Ignora las acciones ({action}).[/small]\n[small](Sin dominantes.)[/small]"
     ],
     "flavor": "¡Abra-ca-doomling!"
   },
@@ -111,7 +111,7 @@
   "special/traits/rainbow-keratin": {
     "name": "Queratina Arcoíris",
     "effects": [
-      "-2 por cada Gota de Vida ({drop-of-life}) en tu pila de traits. (Excepto este.) Si tienes los 4 [rainbow]colores[/rainbow] en tu pila de traits: +2 por cada trait del [rainbow]color que tienes en mayor cantidad.[/rainbow]\n(Si hay empate, ¡elige 1!)"
+      "-2 por cada Gota de Vida ({drop-of-life}) en tu pila de traits. [small](Excepto este.)[/small] Si tienes los 4 [rainbow]colores[/rainbow] en tu pila de traits: +2 por cada trait del [rainbow]color que tienes en mayor cantidad.[/rainbow]\n[small](Si hay empate, ¡elige 1!)[/small]"
     ],
     "flavor": "Mi visión de la vida es bastante sombría."
   },
@@ -125,8 +125,7 @@
   "special/traits/shiny": {
     "name": "Brillante",
     "effects": [
-      "Cada jugador recibe -1 por cada trait [colorless]incoloro[/colorless] en su pila de traits.",
-      "(¡Incluyéndote!)"
+      "Cada jugador recibe -1 por cada trait [colorless]incoloro[/colorless] en su pila de traits.\n[small](¡Incluyéndote!)[/small]"
     ],
     "flavor": "Si lo tocas, ¿qué es lo peor que podría pasar?"
   },

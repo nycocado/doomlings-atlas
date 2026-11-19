@@ -490,7 +490,7 @@
     "flavor": "No one can doubt themself quite like you!",
     "effects": [
       {
-        "text": "Double the face value of each trait in your trait pile that is the only trait of that color. This effect excludes dominants entirely."
+        "text": "Double the face value of each trait in your trait pile that is the only trait of that color. [small]This effect excludes dominants entirely.[/small]"
       }
     ],
     "genePool": null,
@@ -639,7 +639,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "You may play Toh when a trait is discarded from your trait pile.\n(Unless targeted by a dominant!)\nReturn that trait to your hand."
+        "text": "You may play Toh when a trait is discarded from your trait pile.\n[small](Unless targeted by a dominant!)[/small]\nReturn that trait to your hand."
       }
     ],
     "genePool": null,
@@ -901,7 +901,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "You may play Yobondo when an opponent targets a single trait in your trait pile.\n(Unless targeted by a dominant!) That effect targets Yobondo instead."
+        "text": "You may play Yobondo when an opponent targets a single trait in your trait pile.\n[small](Unless targeted by a dominant!)[/small] That effect targets Yobondo instead."
       }
     ],
     "genePool": null,
