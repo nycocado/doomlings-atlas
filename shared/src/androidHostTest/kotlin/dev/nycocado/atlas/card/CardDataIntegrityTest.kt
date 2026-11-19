@@ -131,6 +131,21 @@ class CardDataIntegrityTest {
     }
 
     @Test
+    fun noWorldsEndSectionIsMidEffect() {
+        // Super Sneaky prints "At World's End:" mid-text as the condition of its Play When section.
+        val printed = setOf("overlush/traits/super-sneaky")
+        assertEquals(
+            emptyList(),
+            effects
+                .filter { (card, effect) ->
+                    effect.kind != EffectKind.WorldsEnd &&
+                        effect.text.indexOf("At World's End:") > 0 &&
+                        card.id !in printed
+                }.map { (card, _) -> card.id },
+        )
+    }
+
+    @Test
     fun noEffectTextIsEmpty() {
         assertEquals(emptyList(), effects.filter { (_, effect) -> effect.text.isBlank() }.map { (card, _) -> card.id })
     }

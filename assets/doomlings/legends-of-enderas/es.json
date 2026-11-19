@@ -289,7 +289,8 @@
   "legends-of-enderas/traits/hollow-bones": {
     "name": "Huesos Huecos",
     "effects": [
-      "Para jugar, debes descartar 1 trait positivo de tu pila de traits. En el Fin del Mundo: [rainbow]Elige un color[/rainbow]. Los oponentes descartan 2 traits de ese [rainbow]color[/rainbow] de su pila de traits."
+      "Para jugar, debes descartar 1 trait positivo de tu pila de traits.",
+      "[rainbow]Elige un color[/rainbow]. Los oponentes descartan 2 traits de ese [rainbow]color[/rainbow] de su pila de traits."
     ],
     "flavor": "No estoy gordo. Es que tengo los huesos huecos."
   },
