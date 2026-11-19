@@ -2769,7 +2769,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 3 cards.\nPlay 1 card from your hand into an opponent's trait pile. [small]No dominants.\nIgnore its action ({action}).[/small]"
+        "text": "Draw 3 cards.\nPlay 1 card from your hand into an opponent's trait pile.\n[small]No dominants.[/small]\n[small]Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -3634,7 +3634,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "All opponents play 1 trait. [small](No dominants.)\nIgnore actions ({action}).[/small]\nSteal 1 of those traits OR play an additional trait."
+        "text": "All opponents play 1 trait.\n[small](No dominants.)[/small]\n[small]Ignore actions ({action}).[/small]\nSteal 1 of those traits OR play an additional trait."
       }
     ],
     "genePool": null,

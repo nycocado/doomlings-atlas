@@ -107,7 +107,7 @@ class CardDataIntegrityTest {
 
     @Test
     fun noEffectTextHasAGenePoolLineOrALabelItShouldHaveAsAKind() {
-        // A line of its own, unless it follows "receive:": "All players receive:\n-1 Gene Pool." is rules text.
+        // A line of its own, unless it follows "receive:": "All players receive:\n+1 Gene Pool." is rules text.
         val genePoolLine = Regex("""(^|(?<!receive:)\n)[+-]\d+ Gene Pool\.?(\n|$)""")
         val labels =
             Regex(

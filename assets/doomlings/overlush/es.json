@@ -922,7 +922,7 @@
   "overlush/traits/shady": {
     "name": "Sombreado",
     "effects": [
-      "Roba 3 cartas.\nJuega 1 carta de tu mano en la pila de traits de un oponente. [small]Sin dominantes.\nIgnora su acción ({action}).[/small]"
+      "Roba 3 cartas.\nJuega 1 carta de tu mano en la pila de traits de un oponente.\n[small]Sin dominantes.[/small]\n[small]Ignora su acción ({action}).[/small]"
     ],
     "flavor": "Un lugar fresco y sin costo de entrada."
   },
@@ -1178,7 +1178,7 @@
   "overlush/traits/vagabond": {
     "name": "Vagabundo",
     "effects": [
-      "Todos los oponentes juegan 1 trait. [small](Sin dominantes.)\nIgnora las acciones ({action}).[/small]\nArrebata 1 de esos traits O juega un trait adicional."
+      "Todos los oponentes juegan 1 trait.\n[small](Sin dominantes.)[/small]\n[small]Ignora las acciones ({action}).[/small]\nArrebata 1 de esos traits O juega un trait adicional."
     ],
     "flavor": "¡No sigo las reglas de nadie! Ni siquiera las mías."
   },

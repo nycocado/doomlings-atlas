@@ -57,7 +57,7 @@
     "name": "Age of Reason",
     "effects": [
       {
-        "text": "Draw 3 cards.\nKeep 1,\ndiscard the other 2."
+        "text": "Draw 3 cards.\nKeep 1, discard the other 2."
       }
     ],
     "image": "classic/ages/age-of-reason.webp"
