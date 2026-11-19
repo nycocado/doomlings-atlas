@@ -2291,7 +2291,7 @@
     "flavor": "How many fingers am I holding up? Wait, hold on, they're still growing back",
     "effects": [
       {
-        "text": "Anytime you discard a trait from your trait pile,\n(including this one), draw 1. Play it immediately.\n(Unless restricted.) Ignore actions ({action})."
+        "text": "Anytime you discard a trait from your trait pile,\n[small](including this one),[/small] draw 1. Play it immediately.\n[small](Unless restricted.)[/small] Ignore actions ({action})."
       }
     ],
     "genePool": null,
@@ -2599,7 +2599,7 @@
     "flavor": "Ah...AH...AH...false alarm, I thought I was gon--CHOO!",
     "effects": [
       {
-        "text": "All players receive: -1 Gene Pool.\n(Including yourself.)"
+        "text": "All players receive: -1 Gene Pool.\n[small](Including yourself.)[/small]"
       }
     ],
     "genePool": null,

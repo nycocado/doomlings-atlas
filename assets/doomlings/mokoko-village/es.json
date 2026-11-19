@@ -95,7 +95,7 @@
   "mokoko-village/traits/entwined": {
     "name": "Entrelazado",
     "effects": [
-      "Juega en cualquier momento: Descarta 1 de tu pila de traits.\n(Excepto dominantes, esto puede impedir que el trait sea intercambiado/arrebatado.)"
+      "Juega en cualquier momento: Descarta 1 de tu pila de traits.\n[small](Excepto dominantes, esto puede impedir que el trait sea intercambiado/arrebatado.)[/small]"
     ],
     "flavor": "Todo está bien. Solo enredado."
   },
@@ -184,7 +184,7 @@
   "mokoko-village/traits/nurturing": {
     "name": "Cuidador",
     "effects": [
-      "Roba 1 carta. Puedes descartar un trait con un valor nominal de 1 de tu pila de traits para jugar otro trait. Ignora su acción ({action})."
+      "Roba 1 carta. Puedes descartar un trait con un valor nominal de 1 de tu pila de traits para jugar otro trait. [small]Ignora su acción ({action}).[/small]"
     ],
     "flavor": "El secreto es cariño y fertilizante."
   },
@@ -222,7 +222,7 @@
     "name": "Marginado",
     "effects": [
       "+5 si este es tu único [purple]morado[/purple].",
-      "Si Shunned es descartado de tu pila de traits, puedes jugar hasta 2 [purple]morados[/purple]. Ignora las acciones ({action})."
+      "Si Shunned es descartado de tu pila de traits, puedes jugar hasta 2 [purple]morados[/purple]. [small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "Gritas «¡Ahí viene el lobo!» tres veces y de repente nadie te ayuda."
   },
@@ -298,8 +298,7 @@
   "mokoko-village/traits/veiled": {
     "name": "Encubierto",
     "effects": [
-      "En cualquier orden, descarta 1 de tu pila de traits y juega la carta de la parte superior de la pila de descarte.",
-      "Ignora las acciones ({action})."
+      "En cualquier orden, descarta 1 de tu pila de traits y juega la carta de la parte superior de la pila de descarte.\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "Cuando se levante el viento, agita los brazos como si hicieras magia."
   },

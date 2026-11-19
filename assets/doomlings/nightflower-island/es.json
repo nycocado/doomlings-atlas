@@ -69,8 +69,7 @@
   "nightflower-island/traits/collective": {
     "name": "Colectivo",
     "effects": [
-      "Juega hasta 3 traits con un valor nominal de 1 o menos.",
-      "Ignora las acciones ({action})."
+      "Juega hasta 3 traits con un valor nominal de 1 o menos.\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "Algo huele a pescado en este tiburón..."
   },
@@ -246,8 +245,7 @@
   "nightflower-island/traits/unboxed": {
     "name": "Desenvuelto",
     "effects": [
-      "[rainbow]Revela[/rainbow] 1 de tu mano. Los amigos suprimen 1 de su mano del [rainbow]color revelado[/rainbow].",
-      "(A su pila de traits.)"
+      "[rainbow]Revela[/rainbow] 1 de tu mano. Los amigos suprimen 1 de su mano del [rainbow]color revelado[/rainbow].\n[small](A su pila de traits.)[/small]"
     ],
     "flavor": "¡No te hubieras molestado!"
   },
@@ -261,7 +259,7 @@
   "nightflower-island/traits/versatile": {
     "name": "Versátil",
     "effects": [
-      "Juega 1 y descarta este. Ignora las acciones ({action})."
+      "Juega 1 y descarta este. [small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "Lo único que no puedo hacer es cualquier otra cosa."
   },

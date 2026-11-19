@@ -20,8 +20,7 @@
   "imaginary-ends/ages/fading-away": {
     "name": "Desvanecimento",
     "effects": [
-      "Depois de jogar um trait e resolver o efeito dele, suprima-o.",
-      "(Exceto dominantes.)"
+      "Depois de jogar um trait e resolver o efeito dele, suprima-o.\n[small](Exceto dominantes.)[/small]"
     ]
   },
   "imaginary-ends/ages/glitterstorm": {
@@ -238,7 +237,7 @@
   "imaginary-ends/traits/ethereal": {
     "name": "Etéreo",
     "effects": [
-      "Até o Fim do Mundo: Se você tiver 6 ou menos cartas na mão no fim do seu turno, pode suprimir 1 carta da sua mão em vez de estabilizar.\n(Se este efeito esvaziar sua mão, compre 2 cartas.)"
+      "Até o Fim do Mundo: Se você tiver 6 ou menos cartas na mão no fim do seu turno, pode suprimir 1 carta da sua mão em vez de estabilizar.\n[small](Se este efeito esvaziar sua mão, compre 2 cartas.)[/small]"
     ],
     "flavor": "Perfeito demais para este mundo, ou para o próximo."
   },
@@ -352,8 +351,7 @@
   "imaginary-ends/traits/magic-beans": {
     "name": "Feijões Mágicos",
     "effects": [
-      "Compre 1 carta. Se o valor de face dela for 1, jogue-a e repita.",
-      "Ignore ações ({action})."
+      "Compre 1 carta. Se o valor de face dela for 1, jogue-a e repita.\n[small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Quem sabe no que eles podem virar?"
   },
@@ -396,7 +394,7 @@
   "imaginary-ends/traits/polka-dots": {
     "name": "Bolinhas",
     "effects": [
-      "Descarte as 5 cartas do topo do baralho de traits. Se alguma tiver valor de face 0, jogue-a agora. Ignore ações ({action})."
+      "Descarte as 5 cartas do topo do baralho de traits. Se alguma tiver valor de face 0, jogue-a agora. [small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Não estou doente! Eu sou fabuloso!"
   },
@@ -411,7 +409,7 @@
   "imaginary-ends/traits/rainbow-magic": {
     "name": "Magia do Arco-Íris",
     "effects": [
-      "Você pode devolver [rainbow]Rainbow Magic[/rainbow] à sua mão (sério!) depois de estabilizar. Depois, jogue 1 carta aleatória da sua mão. Ignore restrições e requisitos."
+      "Você pode devolver [rainbow]Rainbow Magic[/rainbow] à sua mão (sério!) depois de estabilizar. Depois, jogue 1 carta aleatória da sua mão. [small]Ignore restrições e requisitos.[/small]"
     ],
     "flavor": "Tenho refletido muito. E refratado também."
   },
@@ -428,15 +426,14 @@
   "imaginary-ends/traits/scintillant": {
     "name": "Cintilante",
     "effects": [
-      "+1 para cada Deepling ({deepling}) e Glitterling ({glitterling}) na sua pilha de traits.\n(Incluindo este.)"
+      "+1 para cada Deepling ({deepling}) e Glitterling ({glitterling}) na sua pilha de traits.\n[small](Incluindo este.)[/small]"
     ],
     "flavor": "Nasci sereia pra brilhar."
   },
   "imaginary-ends/traits/scrappy": {
     "name": "Remendado",
     "effects": [
-      "Compre 2 cartas. Você pode não jogar nenhuma, ou jogar as duas e descartar Scrappy.",
-      "Ignore ações ({action})."
+      "Compre 2 cartas. Você pode não jogar nenhuma, ou jogar as duas e descartar Scrappy.\n[small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Isso funcionaria melhor se eu não estivesse com dois tapa-olhos."
   },
@@ -787,7 +784,7 @@
   "imaginary-ends/trinkets/t-o-m-four": {
     "name": "T.O.M. Four",
     "effects": [
-      "Seus oponentes podem comprar 1 carta no início do seu turno. (Se perceberem...)",
+      "Seus oponentes podem comprar 1 carta no início do seu turno. [small](Se perceberem...)[/small]",
       "Revelar: 3 cores diferentes na mão."
     ],
     "flavor": "O que é um TOM Four? Serve para contar piadas mais ou menos."

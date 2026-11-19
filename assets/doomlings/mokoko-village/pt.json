@@ -95,7 +95,7 @@
   "mokoko-village/traits/entwined": {
     "name": "Entrelaçado",
     "effects": [
-      "Jogue a qualquer momento: Descarte 1 da sua pilha de traits.\n(Exceto dominantes, isso pode impedir que o trait seja trocado/roubado.)"
+      "Jogue a qualquer momento: Descarte 1 da sua pilha de traits.\n[small](Exceto dominantes, isso pode impedir que o trait seja trocado/roubado.)[/small]"
     ],
     "flavor": "Tá tudo certo. Só enroscado."
   },
@@ -184,7 +184,7 @@
   "mokoko-village/traits/nurturing": {
     "name": "Cuidador",
     "effects": [
-      "Compre 1 carta. Você pode descartar um trait com valor de face 1 da sua pilha de traits para jogar outro trait. Ignore a ação dele ({action})."
+      "Compre 1 carta. Você pode descartar um trait com valor de face 1 da sua pilha de traits para jogar outro trait. [small]Ignore a ação dele ({action}).[/small]"
     ],
     "flavor": "O segredo é amor e adubo."
   },
@@ -222,7 +222,7 @@
     "name": "Marginalizado",
     "effects": [
       "+5 se este for o seu único [purple]roxo[/purple].",
-      "Se Shunned for descartado da sua pilha de traits, você pode jogar até 2 [purple]roxos[/purple]. Ignore ações ({action})."
+      "Se Shunned for descartado da sua pilha de traits, você pode jogar até 2 [purple]roxos[/purple]. [small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Você grita \"Olha o lobo!\" três vezes e de repente ninguém mais ajuda."
   },
@@ -298,8 +298,7 @@
   "mokoko-village/traits/veiled": {
     "name": "Encoberto",
     "effects": [
-      "Em qualquer ordem, descarte 1 da sua pilha de traits e jogue a carta do topo da pilha de descarte.",
-      "Ignore ações ({action})."
+      "Em qualquer ordem, descarte 1 da sua pilha de traits e jogue a carta do topo da pilha de descarte.\n[small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Quando o vento soprar forte, balance os braços como se estivesse fazendo mágica."
   },

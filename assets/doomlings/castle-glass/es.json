@@ -160,16 +160,14 @@
   "castle-glass/traits/pearl": {
     "name": "Perla",
     "effects": [
-      "Puedes jugar 1 trait de cada [rainbow]color[/rainbow].",
-      "Ignora las acciones ({action})."
+      "Puedes jugar 1 trait de cada [rainbow]color[/rainbow].\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "La sorpresa de la naturaleza en una cajita."
   },
   "castle-glass/traits/pip": {
     "name": "Pip",
     "effects": [
-      "Juega todos los traits con un valor nominal de tu elección.",
-      "Ignora las acciones ({action})."
+      "Juega todos los traits con un valor nominal de tu elección.\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "¡Pip, pip, miaurra!"
   },
@@ -222,8 +220,7 @@
   "castle-glass/traits/spiny-fins": {
     "name": "Aletas Espinosas",
     "effects": [
-      "Juega 1. Luego, descártalo.",
-      "(No puedes descartar dominantes.)"
+      "Juega 1. Luego, descártalo.\n[small](No puedes descartar dominantes.)[/small]"
     ],
     "flavor": "Las ventajas son tres: agilidad, defensa y estilo."
   },
@@ -237,8 +234,7 @@
   "castle-glass/traits/spiral-motion": {
     "name": "Movimiento Espiral",
     "effects": [
-      "Juega 1. Luego, devuélvelo a tu mano.",
-      "(No puedes jugar este efecto dos veces en 1 turno.)\n(No puedes devolver dominantes.)"
+      "Juega 1. Luego, devuélvelo a tu mano.\n[small](No puedes jugar este efecto dos veces en 1 turno.)[/small]\n[small](No puedes devolver dominantes.)[/small]"
     ],
     "flavor": "En espiral hacia el control."
   },

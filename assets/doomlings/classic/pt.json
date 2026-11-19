@@ -755,7 +755,7 @@
   "classic/traits/regenerative-tissue": {
     "name": "Tecido Regenerativo",
     "effects": [
-      "Sempre que você descartar um trait da sua pilha de traits,\n(incluindo este), compre 1. Jogue-o imediatamente.\n(A menos que haja restrição.) Ignore ações ({action})."
+      "Sempre que você descartar um trait da sua pilha de traits,\n[small](incluindo este),[/small] compre 1. Jogue-o imediatamente.\n[small](A menos que haja restrição.)[/small] Ignore ações ({action})."
     ],
     "flavor": "Quantos dedos tem aqui? Peraí, eles ainda estão nascendo de novo"
   },
@@ -845,7 +845,7 @@
   "classic/traits/super-spreader": {
     "name": "Supertransmissor",
     "effects": [
-      "Todos os jogadores recebem: -1 Gene Pool.\n(Incluindo você.)"
+      "Todos os jogadores recebem: -1 Gene Pool.\n[small](Incluindo você.)[/small]"
     ],
     "flavor": "Ah...AH...AH...alarme falso, achei que eu ia--ATCHIM!"
   },

@@ -136,7 +136,7 @@
   "shadow-puppets/traits/self-doubt": {
     "name": "Inseguro",
     "effects": [
-      "Dobre o valor de face de cada trait na sua pilha de traits que seja o único trait dessa cor. Este efeito exclui os dominantes por completo."
+      "Dobre o valor de face de cada trait na sua pilha de traits que seja o único trait dessa cor. [small]Este efeito exclui os dominantes por completo.[/small]"
     ],
     "flavor": "Ninguém duvida de si mesmo como você!"
   },
@@ -178,7 +178,7 @@
   "shadow-puppets/traits/toh": {
     "name": "Toh",
     "effects": [
-      "Você pode jogar Toh quando um trait for descartado da sua pilha de traits.\n(A menos que seja alvo de um dominante!)\nDevolva esse trait à sua mão."
+      "Você pode jogar Toh quando um trait for descartado da sua pilha de traits.\n[small](A menos que seja alvo de um dominante!)[/small]\nDevolva esse trait à sua mão."
     ],
     "flavor": "Comb toh pahpah."
   },
@@ -249,7 +249,7 @@
   "shadow-puppets/traits/yobondo": {
     "name": "Yobondo",
     "effects": [
-      "Você pode jogar Yobondo quando um oponente tiver como alvo um único trait na sua pilha de traits.\n(A menos que seja alvo de um dominante!) Esse efeito passa a ter Yobondo como alvo."
+      "Você pode jogar Yobondo quando um oponente tiver como alvo um único trait na sua pilha de traits.\n[small](A menos que seja alvo de um dominante!)[/small] Esse efeito passa a ter Yobondo como alvo."
     ],
     "flavor": "Yoh bohn doh."
   }

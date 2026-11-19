@@ -328,14 +328,14 @@
   "overlush/traits/bitter-berries": {
     "name": "Bagas Amargas",
     "effects": [
-      "+1 para cada trait [purple]roxo[/purple] ou para cada trait [green]verde[/green] na sua pilha de traits, da [rainbow]cor[/rainbow] que você tem em menor quantidade.\n(Em caso de empate, escolha 1!)"
+      "+1 para cada trait [purple]roxo[/purple] ou para cada trait [green]verde[/green] na sua pilha de traits, da [rainbow]cor[/rainbow] que você tem em menor quantidade.\n[small](Em caso de empate, escolha 1!)[/small]"
     ],
     "flavor": "Prontas para colher. Prontas para reclamar."
   },
   "overlush/traits/blossom": {
     "name": "Florada",
     "effects": [
-      "Compre 4 cartas. Você pode jogar 1 da sua mão. Jogue ações ({action})."
+      "Compre 4 cartas. Você pode jogar 1 da sua mão. [small]Jogue ações ({action}).[/small]"
     ],
     "flavor": "A vida é uma taça de sorvete, e os amigos são a cereja por cima."
   },
@@ -411,7 +411,7 @@
   "overlush/traits/collector": {
     "name": "Colecionador",
     "effects": [
-      "Quando você jogar Collector da sua mão, compre 4 cartas. Você pode jogar 1 de cada [rainbow]cor[/rainbow] entre as cartas compradas. Descarte os dominantes. Ignore ações."
+      "Quando você jogar Collector da sua mão, compre 4 cartas. Você pode jogar 1 de cada [rainbow]cor[/rainbow] entre as cartas compradas. [small]Descarte os dominantes. Ignore ações.[/small]"
     ],
     "flavor": "Essa eu ainda não tenho!"
   },
@@ -440,7 +440,7 @@
   "overlush/traits/dart": {
     "name": "Dardo",
     "effects": [
-      "Não pode ser jogado no seu turno! Jogue Dart quando um oponente remover um trait da sua pilha de traits."
+      "[small]Não pode ser jogado no seu turno![/small] Jogue Dart quando um oponente remover um trait da sua pilha de traits."
     ],
     "flavor": "Na verdade, estou só entrando num relacionamento tóxico."
   },
@@ -466,7 +466,7 @@
   "overlush/traits/elusive": {
     "name": "Esquivo",
     "effects": [
-      "Não pode ser jogado no seu turno! Quando Elusive entrar na sua mão durante um efeito de age ou no turno de um oponente, você pode jogá-lo imediatamente."
+      "[small]Não pode ser jogado no seu turno![/small] Quando Elusive entrar na sua mão durante um efeito de age ou no turno de um oponente, você pode jogá-lo imediatamente."
     ],
     "flavor": "Jogue como a raposa."
   },
@@ -606,7 +606,7 @@
   "overlush/traits/illusory": {
     "name": "Ilusório",
     "effects": [
-      "Até o Fim do Mundo: Depois de estabilizar, se você não jogou nenhuma ação ({action}) no seu turno, pode jogar uma ação de uma carta da sua mão e depois descartá-la.\n(Ignore todas as outras ações.)"
+      "Até o Fim do Mundo: Depois de estabilizar, se você não jogou nenhuma ação ({action}) no seu turno, pode jogar uma ação de uma carta da sua mão e depois descartá-la.\n[small](Ignore todas as outras ações.)[/small]"
     ],
     "flavor": "Faça-se o truque."
   },
@@ -717,8 +717,7 @@
   "overlush/traits/mimicry": {
     "name": "Mimetismo",
     "effects": [
-      "Se você jogar apenas 1 trait nos seus turnos, pode jogar 1 trait com valor de face 1 depois de estabilizar.",
-      "Ignore a ação dele ({action})."
+      "Se você jogar apenas 1 trait nos seus turnos, pode jogar 1 trait com valor de face 1 depois de estabilizar.\n[small]Ignore a ação dele ({action}).[/small]"
     ],
     "flavor": "Um e NÃO acabou! Um e NÃO acabou!"
   },
@@ -732,7 +731,7 @@
   "overlush/traits/muse": {
     "name": "Musa",
     "effects": [
-      "Não pode ser jogado no seu turno! Se Muse for descartado da sua mão, você pode, em vez disso, jogá-lo na sua pilha de traits."
+      "[small]Não pode ser jogado no seu turno![/small] Se Muse for descartado da sua mão, você pode, em vez disso, jogá-lo na sua pilha de traits."
     ],
     "flavor": "Só esperando a inspiração."
   },
@@ -746,7 +745,7 @@
   "overlush/traits/mycelium": {
     "name": "Micélio",
     "effects": [
-      "Se Mycelium for removido da sua pilha de traits no seu turno, você pode primeiro jogar a carta do topo da pilha de descarte. Jogue ações ({action})."
+      "Se Mycelium for removido da sua pilha de traits no seu turno, você pode primeiro jogar a carta do topo da pilha de descarte. [small]Jogue ações ({action}).[/small]"
     ],
     "flavor": "Claro que você pode entrar na minha rede. Sempre cabe mais um cogumelo."
   },
@@ -760,7 +759,7 @@
   "overlush/traits/nectar": {
     "name": "Néctar",
     "effects": [
-      "[rainbow]Escolha uma cor.[/rainbow] Todos os oponentes podem jogar 1 da [rainbow]cor[/rainbow] escolhida.\n(Exceto dominantes.) Ignore ações ({action})."
+      "[rainbow]Escolha uma cor.[/rainbow] Todos os oponentes podem jogar 1 da [rainbow]cor[/rainbow] escolhida.\n[small](Exceto dominantes.) Ignore ações ({action}).[/small]"
     ],
     "flavor": "Um pouco pra você, um pouco pra mim."
   },
@@ -803,8 +802,7 @@
   "overlush/traits/patches": {
     "name": "Manchas",
     "effects": [
-      "Você pode jogar Patches depois que um trait for removido da sua pilha de traits. Devolva esse trait à sua pilha de traits.",
-      "(A menos que tenha sido removido por um dominante!)"
+      "Você pode jogar Patches depois que um trait for removido da sua pilha de traits. Devolva esse trait à sua pilha de traits.\n[small](A menos que tenha sido removido por um dominante!)[/small]"
     ],
     "flavor": "Gosto de rabiscar na areia com o meu cajado da sabedoria."
   },
@@ -853,7 +851,7 @@
   "overlush/traits/pyrophyte": {
     "name": "Pirófita",
     "effects": [
-      "Compre 4 cartas. Você pode jogar qualquer uma com valor de face 2 ou menos. Ignore ações ({action})."
+      "Compre 4 cartas. Você pode jogar qualquer uma com valor de face 2 ou menos. [small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Sair em grande estilo, pegando fogo? É assim que eu quero ir."
   },
@@ -903,8 +901,7 @@
   "overlush/traits/seedwing": {
     "name": "Semente Alada",
     "effects": [
-      "No seu turno, você pode descartar Seedwing da sua pilha de traits e jogar um trait adicional.",
-      "Ignore a ação dele ({action})."
+      "No seu turno, você pode descartar Seedwing da sua pilha de traits e jogar um trait adicional.\n[small]Ignore a ação dele ({action}).[/small]"
     ],
     "flavor": "Ah, legal! Quer dizer, isso não vai me ajudar a voar, mas vou ficar tão bonito caindo!"
   },
@@ -925,7 +922,7 @@
   "overlush/traits/shady": {
     "name": "Sombreado",
     "effects": [
-      "Compre 3 cartas. Jogue 1 carta da sua mão na pilha de traits de um oponente. Sem dominantes. Ignore a ação dele ({action})."
+      "Compre 3 cartas. Jogue 1 carta da sua mão na pilha de traits de um oponente. [small]Sem dominantes. Ignore a ação dele ({action}).[/small]"
     ],
     "flavor": "Um cantinho fresco, sem couvert."
   },
@@ -985,7 +982,7 @@
   "overlush/traits/sour-grapes": {
     "name": "Uvas Azedas",
     "effects": [
-      "+1 para cada trait [blue]azul[/blue] ou para cada trait [red]vermelho[/red] na sua pilha de traits, da [rainbow]cor[/rainbow] que você tem em menor quantidade.\n(Em caso de empate, escolha 1!)"
+      "+1 para cada trait [blue]azul[/blue] ou para cada trait [red]vermelho[/red] na sua pilha de traits, da [rainbow]cor[/rainbow] que você tem em menor quantidade.\n[small](Em caso de empate, escolha 1!)[/small]"
     ],
     "flavor": "Dão vinho ruim e muita choradeira."
   },
@@ -1007,7 +1004,7 @@
   "overlush/traits/spicy": {
     "name": "Picante",
     "effects": [
-      "+1 para cada trait [red]vermelho[/red] ou para cada trait [green]verde[/green] na sua pilha de traits, da [rainbow]cor[/rainbow] que você tem em menor quantidade.\n(Em caso de empate, escolha 1!)"
+      "+1 para cada trait [red]vermelho[/red] ou para cada trait [green]verde[/green] na sua pilha de traits, da [rainbow]cor[/rainbow] que você tem em menor quantidade.\n[small](Em caso de empate, escolha 1!)[/small]"
     ],
     "flavor": "Pessoas prudentes preferem picles de pimentas particularmente picantes."
   },
@@ -1021,7 +1018,7 @@
   "overlush/traits/spots": {
     "name": "Pintas",
     "effects": [
-      "[rainbow]Escolha uma cor.[/rainbow] Todos os oponentes revelam da mão todas as cartas dessa [rainbow]cor[/rainbow]. Jogue 1 imediatamente. Ignore ações ({action})."
+      "[rainbow]Escolha uma cor.[/rainbow] Todos os oponentes revelam da mão todas as cartas dessa [rainbow]cor[/rainbow]. Jogue 1 imediatamente. [small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Elas deixam você difícil de achar."
   },
@@ -1046,7 +1043,7 @@
   "overlush/traits/stinging-tendrils": {
     "name": "Gavinhas Urticantes",
     "effects": [
-      "Troque 1 trait da sua pilha de traits por 1 trait da pilha de traits de um oponente que seja de [rainbow]cor[/rainbow] diferente.\n(Exceto este.)"
+      "Troque 1 trait da sua pilha de traits por 1 trait da pilha de traits de um oponente que seja de [rainbow]cor[/rainbow] diferente.\n[small](Exceto este.)[/small]"
     ],
     "flavor": "Isso ficaria melhor ali."
   },
@@ -1109,7 +1106,7 @@
   "overlush/traits/sweet": {
     "name": "Doce",
     "effects": [
-      "+1 para cada trait [green]verde[/green] ou para cada trait [blue]azul[/blue] na sua pilha de traits, da [rainbow]cor[/rainbow] que você tem em menor quantidade.\n(Em caso de empate, escolha 1!)"
+      "+1 para cada trait [green]verde[/green] ou para cada trait [blue]azul[/blue] na sua pilha de traits, da [rainbow]cor[/rainbow] que você tem em menor quantidade.\n[small](Em caso de empate, escolha 1!)[/small]"
     ],
     "flavor": "Amo com doçura, amo com ternura, você é minha metade da laranja."
   },
@@ -1181,7 +1178,7 @@
   "overlush/traits/vagabond": {
     "name": "Vagabundo",
     "effects": [
-      "Todos os oponentes jogam 1 trait. (Sem dominantes.) Ignore ações ({action}). Roube 1 desses traits OU jogue um trait adicional."
+      "Todos os oponentes jogam 1 trait. [small](Sem dominantes.) Ignore ações ({action}).[/small] Roube 1 desses traits OU jogue um trait adicional."
     ],
     "flavor": "Não sigo regra de ninguém! Nem as minhas."
   },

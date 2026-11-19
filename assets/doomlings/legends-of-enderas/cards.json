@@ -172,11 +172,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "You may remove 1 attachment from your trait pile and attach it to a trait in any trait pile."
-      },
-      {
-        "kind": "note",
-        "text": "(Excluding dominants.)"
+        "text": "You may remove 1 attachment from your trait pile and attach it to a trait in any trait pile.\n[small](Excluding dominants.)[/small]"
       }
     ],
     "genePool": null,
@@ -201,11 +197,7 @@
     "flavor": "Ladies and gentlemen, Mr. Al Chemical!",
     "effects": [
       {
-        "text": "If Alchemical is discarded from hand, announce it!\nPlayers resolve all effects.\nThen opponents discard half their hand at random."
-      },
-      {
-        "kind": "note",
-        "text": "(Round down.)"
+        "text": "If Alchemical is discarded from hand, announce it!\nPlayers resolve all effects.\nThen opponents discard half their hand at random.\n[small](Round down.)[/small]"
       }
     ],
     "genePool": null,
@@ -362,11 +354,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Discard all Dinolings ({dinoling}) from your trait pile."
-      },
-      {
-        "kind": "note",
-        "text": "(Excluding this one.)"
+        "text": "Discard all Dinolings ({dinoling}) from your trait pile.\n[small](Excluding this one.)[/small]"
       }
     ],
     "genePool": null,
@@ -456,11 +444,7 @@
     "flavor": "There's always a bigger dino. And that's me!",
     "effects": [
       {
-        "text": "To play, you must discard a face value 5 or higher from your trait pile."
-      },
-      {
-        "kind": "note",
-        "text": "Cannot be removed from your trait pile."
+        "text": "To play, you must discard a face value 5 or higher from your trait pile.\n[small]Cannot be removed from your trait pile.[/small]"
       }
     ],
     "genePool": null,
@@ -843,11 +827,7 @@
     "flavor": "Extinction is only the beginning.",
     "effects": [
       {
-        "text": "When you attach a card to Fossil Fueled, you may play 1 from the top 5 of the discard pile."
-      },
-      {
-        "kind": "note",
-        "text": "Ignore its action ({action})."
+        "text": "When you attach a card to Fossil Fueled, you may play 1 from the top 5 of the discard pile.\n[small]Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -1070,11 +1050,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Discard all Dinolings ({dinoling}) from your trait pile."
-      },
-      {
-        "kind": "note",
-        "text": "(Excluding this one.)"
+        "text": "Discard all Dinolings ({dinoling}) from your trait pile.\n[small](Excluding this one.)[/small]"
       }
     ],
     "genePool": null,
@@ -1370,11 +1346,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "You may remove 1 attachment from your trait pile and attach it to a trait in any trait pile."
-      },
-      {
-        "kind": "note",
-        "text": "(Excluding dominants.)"
+        "text": "You may remove 1 attachment from your trait pile and attach it to a trait in any trait pile.\n[small](Excluding dominants.)[/small]"
       }
     ],
     "genePool": null,
@@ -1442,7 +1414,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "You may discard 1 from your trait pile, OR play the top card from the discard pile. Ignore its action ({action})."
+        "text": "You may discard 1 from your trait pile, OR play the top card from the discard pile. [small]Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -1676,7 +1648,7 @@
     "flavor": "The best peach-to-text translator on the barket.",
     "effects": [
       {
-        "text": "Attach. Add the face value of 1 card in hand that shares a [rainbow]color[/rainbow] with the host.\n(Excluding dominants.)"
+        "text": "Attach. Add the face value of 1 card in hand that shares a [rainbow]color[/rainbow] with the host.\n[small](Excluding dominants.)[/small]"
       }
     ],
     "genePool": null,
@@ -1800,11 +1772,7 @@
     "flavor": "The someone who summons some things.",
     "effects": [
       {
-        "text": "Discard up to 3 from hand, then play 1 for each discarded card."
-      },
-      {
-        "kind": "note",
-        "text": "Ignore actions ({action})."
+        "text": "Discard up to 3 from hand, then play 1 for each discarded card.\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2020,7 +1988,7 @@
     "flavor": "Mmmm, icebergers!",
     "effects": [
       {
-        "text": "To play, you must discard a total face value of 5 or higher from your trait pile using any number of cards.\n(Titanic cannot regenerate tissue!)"
+        "text": "To play, you must discard a total face value of 5 or higher from your trait pile using any number of cards.\n[small](Titanic cannot regenerate tissue!)[/small]"
       }
     ],
     "genePool": null,

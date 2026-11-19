@@ -245,7 +245,7 @@
   "upgrade/meaning-of-life/the-silent-elder": {
     "name": "O Ancião Silencioso",
     "effects": [
-      "Se você tiver 4 ou menos de cada cor na sua pilha de traits, revele 1 carta do topo do baralho de traits. Se tiver 3 ou menos de cada cor, revele 5.\nAdicione todos os valores de face de 4 ou menos à sua pontuação final.\n(Remova as cartas reveladas do jogo.)"
+      "Se você tiver 4 ou menos de cada cor na sua pilha de traits, revele 1 carta do topo do baralho de traits. Se tiver 3 ou menos de cada cor, revele 5.\nAdicione todos os valores de face de 4 ou menos à sua pontuação final.\n[small](Remova as cartas reveladas do jogo.)[/small]"
     ]
   },
   "upgrade/meaning-of-life/the-soothsayer": {
@@ -601,7 +601,7 @@
   "upgrade/traits/pycnofibers": {
     "name": "Picnofibras",
     "effects": [
-      "Compre 1 carta. Se for um trait dominante, descarte-a. Se não for, jogue-a imediatamente. Ignore a ação dela ({action})."
+      "Compre 1 carta. Se for um trait dominante, descarte-a. Se não for, jogue-a imediatamente. [small]Ignore a ação dela ({action}).[/small]"
     ],
     "flavor": "Toda matéria sobre mim é pura fofura."
   },
