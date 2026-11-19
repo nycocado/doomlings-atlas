@@ -5,13 +5,16 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicText
@@ -21,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,16 +38,24 @@ import androidx.compose.ui.graphics.Shader
 import androidx.compose.ui.graphics.ShaderBrush
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.intl.LocaleList
+import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import dev.nycocado.atlas.R
@@ -71,6 +83,7 @@ import dev.nycocado.atlas.ui.theme.AtlasTheme
 import dev.nycocado.atlas.ui.theme.AtlasTypography
 import dev.nycocado.atlas.ui.theme.Radius
 import dev.nycocado.atlas.ui.theme.Shadow
+import dev.nycocado.atlas.ui.theme.Sizes
 import dev.nycocado.atlas.ui.theme.Space
 import dev.nycocado.atlas.ui.theme.sticker
 import dev.nycocado.atlas.ui.theme.trait
@@ -91,9 +104,11 @@ internal fun BlockBubble(
     library: CardLibrary = CardLibrary.loading,
     onCardClick: (String) -> Unit = {},
     selector: (@Composable () -> Unit)? = null,
+    initialStoryExpanded: Boolean = false,
 ) {
     val theme = AtlasTheme.colors
     val actionColors = theme.actionColors(colors)
+    var expanded by rememberSaveable { mutableStateOf(initialStoryExpanded) }
     // The selector hangs above the bubble, so the bubble keeps it as far from the pills as the pills are from each other.
     Box(Modifier.padding(top = 6.dp + if (selector != null) Space.s2 else 0.dp)) {
         Box(
@@ -134,6 +149,10 @@ internal fun BlockBubble(
                             )
                         }
 
+                        is BlockContent.Story -> {
+                            Story(content.paragraphs, shownLanguage, expanded) { expanded = !expanded }
+                        }
+
                         null -> {}
                     }
                     shown.block.flavor?.let {
@@ -153,6 +172,72 @@ internal fun BlockBubble(
         selector?.let { Box(Modifier.align(Alignment.TopEnd).offset(x = (-14).dp, y = (-18).dp)) { it() } }
     }
 }
+
+@Composable
+private fun Story(
+    paragraphs: List<String>,
+    language: CardLanguage,
+    expanded: Boolean,
+    onToggle: () -> Unit,
+) {
+    val theme = AtlasTheme.colors
+    // A blank line between paragraphs: Compose text has no paragraph spacing, and a line scales with the font.
+    val text = tagged(paragraphs.joinToString("\n\n"), language)
+    val style = AtlasTypography.bodyMd.copy(color = theme.onSurfaceVariant, fontStyle = FontStyle.Italic)
+    val measurer = rememberTextMeasurer()
+    // The width comes while composing, so the control is there from the first frame, not one layout later.
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val layout =
+            measurer.measure(
+                text,
+                style,
+                overflow = TextOverflow.Clip,
+                maxLines = STORY_LINES,
+                constraints = Constraints(maxWidth = constraints.maxWidth),
+            )
+        val overflows = layout.hasVisualOverflow
+        // A blank last line is the gap between paragraphs, so the cut goes above it. A cut where the text breaks the
+        // line anyway gets no ellipsis: Android would still add one, after a full stop or alone on the blank line.
+        val lines = if (overflows && layout.isBlank(STORY_LINES - 1)) STORY_LINES - 1 else STORY_LINES
+        val atBreak = overflows && text.text.getOrNull(layout.getLineEnd(lines - 1, visibleEnd = true)) == '\n'
+        Column {
+            AnimatedContent(expanded, transitionSpec = LanguageChange, label = "story") { open ->
+                BasicText(
+                    text,
+                    style = style,
+                    maxLines = if (open) Int.MAX_VALUE else lines,
+                    overflow = if (atBreak) TextOverflow.Clip else TextOverflow.Ellipsis,
+                )
+            }
+            if (overflows || expanded) StoryToggle(expanded, onToggle)
+        }
+    }
+}
+
+@Composable
+private fun StoryToggle(
+    expanded: Boolean,
+    onToggle: () -> Unit,
+) {
+    val state = stringResource(if (expanded) R.string.story_expanded else R.string.story_collapsed)
+    Box(
+        Modifier
+            .heightIn(min = Sizes.touchTarget)
+            .clickable(role = Role.Button, onClick = onToggle)
+            .semantics { stateDescription = state },
+        contentAlignment = Alignment.CenterStart,
+    ) {
+        BasicText(
+            stringResource(if (expanded) R.string.story_less else R.string.story_more),
+            style = AtlasTypography.labelLg.copy(color = AtlasTheme.colors.onSurface),
+        )
+    }
+}
+
+private const val STORY_LINES = 4
+
+private fun TextLayoutResult.isBlank(line: Int) =
+    line < lineCount && getLineStart(line) == getLineEnd(line, visibleEnd = true)
 
 @Composable
 private fun Line(

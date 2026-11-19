@@ -34,6 +34,7 @@ import dev.nycocado.atlas.carddetail.TranslatedCatastropheDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitDetailPreview
 import dev.nycocado.atlas.carddetail.TranslatedTraitSample
 import dev.nycocado.atlas.carddetail.TreasureDetailPreview
+import dev.nycocado.atlas.carddetail.TreasureStoryExpandedDetailPreview
 import dev.nycocado.atlas.carddetail.TrinketBlocksPreview
 import dev.nycocado.atlas.carddetail.TrinketDetailPreview
 import dev.nycocado.atlas.cardpane.CardBesideListPreview
@@ -584,6 +585,16 @@ fun TreasureDetailScreenshot() = TreasureDetailPreview()
 @Preview(fontScale = 2f)
 @Composable
 fun TreasureDetailFontScale200Screenshot() = TreasureDetailPreview()
+
+@PreviewTest
+@PreviewLightDark
+@Composable
+fun TreasureStoryExpandedDetailScreenshot() = TreasureStoryExpandedDetailPreview()
+
+@PreviewTest
+@Preview(fontScale = 2f)
+@Composable
+fun TreasureStoryExpandedDetailFontScale200Screenshot() = TreasureStoryExpandedDetailPreview()
 
 @PreviewTest
 @PreviewLightDark

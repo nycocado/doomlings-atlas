@@ -282,6 +282,11 @@ class CardDataIntegrityTest {
     }
 
     @Test
+    fun everyTreasureHasAStory() {
+        assertEquals(emptyList(), cards.filterIsInstance<Treasure>().filter { it.story.isEmpty() }.map { it.id })
+    }
+
+    @Test
     fun noTextStartsOrEndsWithWhitespace() {
         assertEquals(emptyList(), texts.filter { (_, text) -> text != text.trim() })
     }

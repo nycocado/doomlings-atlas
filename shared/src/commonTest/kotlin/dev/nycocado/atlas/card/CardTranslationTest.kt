@@ -60,6 +60,14 @@ class CardTranslationTest {
         )
 
     @Test
+    fun aTranslationDecodesItsStoryAsAListOfParagraphs() {
+        assertEquals(
+            listOf("Um.", "Dois."),
+            decodeTranslations("""{"x": {"name": "Luva", "story": ["Um.", "Dois."]}}""").getValue("x").story,
+        )
+    }
+
+    @Test
     fun aCardWithATranslationShowsItInThatLanguage() {
         val face = translations.face(trait, CardLanguage.Portuguese)
 

@@ -7,7 +7,7 @@ data class CardFace(
     val facts: List<CardFact>,
     // null for a compass star and for cards without one.
     val faceValue: Int?,
-    // The card detail's blocks in order; none when the card has no text, flavor or Gene Pool.
+    // The card detail's blocks in order; none when the card has no story, text, flavor or Gene Pool.
     val blocks: List<CardBlock>,
     // What the compendium search matches: the name, if any, and the text of every effect, without tokens, ink or small
     // marks.
@@ -85,8 +85,8 @@ private fun Trait.iconFacts(): List<CardFact> {
     }
 }
 
-// One block of the card detail's text: the Gene Pool, an effect or a Trinket's Value, in that order. The app writes the
-// numbers and the kind's name in the card language.
+// One block of the card detail's text: a Treasure's story, the Gene Pool, an effect or a Trinket's Value, in that order.
+// The app writes the numbers and the kind's name in the card language.
 data class CardBlock(
     // null for the block of a card with only a flavor.
     val content: BlockContent?,
@@ -97,6 +97,11 @@ data class CardBlock(
 )
 
 sealed interface BlockContent {
+    // A Treasure's story, one text per paragraph.
+    data class Story(
+        val paragraphs: List<String>,
+    ) : BlockContent
+
     data class GenePool(
         val genePool: Int,
     ) : BlockContent
@@ -237,7 +242,7 @@ fun plainText(text: String) = text.replace(token, "").replace(inkMark, "")
 
 fun Card.face(): CardFace =
     when (this) {
-        is NamedCard -> face(name, effects, flavor, genePool)
+        is NamedCard -> face(name, effects, flavor, genePool, (this as? Treasure)?.story.orEmpty())
         is GenePool -> CardFace(null, listOf(CardFact.Kind(kind)), null, emptyList(), emptyList())
     }
 
@@ -249,6 +254,7 @@ internal fun NamedCard.face(text: CardText): CardFace =
         effects.zip(text.effects) { effect, translated -> effect.copy(text = translated) },
         text.flavor,
         genePool,
+        text.story,
     )
 
 private fun NamedCard.face(
@@ -256,9 +262,10 @@ private fun NamedCard.face(
     effects: List<Effect>,
     flavor: String?,
     genePool: Int?,
+    story: List<String>,
 ): CardFace {
     val trait = this as? Trait
-    val blocks = blocks(effects, flavor, genePool)
+    val blocks = blocks(effects, flavor, genePool, story)
     return CardFace(
         name,
         buildList {
@@ -278,9 +285,11 @@ internal fun NamedCard.blocks(
     effects: List<Effect>,
     flavor: String?,
     genePool: Int?,
+    story: List<String> = emptyList(),
 ): List<CardBlock> {
     val contents =
-        listOfNotNull(genePool?.let(BlockContent::GenePool)) +
+        listOfNotNull(story.takeIf { it.isNotEmpty() }?.let(BlockContent::Story)) +
+            listOfNotNull(genePool?.let(BlockContent::GenePool)) +
             effects.map { effect ->
                 val ink = effectInk(effect.kind)
                 BlockContent.Effect(effect.kind, parts(effect.text, ink), ink)

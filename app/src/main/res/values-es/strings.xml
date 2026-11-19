@@ -49,6 +49,10 @@
     <string name="card_variant_position">%1$s, variante %2$d de %3$d</string>
     <string name="card_group_expand">Abrir</string>
     <string name="card_group_collapse">Contraer</string>
+    <string name="story_more">Leer más</string>
+    <string name="story_less">Leer menos</string>
+    <string name="story_collapsed">Contraída</string>
+    <string name="story_expanded">Expandida</string>
 
     <string name="color_blue">Azul</string>
     <string name="color_green">Verde</string>

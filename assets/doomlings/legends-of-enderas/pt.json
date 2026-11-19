@@ -620,6 +620,12 @@
   },
   "legends-of-enderas/treasures/ardent-grip": {
     "name": "Luva Ardente",
+    "story": [
+      "Minha palma já suava antes mesmo de eu calçar a luva. Testei o seu poder, conjurando joias e barras de ouro. A cada joia invocada, a luva esquentava mais, mas ignorei a dor em busca da fortuna.",
+      "\"Vou ficar rico e eles vão passar vergonha!\", pensei.",
+      "Quando não consegui invocar mais nada, tirei a luva. Uma pilha de fuligem preta caiu lá de dentro. Fiquei horrorizado ao descobrir que não havia nada depois do pulso.",
+      "Fiz uma pausa, pensei nas minhas opções e então enfiei a luva na outra mão."
+    ],
     "effects": [
       "Defina seu Gene Pool como 5.",
       "Compre 1 carta."
@@ -627,6 +633,12 @@
   },
   "legends-of-enderas/treasures/black-silk": {
     "name": "Seda Negra",
+    "story": [
+      "O garoto tropeçou floresta adentro, em meio à névoa, e ficou preso numa teia negra. Os fios eram cobertos por algo parecido com piche. Ele gritou, mas só uma coisa podia ouvi-lo.",
+      "Ela veio rastejando da neblina. As facetas dos seus olhos refletiam o terror do garoto cem vezes. Ele viu que os membros finos da criatura eram afiados como lâminas de barbear.",
+      "\"Mil perdões\", disse ela, cortando os fios grossos e libertando o garoto.",
+      "\"É um projeto de arte meu. Você poderia me dizer o que acha?\""
+    ],
     "effects": [
       "[blue]Azul[/blue]\nou\n[red]Vermelho[/red]",
       "Descarte 1 carta da mão."
@@ -634,6 +646,12 @@
   },
   "legends-of-enderas/treasures/box-of-rainbows": {
     "name": "Caixa de Arco-Íris",
+    "story": [
+      "As crianças se amontoaram em volta da caixa, de olhos arregalados. A mais corajosa e mais burra de todas abriu a tampa. A caixa explodiu em cores que ainda não tinham nome.",
+      "\"Vamos chamar essa de smokle\", declarou Sandy, apontando para um fiapo de luz arroxeada que chiava. \"E aquela é gleengroll!\", completou Candy, apontando para um brilho trêmulo de dourado esverdeado.",
+      "Um tom rosado, com cheiro de toranja, quicava entre as luzes.\n\"Oyngo\", disse Mandy, assentindo com sabedoria.",
+      "Depois de horas, chegaram a um azul-tinta, que todos concordaram ser \"blorky\"."
+    ],
     "effects": [
       "Impeça um roubo. (Exceto dominantes.)",
       "Jogue um trait com valor de face 2 ou menos. Ignore ações ({action})."
@@ -641,6 +659,11 @@
   },
   "legends-of-enderas/treasures/broken-promises": {
     "name": "Promessas Quebradas",
+    "story": [
+      "\"A luz deste anel mostra onde eu estou\", explicou Marin ao colocá-lo no dedo do filho.",
+      "Ela esfregou o aro de metal, e um feixe projetou um mapa das estrelas.",
+      "\"Você sempre vai saber onde eu estou enquanto eu estiver fora, o que não vai demorar.\""
+    ],
     "effects": [
       "[blue]Azul[/blue] para [blue]Azul[/blue]\nou\n[purple]Roxo[/purple] para [purple]Roxo[/purple]",
       "Compre 2 cartas."
@@ -648,6 +671,10 @@
   },
   "legends-of-enderas/treasures/cataclyte": {
     "name": "Cataclyte",
+    "story": [
+      "Por um instante, uma rocha sem vida vagou sozinha, perdida no vazio. Então esse instante passou, e a rocha foi puxada para o calor de uma estrela. A energia da estrela castigou a rocha. Causou uma catástrofe atrás da outra. Mas, depois da devastação, surgiu a vida.\nEnderas nasceu.",
+      "Em meio ao caos, surgiram os Doomlings, capazes de adotar rapidamente os traits e as forças dos amigos diante de qualquer desastre. Dizem que Enderas contém elementos raros que absorveram a energia da estrela e podem ser usados para amplificar o poder dos Doomlings."
+    ],
     "effects": [
       "[purple]Roxo[/purple] para [purple]Roxo[/purple]\nou\n[red]Vermelho[/red] para [red]Vermelho[/red]",
       "Compre 2 cartas."
@@ -655,6 +682,11 @@
   },
   "legends-of-enderas/treasures/chrona": {
     "name": "Chrona",
+    "story": [
+      "O jovem Mance trabalhava no seu cajado, convencido de que, se o entalhasse direitinho, poderia dominar o poder do tempo. E, muitos anos depois, conseguiu.",
+      "Alisando o queixo, agora barbudo e desgrenhado, ele espiou fundo através das brumas do tempo. Viu uma esposa, um filho, um beijo na bochecha de um homem ocupado demais para perceber. Chuvas de cometas, superflorações. Um nascimento, um casamento, um funeral...",
+      "Mance recuou, decepcionado com o que viu. \"Coisa idiota! Isso foi o passado... ...me mostre o futuro!\""
+    ],
     "effects": [
       "Compre as 3 cartas do topo da pilha de descarte.",
       "Compre 1 carta."
@@ -662,6 +694,12 @@
   },
   "legends-of-enderas/treasures/coda": {
     "name": "Coda",
+    "story": [
+      "No Fim do Mundo, um cavaleiro misterioso desmontou do cavalo. Ele se aproximou devagar, e a lâmina da sua foice encobria mais da lua quanto mais perto ele chegava.",
+      "Parou a uma passada de mim. Ergueu o dedo ossudo e apontou para o espaço entre meus olhos. Eu os fechei com força.",
+      "\"É agora\", pensei.",
+      "Instantes depois, começaram os cortes e golpes. Gritei e abri os olhos de supetão, e vi que a figura tinha passado por mim e estava cortando a grama do meu jardim."
+    ],
     "effects": [
       "Diminua o Gene Pool em 1.\nJogue 1.",
       "Compre 1 carta."
@@ -669,6 +707,15 @@
   },
   "legends-of-enderas/treasures/dragon-scales": {
     "name": "Escamas de Dragão",
+    "story": [
+      "\"FAZ A COISA!!\"",
+      "\"Que coisa?!!\"",
+      "\"A coisa! A COISA!! Rápido, cria umas asas ou sei lá o quê e salva a gente!\"",
+      "\"Ah! AQUELA coisa. Deixa comigo!\"",
+      "Kal e Hero despencaram pelas nuvens. Hero fechou bem os olhos, franziu o nariz e fez força DE VERDADE. De repente, duas asas de galinha brotaram nas suas costas.",
+      "\"ASSIM NÃO!\"",
+      "\"PARA DE GRITAR COMIGO!\""
+    ],
     "effects": [
       "[red]Vermelho[/red]\nou\n[purple]Roxo[/purple]",
       "Descarte 1 carta da mão."
@@ -676,12 +723,22 @@
   },
   "legends-of-enderas/treasures/fortune-glory": {
     "name": "Fortuna e Glória",
+    "story": [
+      "\"Chegou a minha hora, garoto\", gritou o aventureiro, pendurado pelas pontas dos dedos, \"pegue o tesouro e dê o fora daqui!\"",
+      "Mas o garoto já tinha pulado, com uma ponta da corda bem agarrada e a outra balançando atrás. Ele puxou o aventureiro do precipício e os dois se balançaram até um lugar seguro.",
+      "Os dois escaparam juntos, sem nada reluzente para mostrar. Mas adoravam contar a história sempre que podiam."
+    ],
     "effects": [
       "Compre 4 cartas.\nVocê pode escolher não estabilizar."
     ]
   },
   "legends-of-enderas/treasures/fwip": {
     "name": "Fwip",
+    "story": [
+      "\"Como você chama a sua espada?\"",
+      "Hero nunca tinha pensado nisso. Ele tinha arrancado a espada de um pedaço de lixo espacial. Como se dá nome a um caco de metal? Decidiu chamá-la de 'Fwip', pelo som que ela fazia quando ele a brandia por aí. Kal não ficou impressionado, mas quem era ele para cortar o barato do baixinho?",
+      "Mais tarde naquela noite, Kal viu Hero saltitar pela floresta, 'fwipando' a lâmina para todo lado. \"Onomatopeia!\", gritou Hero, sem saber o que significava."
+    ],
     "effects": [
       "Devolva 1 dominante da sua pilha de traits à sua mão para jogar um dominante diferente.",
       "Compre 1 carta."
@@ -689,6 +746,11 @@
   },
   "legends-of-enderas/treasures/ghostly-boots": {
     "name": "Botas Fantasmagóricas",
+    "story": [
+      "Escute. Havia uma garota que dançava em Amaranth Hill. Sua dança tinha um poder. Os outros notaram. Pagavam para ela dançar nas tavernas e nas feiras deles, mas, com o tempo, o poder se foi.",
+      "\"Dance como antes! Como você dançava quando a encontramos!\", exigiram. Mas a dança dela agora era só uma apresentação. A multidão tinha arrancado o coração dela e pisoteado. Ela abandonou as botas e fugiu da cidade, para nunca mais ser vista.",
+      "Dizem que, à noite, dá para encontrar as botas, ainda dançando. Pegue-as, calce-as, e você terá o poder de ir aonde quiser, sem ser visto nem ouvido."
+    ],
     "effects": [
       "Ações [purple]roxas[/purple] ({action})\nou\nAções [red]vermelhas[/red] ({action})",
       "Estabilize até 5."
@@ -696,6 +758,11 @@
   },
   "legends-of-enderas/treasures/heart-of-the-woods": {
     "name": "Coração da Floresta",
+    "story": [
+      "Marin vagava sozinha, perdida na floresta fria e escura, até que chegou a uma porta selada de raízes e madeira viva.",
+      "Ela bateu. Ninguém respondeu, a não ser, talvez, um batimento cardíaco. Marin abriu a porta. Uma luz dourada jorrou do cômodo. Lá dentro, ela viu um coração de âmbar.\nSeu brilho expulsava todas as sombras.\nEra um tesouro.",
+      "Marin contemplou sua beleza, fechou a porta e deixou o coração em paz."
+    ],
     "effects": [
       "[rainbow]Qualquer Cor[/rainbow]",
       "Descarte 1 carta da mão."
@@ -703,6 +770,13 @@
   },
   "legends-of-enderas/treasures/reflecting-glass": {
     "name": "Vidro Refletor",
+    "story": [
+      "Kal ouviu uma voz vinda do vidro refletor.",
+      "\"Melon! Volte!\"",
+      "Ele fitou o artefato. Uma imagem turva apareceu. Um presságio? Uma lembrança? Viu um céu limpo, iluminado pela lua. Um garoto vasculhando a pradaria. Uma collie correndo pelo capim alto e dourado.",
+      "O garoto tinha gritado com a cachorra. Não foi por querer. Estava cansado. Com fome. A paciência estava curta. Melon era uma amiga confiável. Mas collies também têm sentimentos. Agora o garoto só queria saber se ela estava bem...",
+      "\"Ooo, brilhante! O que você está vendo?\", sussurrou Hero, interrompendo a visão. Kal olhou de novo para o vidro refletor, mas a imagem tinha sumido."
+    ],
     "effects": [
       "Impeça uma ação ({action}).",
       "Jogue um trait com valor de face 2 ou menos. Ignore ações ({action})."
@@ -710,6 +784,12 @@
   },
   "legends-of-enderas/treasures/someone-s-trash": {
     "name": "Lixo de Alguém",
+    "story": [
+      "O Doomling encapuzado arrastou sua carroça até a margem do rio. As rodas penavam na lama, sob o peso das garrafas de vidro recolhidas no lixão da vila.",
+      "O Doomling se largou ao lado da água, tirou da carroça uma pilha de papel amarelado e começou a escrever.",
+      "Ao terminar cada bilhete, ele o enrolava com capricho, lacrava dentro de uma das garrafas descartadas e jogava no rio.",
+      "Dias depois, um pescador fisgou uma das garrafas, abriu e leu o bilhete lá dentro. Ficou corado e tocou o bigode. \"Alguém reparou!\""
+    ],
     "effects": [
       "Embaralhe a pilha do cofre, depois compre 2 tesouros da pilha do cofre.",
       "Compre as 2 cartas do topo da pilha de descarte."
@@ -717,6 +797,12 @@
   },
   "legends-of-enderas/treasures/soulweaver": {
     "name": "Tecelão de Almas",
+    "story": [
+      "Sumner estava diante da sua abominação. A fera, afiada e alienígena, cada aresta com noventa graus de geometria profana. Era... um cubo.",
+      "Os ancestrais esféricos de Sumner haviam sussurrado avisos sobre conjurar \"O Encaixotado\".",
+      "Ele engoliu em seco. \"Isto é proibido.\"",
+      "O Encaixotado falou:\n\"Existem outros quatro como eu, Redondo. Invoque-os, e vamos remodelar este mundo.\""
+    ],
     "effects": [
       "Descarte até 3 da mão. Jogue 1 trait sem efeito para cada carta descartada. Depois, estabilize e pule seu turno.",
       "Compre 1 carta."
@@ -724,6 +810,12 @@
   },
   "legends-of-enderas/treasures/summit": {
     "name": "Cume",
+    "story": [
+      "A maldição da bruxa sobre a espada não podia ser quebrada. A espada tinha de ser destruída, então ele fez uma lista do que levar para a jornada até a Mourning Tower. \"Água? Confere. Comida? Confere. Cautela? Acho que não.\"",
+      "Enfrentou nevascas, ventos torrenciais e debandadas de sapos antes de escalar esse vulcão. Seu corpo doía, suas juntas estavam exaustas. Tudo isso para perder a espada que ele amava.",
+      "Epic chegou ao pico e olhou para a lava lá embaixo. Estendeu a mão para pegar Summit e jogá-la dentro, mas ela não estava lá.",
+      "\"Eu sabia que tinha esquecido alguma coisa.\""
+    ],
     "effects": [
       "Jogue a carta do topo da pilha de descarte. Ignore ações ({action}).",
       "Compre 1 carta."
@@ -731,12 +823,27 @@
   },
   "legends-of-enderas/treasures/the-friends-we-made-along-the-way": {
     "name": "Os Amigos que Fizemos no Caminho",
+    "story": [
+      "O destemido Doomling não passava dos joelhos de Kal, mas seus olhos sinceros estavam fixos nos de Kal. Estava claro que a criatura queria ajudar.",
+      "\"Seguinte, baixinho: se você me levar até Slumberwood, eu te dou o que sobrou do meu sanduíche.\"",
+      "Kal se ajoelhou e estendeu a mão.\nMas Hero não entendeu o gesto.",
+      "\"O que é isso?\"",
+      "\"É uma promessa.\"",
+      "Kal pegou a mão de Hero e o sacudiu como uma maraca.",
+      "Hero ficou todo feliz. \"Eu gosto de promessas.\""
+    ],
     "effects": [
       "Jogue 2 e estabilize. Ignore ações ({action}). Depois, pule seu turno."
     ]
   },
   "legends-of-enderas/treasures/the-maliforms": {
     "name": "Os Maliformes",
+    "story": [
+      "\"Corra.",
+      "Eu vou limpar a sua memória. Os erros que você cometeu, os amigos que perdeu e todas as catástrofes que você trouxe a Enderas serão como se nunca tivessem existido.",
+      "Ou você pode ficar, e lutamos até o fim. Provavelmente, você vai perder. Mas, mesmo que sobreviva, viverá com a lembrança de que não conseguiu salvá-los.",
+      "Mas eu posso salvar você.\nCorra, e eu vou libertar você do seu luto e da dor de Enderas.\""
+    ],
     "effects": [
       "Ações de\n[rainbow]qualquer cor[/rainbow] ({action})",
       "Estabilize até 5."
@@ -744,6 +851,12 @@
   },
   "legends-of-enderas/treasures/tiny-shells": {
     "name": "Conchinhas",
+    "story": [
+      "Encontrei estas conchas em Castle Glass, a Cidade feita de Areia.",
+      "Suas muralhas monumentais eram tributos requintados ao mar. As ruas: meticulosamente trabalhadas, entrelaçadas entre moradas cintilantes, que lembravam mais esculturas do que casas. Eu poderia ter ficado para sempre, mas tinha compromissos a cumprir, então peguei as conchas e fui embora.",
+      "Quando voltei, a cidade tinha sumido.\nO oceano a havia engolido.",
+      "Para minha surpresa, as conchas no meu bolso tremeram. Criaturinhas saíram de dentro. Rastejaram em direção à praia e começaram a remexer a areia, construindo algo lindo, enquanto as marés recuavam para o oceano."
+    ],
     "effects": [
       "[green]Verde[/green]\nou\n[blue]Azul[/blue]",
       "Descarte 1 carta da mão."
@@ -751,6 +864,13 @@
   },
   "legends-of-enderas/treasures/translator": {
     "name": "Tradutor",
+    "story": [
+      "\"Todos os Doomlings falam?\"",
+      "O Doomling fez os lábios vibrarem enquanto pensava. Queria ser útil, então queria acertar.",
+      "\"Sim! Todos! Alguns. Bichinhos de estimação não falam. Árvores também não. A menos que você fale árvore. Você fala árvore? Vai preferir não falar. Elas não param nunca. Parece que nem se ouvem falando e falando e falando.\"",
+      "O Doomling refletiu por um instante.",
+      "\"É muito bom ter com quem conversar.\""
+    ],
     "effects": [
       "[green]Verde[/green] para [green]Verde[/green]\nou\n[blue]Azul[/blue] para [blue]Azul[/blue]",
       "Compre 2 cartas."
@@ -758,6 +878,12 @@
   },
   "legends-of-enderas/treasures/twisters": {
     "name": "Redemoinhos",
+    "story": [
+      "Fable se esgueirou até o cofre e pegou os nunchakus do pedestal.",
+      "Armas estranhas. Ela se perguntou por que seu cliente as queria. Mas não pôde se perguntar por muito tempo. Dois guardas invadiram o lugar!",
+      "Encurralada, Fable ergueu os nunchakus sobre a cabeça, girando-os até virarem um borrão. O giro criou uma rajada que a tirou do chão, e os braços finos dela faziam força para não soltar. Os guardas só puderam assistir enquanto Fable subia flutuando e saía por uma janela aberta.",
+      "Fable riu: \"Acho que vou ficar com eles.\""
+    ],
     "effects": [
       "Aumente o Gene Pool em 1.",
       "Compre 1 carta."
@@ -765,6 +891,12 @@
   },
   "legends-of-enderas/treasures/unbreakable": {
     "name": "Inquebrável",
+    "story": [
+      "Epic fechou a cara diante da cidade em chamas. Os aldeões imploravam por ajuda, mas Epic só se importava com a sua taverna favorita.",
+      "Com o fogo crepitando atrás de si, ele cravou o olhar de aço na represa acima da vila. Abriu um sorriso e partiu para cima. Com um rugido primitivo, Epic girou seu machado de guerra, estilhaçando a represa de um só golpe.",
+      "A água avançou. Desceu trovejando, arrebentando campos e ruas, apagando as chamas, arrasando todas as casas - e a taverna - pelo caminho.",
+      "\"O fogo apagou\", declarou Epic.\n\"Pena que agora não tem onde tomar uma.\""
+    ],
     "effects": [
       "Os oponentes devolvem 1 trait sem efeito da pilha de traits deles para a mão.",
       "Compre 1 carta."
@@ -772,6 +904,12 @@
   },
   "legends-of-enderas/treasures/vanity": {
     "name": "Vaidade",
+    "story": [
+      "A estrada até Titan's Tower tinha sido fria, áspera e cheia de curvas. Mas valeu cada bolha e cada queimadura de frio. As histórias eram verdadeiras, e a aventureira logo seria uma lenda.",
+      "Ela escancarou as portas da torre e contemplou as relíquias lá dentro: duas espadas encantadas. Uma, embotada pelo tempo e pelas batalhas.\nA outra, reluzente, brilhosa.\nEssa falou com ela. Tipo, literalmente.\nEla é mágica desse jeito.",
+      "Disse: \"Vamos fazer um nome pra nós... digo, pra você.\"",
+      "E uma Lenda respondeu: \"Não vejo desvantagem nenhuma.\""
+    ],
     "effects": [
       "Os oponentes devolvem 1 trait sem efeito da pilha de traits deles para a mão.",
       "Compre 1 carta."
@@ -779,6 +917,12 @@
   },
   "legends-of-enderas/treasures/wandering-root": {
     "name": "Raiz Errante",
+    "story": [
+      "\"Psiu. Me ajude.\" Uma voz furtiva ecoou pela caverna cintilante. Um Doomling recluso estava preso numa gaiola feita de raízes vivas.",
+      "\"Quem prendeu você?\" Hero puxou as raízes, fazendo com que apertassem ainda mais. O recluso fechou os olhos. \"Uma árvore.\"",
+      "Aliviado, Hero anunciou: \"Eu falo árvore! Eu converso com ela por você!\"",
+      "\"Não. O quê? Não! Esta é uma árvore ANTIGA e MALIGNA. Suas raízes vagam fundo, e suas gavinhas chegam longe, trazendo conflito e catástrofe para Enderas. Eu posso detê-la, mas preciso da sua ajuda. Primeiro, você precisa me soltar...\""
+    ],
     "effects": [
       "[purple]Roxo[/purple]\nou\n[green]Verde[/green]",
       "Descarte 1 carta da mão."
@@ -786,6 +930,15 @@
   },
   "legends-of-enderas/treasures/wisdom-stick": {
     "name": "Bastão da Sabedoria",
+    "story": [
+      "O Urso Espírito rabiscava na areia com o seu bastão da sabedoria.",
+      "Um Hero empolgado espiava por cima do ombro dele, fazendo anotações.",
+      "\"Isso é um segredo para a paz interior?\"",
+      "\"Em alguns sentidos, sim. Em outros, é uma receita de panqueca.\"",
+      "Hero pareceu desapontado.",
+      "O Urso Espírito disse: \"Podemos buscar a paz interior depois do café da manhã.\"",
+      "Voltou a rabiscar."
+    ],
     "effects": [
       "Preveja as próximas 2 ages.",
       "Preveja as últimas 2 ages."
@@ -793,6 +946,13 @@
   },
   "legends-of-enderas/treasures/zero-point-module": {
     "name": "Módulo de Ponto Zero",
+    "story": [
+      "\"Então ele funciona com o passado!\", exclamou Hero.",
+      "Kal se esforçou para explicar a parte da nave: \"Não...não é-\"",
+      "\"-Se eu correr na velocidade da luz, posso voltar no tempo para consertar a sua nave! Lá...vou....eu!\"",
+      "Hero saiu numa velocidade bem normal. Kal suspirou. Depois de várias voltas em torno da nave, Hero parou, ofegante.",
+      "\"Você já tentou chutar?\""
+    ],
     "effects": [
       "[red]Vermelho[/red] para [red]Vermelho[/red]\nou\n[green]Verde[/green] para [green]Verde[/green]",
       "Compre 2 cartas."

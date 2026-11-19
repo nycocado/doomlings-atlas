@@ -26,6 +26,7 @@ class TranslationDataIntegrityTest {
                     if (fields["name"] != null) add("name")
                     if (effectsOf(fields).isNotEmpty()) add("effects")
                     if (fields["flavor"].let { it != null && it !is JsonNull }) add("flavor")
+                    if (fields["story"] != null) add("story")
                 }
         }
 
@@ -181,6 +182,23 @@ class TranslationDataIntegrityTest {
         }
     }
 
+    // A translated story keeps the printed paragraphs, so it has as many as the English one.
+    @Test
+    fun everyTranslatedStoryHasAsManyParagraphsAsItsEnglishStory() {
+        val englishStoryById =
+            englishCards.associate { card ->
+                card.getValue("id").jsonPrimitive.content to card["story"]?.jsonArray.orEmpty().size
+            }
+        files.forEach { file ->
+            val wrong =
+                CardAssets
+                    .translationsOf(file)
+                    .filter { (id, fields) -> fields["story"].orEmpty().size != englishStoryById[id] }
+                    .keys
+            assertEquals(emptyList<String>(), wrong.toList(), file.label)
+        }
+    }
+
     @Test
     fun everyTranslatedEffectHasTheLineBreaksOfItsEnglishEffect() {
         files.forEach { file ->
@@ -188,6 +206,27 @@ class TranslationDataIntegrityTest {
                 effectPairs(file)
                     .filter { (_, pair) -> pair.first.lines().size != pair.second.lines().size }
                     .map { (where, _) -> where }
+            assertEquals(emptyList<String>(), wrong, file.label)
+        }
+    }
+
+    @Test
+    fun everyTranslatedStoryParagraphHasTheLineBreaksOfItsEnglishParagraph() {
+        val englishStoryById =
+            englishCards.associate { card ->
+                card.getValue("id").jsonPrimitive.content to
+                    card["story"]?.jsonArray.orEmpty().map { it.jsonPrimitive.content }
+            }
+        files.forEach { file ->
+            val wrong =
+                CardAssets.translationsOf(file).flatMap { (id, fields) ->
+                    fields["story"]
+                        .orEmpty()
+                        .zip(englishStoryById[id].orEmpty())
+                        .mapIndexedNotNull { index, (text, english) ->
+                            "$id.story[$index]".takeIf { text.lines().size != english.lines().size }
+                        }
+                }
             assertEquals(emptyList<String>(), wrong, file.label)
         }
     }
