@@ -139,8 +139,8 @@ data class Effect(
     val text: String,
 )
 
-// The kinds for when the text applies fit any card with text. A label kind is the printed label
-// of a text section and only its card type has it.
+// The kinds for when the text applies fit any card with text. A label kind is the printed label of a text section and
+// only its card type has it.
 @Serializable
 enum class EffectKind(
     val labelOf: KClass<out NamedCard>? = null,

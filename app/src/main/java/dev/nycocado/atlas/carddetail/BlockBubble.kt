@@ -183,7 +183,6 @@ private fun KindHeading(
     }
 }
 
-// The name of a kind the card detail shows above its text.
 private val EffectKind.title: Int
     @StringRes get() =
         when (this) {

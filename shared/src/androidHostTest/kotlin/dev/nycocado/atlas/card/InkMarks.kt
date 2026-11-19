@@ -65,5 +65,26 @@ fun inks(text: String): List<String> =
         .filter { it != SMALL }
         .toList()
 
-// The text's small spans in order, each as the inks it holds, so a span lost, added or moved past an ink shows.
-fun smallSpans(text: String): List<List<String>> = smallSpan.findAll(text).map { inks(it.groupValues[1]) }.toList()
+private val inkOrToken = Regex("""\[([^\[\]/]*)]|\{[^}]*}""")
+
+// A small span's place: its line, whether it starts and ends that line, and the inks and tokens it holds, in order.
+data class SmallSpan(
+    val line: Int,
+    val startsLine: Boolean,
+    val endsLine: Boolean,
+    val marks: List<String>,
+)
+
+// The text's small spans in order, so a span lost, added or moved to other words shows.
+fun smallSpans(text: String): List<SmallSpan> =
+    smallSpan
+        .findAll(text)
+        .map { span ->
+            val before = text.substring(0, span.range.first)
+            SmallSpan(
+                line = before.count { it == '\n' },
+                startsLine = before.substringAfterLast('\n').isBlank(),
+                endsLine = text.substring(span.range.last + 1).substringBefore('\n').isBlank(),
+                marks = inkOrToken.findAll(span.groupValues[1]).map { it.value }.toList(),
+            )
+        }.toList()

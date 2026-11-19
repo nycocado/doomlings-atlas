@@ -2,6 +2,7 @@ package dev.nycocado.atlas.card
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 
 // Broken samples for the checks CardDataIntegrityTest and TranslationDataIntegrityTest run on the real data.
 class InkMarksTest {
@@ -89,10 +90,18 @@ class InkMarksTest {
     }
 
     @Test
-    fun smallSpansAreTheInksEachHoldsInOrder() {
+    fun smallSpansAreTheirPlacesAndMarksInOrder() {
         assertEquals(
-            listOf(listOf("red"), emptyList()),
-            smallSpans("[blue]x[/blue] [small]a [red]b[/red][/small] c [small]d[/small]"),
+            listOf(SmallSpan(0, false, false, listOf("[red]", "{action}")), SmallSpan(1, true, true, emptyList())),
+            smallSpans("[blue]x[/blue] [small]a [red]b[/red] {action}[/small] c\n[small]d[/small]"),
+        )
+    }
+
+    @Test
+    fun aSmallSpanMovedToOtherWordsChangesItsSmallSpans() {
+        assertNotEquals(
+            smallSpans("Jogue 1 e descarte este. [small]Ignore ações ({action}).[/small]"),
+            smallSpans("[small]Jogue 1 e descarte este.[/small] Ignore ações ({action})."),
         )
     }
 }

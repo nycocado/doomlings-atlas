@@ -12,7 +12,7 @@ A card prints some words of a section in small type, such as "(Cannot discard do
 - An effect's text marks a span printed in small type in brackets, like an ink: `[small](Excluding dominants.)[/small]`. It is a type size, not an ink: a small span may hold ink spans and tokens, but no other small span, and no ink span crosses its marks.
 - `shared` reads it in the same reading of the text as the inks and tokens: the card face's text parts carry a small flag, and search and citations see the words without the mark. The card detail draws small parts in a smaller type, in the same block.
 - The `note` kind is gone: each note joins the effect it is printed in.
-- A translated effect has the small spans of its English effect, in count and order, like the inks. The data tests check this and that every small span is well formed.
+- A translated effect has the small spans of its English effect, in count, order and place: on the same line, at its start or end or within it, around the same inks and tokens. The data tests check this and that every small span is well formed.
 
 ## Alternatives Considered
 

@@ -427,6 +427,19 @@ class CardFaceTest {
     }
 
     @Test
+    fun aSmallSpanInAYellowEffectKeepsTheYellowInk() {
+        val trinket =
+            anxietyElixir.copy(
+                effects = listOf(Effect(EffectKind.PocketObjective, "Reveal: 2 reds. [small](x)[/small]")),
+            )
+        val block = trinket.blocks(trinket.effects, null, null).first()
+        assertEquals(
+            listOf(TextPart.Words("Reveal: 2 reds. ", Ink.Yellow), TextPart.Words("(x)", Ink.Yellow, small = true)),
+            (block.content as BlockContent.Effect).text,
+        )
+    }
+
+    @Test
     fun searchLeavesOutSmallMarks() {
         assertEquals(
             listOf("Age", "Play 1. (No dominants.)"),

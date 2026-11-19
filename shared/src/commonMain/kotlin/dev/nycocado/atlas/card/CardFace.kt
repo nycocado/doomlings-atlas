@@ -9,7 +9,8 @@ data class CardFace(
     val faceValue: Int?,
     // The card detail's blocks in order; none when the card has no text, flavor or Gene Pool.
     val blocks: List<CardBlock>,
-    // What the compendium search matches: the name, if any, and the text of every effect, without tokens, ink or small marks.
+    // What the compendium search matches: the name, if any, and the text of every effect, without tokens, ink or small
+    // marks.
     val searchable: List<String>,
 ) {
     // Empty for cards without color; null stands for colorless.
@@ -223,8 +224,8 @@ private val token = Regex("""\s*\(\{[^}]*\}\)|\{[^}]*\}""")
 
 private val inkMark = Regex("""\[/?[^\]/]*\]""")
 
-// The words of an effect: a token is an icon, not a word to search for, and an ink or small mark only styles its words. A
-// parenthesized token goes with its parentheses and the space before them.
+// The words of an effect: a token is an icon, not a word to search for, and an ink or small mark only styles its words.
+// A parenthesized token goes with its parentheses and the space before them.
 fun plainText(text: String) = text.replace(token, "").replace(inkMark, "")
 
 fun Card.face(): CardFace =
