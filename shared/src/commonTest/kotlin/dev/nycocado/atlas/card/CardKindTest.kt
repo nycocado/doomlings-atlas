@@ -26,7 +26,7 @@ class CardKindTest {
     private val meaningOfLife = MeaningOfLife("m", "upgrade", "", "Meaning", emptyList(), null)
     private val treasure = Treasure("tr", "legends-of-enderas", "", "Treasure", emptyList())
     private val trinket = Trinket("ti", "imaginary-ends", "", "Trinket", emptyList(), 1, "Flavor")
-    private val merchant = Merchant("me", "imaginary-ends", "", "Merchant", emptyList())
+    private val merchant = Merchant("me", "imaginary-ends", "", "Merchant", emptyList(), "Flavor")
 
     @Test
     fun theBirthOfLifeIsAnAge() {

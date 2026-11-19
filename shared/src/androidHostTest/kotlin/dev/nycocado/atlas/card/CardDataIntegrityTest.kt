@@ -164,6 +164,11 @@ class CardDataIntegrityTest {
     }
 
     @Test
+    fun everyMerchantHasAFlavor() {
+        assertEquals(emptyList(), cards.filterIsInstance<Merchant>().filter { it.flavor.isNullOrBlank() }.map { it.id })
+    }
+
+    @Test
     fun idsAreUnique() {
         assertEquals(
             emptyList(),

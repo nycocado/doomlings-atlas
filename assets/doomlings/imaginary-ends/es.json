@@ -79,67 +79,78 @@
     "name": "Bon",
     "effects": [
       "Elimina 1 trinket, luego gana 1 trinket.\nPuedes repetir una vez."
-    ]
+    ],
+    "flavor": "A lo largo de este camino del desierto has visto muchos montículos de tierra. Bon está sentada con sus mercancías junto a un hoyo recién cavado. Sonriendo, dice: \"Tengo una oferta para ti.\""
   },
   "imaginary-ends/merchants/fowler": {
     "name": "Fowler",
     "effects": [
       "Puedes eliminar 1 trinket, luego ganar 1."
-    ]
+    ],
+    "flavor": "Una sola luz parpadea en la oscuridad y revela a un vendedor sospechoso. Con una sonrisa, comenta: \"Felicidades, te perdiste en el lugar correcto.\""
   },
   "imaginary-ends/merchants/fowler-2": {
     "name": "Fowler",
     "effects": [
       "Puedes eliminar 1 trinket, luego ganar 1."
-    ]
+    ],
+    "flavor": "En la niebla, Fowler está solo; su linterna es la única luz que puedes ver. Murmura para nadie en particular: \"Elige una carta, cualquier carta.\""
   },
   "imaginary-ends/merchants/fowler-3": {
     "name": "Fowler",
     "effects": [
       "Puedes eliminar 1 trinket, luego ganar 1."
-    ]
+    ],
+    "flavor": "En este bosque sombrío, un mercader aún más sombrío susurra una y otra vez. \"Se remata todo.\" \"Se. Remata. Todo.\""
   },
   "imaginary-ends/merchants/fowler-4": {
     "name": "Fowler",
     "effects": [
       "Puedes eliminar 1 trinket, luego ganar 1."
-    ]
+    ],
+    "flavor": "Mientras un vendedor en el escenario principal presenta un artilugio curioso, un comerciante sospechoso te susurra al oído: \"Lo que yo tengo es más interesante. Y no es robado, eh.\""
   },
   "imaginary-ends/merchants/huk": {
     "name": "Huk",
     "effects": [
       "Guarda 1 trinket en el bolsillo, luego gana 1."
-    ]
+    ],
+    "flavor": "\"¿Cuánto tengo que pagarte para que me compres algo?\""
   },
   "imaginary-ends/merchants/huk-2": {
     "name": "Huk",
     "effects": [
       "Guarda 1 trinket en el bolsillo, luego gana 1."
-    ]
+    ],
+    "flavor": "Huk te entrega un paquete envuelto. \"Esto es lo que estabas buscando.\" Llevándose un dedo a los labios, se vuelve a perder entre la multitud."
   },
   "imaginary-ends/merchants/toddles": {
     "name": "Toddles",
     "effects": [
       "Gana 1 trinket.\nLuego, elimina 1."
-    ]
+    ],
+    "flavor": "El mercader errante abre un cofre antiguo. En ese instante, el viento aúlla. \"Una coincidencia\", asegura. Un rayo cae sobre un árbol cercano y lo prende en llamas. \"Eso siempre pasa.\""
   },
   "imaginary-ends/merchants/toddles-2": {
     "name": "Toddles",
     "effects": [
       "Gana 1 trinket.\nLuego, elimina 1."
-    ]
+    ],
+    "flavor": "A un costado del mercado principal de Crackletown, un mercader presenta su producto más nuevo: dulce de piedra explosivo. No confundir con piedras explosivas en dulce."
   },
   "imaginary-ends/merchants/toddles-3": {
     "name": "Toddles",
     "effects": [
       "Gana 1 trinket.\nLuego, elimina 1."
-    ]
+    ],
+    "flavor": "El mercader entusiasta pone su puesto en los mercados de arriba. Calcetines, sombreros, bufandas y parkas rosa chillón, todo tejido con 100 % algodón de azúcar. Solo lavado en seco."
   },
   "imaginary-ends/merchants/toddles-4": {
     "name": "Toddles",
     "effects": [
       "Gana 1 trinket.\nLuego, elimina 1."
-    ]
+    ],
+    "flavor": "El mercader despeinado por el viento se quita las botas empapadas. Gotea lodo de las suelas. Sale un hedor de las plantillas. Exclama: \"¡Zapatos nuevos! ¡Nunca usados!\""
   },
   "imaginary-ends/traits/atavism": {
     "name": "Atavismo",
