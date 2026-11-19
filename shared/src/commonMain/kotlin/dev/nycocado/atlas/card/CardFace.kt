@@ -45,7 +45,7 @@ sealed interface CardFact {
     ) : CardFact {
         // The token the effect text writes this subspecies with, null for a name without one.
         val token: Token?
-            get() = subspeciesTokens.firstOrNull { it.name == name }
+            get() = subspeciesTokens.firstOrNull { it.code == name.lowercase() }
     }
 }
 

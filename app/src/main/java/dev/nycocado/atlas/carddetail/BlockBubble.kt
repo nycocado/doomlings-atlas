@@ -246,25 +246,6 @@ private fun Token.title(language: CardLanguage): String =
         Token.Glitterling -> "Glitterling"
     }
 
-internal val Token.symbol: Int
-    @DrawableRes get() =
-        when (this) {
-            Token.Action -> R.drawable.ic_symbol_action
-            Token.Attachment -> R.drawable.ic_symbol_attachment
-            Token.DropOfLife -> R.drawable.ic_symbol_drop_of_life
-            Token.WorldsEnd -> R.drawable.ic_symbol_worlds_end
-            Token.Compass -> R.drawable.ic_symbol_compass_star
-            Token.Coral -> R.drawable.ic_symbol_coral
-            Token.Fish -> R.drawable.ic_symbol_fish
-            Token.Shell -> R.drawable.ic_symbol_shell
-            Token.Mythling -> R.drawable.ic_symbol_sub_mythling
-            Token.Dinoling -> R.drawable.ic_symbol_sub_dinoling
-            Token.Techling -> R.drawable.ic_symbol_sub_techling
-            Token.Deepling -> R.drawable.ic_symbol_sub_deepling
-            Token.Moonling -> R.drawable.ic_symbol_sub_moonling
-            Token.Glitterling -> R.drawable.ic_symbol_sub_glitterling
-        }
-
 // 1.3em high and 1.15em for the action, as docs/design.md has it, at the drawable's own width to height: the other
 // symbols are square.
 private val Token.placeholder: Placeholder

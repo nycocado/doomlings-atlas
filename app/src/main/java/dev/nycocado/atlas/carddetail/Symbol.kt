@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.vectorResource
 import dev.nycocado.atlas.R
 import dev.nycocado.atlas.card.CardColor
+import dev.nycocado.atlas.card.Token
 import dev.nycocado.atlas.ui.theme.AtlasColors
 import dev.nycocado.atlas.ui.theme.trait
 import dev.nycocado.atlas.ui.theme.traitPaint
@@ -61,3 +62,22 @@ private fun ImageVector.withCardColors(colors: List<Color>): ImageVector =
 // A card without a color prints its action symbols in the colorless fill.
 internal fun AtlasColors.actionColors(colors: List<CardColor?>): List<Color> =
     colors.ifEmpty { listOf(null) }.map { trait(it).fill }
+
+internal val Token.symbol: Int
+    @DrawableRes get() =
+        when (this) {
+            Token.Action -> R.drawable.ic_symbol_action
+            Token.Attachment -> R.drawable.ic_symbol_attachment
+            Token.DropOfLife -> R.drawable.ic_symbol_drop_of_life
+            Token.WorldsEnd -> R.drawable.ic_symbol_worlds_end
+            Token.Compass -> R.drawable.ic_symbol_compass_star
+            Token.Coral -> R.drawable.ic_symbol_coral
+            Token.Fish -> R.drawable.ic_symbol_fish
+            Token.Shell -> R.drawable.ic_symbol_shell
+            Token.Mythling -> R.drawable.ic_symbol_sub_mythling
+            Token.Dinoling -> R.drawable.ic_symbol_sub_dinoling
+            Token.Techling -> R.drawable.ic_symbol_sub_techling
+            Token.Deepling -> R.drawable.ic_symbol_sub_deepling
+            Token.Moonling -> R.drawable.ic_symbol_sub_moonling
+            Token.Glitterling -> R.drawable.ic_symbol_sub_glitterling
+        }
