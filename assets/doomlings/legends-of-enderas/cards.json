@@ -2206,7 +2206,7 @@
     "effects": [
       {
         "kind": "cloak",
-        "text": "Prevent a Steal. (Excluding dominants.)"
+        "text": "Prevent a steal. (Excluding dominants.)"
       },
       {
         "kind": "rush",
@@ -2338,7 +2338,7 @@
     "effects": [
       {
         "kind": "adapt",
-        "text": "[purple]Purple[/purple] actions\nor\n[red]Red[/red] actions ({action})"
+        "text": "[purple]Purple[/purple] actions ({action})\nor\n[red]Red[/red] actions ({action})"
       },
       {
         "kind": "rush",
@@ -2372,7 +2372,7 @@
     "effects": [
       {
         "kind": "cloak",
-        "text": "Prevent an action."
+        "text": "Prevent an action ({action})."
       },
       {
         "kind": "rush",
@@ -2453,7 +2453,7 @@
     "effects": [
       {
         "kind": "adapt",
-        "text": "[rainbow]Any Color[/rainbow]\nactions"
+        "text": "[rainbow]Any Color[/rainbow]\nactions ({action})"
       },
       {
         "kind": "rush",

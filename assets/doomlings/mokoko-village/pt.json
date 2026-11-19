@@ -22,7 +22,7 @@
     "name": "Cachoeiras Fatais",
     "effects": [
       "Descarte aleatoriamente todas as cartas da sua mão, menos 2.",
-      "Jogue 1. Ignore ações."
+      "Jogue 1. Ignore ações ({action})."
     ]
   },
   "mokoko-village/traits/abandoned": {

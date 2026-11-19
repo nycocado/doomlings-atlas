@@ -608,8 +608,8 @@
   "imaginary-ends/trinkets/dimming-hat": {
     "name": "Chapéu Escurecedor",
     "effects": [
-      "Impeça as ações que você jogar.",
-      "Jogar: Ação."
+      "Impeça as ações ({action}) que você jogar.",
+      "Jogar: Ação ({action})."
     ],
     "flavor": "Quanto mais eu vejo, menos eu sei."
   },
@@ -728,7 +728,7 @@
   "imaginary-ends/trinkets/party-mask": {
     "name": "Máscara de Festa",
     "effects": [
-      "Você não pode jogar Gota de Vida.",
+      "Você não pode jogar Gota de Vida ({drop-of-life}).",
       "Descartar da mão: 1 azul ou roxo."
     ],
     "flavor": "Comprada de um viajante sem rosto, com um casaco muito da moda."
@@ -768,7 +768,7 @@
   "imaginary-ends/trinkets/silby-bark": {
     "name": "Casca de Silby",
     "effects": [
-      "Impeça as ações que você jogar.",
+      "Impeça as ações ({action}) que você jogar.",
       "Revelar: 2 roxos na mão."
     ],
     "flavor": "Contrabandeada da Living Library."
@@ -849,7 +849,7 @@
     "name": "Quebra-Cabeça Insolúvel",
     "effects": [
       "Ao estabilizar, estabilize até 4.",
-      "Jogar: Ação."
+      "Jogar: Ação ({action})."
     ],
     "flavor": "Todo mundo parece entender."
   },

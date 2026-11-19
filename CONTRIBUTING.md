@@ -28,6 +28,7 @@ Doomlings LLC gave permission for this app (2026-10-15) under the fan art terms 
 - Always keep the notice "Unofficial, not affiliated with or endorsed by Doomlings LLC" visible in the app and its store listings.
 - No paid features and no ads.
 - Card data (names, effects, points) must be traceable to a reliable source: the physical cards, official material or checked community assets. Never guess or invent it.
+- An obvious misprint on a card that doesn't change its meaning is not reproduced in the data: Shade Trees prints "use the the Gene Pool", Ancient prints no period before "Put", and Exotic prints "Ignore actions. (A)".
 - Card images in issues, PRs or datasets must be photos of cards you own or official images already in the repo.
 
 ## Translations

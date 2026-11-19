@@ -131,7 +131,7 @@
   "upgrade/meaning-of-life/the-fortunate-alchemist": {
     "name": "O Alquimista Afortunado",
     "effects": [
-      "+2 se você tiver 2-4 traits com valor de face 0 na sua pilha de traits, incluindo as bússolas ({compass}).\n+9 se tiver 5.\n-4 se não tiver nenhum."
+      "+2 se você tiver 2-4 traits com valor de face 0 na sua pilha de traits, incluindo ({compass}).\n+9 se tiver 5.\n-4 se não tiver nenhum."
     ]
   },
   "upgrade/meaning-of-life/the-genial-outsider": {

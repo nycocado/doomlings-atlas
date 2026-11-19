@@ -550,7 +550,7 @@
       },
       {
         "kind": "worlds-end",
-        "text": "Discard a Drop of Life from your trait pile."
+        "text": "Discard a Drop of Life ({drop-of-life}) from your trait pile."
       }
     ],
     "genePool": -1,
@@ -1053,7 +1053,7 @@
     "flavor": "I don't have that one yet!",
     "effects": [
       {
-        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each [rainbow]color[/rainbow] drawn.\n[small]Discard dominants. Ignore actions.[/small]"
+        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each [rainbow]color[/rainbow] drawn.\n[small]Discard dominants. Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,

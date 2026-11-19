@@ -271,7 +271,7 @@ class CardFaceTest {
             "imaginary-ends/trinkets/anxiety-elixir.webp",
             "Anxiety Elixir",
             listOf(
-                Effect(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand."),
+                Effect(EffectKind.AwesomePower, "Start of turn: Discard dominants from hand."),
                 Effect(EffectKind.PocketObjective, "Reveal: 2 reds in hand."),
             ),
             2,
@@ -282,7 +282,7 @@ class CardFaceTest {
     fun aTrinketsLabelsAreKindsAndItsValueIsTheLastBlockWithTheFlavor() {
         assertEquals(
             listOf(
-                effectBlock(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand.", selector = true),
+                effectBlock(EffectKind.AwesomePower, "Start of turn: Discard dominants from hand.", selector = true),
                 effectBlock(EffectKind.PocketObjective, "Reveal: 2 reds in hand.", ink = Ink.Yellow),
                 CardBlock(BlockContent.Value(2), flavor = "This causes stress. Can't stress that enough."),
             ),

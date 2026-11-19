@@ -131,7 +131,7 @@
   "upgrade/meaning-of-life/the-fortunate-alchemist": {
     "name": "El Alquimista Afortunado",
     "effects": [
-      "+2 si tienes 2-4 traits con valor nominal 0 en tu pila de traits, incluyendo las brújulas ({compass}).\n+9 si tienes 5.\n-4 si no tienes ninguno."
+      "+2 si tienes 2-4 traits con valor nominal 0 en tu pila de traits, incluyendo ({compass}).\n+9 si tienes 5.\n-4 si no tienes ninguno."
     ]
   },
   "upgrade/meaning-of-life/the-genial-outsider": {

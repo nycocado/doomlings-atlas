@@ -49,7 +49,7 @@
       },
       {
         "kind": "worlds-end",
-        "text": "Play 1. Ignore actions."
+        "text": "Play 1. Ignore actions ({action})."
       }
     ],
     "genePool": 0,

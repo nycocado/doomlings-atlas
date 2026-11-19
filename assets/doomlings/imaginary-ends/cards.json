@@ -1874,7 +1874,7 @@
     "effects": [
       {
         "kind": "awesome-power",
-        "text": "Start of Turn: Discard dominants from hand."
+        "text": "Start of turn: Discard dominants from hand."
       },
       {
         "kind": "pocket-objective",
@@ -1988,11 +1988,11 @@
     "effects": [
       {
         "kind": "awesome-power",
-        "text": "Prevent actions that you play."
+        "text": "Prevent actions ({action}) that you play."
       },
       {
         "kind": "pocket-objective",
-        "text": "Play: Action."
+        "text": "Play: Action ({action})."
       }
     ],
     "value": 2,
@@ -2159,7 +2159,7 @@
     "effects": [
       {
         "kind": "awesome-power",
-        "text": "Start of Turn: You may play 1 effectless."
+        "text": "Start of turn: You may play 1 effectless."
       },
       {
         "kind": "pocket-objective",
@@ -2273,7 +2273,7 @@
     "effects": [
       {
         "kind": "awesome-power",
-        "text": "Cannot play Drop of Life."
+        "text": "Cannot play Drop of Life ({drop-of-life})."
       },
       {
         "kind": "pocket-objective",
@@ -2368,7 +2368,7 @@
     "effects": [
       {
         "kind": "awesome-power",
-        "text": "Prevent actions that you play."
+        "text": "Prevent actions ({action}) that you play."
       },
       {
         "kind": "pocket-objective",
@@ -2562,7 +2562,7 @@
       },
       {
         "kind": "pocket-objective",
-        "text": "Play: Action."
+        "text": "Play: Action ({action})."
       }
     ],
     "value": 1,
@@ -2596,7 +2596,7 @@
     "effects": [
       {
         "kind": "awesome-power",
-        "text": "Start of Turn: Discard 1 from hand."
+        "text": "Start of turn: Discard 1 from hand."
       },
       {
         "kind": "pocket-objective",

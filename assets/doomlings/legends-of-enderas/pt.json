@@ -690,7 +690,7 @@
   "legends-of-enderas/treasures/ghostly-boots": {
     "name": "Botas Fantasmagóricas",
     "effects": [
-      "Ações [purple]roxas[/purple]\nou\nAções [red]vermelhas[/red] ({action})",
+      "Ações [purple]roxas[/purple] ({action})\nou\nAções [red]vermelhas[/red] ({action})",
       "Estabilize até 5."
     ]
   },
@@ -704,7 +704,7 @@
   "legends-of-enderas/treasures/reflecting-glass": {
     "name": "Vidro Refletor",
     "effects": [
-      "Impeça uma ação.",
+      "Impeça uma ação ({action}).",
       "Jogue um trait com valor de face 2 ou menos. Ignore ações ({action})."
     ]
   },
@@ -738,7 +738,7 @@
   "legends-of-enderas/treasures/the-maliforms": {
     "name": "Os Maliformes",
     "effects": [
-      "Ações de\n[rainbow]qualquer cor[/rainbow]",
+      "Ações de\n[rainbow]qualquer cor[/rainbow] ({action})",
       "Estabilize até 5."
     ]
   },

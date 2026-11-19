@@ -255,7 +255,7 @@
     "name": "Tragédia dos Comuns",
     "effects": [
       "Escolha uma cor na sua mão para ficar com ela. Descarte o resto.",
-      "Descarte 1 Gota de Vida da sua pilha de traits."
+      "Descarte 1 Gota de Vida ({drop-of-life}) da sua pilha de traits."
     ]
   },
   "overlush/catastrophes/tropical-superstorm": {
@@ -411,7 +411,7 @@
   "overlush/traits/collector": {
     "name": "Colecionador",
     "effects": [
-      "Quando você jogar Collector da sua mão, compre 4 cartas. Você pode jogar 1 de cada [rainbow]cor[/rainbow] entre as cartas compradas.\n[small]Descarte os dominantes. Ignore ações.[/small]"
+      "Quando você jogar Collector da sua mão, compre 4 cartas. Você pode jogar 1 de cada [rainbow]cor[/rainbow] entre as cartas compradas.\n[small]Descarte os dominantes. Ignore ações ({action}).[/small]"
     ],
     "flavor": "Essa eu ainda não tenho!"
   },

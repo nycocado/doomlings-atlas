@@ -746,7 +746,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Give an Opponent 2 from hand OR 1 from the discard pile."
+        "text": "Give an opponent 2 from hand OR 1 from the discard pile."
       }
     ],
     "genePool": null,
