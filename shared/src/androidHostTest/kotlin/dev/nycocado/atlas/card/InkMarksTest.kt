@@ -53,4 +53,46 @@ class InkMarksTest {
     fun inksAreTheOpeningMarksInOrder() {
         assertEquals(listOf("red", "blue", "red"), inks("[red]a[/red] [blue]b[/blue] [red]c[/red] {action}"))
     }
+
+    @Test
+    fun aSmallSpanMayHoldInksAndTokens() {
+        assertEquals(emptyList(), inkMarkProblems("Play 1. [small]Ignore [red]red[/red] actions ({action}).[/small]"))
+    }
+
+    @Test
+    fun anUnclosedSmallSpanIsAProblem() {
+        assertEquals(listOf("unclosed [small]"), inkMarkProblems("Play 1. [small](No dominants.)"))
+    }
+
+    @Test
+    fun aStraySmallCloseIsAProblem() {
+        assertEquals(listOf("stray [/small]"), inkMarkProblems("Play 1. (No dominants.)[/small]"))
+    }
+
+    @Test
+    fun aSmallSpanInsideASmallSpanIsAProblem() {
+        assertEquals(
+            listOf("[small] inside [small]", "stray [/small]"),
+            inkMarkProblems("[small]a [small]b[/small][/small]"),
+        )
+    }
+
+    @Test
+    fun aSmallMarkInsideAnInkSpanIsAProblem() {
+        assertEquals(listOf("[small] inside [red]"), inkMarkProblems("[red]a [small]b[/red] c[/small]"))
+        assertEquals(listOf("[/small] inside [red]"), inkMarkProblems("[small]a [red]b[/small] c[/red]"))
+    }
+
+    @Test
+    fun smallIsNotAnInk() {
+        assertEquals(listOf("red"), inks("[small]a [red]b[/red][/small]"))
+    }
+
+    @Test
+    fun smallSpansAreTheInksEachHoldsInOrder() {
+        assertEquals(
+            listOf(listOf("red"), emptyList()),
+            smallSpans("[blue]x[/blue] [small]a [red]b[/red][/small] c [small]d[/small]"),
+        )
+    }
 }

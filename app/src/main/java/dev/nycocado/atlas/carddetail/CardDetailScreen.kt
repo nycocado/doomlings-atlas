@@ -610,7 +610,7 @@ internal fun CitedCardDetailPreview() =
         }
     }
 
-// Magic Beans as in assets/doomlings/imaginary-ends/cards.json: an Action, then a note with a token.
+// Magic Beans as in assets/doomlings/imaginary-ends/cards.json: an Action with a small-type line holding a token.
 private val MagicBeans =
     Trait(
         "imaginary-ends/traits/magic-beans",
@@ -619,8 +619,10 @@ private val MagicBeans =
         "Magic Beans",
         "Who knows what these could grow into?",
         listOf(
-            Effect(EffectKind.Action, "Draw 1. If its face value is 1, play it and repeat."),
-            Effect(EffectKind.Note, "Ignore actions ({action})."),
+            Effect(
+                EffectKind.Action,
+                "Draw 1. If its face value is 1, play it and repeat.\n[small]Ignore actions ({action}).[/small]",
+            ),
         ),
         null,
         1,
@@ -632,7 +634,7 @@ private val MagicBeans =
 
 @PreviewLightDark
 @Composable
-internal fun ActionNoteTokenDetailPreview() = AtlasTheme { CardDetailSample(card = MagicBeans) }
+internal fun ActionSmallTokenDetailPreview() = AtlasTheme { CardDetailSample(card = MagicBeans) }
 
 // Carnivore as in assets/doomlings/legends-of-enderas/cards.json, with its Dinoling token.
 private val Carnivore =
@@ -643,8 +645,10 @@ private val Carnivore =
         "Carnivore",
         "A healthy, balanced meal includes meat with two sides of meat.",
         listOf(
-            Effect(EffectKind.Action, "Discard all Dinolings ({dinoling}) from your trait pile."),
-            Effect(EffectKind.Note, "(Excluding this one.)"),
+            Effect(
+                EffectKind.Action,
+                "Discard all Dinolings ({dinoling}) from your trait pile.\n[small](Excluding this one.)[/small]",
+            ),
         ),
         null,
         6,

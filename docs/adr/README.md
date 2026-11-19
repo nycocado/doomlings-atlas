@@ -47,3 +47,4 @@ Not an ADR:
 | [0010](0010-ink-marks-in-effect-text.md)           | Ink Marks in Effect Text                     | amended    |
 | [0011](0011-yellow-ink-and-effect-ink.md)          | Yellow Ink and an Effect's Ink               | accepted   |
 | [0012](0012-update-check-from-github-releases.md)  | Update Check from GitHub Releases            | accepted   |
+| [0013](0013-small-type-in-effect-text.md)          | Small Type in Effect Text                    | accepted   |

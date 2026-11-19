@@ -412,6 +412,29 @@ class CardFaceTest {
     }
 
     @Test
+    fun aSmallSpanIsSmallWordsAndIconsThatKeepTheirInks() {
+        assertEquals(
+            listOf(
+                TextPart.Words("Play 1.\n"),
+                TextPart.Words("Ignore ", small = true),
+                TextPart.Words("red", Ink.Red, small = true),
+                TextPart.Words(" actions (", small = true),
+                TextPart.Icon(Token.Action, small = true),
+                TextPart.Words(").", small = true),
+            ),
+            age("Play 1.\n[small]Ignore [red]red[/red] actions ({action}).[/small]").textParts(),
+        )
+    }
+
+    @Test
+    fun searchLeavesOutSmallMarks() {
+        assertEquals(
+            listOf("Age", "Play 1. (No dominants.)"),
+            age("Play 1. [small](No dominants.)[/small]").face().searchable,
+        )
+    }
+
+    @Test
     fun searchLeavesOutInkMarks() {
         assertEquals(
             listOf("Age", "Discard 1 blue trait."),

@@ -168,6 +168,19 @@ class TranslationDataIntegrityTest {
         }
     }
 
+    // Small type sits on the same words in every language, so each translated effect has the small spans of its English
+    // effect, in their order and around the same inks.
+    @Test
+    fun everyTranslatedEffectHasTheSmallSpansOfItsEnglishEffect() {
+        files.forEach { file ->
+            val wrong =
+                effectPairs(file)
+                    .filter { (_, pair) -> smallSpans(pair.first) != smallSpans(pair.second) }
+                    .map { (where, _) -> where }
+            assertEquals(emptyList<String>(), wrong, file.label)
+        }
+    }
+
     @Test
     fun everyTranslatedEffectHasTheLineBreaksOfItsEnglishEffect() {
         files.forEach { file ->

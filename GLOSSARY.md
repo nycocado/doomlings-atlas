@@ -10,7 +10,7 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 - **Dominant**: a trait with a gold border and star. Once played it can't leave its pile, and each player plays only 2 ([one exception](docs/rules/classic.md#dominant-traits)).
 - **Face value**: the number printed at the bottom of a trait. Bonuses are counted apart from it. _Avoid_: points (for the printed number), score.
 - **Compass star**: a trait whose value "is equal to" something in the game; it has no fixed face value (`points: null` in the data).
-- **Effect**: a section of the text at the bottom of a card. A card has one or more, each with an optional **kind** (when it applies, a small-type note, or a label such as Rush). A trait without any is **effectless**.
+- **Effect**: a section of the text at the bottom of a card. A card has one or more, each with an optional **kind** (when it applies, or a label such as Rush); words printed in small type are marked inside its text. A trait without any is **effectless**.
 - **Token**: an inline icon in an effect's text, written in braces (`{action}`).
 - **Ink**: the color an effect's text is printed in: a trait color, colorless, rainbow, yellow or wonder (the orange-to-blue gradient of Age of Wonder). A span gets it from **ink marks** in brackets (`[red]red[/red]`); a whole effect gets it from its kind (a Catastrophe's World's End and a Trinket's Pocket Objective are yellow), and a span's ink wins over its effect's.
 - **Value**: a Trinket's points, kept apart from its effects.

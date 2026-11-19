@@ -126,7 +126,6 @@ internal fun BlockBubble(
                             KindHeading(content, shownLanguage, actionColors)
                             EffectText(
                                 content.text,
-                                note = content.kind == EffectKind.Note,
                                 language = shownLanguage,
                                 card = card,
                                 library = library,
@@ -184,14 +183,13 @@ private fun KindHeading(
     }
 }
 
-// The name of a kind the card detail shows above its text; a note shows none, as its small type sets it apart.
-private val EffectKind.title: Int?
+// The name of a kind the card detail shows above its text.
+private val EffectKind.title: Int
     @StringRes get() =
         when (this) {
             EffectKind.Action -> R.string.icon_action
             EffectKind.PlayWhen -> R.string.icon_play_when
             EffectKind.WorldsEnd -> R.string.worlds_end
-            EffectKind.Note -> null
             EffectKind.AwesomePower -> R.string.effect_awesome_power
             EffectKind.PocketObjective -> R.string.effect_pocket_objective
             EffectKind.Rush -> R.string.effect_rush
@@ -279,11 +277,10 @@ private val Token.placeholder: Placeholder
         }
 
 // An effect's text with its tokens as symbols in the line, tagged with its language, and the card names it cites as
-// links. A note is in smaller type.
+// links. A small span is in smaller type, in the same text.
 @Composable
 private fun EffectText(
     parts: List<TextPart>,
-    note: Boolean,
     language: CardLanguage,
     card: Card,
     library: CardLibrary,
@@ -301,6 +298,7 @@ private fun EffectText(
         buildAnnotatedString {
             withStyle(SpanStyle(localeList = LocaleList(language.code))) {
                 parts.forEachIndexed { i, part ->
+                    val partStart = length
                     when (part) {
                         is TextPart.Words -> {
                             val start = length
@@ -345,6 +343,7 @@ private fun EffectText(
                             appendInlineContent(part.token.code, titles.getValue(part.token))
                         }
                     }
+                    if (part.small) addStyle(SpanStyle(fontSize = AtlasTypography.bodyMd.fontSize), partStart, length)
                 }
             }
         }
@@ -367,7 +366,7 @@ private fun EffectText(
             }
     BasicText(
         text,
-        style = (if (note) AtlasTypography.bodyMd else AtlasTypography.bodyLg).copy(color = theme.onSurface),
+        style = AtlasTypography.bodyLg.copy(color = theme.onSurface),
         onTextLayout = { layout ->
             gradients.forEach { (span, brush) ->
                 brush.extent =
@@ -458,7 +457,7 @@ internal fun TrinketBlocksPreview() =
     }
 
 // Hyper-Intelligence (assets/doomlings/classic/cards.json) and Sour Grapes (overlush), verbatim, ink marks included: a
-// rainbow "Choose a color.", and blue and red words with a rainbow "color".
+// rainbow "Choose a color.", and blue and red words with a rainbow "color" above a small-type line.
 private val HyperIntelligence =
     Trait(
         "classic/traits/hyper-intelligence",
@@ -492,7 +491,7 @@ private val SourGrapes =
             Effect(
                 text =
                     "+1 for each [blue]blue[/blue] or each [red]red[/red] trait in your trait pile, whichever is the " +
-                        "lower [rainbow]color[/rainbow] count.\n\n(If there's a tie, pick 1!)",
+                        "lower [rainbow]color[/rainbow] count.\n[small](If there's a tie, pick 1!)[/small]",
             ),
         ),
         null,

@@ -139,7 +139,7 @@ data class Effect(
     val text: String,
 )
 
-// The kinds for when the text applies and for small-type notes fit any card with text. A label kind is the printed label
+// The kinds for when the text applies fit any card with text. A label kind is the printed label
 // of a text section and only its card type has it.
 @Serializable
 enum class EffectKind(
@@ -153,9 +153,6 @@ enum class EffectKind(
 
     @SerialName("worlds-end")
     WorldsEnd,
-
-    @SerialName("note")
-    Note,
 
     @SerialName("awesome-power")
     AwesomePower(Trinket::class),
