@@ -2,6 +2,27 @@
 
 Notable changes in each release of Doomlings Atlas, generated from the commit history by [git-cliff](https://git-cliff.org).
 
+## 0.4.0 (2026-11-19)
+
+### Features
+
+- Small type marked inside the effect ([#247](https://github.com/nycocado/doomlings-atlas/pull/247))
+- Subspecies symbol on its pill ([#252](https://github.com/nycocado/doomlings-atlas/pull/252))
+- Color filter shows traits with every marked color ([#254](https://github.com/nycocado/doomlings-atlas/pull/254))
+- Merchants' flavor, transcribed and translated ([#255](https://github.com/nycocado/doomlings-atlas/pull/255))
+- Treasures' story, transcribed and translated ([#257](https://github.com/nycocado/doomlings-atlas/pull/257))
+
+### Fixes
+
+- World's End of Hollow Bones as its own effect ([#246](https://github.com/nycocado/doomlings-atlas/pull/246))
+- Line breaks where the printed card breaks ([#248](https://github.com/nycocado/doomlings-atlas/pull/248))
+- Card text as printed: icons, case and words ([#253](https://github.com/nycocado/doomlings-atlas/pull/253))
+
+### Tooling
+
+- Bump the actions group with 2 updates ([#242](https://github.com/nycocado/doomlings-atlas/pull/242))
+- Bump the gradle group with 2 updates ([#243](https://github.com/nycocado/doomlings-atlas/pull/243))
+
 ## 0.3.0 (2026-11-08)
 
 ### Features
