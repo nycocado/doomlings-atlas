@@ -222,7 +222,7 @@
     "name": "Marginado",
     "effects": [
       "+5 si este es tu único [purple]morado[/purple].",
-      "Si Shunned es descartado de tu pila de traits, puedes jugar hasta 2 [purple]morados[/purple]. [small]Ignora las acciones ({action}).[/small]"
+      "Si Shunned es descartado de tu pila de traits, puedes jugar hasta 2 [purple]morados[/purple].\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "Gritas «¡Ahí viene el lobo!» tres veces y de repente nadie te ayuda."
   },

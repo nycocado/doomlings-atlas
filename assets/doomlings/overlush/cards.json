@@ -798,7 +798,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Draw 4 cards. You may play 1 from your hand. [small]Play actions ({action}).[/small]"
+        "text": "Draw 4 cards. You may play 1 from your hand.\n[small]Play actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -1053,7 +1053,7 @@
     "flavor": "I don't have that one yet!",
     "effects": [
       {
-        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each [rainbow]color[/rainbow] drawn. [small]Discard dominants. Ignore actions.[/small]"
+        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each [rainbow]color[/rainbow] drawn.\n[small]Discard dominants. Ignore actions.[/small]"
       }
     ],
     "genePool": null,

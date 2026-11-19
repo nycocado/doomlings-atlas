@@ -601,7 +601,7 @@
   "upgrade/traits/pycnofibers": {
     "name": "Picnofibras",
     "effects": [
-      "Compre 1 carta. Se for um trait dominante, descarte-a. Se não for, jogue-a imediatamente. [small]Ignore a ação dela ({action}).[/small]"
+      "Compre 1 carta. Se for um trait dominante, descarte-a. Se não for, jogue-a imediatamente.\n[small]Ignore a ação dela ({action}).[/small]"
     ],
     "flavor": "Toda matéria sobre mim é pura fofura."
   },

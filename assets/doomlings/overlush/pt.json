@@ -335,7 +335,7 @@
   "overlush/traits/blossom": {
     "name": "Florada",
     "effects": [
-      "Compre 4 cartas. Você pode jogar 1 da sua mão. [small]Jogue ações ({action}).[/small]"
+      "Compre 4 cartas. Você pode jogar 1 da sua mão.\n[small]Jogue ações ({action}).[/small]"
     ],
     "flavor": "A vida é uma taça de sorvete, e os amigos são a cereja por cima."
   },
@@ -411,7 +411,7 @@
   "overlush/traits/collector": {
     "name": "Colecionador",
     "effects": [
-      "Quando você jogar Collector da sua mão, compre 4 cartas. Você pode jogar 1 de cada [rainbow]cor[/rainbow] entre as cartas compradas. [small]Descarte os dominantes. Ignore ações.[/small]"
+      "Quando você jogar Collector da sua mão, compre 4 cartas. Você pode jogar 1 de cada [rainbow]cor[/rainbow] entre as cartas compradas.\n[small]Descarte os dominantes. Ignore ações.[/small]"
     ],
     "flavor": "Essa eu ainda não tenho!"
   },

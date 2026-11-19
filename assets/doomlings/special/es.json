@@ -43,7 +43,7 @@
   "special/traits/exotic": {
     "name": "Exótico",
     "effects": [
-      "Para jugar, debes descartar 2 de tu pila de traits, luego robar 2. Debes jugarlos inmediatamente.\n(A menos que haya restricción.) [small]Descarta los dominantes. Ignora las acciones ({action}).[/small]"
+      "Para jugar, debes descartar 2 de tu pila de traits, luego robar 2. Debes jugarlos inmediatamente.\n(A menos que haya restricción.)\n[small]Descarta los dominantes. Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "¡Yupi! ¡Un ambiente nuevo! ¡Voy a ponerlo todo patas arriba!"
   },

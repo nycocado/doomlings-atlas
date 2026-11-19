@@ -1729,7 +1729,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 1 card. If it is a dominant trait, discard it. If it is not, play it immediately. [small]Ignore its action ({action}).[/small]"
+        "text": "Draw 1 card. If it is a dominant trait, discard it. If it is not, play it immediately.\n[small]Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,

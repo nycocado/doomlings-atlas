@@ -863,7 +863,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Play 1 and discard this. [small]Ignore actions ({action}).[/small]"
+        "text": "Play 1 and discard this.\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,

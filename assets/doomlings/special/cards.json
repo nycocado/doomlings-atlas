@@ -136,7 +136,7 @@
     "flavor": "Wee! A new environment! I'm gonna throw it into complete disarray!",
     "effects": [
       {
-        "text": "To play, you must discard 2 from your trait pile, then draw 2. You must play them immediately.\n(Unless restricted.) [small]Discard dominants. Ignore actions ({action}).[/small]"
+        "text": "To play, you must discard 2 from your trait pile, then draw 2. You must play them immediately.\n(Unless restricted.)\n[small]Discard dominants. Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,

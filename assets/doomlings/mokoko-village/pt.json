@@ -222,7 +222,7 @@
     "name": "Marginalizado",
     "effects": [
       "+5 se este for o seu único [purple]roxo[/purple].",
-      "Se Shunned for descartado da sua pilha de traits, você pode jogar até 2 [purple]roxos[/purple]. [small]Ignore ações ({action}).[/small]"
+      "Se Shunned for descartado da sua pilha de traits, você pode jogar até 2 [purple]roxos[/purple].\n[small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Você grita \"Olha o lobo!\" três vezes e de repente ninguém mais ajuda."
   },

@@ -43,7 +43,7 @@
   "special/traits/exotic": {
     "name": "Exótico",
     "effects": [
-      "Para jogar, você deve descartar 2 da sua pilha de traits, depois comprar 2. Você deve jogá-los imediatamente.\n(A menos que haja restrição.) [small]Descarte dominantes. Ignore ações ({action}).[/small]"
+      "Para jogar, você deve descartar 2 da sua pilha de traits, depois comprar 2. Você deve jogá-los imediatamente.\n(A menos que haja restrição.)\n[small]Descarte dominantes. Ignore ações ({action}).[/small]"
     ],
     "flavor": "Oba! Um ambiente novo! Vou deixar tudo de pernas para o ar!"
   },

@@ -601,7 +601,7 @@
   "upgrade/traits/pycnofibers": {
     "name": "Picnofibras",
     "effects": [
-      "Roba 1 carta. Si es un trait dominante, descártala. Si no, juégala inmediatamente. [small]Ignora su acción ({action}).[/small]"
+      "Roba 1 carta. Si es un trait dominante, descártala. Si no, juégala inmediatamente.\n[small]Ignora su acción ({action}).[/small]"
     ],
     "flavor": "Cada nota sobre mí es pura pelusa."
   },

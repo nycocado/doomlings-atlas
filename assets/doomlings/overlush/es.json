@@ -335,7 +335,7 @@
   "overlush/traits/blossom": {
     "name": "Flor de Cerezo",
     "effects": [
-      "Roba 4 cartas. Puedes jugar 1 desde tu mano. [small]Juega las acciones ({action}).[/small]"
+      "Roba 4 cartas. Puedes jugar 1 desde tu mano.\n[small]Juega las acciones ({action}).[/small]"
     ],
     "flavor": "La vida es una copa de helado, y los amigos son la cereza encima."
   },
@@ -411,7 +411,7 @@
   "overlush/traits/collector": {
     "name": "Coleccionista",
     "effects": [
-      "Cuando juegues Collector desde tu mano, roba 4 cartas. Puedes jugar 1 de cada [rainbow]color[/rainbow] entre las cartas robadas. [small]Descarta los dominantes. Ignora las acciones.[/small]"
+      "Cuando juegues Collector desde tu mano, roba 4 cartas. Puedes jugar 1 de cada [rainbow]color[/rainbow] entre las cartas robadas.\n[small]Descarta los dominantes. Ignora las acciones.[/small]"
     ],
     "flavor": "¡Esa todavía no la tengo!"
   },

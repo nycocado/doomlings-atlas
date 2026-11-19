@@ -259,7 +259,7 @@
   "nightflower-island/traits/versatile": {
     "name": "Versátil",
     "effects": [
-      "Juega 1 y descarta este. [small]Ignora las acciones ({action}).[/small]"
+      "Juega 1 y descarta este.\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "Lo único que no puedo hacer es cualquier otra cosa."
   },
