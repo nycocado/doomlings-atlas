@@ -255,7 +255,7 @@
     "name": "Tragedia de los Comunes",
     "effects": [
       "Elige un color en tu mano para quedarte con él. Descarta el resto.",
-      "Descarta 1 Gota de Vida de tu pila de traits."
+      "Descarta 1 Gota de Vida ({drop-of-life}) de tu pila de traits."
     ]
   },
   "overlush/catastrophes/tropical-superstorm": {

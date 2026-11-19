@@ -550,7 +550,7 @@
       },
       {
         "kind": "worlds-end",
-        "text": "Discard a Drop of Life from your trait pile."
+        "text": "Discard a Drop of Life ({drop-of-life}) from your trait pile."
       }
     ],
     "genePool": -1,
