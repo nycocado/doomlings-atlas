@@ -42,7 +42,7 @@
   "mokoko-village/traits/ancestral": {
     "name": "Ancestral",
     "effects": [
-      "Você pode descartar 1 da sua pilha de traits. +3 para cada [rainbow]cor[/rainbow] na sua pilha de traits com exatamente 2 traits."
+      "Você pode descartar 1 da sua pilha de traits.\n+3 para cada [rainbow]cor[/rainbow] na sua pilha de traits com exatamente 2 traits."
     ],
     "flavor": "O melhor do além é julgar a parentada."
   },
@@ -56,7 +56,7 @@
   "mokoko-village/traits/cairnwalker": {
     "name": "Andarilho das Pedras",
     "effects": [
-      "[rainbow]Escolha uma cor[/rainbow]. Conte o valor de face dos traits dessa [rainbow]cor[/rainbow] como 2."
+      "[rainbow]Escolha uma cor[/rainbow].\nConte o valor de face dos traits dessa [rainbow]cor[/rainbow] como 2."
     ],
     "flavor": "Meu recorde é 2.000 pedras."
   },
@@ -88,7 +88,7 @@
   "mokoko-village/traits/dryadic": {
     "name": "Driádico",
     "effects": [
-      "-2 para cada trait [purple]roxo[/purple] na sua pilha de traits. +1 para cada [green]verde[/green]. +1 para cada [red]vermelho[/red]."
+      "-2 para cada trait [purple]roxo[/purple] na sua pilha de traits.\n+1 para cada [green]verde[/green]. +1 para cada [red]vermelho[/red]."
     ],
     "flavor": "Coisa boa dá em árvore."
   },
@@ -131,7 +131,7 @@
   "mokoko-village/traits/gravetender": {
     "name": "Coveiro",
     "effects": [
-      "Compre 1 carta para cada [rainbow]cor[/rainbow] que faltar na sua pilha de traits. +2 para cada carta comprada dessa forma."
+      "Compre 1 carta para cada [rainbow]cor[/rainbow] que faltar na sua pilha de traits.\n+2 para cada carta comprada dessa forma."
     ],
     "flavor": "Esse trabalho está abaixo de mim."
   },
@@ -166,7 +166,7 @@
   "mokoko-village/traits/low-mane": {
     "name": "Cabelo de Lámen",
     "effects": [
-      "Todos os jogadores podem estabilizar até 5. Depois, você pode revelar 2 da mesma [rainbow]cor[/rainbow] para jogar outro trait."
+      "Todos os jogadores podem estabilizar até 5.\nDepois, você pode revelar 2 da mesma [rainbow]cor[/rainbow] para jogar outro trait."
     ],
     "flavor": "Falta tempero."
   },
@@ -184,7 +184,7 @@
   "mokoko-village/traits/nurturing": {
     "name": "Cuidador",
     "effects": [
-      "Compre 1 carta. Você pode descartar um trait com valor de face 1 da sua pilha de traits para jogar outro trait. [small]Ignore a ação dele ({action}).[/small]"
+      "Compre 1 carta. Você pode descartar um trait com valor de face 1 da sua pilha de traits para jogar outro trait.\n[small]Ignore a ação dele ({action}).[/small]"
     ],
     "flavor": "O segredo é amor e adubo."
   },
@@ -222,7 +222,7 @@
     "name": "Marginalizado",
     "effects": [
       "+5 se este for o seu único [purple]roxo[/purple].",
-      "Se Shunned for descartado da sua pilha de traits, você pode jogar até 2 [purple]roxos[/purple]. [small]Ignore ações ({action}).[/small]"
+      "Se Shunned for descartado da sua pilha de traits, você pode jogar até 2 [purple]roxos[/purple].\n[small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "Você grita \"Olha o lobo!\" três vezes e de repente ninguém mais ajuda."
   },
@@ -235,7 +235,7 @@
   "mokoko-village/traits/smithy": {
     "name": "Ferreiro",
     "effects": [
-      "Revele: 2 [green]verdes[/green]: Jogue 1 [green]verde[/green]. 2 [red]vermelhos[/red]: Descarte 1 da sua pilha de traits."
+      "Revele:\n2 [green]verdes[/green]: Jogue 1 [green]verde[/green].\n2 [red]vermelhos[/red]: Descarte 1 da sua pilha de traits."
     ],
     "flavor": "Respeite os mais velhos. E os soldadores."
   },
@@ -254,7 +254,7 @@
   "mokoko-village/traits/steady": {
     "name": "Firme",
     "effects": [
-      "Compre 2 cartas. Depois, revele 4 [rainbow]cores[/rainbow] diferentes para comprar 2 cartas."
+      "Compre 2 cartas.\nDepois, revele 4 [rainbow]cores[/rainbow] diferentes para comprar 2 cartas."
     ],
     "flavor": "Sempre quero mais um vaso."
   },
@@ -269,7 +269,7 @@
   "mokoko-village/traits/sundering": {
     "name": "Ruptura",
     "effects": [
-      "Início dos seus turnos: [rainbow]Escolha uma cor[/rainbow]. Se você tiver traits dessa [rainbow]cor[/rainbow] na sua pilha de traits, descarte-os."
+      "Início dos seus turnos: [rainbow]Escolha uma cor[/rainbow].\nSe você tiver traits dessa [rainbow]cor[/rainbow] na sua pilha de traits, descarte-os."
     ],
     "flavor": "Diga seu nome e ele deixará de existir."
   },

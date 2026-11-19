@@ -277,7 +277,7 @@
     "flavor": "If at first you don't succeed, or even if you do, try again.",
     "effects": [
       {
-        "text": "Attach. Host's face value is now 2."
+        "text": "Attach.\nHost's face value is now 2."
       },
       {
         "kind": "worlds-end",
@@ -308,7 +308,7 @@
     "flavor": "I'm saving up for another one. Until then, I'm stuck with this pesky robot limb.",
     "effects": [
       {
-        "text": "Attach. Host's face value is now 4."
+        "text": "Attach.\nHost's face value is now 4."
       }
     ],
     "genePool": null,
@@ -493,7 +493,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Attach. When a trait enters your trait pile, you may attach Cryonics to it.\nHost's face value is now 1."
+        "text": "Attach.\nWhen a trait enters your trait pile, you may attach Cryonics to it.\nHost's face value is now 1."
       }
     ],
     "genePool": null,
@@ -520,7 +520,7 @@
     "flavor": "I broke a mirror under a witch's ladder last Friday the 13th.",
     "effects": [
       {
-        "text": "Attach. If Cursed is discarded from hand or trait pile, attach it to an opponent's trait."
+        "text": "Attach.\nIf Cursed is discarded from hand or trait pile, attach it to an opponent's trait."
       }
     ],
     "genePool": null,
@@ -582,7 +582,7 @@
     "flavor": "Sometimes you gotta sacrifice a couple of eggs to materialize an omelet.",
     "effects": [
       {
-        "text": "On your turn: You may discard Dark Magic from hand when you play an effectless. If you do, play an action ({action}) in any trait pile."
+        "text": "On your turn:\nYou may discard Dark Magic from hand when you play an effectless.\nIf you do, play an action ({action}) in any trait pile."
       }
     ],
     "genePool": null,
@@ -635,7 +635,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Play 1 Dinoling ({dinoling}) from the discard pile. Play its action ({action})."
+        "text": "Play 1 Dinoling ({dinoling}) from the discard pile.\nPlay its action ({action})."
       }
     ],
     "genePool": null,
@@ -660,7 +660,7 @@
     "flavor": "A sword can make someone a hero, a villain, or, like, 40% cooler.",
     "effects": [
       {
-        "text": "Attach. +3 if host is a Mythling ({mythling})."
+        "text": "Attach.\n+3 if host is a Mythling ({mythling})."
       },
       {
         "text": "If Enchanted is discarded from hand, you may attach to a dominant."
@@ -715,7 +715,7 @@
     "flavor": "No, YOU'RE not locally real, man.",
     "effects": [
       {
-        "text": "Start of your turn: You may discard Entangled from hand. If you do, discard 1 from hand, then draw 1."
+        "text": "Start of your turn:\nYou may discard Entangled from hand. If you do, discard 1 from hand, then draw 1."
       }
     ],
     "genePool": null,
@@ -759,7 +759,7 @@
     "flavor": "I just got an idea. It's going to be lit.",
     "effects": [
       {
-        "text": "Attach. +3 for each dominant in your trait pile of the same [rainbow]color[/rainbow] as the host."
+        "text": "Attach.\n+3 for each dominant in your trait pile of the same [rainbow]color[/rainbow] as the host."
       }
     ],
     "genePool": null,
@@ -802,7 +802,7 @@
     "flavor": "My friends, the future is bright. Mainly due to the nuclear bomb.",
     "effects": [
       {
-        "text": "At any time: You may discard Foresight from hand to peek at the next age."
+        "text": "At any time:\nYou may discard Foresight from hand to peek at the next age."
       }
     ],
     "genePool": null,
@@ -849,7 +849,7 @@
     "flavor": "Oops, I think I stepped on something.",
     "effects": [
       {
-        "text": "To play, you must discard a face value 2 or higher from your trait pile. Opponents discard 1 from their trait pile with a higher face value."
+        "text": "To play, you must discard a face value 2 or higher from your trait pile.\nOpponents discard 1 from their trait pile with a higher face value."
       }
     ],
     "genePool": null,
@@ -872,7 +872,7 @@
     "flavor": "The ghost with the most.",
     "effects": [
       {
-        "text": "If Ghostly is discarded from hand, play it immediately. If discarded from trait pile, pass it to an opponent's hand."
+        "text": "If Ghostly is discarded from hand, play it immediately.\nIf discarded from trait pile, pass it to an opponent's hand."
       }
     ],
     "genePool": null,
@@ -895,7 +895,7 @@
     "flavor": "It does whatever you want it to do! Or whatever it wants to do! Or whatever!",
     "effects": [
       {
-        "text": "Attach. Choose 1.\nIf host is:\n[green]Green[/green]: Preview the next age.\n[purple]Purple[/purple]: Stabilize to 6.\n[blue]Blue[/blue]: Draw 2.\n[red]Red[/red]: +2\nThen play another trait."
+        "text": "Attach.\nChoose 1. If host is:\n[green]Green[/green]: Preview the next age.\n[purple]Purple[/purple]: Stabilize to 6.\n[blue]Blue[/blue]: Draw 2.\n[red]Red[/red]: +2\nThen play another trait."
       }
     ],
     "genePool": null,
@@ -921,7 +921,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "You may play Herbivore after you stabilize if the top of the discard pile is [green]green[/green]. Then draw 1."
+        "text": "You may play Herbivore after you stabilize if the top of the discard pile is [green]green[/green].\nThen draw 1."
       }
     ],
     "genePool": null,
@@ -973,7 +973,7 @@
     "flavor": "Not recommended for mere mortals.",
     "effects": [
       {
-        "text": "Start of your turn: You may discard Ichor from hand to draw 2."
+        "text": "Start of your turn:\nYou may discard Ichor from hand to draw 2."
       }
     ],
     "genePool": null,
@@ -1269,7 +1269,7 @@
     "flavor": "Laser eye sold separately.",
     "effects": [
       {
-        "text": "Attach to a trait in any trait pile. +5 if host is a Dinoling ({dinoling})."
+        "text": "Attach to a trait in any trait pile.\n+5 if host is a Dinoling ({dinoling})."
       }
     ],
     "genePool": null,
@@ -1414,7 +1414,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "You may discard 1 from your trait pile, OR play the top card from the discard pile. [small]Ignore its action ({action}).[/small]"
+        "text": "You may discard 1 from your trait pile, OR play the top card from the discard pile.\n[small]Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -1439,7 +1439,7 @@
     "flavor": "A shiny ~~new~~ toy.",
     "effects": [
       {
-        "text": "Attach. If host is: [purple]Purple[/purple]: +2. [red]Red[/red]: +3. If host is a Techling ({techling}): +1 for each card in hand."
+        "text": "Attach.\nIf host is: [purple]Purple[/purple]: +2. [red]Red[/red]: +3. If host is a Techling ({techling}): +1 for each card in hand."
       }
     ],
     "genePool": null,
@@ -1570,7 +1570,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Discard 1 from hand.\nIf the card is:\n[purple]Purple[/purple]: Discard up to 2 from your trait pile.\n[red]Red[/red]: Add its face value.\n[green]Green[/green]: Play 1 trait.\n[blue]Blue[/blue]: +5."
+        "text": "Discard 1 from hand. If the card is:\n[purple]Purple[/purple]: Discard up to 2 from your trait pile.\n[red]Red[/red]: Add its face value.\n[green]Green[/green]: Play 1 trait.\n[blue]Blue[/blue]: +5."
       }
     ],
     "genePool": null,
@@ -1598,7 +1598,7 @@
     "flavor": "Backed by a billion-year/36,000-mile limited warranty.",
     "effects": [
       {
-        "text": "Attach. Value is equal to host's face value."
+        "text": "Attach.\nValue is equal to host's face value."
       }
     ],
     "genePool": null,
@@ -1648,7 +1648,7 @@
     "flavor": "The best peach-to-text translator on the barket.",
     "effects": [
       {
-        "text": "Attach. Add the face value of 1 card in hand that shares a [rainbow]color[/rainbow] with the host.\n[small](Excluding dominants.)[/small]"
+        "text": "Attach.\nAdd the face value of 1 card in hand that shares a [rainbow]color[/rainbow] with the host.\n[small](Excluding dominants.)[/small]"
       }
     ],
     "genePool": null,
@@ -1751,7 +1751,7 @@
     "flavor": "My feet do one thing and that thing is loud.",
     "effects": [
       {
-        "text": "To play, you must discard a total face value of 5 or higher from hand using any number of cards. Do not stabilize!"
+        "text": "To play, you must discard a total face value of 5 or higher from hand using any number of cards.\nDo not stabilize!"
       }
     ],
     "genePool": null,
@@ -1869,7 +1869,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 2. Then you may play a Mythling ({mythling}) or Techling ({techling}) from hand."
+        "text": "Draw 2.\nThen you may play a Mythling ({mythling}) or Techling ({techling}) from hand."
       }
     ],
     "genePool": null,
@@ -1896,7 +1896,7 @@
     "flavor": "I ate watermelon seeds and now they're growing in my brain. Please help.",
     "effects": [
       {
-        "text": "Attach. +1 for each trait of the same face value as the host."
+        "text": "Attach.\n+1 for each trait of the same face value as the host."
       }
     ],
     "genePool": null,
@@ -2028,7 +2028,7 @@
     "flavor": "One bad switch.",
     "effects": [
       {
-        "text": "Attach. All opponents discard all cards from their hand that share a [rainbow]color[/rainbow] with the host trait."
+        "text": "Attach.\nAll opponents discard all cards from their hand that share a [rainbow]color[/rainbow] with the host trait."
       }
     ],
     "genePool": null,
@@ -2053,7 +2053,7 @@
     "flavor": "Tread heavily.",
     "effects": [
       {
-        "text": "Attach. You may play another trait that shares a [rainbow]color[/rainbow] with the host."
+        "text": "Attach.\nYou may play another trait that shares a [rainbow]color[/rainbow] with the host."
       }
     ],
     "genePool": null,
@@ -2130,7 +2130,7 @@
     "flavor": "Made a blood pact with a demon under a moonless night. It was pretty cool and there were no consequences.",
     "effects": [
       {
-        "text": "On your turn: You may discard Warlocky from hand when you play a trait. If you do, play another trait of the same [rainbow]color[/rainbow]."
+        "text": "On your turn:\nYou may discard Warlocky from hand when you play a trait.\nIf you do, play another trait of the same [rainbow]color[/rainbow]."
       }
     ],
     "genePool": null,
@@ -2274,7 +2274,7 @@
     "effects": [
       {
         "kind": "rush",
-        "text": "Decrease Gene Pool by 1. Play 1."
+        "text": "Decrease Gene Pool by 1.\nPlay 1."
       },
       {
         "kind": "rush",

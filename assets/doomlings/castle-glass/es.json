@@ -21,7 +21,7 @@
   "castle-glass/traits/aposematic": {
     "name": "Aposemático",
     "effects": [
-      "Roba 1 carta. Juega 1."
+      "Roba 1 carta.\nJuega 1."
     ],
     "flavor": "Nada grita peligro como los colores bonitos."
   },
@@ -96,7 +96,7 @@
   "castle-glass/traits/fragmentation": {
     "name": "Fragmentación",
     "effects": [
-      "Estabiliza hasta 4. Juega 1."
+      "Estabiliza hasta 4.\nJuega 1."
     ],
     "flavor": "Separémonos para poder empezar algo nuevo."
   },
@@ -153,7 +153,7 @@
   "castle-glass/traits/opulent": {
     "name": "Opulento",
     "effects": [
-      "Roba 1 carta. Juega 1."
+      "Roba 1 carta.\nJuega 1."
     ],
     "flavor": "El oro se desvanece, la riqueza se esfuma y la fortuna de nuestras vidas se mide en recuerdos."
   },
@@ -178,14 +178,14 @@
   "castle-glass/traits/pteridines": {
     "name": "Pteridinas",
     "effects": [
-      "Roba 1 carta. Puedes jugarla ahora."
+      "Roba 1 carta.\nPuedes jugarla ahora."
     ],
     "flavor": "El motivo de unos colores pterriblemente hermosos."
   },
   "castle-glass/traits/radial-symmetry": {
     "name": "Simetría Radial",
     "effects": [
-      "Inicio de tus turnos: Puedes descartar todas las cartas de 1 [rainbow]color[/rainbow] de tu mano."
+      "Inicio de tus turnos:\nPuedes descartar todas las cartas de 1 [rainbow]color[/rainbow] de tu mano."
     ],
     "flavor": "Mantén a tus amigos cerca y a tus anémonas aún más cerca."
   },

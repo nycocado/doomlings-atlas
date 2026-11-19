@@ -20,7 +20,7 @@
   "upgrade/catastrophes/bioengineered-plague": {
     "name": "Peste Bioingenierizada",
     "effects": [
-      "Cada jugador elige un color. El jugador a tu izquierda descarta de su mano todas las cartas de ese color.",
+      "Cada jugador elige un color.\nEl jugador a tu izquierda descarta de su mano todas las cartas de ese color.",
       "Descarta 1 trait aleatorio del color que tienes en mayor cantidad en tu pila de traits.\n(Si 2 o más colores empatan, elige 1.)"
     ]
   },
@@ -333,7 +333,7 @@
   "upgrade/traits/ancient": {
     "name": "Milenario",
     "effects": [
-      "[rainbow]Elige un color.[/rainbow] Roba 10 cartas. Quédate con 1 del [rainbow]color[/rainbow] elegido. Coloca el resto en el fondo del mazo."
+      "[rainbow]Elige un color.[/rainbow]\nRoba 10 cartas. Quédate con 1 del [rainbow]color[/rainbow] elegido. Coloca el resto en el fondo del mazo."
     ],
     "flavor": "Si quieres pasar por mi bosque, debes decir qué es lo que más te gusta de mí."
   },
@@ -347,7 +347,7 @@
   "upgrade/traits/bionic-arm": {
     "name": "Brazo Biónico",
     "effects": [
-      "+1 por cada Techling ({techling}) en tu pila de traits.\n(Incluyendo este.) +2 por cada Techling si un trait está adjunto a Bionic Arm."
+      "+1 por cada Techling ({techling}) en tu pila de traits.\n(Incluyendo este.)\n+2 por cada Techling si un trait está adjunto a Bionic Arm."
     ],
     "flavor": "Nunca más pierdas una guerra de pulgares."
   },
@@ -462,7 +462,7 @@
   "upgrade/traits/fey": {
     "name": "Hada",
     "effects": [
-      "Puedes jugar Fey en cualquier momento. Todos los jugadores reciben: +1 Gene Pool."
+      "Puedes jugar Fey en cualquier momento.\nTodos los jugadores reciben:\n+1 Gene Pool."
     ],
     "flavor": "Hada. Ángel degradado. A veces colecciona dientes."
   },
@@ -601,7 +601,7 @@
   "upgrade/traits/pycnofibers": {
     "name": "Picnofibras",
     "effects": [
-      "Roba 1 carta. Si es un trait dominante, descártala. Si no, juégala inmediatamente. [small]Ignora su acción ({action}).[/small]"
+      "Roba 1 carta. Si es un trait dominante, descártala. Si no, juégala inmediatamente.\n[small]Ignora su acción ({action}).[/small]"
     ],
     "flavor": "Cada nota sobre mí es pura pelusa."
   },
@@ -622,7 +622,7 @@
   "upgrade/traits/ruggedized": {
     "name": "Reforzado",
     "effects": [
-      "Adjunta a un trait. El trait huésped no puede ser retirado de tu pila de traits. Puedes adjuntar a un nuevo trait huésped al final de cada turno."
+      "Adjunta a un trait.\nEl trait huésped no puede ser retirado de tu pila de traits. Puedes adjuntar a un nuevo trait huésped al final de cada turno."
     ],
     "flavor": "Soy maíz impenetrable. Bip bop."
   },

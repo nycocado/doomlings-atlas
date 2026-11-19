@@ -27,7 +27,7 @@
   "classic/ages/age-of-reason": {
     "name": "Era da Razão",
     "effects": [
-      "Compre 3 cartas. Fique com 1, descarte as outras 2."
+      "Compre 3 cartas.\nFique com 1, descarte as outras 2."
     ]
   },
   "classic/ages/alien-terraform": {
@@ -362,7 +362,7 @@
   "classic/traits/cold-blood": {
     "name": "Sangue Frio",
     "effects": [
-      "Compre 3 cartas. Você pode jogar 1 agora."
+      "Compre 3 cartas.\nVocê pode jogar 1 agora."
     ],
     "flavor": "Eu mataria para conseguir controlar minha temperatura corporal."
   },
@@ -416,7 +416,7 @@
   "classic/traits/echolocation": {
     "name": "Ecolocalização",
     "effects": [
-      "Até o Fim do Mundo: Compre 1 carta no início de cada um dos seus turnos."
+      "Até o Fim do Mundo:\nCompre 1 carta no início de cada um dos seus turnos."
     ],
     "flavor": "O ouvido que tudo vê."
   },
@@ -695,14 +695,14 @@
   "classic/traits/persuasive": {
     "name": "Persuasivo",
     "effects": [
-      "[rainbow]Escolha uma cor.[/rainbow] Todos os jogadores descartam da mão todas as cartas dessa cor.\n(Incluindo você!)"
+      "[rainbow]Escolha uma cor.[/rainbow]\nTodos os jogadores descartam da mão todas as cartas dessa cor.\n(Incluindo você!)"
     ],
     "flavor": "Mude de ideia ou eu grito ainda mais!"
   },
   "classic/traits/photosynthesis": {
     "name": "Fotossíntese",
     "effects": [
-      "Compre 2 cartas. Se alguma for [green]verde[/green], jogue 1 imediatamente.\n(A menos que haja restrição.)"
+      "Compre 2 cartas.\nSe alguma for [green]verde[/green], jogue 1 imediatamente.\n(A menos que haja restrição.)"
     ],
     "flavor": "Mastigando uns fótons, nham nham nham."
   },
@@ -755,7 +755,7 @@
   "classic/traits/regenerative-tissue": {
     "name": "Tecido Regenerativo",
     "effects": [
-      "Sempre que você descartar um trait da sua pilha de traits,\n[small](incluindo este),[/small] compre 1. Jogue-o imediatamente.\n[small](A menos que haja restrição.)[/small] Ignore ações ({action})."
+      "Sempre que você descartar um trait da sua pilha de traits,\n[small](incluindo este),[/small]\ncompre 1. Jogue-o imediatamente.\n[small](A menos que haja restrição.)[/small]\nIgnore ações ({action})."
     ],
     "flavor": "Quantos dedos tem aqui? Peraí, eles ainda estão nascendo de novo"
   },
@@ -816,14 +816,14 @@
   "classic/traits/sentience": {
     "name": "Senciência",
     "effects": [
-      "[rainbow]Escolha uma cor.[/rainbow] +1 para cada trait dessa cor na sua pilha de traits."
+      "[rainbow]Escolha uma cor.[/rainbow]\n+1 para cada trait dessa cor na sua pilha de traits."
     ],
     "flavor": "Estou sentindo tanta coisa agora."
   },
   "classic/traits/sneaky": {
     "name": "Sorrateiro",
     "effects": [
-      "No Fim do Mundo: Você pode jogar Sneaky da sua mão."
+      "No Fim do Mundo:\nVocê pode jogar Sneaky da sua mão."
     ],
     "flavor": "Essa você não esperava, né?"
   },
@@ -961,7 +961,7 @@
   "classic/traits/venomous": {
     "name": "Peçonhento",
     "effects": [
-      "Jogue outro trait. Depois, mova Venomous para a pilha de traits de um oponente."
+      "Jogue outro trait.\nDepois, mova Venomous para a pilha de traits de um oponente."
     ],
     "flavor": "Eu não ladro, mas mordo."
   },

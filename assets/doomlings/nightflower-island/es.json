@@ -26,13 +26,13 @@
   "nightflower-island/ages/spring-nightflower-island": {
     "name": "Primavera de Nightflower Island",
     "effects": [
-      "Roba 2 cartas. Pasa 1 [green]verde[/green] de tu mano a la izquierda."
+      "Roba 2 cartas.\nPasa 1 [green]verde[/green] de tu mano a la izquierda."
     ]
   },
   "nightflower-island/ages/summer-nightflower-island": {
     "name": "Verano de Nightflower Island",
     "effects": [
-      "Roba 1 carta. Si es [purple]morada[/purple], repite."
+      "Roba 1 carta.\nSi es [purple]morada[/purple], repite."
     ]
   },
   "nightflower-island/ages/winter-nightflower-island": {
@@ -62,7 +62,7 @@
   "nightflower-island/traits/buoyant": {
     "name": "Flotante",
     "effects": [
-      "Juega hasta 3 traits. Ignora todas las acciones ({action}) menos 1."
+      "Juega hasta 3 traits.\nIgnora todas las acciones ({action}) menos 1."
     ],
     "flavor": "Esto podría abrir la caja de Pandora, llena de gusanos, que serían deliciosos."
   },
@@ -89,7 +89,7 @@
   "nightflower-island/traits/decrepit": {
     "name": "Decrépito",
     "effects": [
-      "Juega en cualquier momento: [rainbow]Elige un color[/rainbow] y luego revela la carta de la parte superior del mazo de traits. Si es de ese color, róbala."
+      "Juega en cualquier momento:\n[rainbow]Elige un color[/rainbow] y luego revela la carta de la parte superior del mazo de traits. Si es de ese color, róbala."
     ],
     "flavor": "Disfruta tu juventud. Algún día a ti también se te caerán los ojos."
   },
@@ -103,7 +103,7 @@
   "nightflower-island/traits/ennui": {
     "name": "Tedio",
     "effects": [
-      "Devuelve todos tus traits sin efecto a tu mano. +4 por cada trait devuelto de esta forma."
+      "Devuelve todos tus traits sin efecto a tu mano.\n+4 por cada trait devuelto de esta forma."
     ],
     "flavor": "Si la vida te pasa de largo, es culpa tuya."
   },
@@ -116,7 +116,7 @@
   "nightflower-island/traits/grim": {
     "name": "Siniestro",
     "effects": [
-      "Inicio de tus turnos: Revela 2 del mismo [rainbow]color[/rainbow]. Suprime 1 de ellas."
+      "Inicio de tus turnos:\nRevela 2 del mismo [rainbow]color[/rainbow]. Suprime 1 de ellas."
     ],
     "flavor": "Este pueblo es lo bastante grande para los dos, pero igual me voy a deshacer de ti."
   },
@@ -158,7 +158,7 @@
   "nightflower-island/traits/mucus-traps": {
     "name": "Trampas de Moco",
     "effects": [
-      "En cualquier orden: Estabiliza hasta 3. Roba 2 cartas."
+      "En cualquier orden:\nEstabiliza hasta 3.\nRoba 2 cartas."
     ],
     "flavor": "No es lo que parece. Son mocos."
   },
@@ -259,7 +259,7 @@
   "nightflower-island/traits/versatile": {
     "name": "Versátil",
     "effects": [
-      "Juega 1 y descarta este. [small]Ignora las acciones ({action}).[/small]"
+      "Juega 1 y descarta este.\n[small]Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "Lo único que no puedo hacer es cualquier otra cosa."
   },

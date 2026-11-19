@@ -67,7 +67,7 @@
     "flavor": "A marionette you'll never forget.",
     "effects": [
       {
-        "text": "Peek at the top 4 of the trait deck. Draw 1. You may play it. If any are negative, you may play them into any trait pile(s) and ignore actions ({action})."
+        "text": "Peek at the top 4 of the trait deck. Draw 1. You may play it.\nIf any are negative, you may play them into any trait pile(s) and ignore actions ({action})."
       }
     ],
     "genePool": null,
@@ -115,7 +115,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "[rainbow]Reveal[/rainbow] the top of the trait deck. [purple]Purple[/purple]: Swap Cracked with a trait in a friend's trait pile. [blue]Blue[/blue]: Return it to their hand. [red]Red[/red]: Steal 1 from their trait pile."
+        "text": "[rainbow]Reveal[/rainbow] the top of the trait deck.\n[purple]Purple[/purple]: Swap Cracked with a trait in a friend's trait pile.\n[blue]Blue[/blue]: Return it to their hand.\n[red]Red[/red]: Steal 1 from their trait pile."
       }
     ],
     "genePool": null,
@@ -209,7 +209,7 @@
     "flavor": "A wise moon elder who, upon entering a room, has already overstayed his welcome.",
     "effects": [
       {
-        "text": "Start of turn: You may discard Fumboh from your trait pile to play another trait."
+        "text": "Start of turn:\nYou may discard Fumboh from your trait pile to play another trait."
       }
     ],
     "genePool": -2,
@@ -280,7 +280,7 @@
     "flavor": "I don't know why you won't change your mind to the way I see it.",
     "effects": [
       {
-        "text": "Excluding dominants, if you have 6 or fewer traits in your trait pile, they cannot be swapped or stolen.\nStart of your turns: You may suppress 1 trait in your trait pile."
+        "text": "Excluding dominants, if you have 6 or fewer traits in your trait pile, they cannot be swapped or stolen.\nStart of your turns:\nYou may suppress 1 trait in your trait pile."
       }
     ],
     "genePool": null,
@@ -306,7 +306,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "[rainbow]Reveal[/rainbow] the top of the trait deck. [rainbow]Any color[/rainbow]: Swap Imperfect with a trait in a friend's trait pile. [colorless]Colorless[/colorless]: Move Imperfect to a friend's trait pile."
+        "text": "[rainbow]Reveal[/rainbow] the top of the trait deck.\n[rainbow]Any color[/rainbow]: Swap Imperfect with a trait in a friend's trait pile.\n[colorless]Colorless[/colorless]: Move Imperfect to a friend's trait pile."
       }
     ],
     "genePool": null,
@@ -490,7 +490,7 @@
     "flavor": "No one can doubt themself quite like you!",
     "effects": [
       {
-        "text": "Double the face value of each trait in your trait pile that is the only trait of that color. [small]This effect excludes dominants entirely.[/small]"
+        "text": "Double the face value of each trait in your trait pile that is the only trait of that color.\n[small]This effect excludes dominants entirely.[/small]"
       }
     ],
     "genePool": null,
@@ -513,7 +513,7 @@
     "flavor": "Your secret's safe with me. Until it's not.",
     "effects": [
       {
-        "text": "Suppress 1 from your hand. Start of your turns: You may draw all suppressed cards from under Shrouded."
+        "text": "Suppress 1 from your hand.\nStart of your turns: You may draw all suppressed cards from under Shrouded."
       }
     ],
     "genePool": null,
@@ -538,7 +538,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "[rainbow]Reveal[/rainbow] the top of the trait deck. [blue]Blue[/blue]: Increase Gene Pool by 1. [red]Red[/red]: Decrease Gene Pool by 1 and play 1. [colorless]Colorless[/colorless]: Do either."
+        "text": "[rainbow]Reveal[/rainbow] the top of the trait deck.\n[blue]Blue[/blue]: Increase Gene Pool by 1.\n[red]Red[/red]: Decrease Gene Pool by 1 and play 1.\n[colorless]Colorless[/colorless]: Do either."
       }
     ],
     "genePool": null,
@@ -563,7 +563,7 @@
     "flavor": "Nothing is what it seams.",
     "effects": [
       {
-        "text": "Start of your turns: You may discard a positive trait from your trait pile to play 1. Ignore its action ({action})."
+        "text": "Start of your turns: You may discard a positive trait from your trait pile to play 1.\nIgnore its action ({action})."
       }
     ],
     "genePool": null,
@@ -613,7 +613,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "All friends give you 1 from their hand at random. Then they draw 1."
+        "text": "All friends give you 1 from their hand at random.\nThen they draw 1."
       }
     ],
     "genePool": null,
@@ -665,7 +665,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "At any time: Play into any trait pile. Too Many Eyes cannot be removed from your trait pile."
+        "text": "At any time:\nPlay into any trait pile.\nToo Many Eyes cannot be removed from your trait pile."
       }
     ],
     "genePool": null,
@@ -690,7 +690,7 @@
     "flavor": "It's pronounced, \"Tumpleyo.",
     "effects": [
       {
-        "text": "If your Gene Pool is: 4: -4, 3: +2, 2: +4, 1: +8"
+        "text": "If your Gene Pool is:\n4: -4,\n3: +2,\n2: +4,\n1: +8"
       }
     ],
     "genePool": null,
@@ -852,7 +852,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "All players pass 1 random card right. You may play another trait."
+        "text": "All players pass 1 random card right.\nYou may play another trait."
       }
     ],
     "genePool": null,
@@ -901,7 +901,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "You may play Yobondo when an opponent targets a single trait in your trait pile.\n[small](Unless targeted by a dominant!)[/small] That effect targets Yobondo instead."
+        "text": "You may play Yobondo when an opponent targets a single trait in your trait pile.\n[small](Unless targeted by a dominant!)[/small]\nThat effect targets Yobondo instead."
       }
     ],
     "genePool": null,

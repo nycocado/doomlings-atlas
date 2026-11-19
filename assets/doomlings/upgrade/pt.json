@@ -20,7 +20,7 @@
   "upgrade/catastrophes/bioengineered-plague": {
     "name": "Peste Bioengenheirada",
     "effects": [
-      "Cada jogador escolhe uma cor. O jogador à sua esquerda descarta da mão todas as cartas dessa cor.",
+      "Cada jogador escolhe uma cor.\nO jogador à sua esquerda descarta da mão todas as cartas dessa cor.",
       "Descarte 1 trait aleatório da cor que você tem em maior quantidade na sua pilha de traits.\n(Se 2 ou mais cores estiverem empatadas, escolha 1.)"
     ]
   },
@@ -333,7 +333,7 @@
   "upgrade/traits/ancient": {
     "name": "Milenar",
     "effects": [
-      "[rainbow]Escolha uma cor.[/rainbow] Compre 10 cartas. Fique com 1 da [rainbow]cor[/rainbow] escolhida. Coloque o resto no fundo do baralho."
+      "[rainbow]Escolha uma cor.[/rainbow]\nCompre 10 cartas. Fique com 1 da [rainbow]cor[/rainbow] escolhida. Coloque o resto no fundo do baralho."
     ],
     "flavor": "Se quiser atravessar a minha floresta, diga do que você mais gosta em mim."
   },
@@ -347,7 +347,7 @@
   "upgrade/traits/bionic-arm": {
     "name": "Braço Biônico",
     "effects": [
-      "+1 para cada Techling ({techling}) na sua pilha de traits.\n(Incluindo este.) +2 para cada Techling se um trait estiver anexado a Bionic Arm."
+      "+1 para cada Techling ({techling}) na sua pilha de traits.\n(Incluindo este.)\n+2 para cada Techling se um trait estiver anexado a Bionic Arm."
     ],
     "flavor": "Nunca mais perca uma queda de braço."
   },
@@ -462,7 +462,7 @@
   "upgrade/traits/fey": {
     "name": "Fada",
     "effects": [
-      "Você pode jogar Fey a qualquer momento. Todos os jogadores recebem: +1 Gene Pool."
+      "Você pode jogar Fey a qualquer momento.\nTodos os jogadores recebem:\n+1 Gene Pool."
     ],
     "flavor": "Fada. Anjo rebaixado. Às vezes coleciona dentes."
   },
@@ -601,7 +601,7 @@
   "upgrade/traits/pycnofibers": {
     "name": "Picnofibras",
     "effects": [
-      "Compre 1 carta. Se for um trait dominante, descarte-a. Se não for, jogue-a imediatamente. [small]Ignore a ação dela ({action}).[/small]"
+      "Compre 1 carta. Se for um trait dominante, descarte-a. Se não for, jogue-a imediatamente.\n[small]Ignore a ação dela ({action}).[/small]"
     ],
     "flavor": "Toda matéria sobre mim é pura fofura."
   },
@@ -622,7 +622,7 @@
   "upgrade/traits/ruggedized": {
     "name": "Reforçado",
     "effects": [
-      "Anexe a um trait. O trait hospedeiro não pode ser removido da sua pilha de traits. Você pode anexar a um novo trait hospedeiro no fim de cada turno."
+      "Anexe a um trait.\nO trait hospedeiro não pode ser removido da sua pilha de traits. Você pode anexar a um novo trait hospedeiro no fim de cada turno."
     ],
     "flavor": "Sou milho impenetrável. Bip bop."
   },

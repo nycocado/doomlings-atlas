@@ -26,13 +26,13 @@
   "nightflower-island/ages/spring-nightflower-island": {
     "name": "Primavera de Nightflower Island",
     "effects": [
-      "Compre 2 cartas. Passe 1 [green]verde[/green] da sua mão para a esquerda."
+      "Compre 2 cartas.\nPasse 1 [green]verde[/green] da sua mão para a esquerda."
     ]
   },
   "nightflower-island/ages/summer-nightflower-island": {
     "name": "Verão de Nightflower Island",
     "effects": [
-      "Compre 1 carta. Se for [purple]roxa[/purple], repita."
+      "Compre 1 carta.\nSe for [purple]roxa[/purple], repita."
     ]
   },
   "nightflower-island/ages/winter-nightflower-island": {
@@ -62,7 +62,7 @@
   "nightflower-island/traits/buoyant": {
     "name": "Flutuante",
     "effects": [
-      "Jogue até 3 traits. Ignore todas as ações ({action}), menos 1."
+      "Jogue até 3 traits.\nIgnore todas as ações ({action}), menos 1."
     ],
     "flavor": "Isso pode abrir uma caixa de Pandora cheia de minhocas, que seriam deliciosas."
   },
@@ -89,7 +89,7 @@
   "nightflower-island/traits/decrepit": {
     "name": "Decrépito",
     "effects": [
-      "Jogue a qualquer momento: [rainbow]Escolha uma cor[/rainbow] e, depois, revele a carta do topo do baralho de traits. Se for dessa cor, compre-a."
+      "Jogue a qualquer momento:\n[rainbow]Escolha uma cor[/rainbow] e, depois, revele a carta do topo do baralho de traits. Se for dessa cor, compre-a."
     ],
     "flavor": "Aproveite a juventude. Um dia seus olhos também vão cair."
   },
@@ -103,7 +103,7 @@
   "nightflower-island/traits/ennui": {
     "name": "Tédio",
     "effects": [
-      "Devolva todos os seus traits sem efeito à sua mão. +4 para cada trait devolvido desta forma."
+      "Devolva todos os seus traits sem efeito à sua mão.\n+4 para cada trait devolvido desta forma."
     ],
     "flavor": "Se a vida passa por você, a culpa é sua."
   },
@@ -116,7 +116,7 @@
   "nightflower-island/traits/grim": {
     "name": "Sombrio",
     "effects": [
-      "Início dos seus turnos: Revele 2 da mesma [rainbow]cor[/rainbow]. Suprima 1 delas."
+      "Início dos seus turnos:\nRevele 2 da mesma [rainbow]cor[/rainbow]. Suprima 1 delas."
     ],
     "flavor": "Esta cidade é grande o bastante pra nós dois, mas vou me livrar de você mesmo assim."
   },
@@ -158,7 +158,7 @@
   "nightflower-island/traits/mucus-traps": {
     "name": "Armadilhas de Muco",
     "effects": [
-      "Em qualquer ordem: Estabilize até 3. Compre 2 cartas."
+      "Em qualquer ordem:\nEstabilize até 3.\nCompre 2 cartas."
     ],
     "flavor": "Não é o que parece... é meleca mesmo."
   },
@@ -259,7 +259,7 @@
   "nightflower-island/traits/versatile": {
     "name": "Versátil",
     "effects": [
-      "Jogue 1 e descarte este. [small]Ignore ações ({action}).[/small]"
+      "Jogue 1 e descarte este.\n[small]Ignore ações ({action}).[/small]"
     ],
     "flavor": "A única coisa que não consigo fazer é qualquer outra coisa."
   },

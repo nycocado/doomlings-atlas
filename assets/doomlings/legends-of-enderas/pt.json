@@ -106,7 +106,7 @@
   "legends-of-enderas/traits/back-propagation": {
     "name": "Retropropagação",
     "effects": [
-      "Anexe. O valor de face do hospedeiro agora é 2.",
+      "Anexe.\nO valor de face do hospedeiro agora é 2.",
       "Você pode mover este anexo para outro trait da sua pilha de traits."
     ],
     "flavor": "Se não der certo de primeira, ou mesmo se der, tente de novo."
@@ -114,7 +114,7 @@
   "legends-of-enderas/traits/bionic-leg": {
     "name": "Perna Biônica",
     "effects": [
-      "Anexe. O valor de face do hospedeiro agora é 4."
+      "Anexe.\nO valor de face do hospedeiro agora é 4."
     ],
     "flavor": "Estou juntando dinheiro para outra. Até lá, fico preso a este chato membro robótico."
   },
@@ -162,14 +162,14 @@
   "legends-of-enderas/traits/cryonics": {
     "name": "Criônica",
     "effects": [
-      "Anexe. Quando um trait entrar na sua pilha de traits, você pode anexar Cryonics a ele.\nO valor de face do hospedeiro agora é 1."
+      "Anexe.\nQuando um trait entrar na sua pilha de traits, você pode anexar Cryonics a ele.\nO valor de face do hospedeiro agora é 1."
     ],
     "flavor": "Preservar o que amamos. Congelando."
   },
   "legends-of-enderas/traits/cursed": {
     "name": "Amaldiçoado",
     "effects": [
-      "Anexe. Se Cursed for descartado da mão ou da pilha de traits, anexe-o a um trait de um oponente."
+      "Anexe.\nSe Cursed for descartado da mão ou da pilha de traits, anexe-o a um trait de um oponente."
     ],
     "flavor": "Quebrei um espelho debaixo da escada de uma bruxa na última sexta-feira 13."
   },
@@ -184,7 +184,7 @@
   "legends-of-enderas/traits/dark-magic": {
     "name": "Magia Negra",
     "effects": [
-      "No seu turno: Você pode descartar Dark Magic da mão quando jogar um trait sem efeito. Se fizer isso, jogue uma ação ({action}) em qualquer pilha de traits."
+      "No seu turno:\nVocê pode descartar Dark Magic da mão quando jogar um trait sem efeito.\nSe fizer isso, jogue uma ação ({action}) em qualquer pilha de traits."
     ],
     "flavor": "Às vezes é preciso sacrificar uns ovos para materializar uma omelete."
   },
@@ -198,14 +198,14 @@
   "legends-of-enderas/traits/dinowrangler": {
     "name": "Domador de Dinos",
     "effects": [
-      "Jogue 1 Dinoling ({dinoling}) da pilha de descarte. Jogue a ação dele ({action})."
+      "Jogue 1 Dinoling ({dinoling}) da pilha de descarte.\nJogue a ação dele ({action})."
     ],
     "flavor": "Eia, estegozinho!"
   },
   "legends-of-enderas/traits/enchanted": {
     "name": "Enfeitiçado",
     "effects": [
-      "Anexe. +3 se o hospedeiro for um Mythling ({mythling}).",
+      "Anexe.\n+3 se o hospedeiro for um Mythling ({mythling}).",
       "Se Enchanted for descartado da mão, você pode anexá-lo a um dominante."
     ],
     "flavor": "Uma espada pode transformar alguém em herói, vilão ou, tipo, 40% mais legal."
@@ -220,7 +220,7 @@
   "legends-of-enderas/traits/entangled": {
     "name": "Emaranhado",
     "effects": [
-      "Início do seu turno: Você pode descartar Entangled da mão. Se fizer isso, descarte 1 carta da mão, depois compre 1 carta."
+      "Início do seu turno:\nVocê pode descartar Entangled da mão. Se fizer isso, descarte 1 carta da mão, depois compre 1 carta."
     ],
     "flavor": "Não, VOCÊ que não é localmente real, cara."
   },
@@ -231,7 +231,7 @@
   "legends-of-enderas/traits/filament": {
     "name": "Filamento",
     "effects": [
-      "Anexe. +3 para cada dominante na sua pilha de traits da mesma [rainbow]cor[/rainbow] do hospedeiro."
+      "Anexe.\n+3 para cada dominante na sua pilha de traits da mesma [rainbow]cor[/rainbow] do hospedeiro."
     ],
     "flavor": "Acabei de ter uma ideia. Vai ser brilhante."
   },
@@ -242,7 +242,7 @@
   "legends-of-enderas/traits/foresight": {
     "name": "Previsão",
     "effects": [
-      "A qualquer momento: Você pode descartar Foresight da mão para espiar a próxima age."
+      "A qualquer momento:\nVocê pode descartar Foresight da mão para espiar a próxima age."
     ],
     "flavor": "Meus amigos, o futuro é brilhante. Principalmente por causa da bomba nuclear."
   },
@@ -256,28 +256,28 @@
   "legends-of-enderas/traits/gentle": {
     "name": "Gentil",
     "effects": [
-      "Para jogar, você deve descartar um trait com valor de face 2 ou mais da sua pilha de traits. Os oponentes descartam 1 trait da pilha de traits deles com valor de face maior."
+      "Para jogar, você deve descartar um trait com valor de face 2 ou mais da sua pilha de traits.\nOs oponentes descartam 1 trait da pilha de traits deles com valor de face maior."
     ],
     "flavor": "Ops, acho que pisei em alguma coisa."
   },
   "legends-of-enderas/traits/ghostly": {
     "name": "Fantasmal",
     "effects": [
-      "Se Ghostly for descartado da mão, jogue-o imediatamente. Se for descartado da pilha de traits, passe-o para a mão de um oponente."
+      "Se Ghostly for descartado da mão, jogue-o imediatamente.\nSe for descartado da pilha de traits, passe-o para a mão de um oponente."
     ],
     "flavor": "O fantasma mais fantasma."
   },
   "legends-of-enderas/traits/gizmo": {
     "name": "Geringonça",
     "effects": [
-      "Anexe. Escolha 1.\nSe o hospedeiro for:\n[green]Verde[/green]: Preveja a próxima age.\n[purple]Roxo[/purple]: Estabilize até 6.\n[blue]Azul[/blue]: Compre 2 cartas.\n[red]Vermelho[/red]: +2.\nDepois, jogue outro trait."
+      "Anexe.\nEscolha 1. Se o hospedeiro for:\n[green]Verde[/green]: Preveja a próxima age.\n[purple]Roxo[/purple]: Estabilize até 6.\n[blue]Azul[/blue]: Compre 2 cartas.\n[red]Vermelho[/red]: +2.\nDepois, jogue outro trait."
     ],
     "flavor": "Ela faz o que você quiser! Ou o que ela quiser! Ou o que for!"
   },
   "legends-of-enderas/traits/herbivore": {
     "name": "Herbívoro",
     "effects": [
-      "Você pode jogar Herbivore depois de estabilizar se o topo da pilha de descarte for [green]verde[/green]. Depois, compre 1 carta."
+      "Você pode jogar Herbivore depois de estabilizar se o topo da pilha de descarte for [green]verde[/green].\nDepois, compre 1 carta."
     ],
     "flavor": "Você devia tentar comer coisas que não fogem. É bem mais fácil."
   },
@@ -292,7 +292,7 @@
   "legends-of-enderas/traits/ichor": {
     "name": "Icor",
     "effects": [
-      "Início do seu turno: Você pode descartar Ichor da mão para comprar 2 cartas."
+      "Início do seu turno:\nVocê pode descartar Ichor da mão para comprar 2 cartas."
     ],
     "flavor": "Não recomendado para meros mortais."
   },
@@ -373,7 +373,7 @@
   "legends-of-enderas/traits/mecha-jaw": {
     "name": "Mecha-Mandíbula",
     "effects": [
-      "Anexe a um trait em qualquer pilha de traits. +5 se o hospedeiro for um Dinoling ({dinoling})."
+      "Anexe a um trait em qualquer pilha de traits.\n+5 se o hospedeiro for um Dinoling ({dinoling})."
     ],
     "flavor": "Laser nos olhos vendido separadamente."
   },
@@ -412,14 +412,14 @@
   "legends-of-enderas/traits/plastron": {
     "name": "Plastrão",
     "effects": [
-      "Você pode descartar 1 da sua pilha de traits OU jogar a carta do topo da pilha de descarte. [small]Ignore a ação dela ({action}).[/small]"
+      "Você pode descartar 1 da sua pilha de traits OU jogar a carta do topo da pilha de descarte.\n[small]Ignore a ação dela ({action}).[/small]"
     ],
     "flavor": "Memória de tartaruga."
   },
   "legends-of-enderas/traits/refurbished": {
     "name": "Recondicionado",
     "effects": [
-      "Anexe. Se o hospedeiro for: [purple]Roxo[/purple]: +2. [red]Vermelho[/red]: +3. Se o hospedeiro for um Techling ({techling}): +1 para cada carta na mão."
+      "Anexe.\nSe o hospedeiro for: [purple]Roxo[/purple]: +2. [red]Vermelho[/red]: +3. Se o hospedeiro for um Techling ({techling}): +1 para cada carta na mão."
     ],
     "flavor": "Um ~~novo~~ brinquedo reluzente."
   },
@@ -454,14 +454,14 @@
   "legends-of-enderas/traits/slumbering": {
     "name": "Dorminhoco",
     "effects": [
-      "Descarte 1 carta da mão.\nSe a carta for:\n[purple]Roxa[/purple]: Descarte até 2 da sua pilha de traits.\n[red]Vermelha[/red]: Adicione o valor de face dela.\n[green]Verde[/green]: Jogue 1 trait.\n[blue]Azul[/blue]: +5."
+      "Descarte 1 carta da mão. Se a carta for:\n[purple]Roxa[/purple]: Descarte até 2 da sua pilha de traits.\n[red]Vermelha[/red]: Adicione o valor de face dela.\n[green]Verde[/green]: Jogue 1 trait.\n[blue]Azul[/blue]: +5."
     ],
     "flavor": "Desculpa ter dormido demais. Já é o fim do mundo?"
   },
   "legends-of-enderas/traits/solar-powered": {
     "name": "Energia Solar",
     "effects": [
-      "Anexe. O valor é igual ao valor de face do hospedeiro."
+      "Anexe.\nO valor é igual ao valor de face do hospedeiro."
     ],
     "flavor": "Com garantia limitada de um bilhão de anos ou 60.000 km."
   },
@@ -475,7 +475,7 @@
   "legends-of-enderas/traits/speech-recognition": {
     "name": "Reconhecimento de Voz",
     "effects": [
-      "Anexe. Adicione o valor de face de 1 carta na mão que compartilhe uma [rainbow]cor[/rainbow] com o hospedeiro.\n[small](Exceto dominantes.)[/small]"
+      "Anexe.\nAdicione o valor de face de 1 carta na mão que compartilhe uma [rainbow]cor[/rainbow] com o hospedeiro.\n[small](Exceto dominantes.)[/small]"
     ],
     "flavor": "O melhor conversor de voz para texto do mercado."
   },
@@ -504,7 +504,7 @@
   "legends-of-enderas/traits/stompy": {
     "name": "Pisão",
     "effects": [
-      "Para jogar, você deve descartar um valor de face total de 5 ou mais da sua mão, usando qualquer número de cartas. Não estabilize!"
+      "Para jogar, você deve descartar um valor de face total de 5 ou mais da sua mão, usando qualquer número de cartas.\nNão estabilize!"
     ],
     "flavor": "Meus pés fazem uma coisa só, e essa coisa é barulhenta."
   },
@@ -539,14 +539,14 @@
   "legends-of-enderas/traits/technomagik": {
     "name": "Tecnomagia",
     "effects": [
-      "Compre 2 cartas. Depois, você pode jogar um Mythling ({mythling}) ou Techling ({techling}) da mão."
+      "Compre 2 cartas.\nDepois, você pode jogar um Mythling ({mythling}) ou Techling ({techling}) da mão."
     ],
     "flavor": "Suficientemente avançada."
   },
   "legends-of-enderas/traits/terrarium": {
     "name": "Terrário",
     "effects": [
-      "Anexe. +1 para cada trait com o mesmo valor de face do hospedeiro."
+      "Anexe.\n+1 para cada trait com o mesmo valor de face do hospedeiro."
     ],
     "flavor": "Comi sementes de melancia e agora elas estão crescendo no meu cérebro. Por favor, ajudem."
   },
@@ -582,14 +582,14 @@
   "legends-of-enderas/traits/transistor": {
     "name": "Transistor",
     "effects": [
-      "Anexe. Todos os oponentes descartam da mão todas as cartas que compartilhem uma [rainbow]cor[/rainbow] com o trait hospedeiro."
+      "Anexe.\nTodos os oponentes descartam da mão todas as cartas que compartilhem uma [rainbow]cor[/rainbow] com o trait hospedeiro."
     ],
     "flavor": "Um mau contato."
   },
   "legends-of-enderas/traits/treads": {
     "name": "Esteiras",
     "effects": [
-      "Anexe. Você pode jogar outro trait que compartilhe uma [rainbow]cor[/rainbow] com o hospedeiro."
+      "Anexe.\nVocê pode jogar outro trait que compartilhe uma [rainbow]cor[/rainbow] com o hospedeiro."
     ],
     "flavor": "Pise pesado."
   },
@@ -610,7 +610,7 @@
   "legends-of-enderas/traits/warlocky": {
     "name": "Bruxesco",
     "effects": [
-      "No seu turno: Você pode descartar Warlocky da mão quando jogar um trait. Se fizer isso, jogue outro trait da mesma [rainbow]cor[/rainbow]."
+      "No seu turno:\nVocê pode descartar Warlocky da mão quando jogar um trait.\nSe fizer isso, jogue outro trait da mesma [rainbow]cor[/rainbow]."
     ],
     "flavor": "Fiz um pacto de sangue com um demônio numa noite sem lua. Foi bem legal e não teve nenhuma consequência."
   },
@@ -663,7 +663,7 @@
   "legends-of-enderas/treasures/coda": {
     "name": "Coda",
     "effects": [
-      "Diminua o Gene Pool em 1. Jogue 1.",
+      "Diminua o Gene Pool em 1.\nJogue 1.",
       "Compre 1 carta."
     ]
   },

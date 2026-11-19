@@ -798,7 +798,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Draw 4 cards. You may play 1 from your hand. [small]Play actions ({action}).[/small]"
+        "text": "Draw 4 cards. You may play 1 from your hand.\n[small]Play actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -1053,7 +1053,7 @@
     "flavor": "I don't have that one yet!",
     "effects": [
       {
-        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each [rainbow]color[/rainbow] drawn. [small]Discard dominants. Ignore actions.[/small]"
+        "text": "When you play Collector from your hand, draw 4 cards. You may play 1 of each [rainbow]color[/rainbow] drawn.\n[small]Discard dominants. Ignore actions.[/small]"
       }
     ],
     "genePool": null,
@@ -1146,7 +1146,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "[small]Cannot be played on your turn![/small] Play Dart when an opponent removes a trait from your trait pile."
+        "text": "[small]Cannot be played on your turn![/small]\nPlay Dart when an opponent removes a trait from your trait pile."
       }
     ],
     "genePool": null,
@@ -1241,7 +1241,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "[small]Cannot be played on your turn![/small] When Elusive enters your hand during an age effect or an opponent's turn, you may play it immediately."
+        "text": "[small]Cannot be played on your turn![/small]\nWhen Elusive enters your hand during an age effect or an opponent's turn, you may play it immediately."
       }
     ],
     "genePool": null,
@@ -1630,7 +1630,7 @@
     "flavor": "A bird in the hand is worth...several points, so play it!",
     "effects": [
       {
-        "text": "Until World's End: After you stabilize, you may discard 1 effectless trait from your hand to draw 3 cards."
+        "text": "Until World's End:\nAfter you stabilize, you may discard 1 effectless trait from your hand to draw 3 cards."
       }
     ],
     "genePool": null,
@@ -1719,7 +1719,7 @@
     "flavor": "Let there be sleight.",
     "effects": [
       {
-        "text": "Until World's End: After stabilizing, if you played no actions ({action}) on your turn, you may play an action from a card in your hand, then discard it.\n[small](Ignore all other actions.)[/small]"
+        "text": "Until World's End:\nAfter stabilizing, if you played no actions ({action}) on your turn, you may play an action from a card in your hand, then discard it.\n[small](Ignore all other actions.)[/small]"
       }
     ],
     "genePool": null,
@@ -2135,7 +2135,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "[small]Cannot be played on your turn![/small] If Muse is discarded from your hand, you may instead play it into your trait pile."
+        "text": "[small]Cannot be played on your turn![/small]\nIf Muse is discarded from your hand, you may instead play it into your trait pile."
       }
     ],
     "genePool": null,
@@ -2158,7 +2158,7 @@
     "flavor": "You're my new best friend! What's your name again?",
     "effects": [
       {
-        "text": "All opponents receive: +1 Gene Pool. Add the value of the highest Gene Pool to your final score."
+        "text": "All opponents receive:\n+1 Gene Pool.\nAdd the value of the highest Gene Pool to your final score."
       }
     ],
     "genePool": null,
@@ -2179,7 +2179,7 @@
     "flavor": "Of course you can join my network. There's so mush room.",
     "effects": [
       {
-        "text": "If Mycelium is removed from your trait pile on your turn, you may first play the top card of the discard pile. [small]Play actions ({action}).[/small]"
+        "text": "If Mycelium is removed from your trait pile on your turn, you may first play the top card of the discard pile.\n[small]Play actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2220,7 +2220,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "[rainbow]Choose a color.[/rainbow] All opponents may play 1 of the chosen [rainbow]color[/rainbow].\n[small](Excluding dominants.) Ignore actions ({action}).[/small]"
+        "text": "[rainbow]Choose a color.[/rainbow]\nAll opponents may play 1 of the chosen [rainbow]color[/rainbow].\n[small](Excluding dominants.) Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2389,7 +2389,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "You may play Pinchy when an opponent plays a trait. Stop its action ({action}) and add it to your hand. That opponent may play another trait."
+        "text": "You may play Pinchy when an opponent plays a trait.\nStop its action ({action}) and add it to your hand.\nThat opponent may play another trait."
       }
     ],
     "genePool": null,
@@ -2508,7 +2508,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Restart the age. You are now 1st player. Take your turn.\n(You may not restart catastrophes.)"
+        "text": "Restart the age.\nYou are now 1st player.\nTake your turn.\n(You may not restart catastrophes.)"
       }
     ],
     "genePool": null,
@@ -2532,7 +2532,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "Draw 4 cards. You may play any with a face value of 2 or lower. [small]Ignore actions ({action}).[/small]"
+        "text": "Draw 4 cards.\nYou may play any with a face value of 2 or lower.\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -2601,7 +2601,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Choose a [rainbow]color[/rainbow]. Look at the bottom 5 cards in the trait deck. You may play 1 of the chosen [rainbow]color[/rainbow]."
+        "text": "Choose a [rainbow]color[/rainbow].\nLook at the bottom 5 cards in the trait deck. You may play 1 of the chosen [rainbow]color[/rainbow]."
       }
     ],
     "genePool": null,
@@ -2769,7 +2769,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 3 cards. Play 1 card from your hand into an opponent's trait pile. [small]No dominants. Ignore its action ({action}).[/small]"
+        "text": "Draw 3 cards.\nPlay 1 card from your hand into an opponent's trait pile.\n[small]No dominants.[/small]\n[small]Ignore its action ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -3095,7 +3095,7 @@
     "effects": [
       {
         "kind": "worlds-end",
-        "text": "[rainbow]Choose a color.[/rainbow] All opponents reveal all cards of that [rainbow]color[/rainbow] from their hand. Play 1 immediately. [small]Ignore actions ({action}).[/small]"
+        "text": "[rainbow]Choose a color.[/rainbow]\nAll opponents reveal all cards of that [rainbow]color[/rainbow] from their hand. Play 1 immediately.\n[small]Ignore actions ({action}).[/small]"
       }
     ],
     "genePool": null,
@@ -3207,7 +3207,7 @@
     "flavor": "Whimmy zap bam woppa tummy tam wapple!",
     "effects": [
       {
-        "text": "Until World's End: When you play an effectless trait, you may trigger a catastrophic effect from any previously played catastrophe."
+        "text": "Until World's End:\nWhen you play an effectless trait, you may trigger a catastrophic effect from any previously played catastrophe."
       }
     ],
     "genePool": null,
@@ -3227,7 +3227,7 @@
     "effects": [
       {
         "kind": "play-when",
-        "text": "Cannot be played on your turn! At World's End: You may play Super Sneaky from your hand."
+        "text": "Cannot be played on your turn!\nAt World's End:\nYou may play Super Sneaky from your hand."
       }
     ],
     "genePool": null,
@@ -3634,7 +3634,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "All opponents play 1 trait. [small](No dominants.) Ignore actions ({action}).[/small] Steal 1 of those traits OR play an additional trait."
+        "text": "All opponents play 1 trait.\n[small](No dominants.)[/small]\n[small]Ignore actions ({action}).[/small]\nSteal 1 of those traits OR play an additional trait."
       }
     ],
     "genePool": null,
@@ -3681,7 +3681,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 1 card. You may either play it now OR draw 1 from the bottom of the trait deck. You may instead play that card now."
+        "text": "Draw 1 card.\nYou may either play it now OR draw 1 from the bottom of the trait deck. You may instead play that card now."
       }
     ],
     "genePool": null,
@@ -3719,7 +3719,7 @@
     "flavor": "EeEe! Ee! EeEeEeEe!",
     "effects": [
       {
-        "text": "Until World's End: You may discard up to 2 from your hand before stabilizing."
+        "text": "Until World's End:\nYou may discard up to 2 from your hand before stabilizing."
       }
     ],
     "genePool": null,
@@ -3741,7 +3741,7 @@
     "effects": [
       {
         "kind": "action",
-        "text": "Draw 3 cards. Discard 3 cards from your hand to the bottom of the trait deck."
+        "text": "Draw 3 cards.\nDiscard 3 cards from your hand to the bottom of the trait deck."
       }
     ],
     "genePool": null,
