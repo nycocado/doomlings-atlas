@@ -57,6 +57,10 @@
     <string name="card_variant_position">%1$s, variant %2$d of %3$d</string>
     <string name="card_group_expand">Open</string>
     <string name="card_group_collapse">Collapse</string>
+    <string name="story_more">Read more</string>
+    <string name="story_less">Read less</string>
+    <string name="story_collapsed">Collapsed</string>
+    <string name="story_expanded">Expanded</string>
 
     <string name="color_blue">Blue</string>
     <string name="color_green">Green</string>

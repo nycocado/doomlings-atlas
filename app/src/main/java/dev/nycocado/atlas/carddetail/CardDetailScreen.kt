@@ -173,6 +173,7 @@ fun CardDetailContent(
     onLanguageChange: (CardLanguage) -> Unit = {},
     library: CardLibrary = CardLibrary.loading,
     onCardClick: (String) -> Unit = {},
+    storyExpanded: Boolean = false,
 ) {
     val theme = AtlasTheme.colors
     val face = translations.face(card, language)
@@ -250,6 +251,7 @@ fun CardDetailContent(
                             library,
                             onCardClick,
                             selector.takeIf { block.selector },
+                            storyExpanded,
                         )
                     }
                 }
@@ -439,8 +441,9 @@ internal fun CardDetailPreview() = AtlasTheme { CardDetailSample() }
 internal fun CardDetailSample(
     layout: ListDetailLayout = ListDetailLayout.Single,
     card: Card = SampleTrait,
+    storyExpanded: Boolean = false,
 ) = BlankCardImages {
-    CardDetailContent(card, tilt = -3f, onBack = {}, onAboutClick = {}, layout = layout)
+    CardDetailContent(card, tilt = -3f, onBack = {}, onAboutClick = {}, layout = layout, storyExpanded = storyExpanded)
 }
 
 private val SampleTrait =
@@ -741,6 +744,7 @@ private val ArmoredMelon =
         null,
     )
 
+// Ardent Grip as in assets/doomlings/legends-of-enderas/cards.json.
 private val ArdentGrip =
     Treasure(
         "legends-of-enderas/treasures/ardent-grip",
@@ -748,6 +752,15 @@ private val ArdentGrip =
         "",
         "Ardent Grip",
         listOf(Effect(EffectKind.Rush, "Set your Gene Pool to 5."), Effect(EffectKind.Rush, "Draw 1.")),
+        listOf(
+            "My palm was sweating before the glove was even on. I tested its power, conjuring gems & bricks " +
+                "of gold. With every jewel summoned, the glove got hotter, but I ignored the pain in pursuit of " +
+                "fortune.",
+            "\"I'll be rich and they'll look like fools!\" I thought.",
+            "When I could summon no more, I removed the glove. A mound of black soot poured out from inside." +
+                " I was mortified to discover there was nothing past my wrist.",
+            "I paused, considered my options, then placed the glove over my other hand.",
+        ),
     )
 
 private val Bon =
@@ -776,6 +789,11 @@ internal fun MeaningOfLifeDetailPreview() = AtlasTheme { CardDetailSample(card =
 @PreviewLightDark
 @Composable
 internal fun TreasureDetailPreview() = AtlasTheme { CardDetailSample(card = ArdentGrip) }
+
+@PreviewLightDark
+@Composable
+internal fun TreasureStoryExpandedDetailPreview() =
+    AtlasTheme { CardDetailSample(card = ArdentGrip, storyExpanded = true) }
 
 @PreviewLightDark
 @Composable

@@ -596,7 +596,11 @@ class CardFaceTest {
                     CardLanguage.Portuguese to
                         mapOf(
                             ardentGrip.id to
-                                CardText("Luva Ardente", listOf("Defina.", "Compre 1."), story = listOf("Um.", "Dois.")),
+                                CardText(
+                                    "Luva Ardente",
+                                    listOf("Defina.", "Compre 1."),
+                                    story = listOf("Um.", "Dois."),
+                                ),
                         ),
                 ),
             ).face(ardentGrip, CardLanguage.Portuguese)
