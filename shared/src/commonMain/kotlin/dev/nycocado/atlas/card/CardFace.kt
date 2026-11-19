@@ -42,7 +42,11 @@ sealed interface CardFact {
 
     data class Subspecies(
         val name: String,
-    ) : CardFact
+    ) : CardFact {
+        // The token the effect text writes this subspecies with, null for a name without one.
+        val token: Token?
+            get() = subspeciesTokens.firstOrNull { it.code == name.lowercase() }
+    }
 }
 
 enum class TagQualifier { Curious, Exotic }
@@ -146,6 +150,9 @@ enum class Token(
     Moonling("moonling"),
     Glitterling("glitterling"),
 }
+
+private val subspeciesTokens =
+    listOf(Token.Mythling, Token.Dinoling, Token.Techling, Token.Deepling, Token.Moonling, Token.Glitterling)
 
 // The inks an effect's text is printed in: a span's, by the name in brackets (`[red]red[/red]`), or a whole effect's,
 // from its kind.

@@ -49,6 +49,19 @@ class CardDataIntegrityTest {
         )
     }
 
+    // A subspecies without a token would lose its symbol silently.
+    @Test
+    fun everySubspeciesHasAToken() {
+        assertEquals(
+            emptyList(),
+            cards
+                .filterIsInstance<Trait>()
+                .flatMap { trait -> trait.subspecies.map { trait.id to it } }
+                .filter { (_, name) -> CardFact.Subspecies(name).token == null }
+                .map { (id, name) -> "$id: $name" },
+        )
+    }
+
     @Test
     fun everyEffectKindIsAllowedOnItsCardType() {
         assertEquals(
