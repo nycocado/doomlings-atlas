@@ -211,6 +211,27 @@ class TranslationDataIntegrityTest {
     }
 
     @Test
+    fun everyTranslatedStoryParagraphHasTheLineBreaksOfItsEnglishParagraph() {
+        val englishStoryById =
+            englishCards.associate { card ->
+                card.getValue("id").jsonPrimitive.content to
+                    card["story"]?.jsonArray.orEmpty().map { it.jsonPrimitive.content }
+            }
+        files.forEach { file ->
+            val wrong =
+                CardAssets.translationsOf(file).flatMap { (id, fields) ->
+                    fields["story"]
+                        .orEmpty()
+                        .zip(englishStoryById[id].orEmpty())
+                        .mapIndexedNotNull { index, (text, english) ->
+                            "$id.story[$index]".takeIf { text.lines().size != english.lines().size }
+                        }
+                }
+            assertEquals(emptyList<String>(), wrong, file.label)
+        }
+    }
+
+    @Test
     fun everySetWithTextHasAFileForEveryCardLanguage() {
         val names = CardLanguage.entries.filter { it != CardLanguage.English }.map { "${it.code}.json" }
         val missing =

@@ -2218,7 +2218,7 @@
     "story": [
       "The kids huddled around the box, eyes wide. The bravest and stupidest of them opened it. The box exploded with colors not yet named.",
       "\"Let's call that smokle,\" Sandy declared, pointing at a fizzing wisp of violet light. \"And that's gleengroll!\" Candy added, pointing at a wobbly shimmer of greenish gold.",
-      "A rosy shade that smelled of grapefruit bounced among the light. \"Oyngo,\" said Mandy, nodding sagely.",
+      "A rosy shade that smelled of grapefruit bounced among the light.\n\"Oyngo,\" said Mandy, nodding sagely.",
       "After hours, they ended on an inky blue, which they all agreed was \"blorky\"."
     ],
     "effects": [
@@ -2261,7 +2261,7 @@
     "set": "legends-of-enderas",
     "name": "Cataclyte",
     "story": [
-      "For a moment, a lifeless rock wandered alone, lost in the void. Then that moment passed, and the rock was pulled into the warmth of a star. The star's energy pummeled the rock. It caused catastrophe after catastrophe. But, in the wake of devastation, there was life. Enderas was born.",
+      "For a moment, a lifeless rock wandered alone, lost in the void. Then that moment passed, and the rock was pulled into the warmth of a star. The star's energy pummeled the rock. It caused catastrophe after catastrophe. But, in the wake of devastation, there was life.\nEnderas was born.",
       "Through the chaos, Doomlings emerged, capable of rapidly adapting the traits and strengths of their friends in the face of any disaster. It's rumored that Enderas contains rare elements that absorbed the star's energy and can be used to amplify the Doomlings' power."
     ],
     "effects": [
@@ -2416,7 +2416,7 @@
     "name": "Heart of the Woods",
     "story": [
       "Marin wandered alone, lost in the cold, dark woods, until she came upon a sealed door of roots and living wood.",
-      "She knocked. There was no answer-except, maybe, a heartbeat. Marin opened the door. A golden light poured out from the room. Inside, she saw an amber heart. Its glow banished every shadow. This was a treasure.",
+      "She knocked. There was no answer-except, maybe, a heartbeat. Marin opened the door. A golden light poured out from the room. Inside, she saw an amber heart.\nIts glow banished every shadow.\nThis was a treasure.",
       "Marin beheld its beauty, closed the door, and left it alone."
     ],
     "effects": [
@@ -2487,7 +2487,7 @@
       "Sumner stood before his abomination. The beast, sharp and alien, every edge ninety degrees of unholy geometry. It was... a cube.",
       "Sumner's spherical ancestors had whispered warnings of conjuring \"The Boxed One.\"",
       "He gulped. \"This is forbidden.\"",
-      "The Boxed One spoke: \"There are four more like me, Round One. Summon them, and we shall reshape this world.\""
+      "The Boxed One spoke:\n\"There are four more like me, Round One. Summon them, and we shall reshape this world.\""
     ],
     "effects": [
       {
@@ -2532,7 +2532,7 @@
     "story": [
       "The plucky Doomling stood no taller than Kal's knees, but his honest eyes were fixed on Kal's. Clearly, the creature wanted to help.",
       "\"I tell you what little guy: if you take me to Slumberwood, I'll give you what's left of my sandwich.\"",
-      "Kal knelt and extended his hand. But Hero didn't understand the gesture.",
+      "Kal knelt and extended his hand.\nBut Hero didn't understand the gesture.",
       "\"What's that?\"",
       "\"It's a promise.\"",
       "Kal grabbed Hero's hand and shook him like a maraca.",
@@ -2555,7 +2555,7 @@
       "\"Run.",
       "I will clean your memory. The mistakes you've made, the friends you've lost, and all the catastrophes you've brought to Enderas will be as though they never were.",
       "Or, you can stay, and we can fight to the end. Likely, you will lose. But even if you survive, you'll live on with the memory that you could not save them.",
-      "But I can save you. Run, and I will release you from your grief, and the pain of Enderas.\""
+      "But I can save you.\nRun, and I will release you from your grief, and the pain of Enderas.\""
     ],
     "effects": [
       {
@@ -2577,7 +2577,7 @@
     "story": [
       "I found these shells in Castle Glass, the City made of Sand.",
       "Its monumental walls were exquisite tributes to the sea. The roads: meticulously crafted, woven through sparkling dwellings, which were more like sculptures than homes. I could have stayed forever, but I had business to attend to, so I grabbed the shells and left.",
-      "When I returned, the city was gone. The ocean had swallowed it.",
+      "When I returned, the city was gone.\nThe ocean had swallowed it.",
       "To my surprise, the shells in my pocket shook. Tiny creatures emerged. They crawled toward the beach and began shifting the sands, building something beautiful, as the tides receded to the ocean."
     ],
     "effects": [
@@ -2648,7 +2648,7 @@
       "Epic scowled at the burning town. The villagers pleaded for aid, but Epic cared only about his favorite tavern.",
       "With the blaze crackling behind him, he fixed his steely gaze upon the dam above the village. He grinned, and charged. With a primal roar, Epic swung his greataxe, shattering the dam in a single blow.",
       "The water surged. Down it thundered, smashing through fields and streets, dousing the flames, flattening every house-and tavern-in its path.",
-      "\"Fire's out,\" Epic declared. \"Wish I could get a drink though.\""
+      "\"Fire's out,\" Epic declared.\n\"Wish I could get a drink though.\""
     ],
     "effects": [
       {
@@ -2669,7 +2669,7 @@
     "name": "Vanity",
     "story": [
       "The road to Titan's Tower had been cold, rough, and winding. But it was worth the blisters and frostbite. The stories were true, and the adventurer would soon be a legend.",
-      "She swung open the doors to the tower and beheld the relics within: two enchanted swords. One dulled from time and battle. The other, shiny and brilliant. This one spoke to her. Like, literally. It's magical like that.",
+      "She swung open the doors to the tower and beheld the relics within: two enchanted swords. One dulled from time and battle.\nThe other, shiny and brilliant.\nThis one spoke to her. Like, literally.\nIt's magical like that.",
       "It said, \"We're going to make a name for yourself.\"",
       "And a Legend replied, \"I see no downside.\""
     ],

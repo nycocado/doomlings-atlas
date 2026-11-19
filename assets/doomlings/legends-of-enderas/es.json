@@ -649,7 +649,7 @@
     "story": [
       "Los niños se apiñaron alrededor de la caja, con los ojos muy abiertos. El más valiente y más tonto de todos la abrió. La caja estalló en colores que aún no tenían nombre.",
       "\"Vamos a llamar a eso smokle\", declaró Sandy, señalando una voluta burbujeante de luz morada. \"¡Y eso es gleengroll!\", añadió Candy, señalando un destello tembloroso de dorado verdoso.",
-      "Un tono rosado que olía a toronja rebotaba entre las luces. \"Oyngo\", dijo Mandy, asintiendo con sabiduría.",
+      "Un tono rosado que olía a toronja rebotaba entre las luces.\n\"Oyngo\", dijo Mandy, asintiendo con sabiduría.",
       "Después de horas, terminaron en un azul tinta, y todos estuvieron de acuerdo en que era \"blorky\"."
     ],
     "effects": [
@@ -672,7 +672,7 @@
   "legends-of-enderas/treasures/cataclyte": {
     "name": "Cataclyte",
     "story": [
-      "Por un instante, una roca sin vida vagaba sola, perdida en el vacío. Luego ese instante pasó y la roca fue atraída hacia el calor de una estrella. La energía de la estrella golpeó la roca sin piedad. Provocó una catástrofe tras otra. Pero, tras la devastación, hubo vida. Nació Enderas.",
+      "Por un instante, una roca sin vida vagaba sola, perdida en el vacío. Luego ese instante pasó y la roca fue atraída hacia el calor de una estrella. La energía de la estrella golpeó la roca sin piedad. Provocó una catástrofe tras otra. Pero, tras la devastación, hubo vida.\nNació Enderas.",
       "Del caos surgieron los Doomlings, capaces de adaptar rápidamente los traits y las fortalezas de sus amigos ante cualquier desastre. Se dice que Enderas contiene elementos raros que absorbieron la energía de la estrella y que pueden usarse para amplificar el poder de los Doomlings."
     ],
     "effects": [
@@ -760,7 +760,7 @@
     "name": "Corazón del Bosque",
     "story": [
       "Marin vagaba sola, perdida en el bosque frío y oscuro, hasta que dio con una puerta sellada, hecha de raíces y madera viva.",
-      "Tocó. No hubo respuesta, salvo, quizás, un latido. Marin abrió la puerta. Una luz dorada brotó de la habitación. Dentro, vio un corazón de ámbar. Su resplandor ahuyentaba todas las sombras. Eso sí era un tesoro.",
+      "Tocó. No hubo respuesta, salvo, quizás, un latido. Marin abrió la puerta. Una luz dorada brotó de la habitación. Dentro, vio un corazón de ámbar.\nSu resplandor ahuyentaba todas las sombras.\nEso sí era un tesoro.",
       "Marin contempló su belleza, cerró la puerta y lo dejó en paz."
     ],
     "effects": [
@@ -801,7 +801,7 @@
       "Sumner estaba frente a su abominación. La bestia, afilada y alienígena, con cada arista a noventa grados de geometría impía. Era... un cubo.",
       "Los ancestros esféricos de Sumner habían susurrado advertencias contra invocar a \"El Encajonado\".",
       "Tragó saliva. \"Esto está prohibido.\"",
-      "El Encajonado habló: \"Hay otros cuatro como yo, Redondo. Invócalos y remodelaremos este mundo.\""
+      "El Encajonado habló:\n\"Hay otros cuatro como yo, Redondo. Invócalos y remodelaremos este mundo.\""
     ],
     "effects": [
       "Descarta hasta 3 de la mano. Juega 1 trait sin efecto por cada carta descartada. Luego, estabiliza y salta tu turno.",
@@ -826,7 +826,7 @@
     "story": [
       "El Doomling valiente no pasaba de las rodillas de Kal, pero sus ojos honestos estaban clavados en los de Kal. Estaba claro que la criatura quería ayudar.",
       "\"Mira, amiguito: si me llevas a Slumberwood, te doy lo que queda de mi sándwich.\"",
-      "Kal se arrodilló y extendió la mano. Pero Hero no entendió el gesto.",
+      "Kal se arrodilló y extendió la mano.\nPero Hero no entendió el gesto.",
       "\"¿Qué es eso?\"",
       "\"Es una promesa.\"",
       "Kal tomó la mano de Hero y lo sacudió como a una maraca.",
@@ -842,7 +842,7 @@
       "\"Corre.",
       "Borraré tu memoria. Los errores que has cometido, los amigos que has perdido y todas las catástrofes que has traído a Enderas serán como si nunca hubieran existido.",
       "O puedes quedarte y podemos pelear hasta el final. Lo más probable es que pierdas. Pero incluso si sobrevives, vivirás con el recuerdo de que no pudiste salvarlos.",
-      "Pero yo puedo salvarte. Corre y te libraré de tu pena y del dolor de Enderas.\""
+      "Pero yo puedo salvarte.\nCorre y te libraré de tu pena y del dolor de Enderas.\""
     ],
     "effects": [
       "Acciones de\n[rainbow]cualquier color[/rainbow] ({action})",
@@ -854,7 +854,7 @@
     "story": [
       "Encontré estas conchas en Castle Glass, la Ciudad de Arena.",
       "Sus monumentales murallas eran exquisitos homenajes al mar. Los caminos: meticulosamente trazados, tejidos entre moradas relucientes que parecían más esculturas que hogares. Podría haberme quedado para siempre, pero tenía asuntos que atender, así que tomé las conchas y me fui.",
-      "Cuando volví, la ciudad ya no estaba. El océano se la había tragado.",
+      "Cuando volví, la ciudad ya no estaba.\nEl océano se la había tragado.",
       "Para mi sorpresa, las conchas en mi bolsillo temblaron. Salieron criaturas diminutas. Se arrastraron hacia la playa y empezaron a mover las arenas, construyendo algo hermoso, mientras las mareas se retiraban hacia el océano."
     ],
     "effects": [
@@ -895,7 +895,7 @@
       "Epic frunció el ceño ante el pueblo en llamas. Los aldeanos suplicaban ayuda, pero a Epic solo le importaba su taberna favorita.",
       "Con el fuego crepitando a su espalda, clavó su mirada de acero en la presa sobre el pueblo. Sonrió y cargó. Con un rugido primitivo, Epic blandió su gran hacha y rompió la presa de un solo golpe.",
       "El agua se desbordó. Bajó atronando, arrasando campos y calles, apagando las llamas y aplastando cada casa - y taberna - a su paso.",
-      "\"Fuego apagado\", declaró Epic. \"Aunque ojalá pudiera tomarme un trago.\""
+      "\"Fuego apagado\", declaró Epic.\n\"Aunque ojalá pudiera tomarme un trago.\""
     ],
     "effects": [
       "Los oponentes devuelven 1 trait sin efecto de su pila de traits a la mano.",
@@ -906,7 +906,7 @@
     "name": "Vanidad",
     "story": [
       "El camino a Titan's Tower había sido frío, áspero y sinuoso. Pero las ampollas y la congelación valieron la pena. Las historias eran ciertas y la aventurera pronto sería una leyenda.",
-      "Abrió de par en par las puertas de la torre y contempló las reliquias de su interior: dos espadas encantadas. Una, opaca por el tiempo y la batalla. La otra, reluciente y brillante. Esta le habló. En serio, literalmente. Es mágica así.",
+      "Abrió de par en par las puertas de la torre y contempló las reliquias de su interior: dos espadas encantadas. Una, opaca por el tiempo y la batalla.\nLa otra, reluciente y brillante.\nEsta le habló. En serio, literalmente.\nEs mágica así.",
       "Dijo: \"Vamos a hacernos un nombre para ti misma.\"",
       "Y una Leyenda respondió: \"No le veo ningún inconveniente.\""
     ],
