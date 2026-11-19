@@ -173,7 +173,7 @@ fun CardDetailContent(
     onLanguageChange: (CardLanguage) -> Unit = {},
     library: CardLibrary = CardLibrary.loading,
     onCardClick: (String) -> Unit = {},
-    storyExpanded: Boolean = false,
+    initialStoryExpanded: Boolean = false,
 ) {
     val theme = AtlasTheme.colors
     val face = translations.face(card, language)
@@ -251,7 +251,7 @@ fun CardDetailContent(
                             library,
                             onCardClick,
                             selector.takeIf { block.selector },
-                            storyExpanded,
+                            initialStoryExpanded,
                         )
                     }
                 }
@@ -441,9 +441,10 @@ internal fun CardDetailPreview() = AtlasTheme { CardDetailSample() }
 internal fun CardDetailSample(
     layout: ListDetailLayout = ListDetailLayout.Single,
     card: Card = SampleTrait,
-    storyExpanded: Boolean = false,
+    initialStoryExpanded: Boolean = false,
 ) = BlankCardImages {
-    CardDetailContent(card, tilt = -3f, onBack = {}, onAboutClick = {}, layout = layout, storyExpanded = storyExpanded)
+    CardDetailContent(card, tilt = -3f, onBack = {
+    }, onAboutClick = {}, layout = layout, initialStoryExpanded = initialStoryExpanded)
 }
 
 private val SampleTrait =
@@ -745,7 +746,7 @@ private val ArmoredMelon =
     )
 
 // Ardent Grip as in assets/doomlings/legends-of-enderas/cards.json.
-private val ArdentGrip =
+internal val ArdentGrip =
     Treasure(
         "legends-of-enderas/treasures/ardent-grip",
         "legends-of-enderas",
@@ -793,7 +794,7 @@ internal fun TreasureDetailPreview() = AtlasTheme { CardDetailSample(card = Arde
 @PreviewLightDark
 @Composable
 internal fun TreasureStoryExpandedDetailPreview() =
-    AtlasTheme { CardDetailSample(card = ArdentGrip, storyExpanded = true) }
+    AtlasTheme { CardDetailSample(card = ArdentGrip, initialStoryExpanded = true) }
 
 @PreviewLightDark
 @Composable

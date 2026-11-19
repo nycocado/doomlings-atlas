@@ -46,6 +46,7 @@ import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
@@ -91,7 +92,6 @@ import dev.nycocado.atlas.ui.theme.trait
 private data class BubbleText(
     val block: CardBlock,
     val language: CardLanguage,
-    val storyExpanded: Boolean,
 )
 
 @Composable
@@ -104,11 +104,11 @@ internal fun BlockBubble(
     library: CardLibrary = CardLibrary.loading,
     onCardClick: (String) -> Unit = {},
     selector: (@Composable () -> Unit)? = null,
-    storyExpanded: Boolean = false,
+    initialStoryExpanded: Boolean = false,
 ) {
     val theme = AtlasTheme.colors
     val actionColors = theme.actionColors(colors)
-    var expanded by rememberSaveable(block.content) { mutableStateOf(storyExpanded) }
+    var expanded by rememberSaveable { mutableStateOf(initialStoryExpanded) }
     // The selector hangs above the bubble, so the bubble keeps it as far from the pills as the pills are from each other.
     Box(Modifier.padding(top = 6.dp + if (selector != null) Space.s2 else 0.dp)) {
         Box(
@@ -119,7 +119,7 @@ internal fun BlockBubble(
         ) {
             // The bubble wraps this, so it resizes with the crossfade.
             AnimatedContent(
-                BubbleText(block, language, expanded),
+                BubbleText(block, language),
                 transitionSpec = LanguageChange,
                 label = "bubble text",
             ) { shown ->
@@ -150,7 +150,7 @@ internal fun BlockBubble(
                         }
 
                         is BlockContent.Story -> {
-                            Story(content.paragraphs, shownLanguage, shown.storyExpanded) { expanded = !expanded }
+                            Story(content.paragraphs, shownLanguage, expanded) { expanded = !expanded }
                         }
 
                         null -> {}
@@ -173,7 +173,6 @@ internal fun BlockBubble(
     }
 }
 
-// Collapsed, the story shows its first lines, with the control to read the rest only when there is more.
 @Composable
 private fun Story(
     paragraphs: List<String>,
@@ -188,27 +187,33 @@ private fun Story(
     val measurer = rememberTextMeasurer()
     // The width comes while composing, so the control is there from the first frame, not one layout later.
     BoxWithConstraints(Modifier.fillMaxWidth()) {
-        val overflows =
-            measurer
-                .measure(
-                    text,
-                    style,
-                    maxLines = STORY_LINES,
-                    constraints = Constraints(maxWidth = constraints.maxWidth),
-                ).hasVisualOverflow
-        Column {
-            BasicText(
+        val layout =
+            measurer.measure(
                 text,
-                style = style,
-                maxLines = if (expanded) Int.MAX_VALUE else STORY_LINES,
-                overflow = TextOverflow.Ellipsis,
+                style,
+                overflow = TextOverflow.Clip,
+                maxLines = STORY_LINES,
+                constraints = Constraints(maxWidth = constraints.maxWidth),
             )
+        val overflows = layout.hasVisualOverflow
+        // A blank last line is the gap between paragraphs, so the cut goes above it. A cut where the text breaks the
+        // line anyway gets no ellipsis: Android would still add one, after a full stop or alone on the blank line.
+        val lines = if (overflows && layout.isBlank(STORY_LINES - 1)) STORY_LINES - 1 else STORY_LINES
+        val atBreak = overflows && text.text.getOrNull(layout.getLineEnd(lines - 1, visibleEnd = true)) == '\n'
+        Column {
+            AnimatedContent(expanded, transitionSpec = LanguageChange, label = "story") { open ->
+                BasicText(
+                    text,
+                    style = style,
+                    maxLines = if (open) Int.MAX_VALUE else lines,
+                    overflow = if (atBreak) TextOverflow.Clip else TextOverflow.Ellipsis,
+                )
+            }
             if (overflows || expanded) StoryToggle(expanded, onToggle)
         }
     }
 }
 
-// A text button: 48dp tall to touch, read by TalkBack as a button with the story's state.
 @Composable
 private fun StoryToggle(
     expanded: Boolean,
@@ -230,6 +235,9 @@ private fun StoryToggle(
 }
 
 private const val STORY_LINES = 4
+
+private fun TextLayoutResult.isBlank(line: Int) =
+    line < lineCount && getLineStart(line) == getLineEnd(line, visibleEnd = true)
 
 @Composable
 private fun Line(
