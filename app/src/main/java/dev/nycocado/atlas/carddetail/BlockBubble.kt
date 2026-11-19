@@ -436,7 +436,7 @@ internal val AnxietyElixir =
         "",
         "Anxiety Elixir",
         listOf(
-            Effect(EffectKind.AwesomePower, "Start of Turn: Discard dominants from hand."),
+            Effect(EffectKind.AwesomePower, "Start of turn: Discard dominants from hand."),
             Effect(EffectKind.PocketObjective, "Reveal: 2 reds in hand."),
         ),
         2,

@@ -22,7 +22,7 @@
     "name": "Cascadas Fatales",
     "effects": [
       "Descarta aleatoriamente todas las cartas de tu mano, excepto 2.",
-      "Juega 1. Ignora las acciones."
+      "Juega 1. Ignora las acciones ({action})."
     ]
   },
   "mokoko-village/traits/abandoned": {

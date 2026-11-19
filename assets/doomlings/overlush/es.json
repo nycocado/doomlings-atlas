@@ -411,7 +411,7 @@
   "overlush/traits/collector": {
     "name": "Coleccionista",
     "effects": [
-      "Cuando juegues Collector desde tu mano, roba 4 cartas. Puedes jugar 1 de cada [rainbow]color[/rainbow] entre las cartas robadas.\n[small]Descarta los dominantes. Ignora las acciones.[/small]"
+      "Cuando juegues Collector desde tu mano, roba 4 cartas. Puedes jugar 1 de cada [rainbow]color[/rainbow] entre las cartas robadas.\n[small]Descarta los dominantes. Ignora las acciones ({action}).[/small]"
     ],
     "flavor": "¡Esa todavía no la tengo!"
   },

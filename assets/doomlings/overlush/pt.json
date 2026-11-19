@@ -411,7 +411,7 @@
   "overlush/traits/collector": {
     "name": "Colecionador",
     "effects": [
-      "Quando você jogar Collector da sua mão, compre 4 cartas. Você pode jogar 1 de cada [rainbow]cor[/rainbow] entre as cartas compradas.\n[small]Descarte os dominantes. Ignore ações.[/small]"
+      "Quando você jogar Collector da sua mão, compre 4 cartas. Você pode jogar 1 de cada [rainbow]cor[/rainbow] entre as cartas compradas.\n[small]Descarte os dominantes. Ignore ações ({action}).[/small]"
     ],
     "flavor": "Essa eu ainda não tenho!"
   },

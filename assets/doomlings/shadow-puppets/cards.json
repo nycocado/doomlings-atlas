@@ -690,7 +690,7 @@
     "flavor": "It's pronounced, \"Tumpleyo.",
     "effects": [
       {
-        "text": "If your Gene Pool is:\n4: -4,\n3: +2,\n2: +4,\n1: +8"
+        "text": "If your Gene Pool is:\n4: -4\n3: +2\n2: +4\n1: +8"
       }
     ],
     "genePool": null,

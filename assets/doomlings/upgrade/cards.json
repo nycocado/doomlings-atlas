@@ -288,7 +288,7 @@
     "name": "The Fortunate Alchemist",
     "effects": [
       {
-        "text": "+2 if you have 2-4 traits in your trait pile with a face value of 0, including Compasses ({compass}).\n+9 if you have 5.\n-4 if you have none."
+        "text": "+2 if you have 2-4 traits in your trait pile with a face value of 0, including ({compass}).\n+9 if you have 5.\n-4 if you have none."
       }
     ],
     "flavor": null,
