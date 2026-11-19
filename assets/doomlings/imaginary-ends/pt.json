@@ -94,14 +94,14 @@
     "effects": [
       "Você pode eliminar 1 trinket, depois ganhar 1."
     ],
-    "flavor": "Na névoa, Fowler está sozinho, e sua lanterna é a única luz que você enxerga. Ele murmura para ninguém em particular: \"Pega uma carta, qualquer uma.\""
+    "flavor": "Na névoa, Fowler está sozinho, e sua lanterna é a única luz que você enxerga. Ele murmura para ninguém em particular: \"Escolha uma carta, qualquer uma.\""
   },
   "imaginary-ends/merchants/fowler-3": {
     "name": "Fowler",
     "effects": [
       "Você pode eliminar 1 trinket, depois ganhar 1."
     ],
-    "flavor": "Nesta floresta sombria, um mercador mais sombrio ainda sussurra sem parar: \"Queima de estoque.\" \"Queima. De. Estoque.\""
+    "flavor": "Nesta floresta obscura, um mercador mais obscuro ainda sussurra sem parar: \"Queima de estoque.\" \"Queima. De. Estoque.\""
   },
   "imaginary-ends/merchants/fowler-4": {
     "name": "Fowler",
@@ -115,35 +115,35 @@
     "effects": [
       "Guarde 1 trinket no bolso, depois ganhe 1."
     ],
-    "flavor": "\"Quanto eu tenho que te pagar para você comprar alguma coisa de mim?\""
+    "flavor": "Quanto eu tenho que te pagar pra você comprar alguma coisa de mim?"
   },
   "imaginary-ends/merchants/huk-2": {
     "name": "Huk",
     "effects": [
       "Guarde 1 trinket no bolso, depois ganhe 1."
     ],
-    "flavor": "Huk te entrega um pacote embrulhado. \"Era isso que você estava procurando.\" Com um dedo nos lábios, ele some de novo na multidão."
+    "flavor": "Huk te entrega um embrulho. \"Era isso que você estava procurando.\" Com um dedo nos lábios, ele some de novo na multidão."
   },
   "imaginary-ends/merchants/toddles": {
     "name": "Toddles",
     "effects": [
       "Ganhe 1 trinket.\nDepois, elimine 1."
     ],
-    "flavor": "O mercador andarilho abre um baú antigo. Na mesma hora, o vento uiva. \"Coincidência\", ele garante. Um raio atinge uma árvore ali perto e a incendeia. \"Sempre acontece.\""
+    "flavor": "O mercador andarilho abre um baú antigo. Na mesma hora, o vento uiva. \"Coincidência\", ele garante. Um raio atinge uma árvore ali perto e a incendeia. \"Isso sempre acontece.\""
   },
   "imaginary-ends/merchants/toddles-2": {
     "name": "Toddles",
     "effects": [
       "Ganhe 1 trinket.\nDepois, elimine 1."
     ],
-    "flavor": "Numa ruela do mercado principal de Crackletown, um mercador apresenta seu mais novo produto: bala de pedra explosiva. Não confundir com pedra explosiva de bala."
+    "flavor": "Numa ruela do mercado principal de Crackletown, um mercador apresenta seu mais novo produto: doce de pedra explosivo. Não confundir com explosivo de pedra cristalizado."
   },
   "imaginary-ends/merchants/toddles-3": {
     "name": "Toddles",
     "effects": [
       "Ganhe 1 trinket.\nDepois, elimine 1."
     ],
-    "flavor": "O mercador animado monta sua banca nos mercados de cima. Meias, chapéus, cachecóis e parcas rosa-choque, tudo tecido com 100% algodão-doce. Lavar só a seco."
+    "flavor": "O mercador animado monta sua banca nos mercados de cima. Meias, chapéus, cachecóis e parkas rosa-choque, tudo tecido com 100% algodão-doce. Só lavagem a seco."
   },
   "imaginary-ends/merchants/toddles-4": {
     "name": "Toddles",
