@@ -23,18 +23,31 @@ jobs:
       version: ${{ steps.find.outputs.version }}
     steps:
       # Only the PR this workflow opens counts, not one from a fork's branch of the same name. The version is the
-      # newest heading of the merged CHANGELOG.md, so editing the PR title changes nothing.
+      # newest heading of the merged CHANGELOG.md, so editing the PR title changes nothing. GitHub can link a commit
+      # to its PR seconds after the push, so a commit shaped like the release PR's squash asks for up to a minute; any
+      # other push asks once.
       - id: find
         env:
           GH_TOKEN: ${{ github.token }}
+          MESSAGE: ${{ github.event.head_commit.message }}
         run: |
-          release=$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/pulls" --jq "[.[] | select(
-            .merged_at != null and .head.ref == \"$RELEASE_BRANCH\" and
-            .head.repo.full_name == \"$GITHUB_REPOSITORY\" and .user.login == \"github-actions[bot]\")] | length")
+          subject=${MESSAGE%%$'\n'*}
+          attempts=1
+          if [[ $subject =~ ^docs:\ release\ v[0-9]+\.[0-9]+\.[0-9]+\ \(#[0-9]+\)$ ]]; then attempts=12; fi
+          for ((i = 1; ; i++)); do
+            release=$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/pulls" --jq "[.[] | select(
+              .merged_at != null and .head.ref == \"$RELEASE_BRANCH\" and
+              .head.repo.full_name == \"$GITHUB_REPOSITORY\" and .user.login == \"github-actions[bot]\")] | length")
+            if [ "$release" -gt 0 ] || [ "$i" -ge "$attempts" ]; then break; fi
+            sleep 5
+          done
           if [ "$release" -gt 0 ]; then
             version=$(gh api "repos/$GITHUB_REPOSITORY/contents/CHANGELOG.md?ref=$GITHUB_SHA" \
               -H "Accept: application/vnd.github.raw" | sed -n 's/^## \([0-9]*\.[0-9]*\.[0-9]*\) .*/v\1/p' | head -1)
             echo "version=$version" >> "$GITHUB_OUTPUT"
+          elif [ "$attempts" -gt 1 ]; then
+            echo "::error::$subject looks like a release PR merge, but GitHub linked it to no release PR within a minute. Rerun this workflow to tag it (docs/development.md#releases)."
+            exit 1
           fi
 
   tag:
