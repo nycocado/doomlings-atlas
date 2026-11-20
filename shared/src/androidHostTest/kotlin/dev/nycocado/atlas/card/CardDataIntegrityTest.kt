@@ -316,6 +316,41 @@ class CardDataIntegrityTest {
         )
     }
 
+    // A flavor printed inside one pair of quotes is stored without that pair (Stygian), so the quotes left are
+    // balanced. A story is checked whole: a speech may open in its first paragraph and close in its last (The Maliforms).
+    @Test
+    fun noTextHasAnOddNumberOfQuotes() {
+        val english =
+            CardAssets.cardsByFolder.values.flatten().flatMap { card ->
+                val id = card.getValue("id").jsonPrimitive.content
+                card.flatMap { (field, value) ->
+                    if (field == "story") {
+                        listOf(id to value.jsonArray.joinToString("\n") { it.jsonPrimitive.content })
+                    } else {
+                        (value as? JsonArray ?: listOf(value))
+                            .flatMap { if (it is JsonObject) it.values else listOf(it) }
+                            .filter { it is JsonPrimitive && it.isString }
+                            .map { id to (it as JsonPrimitive).content }
+                    }
+                }
+            }
+        val translated =
+            CardAssets.translationFiles.flatMap { file ->
+                CardAssets.translationsOf(file).flatMap { (id, fields) ->
+                    fields.flatMap { (field, values) ->
+                        val where = "${file.relativeTo(dir).path} $id"
+                        if (field == "story") listOf(where to values.joinToString("\n")) else values.map { where to it }
+                    }
+                }
+            }
+        assertEquals(
+            emptyList(),
+            (english + translated)
+                .filter { (_, text) -> text.count { it == '"' } % 2 != 0 }
+                .map { (where, text) -> "$where: $text" },
+        )
+    }
+
     @Test
     fun noTextHasABlankLine() {
         val blankLine = Regex("""\n\s*\n""")

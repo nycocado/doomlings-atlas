@@ -983,7 +983,7 @@
     "type": "trait",
     "set": "classic",
     "name": "Confusion",
-    "flavor": "And you might ask yourself, \"Why does this trait exist?",
+    "flavor": "And you might ask yourself, \"Why does this trait exist?\"",
     "effects": [],
     "genePool": null,
     "points": -2,

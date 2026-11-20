@@ -979,7 +979,7 @@
     "type": "trait",
     "set": "imaginary-ends",
     "name": "Humdumpling",
-    "flavor": "Hum.\" \"Dum.\" \"Pling.",
+    "flavor": "\"Hum.\" \"Dum.\" \"Pling.\"",
     "effects": [
       {
         "kind": "action",
