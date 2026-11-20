@@ -316,19 +316,24 @@ class CardDataIntegrityTest {
         )
     }
 
-    // A flavor printed entirely in quotes is stored without its outer pair, so the quotes left are balanced. A story is
-    // checked whole: a speech may open in its first paragraph and close in its last (The Maliforms).
+    // A flavor printed inside one pair of quotes is stored without that pair (Stygian), so the quotes left are
+    // balanced. A story is checked whole: a speech may open in its first paragraph and close in its last (The Maliforms).
     @Test
-    fun everyTextHasBalancedQuotes() {
-        val englishStories =
-            Json.parseToJsonElement(json).jsonArray.map { it.jsonObject }.mapNotNull { card ->
-                card["story"]?.let { story ->
-                    card.getValue("id").jsonPrimitive.content to
-                        story.jsonArray.joinToString("\n") { it.jsonPrimitive.content }
+    fun noTextHasAnOddNumberOfQuotes() {
+        val english =
+            CardAssets.cardsByFolder.values.flatten().flatMap { card ->
+                val id = card.getValue("id").jsonPrimitive.content
+                card.flatMap { (field, value) ->
+                    if (field == "story") {
+                        listOf(id to value.jsonArray.joinToString("\n") { it.jsonPrimitive.content })
+                    } else {
+                        (value as? JsonArray ?: listOf(value))
+                            .flatMap { if (it is JsonObject) it.values else listOf(it) }
+                            .filter { it is JsonPrimitive && it.isString }
+                            .map { id to (it as JsonPrimitive).content }
+                    }
                 }
             }
-        val englishOthers =
-            texts.filterNot { (id, text) -> englishStories.any { (storyId, story) -> storyId == id && text in story } }
         val translated =
             CardAssets.translationFiles.flatMap { file ->
                 CardAssets.translationsOf(file).flatMap { (id, fields) ->
@@ -340,7 +345,7 @@ class CardDataIntegrityTest {
             }
         assertEquals(
             emptyList(),
-            (englishOthers + englishStories + translated)
+            (english + translated)
                 .filter { (_, text) -> text.count { it == '"' } % 2 != 0 }
                 .map { (where, text) -> "$where: $text" },
         )
