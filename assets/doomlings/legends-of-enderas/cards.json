@@ -1342,7 +1342,7 @@
     "type": "trait",
     "set": "legends-of-enderas",
     "name": "Modular",
-    "flavor": "How much of me am I once every part has been replaced?\" And with this final thought, the robot's neuroparts were yanked and trashed, only to be replaced with a calculator.",
+    "flavor": "\"How much of me am I once every part has been replaced?\" And with this final thought, the robot's neuroparts were yanked and trashed, only to be replaced with a calculator.",
     "effects": [
       {
         "kind": "action",
