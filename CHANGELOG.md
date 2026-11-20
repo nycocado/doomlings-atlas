@@ -2,6 +2,13 @@
 
 Notable changes in each release of Doomlings Atlas, generated from the commit history by [git-cliff](https://git-cliff.org).
 
+## 0.4.1 (2026-11-20)
+
+### Fixes
+
+- Balanced quotes in four flavors ([#260](https://github.com/nycocado/doomlings-atlas/pull/260))
+- Release PR merge found when GitHub links it late ([#261](https://github.com/nycocado/doomlings-atlas/pull/261))
+
 ## 0.4.0 (2026-11-19)
 
 ### Features
