@@ -28,12 +28,11 @@ data class Player(
     val name: String,
     val pile: List<Trait>,
     val hand: List<Trait>,
-    val genePool: Int,
-    // Signed, for cards missing from the data and house rules.
+    val genePoolSize: Int,
     val manualAdjustment: Int,
 ) {
     init {
-        require(genePool in 1..8) { "a Gene Pool is 1 to 8, not $genePool" }
+        require(genePoolSize in 1..8) { "a Gene Pool is 1 to 8, not $genePoolSize" }
     }
 }
 
@@ -58,30 +57,17 @@ data class FaceValues(
 
 private val Trait.faceValue: Int get() = points ?: 0
 
-// Players by score, tied players in one group. A group breaks by the drawn traits' face values only when every tied
-// player has one; otherwise the tie stays.
+// Players by score, tied players in one group. The table breaks a tie its own way; `tieOrder` is the order it chose,
+// as indices in `scores`, which unlike a Player can't stand for two equal players. A tie breaks only when every tied
+// player is in it; otherwise it stays.
 fun ranking(
     scores: List<PlayerScore>,
-    drawn: Map<Player, Trait> = emptyMap(),
+    tieOrder: List<Int> = emptyList(),
 ): List<List<PlayerScore>> =
-    scores
-        .groupBy { it.score }
+    scores.indices
+        .groupBy { scores[it].score }
         .entries
         .sortedByDescending { it.key }
-        .map { it.value }
-        .flatMap { tied ->
-            val draws = tied.map { drawn[it.player] }
-            if (tied.size == 1 || null in draws) {
-                listOf(tied)
-            } else {
-                tied
-                    .groupBy {
-                        drawn
-                            .getValue(
-                                it.player,
-                            ).faceValue
-                    }.entries
-                    .sortedByDescending { it.key }
-                    .map { it.value }
-            }
-        }
+        .flatMap { (_, tied) ->
+            if (tieOrder.containsAll(tied)) tied.sortedBy(tieOrder::indexOf).map(::listOf) else listOf(tied)
+        }.map { group -> group.map(scores::get) }

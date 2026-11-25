@@ -42,7 +42,7 @@ sealed interface ScoringRule {
                 piles.sumOf { pile ->
                     pile.count { it.name == card.name }
                 },
-                Counted.CardsNamed(card.name),
+                Counted.SameName,
             )
         }
     }
@@ -56,7 +56,7 @@ sealed interface ScoringRule {
             card: Trait,
             player: Player,
             game: FinishedGame,
-        ) = RuleValue(card, player.genePool, Counted.GenePoolSize)
+        ) = RuleValue(card, player.genePoolSize, Counted.GenePoolSize)
     }
 
     @Serializable
@@ -115,9 +115,8 @@ enum class PlayerInput { Hand, GenePoolSize }
 
 // What a rule counted, as data: the app writes it in the interface language ("4 Kidneys").
 sealed interface Counted {
-    data class CardsNamed(
-        val name: String,
-    ) : Counted
+    // Traits named as the rule's card, which the app writes in the card language.
+    data object SameName : Counted
 
     data object GenePoolSize : Counted
 
@@ -138,5 +137,5 @@ data class RuleValue(
 
 fun needsOf(pile: List<Trait>): Set<PlayerInput> = pile.flatMapTo(mutableSetOf()) { it.scoring?.needs.orEmpty() }
 
-// The sets whose every scoring card has its rule; the card picker offers only these.
+// The sets whose every scoring card has its rule; a game's cards come only from these.
 val scoredSets: Set<String> = setOf("classic")

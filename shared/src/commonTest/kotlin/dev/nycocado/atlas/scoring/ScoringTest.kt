@@ -38,6 +38,9 @@ private val bark = trait("bark", "Bark", 2, listOf(CardColor.Green))
 private val fangs = trait("fangs", "Fangs", 1, listOf(CardColor.Red))
 private val confusion = trait("confusion", "Confusion", -2)
 private val bad = trait("bad", "Bad", 1, listOf(CardColor.Red), "Opponents discard 2 cards from their hand at random.")
+
+// No effects but a Gene Pool line, so not effectless (GLOSSARY, Effect): one of Boredom's "cards with effects".
+private val teeth = trait("teeth", "Teeth", 1, listOf(CardColor.Purple)).copy(genePool = 1)
 private val coldBlood =
     trait("cold-blood", "Cold Blood", 1, listOf(CardColor.Blue), "Draw 3 cards.\nYou may play 1 now.")
 
@@ -120,9 +123,9 @@ private fun player(
     name: String,
     pile: List<Trait>,
     hand: List<Trait> = emptyList(),
-    genePool: Int = 5,
-    adjustment: Int = 0,
-) = Player(name, pile, hand, genePool, adjustment)
+    genePoolSize: Int = 5,
+    manualAdjustment: Int = 0,
+) = Player(name, pile, hand, genePoolSize, manualAdjustment)
 
 private fun scoresOf(vararg players: Player) = FinishedGame(players.toList(), catastrophes).score()
 
@@ -150,8 +153,8 @@ class ScoringTest {
         assertEquals(FaceValues(traits = 3, total = 4), score.breakdown.faceValues)
         assertEquals(
             listOf(
-                RuleValue(kidney, 2, Counted.CardsNamed("Kidney")),
-                RuleValue(kidney2, 2, Counted.CardsNamed("Kidney")),
+                RuleValue(kidney, 2, Counted.SameName),
+                RuleValue(kidney2, 2, Counted.SameName),
             ),
             score.breakdown.rules,
         )
@@ -163,14 +166,21 @@ class ScoringTest {
             scoresOf(player("Ana", listOf(swarm("swarm"), swarm("swarm-2"))), player("Ben", listOf(swarm("swarm-3"))))
 
         assertEquals(listOf(6, 3), scores.map { it.score })
+        assertEquals(RuleValue(scores[1].player.pile.single(), 3, Counted.SameName), scores[1].breakdown.rules.single())
     }
 
     @Test
     fun altruisticAndRandomFertilizationAreTheGenePoolSize() {
-        val score = scoresOf(player("Ana", listOf(altruistic, randomFertilization), genePool = 6), filler).first()
+        val score = scoresOf(player("Ana", listOf(altruistic, randomFertilization), genePoolSize = 6), filler).first()
 
         assertEquals(12, score.score)
-        assertEquals(RuleValue(altruistic, 6, Counted.GenePoolSize), score.breakdown.rules.first())
+        assertEquals(
+            listOf(
+                RuleValue(altruistic, 6, Counted.GenePoolSize),
+                RuleValue(randomFertilization, 6, Counted.GenePoolSize),
+            ),
+            score.breakdown.rules,
+        )
     }
 
     @Test
@@ -183,10 +193,11 @@ class ScoringTest {
 
     @Test
     fun boredomCountsTheCardsInHandWithEffects() {
-        val score = scoresOf(player("Ana", listOf(boredom), hand = listOf(adorable, bad, coldBlood)), filler).first()
+        val hand = listOf(adorable, teeth, bad, coldBlood)
+        val score = scoresOf(player("Ana", listOf(boredom), hand = hand), filler).first()
 
-        assertEquals(2, score.score)
-        assertEquals(RuleValue(boredom, 2, Counted.CardsInHandWithEffects), score.breakdown.rules.single())
+        assertEquals(3, score.score)
+        assertEquals(RuleValue(boredom, 3, Counted.CardsInHandWithEffects), score.breakdown.rules.single())
     }
 
     @Test
@@ -200,7 +211,7 @@ class ScoringTest {
 
     @Test
     fun manualAdjustmentAddsToTheScore() {
-        val score = scoresOf(player("Ana", listOf(adorable, antlers, confusion), adjustment = -3), filler).first()
+        val score = scoresOf(player("Ana", listOf(adorable, antlers, confusion), manualAdjustment = -3), filler).first()
 
         assertEquals(2, score.score)
         assertEquals(-3, score.breakdown.manualAdjustment)
@@ -209,11 +220,18 @@ class ScoringTest {
     @Test
     fun breakdownSumsToTheScore() {
         val pile = listOf(kidney("kidney"), fortunate, adorable)
-        val score = scoresOf(player("Ana", pile, hand = listOf(bad), adjustment = 2), filler).first()
+        val score = scoresOf(player("Ana", pile, hand = listOf(bad), manualAdjustment = 2), filler).first()
 
         // Adorable 4, Kidney 1, Fortunate 1, adjustment 2.
         assertEquals(8, score.score)
-        with(score.breakdown) { assertEquals(8, faceValues.total + rules.sumOf { it.value } + manualAdjustment) }
+        assertEquals(
+            Breakdown(
+                FaceValues(traits = 3, total = 4),
+                listOf(RuleValue(pile[0], 1, Counted.SameName), RuleValue(fortunate, 1, Counted.CardsInHand)),
+                manualAdjustment = 2,
+            ),
+            score.breakdown,
+        )
     }
 
     @Test
@@ -241,37 +259,54 @@ class ScoringTest {
 
     @Test
     fun genePoolSizeIsBetweenOneAndEight() {
-        assertFailsWith<IllegalArgumentException> { player("Ana", emptyList(), genePool = 0) }
-        assertFailsWith<IllegalArgumentException> { player("Ana", emptyList(), genePool = 9) }
+        assertFailsWith<IllegalArgumentException> { player("Ana", emptyList(), genePoolSize = 0) }
+        assertFailsWith<IllegalArgumentException> { player("Ana", emptyList(), genePoolSize = 9) }
     }
 }
 
 class RankingTest {
-    // Ana 4 - 2 + 3 = 5, Ben 4 + 2 + 2 = 8, Cy 2 + 3 = 5.
+    // Ana 4 - 2 + 3 = 5, Ben 4 + 2 + 2 = 8, Cy 2 + 3 = 5, Di 1.
     private val ana = player("Ana", listOf(adorable, confusion, antlers))
     private val ben =
         player("Ben", listOf(adorable, bark, trait("deep-roots", "Deep Roots", 2, listOf(CardColor.Green))))
     private val cy = player("Cy", listOf(bark, antlers))
-    private val scores = scoresOf(ana, ben, cy)
+    private val di = player("Di", listOf(fangs))
+    private val scores = scoresOf(ana, ben, cy, di)
 
     @Test
-    fun ordersPlayersByScoreAndKeepsATie() {
-        assertEquals(listOf(listOf("Ben"), listOf("Ana", "Cy")), ranking(scores).names())
+    fun ordersPlayersByScoreAndKeepsATieWithoutAnOrder() {
+        assertEquals(listOf(listOf("Ben"), listOf("Ana", "Cy"), listOf("Di")), ranking(scores).names())
     }
 
     @Test
-    fun drawnTraitsBreakATieByFaceValueWithACompassStarAsZero() {
-        val ranked = ranking(scores, drawn = mapOf(ana to kidney("kidney"), cy to fangs))
-
-        assertEquals(listOf(listOf("Ben"), listOf("Cy"), listOf("Ana")), ranked.names())
-    }
-
-    @Test
-    fun tieStaysWithoutADrawnTraitForEveryTiedPlayer() {
+    fun tableOrderBreaksATie() {
         assertEquals(
-            listOf(listOf("Ben"), listOf("Ana", "Cy")),
-            ranking(scores, drawn = mapOf(ana to adorable)).names(),
+            listOf(listOf("Ben"), listOf("Cy"), listOf("Ana"), listOf("Di")),
+            ranking(scores, tieOrder = listOf(2, 0)).names(),
         )
+    }
+
+    @Test
+    fun tableOrderChangesNoScoreNorAnyoneOutsideTheTie() {
+        val ranked = ranking(scores, tieOrder = listOf(3, 2, 1, 0))
+
+        assertEquals(listOf(listOf("Ben"), listOf("Cy"), listOf("Ana"), listOf("Di")), ranked.names())
+        assertEquals(listOf(8, 5, 5, 1), ranked.flatten().map { it.score })
+    }
+
+    @Test
+    fun tieStaysWhenTheOrderLeavesATiedPlayerOut() {
+        assertEquals(
+            listOf(listOf("Ben"), listOf("Ana", "Cy"), listOf("Di")),
+            ranking(scores, tieOrder = listOf(2)).names(),
+        )
+    }
+
+    @Test
+    fun equalPlayersStayApart() {
+        val ranked = ranking(scoresOf(ana, ana.copy()), tieOrder = listOf(1, 0))
+
+        assertEquals(2, ranked.size)
     }
 
     private fun List<List<PlayerScore>>.names() = map { group -> group.map { it.player.name } }
