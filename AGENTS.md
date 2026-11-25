@@ -43,7 +43,7 @@ Doomlings Atlas: unofficial companion app for the Doomlings card game. Where it 
 2. A small spec (2 to 4 tickets) runs with `/implement-spec` and becomes one PR; a single ticket runs with `/implement` and becomes one PR. Before merging a ticket into its integration branch, `/implement-spec` runs the `ticket-review` agent on the ticket's commits and fixes or sends back what it finds.
 3. Work on a branch from `main` (`feat/...`, `fix/...`, `docs/...`). Agents working on their own, and the session that orchestrates `/implement-spec` (`claude --worktree`), use a worktree; the main checkout is the maintainer's, open in Android Studio.
 4. In `shared`, write the failing test first, then the code. In `app`, give every component and screen a `@PreviewLightDark` preview, following [docs/design.md](docs/design.md).
-5. Run `./gradlew spotlessApply check validateDebugScreenshotTest` and fix everything it reports.
+5. Run `./gradlew spotlessApply check validateDebugScreenshotTest` and fix everything it reports. Skip it when the change is only Markdown, as CI does.
 6. Commit and push your branch freely, and open a draft PR titled in the commit format, saying what changed, why and how it was tested, with `Closes #N`. Mark it ready when CI passes and `/mattpocock-skills:code-review` has nothing left: it is the PR's only review, besides `ticket-review` inside a spec.
 7. Only the maintainer merges: by squash, with the PR title plus ` (#N)` as the subject and an empty body. "Pode forçar" (force it) means `gh pr merge --admin`.
 

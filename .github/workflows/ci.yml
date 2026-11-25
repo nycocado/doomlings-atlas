@@ -50,7 +50,31 @@ jobs:
             exit 1
           fi
 
+  # No Gradle task or test reads a Markdown file, so a PR that only changes Markdown skips check and release-apk.
+  # They stay required by the main ruleset: a job skipped by its if passes as a required check, where paths-ignore
+  # would leave it never reporting. A rename counts its old name too, so a .kt renamed to .md still runs them.
+  markdown-only:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read # the PR's files
+    outputs:
+      result: ${{ steps.files.outputs.result }}
+    steps:
+      - id: files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          files=$(gh api --paginate "repos/$GITHUB_REPOSITORY/pulls/$PR/files" --jq '.[] | .filename, .previous_filename // empty')
+          if printf '%s\n' "$files" | grep -qv '\.md$'; then result=false; else result=true; fi
+          echo "result=$result" >> "$GITHUB_OUTPUT"
+
   check:
+    needs: markdown-only
+    # Runs unless the files were found to be only Markdown: also on push, where markdown-only is skipped, and when
+    # it fails, so a broken lookup never skips the checks.
+    if: ${{ !cancelled() && needs.markdown-only.outputs.result != 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -75,6 +99,8 @@ jobs:
   # R8 and resource shrinking only run in the release build. Without the release key's Gradle properties
   # the APK is built unsigned (app/build.gradle.kts).
   release-apk:
+    needs: markdown-only
+    if: ${{ !cancelled() && needs.markdown-only.outputs.result != 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
