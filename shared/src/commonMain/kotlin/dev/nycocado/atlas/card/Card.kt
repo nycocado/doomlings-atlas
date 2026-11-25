@@ -1,5 +1,6 @@
 package dev.nycocado.atlas.card
 
+import dev.nycocado.atlas.scoring.ScoringRule
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlin.reflect.KClass
@@ -41,6 +42,8 @@ data class Trait(
     val dominant: Boolean,
     val subspecies: List<String>,
     val icons: List<TraitIcon>,
+    // null scores the face value alone.
+    val scoring: ScoringRule? = null,
 ) : NamedCard {
     val effectless: Boolean get() = effects.isEmpty() && genePool == null
 
@@ -67,6 +70,7 @@ data class Catastrophe(
     override val name: String,
     override val effects: List<Effect>,
     override val genePool: Int?,
+    val scoring: ScoringRule? = null,
 ) : NamedCard
 
 @Serializable

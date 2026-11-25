@@ -4,7 +4,7 @@ A map of the code at the level of modules and data flow. The decisions behind it
 
 ## Modules
 
-- **`shared/`** (Kotlin Multiplatform, Android its only target for now, [ADR 0001](adr/0001-kotlin-multiplatform-android-first.md)): the card model (`card/Card.kt`), decoding (`card/CardDecoding.kt`), the library of loaded cards (`card/CardLibrary.kt`), card translations (`card/CardTranslation.kt`), the card face (`card/CardFace.kt`: what a card shows, its pills in order, its text blocks and its searchable text) and the compendium filter (`compendium/CompendiumFilter.kt`) and the card groups that follow it (`compendium/CardGroup.kt`: cards that share a name) and the grid cells of the compendium (`compendium/GridCells.kt`). Game rules and scoring go here too. No Android or Compose code; platform bits are `expect`/`actual` (accent stripping).
+- **`shared/`** (Kotlin Multiplatform, Android its only target for now, [ADR 0001](adr/0001-kotlin-multiplatform-android-first.md)): the card model (`card/Card.kt`), decoding (`card/CardDecoding.kt`), the library of loaded cards (`card/CardLibrary.kt`), card translations (`card/CardTranslation.kt`), the card face (`card/CardFace.kt`: what a card shows, its pills in order, its text blocks and its searchable text) and the compendium filter (`compendium/CompendiumFilter.kt`) and the card groups that follow it (`compendium/CardGroup.kt`: cards that share a name) and the grid cells of the compendium (`compendium/GridCells.kt`), and scoring (`scoring/`: a finished game, its scores with their breakdown, the ranking and the scoring rules of card data). Game rules go here too. No Android or Compose code; platform bits are `expect`/`actual` (accent stripping).
 - **`app/`** (Android, Jetpack Compose, Hilt): screens, navigation, the theme and the build tasks that package card data.
 - **`assets/doomlings/`**: card data and images, © Doomlings LLC ([NOTICE](../assets/doomlings/NOTICE.md)). Outside both modules on purpose.
 - **`design/`**: design tokens, brand assets and prototype screens ([docs/design.md](design.md)).
@@ -31,7 +31,7 @@ A map of the code at the level of modules and data flow. The decisions behind it
 
 - The app works offline ([ADR 0002](adr/0002-offline-without-backend.md)); its only network access is the update check ([ADR 0012](adr/0012-update-check-from-github-releases.md)). Its permissions (the update check's and those libraries add) are listed in `app/permissions-allowlist.txt`.
 - Card data is never guessed: everything in `cards.json` comes from a source ([CONTRIBUTING.md](../CONTRIBUTING.md#doomlings-assets)).
-- Scoring rules will live in card data, as calls to named Kotlin functions ([ADR 0005](adr/0005-scoring-rules-in-card-data.md)).
+- Scoring rules live in card data, as calls to named Kotlin functions ([ADR 0005](adr/0005-scoring-rules-in-card-data.md)).
 - Card text language is chosen apart from the interface language ([ADR 0007](adr/0007-card-language-apart-from-interface.md)).
 
 ## Build Checks

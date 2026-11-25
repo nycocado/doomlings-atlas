@@ -1,5 +1,7 @@
 package dev.nycocado.atlas.card
 
+import dev.nycocado.atlas.scoring.ScoringRule
+import dev.nycocado.atlas.scoring.Zone
 import kotlinx.serialization.SerializationException
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -151,5 +153,35 @@ class CardDecodingTest {
         assertFailsWith<SerializationException> {
             decodeCards("""[{"id": "x", "type": "playmat", "set": "classic", "image": "x.jpg"}]""")
         }
+    }
+
+    private fun traitWithRule(rule: String) =
+        decodeCards(
+            """
+            [{"id": "classic/traits/kidney", "type": "trait", "set": "classic", "name": "Kidney", "flavor": null,
+              "effects": [], "genePool": null, "points": null, "colors": ["red"], "dominant": false,
+              "subspecies": [], "icons": [], "image": "k.webp", "scoring": $rule}]
+            """,
+        ).single() as Trait
+
+    @Test
+    fun decodesScoringRule() {
+        assertEquals(
+            ScoringRule.CountByName(Zone.OwnPile),
+            traitWithRule("""{"fn": "countByName", "zone": "ownPile"}""").scoring,
+        )
+        assertEquals(ScoringRule.HandSize, traitWithRule("""{"fn": "handSize"}""").scoring)
+    }
+
+    @Test
+    fun rejectsUnknownScoringFunction() {
+        assertFailsWith<SerializationException> { traitWithRule("""{"fn": "perEachKidney"}""") }
+    }
+
+    @Test
+    fun rejectsBadScoringParameters() {
+        assertFailsWith<SerializationException> { traitWithRule("""{"fn": "countByName", "zone": "hand"}""") }
+        assertFailsWith<SerializationException> { traitWithRule("""{"fn": "countByName"}""") }
+        assertFailsWith<SerializationException> { traitWithRule("""{"fn": "handSize", "amount": 2}""") }
     }
 }

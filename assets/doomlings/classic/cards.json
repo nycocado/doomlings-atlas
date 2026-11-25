@@ -641,7 +641,10 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/altruistic.webp"
+    "image": "classic/traits/altruistic.webp",
+    "scoring": {
+      "fn": "genePoolSize"
+    }
   },
   {
     "id": "classic/traits/antlers",
@@ -818,7 +821,10 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/boredom.webp"
+    "image": "classic/traits/boredom.webp",
+    "scoring": {
+      "fn": "handWithEffects"
+    }
   },
   {
     "id": "classic/traits/branches",
@@ -1387,7 +1393,10 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/fortunate.webp"
+    "image": "classic/traits/fortunate.webp",
+    "scoring": {
+      "fn": "handSize"
+    }
   },
   {
     "id": "classic/traits/gills",
@@ -1425,7 +1434,10 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/gratitude.webp"
+    "image": "classic/traits/gratitude.webp",
+    "scoring": {
+      "fn": "differentColors"
+    }
   },
   {
     "id": "classic/traits/heat-vision",
@@ -1672,7 +1684,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/kidney.webp"
+    "image": "classic/traits/kidney.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "ownPile"
+    }
   },
   {
     "id": "classic/traits/kidney-2",
@@ -1695,7 +1711,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/kidney-2.webp"
+    "image": "classic/traits/kidney-2.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "ownPile"
+    }
   },
   {
     "id": "classic/traits/kidney-3",
@@ -1718,7 +1738,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/kidney-3.webp"
+    "image": "classic/traits/kidney-3.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "ownPile"
+    }
   },
   {
     "id": "classic/traits/kidney-4",
@@ -1741,7 +1765,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/kidney-4.webp"
+    "image": "classic/traits/kidney-4.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "ownPile"
+    }
   },
   {
     "id": "classic/traits/kidney-5",
@@ -1764,7 +1792,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/kidney-5.webp"
+    "image": "classic/traits/kidney-5.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "ownPile"
+    }
   },
   {
     "id": "classic/traits/kidney-6",
@@ -1787,7 +1819,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/kidney-6.webp"
+    "image": "classic/traits/kidney-6.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "ownPile"
+    }
   },
   {
     "id": "classic/traits/late",
@@ -2257,7 +2293,10 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/random-fertilization.webp"
+    "image": "classic/traits/random-fertilization.webp",
+    "scoring": {
+      "fn": "genePoolSize"
+    }
   },
   {
     "id": "classic/traits/reckless",
@@ -2633,7 +2672,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/swarm.webp"
+    "image": "classic/traits/swarm.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "allPiles"
+    }
   },
   {
     "id": "classic/traits/swarm-2",
@@ -2656,7 +2699,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/swarm-2.webp"
+    "image": "classic/traits/swarm-2.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "allPiles"
+    }
   },
   {
     "id": "classic/traits/swarm-3",
@@ -2679,7 +2726,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/swarm-3.webp"
+    "image": "classic/traits/swarm-3.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "allPiles"
+    }
   },
   {
     "id": "classic/traits/swarm-4",
@@ -2702,7 +2753,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/swarm-4.webp"
+    "image": "classic/traits/swarm-4.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "allPiles"
+    }
   },
   {
     "id": "classic/traits/swarm-5",
@@ -2725,7 +2780,11 @@
     "icons": [
       "drop-of-life"
     ],
-    "image": "classic/traits/swarm-5.webp"
+    "image": "classic/traits/swarm-5.webp",
+    "scoring": {
+      "fn": "countByName",
+      "zone": "allPiles"
+    }
   },
   {
     "id": "classic/traits/sweat",

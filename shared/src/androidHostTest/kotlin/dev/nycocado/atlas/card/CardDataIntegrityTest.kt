@@ -3,10 +3,13 @@ package dev.nycocado.atlas.card
 import dev.nycocado.atlas.compendium.CompendiumFilter
 import dev.nycocado.atlas.compendium.filterCompendium
 import dev.nycocado.atlas.compendium.inSetsOf
+import dev.nycocado.atlas.scoring.ScoringRule
+import dev.nycocado.atlas.scoring.scoredSets
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.decodeFromJsonElement
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
@@ -398,5 +401,31 @@ class CardDataIntegrityTest {
             val set = Json.decodeFromString<CardSet>(dir.resolve(folder).resolve("set.json").readText())
             assertEquals(folder, set.id)
         }
+    }
+
+    // Decoding the whole data fails too, but this names each card whose rule calls a missing function or gives it a
+    // bad parameter.
+    @Test
+    fun everyScoringRuleCallsAKnownFunctionWithValidParameters() {
+        assertEquals(
+            emptyList(),
+            CardAssets.cardsByFolder.values.flatten().mapNotNull { card ->
+                val rule = card["scoring"] ?: return@mapNotNull null
+                runCatching { Json.decodeFromJsonElement<ScoringRule>(rule) }
+                    .exceptionOrNull()
+                    ?.let { "${card.getValue("id").jsonPrimitive.content}: ${it.message}" }
+            },
+        )
+    }
+
+    @Test
+    fun everyCompassStarOfAScoredSetHasAScoringRule() {
+        assertEquals(
+            emptyList(),
+            cards
+                .filterIsInstance<Trait>()
+                .filter { it.set in scoredSets && it.points == null && it.scoring == null }
+                .map { it.id },
+        )
     }
 }
