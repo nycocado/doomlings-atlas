@@ -26,6 +26,17 @@ The words this project uses for its concepts, in code, docs, issues and chat. Ga
 - **Stabilize**: drawing or discarding at the end of a turn until the hand matches the Gene Pool.
 - **Score**: a player's final total: face values plus bonuses and World's End effects ([docs/rules/classic.md](docs/rules/classic.md#scoring)).
 
+## Scoring
+
+- **Finished game**: the final state of a game the app scores, `FinishedGame` in `shared`: 2 to 6 players and the 3 catastrophes in order, after the table resolved every World's End that moves cards.
+- **Player**: one player of a finished game, `Player`: a name, a trait pile, a hand, a Gene Pool size (1 to 8) and a manual adjustment.
+- **Scoring rule**: a card's `scoring` entry in the card data, a call to a named Kotlin function (`fn`) with its parameters ([ADR 0005](docs/adr/0005-scoring-rules-in-card-data.md)), `ScoringRule` in code. A card without one scores its face value. Each rule declares its **needs** (`PlayerInput`): what it reads from a player beyond the trait piles, such as the hand or the Gene Pool size.
+- **Counted**: what a scoring rule counted, its number and what of (2 Kidneys, the Gene Pool size), kept as data so the app writes it in the interface language.
+- **Breakdown**: where each point of a score comes from: the face values (one total with the number of traits, a compass star 0), each scoring rule's value by card with what it counted, and the manual adjustment. It sums to the score.
+- **Manual adjustment**: a signed number added to a player's score, for cards missing from the data and house rules.
+- **Ranking**: the players by score, tied players together. A tie breaks only by the face value of the trait each tied player drew (a compass star 0); without one for every tied player, it stays.
+- **Scored sets**: the sets whose scoring is done (`scoredSets`), the only ones the app lets a game use. Today, Classic.
+
 ## Expansion Card Types
 
 Each is explained by the rulesheet of its set, in [`assets/doomlings/rules`](assets/doomlings/rules), and summarized in the set's file in [docs/rules](docs/rules/README.md).
