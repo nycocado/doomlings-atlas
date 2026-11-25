@@ -58,7 +58,7 @@ A security vulnerability never goes in an issue: report it privately as [SECURIT
 Work on the app starts from an issue that says what "done" means.
 
 - A **ticket** is an issue that becomes one PR. It uses the Ticket form: the problem, the decided behavior, acceptance criteria with the test that must fail first, and when needed what is out of scope and notes.
-- A **spec** is the parent issue of 2 to 4 tickets and holds the decisions they share. It uses the same form; each of its tickets is a sub-issue whose problem says "Part of #N" and whose behavior covers only its own slice. Most work is a single ticket.
+- A **spec** is the parent issue of the tickets that share its decisions, as many as the work needs. It uses the same form; each of its tickets is a sub-issue whose problem says "Part of #N", whose behavior covers only its own slice, and which becomes its own PR. Most work is a single ticket.
 - New issues get `needs-triage`. The maintainer reads them and labels each one: `needs-info` (waiting on the author), `ready-for-agent` (an approved ticket or spec that an AI agent may build), `ready-for-human` (needs a person) or `wontfix`.
 - Each [ROADMAP.md](ROADMAP.md) phase is a milestone, holding the issues of that phase.
 - Topic labels: `bug`, `card-data`, `translation`, `scoring`, `accessibility` and `dependencies`; `good first issue` and `help wanted` point newcomers to a place to start.
