@@ -2,6 +2,23 @@
 
 Notable changes in each release of Doomlings Atlas, generated from the commit history by [git-cliff](https://git-cliff.org).
 
+## 0.5.0 (2026-11-25)
+
+### Features
+
+- Scoring core and compass stars ([#285](https://github.com/nycocado/doomlings-atlas/pull/285))
+- Gene Pool creatures and player colors ([#287](https://github.com/nycocado/doomlings-atlas/pull/287))
+
+### Documentation
+
+- A PR per ticket, specs without a ticket limit ([#266](https://github.com/nycocado/doomlings-atlas/pull/266))
+- PR body from the repo's template ([#286](https://github.com/nycocado/doomlings-atlas/pull/286))
+
+### Tooling
+
+- Bump actions/setup-java from 6.2.0 to 6.3.0 in the actions group ([#263](https://github.com/nycocado/doomlings-atlas/pull/263))
+- Bump the gradle group with 6 updates ([#264](https://github.com/nycocado/doomlings-atlas/pull/264))
+
 ## 0.4.1 (2026-11-20)
 
 ### Fixes
